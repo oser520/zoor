@@ -7,7 +7,9 @@
 #ifndef _BOARD_H
 #define _BOARD_H
 
+#include <cstdint>
 #include <iostream>
+#include <vector>
 
 namespace zoor {
 
@@ -63,7 +65,14 @@ struct PieceCount {
 
 class Board {
   friend std:ostream& operator<<(std:ostream &os, const Board &board);
-  unsigned int mRows[8];
+  
+  // Each row contains eight squares, and each square is made up of 4 bits.
+  using row_type = uint32_t;
+  using count_type = PiceCount::count_type;
+
+  row_type mRows[8];
+  PieceCount mPieceCount;
+
 public:
   /* copy control */
   Board() = default;
@@ -72,6 +81,12 @@ public:
   Board& operator=(const Board &board) = default;
   Board& operator=(Board &&board) = default;
   ~Board() = default;
+
+  /* return the piece count */
+  PieceCount pieceCount() noexcept;
+
+  /* return a vector of all the possible moves from this given position */
+  vector<Board> moves() noexcept;
 };
 
 } // namespace zoor
