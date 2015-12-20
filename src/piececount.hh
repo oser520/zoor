@@ -27,45 +27,34 @@ struct PieceCount {
 
   enum class Pos { START };
 
-  /* copy control */
-  PieceCount() noexcept = default;
-  PieceCount(Pos) noexcept;
+  /**
+   * Construct a PieceCount with the normal number of pieces at the beginning of
+   * a game, with:
+   *
+   * @li 1 king
+   * @li 1 queen
+   * @li 2 rooks
+   * @li 2 bishops
+   * @li 2 knights
+   * @li 8 pawns
+   */
+  PieceCount() noexcept;
   PieceCount(const PieceCount &pcount) noexcept = default;
   PieceCount& operator=(const PieceCount &pcount) noexcept = default;
   ~PieceCount() noexcept = default;
 
   /**
-   * init() Sets the number of pieces to what they are when the game begins.
-   * @return a reference to this PieceCount
+   * Sets the piece count to what it would be at the beginning of the game.
+   * The default constructor initializes a PieceCount to the same state,
+   * so we would use this after a board has already been in use and we want
+   * to re-set the state.
+   *
+   * @return A reference to this PieceCount.
    */
   PieceCount& init() noexcept;
 };
 
-/**
- * Format a PieceCount for an output stream.
- *
- * @param os The output stream.
- * @param pc A PieceCount object.
- * @return A reference to the output stream.
- */
-std::ostream& operator<<(std::ostream &os, const PieceCount &pc)
-{
-  return os << "{kings=" << mKings
-            << ", queens=" << mQueens
-            << ", rooks=" << mRooks
-            << ", bishops=" << mBishops
-            << ", knights=" << mKnights
-            << ", pawns=" << mPawns
-            << ", total=" << mTotal
-            << "}";
-  return os;
-}
-
-/**
- * Construct a PieceCount with the normal number of pieces at the beginning of
- * a game.
- */
-PieceCount::PieceCount(PieceCount::Pos) noexcept
+PieceCount::PieceCount() noexcept
   : mKings(1),
     mQueens(1),
     mRooks(2),
@@ -84,6 +73,26 @@ inline PieceCount& PieceCount::init() noexcept
   mPawns = 8;
   mTotal = 16;
   return *this;
+}
+
+/**
+ * Format a PieceCount for an output stream.
+ *
+ * @param os The output stream.
+ * @param pc A PieceCount object.
+ * @return A reference to the output stream.
+ */
+inline std::ostream& operator<<(std::ostream &os, const PieceCount &pc)
+{
+  return os << "{kings=" << mKings
+            << ", queens=" << mQueens
+            << ", rooks=" << mRooks
+            << ", bishops=" << mBishops
+            << ", knights=" << mKnights
+            << ", pawns=" << mPawns
+            << ", total=" << mTotal
+            << "}";
+  return os;
 }
 
 } // namespace zoor
