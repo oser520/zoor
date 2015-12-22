@@ -25,8 +25,6 @@ struct PieceCount {
   count_type mPawns;
   count_type mTotal;
 
-  enum class Pos { START };
-
   /**
    * Construct a PieceCount with the normal number of pieces at the beginning of
    * a game, with:
@@ -84,15 +82,30 @@ inline PieceCount& PieceCount::init() noexcept
  */
 inline std::ostream& operator<<(std::ostream &os, const PieceCount &pc)
 {
-  return os << "{kings=" << mKings
-            << ", queens=" << mQueens
-            << ", rooks=" << mRooks
-            << ", bishops=" << mBishops
-            << ", knights=" << mKnights
-            << ", pawns=" << mPawns
-            << ", total=" << mTotal
-            << "}";
+  os << "{kings=" << mKings
+     << ", queens=" << mQueens
+     << ", rooks=" << mRooks
+     << ", bishops=" << mBishops
+     << ", knights=" << mKnights
+     << ", pawns=" << mPawns
+     << ", total=" << mTotal
+     << "}";
   return os;
+}
+
+bool operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept
+{
+  return pc1.mKings == pc2.mKings
+      && pc1.mQueens == pc2.mQueens
+      && pc1.mRooks == pc2.mRooks
+      && pc1.mBishops == pc2.mBishops
+      && pc1.mKnights == pc2.mKnights
+      && pc1.mPawns == pc2.mPawns;
+}
+
+bool operator!=(const PieceCount &pc1, const PieceCount &pc2) noexcept
+{
+  return !(pc1 == pc2);
 }
 
 } // namespace zoor
