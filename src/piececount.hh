@@ -1,7 +1,7 @@
 /**
  * @file piececount.hh
  * @author Omar A Serrano
- * @date 2015-19-18
+ * @date 2015-12-19
  */
 
 #ifndef _PIECECOUNT_H
@@ -52,27 +52,6 @@ struct PieceCount {
   PieceCount& init() noexcept;
 };
 
-PieceCount::PieceCount() noexcept
-  : mKings(1),
-    mQueens(1),
-    mRooks(2),
-    mBishops(2),
-    mKnights(2),
-    mPawns(8),
-    mTotal(16) {}
-
-inline PieceCount& PieceCount::init() noexcept
-{
-  mKings = 1;
-  mQueens = 1;
-  mRooks = 2;
-  mBishops = 2;
-  mKnights = 2;
-  mPawns = 8;
-  mTotal = 16;
-  return *this;
-}
-
 /**
  * Format a PieceCount for an output stream.
  *
@@ -80,33 +59,31 @@ inline PieceCount& PieceCount::init() noexcept
  * @param pc A PieceCount object.
  * @return A reference to the output stream.
  */
-inline std::ostream& operator<<(std::ostream &os, const PieceCount &pc)
-{
-  os << "{kings=" << mKings
-     << ", queens=" << mQueens
-     << ", rooks=" << mRooks
-     << ", bishops=" << mBishops
-     << ", knights=" << mKnights
-     << ", pawns=" << mPawns
-     << ", total=" << mTotal
-     << "}";
-  return os;
-}
+std::ostream& operator<<(std::ostream &os, const PieceCount &pc);
 
-bool operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept
-{
-  return pc1.mKings == pc2.mKings
-      && pc1.mQueens == pc2.mQueens
-      && pc1.mRooks == pc2.mRooks
-      && pc1.mBishops == pc2.mBishops
-      && pc1.mKnights == pc2.mKnights
-      && pc1.mPawns == pc2.mPawns;
-}
+/**
+ * @function operator==
+ * @brief Compares two PieceCount objects for equality.
+ *
+ * The function is guaranteed not to throw an exception.
+ *
+ * @param pc1 The first *PieceCount* object.
+ * @param pc2 The second *PieceCount* object.
+ * @return True if they are equal, false otherwise.
+ */
+bool operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept;
 
+/**
+ * @function operator!=
+ * @brief Compares two PieceCount objects for non-equality.
+ *
+ * The function is guaranteed not to throw an exception.
+ *
+ * @param pc1 The first *PieceCount* object.
+ * @param pc2 The second *PieceCount* object.
+ * @return False if they are equal, true otherwise.
+ */
 bool operator!=(const PieceCount &pc1, const PieceCount &pc2) noexcept
-{
-  return !(pc1 == pc2);
-}
 
 } // namespace zoor
 
