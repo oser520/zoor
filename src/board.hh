@@ -19,6 +19,19 @@
 namespace zoor {
 
 
+/**
+ * The Board class maintains the current state of the chess board.
+ *
+ * The functionality of the Board class is limited to the minimum knowledge we would
+ * expect a board to have about itself, including the current chess position, the
+ * number of pieces on the board, the positions that can be obtained from the current
+ * position via legal moves, and whether it is white's or black's turn to move. On
+ * the other hand, we don't expect a chess board to know the series of moves that led
+ * to the current position. It is in fact feasible that we arrived at the current
+ * position without any prior moves if we are not playing a game but only analysing a
+ * position. In real life, it is the player's job to know the series of moves that
+ * led to a given position.
+ */
 class Board {
   friend std:ostream& operator<<(std:ostream &os, const Board &board);
   
