@@ -41,10 +41,8 @@ class Board {
 public:
   using dim_type = unsigned short;
   using row_type = uint64_t;
-
   static constexpr dim_type BOARD_DIM = 8;
   
-
 private:
   array<row_type, BOARD_DIM> mRows;
   PieceCount mWhiteCount;
