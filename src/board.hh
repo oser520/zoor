@@ -59,9 +59,9 @@ public:
 
   /* Return a vector of all the legal moves from this position.
    * 
-   * If there are no legal moves, then the vector of boards will be empty. This
-   * mean that the current position is a checkmate, a stalemate, or that there
-   * are no pieces on the board. 
+   * If there are no legal moves, then the vector of boards will be empty. This mean
+   * that the current position is a checkmate, a stalemate, or that there are no
+   * pieces on the board. 
    *
    * @return A vector of all the legal moves from the current position.
    */
