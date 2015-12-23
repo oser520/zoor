@@ -57,7 +57,7 @@ public:
   Board(Board &&board) = default;
   Board& operator=(const Board &board) = default;
   Board& operator=(Board &&board) = default;
-  ~Board() = default;
+  ~Board() noexcept = default;
 
   /* return the piece count */
   PieceCount pieceCount() noexcept;
