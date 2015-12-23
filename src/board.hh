@@ -18,22 +18,6 @@
 
 namespace zoor {
 
-/* TODO:
- * - create piece representation based on 4 bits
- * - determine how to represent board (e.g. use dynamic memory?) 
- * - provide member variables to maintain information, including
- *   - 50 move tie
- *   - 3 move tie
- *   - number of moves in game so far
- *   - black/whites turn
- *   - number of pieces
- * - provide member functions
- *   - get next move
- *   - serialize board
- *   - get position value
- *   - info about position
- *   - is mate
- */
 
 class Board {
   friend std:ostream& operator<<(std:ostream &os, const Board &board);
