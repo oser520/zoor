@@ -64,7 +64,7 @@ public:
    *
    * @return A vector of all the legal moves from the current position.
    */
-  vector<Board> moves() noexcept;
+  vector<Board> moves() const noexcept;
 
   /**
    * @brief Obtain the count of white pieces on the board. The object is not modified
