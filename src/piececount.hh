@@ -117,7 +117,10 @@ inline size_t PieceCount::valueBishops() const noexcept
   return static_cast<size_t>(mBishops) * static_cast<size_t>(PieceValue::BISHOP);
 }
 
-size_t valueRooks() const noexcept;
+inline size_t PieceCount::valueRooks() const noexcept
+{
+  return static_cast<size_t>(mRooks) * static_cast<size_t>(PieceValue::ROOK);
+}
 
 size_t valueQueens() const noexcept;
 
