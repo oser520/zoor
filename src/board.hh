@@ -72,7 +72,7 @@ public:
    *
    * @return A copy of the white PieceCount.
    */
-  PieceCount whiteCount() noexcept;
+  PieceCount whiteCount() const noexcept;
 
   /**
    * @brief Obtain the count of black pieces on the board. The object is not modified
@@ -80,7 +80,7 @@ public:
    *
    * @return A copy of the black PieceCount.
    */
-  PieceCount blackCount() noexcept;
+  PieceCount blackCount() const noexcept;
 };
 
 /**
