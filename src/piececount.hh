@@ -102,6 +102,19 @@ struct PieceCount {
   size_t valueQueens() const noexcept;
 };
 
+inline size_t PieceCount::valuePawns() const noexcept
+{
+  return static_cast<size_t>(mPawns) * static_cast<size_t>(PieceValue::PAWN);
+}
+
+size_t valueKnights() const noexcept;
+
+size_t valueBishops() const noexcept;
+
+size_t valueRooks() const noexcept;
+
+size_t valueQueens() const noexcept;
+
 /**
  * Format a PieceCount for an output stream.
  *
