@@ -44,6 +44,7 @@ public:
   
 private:
   array<row_type, BOARD_DIM> mRows;
+  PieceCode mColorMove;
   PieceCount mWhiteCount;
   PieceCount mBlackCount;
 
