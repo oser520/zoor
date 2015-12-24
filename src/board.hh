@@ -66,7 +66,20 @@ public:
    */
   vector<Board> moves() noexcept;
 
+  /**
+   * @brief Obtain the count of white pieces on the board. The object is not modified
+   * and no exceptions are thrown.
+   *
+   * @return A copy of the white PieceCount.
+   */
   PieceCount whiteCount() noexcept;
+
+  /**
+   * @brief Obtain the count of black pieces on the board. The object is not modified
+   * and no exceptions are thrown.
+   *
+   * @return A copy of the black PieceCount.
+   */
   PieceCount blackCount() noexcept;
 };
 
