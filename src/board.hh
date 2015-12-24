@@ -15,6 +15,7 @@
 
 // zoor headers
 #include "piececount.hh"
+#include "piececode.hh"
 
 namespace zoor {
 
