@@ -27,6 +27,19 @@ enum class PieceCode: unsigned char
   BLACK = 1 << 6
 };
 
+/**
+ * Represents the value of a piece.
+ */
+enum class PieceValue: unsigned short
+{
+  PAWN = 1,
+  KNIGHT = 3,
+  BISHOP = KNIGHT,
+  ROOK = 5,
+  QUEEN = 9,
+  KING = ~0
+};
+
 } // namespace zoor
 
 #endif 
