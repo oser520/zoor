@@ -104,31 +104,6 @@ struct PieceCount {
   size_t valueQueens() const noexcept;
 };
 
-inline size_t PieceCount::valuePawns() const noexcept
-{
-  return static_cast<size_t>(mPawns) * static_cast<size_t>(PieceValue::PAWN);
-}
-
-inline size_t PieceCount::valueKnights() const noexcept
-{
-  return static_cast<size_t>(mKnights) * static_cast<size_t>(PieceValue::KNIGHT);
-}
-
-inline size_t PieceCount::valueBishops() const noexcept
-{
-  return static_cast<size_t>(mBishops) * static_cast<size_t>(PieceValue::BISHOP);
-}
-
-inline size_t PieceCount::valueRooks() const noexcept
-{
-  return static_cast<size_t>(mRooks) * static_cast<size_t>(PieceValue::ROOK);
-}
-
-inline size_t PieceCount::valueQueens() const noexcept
-{
-  return static_cast<size_t>(mQueens) * static_cast<size_t>(PieceValue::QUEENS);
-}
-
 /**
  * Format a PieceCount for an output stream.
  *
@@ -161,6 +136,32 @@ bool operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept;
  * @return False if they are equal, true otherwise.
  */
 bool operator!=(const PieceCount &pc1, const PieceCount &pc2) noexcept
+
+inline size_t PieceCount::valuePawns() const noexcept
+{
+  return static_cast<size_t>(mPawns) * static_cast<size_t>(PieceValue::PAWN);
+}
+
+inline size_t PieceCount::valueKnights() const noexcept
+{
+  return static_cast<size_t>(mKnights) * static_cast<size_t>(PieceValue::KNIGHT);
+}
+
+inline size_t PieceCount::valueBishops() const noexcept
+{
+  return static_cast<size_t>(mBishops) * static_cast<size_t>(PieceValue::BISHOP);
+}
+
+inline size_t PieceCount::valueRooks() const noexcept
+{
+  return static_cast<size_t>(mRooks) * static_cast<size_t>(PieceValue::ROOK);
+}
+
+inline size_t PieceCount::valueQueens() const noexcept
+{
+  return static_cast<size_t>(mQueens) * static_cast<size_t>(PieceValue::QUEENS);
+}
+
 
 } // namespace zoor
 
