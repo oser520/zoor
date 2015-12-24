@@ -19,7 +19,6 @@
 
 namespace zoor {
 
-
 /**
  * The Board class maintains the current state of the chess board.
  *
