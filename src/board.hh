@@ -56,9 +56,6 @@ public:
   Board& operator=(Board &&board) = default;
   ~Board() noexcept = default;
 
-  /* return the piece count */
-  PieceCount pieceCount() noexcept;
-
   /* Return a vector of all the legal moves from this position.
    * 
    * If there are no legal moves, then the vector of boards will be empty. This mean
