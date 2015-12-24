@@ -122,7 +122,10 @@ inline size_t PieceCount::valueRooks() const noexcept
   return static_cast<size_t>(mRooks) * static_cast<size_t>(PieceValue::ROOK);
 }
 
-size_t valueQueens() const noexcept;
+inline size_t PieceCount::valueQueens() const noexcept
+{
+  return static_cast<size_t>(mQueens) * static_cast<size_t>(PieceValue::QUEENS);
+}
 
 /**
  * Format a PieceCount for an output stream.
