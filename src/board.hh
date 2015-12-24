@@ -34,6 +34,7 @@ namespace zoor {
  */
 class Board {
   friend std:ostream& operator<<(std:ostream &os, const Board &board);
+  friend operator==(const Board &boar1, const Board &board2);
   
 public:
   using dim_type = unsigned short;
