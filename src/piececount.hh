@@ -50,6 +50,56 @@ struct PieceCount {
    * @return A reference to this PieceCount.
    */
   PieceCount& init() noexcept;
+
+  /**
+   * Obtain the value of the pawns on the board.
+   *
+   * The value of the pawns on the board is simply the number of pawns times the
+   * value of each pawn. The object is not modified and no exceptions are thrown.
+   *
+   * @return The value of the pawns on the board.
+   */
+  size_t valuePawns() const noexcept;
+
+  /**
+   * Obtain the value of the knights on the board.
+   *
+   * The value of the knights on the board is simply the number of knights times the
+   * value of each knight. The object is not modified and no exceptions are thrown.
+   *
+   * @return The value of the knights on the board.
+   */
+  size_t valueKnights() const noexcept;
+
+  /**
+   * Obtain the value of the bishops in the board.
+   *
+   * The value of the bishops on the board is simply the number of bishops times the
+   * value of each bishop. The object is not modified and no exceptions are thrown.
+   *
+   * @return The value of the bishops on the board.
+   */
+  size_t valueBishops() const noexcept;
+
+  /**
+   * Obtain the value of the rooks in the board.
+   *
+   * The value of the rooks on the board is simply the number of rooks times the
+   * value of each rook. The object is not modified and no exceptions are thrown.
+   *
+   * @return The value of the rooks on the board.
+   */
+  size_t valueRooks() const noexcept;
+
+  /**
+   * Obtain the value of the queens in the board.
+   *
+   * The value of the queens on the board is simply the number of queens times the
+   * value of each queen. The object is not modified and no exceptions are thrown.
+   *
+   * @return The value of the queens on the board.
+   */
+  size_t valueQueens() const noexcept;
 };
 
 /**
