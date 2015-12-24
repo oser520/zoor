@@ -107,12 +107,15 @@ inline size_t PieceCount::valuePawns() const noexcept
   return static_cast<size_t>(mPawns) * static_cast<size_t>(PieceValue::PAWN);
 }
 
-inline size_t valueKnights() const noexcept
+inline size_t PieceCount::valueKnights() const noexcept
 {
   return static_cast<size_t>(mKnights) * static_cast<size_t>(PieceValue::KNIGHT);
 }
 
-size_t valueBishops() const noexcept;
+inline size_t PieceCount::valueBishops() const noexcept
+{
+  return static_cast<size_t>(mBishops) * static_cast<size_t>(PieceValue::BISHOP);
+}
 
 size_t valueRooks() const noexcept;
 
