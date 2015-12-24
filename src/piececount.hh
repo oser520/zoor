@@ -162,7 +162,6 @@ inline size_t PieceCount::valueQueens() const noexcept
   return static_cast<size_t>(mQueens) * static_cast<size_t>(PieceValue::QUEENS);
 }
 
-
 } // namespace zoor
 
 #endif 
