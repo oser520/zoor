@@ -40,9 +40,6 @@ bool operator==(const Board &boar1, const Board &board2) noexcept
       && std::equal(std::begin(board1), std::end(board1), std::begin(board2));
 }
 
-/**
- * TODO: implement non-equality operator.
- */
 bool operator!=(const Board &boar1, const Board &board2) noexcept
 {
   return !(board1 == board2);
