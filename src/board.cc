@@ -34,4 +34,7 @@ bool operator==(const Board &boar1, const Board &board2) noexcept
 /**
  * TODO: implement non-equality operator.
  */
-bool operator!=(const Board &boar1, const Board &board2) noexcept;
+bool operator!=(const Board &boar1, const Board &board2) noexcept
+{
+  return !(board1 == board2);
+}
