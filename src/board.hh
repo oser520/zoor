@@ -104,11 +104,7 @@ std:ostream& operator<<(std:ostream &os, const Board &board);
  * @return True if boards are equal, false otherwise.
  * @except Guaranteed not to throw an exception.
  */
-bool operator==(const Board &boar1, const Board &board2) noexcept
-{
-  return board1.mColorMove == board2.mColorMove
-      && equal(begin(board1), end(board1), begin(board2));
-}
+bool operator==(const Board &boar1, const Board &board2) noexcept;
 
 /**
  * Non-equality operator for a *Board*.
