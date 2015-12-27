@@ -4,6 +4,13 @@
  * @date 2015-12-26
  */
 
+// STL headers
+#include <vector>
+#include <iostream>
+
+// zoor headers
+#include "board.hh"
+
 namespace zoor {
 
 /**
