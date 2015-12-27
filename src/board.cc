@@ -25,10 +25,11 @@ std:ostream& operator<<(std:ostream &os, const Board &board)
   return os;
 }
 
-/**
- * TODO: implement equality operator.
- */
-bool operator==(const Board &boar1, const Board &board2) noexcept;
+bool operator==(const Board &boar1, const Board &board2) noexcept
+{
+  return board1.mColorMove == board2.mColorMove
+      && equal(begin(board1), end(board1), begin(board2));
+}
 
 /**
  * TODO: implement non-equality operator.
