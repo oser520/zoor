@@ -38,7 +38,7 @@ std:ostream& operator<<(std:ostream &os, const Board &board)
 bool operator==(const Board &boar1, const Board &board2) noexcept
 {
   return board1.mColorMove == board2.mColorMove
-      && std::equal(std::begin(board1), std::end(board1), std::begin(board2));
+      && std::equal(board1.begin(), board1.end(), board2.begin());
 }
 
 bool operator!=(const Board &boar1, const Board &board2) noexcept
