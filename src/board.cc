@@ -7,6 +7,7 @@
 // STL headers
 #include <vector>
 #include <iostream>
+#include <algorithm>
 
 // zoor headers
 #include "board.hh"
