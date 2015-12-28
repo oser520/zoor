@@ -8,6 +8,11 @@
 #define _SEARCH_H
 
 namespace zoor {
+
+/**
+ * TODO: Create search class that implements alpha-beta pruning. Each node will represent
+ * a chess board position.
+ */
 }
 
 #endif // _SEARCH_H
