@@ -6,4 +6,8 @@
  
 #ifndef _SEARCH_H
 #define _SEARCH_H
+
+namespace zoor {
+}
+
 #endif // _SEARCH_H
