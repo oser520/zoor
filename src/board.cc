@@ -20,9 +20,9 @@ namespace zoor {
 Board::Board() {}
 
 /**
- * TODO: implement moves function
+ * TODO: implement getBoardsFromMoves function
  */
-vector<Board> Board::moves() const noexcept
+vector<Board> Board::getBoardsFromMoves() const noexcept
 {
   return vector<Board>();
 }
