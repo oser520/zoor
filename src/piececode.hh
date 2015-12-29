@@ -17,14 +17,19 @@ namespace zoor {
  */
 enum class PieceCode: unsigned char
 {
-  PAWN = 1,
+  NONE = 0,
+  PAWN,
   KNIGHT,
   BISHOP,
   ROOK,
   QUEEN,
-  KING,
-  WHITE = 1 << 5,
-  BLACK = 1 << 6
+  KING
+};
+
+enum class PieceColor: unsigned char
+{
+  WHITE = 1 << 4,
+  BLACK = 1 << 5
 };
 
 /**
