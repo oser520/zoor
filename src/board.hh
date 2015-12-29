@@ -47,6 +47,15 @@ private:
   PieceCount mWhiteCount;
   PieceCount mBlackCount;
 
+  /* Return a vector of all the legal moves from the given position.
+   *
+   * @param row The row in the board.
+   * @param col The column in the board.
+   * @return A vector of all the legal moves from the current position. An empty
+   *  vector if there are no moves from the given position.
+   */
+  vector<PieceMoves> getMoves(size_t row, size_t col) const noexcept;
+
 public:
   /* copy control */
   Board() = default;
@@ -56,15 +65,16 @@ public:
   Board& operator=(Board &&board) = default;
   ~Board() noexcept = default;
 
-  /* Return a vector of all the legal moves from this position.
+  /* @brief Return a vector of all the boards that can be reached from this board in
+   * one move.
    * 
-   * If there are no legal moves, then the vector of boards will be empty. This mean
-   * that the current position is a checkmate, a stalemate, or that there are no
+   * If there are no legal moves, then the vector of boards will be empty. This may
+   * mean that the current position is a checkmate, a stalemate, or that there are no
    * pieces on the board. 
    *
    * @return A vector of all the legal moves from the current position.
    */
-  vector<Board> moves() const noexcept;
+  vector<Board> getBoardsFromMoves() const noexcept;
 
   /**
    * @brief Obtain the count of white pieces on the board. The object is not modified
