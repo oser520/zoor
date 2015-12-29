@@ -10,7 +10,7 @@
 namespace zoor {
 
 /**
- * Represents the piece or color of a piece.
+ * Represents a piece on the board.
  *
  * Since each piece on a board is represented in a byte, the type for
  * each PieceCode is an unsigned char.
@@ -26,6 +26,12 @@ enum class PieceCode: unsigned char
   KING
 };
 
+/**
+ * Represents the color of a piece. 
+ *
+ * The PieceColor can be logically ORed with a PiceCode to
+ * make a piece have color.
+ */
 enum class PieceColor: unsigned char
 {
   WHITE = 1 << 4,
