@@ -48,6 +48,8 @@ public:
   PieceMoves& setColor(PieceColor) noexcept;
   PieceMoves& setPiece(PieceCode) noexcept;
   PieceMoves& setSquare(Square) noexcept;
+
+  PieceColor color() const noexcept;
   
 private:
   PieceColor mColor;
