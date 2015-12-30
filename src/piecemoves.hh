@@ -56,6 +56,8 @@ public:
 
   bool empty() const noexcept;
   size_type size() const noexcept;
+
+  // TODO: provide access to iterators.
   
 private:
   PieceColor mColor;
