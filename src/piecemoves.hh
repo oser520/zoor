@@ -26,6 +26,37 @@ struct Square
  */
 class PieceMoves
 {
+  friend std::ostream& operator<<(std::ostream &os, const PieceMoves &pm) noexcept;
+  friend bool operator==(const PieceMoves &pm1, const PieceMoves &pm2) noexcept;
+
+public:
+  // typedefs
+  using iterator = std::vector<MoveTo>::iterator;
+  using const_iterator = std::vector<MoveTo>::const_iterator;
+  
+  // copy control
+  PieceMoves();
+  PieceMoves(const PieceMoves &pm);
+  PieceMoves(PieceMoves &&pm);
+  PieceMoves& operator=(const PieceMoves &pm);
+  PieceMoves& operator=(PieceMoves &&pm);
+  
+private:
+  PieceColor mColor;
+  PieceCode mPiece;
+  Square mSquare;
+  std::vector<MoveTo> mMoves;
+
+public:
+  /**
+   * A move to a given position.
+   */
+  struct MoveTo
+  {
+    PieceColor mColor;
+    PieceCode mPiece;
+    Square mSquare;
+  };
 };
 
 } // namespace zoor
