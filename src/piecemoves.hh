@@ -52,6 +52,8 @@ public:
   PieceColor color() const noexcept;
   PieceCode piece() const noexcept;
   Square square(Square) const noexcept;
+
+  bool empty() const noexcept;
   
 private:
   PieceColor mColor;
