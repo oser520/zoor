@@ -9,6 +9,15 @@
 namespace zoor {
 
 /**
+ * Represents a position in the baord.
+ */
+struct Square
+{
+  unsigned short mRow;
+  unsigned short mCol;
+};
+
+/**
  * @brief Represents a list of moves for a given piece from a particular position in
  * the board.
  *
