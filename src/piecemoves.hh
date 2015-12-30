@@ -26,8 +26,8 @@ struct Square
  */
 class PieceMoves
 {
-  friend std::ostream& operator<<(std::ostream &os, const PieceMoves &pm) noexcept;
-  friend bool operator==(const PieceMoves &pm1, const PieceMoves &pm2) noexcept;
+  friend std::ostream& operator<<(std::ostream&, const PieceMoves&) noexcept;
+  friend bool operator==(const PieceMoves&, const PieceMoves&) noexcept;
 
 public:
   // typedefs
@@ -36,11 +36,13 @@ public:
   
   // copy control
   PieceMoves();
-  PieceMoves(const PieceMoves &pm);
-  PieceMoves(PieceMoves &&pm);
-  PieceMoves& operator=(const PieceMoves &pm);
-  PieceMoves& operator=(PieceMoves &&pm);
-  ~PieceMoves() noexcept;
+  PieceMoves(const PieceMoves&);
+  PieceMoves(PieceColor, PieceCode, Square);
+  PieceMoves(PieceColor, PieceCode, Square, std::vector<MoveTo>);
+  PieceMoves(PieceMoves&&) = default;
+  PieceMoves& operator=(const PieceMoves&) = default;
+  PieceMoves& operator=(PieceMoves &&) = default;
+  ~PieceMoves() noexcept = default;
   
 private:
   PieceColor mColor;
