@@ -43,6 +43,9 @@ public:
   PieceMoves& operator=(const PieceMoves&) = default;
   PieceMoves& operator=(PieceMoves &&) = default;
   ~PieceMoves() noexcept = default;
+
+  // interface
+  PieceMoves& setColor(PieceColor) noexcept;
   
 private:
   PieceColor mColor;
