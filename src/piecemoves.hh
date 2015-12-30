@@ -40,6 +40,7 @@ public:
   PieceMoves(PieceMoves &&pm);
   PieceMoves& operator=(const PieceMoves &pm);
   PieceMoves& operator=(PieceMoves &&pm);
+  ~PieceMoves() noexcept;
   
 private:
   PieceColor mColor;
