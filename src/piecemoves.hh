@@ -33,6 +33,7 @@ public:
   // typedefs
   using iterator = std::vector<MoveTo>::iterator;
   using const_iterator = std::vector<MoveTo>::const_iterator;
+  using size_type = std::vector<MoveTo>::size_type;
   
   // copy control
   PieceMoves();
@@ -54,6 +55,7 @@ public:
   Square square(Square) const noexcept;
 
   bool empty() const noexcept;
+  size_type size() const noexcept;
   
 private:
   PieceColor mColor;
