@@ -47,6 +47,7 @@ public:
   // interface
   PieceMoves& setColor(PieceColor) noexcept;
   PieceMoves& setPiece(PieceCode) noexcept;
+  PieceMoves& setSquare(Square) noexcept;
   
 private:
   PieceColor mColor;
