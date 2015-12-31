@@ -23,15 +23,53 @@ public:
   using dim_type = unsigned short;
   static constexpr dim_type BOARD_DIM = 8;
 
-  // custom constructor
-  Square(dim_type, dim_type);
+  /**
+   * @brief Constructs square with specific with specific row and column.
+   * @param row The row of the square.
+   * @param column The column of the square.
+   * @except Throws exception if row or column are not within bounds of
+   *  <em>BOARD_DIM</em>.
+   */
+  Square(dim_type row, dim_type column);
   
-  // standard copy control
+  /**
+   * @brief Default constructor.
+   * @except Does not throw exception.
+   */
   Square() noexcept = default
-  Square(const Square&) noexcept = default
-  Square(Square&&) noexcept = default
-  Square& operator=(const Square&) noexcept = default
-  Square& operator=(Square&&) noexcept = default
+
+  /**
+   * @brief Default copy constructor.
+   * @param square The square being copied. 
+   * @except Does not throw exception.
+   */
+  Square(const Square& square) noexcept = default
+
+  /**
+   * @brief Default move constructor.
+   * @param square The square being moved. 
+   * @except Does not throw exception.
+   */
+  Square(Square&& square) noexcept = default
+
+  /**
+   * @brief Default copy assignment.
+   * @param square The square being copied. 
+   * @except Does not throw exception.
+   */
+  Square& operator=(const Square& square) noexcept = default
+
+  /**
+   * @brief Default move assignment.
+   * @param square The square being moved. 
+   * @except Does not throw exception.
+   */
+  Square& operator=(Square &&square) noexcept = default
+
+  /**
+   * @brief Default destructor.
+   * @except Does not throw exception.
+   */
   ~Square() noexcept = default;
 
   // getters
