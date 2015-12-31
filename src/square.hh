@@ -39,8 +39,8 @@ public:
   dim_type col() const noexcept;
 
   // setters
-  Square& setRow(dim_type) noexcept;
-  Square& setCol(dim_type) noexcept;
+  Square& setRow(dim_type);
+  Square& setCol(dim_type);
 
 private:
   dim_type mRow;
