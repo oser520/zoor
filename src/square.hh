@@ -47,6 +47,13 @@ private:
   dim_type mCol;
 };
 
+/**
+ * @brief Output operator for Square. Format is <em>{row, column}</em>.
+ *
+ * @param os The output stream. 
+ * @param square An immutable squre.
+ * @return A reference to the output stream.
+ */
 std::ostream& operator<<(std::ostream& os, const Square& square);
 
 bool operator==(const Square& square1, const Square& square2) noexcept;
