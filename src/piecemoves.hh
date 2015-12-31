@@ -57,7 +57,13 @@ public:
   bool empty() const noexcept;
   size_type size() const noexcept;
 
-  // TODO: provide access to iterators.
+  // iterator access
+  iterator begin() noexcept;
+  iterator end() noexcept;
+  const_iterator begin() const noexcept;
+  const_iterator end() const noexcept;
+  const_iterator cbegin() noexcept;
+  const_iterator cend() noexcept;
   
 private:
   PieceColor mColor;
@@ -80,4 +86,3 @@ public:
 } // namespace zoor
 
 #endif // _PIECEMOVES_H
-
