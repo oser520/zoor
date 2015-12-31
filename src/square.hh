@@ -66,6 +66,14 @@ std::ostream& operator<<(std::ostream& os, const Square& square);
  */
 bool operator==(const Square& square1, const Square& square2) noexcept;
 
+/**
+ * @brief Non-equality test for Square.
+ *
+ * @param square1 The first square operand.
+ * @param square2 The second square operand.
+ * @return True if square1 and square2 are not equal.
+ * @except Does not throw exception.
+ */
 bool operator!=(const Square& square1, const Square& square2) noexcept;
 
 } // namespace zoor
