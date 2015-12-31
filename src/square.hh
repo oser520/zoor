@@ -16,7 +16,14 @@ namespace zoor {
  */
 class Square
 {
+  /**
+   * @copydoc std::ostream& operator<<(std::ostream&, const Square&)
+   */
   friend std::ostream& operator<<(std::ostream&, const Square&);
+
+  /**
+   * @copydoc bool operator==(const Square&, const Square&)
+   */
   friend bool operator==(const Square&, const Square&) noexcept;
 
 public:
@@ -115,7 +122,14 @@ public:
   Square& setCol(dim_type column);
 
 private:
+  /**
+   * The row in the @c Square.
+   */
   dim_type mRow;
+
+  /**
+   * The column in the @c Square.
+   */
   dim_type mCol;
 };
 
