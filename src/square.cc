@@ -16,6 +16,14 @@ Square::Square(dim_type row, dim_type column) noexcept
   assert(mCol < BOARD_DIM);
 }
 
+dim_type Square::row() const noexcept
+{
+  return mRow;
+}
 
+dim_type Square::col() const noexcept
+{
+  return mCol;
+}
 
 } // namespace zoor
