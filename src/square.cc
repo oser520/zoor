@@ -4,6 +4,11 @@
  * @data 2015-12-31
  */
 
+#include <iostream>
+#include <cassert>
+
+#include "square.hh"
+
 namespace zoor {
 
 using dim_type = Square::dim_type;
