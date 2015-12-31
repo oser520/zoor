@@ -20,6 +20,9 @@ class Square
   friend bool operator==(const Square&, const Square&) noexcept;
 
 public:
+  /**
+   * Alias for type of row and column.
+   */
   using dim_type = unsigned short;
   static constexpr dim_type BOARD_DIM = 8;
 
