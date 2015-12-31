@@ -41,62 +41,62 @@ public:
    * @brief Constructs a @c Square with a specific row and column.
    * @param row The row of the @c Square.
    * @param column The column of the @c Square.
-   * @except Throws exception if row or column are not within bounds of
+   * @throw Throws exception if row or column are not within bounds of
    *  <em>BOARD_DIM</em>.
    */
   Square(dim_type row, dim_type column);
   
   /**
    * @brief Default constructor.
-   * @except Does not throw exception.
+   * @throw Does not throw exception.
    */
   Square() noexcept = default
 
   /**
    * @brief Default copy constructor.
    * @param square The @c Square being copied. 
-   * @except Does not throw exception.
+   * @throw Does not throw exception.
    */
   Square(const Square& square) noexcept = default
 
   /**
    * @brief Default move constructor.
    * @param square The @c Square being moved. 
-   * @except Does not throw exception.
+   * @throw Does not throw exception.
    */
   Square(Square&& square) noexcept = default
 
   /**
    * @brief Default copy assignment.
    * @param square The @c Square being copied. 
-   * @except Does not throw exception.
+   * @throw Does not throw exception.
    */
   Square& operator=(const Square& square) noexcept = default
 
   /**
    * @brief Default move assignment.
    * @param square The @c Square being moved. 
-   * @except Does not throw exception.
+   * @throw Does not throw exception.
    */
   Square& operator=(Square &&square) noexcept = default
 
   /**
    * @brief Default destructor.
-   * @except Does not throw exception.
+   * @throw Does not throw exception.
    */
   ~Square() noexcept = default;
 
   /**
    * @brief Gets the row number without modifying the @c Square.
    * @return The row number.
-   * @except Does not throw exception.
+   * @throw Does not throw exception.
    */
   dim_type row() const noexcept;
 
   /**
    * @brief Gets the column number without modifying the @c Square.
    * @return The column number.
-   * @except Does not throw exception.
+   * @throw Does not throw exception.
    */
   dim_type col() const noexcept;
 
@@ -105,7 +105,7 @@ public:
    * @brief Sets the row number.
    * @param row The row number.
    * @return A reference to this @c Square
-   * @except Throws
+   * @throw Throws
    *  <a href="http://www.cplusplus.com/reference/stdexcept/invalid_argument/">
    *  invalid_argument</a> if row is greater than <em>BOARD_DIM</em>.
    */
@@ -115,7 +115,7 @@ public:
    * @brief Sets the column number.
    * @param column The column number.
    * @return A reference to this @c Square
-   * @except Throws
+   * @throw Throws
    *  <a href="http://www.cplusplus.com/reference/stdexcept/invalid_argument/">
    *  invalid_argument</a> if column is greater than <em>BOARD_DIM</em>.
    */
@@ -148,7 +148,7 @@ std::ostream& operator<<(std::ostream& os, const Square& square);
  * @param square1 The first @c Square operand.
  * @param square2 The second @c Square operand.
  * @return True if square1 and square2 are equal.
- * @except Does not throw exception.
+ * @throw Does not throw exception.
  */
 bool operator==(const Square& square1, const Square& square2) noexcept;
 
@@ -158,7 +158,7 @@ bool operator==(const Square& square1, const Square& square2) noexcept;
  * @param square1 The first @c Square operand.
  * @param square2 The second @c Square operand.
  * @return True if square1 and square2 are not equal.
- * @except Does not throw exception.
+ * @throw Does not throw exception.
  */
 bool operator!=(const Square& square1, const Square& square2) noexcept;
 
