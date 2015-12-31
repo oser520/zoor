@@ -100,33 +100,29 @@ public:
 
   
   /**
-   * @brief Sets the row number.
+   * @brief Sets the row number. Enforces the invariant for the row size.
    * @param row The row number.
    * @return A reference to this @c Square
-   * @throw Throws
-   *  <a href="http://www.cplusplus.com/reference/stdexcept/invalid_argument/">
-   *  invalid_argument</a> if row is greater than <em>BOARD_DIM</em>.
+   * @throw Guaranteed not to throw.
    */
-  Square& setRow(dim_type row);
+  Square& setRow(dim_type row) noexcept;
 
   /**
-   * @brief Sets the column number.
+   * @brief Sets the column number. Enforces the invariant for the column size.
    * @param column The column number.
    * @return A reference to this @c Square
-   * @throw Throws
-   *  <a href="http://www.cplusplus.com/reference/stdexcept/invalid_argument/">
-   *  invalid_argument</a> if column is greater than <em>BOARD_DIM</em>.
+   * @throw Guaranteed not to throw.
    */
-  Square& setCol(dim_type column);
+  Square& setCol(dim_type column) noexcept;
 
 private:
   /**
-   * The row in the @c Square.
+   * The row in the @c Square. Invariant: \f$0 \leq row \le BOARD_DIM.
    */
   dim_type mRow;
 
   /**
-   * The column in the @c Square.
+   * The column in the @c Square. Invariant: \f$0 \leq column \le BOARD_DIM.
    */
   dim_type mCol;
 };
