@@ -6,6 +6,9 @@
 #ifndef _PIECEMOVES_H
 #define _PIECEMOVES_H
 
+#include <vector>
+#include <iostream>
+
 namespace zoor {
 
 /**
