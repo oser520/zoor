@@ -9,8 +9,10 @@
 #include <iostream>
 
 namespace zoor {
+
 /**
- * Represents a position in the baord.
+ * @brief Represents a position in a chess board. It is aware of how big the board
+ * is, and whether a given position is within the bounds of the board.
  */
 class Square
 {
