@@ -39,12 +39,10 @@ public:
 
   /**
    * @brief Constructs a @c Square with a specific row and column.
-   * @param row The row of the @c Square.
-   * @param column The column of the @c Square.
-   * @throw Throws exception if row or column are not within bounds of
-   *  <em>BOARD_DIM</em>.
+   * @param row The row of the @c Square. Assumption: row <= BOARD_DIM.
+   * @param column The column of the @c Square. Assumption: column <= BOARD_DIM.
    */
-  Square(dim_type row, dim_type column);
+  Square(dim_type row, dim_type column) noexcept;
   
   /**
    * @brief Default constructor.

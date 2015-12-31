@@ -6,7 +6,7 @@
 
 namespace zoor {
 
-Square::Square(dim_type row, dim_type column)
+Square::Square(dim_type row, dim_type column) noexcept
   : mRow(row),
     mCol(column)
 {
