@@ -38,9 +38,9 @@ public:
   static constexpr dim_type BOARD_DIM = 8;
 
   /**
-   * @brief Constructs square with specific with specific row and column.
-   * @param row The row of the square.
-   * @param column The column of the square.
+   * @brief Constructs a @c Square with a specific row and column.
+   * @param row The row of the @c Square.
+   * @param column The column of the @c Square.
    * @except Throws exception if row or column are not within bounds of
    *  <em>BOARD_DIM</em>.
    */
@@ -54,28 +54,28 @@ public:
 
   /**
    * @brief Default copy constructor.
-   * @param square The square being copied. 
+   * @param square The @c Square being copied. 
    * @except Does not throw exception.
    */
   Square(const Square& square) noexcept = default
 
   /**
    * @brief Default move constructor.
-   * @param square The square being moved. 
+   * @param square The @c Square being moved. 
    * @except Does not throw exception.
    */
   Square(Square&& square) noexcept = default
 
   /**
    * @brief Default copy assignment.
-   * @param square The square being copied. 
+   * @param square The @c Square being copied. 
    * @except Does not throw exception.
    */
   Square& operator=(const Square& square) noexcept = default
 
   /**
    * @brief Default move assignment.
-   * @param square The square being moved. 
+   * @param square The @c Square being moved. 
    * @except Does not throw exception.
    */
   Square& operator=(Square &&square) noexcept = default
@@ -87,14 +87,14 @@ public:
   ~Square() noexcept = default;
 
   /**
-   * @brief Gets the row number without modifying the square.
+   * @brief Gets the row number without modifying the @c Square.
    * @return The row number.
    * @except Does not throw exception.
    */
   dim_type row() const noexcept;
 
   /**
-   * @brief Gets the column number without modifying the square.
+   * @brief Gets the column number without modifying the @c Square.
    * @return The column number.
    * @except Does not throw exception.
    */
@@ -134,29 +134,29 @@ private:
 };
 
 /**
- * @brief Output operator for Square. Format is <em>{row, column}</em>.
+ * @brief Output operator for @c Square. Format is <em>{row, column}</em>.
  *
  * @param os The output stream. 
- * @param square An immutable squre.
+ * @param square An immutable @c Square.
  * @return A reference to the output stream.
  */
 std::ostream& operator<<(std::ostream& os, const Square& square);
 
 /**
- * @brief Equality test for Square.
+ * @brief Equality test for @c Square.
  *
- * @param square1 The first square operand.
- * @param square2 The second square operand.
+ * @param square1 The first @c Square operand.
+ * @param square2 The second @c Square operand.
  * @return True if square1 and square2 are equal.
  * @except Does not throw exception.
  */
 bool operator==(const Square& square1, const Square& square2) noexcept;
 
 /**
- * @brief Non-equality test for Square.
+ * @brief Non-equality test for @c Square.
  *
- * @param square1 The first square operand.
- * @param square2 The second square operand.
+ * @param square1 The first @c Square operand.
+ * @param square2 The second @c Square operand.
  * @return True if square1 and square2 are not equal.
  * @except Does not throw exception.
  */
