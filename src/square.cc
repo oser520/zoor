@@ -6,6 +6,8 @@
 
 namespace zoor {
 
+using dim_type = Square::dim_type;
+
 Square::Square(dim_type row, dim_type column) noexcept
   : mRow(row),
     mCol(column)
@@ -13,6 +15,7 @@ Square::Square(dim_type row, dim_type column) noexcept
   assert(mRow < BOARD_DIM);
   assert(mCol < BOARD_DIM);
 }
+
 
 
 } // namespace zoor
