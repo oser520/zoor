@@ -6,5 +6,13 @@
 
 namespace zoor {
 
+Square::Square(dim_type row, dim_type column)
+  : mRow(row),
+    mCol(column)
+{
+  assert(mRow < BOARD_DIM);
+  assert(mCol < BOARD_DIM);
+}
+
 
 } // namespace zoor
