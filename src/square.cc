@@ -50,4 +50,10 @@ bool operator!=(const Square& square1, const Square& square2) noexcept;
   return !(square1 == square2);
 }
 
+std::ostream& operator<<(std::ostream& os, const Square& square)
+{
+  os << "(" << square.mRow << ", " << square.mCol << ")";
+  return os;
+}
+
 } // namespace zoor
