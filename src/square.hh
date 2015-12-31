@@ -128,15 +128,6 @@ private:
 };
 
 /**
- * @brief Output operator for @c Square. Format is <em>{row, column}</em>.
- *
- * @param os The output stream. 
- * @param square An immutable @c Square.
- * @return A reference to the output stream.
- */
-std::ostream& operator<<(std::ostream& os, const Square& square);
-
-/**
  * @brief Equality test for @c Square.
  *
  * @param square1 The first @c Square operand.
@@ -155,6 +146,15 @@ bool operator==(const Square& square1, const Square& square2) noexcept;
  * @throw Does not throw exception.
  */
 bool operator!=(const Square& square1, const Square& square2) noexcept;
+
+/**
+ * @brief Output operator for @c Square. Format is <em>{row, column}</em>.
+ *
+ * @param os The output stream. 
+ * @param square An immutable @c Square.
+ * @return A reference to the output stream.
+ */
+std::ostream& operator<<(std::ostream& os, const Square& square);
 
 } // namespace zoor
 
