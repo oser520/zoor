@@ -56,6 +56,14 @@ private:
  */
 std::ostream& operator<<(std::ostream& os, const Square& square);
 
+/**
+ * @brief Equality test for Square.
+ *
+ * @param square1 The first square operand.
+ * @param square2 The second square operand.
+ * @return True if square1 and square2 are equal.
+ * @except Does not throw exception.
+ */
 bool operator==(const Square& square1, const Square& square2) noexcept;
 
 bool operator!=(const Square& square1, const Square& square2) noexcept;
