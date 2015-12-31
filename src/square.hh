@@ -79,8 +79,18 @@ public:
    */
   ~Square() noexcept = default;
 
-  // getters
+  /**
+   * @brief Gets the row number without modifying the square.
+   * @return The row number.
+   * @except Does not throw exception.
+   */
   dim_type row() const noexcept;
+
+  /**
+   * @brief Gets the column number without modifying the square.
+   * @return The column number.
+   * @except Does not throw exception.
+   */
   dim_type col() const noexcept;
 
   // setters
