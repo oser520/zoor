@@ -15,7 +15,7 @@ namespace zoor {
 /**
  * Represents a position in the baord.
  */
-struct Square
+class Square
 {
   unsigned short mRow;
   unsigned short mCol;
