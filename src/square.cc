@@ -40,4 +40,14 @@ Square& Square::setCol(dim_type column) noexcept
   return *this;
 }
 
+bool operator==(const Square& square1, const Square& square2) noexcept
+{
+  return square1.mRow == square2.mRow && square1.mCol == square2.mCol;
+}
+
+bool operator!=(const Square& square1, const Square& square2) noexcept;
+{
+  return !(square1 == square2);
+}
+
 } // namespace zoor
