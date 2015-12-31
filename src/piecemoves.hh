@@ -80,11 +80,15 @@ public:
    */
   class MoveTo
   {
+    friend std::ostream& operator<<(std::ostream&, const MoveTo&);
+    friend bool operator==(const MoveTo&, const MoveTo&) noexcept;
     friend class PieceMoves;
+
   private:
     PieceColor mColor;
     PieceCode mPiece;
     Square mSquare;
+    unique_ptr<PieceMoves> mParent;
 
   public:
     /* copy control */
