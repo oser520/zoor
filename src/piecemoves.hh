@@ -8,6 +8,7 @@
 
 #include <vector>
 #include <iostream>
+#include <memory>
 
 namespace zoor {
 
