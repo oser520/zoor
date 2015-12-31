@@ -6,6 +6,8 @@
 #ifndef _SQUARE_H
 #define _SQUARE_H
 
+#include <iostream>
+
 namespace zoor {
 /**
  * Represents a position in the baord.
