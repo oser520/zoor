@@ -10,6 +10,8 @@
 #include <iostream>
 #include <memory>
 
+#include "square.hh"
+
 namespace zoor {
 
 /**
