@@ -44,6 +44,12 @@ private:
   dim_type mCol;
 };
 
+std::ostream& operator<<(std::ostream& os, const Square& square);
+
+bool operator==(const Square& square1, const Square& square2) noexcept;
+
+bool operator!=(const Square& square1, const Square& square2) noexcept;
+
 } // namespace zoor
 
 #endif // _SQUARE_H
