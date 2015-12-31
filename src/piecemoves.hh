@@ -81,9 +81,21 @@ public:
   class MoveTo
   {
     friend class PieceMoves;
+  private:
     PieceColor mColor;
     PieceCode mPiece;
     Square mSquare;
+
+  public:
+    /* copy control */
+    MoveTo() = default;
+    MoveTo(PieceColor, PieceCode, const Square&) = default;
+    MoveTo(PieceColor, PieceCode, Square&&) = default;
+    MoveTo(const MoveTo&) = default;
+    MoveTo(MoveTo&&) noexcept = default;
+    MoveTo& operator=(const MoveTo&) = default;
+    MoveTo& operator=(MoveTo&&) noexcept = default;
+    ~MoveTo() noexcept = default;
   };
 };
 
