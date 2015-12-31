@@ -78,8 +78,9 @@ public:
   /**
    * A move to a given position.
    */
-  struct MoveTo
+  class MoveTo
   {
+    friend class PieceMoves;
     PieceColor mColor;
     PieceCode mPiece;
     Square mSquare;
