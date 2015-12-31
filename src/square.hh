@@ -93,9 +93,26 @@ public:
    */
   dim_type col() const noexcept;
 
-  // setters
-  Square& setRow(dim_type);
-  Square& setCol(dim_type);
+  
+  /**
+   * @brief Sets the row number.
+   * @param row The row number.
+   * @return A reference to this @c Square
+   * @except Throws
+   *  <a href="http://www.cplusplus.com/reference/stdexcept/invalid_argument/">
+   *  invalid_argument</a> if row is greater than <em>BOARD_DIM</em>.
+   */
+  Square& setRow(dim_type row);
+
+  /**
+   * @brief Sets the column number.
+   * @param column The column number.
+   * @return A reference to this @c Square
+   * @except Throws
+   *  <a href="http://www.cplusplus.com/reference/stdexcept/invalid_argument/">
+   *  invalid_argument</a> if column is greater than <em>BOARD_DIM</em>.
+   */
+  Square& setCol(dim_type column);
 
 private:
   dim_type mRow;
