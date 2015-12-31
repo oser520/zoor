@@ -22,6 +22,9 @@ class Square
 public:
   using dim_type = unsigned short;
   static constexpr dim_type BOARD_DIM = 8;
+
+  // custom constructor
+  Square(dim_type, dim_type);
   
   // standard copy control
   Square() noexcept = default
@@ -30,8 +33,6 @@ public:
   Square& operator=(const Square&) noexcept = default
   Square& operator=(Square&&) noexcept = default
   ~Square() noexcept = default;
-  // custom constructor
-  Square(dim_type, dim_type);
 
   // getters
   dim_type row() const noexcept;
