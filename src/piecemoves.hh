@@ -96,6 +96,23 @@ public:
     MoveTo& operator=(const MoveTo&) = default;
     MoveTo& operator=(MoveTo&&) noexcept = default;
     ~MoveTo() noexcept = default;
+
+    /* getters */
+    PieceColor color() const noexcept;
+    PieceCode piece() const noexcept;
+    Square square() const noexcept;
+
+    // TODO: implement as template with universal paramter T&&
+    // setters with lvalue paramters
+    MoveTo& setColor(const PieceColor&) noexcept;
+    MoveTo& setPiece(const PieceCode&) noexcept;
+    MoveTo& setSquare(const Square&) noexcept;
+
+    // implement as template with universal paramter T&&
+    // setters with rvalue paramters
+    MoveTo& setColor(PieceColor&&) noexcept;
+    MoveTo& setPiece(PieceCode&&) noexcept;
+    MoveTo& setSquare(Square&&) noexcept;
   };
 };
 
