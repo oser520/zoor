@@ -26,4 +26,18 @@ dim_type Square::col() const noexcept
   return mCol;
 }
 
+Square& Square::setRow(dim_type row) noexcept
+{
+  assert(row < BOARD_DIM);
+  mRow = row;
+  return *this;
+}
+
+Square& Square::setCol(dim_type column) noexcept
+{
+  assert(column < BOARD_DIM);
+  mCol = column;
+  return *this;
+}
+
 } // namespace zoor
