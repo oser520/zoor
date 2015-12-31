@@ -24,6 +24,10 @@ public:
    * Alias for type of row and column.
    */
   using dim_type = unsigned short;
+
+  /**
+   * @brief The maximum size of row or column. The dimensions of the chess board.
+   */
   static constexpr dim_type BOARD_DIM = 8;
 
   /**
