@@ -61,7 +61,14 @@ public:
   const_iterator end() const noexcept;
   const_iterator cbegin() noexcept;
   const_iterator cend() noexcept;
-  
+
+  // adding and removing MoveTo elements
+  PieceMoves& push_back(const MoveTo&);
+  PieceMoves& pop_back();
+  PieceMoves& clear();
+
+  // TODO: add emplace_back
+
 private:
   PieceColor mColor;
   PieceCode mPiece;
