@@ -52,6 +52,16 @@ enum class PieceValue: unsigned short
   KING = ~0
 };
 
+/**
+ * Gets the initial letter for the name of a given piece.
+ *
+ * The intial letter of the pieces are N, P, K, B, R, Q, and K. The letters
+ * correspond to @c PieceCode values for none, pawn, knight, bishop, root,
+ * queen, and king.
+ *
+ * @param piece The @c PieceCode.
+ * @return A string representing the one letter intial of the piece.
+ */
 string pieceString(PieceCode piece);
 string longPieceString(PieceCode piece);
 string colorString(PieceCode piece);
