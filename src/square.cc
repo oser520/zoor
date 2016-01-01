@@ -21,6 +21,20 @@ Square::Square(dim_type row, dim_type column) noexcept
   assert(mColumn < BOARD_DIM);
 }
 
+Square::Square
+  (dim_type row,
+   dim_type column,
+   PieceCode piece,
+   PieceColor color) noexcept
+  : mPiece(piece),
+    mColor(color),
+    mRow(row),
+    mColum(column)
+{
+  assert(mRow < BOARD_DIM);
+  assert(mColumn < BOARD_DIM);
+}
+
 dim_type Square::row() const noexcept
 {
   return mRow;
