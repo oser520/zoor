@@ -120,6 +120,17 @@ public:
 
 private:
   /**
+   * @brief The piece sitting on this @c Square, which maybe <em>None</em>.
+   */
+  PiceCode mPiece;
+
+  /**
+   * @brief The color of the piece sitting on this @c Square. Only meaningful if
+   * there is a piece on it.
+   */
+  PiceColor mColor;
+
+  /**
    * The row in the @c Square. Invariant: \f$0 \leq row \le BOARD_DIM.
    */
   dim_type mRow;
