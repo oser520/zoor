@@ -43,7 +43,7 @@ dim_type Square::row() const noexcept
   return mRow;
 }
 
-dim_type Square::col() const noexcept
+dim_type Square::column() const noexcept
 {
   return mColumn;
 }
@@ -55,7 +55,7 @@ Square& Square::setRow(dim_type row) noexcept
   return *this;
 }
 
-Square& Square::setCol(dim_type column) noexcept
+Square& Square::setColumn(dim_type column) noexcept
 {
   assert(column < BOARD_DIM);
   mColumn = column;
