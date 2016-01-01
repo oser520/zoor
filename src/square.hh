@@ -143,6 +143,22 @@ public:
    */
   Square& setCol(dim_type column) noexcept;
 
+  /**
+   * @brief Sets the piece.
+   * @param The piece.
+   * @return A reference to this @c Square.
+   * @throw Does not throw exception.
+   */
+  Square& setPiece(PieceCode piece) noexcept;
+
+  /**
+   * @brief Sets the piece color.
+   * @param The piece color.
+   * @return A reference to this @c Square.
+   * @throw Does not throw exception.
+   */
+  Square& setColor(PieceColor color) noexcept;
+
 private:
   /**
    * @brief The piece sitting on this @c Square, which maybe <em>None</em>.
