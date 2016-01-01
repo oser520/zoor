@@ -101,6 +101,13 @@ public:
    */
   dim_type column() const noexcept;
 
+  /**
+   * @brief Gets the piece without modifying the @c Square.
+   * @return The piece code.
+   * @throw Does not throw exception.
+   */
+  PieceCode piece() const noexcept;
+
   
   /**
    * @brief Sets the row number. Enforces the invariant for the row size.
