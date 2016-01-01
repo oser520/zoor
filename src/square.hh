@@ -11,8 +11,11 @@
 namespace zoor {
 
 /**
- * @brief Represents a position in a chess board. It is aware of how big the board
- * is, and whether a given position is within the bounds of the board.
+ * Represents a position in a chess board.
+ *
+ * A @c Squar is aware of how big is the board, if a row and column are within the
+ * bounds of a chess board, and what piece, if any, is sitting on it, including its
+ * color.
  */
 class Square
 {
