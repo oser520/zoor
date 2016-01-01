@@ -74,6 +74,15 @@ string pieceToString(const PieceCode &piece) noexcept;
  * @return A string representing the long name of the piece.
  */
 string pieceToStringLong(const PieceCode &piece) noexcept;
+
+/**
+ * Gets the one letter initial for the color of a piece.
+ *
+ * The one letter initials for colors are N, W, and B for none, white, and black.
+ *
+ * @param color The @c PieceColor.
+ * @return A string representing the one letter intial of the color.
+ */
 string colorToString(const PieceColor &color) noexcept;
 string colorToStringLong(const PieceColor &color) noexcept;
 
