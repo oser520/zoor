@@ -31,12 +31,14 @@ public:
   using iterator = std::vector<MoveTo>::iterator;
   using const_iterator = std::vector<MoveTo>::const_iterator;
   using size_type = std::vector<MoveTo>::size_type;
-  
-  // copy control
-  PieceMoves();
-  PieceMoves(const PieceMoves&);
+
+  // custom constructors
   PieceMoves(PieceColor, PieceCode, Square);
   PieceMoves(PieceColor, PieceCode, Square, std::vector<MoveTo>);
+  
+  // standard copy control
+  PieceMoves();
+  PieceMoves(const PieceMoves&);
   PieceMoves(PieceMoves&&) = default;
   PieceMoves& operator=(const PieceMoves&) = default;
   PieceMoves& operator=(PieceMoves &&) = default;
