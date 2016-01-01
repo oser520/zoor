@@ -14,7 +14,9 @@ namespace zoor {
 using dim_type = Square::dim_type;
 
 Square::Square(dim_type row, dim_type column) noexcept
-  : mRow(row),
+  : mPiece(PieceCode::NONE),
+    mColor(PieceColor::NONE),
+    mRow(row),
     mColum(column)
 {
   assert(mRow < BOARD_DIM);
