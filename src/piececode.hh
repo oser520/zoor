@@ -34,6 +34,7 @@ enum class PieceCode: unsigned char
  */
 enum class PieceColor: unsigned char
 {
+  NONE,
   WHITE = 1 << 4,
   BLACK = 1 << 5
 };
