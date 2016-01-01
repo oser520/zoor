@@ -7,6 +7,8 @@
 #ifndef _PIECECODES_H
 #define _PIECECODES_H
 
+#include <string>
+
 namespace zoor {
 
 /**
