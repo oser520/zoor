@@ -53,11 +53,10 @@ enum class PieceValue: unsigned short
 };
 
 /**
- * Gets the initial letter for the name of a given piece.
+ * Gets the short name of a piece.
  *
- * The intial letter of the pieces are N, P, K, B, R, Q, and K. The letters
- * correspond to @c PieceCode values for none, pawn, knight, bishop, root,
- * queen, and king.
+ * The short piece names are N, P, KN, B, R, Q, and KI. The letters correspond to
+ * @c PieceCode values for none, pawn, knight, bishop, rook, queen, and king.
  *
  * @param piece The @c PieceCode.
  * @return A string representing the one letter intial of the piece.
