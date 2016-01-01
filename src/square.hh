@@ -41,7 +41,8 @@ public:
   static constexpr dim_type BOARD_DIM = 8;
 
   /**
-   * @brief Constructs a @c Square with a specific row and column.
+   * @brief Constructs a @c Square with a specific row and column. The piece is set
+   *  to <em>NONE</em> and the piece color to <em>NONE</em>.
    * @param row The row of the @c Square. Assumption: row <= BOARD_DIM.
    * @param column The column of the @c Square. Assumption: column <= BOARD_DIM.
    * @throw Never throws exception.
