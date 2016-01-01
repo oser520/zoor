@@ -62,10 +62,10 @@ enum class PieceValue: unsigned short
  * @param piece The @c PieceCode.
  * @return A string representing the one letter intial of the piece.
  */
-string pieceString(PieceCode piece);
-string longPieceString(PieceCode piece);
-string colorString(PieceCode piece);
-string longColorString(PieceCode piece);
+string pieceString(const PieceCode &piece) noexcept;
+string longPieceString(const PieceCode &piece) noexcept;
+string colorString(const PieceColor &color) noexcept;
+string longColorString(const PieceColor &color) noexcept;
 
 } // namespace zoor
 
