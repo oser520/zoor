@@ -162,7 +162,7 @@ public:
 
 private:
   /**
-   * @brief The piece sitting on this @c Square, which maybe <em>None</em>.
+   * @brief The piece sitting on this @c Square, which maybe <em>NONE</em>.
    */
   PiceCode mPiece;
 
