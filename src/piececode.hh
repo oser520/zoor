@@ -63,6 +63,17 @@ enum class PieceValue: unsigned short
  * @return A string representing the one letter intial of the piece.
  */
 string pieceToString(const PieceCode &piece) noexcept;
+
+/**
+ * Gets the long name of a given piece.
+ *
+ * The long piece names are NONE, PAWN, KNIGHT, BISHOT, ROOK, QUEEN, and KING. The
+ * letters correspond to @c PieceCode values for none, pawn, knight, bishop, rook,
+ * queen, and king.
+ *
+ * @param piece The @c PieceCode.
+ * @return A string representing the long name of the piece.
+ */
 string pieceToStringLong(const PieceCode &piece) noexcept;
 string colorToString(const PieceColor &color) noexcept;
 string colorToStringLong(const PieceColor &color) noexcept;
