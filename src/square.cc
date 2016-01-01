@@ -8,6 +8,7 @@
 #include <cassert>
 
 #include "square.hh"
+#include "piececode.hh"
 
 namespace zoor {
 
