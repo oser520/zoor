@@ -15,10 +15,10 @@ using dim_type = Square::dim_type;
 
 Square::Square(dim_type row, dim_type column) noexcept
   : mRow(row),
-    mCol(column)
+    mColum(column)
 {
   assert(mRow < BOARD_DIM);
-  assert(mCol < BOARD_DIM);
+  assert(mColumn < BOARD_DIM);
 }
 
 dim_type Square::row() const noexcept
@@ -28,7 +28,7 @@ dim_type Square::row() const noexcept
 
 dim_type Square::col() const noexcept
 {
-  return mCol;
+  return mColumn;
 }
 
 Square& Square::setRow(dim_type row) noexcept
@@ -41,13 +41,13 @@ Square& Square::setRow(dim_type row) noexcept
 Square& Square::setCol(dim_type column) noexcept
 {
   assert(column < BOARD_DIM);
-  mCol = column;
+  mColumn = column;
   return *this;
 }
 
 bool operator==(const Square& square1, const Square& square2) noexcept
 {
-  return square1.mRow == square2.mRow && square1.mCol == square2.mCol;
+  return square1.mRow == square2.mRow && square1.mColumn == square2.mColumn;
 }
 
 bool operator!=(const Square& square1, const Square& square2) noexcept;
@@ -57,7 +57,7 @@ bool operator!=(const Square& square1, const Square& square2) noexcept;
 
 std::ostream& operator<<(std::ostream& os, const Square& square)
 {
-  os << "(" << square.mRow << ", " << square.mCol << ")";
+  os << "(" << square.mRow << ", " << square.mColumn << ")";
   return os;
 }
 

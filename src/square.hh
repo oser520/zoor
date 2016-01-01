@@ -99,7 +99,7 @@ public:
    * @return The column number.
    * @throw Does not throw exception.
    */
-  dim_type col() const noexcept;
+  dim_type column() const noexcept;
 
   
   /**
@@ -138,7 +138,7 @@ private:
   /**
    * The column in the @c Square. Invariant: \f$0 \leq column \le BOARD_DIM.
    */
-  dim_type mCol;
+  dim_type mColum;
 };
 
 /**
