@@ -52,6 +52,11 @@ enum class PieceValue: unsigned short
   KING = ~0
 };
 
+string pieceString(PieceCode piece);
+string longPieceString(PieceCode piece);
+string colorString(PieceCode piece);
+string longColorString(PieceCode piece);
+
 } // namespace zoor
 
 #endif 
