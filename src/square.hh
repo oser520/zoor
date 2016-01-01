@@ -46,6 +46,15 @@ public:
    * @param column The column of the @c Square. Assumption: column <= BOARD_DIM.
    */
   Square(dim_type row, dim_type column) noexcept;
+
+  /**
+   * @brief Constructs a @c Square with a specific row,column, and piece.
+   * @param row The row of the @c Square. Assumption: row <= BOARD_DIM.
+   * @param column The column of the @c Square. Assumption: column <= BOARD_DIM.
+   * @param piece The piece sitting on the @c Square.
+   * @param color The color of the @c PieceCode.
+   */
+  Square(dim_type row, dim_type column, PieceCode piece, PieceColor color) noexcept;
   
   /**
    * @brief Default constructor.
