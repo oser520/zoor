@@ -84,6 +84,15 @@ string pieceToStringLong(const PieceCode &piece) noexcept;
  * @return A string representing the one letter intial of the color.
  */
 string colorToString(const PieceColor &color) noexcept;
+
+/**
+ * Gets the long color name of a piece.
+ *
+ * The long color names are NONE, WHITE, and BLACK.
+ *
+ * @param color The @c PieceColor.
+ * @return A string representing the long color name.
+ */
 string colorToStringLong(const PieceColor &color) noexcept;
 
 } // namespace zoor
