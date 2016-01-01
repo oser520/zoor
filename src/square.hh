@@ -108,6 +108,13 @@ public:
    */
   PieceCode piece() const noexcept;
 
+  /**
+   * @brief Gets the piece color without modifying the @c Square.
+   * @return The piece color.
+   * @throw Does not throw exception.
+   */
+  PieceColor color() const noexcept;
+
   
   /**
    * @brief Sets the row number. Enforces the invariant for the row size.
