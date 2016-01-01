@@ -64,7 +64,10 @@ Square& Square::setCol(dim_type column) noexcept
 
 bool operator==(const Square& square1, const Square& square2) noexcept
 {
-  return square1.mRow == square2.mRow && square1.mColumn == square2.mColumn;
+  return square1.mPiece == square2.mPiece
+      && square1.mColor == square2.mColor
+      && square1.mRow == square2.mRow
+      && square1.mColumn == square2.mColumn;
 }
 
 bool operator!=(const Square& square1, const Square& square2) noexcept;
