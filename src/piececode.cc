@@ -61,4 +61,20 @@ std::string pieceToStringLong(const PieceCode &piece) noexcept
   }
 }
 
+std::string colorToStringLong(const PieceColor &color) noexcept {
+  switch (color) {
+  case PieceColor::NONE:
+    return "NONE";
+  case PieceColor::WHITE:
+    return "WHITE";
+  case PieceColor::BLACK:
+    return "BLACK";
+  default:
+    // TODO: throw some kind of exception and make error message more informative by
+    // including function name, source file and line number
+    std::cerr << "Unknown PieceColor value" << std::endl;
+    exit(EXIT_FAILURE);
+  }
+}
+
 } // namespace zoor
