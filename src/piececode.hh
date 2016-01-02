@@ -87,49 +87,6 @@ std::ostream& operator<<(std::ostream &os, const PieceCode &piece);
  */
 std::ostream& operator<<(std::ostream &os, const PieceColor &color);
 
-/**
- * Gets the short name of a piece.
- *
- * The short piece names are N, P, KN, B, R, Q, and KI. The letters correspond to
- * @c PieceCode values for none, pawn, knight, bishop, rook, queen, and king.
- *
- * @param piece The @c PieceCode.
- * @return A string representing the one letter intial of the piece.
- */
-std::string pieceToString(const PieceCode &piece);
-
-/**
- * Gets the long name of a given piece.
- *
- * The long piece names are NONE, PAWN, KNIGHT, BISHOT, ROOK, QUEEN, and KING. The
- * letters correspond to @c PieceCode values for none, pawn, knight, bishop, rook,
- * queen, and king.
- *
- * @param piece The @c PieceCode.
- * @return A string representing the long name of the piece.
- */
-std::string pieceToStringLong(const PieceCode &piece);
-
-/**
- * Gets the one letter initial for the color of a piece.
- *
- * The one letter initials for colors are N, W, and B for none, white, and black.
- *
- * @param color The @c PieceColor.
- * @return A string representing the one letter intial of the color.
- */
-std::string colorToString(const PieceColor &color);
-
-/**
- * Gets the long color name of a piece.
- *
- * The long color names are NONE, WHITE, and BLACK.
- *
- * @param color The @c PieceColor.
- * @return A string representing the long color name.
- */
-std::string colorToStringLong(const PieceColor &color);
-
 } // namespace zoor
 
 #endif 
