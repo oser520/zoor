@@ -63,7 +63,7 @@ enum class PieceValue: unsigned short
  * @param piece The @c PieceCode.
  * @return A string representing the one letter intial of the piece.
  */
-std::string pieceToString(const PieceCode &piece) noexcept;
+std::string pieceToString(const PieceCode &piece);
 
 /**
  * Gets the long name of a given piece.
@@ -75,7 +75,7 @@ std::string pieceToString(const PieceCode &piece) noexcept;
  * @param piece The @c PieceCode.
  * @return A string representing the long name of the piece.
  */
-std::string pieceToStringLong(const PieceCode &piece) noexcept;
+std::string pieceToStringLong(const PieceCode &piece);
 
 /**
  * Gets the one letter initial for the color of a piece.
@@ -85,7 +85,7 @@ std::string pieceToStringLong(const PieceCode &piece) noexcept;
  * @param color The @c PieceColor.
  * @return A string representing the one letter intial of the color.
  */
-std::string colorToString(const PieceColor &color) noexcept;
+std::string colorToString(const PieceColor &color);
 
 /**
  * Gets the long color name of a piece.
@@ -95,7 +95,7 @@ std::string colorToString(const PieceColor &color) noexcept;
  * @param color The @c PieceColor.
  * @return A string representing the long color name.
  */
-std::string colorToStringLong(const PieceColor &color) noexcept;
+std::string colorToStringLong(const PieceColor &color);
 
 } // namespace zoor
 

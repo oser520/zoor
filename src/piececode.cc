@@ -11,7 +11,7 @@
 
 namespace zoor {
 
-std::string pieceToString(const PieceCode &piece) noexcept
+std::string pieceToString(const PieceCode &piece)
 {
   switch (piece) {
   case PieceCode::NONE:
@@ -36,7 +36,7 @@ std::string pieceToString(const PieceCode &piece) noexcept
   }
 }
 
-std::string pieceToStringLong(const PieceCode &piece) noexcept
+std::string pieceToStringLong(const PieceCode &piece)
 {
   switch (piece) {
   case PieceCode::NONE:
@@ -61,7 +61,8 @@ std::string pieceToStringLong(const PieceCode &piece) noexcept
   }
 }
 
-std::string colorToString(const PieceColor &color) noexcept {
+std::string colorToString(const PieceColor &color)
+{
   switch (color) {
   case PieceColor::NONE:
     return "N";
@@ -76,7 +77,8 @@ std::string colorToString(const PieceColor &color) noexcept {
     exit(EXIT_FAILURE);
   }
 
-std::string colorToStringLong(const PieceColor &color) noexcept {
+std::string colorToStringLong(const PieceColor &color)
+{
   switch (color) {
   case PieceColor::NONE:
     return "NONE";
