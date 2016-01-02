@@ -94,12 +94,45 @@ public:
      PieceCode piece,
      PieceColor color) noexcept;
   
-  // standard copy control
+  
+  /**
+   * @brief Default constructor.
+   * @throw Never throws exception.
+   */
   PieceMoves() noexcept;
-  PieceMoves(const PieceMoves&);
-  PieceMoves(PieceMoves&&) noexcept;
-  PieceMoves& operator=(const PieceMoves&);
-  PieceMoves& operator=(PieceMoves &&) noexcept;
+
+  /**
+   * @brief Copy constructor.
+   * @param pieceMoves The @c PieceMoves being copied.
+   * @throw Never throws exception.
+   */
+  PieceMoves(const PieceMoves &pieceMoves);
+
+  /**
+   * @brief Move constructor.
+   * @param pieceMoves The @c PieceMoves being moved.
+   * @throw Never throws exception.
+   */
+  PieceMoves(PieceMoves &&pieceMoves) noexcept;
+
+  /**
+   * @brief Copy assignment.
+   * @param pieceMoves The @c PieceMoves being copied.
+   * @return A reference to this <tt>PieceMoves</tt>.
+   */
+  PieceMoves& operator=(const PieceMoves &pieceMoves);
+
+  /**
+   * @brief Default constructor.
+   * @param pieceMoves The @c PieceMoves being moved.
+   * @return A reference to this <tt>PieceMoves</tt>.
+   */
+  PieceMoves& operator=(PieceMoves &&pieceMoves) noexcept;
+
+  /**
+   * @brief Destructor.
+   * @throw Never throws exception.
+   */
   ~PieceMoves() noexcept = default;
 
   // interface
