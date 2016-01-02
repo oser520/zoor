@@ -73,6 +73,20 @@ enum class PieceValue: unsigned short
 std::ostream& operator<<(std::ostream &os, const PieceCode &piece);
 
 /**
+ * Output operator for a @c PieceColor.
+ *
+ * The @c PieceColor names are:
+ * @li NONE
+ * @li WHITE
+ * @li BLACK
+ *
+ * @param os The output stream.
+ * @param color The @c PieceColor.
+ * @return A reference to the output stream.
+ */
+std::ostream& operator<<(std::ostream &os, const PieceColor &color);
+
+/**
  * Gets the short name of a piece.
  *
  * The short piece names are N, P, KN, B, R, Q, and KI. The letters correspond to
