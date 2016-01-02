@@ -66,7 +66,11 @@ public:
   // custom constructors
   PieceMoves(const Square&) noexcept;
   PieceMoves(Square&&) noexcept;
-  PieceMoves(dim_type row, dim_type column, PieceCode piece, PieceColor color) noexcept;
+  PieceMoves
+    (dim_type row,
+     dim_type column,
+     PieceCode piece,
+     PieceColor color) noexcept;
   
   // standard copy control
   PieceMoves() noexcept;
