@@ -26,7 +26,14 @@ class PieceMoves
   friend std::ostream& operator<<(std::ostream&, const PieceMoves&) noexcept;
   friend bool operator==(const PieceMoves&, const PieceMoves&) noexcept;
 
+  /**
+   * The @c Square from which the moves are made.
+   *
+   * The @c Square holds information about the row and column in the board, the
+   * piece type, and the piece color. This is the piece that is making the moves.
+   */
   Square mSquare;
+
   std::vector<Square> mMoves;
 
 public:
