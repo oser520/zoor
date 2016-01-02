@@ -45,6 +45,28 @@ std::ostream& operator<<(std::ostream &os, const PieceCode &piece)
   return os;
 }
 
+std::ostream& operator<<(std::ostream &os, const PieceColor &color)
+{
+  switch (color) {
+  case PieceColor::NONE:
+    os << "NONE";
+    break;
+  case PieceColor::WHITE:
+    os << "WHITE";
+    break;
+  case PieceColor::BLACK:
+    os << "BLACK";
+    break;
+  default:
+    // TODO: throw some kind of exception and make error message more informative by
+    // including function name, source file and line number
+    std::cerr << "Unknown PieceColor value" << std::endl;
+    exit(EXIT_FAILURE);
+  }
+
+  return os;
+}
+
 std::string pieceToString(const PieceCode &piece)
 {
   switch (piece) {
