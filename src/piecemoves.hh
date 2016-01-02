@@ -33,8 +33,9 @@ public:
   using size_type = std::vector<Square>::size_type;
 
   // custom constructors
-  PieceMoves(PieceColor, PieceCode, Square);
-  PieceMoves(PieceColor, PieceCode, Square, std::vector<Square>);
+  PieceMoves(const Square&) noexcept;
+  PieceMoves(Square&&) noexcept;
+  PieceMoves(dim_type row, dim_type column, PieceCode piece, PieceColor color) noexcept;
   
   // standard copy control
   PieceMoves();
