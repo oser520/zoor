@@ -11,6 +11,40 @@
 
 namespace zoor {
 
+std::ostream& operator<<(std::ostream &os, const PieceCode &piece)
+{
+  switch (piece) {
+  case PieceCode::NONE:
+    os << "NONE";
+    break;
+  case PieceCode::PAWN:
+    os << "PAWN";
+    break;
+  case PieceCode::KNIGHT:
+    os << "KNIGHT";
+    break;
+  case PieceCode::BISHOP:
+    os << "BISHOP";
+    break;
+  case PieceCode::ROOK:
+    os << "ROOK";
+    break;
+  case PieceCode::QUEEN:
+    os << "QUEEN";
+    break;
+  case PieceCode::KING:
+    os << "KING";
+    break;
+  default:
+    // TODO: throw some kind of exception and make error message more informative by
+    // including function name, source file and line number
+    std::cerr << "Unknown PieceCode value" << std::endl;
+    exit(EXIT_FAILURE);
+  }
+
+  return os;
+}
+
 std::string pieceToString(const PieceCode &piece)
 {
   switch (piece) {
