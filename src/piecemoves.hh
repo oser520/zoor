@@ -47,14 +47,14 @@ public:
   ~PieceMoves() noexcept = default;
 
   // interface
+  PieceMoves& setPiece(PieceCode) noexcept;
+  PieceMoves& setColor(PieceColor) noexcept;
   PieceMoves& setRow(dim_type) noexcept;
   PieceMoves& setColumn(dim_type) noexcept;
-  PieceMoves& setColor(PieceColor) noexcept;
-  PieceMoves& setPiece(PieceCode) noexcept;
   PieceMoves& setSquare(Square) noexcept;
 
-  PieceColor color() const noexcept;
   PieceCode piece() const noexcept;
+  PieceColor color() const noexcept;
   Square square() const noexcept;
 
   bool empty() const noexcept;
