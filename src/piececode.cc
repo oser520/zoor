@@ -36,4 +36,29 @@ std::string pieceToString(const PieceCode &piece) noexcept
   }
 }
 
+std::string pieceToStringLong(const PieceCode &piece) noexcept
+{
+  switch (piece) {
+  case PieceCode::NONE:
+    return "NONE";
+  case PieceCode::PAWN:
+    return "PAWN";
+  case PieceCode::KNIGHT:
+    return "KNIGHT";
+  case PieceCode::BISHOP:
+    return "BISHOP";
+  case PieceCode::ROOK:
+    return "ROOK";
+  case PieceCode::QUEEN:
+    return "QUEEN";
+  case PieceCode::KING:
+    return "KING";
+  default:
+    // TODO: throw some kind of exception and make error message more informative by
+    // including function name, source file and line number
+    std::cerr << "Unknown PieceCode value" << std::endl;
+    exit(EXIT_FAILURE);
+  }
+}
+
 } // namespace zoor
