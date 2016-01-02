@@ -72,8 +72,6 @@ public:
   // TODO: add emplace_back
 
 private:
-  PieceColor mColor;
-  PieceCode mPiece;
   Square mSquare;
   std::vector<MoveTo> mMoves;
 
