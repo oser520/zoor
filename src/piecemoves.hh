@@ -55,6 +55,7 @@ public:
 
   PieceCode piece() const noexcept;
   PieceColor color() const noexcept;
+  dim_type row() const noexcept;
   Square square() const noexcept;
 
   bool empty() const noexcept;
