@@ -77,7 +77,12 @@ bool operator!=(const Square& square1, const Square& square2) noexcept;
 
 std::ostream& operator<<(std::ostream& os, const Square& square)
 {
-  os << "(" << square.mRow << ", " << square.mColumn << ")";
+  os << "("
+     << square.mPiece << ", "
+     << square.mColor << ", "
+     << square.mRow << ", "
+     << square.mColumn
+     << ")";
   return os;
 }
 
