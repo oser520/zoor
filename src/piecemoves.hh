@@ -31,6 +31,7 @@ public:
   using iterator = std::vector<Square>::iterator;
   using const_iterator = std::vector<Square>::const_iterator;
   using size_type = std::vector<Square>::size_type;
+  using dim_type = Square::dim_type;
 
   // custom constructors
   PieceMoves(const Square&) noexcept;
