@@ -15,8 +15,8 @@
 namespace zoor {
 
 /**
- * @brief Represents a list of moves for a given piece from a particular position in
- * the board.
+ * @brief Represents the list of legal moves that are possible for a given piece from
+ * a given square on a board.
  *
  * @c PieceMoves is aware of the piece type, the location in the board, and whether
  * a given move is legal.
