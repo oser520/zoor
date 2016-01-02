@@ -6,5 +6,7 @@
 
 #include <string>
 
+#include "piececodes.hh"
+
 namespace zoor {
 } // namespace zoor
