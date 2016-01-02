@@ -55,6 +55,23 @@ enum class PieceValue: unsigned short
 };
 
 /**
+ * Output operator for a @c PieceCode.
+ *
+ * The @c PieceCode names are:
+ * @li PAWN
+ * @li KNIGHT
+ * @li BISHOP
+ * @li ROOK
+ * @li QUEEN
+ * @li KING
+ *
+ * @param os The output stream.
+ * @param piece The @c PieceCode.
+ * @return A reference to the output stream.
+ */
+std::ostream& operator<<(std::ostream &os, const PieceCode &piece);
+
+/**
  * Gets the short name of a piece.
  *
  * The short piece names are N, P, KN, B, R, Q, and KI. The letters correspond to
