@@ -53,7 +53,7 @@ public:
 
   PieceColor color() const noexcept;
   PieceCode piece() const noexcept;
-  Square square(Square) const noexcept;
+  Square square() const noexcept;
 
   bool empty() const noexcept;
   size_type size() const noexcept;
