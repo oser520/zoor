@@ -48,6 +48,7 @@ public:
 
   // interface
   PieceMoves& setRow(dim_type) noexcept;
+  PieceMoves& setColumn(dim_type) noexcept;
   PieceMoves& setColor(PieceColor) noexcept;
   PieceMoves& setPiece(PieceCode) noexcept;
   PieceMoves& setSquare(Square) noexcept;
