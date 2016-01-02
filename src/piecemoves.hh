@@ -74,51 +74,6 @@ public:
 private:
   Square mSquare;
   std::vector<MoveTo> mMoves;
-
-public:
-  /**
-   * A move to a given position.
-   */
-  class MoveTo
-  {
-    friend std::ostream& operator<<(std::ostream&, const MoveTo&);
-    friend bool operator==(const MoveTo&, const MoveTo&) noexcept;
-    friend class PieceMoves;
-
-  private:
-    PieceColor mColor;
-    PieceCode mPiece;
-    Square mSquare;
-    unique_ptr<PieceMoves> mParent;
-
-  public:
-    /* copy control */
-    MoveTo() = default;
-    MoveTo(PieceColor, PieceCode, const Square&) = default;
-    MoveTo(PieceColor, PieceCode, Square&&) = default;
-    MoveTo(const MoveTo&) = default;
-    MoveTo(MoveTo&&) noexcept = default;
-    MoveTo& operator=(const MoveTo&) = default;
-    MoveTo& operator=(MoveTo&&) noexcept = default;
-    ~MoveTo() noexcept = default;
-
-    /* getters */
-    PieceColor color() const noexcept;
-    PieceCode piece() const noexcept;
-    Square square() const noexcept;
-
-    // TODO: implement as template with universal paramter T&&
-    // setters with lvalue paramters
-    MoveTo& setColor(const PieceColor&) noexcept;
-    MoveTo& setPiece(const PieceCode&) noexcept;
-    MoveTo& setSquare(const Square&) noexcept;
-
-    // implement as template with universal paramter T&&
-    // setters with rvalue paramters
-    MoveTo& setColor(PieceColor&&) noexcept;
-    MoveTo& setPiece(PieceCode&&) noexcept;
-    MoveTo& setSquare(Square&&) noexcept;
-  };
 };
 
 } // namespace zoor
