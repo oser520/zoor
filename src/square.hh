@@ -204,7 +204,8 @@ bool operator==(const Square& square1, const Square& square2) noexcept;
 bool operator!=(const Square& square1, const Square& square2) noexcept;
 
 /**
- * @brief Output operator for @c Square. Format is <em>{row, column}</em>.
+ * @brief Output operator for @c Square. Format is
+ * <em>(piece, color, row, column)</em>.
  *
  * @param os The output stream. 
  * @param square An immutable @c Square.
