@@ -63,9 +63,31 @@ public:
    */
   using dim_type = Square::dim_type;
 
-  // custom constructors
-  PieceMoves(const Square&) noexcept;
+  /**
+   * Constructs @c PieceMoves with a @c Square.
+   * @param square The @c Square used to initialize the piece making the moves. The
+   *  piece cannot be <em>NONE</em>.
+   * @throw Never throws exception.
+   */
+  PieceMoves(const Square& square) noexcept;
+
+  /**
+   * Constructs @c PieceMoves with an <em>rvalue</em> @c Square.
+   * @param square The @c Square used to initialize the piece making the moves. The
+   *  piece cannot be <em>NONE</em>.
+   * @throw Never throws exception.
+   */
   PieceMoves(Square&&) noexcept;
+
+  /**
+   * @brief Constructs @c PieceMoves with the four paramters used to construct a
+   * @c Square.
+   * @param row The row of the @c Square.
+   * @param column The column of the @c Square.
+   * @param piece The piece making the moves. The piece cannot be <em>NONE</em>.
+   * @param color The color of the piece.
+   * @throw Never throws exception.
+   */
   PieceMoves
     (dim_type row,
      dim_type column,
