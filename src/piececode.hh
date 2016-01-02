@@ -58,6 +58,7 @@ enum class PieceValue: unsigned short
  * Output operator for a @c PieceCode.
  *
  * The @c PieceCode names are:
+ * @li NONE
  * @li PAWN
  * @li KNIGHT
  * @li BISHOP
