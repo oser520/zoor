@@ -69,6 +69,7 @@ public:
   // adding and removing Square elements
   PieceMoves& push_back(const Square&);
   PieceMoves& pop_back();
+  Square top();
   PieceMoves& clear();
 
   // TODO: add emplace_back
