@@ -42,11 +42,11 @@ public:
   PieceMoves(dim_type row, dim_type column, PieceCode piece, PieceColor color) noexcept;
   
   // standard copy control
-  PieceMoves();
+  PieceMoves() noexcept;
   PieceMoves(const PieceMoves&);
-  PieceMoves(PieceMoves&&) = default;
-  PieceMoves& operator=(const PieceMoves&) = default;
-  PieceMoves& operator=(PieceMoves &&) = default;
+  PieceMoves(PieceMoves&&) noexcept;
+  PieceMoves& operator=(const PieceMoves&);
+  PieceMoves& operator=(PieceMoves &&) noexcept;
   ~PieceMoves() noexcept = default;
 
   // interface
