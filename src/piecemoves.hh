@@ -30,10 +30,24 @@ class PieceMoves
   std::vector<Square> mMoves;
 
 public:
-  // typedefs
+  /**
+   * Iterator for a @c Square @c vector.
+   */
   using iterator = std::vector<Square>::iterator;
+
+  /**
+   * Iterator for a @c const @c Square @c vector.
+   */
   using const_iterator = std::vector<Square>::const_iterator;
+
+  /**
+   * Alias for the size type of a @c Square @c vector.
+   */
   using size_type = std::vector<Square>::size_type;
+
+  /**
+   * Alias for the dimension type of a @c Square.
+   */
   using dim_type = Square::dim_type;
 
   // custom constructors
