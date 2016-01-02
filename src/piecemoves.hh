@@ -34,6 +34,12 @@ class PieceMoves
    */
   Square mSquare;
 
+  /**
+   * A list of moves, each of which is represented by a @c Square.
+   *
+   * Each @c Square represents a legal move for the piece. If the move captures a
+   * piece, then the @c Square contains the piece.
+   */
   std::vector<Square> mMoves;
 
 public:
