@@ -28,13 +28,13 @@ class PieceMoves
 
 public:
   // typedefs
-  using iterator = std::vector<MoveTo>::iterator;
-  using const_iterator = std::vector<MoveTo>::const_iterator;
-  using size_type = std::vector<MoveTo>::size_type;
+  using iterator = std::vector<Square>::iterator;
+  using const_iterator = std::vector<Square>::const_iterator;
+  using size_type = std::vector<Square>::size_type;
 
   // custom constructors
   PieceMoves(PieceColor, PieceCode, Square);
-  PieceMoves(PieceColor, PieceCode, Square, std::vector<MoveTo>);
+  PieceMoves(PieceColor, PieceCode, Square, std::vector<Square>);
   
   // standard copy control
   PieceMoves();
@@ -64,8 +64,8 @@ public:
   const_iterator cbegin() noexcept;
   const_iterator cend() noexcept;
 
-  // adding and removing MoveTo elements
-  PieceMoves& push_back(const MoveTo&);
+  // adding and removing Square elements
+  PieceMoves& push_back(const Square&);
   PieceMoves& pop_back();
   PieceMoves& clear();
 
@@ -73,7 +73,7 @@ public:
 
 private:
   Square mSquare;
-  std::vector<MoveTo> mMoves;
+  std::vector<Square> mMoves;
 };
 
 } // namespace zoor
