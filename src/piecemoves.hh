@@ -26,6 +26,9 @@ class PieceMoves
   friend std::ostream& operator<<(std::ostream&, const PieceMoves&) noexcept;
   friend bool operator==(const PieceMoves&, const PieceMoves&) noexcept;
 
+  Square mSquare;
+  std::vector<Square> mMoves;
+
 public:
   // typedefs
   using iterator = std::vector<Square>::iterator;
@@ -77,10 +80,6 @@ public:
   PieceMoves& clear();
 
   // TODO: add emplace_back
-
-private:
-  Square mSquare;
-  std::vector<Square> mMoves;
 };
 
 } // namespace zoor
