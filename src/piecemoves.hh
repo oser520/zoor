@@ -158,7 +158,14 @@ public:
    * @throw Never throws exception.
    */
   PieceMoves& setRow(dim_type row) noexcept;
-  PieceMoves& setColumn(dim_type) noexcept;
+
+  /**
+   * @brief Sets the column of the square for the piece making the moves.
+   * @param row The column of the squre for the piece making the moves.
+   * @return A reference to this @c PieceMoves.
+   * @throw Never throws exception.
+   */
+  PieceMoves& setColumn(dim_type column) noexcept;
   PieceMoves& setSquare(Square) noexcept;
 
   PieceCode piece() const noexcept;
