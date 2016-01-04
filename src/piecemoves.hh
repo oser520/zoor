@@ -186,6 +186,10 @@ public:
 
   /**
    * @brief Sets the @c Square of the piece making the moves.
+   *
+   * If this @c PieceMoves contains moves, then any move that is illegal from the new
+   * @c Square is removed.
+   *
    * @param square The square being copied.
    * @return A reference to this @c PieceMoves.
    * @throw Never throws exception.
