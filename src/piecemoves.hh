@@ -137,6 +137,10 @@ public:
 
   /**
    * @brief Sets the piece that is making the moves.
+   *
+   * If this @c PieceMoves contains moves, and <em>pieces</em> is different than the
+   * current piece, then the moves are clared.
+   *
    * @param piece The piece making the moves.
    * @return A reference to this @c PieceMoves.
    * @throw Never throws exception.
