@@ -135,8 +135,13 @@ public:
    */
   ~PieceMoves() noexcept = default;
 
-  // interface
-  PieceMoves& setPiece(PieceCode) noexcept;
+  /**
+   * @brief Sets the piece that is making the moves.
+   * @param piece The piece making the moves.
+   * @return A reference to this @c PieceMoves.
+   * @throw Never throws exception.
+   */
+  PieceMoves& setPiece(PieceCode piece) noexcept;
   PieceMoves& setColor(PieceColor) noexcept;
   PieceMoves& setRow(dim_type) noexcept;
   PieceMoves& setColumn(dim_type) noexcept;
