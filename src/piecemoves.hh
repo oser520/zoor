@@ -251,7 +251,12 @@ public:
    */
   size_type size() const noexcept;
 
-  // iterator access
+  
+  /**
+   * @detail If there are no moves, then <tt>begin() == end()</tt>.
+   * @return An iterator to the first move in this @c PieceMoves.
+   * @throw Never throws exception.
+   */
   iterator begin() noexcept;
   iterator end() noexcept;
   const_iterator begin() const noexcept;
