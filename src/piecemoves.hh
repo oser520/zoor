@@ -326,6 +326,12 @@ public:
    * TODO: determine what kind of exception this can throw.
    */
   Square top();
+
+  /**
+   * @brief Removes all the moves from this @c PieceMoves.
+   * @return A reference to this @c PieceMoves.
+   * TODO: determine what kind of exception this can throw.
+   */
   PieceMoves& clear();
 
   // TODO: add emplace_back
