@@ -297,8 +297,13 @@ public:
    */
   const_iterator cend() noexcept;
 
-  // adding and removing Square elements
-  PieceMoves& push_back(const Square&);
+  /**
+   * @brief Insert a @c Square to this @c PieceMoves.
+   * @param square The @c Square being inserted.
+   * @return A reference to this @c PieceMoves.
+   * TODO: determine what kind of exception this can throw.
+   */
+  PieceMoves& push_back(const Square square&);
   PieceMoves& push_back(Square&&);
   PieceMoves& pop_back();
   Square top();
