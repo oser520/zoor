@@ -337,6 +337,16 @@ public:
   // TODO: add emplace_back
 };
 
+/**
+ * @brief Output operator for @c PieceMoves.
+ * @detail Format is (Square, (Move1, Move2, ..., MoveN)), where @c Square represents
+ *  the piece making the moves, and <em>Move1</em> through <em>MoveN</em> represent
+ *  the list of moves, each of which is a @c Square. If there are no moves, then the
+ *  list is empty.
+ * @param os The output stream.
+ * @param pm The @c PieceMoves.
+ * @return A reference to the output stream.
+ */
 std::ostream& operator<<(std::ostream &os, const PieceMoves &pm) noexcept;
 bool operator==(const PieceMoves &pm1, const PieceMoves &pm2) noexcept;
 bool operator=!(const PieceMoves &pm1, const PieceMoves &pm2) noexcept;
