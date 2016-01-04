@@ -348,6 +348,14 @@ public:
  * @return A reference to the output stream.
  */
 std::ostream& operator<<(std::ostream &os, const PieceMoves &pm);
+
+/**
+ * @brief Equality operator for @c PieceMoves.
+ * @detail The pieces making the moves and the moves made by each piece must be the same.
+ * @param pm1 The first @c PieceMoves.
+ * @param pm2 The second @c PieceMoves.
+ * @return True if pm1 and pm2 are equal, false otherwise.
+ */
 bool operator==(const PieceMoves &pm1, const PieceMoves &pm2) noexcept;
 bool operator=!(const PieceMoves &pm1, const PieceMoves &pm2) noexcept;
 
