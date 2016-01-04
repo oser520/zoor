@@ -244,6 +244,11 @@ public:
    * @throw Never throws exception.
    */
   bool empty() const noexcept;
+
+  /**
+   * @return The number of moves in this @c PieceMoves.
+   * @throw Never throws exception.
+   */
   size_type size() const noexcept;
 
   // iterator access
