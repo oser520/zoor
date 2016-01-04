@@ -258,6 +258,12 @@ public:
    * @throw Never throws exception.
    */
   iterator begin() noexcept;
+
+  /**
+   * @detail If there are no moves, then <tt>begin() == end()</tt>.
+   * @return The off-the-end iterator to the list of moves in this @c PieceMoves.
+   * @throw Never throws exception.
+   */
   iterator end() noexcept;
   const_iterator begin() const noexcept;
   const_iterator end() const noexcept;
