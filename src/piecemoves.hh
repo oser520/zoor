@@ -161,6 +161,10 @@ public:
 
   /**
    * @brief Sets the row of the square for the piece making the moves.
+   *
+   * If this @c PieceMoves contains moves, and <em>row</em> is different than the
+   * current row, then any moves that are not reachable from the new row are cleared.
+   *
    * @param row The row of the squre for the piece making the moves.
    * @return A reference to this @c PieceMoves.
    * @throw Never throws exception.
