@@ -311,7 +311,7 @@ public:
    * @return A reference to this @c PieceMoves.
    * TODO: determine what kind of exception this can throw.
    */
-  PieceMoves& push_back(Square&&);
+  PieceMoves& push_back(Square &&square);
 
   /**
    * @brief Remove a @c Square from this @c PieceMoves.
