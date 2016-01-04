@@ -173,6 +173,11 @@ public:
 
   /**
    * @brief Sets the column of the square for the piece making the moves.
+   *
+   * If this @c PieceMoves contains moves, and <em>column</em> is different than the
+   * current column, then any moves that are not reachable from the new column are
+   * cleared.
+   *
    * @param row The column of the squre for the piece making the moves.
    * @return A reference to this @c PieceMoves.
    * @throw Never throws exception.
