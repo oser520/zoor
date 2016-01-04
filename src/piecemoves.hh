@@ -337,6 +337,10 @@ public:
   // TODO: add emplace_back
 };
 
+std::ostream& operator<<(std::ostream &os, const PieceMoves &pm) noexcept;
+bool operator==(const PieceMoves &pm1, const PieceMoves &pm2) noexcept;
+bool operator=!(const PieceMoves &pm1, const PieceMoves &pm2) noexcept;
+
 } // namespace zoor
 
 #endif // _PIECEMOVES_H
