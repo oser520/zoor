@@ -198,8 +198,7 @@ public:
   PieceColor color() const noexcept;
 
   /**
-   * @brief Gets the row of the square of the piece making the moves.
-   * @return row The row of the square of the piece making the moves.
+   * @return The row of the square of the piece making the moves.
    * @throw Never throws exception.
    */
   dim_type row() const noexcept;
