@@ -184,8 +184,7 @@ public:
   PieceMoves& setSquare(Square &&square) noexcept;
 
   /**
-   * @brief Gets the piece making the moves.
-   * @return The @c PieceCode value of the piece.
+   * @return The @c PieceCode value of the piece making the moves.
    * @throw Never throws exception.
    */
   PieceCode piece() const noexcept;
