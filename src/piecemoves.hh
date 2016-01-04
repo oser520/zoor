@@ -23,7 +23,7 @@ namespace zoor {
  */
 class PieceMoves
 {
-  friend std::ostream& operator<<(std::ostream&, const PieceMoves&) noexcept;
+  friend std::ostream& operator<<(std::ostream&, const PieceMoves&);
   friend bool operator==(const PieceMoves&, const PieceMoves&) noexcept;
 
   /**
@@ -347,7 +347,7 @@ public:
  * @param pm The @c PieceMoves.
  * @return A reference to the output stream.
  */
-std::ostream& operator<<(std::ostream &os, const PieceMoves &pm) noexcept;
+std::ostream& operator<<(std::ostream &os, const PieceMoves &pm);
 bool operator==(const PieceMoves &pm1, const PieceMoves &pm2) noexcept;
 bool operator=!(const PieceMoves &pm1, const PieceMoves &pm2) noexcept;
 
