@@ -203,6 +203,12 @@ public:
    * @throw Never throws exception.
    */
   dim_type row() const noexcept;
+
+  /**
+   * @brief Gets the column of the square of the piece making the moves.
+   * @return row The column of the square of the piece making the moves.
+   * @throw Never throws exception.
+   */
   dim_type column() const noexcept;
   Square square() const noexcept;
 
