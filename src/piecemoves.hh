@@ -239,6 +239,10 @@ public:
    */
   Square square() const noexcept;
 
+  /**
+   * @return True if this @c PieceMoves does not contain any moves, false otherwise.
+   * @throw Never throws exception.
+   */
   bool empty() const noexcept;
   size_type size() const noexcept;
 
