@@ -312,6 +312,12 @@ public:
    * TODO: determine what kind of exception this can throw.
    */
   PieceMoves& push_back(Square&&);
+
+  /**
+   * @brief Remove a @c Square from this @c PieceMoves.
+   * @return A reference to this @c PieceMoves.
+   * TODO: determine what kind of exception this can throw.
+   */
   PieceMoves& pop_back();
   Square top();
   PieceMoves& clear();
