@@ -210,6 +210,11 @@ public:
    * @throw Never throws exception.
    */
   dim_type column() const noexcept;
+
+  /**
+   * @return The @c Squre of the piece making the moves.
+   * @throw Never throws exception.
+   */
   Square square() const noexcept;
 
   bool empty() const noexcept;
