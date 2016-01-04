@@ -175,6 +175,14 @@ public:
    */
   PieceMoves& setSquare(const Square &square) noexcept;
 
+  /**
+   * @brief Sets the @c Square of the piece making the moves.
+   * @param square The square being moved.
+   * @return A reference to this @c PieceMoves.
+   * @throw Never throws exception.
+   */
+  PieceMoves& setSquare(Square &&square) noexcept;
+
   PieceCode piece() const noexcept;
   PieceColor color() const noexcept;
   dim_type row() const noexcept;
