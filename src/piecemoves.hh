@@ -149,6 +149,10 @@ public:
 
   /**
    * @brief Sets the piece color.
+   *
+   * If this @c PieceMoves contains moves, and <em>color</em> is different than the
+   * current piece color, then the moves are clared.
+   *
    * @param color The piece color.
    * @return A reference to this @c PieceMoves.
    * @throw Never throws exception.
