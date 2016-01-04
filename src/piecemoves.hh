@@ -304,6 +304,13 @@ public:
    * TODO: determine what kind of exception this can throw.
    */
   PieceMoves& push_back(const Square square&);
+
+  /**
+   * @brief Insert a @c Square to this @c PieceMoves.
+   * @param square The @c Square being moved.
+   * @return A reference to this @c PieceMoves.
+   * TODO: determine what kind of exception this can throw.
+   */
   PieceMoves& push_back(Square&&);
   PieceMoves& pop_back();
   Square top();
