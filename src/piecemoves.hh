@@ -183,6 +183,11 @@ public:
    */
   PieceMoves& setSquare(Square &&square) noexcept;
 
+  /**
+   * @brief Gets the piece making the moves.
+   * @return The @c PieceCode value of the piece.
+   * @throw Never throws exception.
+   */
   PieceCode piece() const noexcept;
   PieceColor color() const noexcept;
   dim_type row() const noexcept;
