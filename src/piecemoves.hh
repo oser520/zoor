@@ -191,7 +191,6 @@ public:
   PieceCode piece() const noexcept;
 
   /**
-   * @brief Gets the color of the piece making the moves.
    * @return The @c PieceColor of the piece.
    * @throw Never throws exception.
    */
