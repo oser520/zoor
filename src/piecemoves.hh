@@ -288,6 +288,13 @@ public:
    * @throw Never throws exception.
    */
   const_iterator cbegin() noexcept;
+
+  /**
+   * @detail If there are no moves, then <tt>begin() == end()</tt>.
+   * @return The constant off-the-end iterator to the list of moves in this
+   *  @c PieceMoves.
+   * @throw Never throws exception.
+   */
   const_iterator cend() noexcept;
 
   // adding and removing Square elements
