@@ -189,6 +189,12 @@ public:
    * @throw Never throws exception.
    */
   PieceCode piece() const noexcept;
+
+  /**
+   * @brief Gets the color of the piece making the moves.
+   * @return The @c PieceColor of the piece.
+   * @throw Never throws exception.
+   */
   PieceColor color() const noexcept;
   dim_type row() const noexcept;
   dim_type column() const noexcept;
