@@ -150,7 +150,14 @@ public:
    * @throw Never throws exception.
    */
   PieceMoves& setColor(PieceColor color) noexcept;
-  PieceMoves& setRow(dim_type) noexcept;
+
+  /**
+   * @brief Sets the row of the square for the piece making the moves.
+   * @param row The row of the squre for the piece making the moves.
+   * @return A reference to this @c PieceMoves.
+   * @throw Never throws exception.
+   */
+  PieceMoves& setRow(dim_type row) noexcept;
   PieceMoves& setColumn(dim_type) noexcept;
   PieceMoves& setSquare(Square) noexcept;
 
