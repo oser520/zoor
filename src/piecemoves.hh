@@ -299,6 +299,7 @@ public:
 
   // adding and removing Square elements
   PieceMoves& push_back(const Square&);
+  PieceMoves& push_back(Square&&);
   PieceMoves& pop_back();
   Square top();
   PieceMoves& clear();
