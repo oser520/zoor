@@ -133,6 +133,11 @@ size_type PieceMoves::size() const noexcept
   return mMoves.size();
 }
 
+iterator PieceMoves::begin() noexcept
+{
+  return mMoves.begin();
+}
+
 
 
 } // namespace zoor
