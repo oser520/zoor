@@ -47,7 +47,7 @@ PieceMoves::PieceMoves
 PieceMoves& PieceMoves::setPiece(PieceCode piece) noexcept
 {
   if (piece() != piece) {
-    setPiece(piece);
+    mSquare.setPiece(piece);
     if (!empty()) clear();
   }
   return *this;
