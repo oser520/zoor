@@ -183,6 +183,11 @@ PieceMoves& PieceMoves::pop_back()
   return *this;
 }
 
+Square PieceMoves::back() const
+{
+  return mMoves.top();
+}
+
 
 
 } // namespace zoor

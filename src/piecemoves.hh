@@ -322,10 +322,11 @@ public:
 
   /**
    * @brief A copy of the last @c Square inserted into this @c PieceMoves.
-   * @return A reference to this @c PieceMoves.
-   * TODO: determine what kind of exception this can throw.
+   * @return A copy of the last move.
+   * @throw Throws exception if there are no moves.
+   * TODO: determine what kind of exception it throws
    */
-  Square top();
+  Square back() const;
 
   /**
    * @brief Removes all the moves from this @c PieceMoves.
