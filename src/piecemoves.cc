@@ -89,6 +89,15 @@ PieceMoves& PieceMoves::setSquare(const Square &square) noexcept
   return *this;
 }
 
+PieceMoves& PieceMoves::setSquare(Square &&square) noexcept
+{
+  if (mSquare != square) {
+    mSquare = std::move(square);
+    if (!empty()) clear();
+  }
+  return *this;
+}
+
 dim_type PieceMoves::row() const noexcept
 {
   return mSquare.row();
