@@ -170,6 +170,13 @@ PieceMoves& PieceMoves::push_back(const Square &square)
   return *this;
 }
 
+PieceMoves& PieceMoves::push_back(Square &&square)
+{
+  // TODO: check if moves is legal
+  mMoves.push_back(std::move(square));
+  return *this;
+}
+
 
 
 } // namespace zoor
