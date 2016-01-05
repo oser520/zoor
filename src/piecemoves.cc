@@ -118,6 +118,11 @@ PieceColor PieceMoves::color() const noexcept
   return mSquare.color();
 }
 
+Square PieceMoves::squre() const noexcept
+{
+  return mSquare;
+}
+
 
 
 } // namespace zoor
