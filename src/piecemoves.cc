@@ -153,6 +153,16 @@ const_iterator PieceMoves::cend() noexcept
   return mMoves.cend();
 }
 
+const_iterator PieceMoves::begin() const noexcept
+{
+  return mMoves.cbegin();
+}
+
+const_iterator PieceMoves::end() const noexcept
+{
+  return mMoves.cend();
+}
+
 
 
 } // namespace zoor
