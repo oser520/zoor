@@ -329,6 +329,14 @@ public:
   Square back() const;
 
   /**
+   * @brief A copy of the first @c Square held in @c PieceMoves.
+   * @return A copy of the first move.
+   * @throw Throws exception if there are no moves.
+   * TODO: determine what kind of exception it throws
+   */
+  Square front() const;
+
+  /**
    * @brief Removes all the moves from this @c PieceMoves.
    * @return A reference to this @c PieceMoves.
    * TODO: determine what kind of exception this can throw.
