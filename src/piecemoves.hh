@@ -69,7 +69,7 @@ public:
    *  piece cannot be <em>NONE</em>.
    * @throw Never throws exception.
    */
-  PieceMoves(const Square& square) noexcept;
+  PieceMoves(const Square &square) noexcept;
 
   /**
    * Constructs @c PieceMoves with an <em>rvalue</em> @c Square.
@@ -77,7 +77,7 @@ public:
    *  piece cannot be <em>NONE</em>.
    * @throw Never throws exception.
    */
-  PieceMoves(Square&&) noexcept;
+  PieceMoves(Square &&squre) noexcept;
 
   /**
    * @brief Constructs @c PieceMoves with the four paramters used to construct a
