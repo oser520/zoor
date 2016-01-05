@@ -188,6 +188,10 @@ Square PieceMoves::back() const
   return mMoves.top();
 }
 
+Square PieceMoves::front() const
+{
+  return mMoves.front();
+}
 
 
 } // namespace zoor
