@@ -203,15 +203,25 @@ PieceMoves& PieceMoves::clear()
 
 std::ostream& operator<<(std::ostream &os, const PieceMoves &pm)
 {
-  os << "(" pm.square() << ", (";
-  auto loops = mMoves.size();
+  os << "(" pm.mSquare << ", (";
+  auto loops = pm.size();
   if (loops) {
     for (size_t i = 0; i < loops - 1; ++i)
-      os << mMoves[i] << ", ";
-    os << mMoves[loops-1];
+      os << pm.mMoves[i] << ", ";
+    os << pm.mMoves[loops-1];
   }
   os << "))";
   return os;
+}
+
+bool operator==(const PieceMoves &pm1, const PieceMoves &pm2) noexcept
+{
+  return pm1.mSquare == pm2.mSquare && pm1.mMoves == pm2.mMoves;
+}
+
+bool operator!=(const PieceMoves &pm1, const PieceMoves &pm2) noexcept
+{
+  return !(pm1 == pm2);
 }
 
 
