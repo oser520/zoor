@@ -185,7 +185,7 @@ PieceMoves& PieceMoves::pop_back()
 
 Square PieceMoves::back() const
 {
-  return mMoves.top();
+  return mMoves.back();
 }
 
 Square PieceMoves::front() const
