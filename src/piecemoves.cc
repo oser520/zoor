@@ -32,5 +32,17 @@ PieceMoves::PieceMoves(Square &&square) noexcept
   assert(mSquara.color() != PieceColor::NONE);
 }
 
+PieceMoves::PieceMoves
+  (dim_type row,
+   dim_type column,
+   PieceCode piece,
+   PieceColor color) noexcept
+  : mSquare(row, column, piece, color)
+{
+  assert(piece != PieceCode::NONE);
+  assert(color != PieceColor::NONE);
+}
+
+
 
 } // namespace zoor
