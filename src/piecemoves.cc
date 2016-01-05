@@ -44,6 +44,15 @@ PieceMoves::PieceMoves
   assert(color != PieceColor::NONE);
 }
 
+PieceMoves& PieceMoves::setPiece(PieceCode piece) noexcept
+{
+  if (piece() != piece) {
+    setPiece(piece);
+    if (!empty()) clear();
+  }
+  return *this;
+}
+
 dim_type PieceMoves::row() const noexcept
 {
   return mSquare.row();
