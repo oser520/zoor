@@ -13,5 +13,12 @@ using iterator = PieceMoves::iterator;
 using const_iterator = PieceMoves::const_iterator;
 using size_type = PieceMoves::size_type;
 
+PieceMoves::PieceMoves(const Square &square)
+  : mSquare(square)
+{
+  assert(mSquara.piece() != PieceCode::NONE);
+  assert(mSquara.color() != PieceColor::NONE);
+}
+
 
 } // namespace zoor
