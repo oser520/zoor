@@ -143,6 +143,16 @@ iterator PieceMoves::end() noexcept
   return mMoves.end();
 }
 
+const_iterator PieceMoves::cbegin() noexcept
+{
+  return mMoves.cbegin();
+}
+
+const_iterator PieceMoves::cend() noexcept
+{
+  return mMoves.cend();
+}
+
 
 
 } // namespace zoor
