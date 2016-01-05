@@ -20,5 +20,12 @@ PieceMoves::PieceMoves(const Square &square)
   assert(mSquara.color() != PieceColor::NONE);
 }
 
+PieceMoves::PieceMoves(Square &&square)
+  : mSquare(std::move(square))
+{
+  assert(mSquara.piece() != PieceCode::NONE);
+  assert(mSquara.color() != PieceColor::NONE);
+}
+
 
 } // namespace zoor
