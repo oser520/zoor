@@ -123,6 +123,11 @@ Square PieceMoves::squre() const noexcept
   return mSquare;
 }
 
+bool PieceMoves::empty() const noexcept
+{
+  return mMoves.empty();
+}
+
 
 
 } // namespace zoor
