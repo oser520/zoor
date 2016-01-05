@@ -71,6 +71,15 @@ PieceMoves& PieceMoves::setRow(dim_type row) noexcept
   return *this;
 }
 
+PieceMoves& PieceMoves::setColumn(dim_type column) noexcept
+{
+  if (column() != column) {
+    mSquare.setColumn(column);
+    if (!empty()) clear();
+  }
+  return *this;
+}
+
 dim_type PieceMoves::row() const noexcept
 {
   return mSquare.row();
