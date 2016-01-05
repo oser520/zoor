@@ -177,6 +177,12 @@ PieceMoves& PieceMoves::push_back(Square &&square)
   return *this;
 }
 
+PieceMoves& PieceMoves::pop_back()
+{
+  mMoves.pop_back();
+  return *this;
+}
+
 
 
 } // namespace zoor
