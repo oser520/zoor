@@ -163,6 +163,13 @@ const_iterator PieceMoves::end() const noexcept
   return mMoves.cend();
 }
 
+PieceMoves& PieceMoves::push_back(const Square &square)
+{
+  // TODO: check if moves is legal
+  mMoves.push_back(square);
+  return *this;
+}
+
 
 
 } // namespace zoor
