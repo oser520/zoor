@@ -43,6 +43,26 @@ PieceMoves::PieceMoves
   assert(color != PieceColor::NONE);
 }
 
+dim_type PieceMoves::row() const noexcept
+{
+  return mSquare.row();
+}
+
+dim_type PieceMoves::column() const noexcept
+{
+  return mSquare.column();
+}
+
+PieceCode PieceMoves::piece() const noexcept
+{
+  return mSquare.piece();
+}
+
+PieceColor PieceMoves::color() const noexcept
+{
+  return mSquare.color();
+}
+
 
 
 } // namespace zoor
