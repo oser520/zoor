@@ -15,6 +15,12 @@
 namespace zoor {
 
 /**
+ * TODO: implement thread safety
+ * TODO: throw exceptions
+ * TODO: implement operator[]
+ */
+
+/**
  * @brief Represents the list of legal moves that are possible for a given piece from
  * a given square on a board.
  *

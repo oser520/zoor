@@ -13,6 +13,12 @@
 
 namespace zoor {
 
+/**
+ * TODO: implement thread safety
+ * TODO: throw exceptions
+ * TODO: implement operator[]
+ */
+
 using dim_type = PieceMoves::dim_type;
 using iterator = PieceMoves::iterator;
 using const_iterator = PieceMoves::const_iterator;
