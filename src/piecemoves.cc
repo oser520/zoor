@@ -18,14 +18,14 @@ using iterator = PieceMoves::iterator;
 using const_iterator = PieceMoves::const_iterator;
 using size_type = PieceMoves::size_type;
 
-PieceMoves::PieceMoves(const Square &square)
+PieceMoves::PieceMoves(const Square &square) noexcept
   : mSquare(square)
 {
   assert(mSquara.piece() != PieceCode::NONE);
   assert(mSquara.color() != PieceColor::NONE);
 }
 
-PieceMoves::PieceMoves(Square &&square)
+PieceMoves::PieceMoves(Square &&square) noexcept
   : mSquare(std::move(square))
 {
   assert(mSquara.piece() != PieceCode::NONE);
