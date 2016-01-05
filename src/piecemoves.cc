@@ -185,11 +185,13 @@ PieceMoves& PieceMoves::pop_back()
 
 Square PieceMoves::back() const
 {
+  // TODO: throw exception if mMoves is empty
   return mMoves.back();
 }
 
 Square PieceMoves::front() const
 {
+  // TODO: throw exception if mMoves is empty
   return mMoves.front();
 }
 
