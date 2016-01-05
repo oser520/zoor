@@ -10,6 +10,7 @@
 #include <cassert>
 
 #include "piecemoves.hh"
+#include "piececode.hh"
 
 namespace zoor {
 
