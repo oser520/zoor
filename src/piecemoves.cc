@@ -195,5 +195,11 @@ Square PieceMoves::front() const
   return mMoves.front();
 }
 
+PieceMoves& PieceMoves::clear()
+{
+  mMoves.clear();
+  return *this;
+}
+
 
 } // namespace zoor
