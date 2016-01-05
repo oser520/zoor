@@ -22,15 +22,15 @@ using size_type = PieceMoves::size_type;
 PieceMoves::PieceMoves(const Square &square) noexcept
   : mSquare(square)
 {
-  assert(mSquara.piece() != PieceCode::NONE);
-  assert(mSquara.color() != PieceColor::NONE);
+  assert(piece() != PieceCode::NONE);
+  assert(color() != PieceColor::NONE);
 }
 
 PieceMoves::PieceMoves(Square &&square) noexcept
   : mSquare(std::move(square))
 {
-  assert(mSquara.piece() != PieceCode::NONE);
-  assert(mSquara.color() != PieceColor::NONE);
+  assert(piece() != PieceCode::NONE);
+  assert(color() != PieceColor::NONE);
 }
 
 PieceMoves::PieceMoves
