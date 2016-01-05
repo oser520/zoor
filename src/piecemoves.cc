@@ -201,5 +201,18 @@ PieceMoves& PieceMoves::clear()
   return *this;
 }
 
+std::ostream& operator<<(std::ostream &os, const PieceMoves &pm)
+{
+  os << "(" pm.square() << ", (";
+  auto loops = mMoves.size();
+  if (loops) {
+    for (size_t i = 0; i < loops - 1; ++i)
+      os << mMoves[i] << ", ";
+    os << mMoves[loops-1];
+  }
+  os << "))";
+  return os;
+}
+
 
 } // namespace zoor
