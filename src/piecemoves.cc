@@ -138,6 +138,11 @@ iterator PieceMoves::begin() noexcept
   return mMoves.begin();
 }
 
+iterator PieceMoves::end() noexcept
+{
+  return mMoves.end();
+}
+
 
 
 } // namespace zoor
