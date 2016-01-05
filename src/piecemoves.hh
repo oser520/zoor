@@ -94,7 +94,6 @@ public:
      PieceCode piece,
      PieceColor color) noexcept;
   
-  
   /**
    * @brief Default constructor.
    * @throw Never throws exception.
@@ -251,7 +250,6 @@ public:
    */
   size_type size() const noexcept;
 
-  
   /**
    * @detail If there are no moves, then <tt>begin() == end()</tt>.
    * @return An iterator to the first move in this @c PieceMoves.
