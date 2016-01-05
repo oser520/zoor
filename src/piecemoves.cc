@@ -128,6 +128,11 @@ bool PieceMoves::empty() const noexcept
   return mMoves.empty();
 }
 
+size_type PieceMoves::size() const noexcept
+{
+  return mMoves.size();
+}
+
 
 
 } // namespace zoor
