@@ -4,7 +4,6 @@
  * @date 2016-01-04
  */
 
-#include <string>
 #include <iostream>
 #include <utility>
 #include <cassert>
@@ -223,6 +222,5 @@ bool operator!=(const PieceMoves &pm1, const PieceMoves &pm2) noexcept
 {
   return !(pm1 == pm2);
 }
-
 
 } // namespace zoor
