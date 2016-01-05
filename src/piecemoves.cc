@@ -4,6 +4,11 @@
  * @date 2016-01-04
  */
 
+#include <string>
+#include <iostream>
+#include <utility>
+#include <cassert>
+
 #include "piecemoves.hh"
 
 namespace zoor {
