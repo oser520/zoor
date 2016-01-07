@@ -34,13 +34,13 @@ class Square
   /**
    * @brief The piece sitting on this @c Square, which maybe <em>NONE</em>.
    */
-  PiceCode mPiece;
+  PieceCode mPiece;
 
   /**
    * @brief The color of the piece sitting on this @c Square. Only meaningful if
    * there is a piece on it.
    */
-  PiceColor mColor;
+  PieceColor mColor;
 
   /**
    * The row in the @c Square. Invariant: \f$0 \leq row \le BOARD_DIM.
@@ -86,35 +86,35 @@ public:
    * @brief Default constructor.
    * @throw Does not throw exception.
    */
-  Square() noexcept = default
+  Square() noexcept = default;
 
   /**
    * @brief Default copy constructor.
    * @param square The @c Square being copied. 
    * @throw Does not throw exception.
    */
-  Square(const Square& square) noexcept = default
+  Square(const Square& square) noexcept = default;
 
   /**
    * @brief Default move constructor.
    * @param square The @c Square being moved. 
    * @throw Does not throw exception.
    */
-  Square(Square&& square) noexcept = default
+  Square(Square&& square) noexcept = default;
 
   /**
    * @brief Default copy assignment.
    * @param square The @c Square being copied. 
    * @throw Does not throw exception.
    */
-  Square& operator=(const Square& square) noexcept = default
+  Square& operator=(const Square& square) noexcept = default;
 
   /**
    * @brief Default move assignment.
    * @param square The @c Square being moved. 
    * @throw Does not throw exception.
    */
-  Square& operator=(Square &&square) noexcept = default
+  Square& operator=(Square &&square) noexcept = default;
 
   /**
    * @brief Default destructor.
