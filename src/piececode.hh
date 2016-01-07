@@ -51,7 +51,7 @@ enum class PieceValue: unsigned short
   BISHOP = KNIGHT,
   ROOK = 5,
   QUEEN = 9,
-  KING = ~0
+  KING = 0xffff;
 };
 
 /**
