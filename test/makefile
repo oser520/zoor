@@ -1,4 +1,5 @@
 VPATH = .:../src
+INCDIR = -I../src
 
 GTFLAGS = -isystem $(GTEST_DIR)/include -I$(GTEST_DIR)
 
@@ -6,7 +7,7 @@ LDFLAGS  = -L/opt/googletest
 LFLAGS   = -lgtest
 
 CXXFLAGS = -Wall -Wextra -std=c++11 -pthread
-CXXFLAGS += $(GTFLAGS)
+CXXFLAGS += $(GTFLAGS) $(INCDIR)
 
 OBJ = tsquare.o
 
