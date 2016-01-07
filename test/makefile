@@ -16,4 +16,4 @@ all: tsquare
 tsquare: $(OBJ)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $< $(LFLAGS) -o $@
 
-$(OBJ): $(OBJ:.o=.hh)
+$(OBJ): $(OBJ:.o=.hh) piececode.hh
