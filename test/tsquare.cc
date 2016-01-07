@@ -7,11 +7,11 @@
 #include "square.hh"
 #include "gtest/gtest.h"
 
+namespace {
+
 using zoor::Square;
 using zoor::PieceCode;
 using zoor::PieceColor;
-
-namespace {
 
 class SquareTest: public testing::Test
 {
