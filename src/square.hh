@@ -165,7 +165,7 @@ public:
    * @return A reference to this @c Square
    * @throw Guaranteed not to throw.
    */
-  Square& setCol(dim_type column) noexcept;
+  Square& setColumn(dim_type column) noexcept;
 
   /**
    * @brief Sets the piece.
