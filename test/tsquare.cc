@@ -39,15 +39,15 @@ TEST_F(SquareTest, InitCorrectly)
 
 TEST_F(SquareTest, EqualityOpWork)
 {
-  EXPECT_NEQ(s11, s00);
+  EXPECT_NE(s11, s00);
 }
 
 TEST_F(SquareTest, GettersWork)
 {
   EXPECT_EQ(PieceCode::NONE, s00.piece());
-  EXPECT_NEQ(PieceCode::KING, s11.piece());
+  EXPECT_NE(PieceCode::KING, s11.piece());
   EXPECT_EQ(PieceColor::NONE, s00.color());
-  EXPECT_NEQ(PieceColor::BLACK, s11.color());
+  EXPECT_NE(PieceColor::BLACK, s11.color());
 }
 
 TEST_F(SquareTest, SettersWork)
