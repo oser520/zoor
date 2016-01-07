@@ -31,27 +31,6 @@ class Square
    */
   friend bool operator==(const Square&, const Square&) noexcept;
 
-  /**
-   * @brief The piece sitting on this @c Square, which maybe <em>NONE</em>.
-   */
-  PieceCode mPiece;
-
-  /**
-   * @brief The color of the piece sitting on this @c Square. Only meaningful if
-   * there is a piece on it.
-   */
-  PieceColor mColor;
-
-  /**
-   * The row in the @c Square. Invariant: \f$0 \leq row \le BOARD_DIM.
-   */
-  dim_type mRow;
-
-  /**
-   * The column in the @c Square. Invariant: \f$0 \leq column \le BOARD_DIM.
-   */
-  dim_type mColum;
-
 public:
   /**
    * Alias for type of row and column.
@@ -182,6 +161,29 @@ public:
    * @throw Does not throw exception.
    */
   Square& setColor(PieceColor color) noexcept;
+
+private:
+  /**
+   * @brief The piece sitting on this @c Square, which maybe <em>NONE</em>.
+   */
+  PieceCode mPiece;
+
+  /**
+   * @brief The color of the piece sitting on this @c Square. Only meaningful if
+   * there is a piece on it.
+   */
+  PieceColor mColor;
+
+  /**
+   * The row in the @c Square. Invariant: \f$0 \leq row \le BOARD_DIM.
+   */
+  dim_type mRow;
+
+  /**
+   * The column in the @c Square. Invariant: \f$0 \leq column \le BOARD_DIM.
+   */
+  dim_type mColum;
+
 };
 
 /**
