@@ -8,6 +8,8 @@
 
 #include <iostream>
 
+#include "piececode.hh"
+
 namespace zoor {
 
 /**
