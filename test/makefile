@@ -17,3 +17,7 @@ tsquare: $(OBJ)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
 
 $(OBJ): square.hh piececode.hh
+
+.PHONY: clean
+clean:
+	$(RM) $(OBJ) tsquare 2>/dev/null
