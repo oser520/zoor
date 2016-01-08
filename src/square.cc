@@ -53,6 +53,11 @@ PieceCode Square::piece() const noexcept
   return mPiece;
 }
 
+PieceColor Square::color() const noexcept
+{
+  return mPiece;
+}
+
 Square& Square::setRow(dim_type row) noexcept
 {
   assert(row < BOARD_DIM);
@@ -64,6 +69,18 @@ Square& Square::setColumn(dim_type column) noexcept
 {
   assert(column < BOARD_DIM);
   mColumn = column;
+  return *this;
+}
+
+Square& Square::setPiece(PieceCode piece) noexcept
+{
+  mPiece = piece;
+  return *this;
+}
+
+Square& Square::setColor(PieceColor color) noexcept
+{
+  mColor = color;
   return *this;
 }
 
