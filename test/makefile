@@ -9,11 +9,11 @@ LFLAGS   = -lgtest
 CXXFLAGS = -Wall -Wextra -std=c++11 -pthread
 CXXFLAGS += $(GTFLAGS) $(INCDIR)
 
-OBJ = tsquare.o
+OBJ = tsquare.o square.o
 
 all: tsquare
 
 tsquare: $(OBJ)
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $< $(LFLAGS) -o $@
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
 
-$(OBJ): $(OBJ:.o=.hh) piececode.hh
+$(OBJ): square.hh piececode.hh
