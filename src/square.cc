@@ -55,7 +55,7 @@ PieceCode Square::piece() const noexcept
 
 PieceColor Square::color() const noexcept
 {
-  return mPiece;
+  return mColor;
 }
 
 Square& Square::setRow(dim_type row) noexcept
