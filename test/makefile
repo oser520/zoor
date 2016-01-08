@@ -9,7 +9,7 @@ LFLAGS   = -lgtest -lpthread
 CXXFLAGS = -Wall -Wextra -std=c++11
 CXXFLAGS += $(GTFLAGS) $(INCDIR)
 
-OBJ = tsquare.o square.o
+OBJ = tsquare.o square.o piececode.o
 
 all: tsquare
 
