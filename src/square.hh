@@ -182,7 +182,7 @@ private:
   /**
    * The column in the @c Square. Invariant: \f$0 \leq column \le BOARD_DIM.
    */
-  dim_type mColum;
+  dim_type mColumn;
 
 };
 
