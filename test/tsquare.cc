@@ -44,10 +44,31 @@ TEST_F(SquareTest, EqualityOpWork)
 
 TEST_F(SquareTest, GettersWork)
 {
+  s00.setPiece(PieceCode::NONE);
   EXPECT_EQ(PieceCode::NONE, s00.piece());
-  EXPECT_NE(PieceCode::KING, s11.piece());
+  s00.setPiece(PieceCode::ROOK);
+  EXPECT_EQ(PieceCode::NONE, s00.piece());
+
+
+  s00.setColor(PieceColor::NONE);
+  EXPECT_EQ(PieceColor::BLACK, s00.color());
+  EXPECT_EQ(PieceColor::WHITE, s00.color());
   EXPECT_EQ(PieceColor::NONE, s00.color());
+
+  s00.setColor(PieceColor::BLACK);
+  EXPECT_EQ(PieceColor::BLACK, s00.color());
+  EXPECT_EQ(PieceColor::WHITE, s00.color());
+  EXPECT_EQ(PieceColor::NONE, s00.color());
+
+  s00.setColor(PieceColor::WHITE);
+  EXPECT_EQ(PieceColor::BLACK, s00.color());
+  EXPECT_EQ(PieceColor::WHITE, s00.color());
+  EXPECT_EQ(PieceColor::NONE, s00.color());
+
+  EXPECT_NE(PieceCode::KING, s11.piece());
   EXPECT_NE(PieceColor::BLACK, s11.color());
+  EXPECT_NE(PieceColor::WHITE, s11.color());
+  EXPECT_NE(PieceColor::NONE, s11.color());
 }
 
 TEST_F(SquareTest, SettersWork)
