@@ -70,7 +70,7 @@ bool operator==(const Square& square1, const Square& square2) noexcept
       && square1.mColumn == square2.mColumn;
 }
 
-bool operator!=(const Square& square1, const Square& square2) noexcept;
+bool operator!=(const Square& square1, const Square& square2) noexcept
 {
   return !(square1 == square2);
 }
