@@ -48,6 +48,11 @@ dim_type Square::column() const noexcept
   return mColumn;
 }
 
+PieceCode Square::piece() const noexcept
+{
+  return mPiece;
+}
+
 Square& Square::setRow(dim_type row) noexcept
 {
   assert(row < BOARD_DIM);
