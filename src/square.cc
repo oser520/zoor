@@ -18,7 +18,7 @@ Square::Square(dim_type row, dim_type column) noexcept
   : mPiece(PieceCode::NONE),
     mColor(PieceColor::NONE),
     mRow(row),
-    mColum(column)
+    mColumn(column)
 {
   assert(mRow < BOARD_DIM);
   assert(mColumn < BOARD_DIM);
@@ -32,7 +32,7 @@ Square::Square
   : mPiece(piece),
     mColor(color),
     mRow(row),
-    mColum(column)
+    mColumn(column)
 {
   assert(mRow < BOARD_DIM);
   assert(mColumn < BOARD_DIM);
