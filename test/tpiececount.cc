@@ -15,7 +15,6 @@ namespace {
 using std::string;
 using std::ostringstream;
 using zoor::PieceCount;
-using PieceCount::count_type;
 
 /**
  * Test the default constructor yields a board with the default number of pieces.
