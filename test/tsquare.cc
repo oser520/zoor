@@ -49,8 +49,23 @@ TEST_F(SquareTest, RowColumn)
 
 TEST_F(SquareTest, EqualityOpWork)
 {
+  s00.setPiece(PieceCode::NONE).setColor(PieceColor::NONE).setRow(0).setColumn(0);
+  s11.setPiece(PieceCode::NONE).setColor(PieceColor::NONE).setRow(0).setColumn(0);
+  EXPECT_EQ(s11, s00);
+
+  s00.setPiece(PieceCode::KNIGHT);
   EXPECT_NE(s11, s00);
+
+  s00.setPiece(PieceCode::NONE);
+  s11.setColor(PieceColor::WHITE);
   EXPECT_NE(s11, s00);
+
+  s00.setPiece(PieceCode::ROOK).setColor(PieceColor::BLACK).setRow(5);
+  s11.setPiece(PieceCode::ROOK).setColor(PieceColor::BLACK).setRow(3);
+  EXPECT_NE(s11, s00);
+
+  s11.setPiece(PieceCode::ROOK).setColor(PieceColor::BLACK).setRow(5);
+  EXPECT_EQ(s11, s00);
 }
 
 TEST_F(SquareTest, GettersWork)
