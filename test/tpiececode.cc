@@ -39,6 +39,18 @@ TEST(PieceCodeTest, PieceCode)
   EXPECT_STREQ("KING", ss7.str().c_str()); 
 }
 
+TEST(PieceColorTest, PieceColor)
+{
+  ostringstream ss1, ss2, ss3;
+  ss1 << PieceColor::NONE; 
+  ss2 << PieceColor::WHITE; 
+  ss3 << PieceColor::BLACK; 
+  
+  EXPECT_STREQ("NONE", ss1.str().c_str()); 
+  EXPECT_STREQ("WHITE", ss2.str().c_str()); 
+  EXPECT_STREQ("BLACK", ss3.str().c_str()); 
+}
+
 } // anonymous namespace
 
 int main(int argc, char *argv[])
