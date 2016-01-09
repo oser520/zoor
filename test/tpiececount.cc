@@ -4,6 +4,7 @@
  * @date 2016-01-09
  */
 
+#include <string>
 #include <sstream>
 #include "piececode.hh"
 #include "piececount.hh"
@@ -11,6 +12,8 @@
 
 namespace {
 
+using std::string;
+using std::ostringstream;
 using zoor::PieceCount;
 using PieceCount::count_type;
 
@@ -56,16 +59,13 @@ TEST(PieceCountTest, ValueFn)
   EXPECT_EQ(255, cp.valueKings());
 }
 
-TEST(PieceColorTest, PieceColor)
-{
-  ostringstream ss1, ss2, ss3;
-  ss1 << PieceColor::NONE; 
-  ss2 << PieceColor::WHITE; 
-  ss3 << PieceColor::BLACK; 
+TEST(PieceCountTest, OutputOp) {
+  PieceCount cp;
+  ostringstream ss1;
+  ss1 << cp;
+  string s("{kings=1, queens=1, rooks=2, bishops=2, knights=2, pawns=8, total=16}");
   
-  EXPECT_STREQ("NONE", ss1.str().c_str()); 
-  EXPECT_STREQ("WHITE", ss2.str().c_str()); 
-  EXPECT_STREQ("BLACK", ss3.str().c_str()); 
+  EXPECT_EQ(s, ss1.str()); 
 }
 
 TEST(PieceValueTest, PieceValue)
