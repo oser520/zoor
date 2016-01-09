@@ -21,7 +21,7 @@ using zoor::PieceValue;
 
 TEST(PieceCodeTest, PieceCode)
 {
-  ostringstream ss1, ss2, ss3, ss4, ss5, ss6;
+  ostringstream ss1, ss2, ss3, ss4, ss5, ss6, ss7;
   ss1 << PieceCode::NONE; 
   ss2 << PieceCode::PAWN; 
   ss3 << PieceCode::KNIGHT; 
@@ -30,13 +30,13 @@ TEST(PieceCodeTest, PieceCode)
   ss6 << PieceCode::QUEEN; 
   ss7 << PieceCode::KING; 
   
-  EXPECT_STREQ("NONE", ss1.str().c_str()): 
-  EXPECT_STREQ("PAWN", ss2.str().c_str()): 
-  EXPECT_STREQ("KNIGHT", ss3.str().c_str()): 
-  EXPECT_STREQ("BISHOP", ss4.str().c_str()): 
-  EXPECT_STREQ("ROOK", ss5.str().c_str()): 
-  EXPECT_STREQ("QUEEN", ss6.str().c_str()): 
-  EXPECT_STREQ("KING", ss7.str().c_str()): 
+  EXPECT_STREQ("NONE", ss1.str().c_str()); 
+  EXPECT_STREQ("PAWN", ss2.str().c_str()); 
+  EXPECT_STREQ("KNIGHT", ss3.str().c_str()); 
+  EXPECT_STREQ("BISHOP", ss4.str().c_str()); 
+  EXPECT_STREQ("ROOK", ss5.str().c_str()); 
+  EXPECT_STREQ("QUEEN", ss6.str().c_str()); 
+  EXPECT_STREQ("KING", ss7.str().c_str()); 
 }
 
 } // anonymous namespace
