@@ -23,14 +23,18 @@ CXXFLAGS += $(GTFLAGS) $(INCDIR)
 
 # Dependencies for each unit test program.
 OBJ_PIECECODE = tpiececode.o piececode.o
+OBJ_PIECECOUNT = tpiececount.o piececount.o piececode.o
 OBJ_SQUARE = tsquare.o square.o piececode.o
 
 # Unit test programs.
-TARGETS = tpiececode tsquare
+TARGETS = tpiececode tpiececount tsquare
 
 all: $(TARGETS)
 
 tpiececode: $(OBJ_PIECECODE)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
+
+tpiececount: $(OBJ_PIECECOUNT)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
 
 tsquare: $(OBJ_SQUARE)
@@ -38,23 +42,31 @@ tsquare: $(OBJ_SQUARE)
 
 $(OBJ_PIECECODE): piececode.hh
 
+$(OBJ_PIECECOUNT): piececode.hh piececode.hh
+
 $(OBJ_SQUARE): square.hh piececode.hh
 
 .PHONY: run clean
 # Run all unit tests.
-run: tsquare tpiececode
-	@echo 
-	@echo Running Unit Tests for Square
-	@echo 
-	-@./tpiececode
-	@echo
-	@echo Unit Tests for Square Finished!
+run: $(TARGETS)
 	@echo 
 	@echo Running Unit Tests for PieceCode, PieceColor, PieceValue
 	@echo 
 	-@./tsquare
 	@echo
 	@echo Unit Tests for PieceCode, PieceColor, PieceValue Finished!
+	@echo 
+	@echo Running Unit Tests for PieceCount
+	@echo 
+	-@./tsquare
+	@echo
+	@echo Unit Tests for PieceCount Finished!
+	@echo 
+	@echo Running Unit Tests for Square
+	@echo 
+	-@./tpiececode
+	@echo
+	@echo Unit Tests for Square Finished!
 	@echo 
 
 clean:
