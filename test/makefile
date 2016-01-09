@@ -16,7 +16,7 @@ all: run tsquare
 run: tsquare
 	@echo Running Unit Tests for Square
 	@echo 
-	@./tsquare
+	-@./tsquare
 	@echo
 	@echo Unit Tests for Square are done
 
