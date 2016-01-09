@@ -11,7 +11,14 @@ CXXFLAGS += $(GTFLAGS) $(INCDIR)
 
 OBJ = tsquare.o square.o piececode.o
 
-all: tsquare
+all: run tsquare
+
+run: tsquare
+	@echo Running Unit Tests for Square
+	@echo 
+	@./tsquare
+	@echo
+	@echo Unit Tests for Square are done
 
 tsquare: $(OBJ)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
