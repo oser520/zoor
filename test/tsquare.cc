@@ -64,37 +64,22 @@ TEST_F(SquareTest, EqualityOpWork)
   s11.setPiece(PieceCode::ROOK).setColor(PieceColor::BLACK).setRow(3);
   EXPECT_NE(s11, s00);
 
-  s11.setPiece(PieceCode::ROOK).setColor(PieceColor::BLACK).setRow(5);
+  s11.setRow(5);
   EXPECT_EQ(s11, s00);
 }
 
 TEST_F(SquareTest, GettersWork)
 {
-  s00.setPiece(PieceCode::NONE);
-  EXPECT_EQ(PieceCode::NONE, s00.piece());
-  s00.setPiece(PieceCode::ROOK);
-  EXPECT_EQ(PieceCode::NONE, s00.piece());
-
-
-  s00.setColor(PieceColor::NONE);
-  EXPECT_EQ(PieceColor::BLACK, s00.color());
+  s00.setPiece(PieceCode::KING).setColor(PieceColor::WHITE).setRow(5).setColumn(7);
+  EXPECT_EQ(PieceCode::KING, s00.piece());
   EXPECT_EQ(PieceColor::WHITE, s00.color());
-  EXPECT_EQ(PieceColor::NONE, s00.color());
+  EXPECT_EQ(5, s00.row());
+  EXPECT_EQ(7, s00.column());
 
-  s00.setColor(PieceColor::BLACK);
-  EXPECT_EQ(PieceColor::BLACK, s00.color());
-  EXPECT_EQ(PieceColor::WHITE, s00.color());
-  EXPECT_EQ(PieceColor::NONE, s00.color());
-
-  s00.setColor(PieceColor::WHITE);
-  EXPECT_EQ(PieceColor::BLACK, s00.color());
-  EXPECT_EQ(PieceColor::WHITE, s00.color());
-  EXPECT_EQ(PieceColor::NONE, s00.color());
-
-  EXPECT_NE(PieceCode::KING, s11.piece());
-  EXPECT_NE(PieceColor::BLACK, s11.color());
-  EXPECT_NE(PieceColor::WHITE, s11.color());
-  EXPECT_NE(PieceColor::NONE, s11.color());
+  EXPECT_NE(PieceCode::BISHOP, s00.piece());
+  EXPECT_NE(PieceColor::BLACK, s00.color());
+  EXPECT_NE(1, s00.row());
+  EXPECT_NE(3, s00.column());
 }
 
 TEST_F(SquareTest, SettersWork)
