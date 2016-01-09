@@ -92,7 +92,12 @@ TEST_F(SquareTest, SettersWork)
   EXPECT_EQ(PieceCode::PAWN, s00.piece());
   EXPECT_EQ(PieceColor::BLACK, s00.color());
   EXPECT_EQ(5, s00.row());
-  EXPECT_EQ(7, s11.column());
+  EXPECT_EQ(7, s00.column());
+
+  EXPECT_NE(PieceCode::QUEEN, s00.piece());
+  EXPECT_NE(PieceColor::WHITE, s00.color());
+  EXPECT_NE(7, s00.row());
+  EXPECT_NE(5, s00.column());
 }
 
 TEST_F(SquareTest, BoolsWork) {
