@@ -96,10 +96,23 @@ TEST_F(SquareTest, SettersWork)
 }
 
 TEST_F(SquareTest, BoolsWork) {
-  auto b1 = s00 == s11;
-  auto b2 = s00 != s11;
-  EXPECT_FALSE(b1);
-  EXPECT_TRUE(b2);
+  s00.setPiece(PieceCode::KNIGHT)
+     .setColor(PieceColor::BLACK)
+     .setRow(5)
+     .setColumn(7);
+  s11.setPiece(PieceCode::KNIGHT)
+     .setColor(PieceColor::BLACK)
+     .setRow(5)
+     .setColumn(7);
+  EXPECT_TRUE(s00 == s11);
+  EXPECT_FALSE(s00 != s11);
+
+  s11.setPiece(PieceCode::KNIGHT)
+     .setColor(PieceColor::WHITE)
+     .setRow(5)
+     .setColumn(7);
+  EXPECT_FALSE(s00 == s11);
+  EXPECT_TRUE(s00 != s11);
 }
 
 } // anonymous namespace
