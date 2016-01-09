@@ -41,4 +41,4 @@ run: tsquare tpiececode
 	@echo 
 
 clean:
-	$(RM) $(OBJ) tsquare 2>/dev/null
+	$(RM) $(OBJ_SQUARE) $(OBJ_PIECECODE) tsquare 2>/dev/null
