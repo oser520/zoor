@@ -16,29 +16,40 @@ using zoor::PieceColor;
 class SquareTest: public testing::Test
 {
 protected:
-  virtual void SetUp()
-  {
-    s00.setRow(0);
-    s00.setColumn(0); 
-
-    s11.setRow(1);
-    s11.setColumn(1); 
-  }
 
   Square s00;
   Square s11;
 };
 
-TEST_F(SquareTest, InitCorrectly)
+TEST_F(SquareTest, RowColumn)
 {
+  s00.setRow(0).setColumn(0);
   EXPECT_EQ(0, s00.row());
   EXPECT_EQ(0, s00.column());
-  EXPECT_EQ(1, s11.row());
-  EXPECT_EQ(1, s11.column());
+  EXPECT_NE(2, s00.row());
+  EXPECT_NE(2, s00.column());
+
+  s00.setRow(1).setColumn(3);
+  EXPECT_EQ(1, s00.row());
+  EXPECT_EQ(3, s00.column());
+  EXPECT_NE(3, s00.row());
+  EXPECT_NE(1, s00.column());
+
+  s00.setRow(7).setColumn(6);
+  EXPECT_EQ(7, s00.row());
+  EXPECT_EQ(6, s00.column());
+  EXPECT_NE(8, s00.row());
+  EXPECT_NE(5, s00.column());
+
+  EXPECT_EQ(5, s00.setRow(5).row());
+  EXPECT_EQ(5, s00.setColumn(5).column());
+  EXPECT_NE(1, s00.row());
+  EXPECT_NE(3, s00.column());
 }
 
 TEST_F(SquareTest, EqualityOpWork)
 {
+  EXPECT_NE(s11, s00);
   EXPECT_NE(s11, s00);
 }
 
