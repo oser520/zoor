@@ -48,6 +48,17 @@ TEST(PieceCountTest, InitFn)
   EXPECT_EQ(16, cp.mTotal);
 }
 
+TEST(PieceCountTest, EqualityOp)
+{
+  PieceCount cp1, cp2;
+  EXPECT_TRUE(cp1 == cp2);
+  EXPECT_FALSE(cp1 != cp2);
+
+  cp2.mPawns = 5;
+  EXPECT_FALSE(cp1 == cp1);
+  EXPECT_TRUE(cp1 != cp1);
+}
+
 TEST(PieceCountTest, ValueFn)
 {
   PieceCount cp;
