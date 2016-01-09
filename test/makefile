@@ -11,8 +11,9 @@ CXXFLAGS += $(GTFLAGS) $(INCDIR)
 
 OBJ_PIECECODE = tpiececode.o piececode.o
 OBJ_SQUARE = tsquare.o square.o piececode.o
+TARGETS = tpiececode tsquare
 
-all: tpiececode tsquare 
+all: $(TARGETS)
 
 tpiececode: $(OBJ_PIECECODE)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
@@ -41,4 +42,4 @@ run: tsquare tpiececode
 	@echo 
 
 clean:
-	$(RM) $(OBJ_SQUARE) $(OBJ_PIECECODE) tsquare 2>/dev/null
+	$(RM) $(OBJ_SQUARE) $(OBJ_PIECECODE) $(TARGETS) 2>/dev/null
