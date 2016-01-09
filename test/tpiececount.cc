@@ -14,10 +14,9 @@ namespace {
 using zoor::PieceCount;
 using PieceCount::count_type;
 
-//class PieceCodeTest: public testing::Test
-//{
-//};
-
+/**
+ * Test the default constructor yields a board with the default number of pieces.
+ */
 TEST(PieceCountTest, CtorValues)
 {
   PieceCount cp;
@@ -28,6 +27,22 @@ TEST(PieceCountTest, CtorValues)
   EXPECT_EQ(2, cp.mKnights); 
   EXPECT_EQ(8, cp.mPawn); 
   EXPECT_EQ(16, cp.mTotal); 
+}
+
+TEST(PieceCountTest, InitFn)
+{
+  PieceCount cp;
+  cp.mKings = 5;
+  cp.mRooks = 1;
+  cp.mPawns = 1;
+  cp.init();
+  EXPECT_EQ(1, cp.mKings);
+  EXPECT_EQ(1, cp.mQueens);
+  EXPECT_EQ(2, cp.mRooks);
+  EXPECT_EQ(2, cp.mBishops);
+  EXPECT_EQ(2, cp.mKnights);
+  EXPECT_EQ(8, cp.mPawn);
+  EXPECT_EQ(16, cp.mTotal);
 }
 
 TEST(PieceColorTest, PieceColor)
