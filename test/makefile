@@ -70,4 +70,4 @@ run: $(TARGETS)
 	@echo 
 
 clean:
-	$(RM) $(OBJ_SQUARE) $(OBJ_PIECECODE) $(TARGETS) 2>/dev/null
+	$(RM) $(OBJ_SQUARE) $(OBJ_PIECECODE) $(OBJ_PIECECOUNT) $(TARGETS) 2>/dev/null
