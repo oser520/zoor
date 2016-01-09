@@ -46,7 +46,8 @@ enum class PieceColor: unsigned char
  */
 enum class PieceValue: unsigned short
 {
-  PAWN = 1,
+  NONE,
+  PAWN,
   KNIGHT = 3,
   BISHOP = KNIGHT,
   ROOK = 5,
