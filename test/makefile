@@ -9,22 +9,36 @@ LFLAGS   = -lgtest -lpthread
 CXXFLAGS = -Wall -Wextra -std=c++11
 CXXFLAGS += $(GTFLAGS) $(INCDIR)
 
-OBJ = tsquare.o square.o piececode.o
+OBJ_PIECECODE = tpiececode.o piececode.o
+OBJ_SQUARE = tsquare.o square.o piececode.o
 
-all: run tsquare
+all: tpiececode tsquare 
 
-run: tsquare
+tpiececode: $(OBJ_PIECECODE)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
+
+tsquare: $(OBJ_SQUARE)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
+
+$(OBJ_PIECECODE): piececode.hh
+
+$(OBJ_SQUARE): square.hh piececode.hh
+
+.PHONY: run clean
+run: tsquare tpiececode
+	@echo 
 	@echo Running Unit Tests for Square
 	@echo 
 	-@./tsquare
 	@echo
-	@echo Unit Tests for Square are done
+	@echo Unit Tests for Square Finished!
+	@echo 
+	@echo Running Unit Tests for PieceCode, PieceColor, PieceValue
+	@echo 
+	-@./tsquare
+	@echo
+	@echo Unit Tests for PieceCode, PieceColor, PieceValue Finished!
+	@echo 
 
-tsquare: $(OBJ)
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
-
-$(OBJ): square.hh piececode.hh
-
-.PHONY: clean
 clean:
 	$(RM) $(OBJ) tsquare 2>/dev/null
