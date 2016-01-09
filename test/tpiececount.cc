@@ -45,6 +45,17 @@ TEST(PieceCountTest, InitFn)
   EXPECT_EQ(16, cp.mTotal);
 }
 
+TEST(PieceCountTest, ValueFn)
+{
+  PieceCount cp;
+  EXPECT_EQ(8, cp.valuePawns());
+  EXPECT_EQ(6, cp.valueKnights());
+  EXPECT_EQ(6, cp.valueBishops());
+  EXPECT_EQ(10, cp.valueRooks());
+  EXPECT_EQ(9, cp.valueQueens());
+  EXPECT_EQ(255, cp.valueKings());
+}
+
 TEST(PieceColorTest, PieceColor)
 {
   ostringstream ss1, ss2, ss3;
