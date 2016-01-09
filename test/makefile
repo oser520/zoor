@@ -6,7 +6,7 @@ GTFLAGS = -isystem $(GTEST_DIR)/include
 LDFLAGS  = -L/opt/googletest
 LFLAGS   = -lgtest -lpthread
 
-CXXFLAGS = -Wall -Wextra -std=c++11
+CXXFLAGS = -Wall -Wextra -std=c++11 -O2
 CXXFLAGS += $(GTFLAGS) $(INCDIR)
 
 OBJ_PIECECODE = tpiececode.o piececode.o
