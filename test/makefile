@@ -1,3 +1,9 @@
+# file: makefile
+# author: Omar A Serrano 
+# date: 2016-01-06
+#
+# makefile for building unit tests.
+
 VPATH = .:../src
 INCDIR = -I../src
 
