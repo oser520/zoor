@@ -30,7 +30,7 @@ run: tsquare tpiececode
 	@echo 
 	@echo Running Unit Tests for Square
 	@echo 
-	-@./tsquare
+	-@./tpiececode
 	@echo
 	@echo Unit Tests for Square Finished!
 	@echo 
