@@ -51,6 +51,18 @@ TEST(PieceColorTest, PieceColor)
   EXPECT_STREQ("BLACK", ss3.str().c_str()); 
 }
 
+TEST(PieceValueTest, PieceValue)
+{
+  using uchar = unsigned char;
+  EXPECT_EQ(static_cast<uchar>(0), static_cast<uchar>(PieceValue::NONE)); 
+  EXPECT_EQ(static_cast<uchar>(1), static_cast<uchar>(PieceValue::PAWN)); 
+  EXPECT_EQ(static_cast<uchar>(3), static_cast<uchar>(PieceValue::KNIGHT)); 
+  EXPECT_EQ(static_cast<uchar>(3), static_cast<uchar>(PieceValue::BISHOP)); 
+  EXPECT_EQ(static_cast<uchar>(5), static_cast<uchar>(PieceValue::ROOK)); 
+  EXPECT_EQ(static_cast<uchar>(9), static_cast<uchar>(PieceValue::QUEEN)); 
+  EXPECT_EQ(static_cast<uchar>(0xffff), static_cast<uchar>(PieceValue::KING)); 
+}
+
 } // anonymous namespace
 
 int main(int argc, char *argv[])
