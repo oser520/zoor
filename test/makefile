@@ -25,6 +25,8 @@ CXXFLAGS += $(GTFLAGS) $(INCDIR)
 OBJ_PIECECODE = tpiececode.o piececode.o
 OBJ_PIECECOUNT = tpiececount.o piececount.o piececode.o
 OBJ_SQUARE = tsquare.o square.o piececode.o
+
+# Combine unique object files.
 OBJ_LIST := $(OBJ_PIECECODE) $(OBJ_PIECECOUNT) $(OBJ_SQUARE)
 OBJ_ALL != echo $(OBJ_LIST) | tr " " "\n" | sort | uniq
 
