@@ -25,6 +25,8 @@ CXXFLAGS += $(GTFLAGS) $(INCDIR)
 OBJ_PIECECODE = tpiececode.o piececode.o
 OBJ_PIECECOUNT = tpiececount.o piececount.o piececode.o
 OBJ_SQUARE = tsquare.o square.o piececode.o
+OBJ_ALL = $(OBJ_PIECECODE) $(OBJ_PIECECOUNT) $(OBJ_SQUARE)
+OBJ_ALL = $(shell echo $(OBJ_ALL) | uniq)
 
 # Unit test programs.
 TARGETS = tpiececode tpiececount tsquare
@@ -51,4 +53,4 @@ run: $(TARGETS)
 	-@./runtest.py $^
 
 clean:
-	$(RM) $(OBJ_SQUARE) $(OBJ_PIECECODE) $(OBJ_PIECECOUNT) $(TARGETS) 2>/dev/null
+	$(RM) $(OBJ_ALL) $(TARGETS) 2>/dev/null
