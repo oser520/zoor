@@ -48,7 +48,7 @@ $(OBJ_SQUARE): square.hh piececode.hh
 .PHONY: run clean
 # Run all unit tests.
 run: $(TARGETS)
-	$(foreach target,$^,$(shell echo $(shell ./$(target))))
+	-@./runtest.py $^
 
 clean:
 	$(RM) $(OBJ_SQUARE) $(OBJ_PIECECODE) $(OBJ_PIECECOUNT) $(TARGETS) 2>/dev/null
