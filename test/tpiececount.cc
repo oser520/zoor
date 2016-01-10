@@ -27,7 +27,7 @@ TEST(PieceCountTest, CtorValues)
   EXPECT_EQ(2, cp.mRooks); 
   EXPECT_EQ(2, cp.mBishops); 
   EXPECT_EQ(2, cp.mKnights); 
-  EXPECT_EQ(8, cp.mPawn); 
+  EXPECT_EQ(8, cp.mPawns); 
   EXPECT_EQ(16, cp.mTotal); 
 }
 
@@ -54,8 +54,8 @@ TEST(PieceCountTest, EqualityOp)
   EXPECT_FALSE(cp1 != cp2);
 
   cp2.mPawns = 5;
-  EXPECT_FALSE(cp1 == cp1);
-  EXPECT_TRUE(cp1 != cp1);
+  EXPECT_FALSE(cp1 == cp2);
+  EXPECT_TRUE(cp1 != cp2);
 }
 
 TEST(PieceCountTest, ValueFn)

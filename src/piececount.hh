@@ -135,7 +135,7 @@ bool operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept;
  * @param pc2 The second *PieceCount* object.
  * @return False if they are equal, true otherwise.
  */
-bool operator!=(const PieceCount &pc1, const PieceCount &pc2) noexcept
+bool operator!=(const PieceCount &pc1, const PieceCount &pc2) noexcept;
 
 inline size_t PieceCount::valuePawns() const noexcept
 {
@@ -159,7 +159,7 @@ inline size_t PieceCount::valueRooks() const noexcept
 
 inline size_t PieceCount::valueQueens() const noexcept
 {
-  return static_cast<size_t>(mQueens) * static_cast<size_t>(PieceValue::QUEENS);
+  return static_cast<size_t>(mQueens) * static_cast<size_t>(PieceValue::QUEEN);
 }
 
 } // namespace zoor
