@@ -31,6 +31,9 @@ TEST(PieceCountTest, CtorValues)
   EXPECT_EQ(16, cp.mTotal); 
 }
 
+/**
+ * Test PieceCount::init().
+ */
 TEST(PieceCountTest, InitFn)
 {
   PieceCount cp;
@@ -47,6 +50,9 @@ TEST(PieceCountTest, InitFn)
   EXPECT_EQ(16, cp.mTotal);
 }
 
+/**
+ * Test equality and non-equality operators.
+ */
 TEST(PieceCountTest, EqualityOp)
 {
   PieceCount cp1, cp2;
@@ -58,6 +64,9 @@ TEST(PieceCountTest, EqualityOp)
   EXPECT_TRUE(cp1 != cp2);
 }
 
+/**
+ * Test the value functions.
+ */
 TEST(PieceCountTest, ValueFn)
 {
   PieceCount cp;
@@ -68,6 +77,9 @@ TEST(PieceCountTest, ValueFn)
   EXPECT_EQ(9, cp.valueQueens());
 }
 
+/**
+ * Test the output operator.
+ */
 TEST(PieceCountTest, OutputOp) {
   PieceCount cp;
   ostringstream ss1;
