@@ -33,13 +33,13 @@ PieceCount& PieceCount::init() noexcept
 
 std::ostream& operator<<(std::ostream &os, const PieceCount &pc)
 {
-  os << "{kings=" << mKings
-     << ", queens=" << mQueens
-     << ", rooks=" << mRooks
-     << ", bishops=" << mBishops
-     << ", knights=" << mKnights
-     << ", pawns=" << mPawns
-     << ", total=" << mTotal
+  os << "{kings=" << pc.mKings
+     << ", queens=" << pc.mQueens
+     << ", rooks=" << pc.mRooks
+     << ", bishops=" << pc.mBishops
+     << ", knights=" << pc.mKnights
+     << ", pawns=" << pc.mPawns
+     << ", total=" << pc.mTotal
      << "}";
   return os;
 }
