@@ -25,8 +25,8 @@ CXXFLAGS += $(GTFLAGS) $(INCDIR)
 OBJ_PIECECODE = tpiececode.o piececode.o
 OBJ_PIECECOUNT = tpiececount.o piececount.o piececode.o
 OBJ_SQUARE = tsquare.o square.o piececode.o
-OBJ_ALL = $(OBJ_PIECECODE) $(OBJ_PIECECOUNT) $(OBJ_SQUARE)
-OBJ_ALL = $(shell echo $(OBJ_ALL) | uniq)
+OBJ_LIST := $(OBJ_PIECECODE) $(OBJ_PIECECOUNT) $(OBJ_SQUARE)
+OBJ_ALL != echo $(OBJ_LIST) | tr " " "\n" | sort | uniq
 
 # Unit test programs.
 TARGETS = tpiececode tpiececount tsquare
