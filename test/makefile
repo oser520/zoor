@@ -40,10 +40,9 @@ tpiececount: $(OBJ_PIECECOUNT)
 tsquare: $(OBJ_SQUARE)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
 
+# Header dependencies.
 $(OBJ_PIECECODE): piececode.hh
-
 $(OBJ_PIECECOUNT): piececode.hh piececode.hh
-
 $(OBJ_SQUARE): square.hh piececode.hh
 
 .PHONY: run clean
