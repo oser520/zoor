@@ -43,7 +43,7 @@ TEST(PieceCountTest, InitFn)
   EXPECT_EQ(2, cp.mRooks);
   EXPECT_EQ(2, cp.mBishops);
   EXPECT_EQ(2, cp.mKnights);
-  EXPECT_EQ(8, cp.mPawn);
+  EXPECT_EQ(8, cp.mPawns);
   EXPECT_EQ(16, cp.mTotal);
 }
 
