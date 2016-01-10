@@ -51,19 +51,19 @@ run: $(TARGETS)
 	@echo 
 	@echo Running Unit Tests for PieceCode, PieceColor, PieceValue
 	@echo 
-	-@./tsquare
+	-@./tpiececode
 	@echo
 	@echo Unit Tests for PieceCode, PieceColor, PieceValue Finished!
 	@echo 
 	@echo Running Unit Tests for PieceCount
 	@echo 
-	-@./tsquare
+	-@./tpiececount
 	@echo
 	@echo Unit Tests for PieceCount Finished!
 	@echo 
 	@echo Running Unit Tests for Square
 	@echo 
-	-@./tpiececode
+	-@./tsquare
 	@echo
 	@echo Unit Tests for Square Finished!
 	@echo 
