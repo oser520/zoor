@@ -48,25 +48,7 @@ $(OBJ_SQUARE): square.hh piececode.hh
 .PHONY: run clean
 # Run all unit tests.
 run: $(TARGETS)
-	@echo 
-	@echo Running Unit Tests for PieceCode, PieceColor, PieceValue
-	@echo 
-	-@./tpiececode
-	@echo
-	@echo Unit Tests for PieceCode, PieceColor, PieceValue Finished!
-	@echo 
-	@echo Running Unit Tests for PieceCount
-	@echo 
-	-@./tpiececount
-	@echo
-	@echo Unit Tests for PieceCount Finished!
-	@echo 
-	@echo Running Unit Tests for Square
-	@echo 
-	-@./tsquare
-	@echo
-	@echo Unit Tests for Square Finished!
-	@echo 
+	$(foreach target,$^,$(shell echo $(shell ./$(target))))
 
 clean:
 	$(RM) $(OBJ_SQUARE) $(OBJ_PIECECODE) $(OBJ_PIECECOUNT) $(TARGETS) 2>/dev/null
