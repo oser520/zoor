@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # file: runtest.py
 # author: Omar A Serrano
 # author: 2016-01-09
