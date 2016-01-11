@@ -107,6 +107,16 @@ public:
   count_type plus(PieceCode piece, count_type value) noexcept;
 
   /**
+   * @brief Decreases the count for a given piece by one.
+   * @detail Won't decrease the count of a given piece below zero.
+   * @param piece The @c PieceCode with count being decreased.
+   * @return The new count for the piece.
+   * @throw BadCountError if attempting to decrease count below zero.
+   * TODO: Implement BadCountError
+   */
+  count_type minus(PieceCode piece);
+
+  /**
    * Obtain the value of the pawns on the board.
    *
    * The value of the pawns on the board is simply the number of pawns times the
