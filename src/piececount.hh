@@ -16,17 +16,9 @@ namespace zoor {
 /**
  * PieceCount maintains a count of the number of pieces on the board.
  */
-struct PieceCount {
+class PieceCount {
+public:
   using count_type = unsigned short;
-
-  count_type mKings;
-  count_type mQueens;
-  count_type mRooks;
-  count_type mBishops;
-  count_type mKnights;
-  count_type mPawns;
-  count_type mTotal;
-
   /**
    * Construct a PieceCount with the normal number of pieces at the beginning of
    * a game, with:
@@ -102,6 +94,15 @@ struct PieceCount {
    * @return The value of the queens on the board.
    */
   size_t valueQueens() const noexcept;
+
+private:
+  count_type mKings;
+  count_type mQueens;
+  count_type mRooks;
+  count_type mBishops;
+  count_type mKnights;
+  count_type mPawns;
+  count_type mTotal;
 };
 
 /**
