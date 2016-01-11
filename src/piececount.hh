@@ -65,6 +65,11 @@ public:
    * @throw Never throws.
    */
   PieceCount& operator=(PieceCount &&pcount) noexcept = default;
+
+  /**
+   * @brief Default destructor.
+   * @throw Never throws.
+   */
   ~PieceCount() noexcept = default;
 
   /**
