@@ -95,7 +95,7 @@ public:
    * @return The new count for the piece.
    * @throw Never throws.
    */
-  count_type increment(PieceCode piece) noexcept;
+  count_type plus(PieceCode piece) noexcept;
 
   /**
    * @brief Increments the count for a given piece by a given number.
@@ -104,7 +104,7 @@ public:
    * @return The new count for the piece.
    * @throw Never throws.
    */
-  count_type increment(PieceCode piece, count_type value) noexcept;
+  count_type plus(PieceCode piece, count_type value) noexcept;
 
   /**
    * Obtain the value of the pawns on the board.
