@@ -128,6 +128,17 @@ public:
   count_type minus(PieceCode piece, count_type value);
 
   /**
+   * @brief Sets the count for a given piece.
+   * @detail Won't set value below zero.
+   * @param piece The @c PieceCode for the piece's count being set.
+   * @param value The value of the count for the piece.
+   * @return A reference to this @c PieceCount.
+   * @throw BadCountError if attempting to decrease count below zero.
+   * TODO: Implement BadCountError
+   */
+  PieceCount& setCount(PieceCode piece, count_type value);
+
+  /**
    * Obtain the value of the pawns on the board.
    *
    * The value of the pawns on the board is simply the number of pawns times the
