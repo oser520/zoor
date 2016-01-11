@@ -57,6 +57,14 @@ public:
    * @throw Never throws.
    */
   PieceCount& operator=(const PieceCount &pcount) noexcept = default;
+
+  /**
+   * @brief Move assignment operator.
+   * @param pcount The @c PieceCount to be moved.
+   * @return A reference to this @c PieceCount.
+   * @throw Never throws.
+   */
+  PieceCount& operator=(PieceCount &&pcount) noexcept = default;
   ~PieceCount() noexcept = default;
 
   /**
