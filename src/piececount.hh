@@ -91,11 +91,11 @@ public:
 
   /**
    * @brief Increments the count for a given piece by one.
-   * @param pc The @c PieceCode of the piece to be incremented.
+   * @param piece The @c PieceCode of the piece to be incremented.
    * @return The new count for the piece.
    * @throw Never throws.
    */
-  count_type increment(PieceCode pc) noexcept;
+  count_type increment(PieceCode piece) noexcept;
 
   /**
    * @brief Increments the count for a given piece by a given number.
@@ -104,7 +104,7 @@ public:
    * @return The new count for the piece.
    * @throw Never throws.
    */
-  count_type increment(PieceCode pc, count_type value) noexcept;
+  count_type increment(PieceCode piece, count_type value) noexcept;
 
   /**
    * Obtain the value of the pawns on the board.
