@@ -83,6 +83,13 @@ public:
   PieceCount& init() noexcept;
 
   /**
+   * @brief Sets the count of every piece to zero.
+   * @return A reference to this PieceCount.
+   * @throw Never throws.
+   */
+  PieceCount& clear() noexcept;
+
+  /**
    * Obtain the value of the pawns on the board.
    *
    * The value of the pawns on the board is simply the number of pawns times the
