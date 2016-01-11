@@ -98,6 +98,15 @@ public:
   count_type increment(PieceCode pc) noexcept;
 
   /**
+   * @brief Increments the count for a given piece by a given number.
+   * @param pc The @c PieceCode of the piece to be incremented.
+   * @param value The value to be incremented by.
+   * @return The new count for the piece.
+   * @throw Never throws.
+   */
+  count_type increment(PieceCode pc, count_type value) noexcept;
+
+  /**
    * Obtain the value of the pawns on the board.
    *
    * The value of the pawns on the board is simply the number of pawns times the
