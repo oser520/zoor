@@ -35,6 +35,12 @@ public:
    * @li 8 pawns
    */
   PieceCount() noexcept;
+
+  /**
+   * @brief Copy constructor.
+   * @param pcount The @c PieceCount to be copied.
+   * @throw Never throws.
+   */
   PieceCount(const PieceCount &pcount) noexcept = default;
   PieceCount& operator=(const PieceCount &pcount) noexcept = default;
   ~PieceCount() noexcept = default;
