@@ -17,8 +17,12 @@ namespace zoor {
  * PieceCount maintains a count of the number of pieces on the board.
  */
 class PieceCount {
+  friend bool operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept;
+  std::ostream& operator<<(std::ostream &os, const PieceCount &pc);
+
 public:
   using count_type = unsigned short;
+
   /**
    * Construct a PieceCount with the normal number of pieces at the beginning of
    * a game, with:
