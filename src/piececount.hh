@@ -49,6 +49,13 @@ public:
    * @throw Never throws.
    */
   PieceCount(PieceCount &&pcount) noexcept = default;
+
+  /**
+   * @brief Copy assignment operator.
+   * @param pcount The @c PieceCount to be copied.
+   * @return A reference to this @c PieceCount.
+   * @throw Never throws.
+   */
   PieceCount& operator=(const PieceCount &pcount) noexcept = default;
   ~PieceCount() noexcept = default;
 
