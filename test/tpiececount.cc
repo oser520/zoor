@@ -87,7 +87,7 @@ TEST(PieceCountTest, MinusFn)
   cp.minus(PieceCode::ROOK);
   cp.minus(PieceCode::PAWN, 3);
   EXPECT_EQ(1, cp.rooks());
-  EXPECT_EQ(5, cp.queens());
+  EXPECT_EQ(5, cp.pawns());
 }
 
 TEST(PieceCountTest, SetCountFn)
