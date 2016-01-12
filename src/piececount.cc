@@ -49,7 +49,7 @@ PieceCount& PieceCount::clear() noexcept
 
 count_type PieceCount::plus(PieceCode piece) noexcept
 {
-  return plus(piece, 1);
+  return plus(piece, static_cast<count_type>(1));
 }
 
 count_type PieceCount::plus(PieceCode piece, count_type value) noexcept
