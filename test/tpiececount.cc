@@ -82,6 +82,7 @@ TEST(PieceCountTest, EqualityOp)
   EXPECT_FALSE(cp1 != cp2);
 
   cp2.mPawns = 5;
+  cp2.setCount(PieceCode::PAWN, 5);
   EXPECT_FALSE(cp1 == cp2);
   EXPECT_TRUE(cp1 != cp2);
 }
