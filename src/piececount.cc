@@ -89,21 +89,27 @@ count_type PieceCount::minus(PieceCode piece, count_type value) noexcept
 {
   switch (piece) {
   case PieceCode::PAWN:
+    assert(mPawns >= value);
     mPawns -= value;
     return mPawns;
   case PieceCode::KNIGHT:
+    assert(mKnights >= value);
     mKnights -= value;
     return mKnights;
   case PieceCode::BISHOP:
+    assert(mBishops >= value);
     mBishops -= value;
     return mBishops;
   case PieceCode::ROOK:
+    assert(mRooks >= value);
     mRooks -= value;
     return mRooks;
   case PieceCode::QUEEN:
+    assert(mQueens >= value);
     mQueens -= value;
     return mQueens;
   case PieceCode::KING:
+    assert(mKings >= value);
     mKings -= value;
     return mKings;
   default:
