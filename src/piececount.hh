@@ -21,6 +21,9 @@ class PieceCount {
   std::ostream& operator<<(std::ostream &os, const PieceCount &pc);
 
 public:
+  /**
+   * Alias for the integral type for the count of each piece.
+   */
   using count_type = unsigned short;
 
   /**
