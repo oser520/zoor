@@ -50,6 +50,19 @@ TEST(PieceCountTest, InitFn)
   EXPECT_EQ(16, cp.mTotal);
 }
 
+TEST(PieceCountTest, ClearFn)
+{
+  PieceCount cp;
+  cp.init();
+  EXPECT_EQ(0, cp.mKings);
+  EXPECT_EQ(0, cp.mQueens);
+  EXPECT_EQ(0, cp.mRooks);
+  EXPECT_EQ(0, cp.mBishops);
+  EXPECT_EQ(0, cp.mKnights);
+  EXPECT_EQ(0, cp.mPawns);
+  EXPECT_EQ(0, cp.mTotal);
+}
+
 /**
  * Test equality and non-equality operators.
  */
