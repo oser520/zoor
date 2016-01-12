@@ -14,7 +14,7 @@ namespace {
 
 using std::string;
 using std::ostringstream;
-using zoor:PieceCode;
+using zoor::PieceCode;
 using zoor::PieceCount;
 
 /**
