@@ -15,24 +15,6 @@
 namespace zoor {
 
 /**
- * Represents a PieceCount error.
- */
-class CountError: public std::logic_error {
-public:
-  /**
-   * @brief Explicit constructor with string object.
-   * @param msg The error message.
-   */
-  explicit CountError(const std::string &msg);
-
-  /**
-   * @brief Explicit constructor with pointer to char array.
-   * @param msg The error message.
-   */
-  explicit CountError(const char *msg);
-};
-
-/**
  * PieceCount maintains a count of the number of pieces on the board.
  */
 class PieceCount {
