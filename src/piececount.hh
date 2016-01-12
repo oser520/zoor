@@ -154,6 +154,13 @@ public:
   count_type queens() const noexcept { return mQueens; }
 
   /**
+   * @brief Get the piece count for rooks.
+   * @return A copy of the count for rooks.
+   * @throw Never throws.
+   */
+  count_type rooks() const noexcept { return mRooks; }
+
+  /**
    * Obtain the value of the pawns on the board.
    *
    * The value of the pawns on the board is simply the number of pawns times the
