@@ -59,7 +59,7 @@ TEST(PieceCountTest, ClearFn)
   EXPECT_EQ(0, cp.queens());
   EXPECT_EQ(0, cp.rooks());
   EXPECT_EQ(0, cp.bishops());
-  EXPECT_EQ(0, cp.kinghts());
+  EXPECT_EQ(0, cp.knights());
   EXPECT_EQ(0, cp.pawns());
   EXPECT_EQ(0, cp.total());
 }
@@ -109,7 +109,6 @@ TEST(PieceCountTest, EqualityOp)
   EXPECT_TRUE(cp1 == cp2);
   EXPECT_FALSE(cp1 != cp2);
 
-  cp2.mPawns = 5;
   cp2.setCount(PieceCode::PAWN, 5);
   EXPECT_FALSE(cp1 == cp2);
   EXPECT_TRUE(cp1 != cp2);
