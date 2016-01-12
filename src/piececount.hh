@@ -133,7 +133,7 @@ public:
    * @detail Won't decrease the count of a given piece below zero.
    * @param piece The @c PieceCode with count being decreased.
    * @return The new count for the piece.
-   * @throw BadCountError if attempting to decrease count below zero.
+   * @throw Never throws.
    */
   count_type minus(PieceCode piece) noexcept;
 
@@ -143,7 +143,7 @@ public:
    * @param piece The @c PieceCode with count being decreased.
    * @param value The value by which the count of the piece is being decreased.
    * @return The new count for the piece.
-   * @throw BadCountError if attempting to decrease count below zero.
+   * @throw Never throws.
    */
   count_type minus(PieceCode piece, count_type value) noexcept;
 
@@ -153,7 +153,7 @@ public:
    * @param piece The @c PieceCode for the piece's count being set.
    * @param value The value of the count for the piece.
    * @return A reference to this @c PieceCount.
-   * @throw BadCountError if attempting to decrease count below zero.
+   * @throw Never throws.
    */
   PieceCount& setCount(PieceCode piece, count_type value) noexcept;
 
