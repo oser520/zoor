@@ -84,8 +84,8 @@ TEST(PieceCountTest, PlusFn)
 TEST(PieceCountTest, MinusFn)
 {
   PieceCount cp;
-  cp.minus(PieceCount::ROOK);
-  cp.minus(PieceCount::PAWN, 3);
+  cp.minus(PieceCode::ROOK);
+  cp.minus(PieceCode::PAWN, 3);
   EXPECT_EQ(1, cp.rooks());
   EXPECT_EQ(5, cp.queens());
 }
@@ -94,8 +94,8 @@ TEST(PieceCountTest, SetCountFn)
 {
   PieceCount cp;
   cp.clear();
-  cp.setCount(PieceCount::ROOK, 7);
-  cp.setCount(PieceCount::PAWN, 3);
+  cp.setCount(PieceCode::ROOK, 7);
+  cp.setCount(PieceCode::PAWN, 3);
   EXPECT_EQ(7, cp.rooks());
   EXPECT_EQ(3, cp.pawns());
 }
