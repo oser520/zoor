@@ -66,6 +66,23 @@ TEST(PieceCountTest, ClearFn)
 TEST(PieceCountTest, PlusFn)
 {
   PieceCount cp;
+
+  cp.plus(PieceCode::PAWN);
+  cp.plus(PieceCode::KING);
+  cp.plus(PieceCode::ROOK);
+  EXPECT_EQ(9, cp.pawns());
+  EXPECT_EQ(2, cp.kings());
+  EXPECT_EQ(3, cp.rooks());
+
+  cp.plus(PieceCode::QUEEN, 6);
+  cp.plus(PieceCode::BISHOP, 5);
+  EXPECT_EQ(7, cp.queens());
+  EXPECT_EQ(7, cp.bishops());
+}
+
+TEST(PieceCountTest, PlusFn)
+{
+  PieceCount cp;
   cp.plus(PieceCount::ROOK);
   cp.plus(PieceCount::QUEEN, 5);
   EXPECT_EQ(3, cp.rooks());
