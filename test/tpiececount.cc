@@ -54,7 +54,7 @@ TEST(PieceCountTest, InitFn)
 TEST(PieceCountTest, ClearFn)
 {
   PieceCount cp;
-  cp.init();
+  cp.clear();
   EXPECT_EQ(0, cp.kings());
   EXPECT_EQ(0, cp.queens());
   EXPECT_EQ(0, cp.rooks());
