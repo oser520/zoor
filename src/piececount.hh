@@ -8,6 +8,7 @@
 #define _PIECECOUNT_H
 
 #include <iostream>
+#include <stdexcept>
 
 #include "piececode.hh"
 
