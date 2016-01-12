@@ -63,6 +63,15 @@ TEST(PieceCountTest, ClearFn)
   EXPECT_EQ(0, cp.mTotal);
 }
 
+TEST(PieceCountTest, PlusFn)
+{
+  PieceCount cp;
+  cp.plus(PieceCount::ROOK);
+  cp.plus(PieceCount::QUEEN, 5);
+  EXPECT_EQ(3, cp.rooks());
+  EXPECT_EQ(6, cp.queens());
+}
+
 /**
  * Test equality and non-equality operators.
  */
