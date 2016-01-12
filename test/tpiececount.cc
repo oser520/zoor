@@ -37,9 +37,9 @@ TEST(PieceCountTest, CtorValues)
 TEST(PieceCountTest, InitFn)
 {
   PieceCount cp;
-  cp.mKings = 5;
-  cp.mRooks = 1;
-  cp.mPawns = 1;
+  cp.setCount(PieceCode::KING, 5);
+  cp.setCount(PieceCode::ROOK, 1);
+  cp.setCount(PieceCode::PAWN, 1);
   cp.init();
   EXPECT_EQ(1, cp.kings());
   EXPECT_EQ(1, cp.queens());
