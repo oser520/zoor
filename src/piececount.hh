@@ -175,6 +175,13 @@ public:
   count_type knights() const noexcept { return mKnights; }
 
   /**
+   * @brief Get the piece count for pawns.
+   * @return A copy of the count for pawns.
+   * @throw Never throws.
+   */
+  count_type pawns() const noexcept { return mPawns; }
+
+  /**
    * Obtain the value of the pawns on the board.
    *
    * The value of the pawns on the board is simply the number of pawns times the
