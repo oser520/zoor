@@ -70,6 +70,7 @@ count_type PieceCount::plus(PieceCode piece, count_type value) noexcept
     mKings += value;
     return mPawns;
   default:
+    // TODO: replace this with exception
     std::cerr << "Bad PieceCode value for plus." << std::endl;
     exit(EXIT_FAILURE);
   }
