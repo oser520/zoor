@@ -19,7 +19,7 @@ namespace zoor {
  */
 class PieceCount {
   friend bool operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept;
-  std::ostream& operator<<(std::ostream &os, const PieceCount &pc);
+  friend std::ostream& operator<<(std::ostream &os, const PieceCount &pc);
 
 public:
   /**
