@@ -60,19 +60,19 @@ count_type PieceCount::plus(PieceCode piece, count_type value) noexcept
     return mPawns;
   case PieceCode::KNIGHT:
     mKnights += value;
-    return mPawns;
+    return mKnights;
   case PieceCode::BISHOP:
     mBishops += value;
-    return mPawns;
+    return mBishops;
   case PieceCode::ROOK:
     mRooks += value;
-    return mPawns;
+    return mRooks;
   case PieceCode::QUEEN:
     mQueens += value;
-    return mPawns;
+    return mQueens;
   case PieceCode::KING:
     mKings += value;
-    return mPawns;
+    return mKings;
   default:
     // TODO: replace this with exception
     std::cerr << "Bad PieceCode value for plus." << std::endl;
@@ -93,19 +93,19 @@ count_type PieceCount::minus(PieceCode piece, count_type value) noexcept
     return mPawns;
   case PieceCode::KNIGHT:
     mKnights -= value;
-    return mPawns;
+    return mKnights;
   case PieceCode::BISHOP:
     mBishops -= value;
-    return mPawns;
+    return mBishops;
   case PieceCode::ROOK:
     mRooks -= value;
-    return mPawns;
+    return mRooks;
   case PieceCode::QUEEN:
     mQueens -= value;
-    return mPawns;
+    return mQueens;
   case PieceCode::KING:
     mKings -= value;
-    return mPawns;
+    return mKings;
   default:
     // TODO: replace this with exception
     std::cerr << "Bad PieceCode value for minus." << std::endl;
