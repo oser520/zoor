@@ -80,13 +80,13 @@ TEST(PieceCountTest, PlusFn)
   EXPECT_EQ(7, cp.bishops());
 }
 
-TEST(PieceCountTest, PlusFn)
+TEST(PieceCountTest, MinusFn)
 {
   PieceCount cp;
-  cp.plus(PieceCount::ROOK);
-  cp.plus(PieceCount::QUEEN, 5);
-  EXPECT_EQ(3, cp.rooks());
-  EXPECT_EQ(6, cp.queens());
+  cp.minus(PieceCount::ROOK);
+  cp.minus(PieceCount::PAWN, 3);
+  EXPECT_EQ(1, cp.rooks());
+  EXPECT_EQ(5, cp.queens());
 }
 
 /**
