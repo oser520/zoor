@@ -140,6 +140,13 @@ public:
   PieceCount& setCount(PieceCode piece, count_type value) noexcept;
 
   /**
+   * @brief Get the piece count for kings.
+   * @return A copy of the count for kings.
+   * @throw Never throws.
+   */
+  count_type kings() const noexcept { return mKings; }
+
+  /**
    * Obtain the value of the pawns on the board.
    *
    * The value of the pawns on the board is simply the number of pawns times the
