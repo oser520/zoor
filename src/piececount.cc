@@ -31,6 +31,18 @@ PieceCount& PieceCount::init() noexcept
   return *this;
 }
 
+PieceCount& PieceCount::clear() noexcept
+{
+  mKings = 0;
+  mQueens = 0;
+  mRooks = 0;
+  mBishops = 0;
+  mKnights = 0;
+  mPawns = 0;
+  mTotal = 0;
+  return *this;
+}
+
 std::ostream& operator<<(std::ostream &os, const PieceCount &pc)
 {
   os << "{kings=" << pc.mKings
