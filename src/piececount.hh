@@ -134,9 +134,8 @@ public:
    * @param piece The @c PieceCode with count being decreased.
    * @return The new count for the piece.
    * @throw BadCountError if attempting to decrease count below zero.
-   * TODO: Implement BadCountError
    */
-  count_type minus(PieceCode piece);
+  count_type minus(PieceCode piece) noexcept;
 
   /**
    * @brief Decreases the count for a given piece by a given value.
@@ -145,9 +144,8 @@ public:
    * @param value The value by which the count of the piece is being decreased.
    * @return The new count for the piece.
    * @throw BadCountError if attempting to decrease count below zero.
-   * TODO: Implement BadCountError
    */
-  count_type minus(PieceCode piece, count_type value);
+  count_type minus(PieceCode piece, count_type value) noexcept;
 
   /**
    * @brief Sets the count for a given piece.
@@ -156,9 +154,8 @@ public:
    * @param value The value of the count for the piece.
    * @return A reference to this @c PieceCount.
    * @throw BadCountError if attempting to decrease count below zero.
-   * TODO: Implement BadCountError
    */
-  PieceCount& setCount(PieceCode piece, count_type value);
+  PieceCount& setCount(PieceCode piece, count_type value) noexcept;
 
   /**
    * Obtain the value of the pawns on the board.

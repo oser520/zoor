@@ -119,7 +119,7 @@ count_type PieceCount::minus(PieceCode piece, count_type value) noexcept
   }
 }
 
-PieceCount& PieceCount::setCount(PieceCode piece, count_type value)
+PieceCount& PieceCount::setCount(PieceCode piece, count_type value) noexcept
 {
   // TODO: implement BadCountError to return exception if value takes
   // count of piece below 0
