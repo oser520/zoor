@@ -4,8 +4,9 @@
  * @date 2015-12-21
  */
 
-#include <iostream>
 #include <cstdlib>
+#include <cassert>
+#include <iostream>
 
 #include "piececode.hh"
 #include "piececount.hh"
