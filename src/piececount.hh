@@ -161,6 +161,13 @@ public:
   count_type rooks() const noexcept { return mRooks; }
 
   /**
+   * @brief Get the piece count for bishops.
+   * @return A copy of the count for bishops.
+   * @throw Never throws.
+   */
+  count_type bishops() const noexcept { return mBishops; }
+
+  /**
    * Obtain the value of the pawns on the board.
    *
    * The value of the pawns on the board is simply the number of pawns times the
