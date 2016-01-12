@@ -5,7 +5,9 @@
  */
 
 #include <iostream>
+#include <cstdlib>
 
+#include "piececode.hh"
 #include "piececount.hh"
 
 namespace zoor {
