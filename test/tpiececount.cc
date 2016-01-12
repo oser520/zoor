@@ -22,13 +22,13 @@ using zoor::PieceCount;
 TEST(PieceCountTest, CtorValues)
 {
   PieceCount cp;
-  EXPECT_EQ(1, cp.mKings); 
-  EXPECT_EQ(1, cp.mQueens); 
-  EXPECT_EQ(2, cp.mRooks); 
-  EXPECT_EQ(2, cp.mBishops); 
-  EXPECT_EQ(2, cp.mKnights); 
-  EXPECT_EQ(8, cp.mPawns); 
-  EXPECT_EQ(16, cp.mTotal); 
+  EXPECT_EQ(1, cp.kings()); 
+  EXPECT_EQ(1, cp.queens()); 
+  EXPECT_EQ(2, cp.rooks()); 
+  EXPECT_EQ(2, cp.bishops()); 
+  EXPECT_EQ(2, cp.knights()); 
+  EXPECT_EQ(8, cp.pawns()); 
+  EXPECT_EQ(16, cp.total()); 
 }
 
 /**
@@ -41,26 +41,26 @@ TEST(PieceCountTest, InitFn)
   cp.mRooks = 1;
   cp.mPawns = 1;
   cp.init();
-  EXPECT_EQ(1, cp.mKings);
-  EXPECT_EQ(1, cp.mQueens);
-  EXPECT_EQ(2, cp.mRooks);
-  EXPECT_EQ(2, cp.mBishops);
-  EXPECT_EQ(2, cp.mKnights);
-  EXPECT_EQ(8, cp.mPawns);
-  EXPECT_EQ(16, cp.mTotal);
+  EXPECT_EQ(1, cp.kings());
+  EXPECT_EQ(1, cp.queens());
+  EXPECT_EQ(2, cp.rooks());
+  EXPECT_EQ(2, cp.bishops());
+  EXPECT_EQ(2, cp.knights());
+  EXPECT_EQ(8, cp.pawns());
+  EXPECT_EQ(16, cp.total());
 }
 
 TEST(PieceCountTest, ClearFn)
 {
   PieceCount cp;
   cp.init();
-  EXPECT_EQ(0, cp.mKings);
-  EXPECT_EQ(0, cp.mQueens);
-  EXPECT_EQ(0, cp.mRooks);
-  EXPECT_EQ(0, cp.mBishops);
-  EXPECT_EQ(0, cp.mKnights);
-  EXPECT_EQ(0, cp.mPawns);
-  EXPECT_EQ(0, cp.mTotal);
+  EXPECT_EQ(0, cp.kings());
+  EXPECT_EQ(0, cp.queens());
+  EXPECT_EQ(0, cp.rooks());
+  EXPECT_EQ(0, cp.bishops());
+  EXPECT_EQ(0, cp.kinghts());
+  EXPECT_EQ(0, cp.pawns());
+  EXPECT_EQ(0, cp.total());
 }
 
 TEST(PieceCountTest, PlusFn)
