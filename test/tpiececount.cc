@@ -51,6 +51,9 @@ TEST(PieceCountTest, InitFn)
   EXPECT_EQ(16, cp.total());
 }
 
+/**
+ * Test PieceCount::clear().
+ */
 TEST(PieceCountTest, ClearFn)
 {
   PieceCount cp;
@@ -64,6 +67,9 @@ TEST(PieceCountTest, ClearFn)
   EXPECT_EQ(0, cp.total());
 }
 
+/**
+ * Test PieceCount::plus().
+ */
 TEST(PieceCountTest, PlusFn)
 {
   PieceCount cp;
@@ -81,6 +87,9 @@ TEST(PieceCountTest, PlusFn)
   EXPECT_EQ(7, cp.bishops());
 }
 
+/**
+ * Test PieceCount::minus().
+ */
 TEST(PieceCountTest, MinusFn)
 {
   PieceCount cp;
@@ -90,6 +99,9 @@ TEST(PieceCountTest, MinusFn)
   EXPECT_EQ(5, cp.pawns());
 }
 
+/**
+ * Test PieceCount::setCount().
+ */
 TEST(PieceCountTest, SetCountFn)
 {
   PieceCount cp;
