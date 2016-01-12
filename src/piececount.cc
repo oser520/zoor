@@ -74,7 +74,6 @@ count_type PieceCount::plus(PieceCode piece, count_type value) noexcept
     mKings += value;
     return mKings;
   default:
-    // TODO: replace this with exception
     std::cerr << "Bad PieceCode value for plus." << std::endl;
     exit(EXIT_FAILURE);
   }
@@ -113,7 +112,6 @@ count_type PieceCount::minus(PieceCode piece, count_type value) noexcept
     mKings -= value;
     return mKings;
   default:
-    // TODO: replace this with exception
     std::cerr << "Bad PieceCode value for minus." << std::endl;
     exit(EXIT_FAILURE);
   }
@@ -121,8 +119,6 @@ count_type PieceCount::minus(PieceCode piece, count_type value) noexcept
 
 PieceCount& PieceCount::setCount(PieceCode piece, count_type value) noexcept
 {
-  // TODO: implement BadCountError to return exception if value takes
-  // count of piece below 0
   switch (piece) {
   case PieceCode::PAWN:
     mPawns = value;
@@ -143,7 +139,6 @@ PieceCount& PieceCount::setCount(PieceCode piece, count_type value) noexcept
     mKings = value;
     break;
   default:
-    // TODO: replace this with exception
     std::cerr << "Bad PieceCode value for minus." << std::endl;
     exit(EXIT_FAILURE);
   }
