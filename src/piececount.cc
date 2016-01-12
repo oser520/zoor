@@ -12,6 +12,8 @@
 
 namespace zoor {
 
+using count_type = PieceCount::count_type;
+
 PieceCount::PieceCount() noexcept
   : mKings(1),
     mQueens(1),
