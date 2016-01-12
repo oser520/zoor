@@ -43,6 +43,11 @@ PieceCount& PieceCount::clear() noexcept
   return *this;
 }
 
+count_type PieceCount::plus(PieceCode piece) noexcept
+{
+  return plus(piece, 1);
+}
+
 std::ostream& operator<<(std::ostream &os, const PieceCount &pc)
 {
   os << "{kings=" << pc.mKings
