@@ -80,6 +80,39 @@ count_type PieceCount::plus(PieceCode piece, count_type value) noexcept
   }
 }
 
+count_type PieceCount::minus(PieceCode piece) noexcept
+{
+  return minus(piece, static_cast<count_type>(1));
+}
+
+count_type PieceCount::minus(PieceCode piece, count_type value) noexcept
+{
+  switch (piece) {
+  case PieceCode::PAWN:
+    mPawns -= value;
+    return mPawns;
+  case PieceCode::KNIGHT:
+    mKnights -= value;
+    return mPawns;
+  case PieceCode::BISHOP:
+    mBishops -= value;
+    return mPawns;
+  case PieceCode::ROOK:
+    mRooks -= value;
+    return mPawns;
+  case PieceCode::QUEEN:
+    mQueens -= value;
+    return mPawns;
+  case PieceCode::KING:
+    mKings -= value;
+    return mPawns;
+  default:
+    // TODO: replace this with exception
+    std::cerr << "Bad PieceCode value for minus." << std::endl;
+    exit(EXIT_FAILURE);
+  }
+}
+
 std::ostream& operator<<(std::ostream &os, const PieceCount &pc)
 {
   os << "{kings=" << pc.mKings
