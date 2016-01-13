@@ -31,7 +31,6 @@ PieceCount& PieceCount::init() noexcept
   mBishops = 2;
   mKnights = 2;
   mPawns = 8;
-  mTotal = 16;
   return *this;
 }
 
