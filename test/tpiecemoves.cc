@@ -7,6 +7,7 @@
 #include <string>
 #include <sstream>
 #include "piececode.hh"
+#include "square.hh"
 #include "piecemoves.hh"
 #include "gtest/gtest.h"
 
