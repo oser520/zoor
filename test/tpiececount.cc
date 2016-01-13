@@ -29,7 +29,6 @@ TEST(PieceCountTest, CtorValues)
   EXPECT_EQ(2, cp.bishops()); 
   EXPECT_EQ(2, cp.knights()); 
   EXPECT_EQ(8, cp.pawns()); 
-  EXPECT_EQ(16, cp.total()); 
 }
 
 /**
@@ -48,7 +47,6 @@ TEST(PieceCountTest, InitFn)
   EXPECT_EQ(2, cp.bishops());
   EXPECT_EQ(2, cp.knights());
   EXPECT_EQ(8, cp.pawns());
-  EXPECT_EQ(16, cp.total());
 }
 
 /**
@@ -64,7 +62,6 @@ TEST(PieceCountTest, ClearFn)
   EXPECT_EQ(0, cp.bishops());
   EXPECT_EQ(0, cp.knights());
   EXPECT_EQ(0, cp.pawns());
-  EXPECT_EQ(0, cp.total());
 }
 
 /**
@@ -146,7 +143,7 @@ TEST(PieceCountTest, OutputOp) {
   PieceCount cp;
   ostringstream ss1;
   ss1 << cp;
-  string s("{kings=1, queens=1, rooks=2, bishops=2, knights=2, pawns=8, total=16}");
+  string s("{kings=1, queens=1, rooks=2, bishops=2, knights=2, pawns=8}");
   
   EXPECT_EQ(s, ss1.str()); 
 }
