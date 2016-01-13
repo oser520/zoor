@@ -56,21 +56,41 @@ TEST(PieceMovesTest, AllParamCtor)
 }
 
 /**
- * Test PieceCount::init().
+ * Test inserting and querying moves.
  */
-TEST(PieceMovesTest, InitFn)
+TEST(PieceMovesTest, InsertMoves)
 {
-  PieceCount cp;
-  cp.setCount(PieceCode::KING, 5);
-  cp.setCount(PieceCode::ROOK, 1);
-  cp.setCount(PieceCode::PAWN, 1);
-  cp.init();
-  EXPECT_EQ(1, cp.kings());
-  EXPECT_EQ(1, cp.queens());
-  EXPECT_EQ(2, cp.rooks());
-  EXPECT_EQ(2, cp.bishops());
-  EXPECT_EQ(2, cp.knights());
-  EXPECT_EQ(8, cp.pawns());
+  PieceMoves pm(1, 2, PieceCode::ROOK, PieceColor::BLACK);
+  pm.push_back(Square(1,3, PieceCode::NONE, PieceColor::NONE));
+  pm.push_back(Square(1,6, PieceCode::NONE, PieceColor::NONE));
+  pm.push_back(Square(5,2, PieceCode::PAWN, PieceColor::WHITE));
+
+  EXPECT_FALSE(pm.empty());
+  EXPECT_EQ(3, pm.size());
+
+  Square sq = pm.front();
+  EXPECT_EQ(1, sq.row());
+  EXPECT_EQ(3, sq.column());
+  EXPECT_EQ(PieceCode::NONE, sq.piece());
+  EXPECT_EQ(PieceColor::NONE, sq.color());
+
+  sq = pm.back();
+  EXPECT_EQ(5, sq.row());
+  EXPECT_EQ(2, sq.column());
+  EXPECT_EQ(PieceCode::PAWN, sq.piece());
+  EXPECT_EQ(PieceColor::WHITE, sq.color());
+
+  EXPECT_FALSE(pm.pop_back().empty());
+  EXPECT_EQ(2, pm.size());
+
+  int i = 1;
+  auto it = pm.begin();
+  while (it != pm.end())
+    ++i, ++it;
+  EXPECT_EQ(2, i); 
+
+  pm.clear();
+  EXPECT_TRUE(pm.empty());
 }
 
 /**
