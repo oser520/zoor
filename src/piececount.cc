@@ -21,8 +21,7 @@ PieceCount::PieceCount() noexcept
     mRooks(2),
     mBishops(2),
     mKnights(2),
-    mPawns(8),
-    mTotal(16) {}
+    mPawns(8) {}
 
 PieceCount& PieceCount::init() noexcept
 {
