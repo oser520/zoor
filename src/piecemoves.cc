@@ -99,6 +99,9 @@ PieceMoves& PieceMoves::setSquare(const Square &square) noexcept
 
 PieceMoves& PieceMoves::setSquare(Square &&square) noexcept
 {
+  assert(square.piece() != PieceCode::NONE);
+  assert(square.color() != PieceColor::NONE);
+
   if (mSquare != square) {
     mSquare = std::move(square);
     if (!empty()) clear();
