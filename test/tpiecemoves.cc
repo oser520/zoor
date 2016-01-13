@@ -21,15 +21,13 @@ using zoor::PieceMoves;
 /**
  * Test the default constructor yields a board with the default number of pieces.
  */
-TEST(PieceMovesTest, CtorValues)
+TEST(PieceMovesTest, DefaultCtor)
 {
-  PieceCount cp;
-  EXPECT_EQ(1, cp.kings()); 
-  EXPECT_EQ(1, cp.queens()); 
-  EXPECT_EQ(2, cp.rooks()); 
-  EXPECT_EQ(2, cp.bishops()); 
-  EXPECT_EQ(2, cp.knights()); 
-  EXPECT_EQ(8, cp.pawns()); 
+  PieceMoves pm;
+  EXPECT_EQ(PieceCode::NONE, pm.piece()); 
+  EXPECT_EQ(PieceColor::NONE, pm.color()); 
+  EXPECT_EQ(static_cast<PieceMoves::size_type>(0), pm.size()); 
+  EXPECT_TRUE(pm.empty()); 
 }
 
 /**
