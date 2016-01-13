@@ -152,7 +152,6 @@ std::ostream& operator<<(std::ostream &os, const PieceCount &pc)
      << ", bishops=" << pc.mBishops
      << ", knights=" << pc.mKnights
      << ", pawns=" << pc.mPawns
-     << ", total=" << pc.mTotal
      << "}";
   return os;
 }
