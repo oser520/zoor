@@ -94,6 +94,27 @@ TEST(PieceMovesTest, InsertMoves)
 }
 
 /**
+ * Test operator==.
+ */
+TEST(PieceMovesTest, EqualOp)
+{
+  PieceMoves pm1(1, 2, PieceCode::ROOK, PieceColor::BLACK);
+  pm.push_back(Square(1,3, PieceCode::NONE, PieceColor::NONE));
+  pm.push_back(Square(1,6, PieceCode::NONE, PieceColor::NONE));
+  pm.push_back(Square(5,2, PieceCode::PAWN, PieceColor::WHITE));
+
+  PieceMoves pm2(1, 2, PieceCode::ROOK, PieceColor::BLACK);
+  pm.push_back(Square(1,3, PieceCode::NONE, PieceColor::NONE));
+  pm.push_back(Square(1,6, PieceCode::NONE, PieceColor::NONE));
+  pm.push_back(Square(5,2, PieceCode::PAWN, PieceColor::WHITE));
+
+  EXPECT_TRUE(pm1 == pm2);
+
+  pm1.pop_back();
+  EXPECT_FALSE(pm1 == pm2);
+}
+
+/**
  * Test PieceCount::clear().
  */
 TEST(PieceMovesTest, ClearFn)
