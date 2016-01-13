@@ -51,6 +51,8 @@ PieceMoves::PieceMoves
 
 PieceMoves& PieceMoves::setPiece(PieceCode piece) noexcept
 {
+  assert(piece != PieceCode::NONE);
+
   if (piece() != piece) {
     mSquare.setPiece(piece);
     if (!empty()) clear();
