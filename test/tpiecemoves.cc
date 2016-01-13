@@ -19,7 +19,7 @@ using zoor::PieceCode;
 using zoor::PieceMoves;
 
 /**
- * Test the default constructor yields a board with the default number of pieces.
+ * Test the values of the piece making the moves with default constructor.
  */
 TEST(PieceMovesTest, DefaultCtor)
 {
@@ -30,6 +30,9 @@ TEST(PieceMovesTest, DefaultCtor)
   EXPECT_TRUE(pm.empty());
 }
 
+/**
+ * Test the values of the piece making the moves with 1-param constructor.
+ */
 TEST(PieceMovesTest, SquareParamCtor)
 {
   Square sq(1, 2, PieceCode::ROOK, PieceColor::BLACK);
@@ -40,6 +43,9 @@ TEST(PieceMovesTest, SquareParamCtor)
   EXPECT_EQ(2, pm.column());
 }
 
+/**
+ * Test the values of the piece making the moves with all-param constructor.
+ */
 TEST(PieceMovesTest, AllParamCtor)
 {
   PieceMoves pm(1, 2, PieceCode::ROOK, PieceColor::BLACK);
