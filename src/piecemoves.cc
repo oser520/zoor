@@ -87,6 +87,9 @@ PieceMoves& PieceMoves::setColumn(dim_type column) noexcept
 
 PieceMoves& PieceMoves::setSquare(const Square &square) noexcept
 {
+  assert(square.piece() != PieceCode::NONE);
+  assert(square.color() != PieceColor::NONE);
+
   if (mSquare != square) {
     mSquare = square;
     if (!empty()) clear();
