@@ -62,6 +62,8 @@ PieceMoves& PieceMoves::setPiece(PieceCode piece) noexcept
 
 PieceMoves& PieceMoves::setColor(PieceColor color) noexcept
 {
+  assert(color != PieceColor::NONE);
+
   if (color() != color) {
     mSquare.setColor(color);
     if (!empty()) clear();
