@@ -24,10 +24,29 @@ using zoor::PieceMoves;
 TEST(PieceMovesTest, DefaultCtor)
 {
   PieceMoves pm;
-  EXPECT_EQ(PieceCode::NONE, pm.piece()); 
-  EXPECT_EQ(PieceColor::NONE, pm.color()); 
-  EXPECT_EQ(static_cast<PieceMoves::size_type>(0), pm.size()); 
-  EXPECT_TRUE(pm.empty()); 
+  EXPECT_EQ(PieceCode::NONE, pm.piece());
+  EXPECT_EQ(PieceColor::NONE, pm.color());
+  EXPECT_EQ(static_cast<PieceMoves::size_type>(0), pm.size());
+  EXPECT_TRUE(pm.empty());
+}
+
+TEST(PieceMovesTest, SquareParamCtor)
+{
+  Square sq(1, 2, PieceCode::ROOK, PieceColor::BLACK);
+  PieceMoves pm(sq);
+  EXPECT_EQ(PieceCode::ROOK, pm.piece());
+  EXPECT_EQ(PieceColor::BLACK, pm.color());
+  EXPECT_EQ(1, pm.row());
+  EXPECT_EQ(2, pm.column());
+}
+
+TEST(PieceMovesTest, AllParamCtor)
+{
+  PieceMoves pm(1, 2, PieceCode::ROOK, PieceColor::BLACK);
+  EXPECT_EQ(PieceCode::ROOK, pm.piece());
+  EXPECT_EQ(PieceColor::BLACK, pm.color());
+  EXPECT_EQ(1, pm.row());
+  EXPECT_EQ(2, pm.column());
 }
 
 /**
