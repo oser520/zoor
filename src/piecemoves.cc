@@ -133,7 +133,7 @@ PieceColor PieceMoves::color() const noexcept
   return mSquare.color();
 }
 
-Square PieceMoves::squre() const noexcept
+Square PieceMoves::square() const noexcept
 {
   return mSquare;
 }
