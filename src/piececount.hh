@@ -238,7 +238,6 @@ private:
   count_type mBishops;
   count_type mKnights;
   count_type mPawns;
-  count_type mTotal;
 };
 
 /**
