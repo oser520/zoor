@@ -20,7 +20,7 @@ using zoor::PieceMoves;
 /**
  * Test the default constructor yields a board with the default number of pieces.
  */
-TEST(PieceCountTest, CtorValues)
+TEST(PieceMovesTest, CtorValues)
 {
   PieceCount cp;
   EXPECT_EQ(1, cp.kings()); 
@@ -34,7 +34,7 @@ TEST(PieceCountTest, CtorValues)
 /**
  * Test PieceCount::init().
  */
-TEST(PieceCountTest, InitFn)
+TEST(PieceMovesTest, InitFn)
 {
   PieceCount cp;
   cp.setCount(PieceCode::KING, 5);
@@ -52,7 +52,7 @@ TEST(PieceCountTest, InitFn)
 /**
  * Test PieceCount::clear().
  */
-TEST(PieceCountTest, ClearFn)
+TEST(PieceMovesTest, ClearFn)
 {
   PieceCount cp;
   cp.clear();
@@ -67,7 +67,7 @@ TEST(PieceCountTest, ClearFn)
 /**
  * Test PieceCount::plus().
  */
-TEST(PieceCountTest, PlusFn)
+TEST(PieceMovesTest, PlusFn)
 {
   PieceCount cp;
 
@@ -87,7 +87,7 @@ TEST(PieceCountTest, PlusFn)
 /**
  * Test PieceCount::minus().
  */
-TEST(PieceCountTest, MinusFn)
+TEST(PieceMovesTest, MinusFn)
 {
   PieceCount cp;
   cp.minus(PieceCode::ROOK);
@@ -99,7 +99,7 @@ TEST(PieceCountTest, MinusFn)
 /**
  * Test PieceCount::setCount().
  */
-TEST(PieceCountTest, SetCountFn)
+TEST(PieceMovesTest, SetCountFn)
 {
   PieceCount cp;
   cp.clear();
@@ -112,7 +112,7 @@ TEST(PieceCountTest, SetCountFn)
 /**
  * Test equality and non-equality operators.
  */
-TEST(PieceCountTest, EqualityOp)
+TEST(PieceMovesTest, EqualityOp)
 {
   PieceCount cp1, cp2;
   EXPECT_TRUE(cp1 == cp2);
@@ -126,7 +126,7 @@ TEST(PieceCountTest, EqualityOp)
 /**
  * Test the value functions.
  */
-TEST(PieceCountTest, ValueFn)
+TEST(PieceMovesTest, ValueFn)
 {
   PieceCount cp;
   EXPECT_EQ(8, cp.valuePawns());
@@ -139,7 +139,7 @@ TEST(PieceCountTest, ValueFn)
 /**
  * Test the output operator.
  */
-TEST(PieceCountTest, OutputOp) {
+TEST(PieceMovesTest, OutputOp) {
   PieceCount cp;
   ostringstream ss1;
   ss1 << cp;
