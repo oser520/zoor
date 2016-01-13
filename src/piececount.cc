@@ -42,7 +42,6 @@ PieceCount& PieceCount::clear() noexcept
   mBishops = 0;
   mKnights = 0;
   mPawns = 0;
-  mTotal = 0;
   return *this;
 }
 
