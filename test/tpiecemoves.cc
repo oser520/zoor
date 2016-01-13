@@ -7,7 +7,7 @@
 #include <string>
 #include <sstream>
 #include "piececode.hh"
-#include "piececount.hh"
+#include "piecemoves.hh"
 #include "gtest/gtest.h"
 
 namespace {
