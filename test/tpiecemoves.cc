@@ -115,12 +115,16 @@ TEST(PieceMovesTest, EqualOp)
 }
 
 /**
+ * TODO: create unit tests for output operator
  * Test the output operator.
  */
 TEST(PieceMovesTest, OutputOp) {
-  PieceCount cp;
+  PieceMoves pm1(1, 2, PieceCode::ROOK, PieceColor::BLACK);
+  pm.push_back(Square(1,3, PieceCode::NONE, PieceColor::NONE));
+  pm.push_back(Square(1,6, PieceCode::NONE, PieceColor::NONE));
+  pm.push_back(Square(5,2, PieceCode::PAWN, PieceColor::WHITE));
   ostringstream ss1;
-  ss1 << cp;
+  ss1 << pm;
   string s("{kings=1, queens=1, rooks=2, bishops=2, knights=2, pawns=8}");
   
   EXPECT_EQ(s, ss1.str()); 
