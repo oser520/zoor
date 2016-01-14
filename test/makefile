@@ -45,7 +45,7 @@ tpiececount: $(OBJ_PIECECOUNT)
 tsquare: $(OBJ_SQUARE)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
 
-tsquare: $(OBJ_PIECEMOVES)
+tpiecemoves: $(OBJ_PIECEMOVES)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
 
 # Header dependencies.
