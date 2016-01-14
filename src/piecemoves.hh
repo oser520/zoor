@@ -376,7 +376,7 @@ bool operator==(const PieceMoves &pm1, const PieceMoves &pm2) noexcept;
  * @param pm2 The second @c PieceMoves.
  * @return True if pm1 and pm2 are different, false otherwise.
  */
-bool operator=!(const PieceMoves &pm1, const PieceMoves &pm2) noexcept;
+bool operator!=(const PieceMoves &pm1, const PieceMoves &pm2) noexcept;
 
 } // namespace zoor
 
