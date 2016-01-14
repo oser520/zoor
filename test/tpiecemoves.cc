@@ -16,6 +16,7 @@ using std::ostringstream;
 using zoor::PieceCode;
 using zoor::PieceColor;
 using zoor::PieceMoves;
+using zoor::Square;
 
 /**
  * Test the values of the piece making the moves with default constructor.
