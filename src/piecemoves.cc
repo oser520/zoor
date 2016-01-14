@@ -192,7 +192,7 @@ PieceMoves& PieceMoves::push_back(Square &&square)
   return *this;
 }
 
-PieceMoves& PieceMoves::pop_back()
+PieceMoves& PieceMoves::pop_back() noexcept
 {
   if (!empty())
     mMoves.pop_back();

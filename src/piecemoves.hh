@@ -322,7 +322,7 @@ public:
    * @return A reference to this @c PieceMoves.
    * TODO: determine what kind of exception this can throw.
    */
-  PieceMoves& pop_back();
+  PieceMoves& pop_back() noexcept;
 
   /**
    * @brief A copy of the last @c Square inserted into this @c PieceMoves.
