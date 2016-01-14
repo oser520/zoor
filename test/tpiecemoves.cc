@@ -118,7 +118,7 @@ TEST(PieceMovesTest, EqualOp)
  * Test the output operator.
  */
 TEST(PieceMovesTest, OutputOp) {
-  PieceMoves pm1(1, 2, PieceCode::ROOK, PieceColor::BLACK);
+  PieceMoves pm(1, 2, PieceCode::ROOK, PieceColor::BLACK);
   pm.push_back(Square(1,3, PieceCode::NONE, PieceColor::NONE));
   pm.push_back(Square(1,6, PieceCode::NONE, PieceColor::NONE));
   pm.push_back(Square(5,2, PieceCode::PAWN, PieceColor::WHITE));
