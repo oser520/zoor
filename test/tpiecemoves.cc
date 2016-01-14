@@ -4,7 +4,6 @@
  * @date 2016-01-12
  */
 
-#include <string>
 #include <sstream>
 #include "piececode.hh"
 #include "square.hh"
@@ -13,7 +12,6 @@
 
 namespace {
 
-using std::string;
 using std::ostringstream;
 using zoor::PieceCode;
 using zoor::PieceMoves;
