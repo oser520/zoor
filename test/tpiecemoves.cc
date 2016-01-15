@@ -124,10 +124,10 @@ TEST(PieceMovesTest, OutputOp) {
   pm.push_back(Square(5,2, PieceCode::PAWN, PieceColor::WHITE));
 
   ostringstream ss1, ss2;
-  ss1 << "(ROOK, BLACK, 1, 2, ("
+  ss1 << "((ROOK, BLACK, 1, 2, ("
       << "(NONE, NONE, 1, 3), ("
       << "(NONE, NONE, 1, 6), ("
-      << "(PAWN, WHITE, 5, 2))";
+      << "(PAWN, WHITE, 5, 2)))";
   ss2 << pm;
   
   EXPECT_EQ(ss1.str(), ss2.str()); 
