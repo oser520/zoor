@@ -220,7 +220,7 @@ PieceMoves& PieceMoves::clear()
 
 std::ostream& operator<<(std::ostream &os, const PieceMoves &pm)
 {
-  os << "(" pm.mSquare << ", (";
+  os << "(" << pm.mSquare << ", (";
   auto loops = pm.size();
   if (loops) {
     for (size_t i = 0; i < loops - 1; ++i)
