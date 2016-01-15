@@ -99,10 +99,15 @@ public:
   Board& operator=(const Board &board) = default;
 
   /**
-   * @brief Default move assignment .
+   * @brief Default move assignment.
    * @param board The @c Board being moved.
    */
   Board& operator=(Board &&board) = default;
+
+  /**
+   * @brief Default move destructor.
+   * @throw Never throws.
+   */
   ~Board() noexcept = default;
 
   /* @brief Return a vector of all the boards that can be reached from this board in
