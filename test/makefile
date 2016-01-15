@@ -49,10 +49,10 @@ tpiecemoves: $(OBJ_PIECEMOVES)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
 
 # Header dependencies.
-$(OBJ_PIECECODE): piececode.hh
-$(OBJ_PIECECOUNT): piececode.hh piececode.hh
-$(OBJ_SQUARE): square.hh piececode.hh
-$(OBJ_PIECEMOVES): piecemoves.hh square.hh piececode.hh
+$(OBJ_PIECECODE:.cc=.o): piececode.hh
+$(OBJ_PIECECOUNT:cc=.o): piececode.hh piececode.hh
+$(OBJ_SQUARE:.cc=.o): square.hh piececode.hh
+$(OBJ_PIECEMOVES:.cc=.o): piecemoves.hh square.hh piececode.hh
 
 .PHONY: run clean
 # Run all unit tests.
