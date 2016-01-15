@@ -14,6 +14,12 @@ namespace zoor {
 
 using dim_type = Square::dim_type;
 
+Square::Square() noexcept
+  : mPiece(PieceCode::NONE)
+    mColor(PieceColor::NONE),
+    mRow(static_cast<dim_type>(0)),
+    mColumn(static_cast<dim_type>(0)) {}
+
 Square::Square(dim_type row, dim_type column) noexcept
   : mPiece(PieceCode::NONE),
     mColor(PieceColor::NONE),

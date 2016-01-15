@@ -65,7 +65,7 @@ public:
    * @brief Default constructor.
    * @throw Does not throw exception.
    */
-  Square() noexcept = default;
+  Square() noexcept;
 
   /**
    * @brief Default copy constructor.
