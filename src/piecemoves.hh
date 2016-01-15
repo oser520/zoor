@@ -104,7 +104,7 @@ public:
    * @brief Default constructor.
    * @throw Never throws exception.
    */
-  PieceMoves() noexcept = default;
+  PieceMoves() = default;
 
   /**
    * @brief Copy constructor.
