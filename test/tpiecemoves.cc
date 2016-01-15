@@ -127,7 +127,7 @@ TEST(PieceMovesTest, OutputOp) {
   ss1 << "((ROOK, BLACK, 1, 2), ("
       << "(NONE, NONE, 1, 3), "
       << "(NONE, NONE, 1, 6), "
-      << "(PAWN, WHITE, 5, 2))";
+      << "(PAWN, WHITE, 5, 2)))";
   ss2 << pm;
   
   EXPECT_EQ(ss1.str(), ss2.str()); 
