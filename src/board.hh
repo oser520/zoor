@@ -73,8 +73,12 @@ private:
   vector<PieceMoves> getMoves(size_t row, size_t col) const noexcept;
 
 public:
-  /* copy control */
-  Board() = default;
+  /**
+   * @brief Default constructor.
+   * @detail Initializes a board with the standard number of pieces, with
+   *  white's turn to move.
+   */
+  Board();
   Board(const Board &board) = default;
   Board(Board &&board) = default;
   Board& operator=(const Board &board) = default;
