@@ -54,7 +54,7 @@ PieceMoves& PieceMoves::setPiece(PieceCode piece) noexcept
 {
   assert(piece != PieceCode::NONE);
 
-  if (piece() != piece) {
+  if (mSquare.piece() != piece) {
     mSquare.setPiece(piece);
     if (!empty()) clear();
   }
@@ -65,7 +65,7 @@ PieceMoves& PieceMoves::setColor(PieceColor color) noexcept
 {
   assert(color != PieceColor::NONE);
 
-  if (color() != color) {
+  if (mSquare.color() != color) {
     mSquare.setColor(color);
     if (!empty()) clear();
   }
@@ -74,7 +74,7 @@ PieceMoves& PieceMoves::setColor(PieceColor color) noexcept
 
 PieceMoves& PieceMoves::setRow(dim_type row) noexcept
 {
-  if (row() != row) {
+  if (mSquare.row() != row) {
     mSquare.setRow(row);
     if (!empty()) clear();
   }
@@ -83,7 +83,7 @@ PieceMoves& PieceMoves::setRow(dim_type row) noexcept
 
 PieceMoves& PieceMoves::setColumn(dim_type column) noexcept
 {
-  if (column() != column) {
+  if (mSquare.column() != column) {
     mSquare.setColumn(column);
     if (!empty()) clear();
   }
