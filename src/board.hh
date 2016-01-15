@@ -85,6 +85,11 @@ public:
    * @param board The @c Board being copied.
    */
   Board(const Board &board) = default;
+
+  /**
+   * @brief Default move constructor.
+   * @param board The @c Board being moved.
+   */
   Board(Board &&board) = default;
   Board& operator=(const Board &board) = default;
   Board& operator=(Board &&board) = default;
