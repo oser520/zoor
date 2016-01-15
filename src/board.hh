@@ -91,6 +91,11 @@ public:
    * @param board The @c Board being moved.
    */
   Board(Board &&board) = default;
+
+  /**
+   * @brief Default copy assignment.
+   * @param board The @c Board being copied.
+   */
   Board& operator=(const Board &board) = default;
   Board& operator=(Board &&board) = default;
   ~Board() noexcept = default;
