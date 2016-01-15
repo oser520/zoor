@@ -8,7 +8,6 @@
 
 #include <vector>
 #include <iostream>
-#include <memory>
 
 #include "square.hh"
 
