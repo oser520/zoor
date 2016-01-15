@@ -50,7 +50,7 @@ tpiecemoves: $(OBJ_PIECEMOVES)
 
 # Header dependencies.
 $(OBJ_PIECECODE): piececode.hh
-$(OBJ_PIECECOUNT): piececode.hh piececode.hh
+$(OBJ_PIECECOUNT): piececount.hh piececode.hh
 $(OBJ_SQUARE): square.hh piececode.hh
 $(OBJ_PIECEMOVES): piecemoves.hh square.hh piececode.hh
 
