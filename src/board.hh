@@ -42,9 +42,25 @@ public:
   static constexpr dim_type BOARD_DIM = 8;
   
 private:
+  /**
+   * The actual board, in the sense that 8 bits represent one square, and each row
+   * cotains 8 squares.
+   */
   array<row_type, BOARD_DIM> mRows;
+
+  /**
+   * Indicates the player's turn: either white or black moves.
+   */
   PieceColor mColorMove;
+
+  /**
+   * The count of white pieces on the board.
+   */
   PieceCount mWhiteCount;
+
+  /**
+   * The count of black pieces on the board.
+   */
   PieceCount mBlackCount;
 
   /* Return a vector of all the legal moves from the given position.
