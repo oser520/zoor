@@ -104,35 +104,35 @@ public:
    * @brief Default constructor.
    * @throw Never throws exception.
    */
-  PieceMoves() noexcept;
+  PieceMoves() noexcept = default;
 
   /**
    * @brief Copy constructor.
    * @param pieceMoves The @c PieceMoves being copied.
    * @throw Never throws exception.
    */
-  PieceMoves(const PieceMoves &pieceMoves);
+  PieceMoves(const PieceMoves &pieceMoves) noexcept = default;
 
   /**
    * @brief Move constructor.
    * @param pieceMoves The @c PieceMoves being moved.
    * @throw Never throws exception.
    */
-  PieceMoves(PieceMoves &&pieceMoves) noexcept;
+  PieceMoves(PieceMoves &&pieceMoves) noexcept = default;
 
   /**
    * @brief Copy assignment.
    * @param pieceMoves The @c PieceMoves being copied.
    * @return A reference to this <tt>PieceMoves</tt>.
    */
-  PieceMoves& operator=(const PieceMoves &pieceMoves);
+  PieceMoves& operator=(const PieceMoves &pieceMoves) noexcept = default;
 
   /**
    * @brief Default constructor.
    * @param pieceMoves The @c PieceMoves being moved.
    * @return A reference to this <tt>PieceMoves</tt>.
    */
-  PieceMoves& operator=(PieceMoves &&pieceMoves) noexcept;
+  PieceMoves& operator=(PieceMoves &&pieceMoves) noexcept = default;
 
   /**
    * @brief Destructor.
