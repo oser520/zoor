@@ -83,7 +83,7 @@ TEST(PieceMovesTest, InsertMoves)
   EXPECT_FALSE(pm.pop_back().empty());
   EXPECT_EQ(2, pm.size());
 
-  int i = 1;
+  int i = 0;
   auto it = pm.begin();
   while (it != pm.end())
     ++i, ++it;
