@@ -89,7 +89,7 @@ private:
    * @return A copy of the board after the move.
    * @throw Never throws.
    */
-  Board move(const Square &square1, const Square &square2) const noexcept;
+  Board moveCopy(const Square &square1, const Square &square2) const noexcept;
 
 public:
   /**
