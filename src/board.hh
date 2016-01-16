@@ -63,6 +63,12 @@ private:
    */
   PieceCount mBlackCount;
 
+  /**
+   * The last move. The first @c Square is the piece that made the move, and the
+   * second @c Square is where the piece moves.
+   */
+  pair<Square, Square> mLastMove;
+
   /* Return a vector of all the legal moves from the given position.
    *
    * @param row The row in the board.
