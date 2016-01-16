@@ -141,7 +141,14 @@ public:
    * @return A reference to this @c Board.
    * @throw Never throws.
    */
-  Board& makeMove(const Square &square1, const Square &square2) const noexcept;
+  Board& makeMove(const Square &square1, const Square &square2) noexcept;
+
+  /**
+   * @brief Reverses the last move.
+   * @return A reference to this board.
+   * @throw Never throws exception.
+   */
+  Board& undo() noexcept;
 
   /**
    * @brief Obtain the count of white pieces on the board. The object is not modified
