@@ -91,6 +91,18 @@ private:
    */
   Board moveCopy(const Square &square1, const Square &square2) const noexcept;
 
+  /**
+   * @brief Make a move on the board.
+   * @detail The move becomes the last move made.
+   * @param square1 The @c Square that is making the move. The Square must contain a
+   *  valid piece with a valid color.
+   * @param square2 The @c Square where the piece is moving to. If it contains a
+   *  piece, then it represents a capture.
+   * @return A reference to this @c Board.
+   * @throw Never throws.
+   */
+  Board& moveRef(const Square &square1, const Square &square2) noexcept;
+
 public:
   /**
    * @brief Default constructor.
