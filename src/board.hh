@@ -124,13 +124,24 @@ public:
   /**
    * @brief Make a move and return a new board.
    * @param square1 The @c Square that is making the move. The Square must contain a
-   *  valid piece with a valid color.  
+   *  valid piece with a valid color.
    * @param square2 The @c Square where the piece is moving to. If it contains a
    *  piece, then it represents a capture.
-   * @return A copy of the new board after the move.
+   * @return A copy of the new @c Board after the move.
    * @throw Never throws.
    */
   Board makeMoveCopy(const Square &square1, const Square &square2) const noexcept;
+
+  /**
+   * @brief Make a move the current board.
+   * @param square1 The @c Square that is making the move. The Square must contain a
+   *  valid piece with a valid color.
+   * @param square2 The @c Square where the piece is moving to. If it contains a
+   *  piece, then it represents a capture.
+   * @return A reference to this @c Board.
+   * @throw Never throws.
+   */
+  Board& makeMove(const Square &square1, const Square &square2) const noexcept;
 
   /**
    * @brief Obtain the count of white pieces on the board. The object is not modified
