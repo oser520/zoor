@@ -78,6 +78,19 @@ private:
    */
   vector<PieceMoves> getMoves(size_t row, size_t col) const noexcept;
 
+  /**
+   * @brief Make a move and return a new board.
+   * @detail Does not affect last move on the current board, nor any other aspect of
+   *  the board.
+   * @param square1 The @c Square that is making the move. The Square must contain a
+   *  valid piece with a valid color.
+   * @param square2 The @c Square where the piece is moving to. If it contains a
+   *  piece, then it represents a capture.
+   * @return A copy of the board after the move.
+   * @throw Never throws.
+   */
+  Board move(const Square &square1, const Square &square2) const noexcept;
+
 public:
   /**
    * @brief Default constructor.
