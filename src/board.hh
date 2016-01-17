@@ -114,6 +114,15 @@ private:
   vector<PieceMoves> movePawn(dim_type row, dim_type column) const noexcept;
 
   /**
+   * @brief Move the knight at the given row and column.
+   * @param row The row where the knight is located.
+   * @param column The column where the knight is located.
+   * @return A vector of squares where the knight can move.
+   * @throw Never throws.
+   */
+  vector<PieceMoves> moveKnight(dim_type row, dim_type column) const noexcept;
+
+  /**
    * @brief Move the rook at the given row and column.
    * @param row The row where the rook is located.
    * @param column The column where the rook is located.
