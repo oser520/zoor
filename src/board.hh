@@ -77,7 +77,7 @@ private:
    * @return A vector of all the legal moves from the current position. An empty
    *  vector if there are no moves from the given position.
    */
-  vector<PieceMoves> getMoves(size_t row, size_t col) const noexcept;
+  vector<PieceMoves> getMoves(dim_type row, dim_type col) const noexcept;
 
   /**
    * @brief Make a move and return a new board.
