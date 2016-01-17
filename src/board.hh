@@ -219,12 +219,10 @@ std:ostream& operator<<(std:ostream &os, const Board &board);
 bool operator==(const Board &boar1, const Board &board2) noexcept;
 
 /**
- * Non-equality operator for a *Board*.
- *
- * The board position, and who's turn is it to play determine the uniqueness of a
- * board, and whether two boards are equal or not. Therefore, it is enough to look
- * the eight rows and who's turn it is.
- *
+ * @brief Non-equality operator.
+ * @detail The board position, and who's turn is it to play determine the uniqueness
+ *  of a board, and whether two boards are equal or not. Therefore, it is enough to
+ *  look the eight rows and who's turn it is.
  * @param board1 The first board.
  * @param board2 The second board.
  * @return False if boards are equal, true otherwise.
