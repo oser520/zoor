@@ -199,8 +199,7 @@ public:
 };
 
 /**
- * Writes the current board position to an output stream.
- *
+ * @brief Writes the current board position to an output stream.
  * @param os The output stream.
  * @param board The board.
  * @return The output stream.
