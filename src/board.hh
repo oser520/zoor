@@ -71,8 +71,7 @@ private:
    */
   pair<Square, Square> mLastMove;
 
-  /* Return a vector of all the legal moves from the given position.
-   *
+  /* @brief Return a vector of all the legal moves from the given position.
    * @param row The row in the board.
    * @param col The column in the board.
    * @return A vector of all the legal moves from the current position. An empty
