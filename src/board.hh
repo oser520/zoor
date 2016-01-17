@@ -203,6 +203,16 @@ public:
    * @throw Never throws.
    */
   pair<Square, Square> lastMove() const noexcept;
+
+  /**
+   * @brief Get the contents of a @c Square at a given row and column.
+   * @param row The row of the @c Board.
+   * @param column The column of the @c Board.
+   * @return A copy of the @c Square at the specified row and column.
+   * @throw Never throws.
+   */
+  Square operator()(dim_type row, dim_type column) const noexcept;
+
 };
 
 /**
