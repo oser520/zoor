@@ -212,7 +212,6 @@ public:
    * @throw Never throws.
    */
   Square operator()(dim_type row, dim_type column) const noexcept;
-
 };
 
 /**
