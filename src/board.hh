@@ -105,6 +105,15 @@ private:
   Board& moveRef(const Square &square1, const Square &square2) noexcept;
 
   /**
+   * @brief Move the pawn at the given row and column.
+   * @param row The row where the pawn is located.
+   * @param column The column where the pawn is located.
+   * @return A vector of squares where the pawn can move.
+   * @throw Never throws.
+   */
+  vector<PieceMoves> movePawn(dim_type row, dim_type column) const noexcept;
+
+  /**
    * @brief Move the rook at the given row and column.
    * @param row The row where the rook is located.
    * @param column The column where the rook is located.
