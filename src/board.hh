@@ -113,6 +113,15 @@ private:
    */
   vector<PieceMoves> moveRook(dim_type row, dim_type column) const noexcept;
 
+  /**
+   * @brief Move the bishop at the given row and column.
+   * @param row The row where the bishop is located.
+   * @param column The column where the bishop is located.
+   * @return A vector of squares where the bishop can move.
+   * @throw Never throws.
+   */
+  vector<PieceMoves> moveBishop(dim_type row, dim_type column) const noexcept;
+
 public:
   /**
    * @brief Default constructor.
