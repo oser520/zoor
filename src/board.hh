@@ -192,8 +192,7 @@ public:
 
   /**
    * @brief Obtain the count of black pieces on the board. The object is not modified
-   * and no exceptions are thrown.
-   *
+   *  and no exceptions are thrown.
    * @return A copy of the black PieceCount.
    */
   PieceCount blackCount() const noexcept;
