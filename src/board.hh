@@ -13,6 +13,7 @@
 #include <array>
 #include <vector>
 #include <utility>
+#include <iterator>
 
 // zoor headers
 #include "piececount.hh"
