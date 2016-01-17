@@ -196,6 +196,13 @@ public:
    * @return A copy of the black PieceCount.
    */
   PieceCount blackCount() const noexcept;
+
+  /**
+   * @brief Get the last move made on this board.
+   * @return A copy of the last move.
+   * @throw Never throws.
+   */
+  pair<Square, Square> lastMove() const noexcept;
 };
 
 /**
