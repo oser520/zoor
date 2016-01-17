@@ -143,12 +143,10 @@ public:
   ~Board() noexcept = default;
 
   /* @brief Return a vector of all the boards that can be reached from this board in
-   * one move.
-   * 
-   * If there are no legal moves, then the vector of boards will be empty. This may
-   * mean that the current position is a checkmate, a stalemate, or that there are no
-   * pieces on the board. 
-   *
+   *  one move.
+   * @detail If there are no legal moves, then the vector of boards will be empty.
+   *  This may mean that the current position is a checkmate, a stalemate, or that
+   *  there are no pieces on the board.
    * @return A vector of all the legal moves from the current position.
    */
   vector<Board> getBoardsFromMoves() const noexcept;
