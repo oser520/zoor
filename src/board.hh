@@ -149,6 +149,15 @@ private:
    */
   vector<PieceMoves> moveQueen(dim_type row, dim_type column) const noexcept;
 
+  /**
+   * @brief Move the king at the given row and column.
+   * @param row The row where the king is located.
+   * @param column The column where the king is located.
+   * @return A vector of squares where the king can move.
+   * @throw Never throws.
+   */
+  vector<PieceMoves> moveKing(dim_type row, dim_type column) const noexcept;
+
 public:
   /**
    * @brief Default constructor.
