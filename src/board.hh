@@ -269,6 +269,14 @@ public:
 };
 
 /**
+ * @brief Provides an iterator interface to access each @c Square of a @c Board.
+ * @detail The iterators can only read the board, and connot modify it.
+ */
+class BoardIterator: std:iterator<std:random_access_iterator_tag, Square, short>
+{
+};
+
+/**
  * @brief Writes the current board position to an output stream.
  * @param os The output stream.
  * @param board The board.
