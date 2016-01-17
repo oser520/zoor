@@ -207,12 +207,10 @@ public:
 std:ostream& operator<<(std:ostream &os, const Board &board);
 
 /**
- * Equality operator for a *Board*.
- *
- * The board position, and who's turn is it to play determine the uniqueness of a
- * board, and whether two boards are equal or not. Therefore, it is enough to look
- * the eight rows and who's turn it is.
- *
+ * @brief Equality operator.
+ * @detail The board position, and who's turn is it to play determine the uniqueness
+ *  of a board, and whether two boards are equal or not. Therefore, it is enough to
+ *  look the eight rows and who's turn it is.
  * @param board1 The first board.
  * @param board2 The second board.
  * @return True if boards are equal, false otherwise.
