@@ -106,8 +106,8 @@ private:
 
   /**
    * @brief Move the rook at the given row and column.
-   * @param row The row of the @c Board.
-   * @param column The column of the @c Board.
+   * @param row The row where the rook is located.
+   * @param column The column where the rook is located.
    * @return A vector of squares where the rook can move.
    * @throw Never throws.
    */
