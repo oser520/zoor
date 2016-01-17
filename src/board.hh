@@ -104,6 +104,15 @@ private:
    */
   Board& moveRef(const Square &square1, const Square &square2) noexcept;
 
+  /**
+   * @brief Move the rook at the given row and column.
+   * @param row The row of the @c Board.
+   * @param column The column of the @c Board.
+   * @return A vector of squares where the rook can move.
+   * @throw Never throws.
+   */
+  vector<PieceMoves> moveRook(dim_type row, dim_type column) const noexcept;
+
 public:
   /**
    * @brief Default constructor.
