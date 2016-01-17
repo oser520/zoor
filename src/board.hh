@@ -309,6 +309,18 @@ bool operator!=(const Board &boar1, const Board &board2) noexcept;
  */
 class BoardIterator: std:iterator<std:random_access_iterator_tag, Square, short>
 {
+public:
+private:
+  /**
+   * A pointer to the @c Board.
+   */
+  Board *mBoardPtr;
+
+  /**
+   * @brief The current index in the @Board.
+   * @detail Index goes from 0 to 63.
+   */
+  Board::dim_type mIndex;
 };
 
 } // namespace zoor
