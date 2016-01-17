@@ -185,8 +185,7 @@ public:
 
   /**
    * @brief Obtain the count of white pieces on the board. The object is not modified
-   * and no exceptions are thrown.
-   *
+   *  and no exceptions are thrown.
    * @return A copy of the white PieceCount.
    */
   PieceCount whiteCount() const noexcept;
