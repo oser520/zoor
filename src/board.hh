@@ -159,6 +159,15 @@ private:
    */
   vector<PieceMoves> moveKing(dim_type row, dim_type column) const noexcept;
 
+  /**
+   * @brief Get the bit pattern at a specific row and column in the @c Board.
+   * @param row The row to get the pattern from.
+   * @param column The column to get the bit pattern from.
+   * @return An unsigned char representing the bit pattern.
+   * @throw Never throws.
+   */
+  unsigned char get(dim_type row, dim_type column) const noexcept;
+
 public:
   /**
    * @brief Default constructor.
