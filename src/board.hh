@@ -357,6 +357,11 @@ bool operator!=(const Board &boar1, const Board &board2) noexcept;
 class BoardIterator: std:iterator<std:random_access_iterator_tag, Square, short>
 {
 public:
+  /**
+   * Alias for the type of the dimension of the a @c Board.
+   */
+  using dim_type = Board::dim_type;
+
 private:
   /**
    * A pointer to the @c Board.
