@@ -423,6 +423,13 @@ public:
    */
   ~BoardIterator() noexcept = default;
 
+  /**
+   * @brief Get the next @c BoardIterator.
+   * @return A reference to the next @c BoardIterator.
+   * @throw BoardIteratorError if next iterator yields one past the last iterator.
+   */
+  BoardIterator& operator++();
+
 private:
   /**
    * A pointer to the @c Board.
