@@ -403,6 +403,13 @@ public:
    */
   BoardIterator(BoardIterator &&boardIterator) noexcept = default;
 
+  /**
+   * @brief Default move assignment.
+   * @param boardIterator The @c BoardIterator being moved.
+   * @throw Never throws.
+   */
+  BoardIterator& operator=(BoardIterator &&boardIterator) noexcept = default;
+
 private:
   /**
    * A pointer to the @c Board.
