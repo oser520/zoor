@@ -161,6 +161,11 @@ iterator Board::begin() const noexcept
   return iterator(this);
 }
 
+iterator Board::end() const noexcept
+{
+  return iterator();
+}
+
 /**
  * TODO: implement output operator for Board
  */
