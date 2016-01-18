@@ -307,6 +307,13 @@ public:
    * @throw Never throws.
    */
   iterator begin() const noexcept;
+
+  /**
+   * @brief Provide an iterator to one past the last @c Square in the @c Board.
+   * @return An iterator to one past the last @c Square in the board.
+   * @throw Never throws.
+   */
+  iterator end() const noexcept;
 };
 
 /**
