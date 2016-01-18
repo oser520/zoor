@@ -99,6 +99,9 @@ vector<Board> Board::getBoardsFromMoves() const noexcept
   return vector<Board>();
 }
 
+Board
+Board::makeMoveCopy(const Square &square1, const Square &square2) const noexcept;
+
 /**
  * TODO: implement output operator for Board
  */
