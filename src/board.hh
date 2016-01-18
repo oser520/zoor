@@ -513,6 +513,18 @@ bool operator!=(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
 BoardIterator::difference_type
 operator-(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
 
+/**
+ * @brief Subtraction operator between @c BoardIterator and @c difference_type.
+ * @param bi A reference to the @c BoardIterator.
+ * @param value The value by which the iterator should advance or move backward.
+ * @return A new iterator pointing to the location where <em>value</em> took
+ *  <em>bi</em>.
+ * @throw BoardIteratorError if <em>value</em> moves <em>bi</em> beyond the board,
+ *  excluding the end iterator.
+ */
+BoardIterator
+operator-(const BoardIterator &bi, BoardIterator::difference_type value);
+
 } // namespace zoor
 
 #endif 
