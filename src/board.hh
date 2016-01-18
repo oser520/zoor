@@ -430,6 +430,13 @@ public:
    */
   BoardIterator& operator++();
 
+  /**
+   * @brief Get a copy of the current iterator, but move it forward.
+   * @return A copy of the iterator before moving it forward.
+   * @throw BoardIteratorError if next iterator yields one past the last iterator.
+   */
+  BoardIterator operator++(int);
+
 private:
   /**
    * A pointer to the @c Board.
