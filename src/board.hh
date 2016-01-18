@@ -168,8 +168,7 @@ private:
    */
   unsigned char get(dim_type row, dim_type column) const noexcept
   {
-    auto bp = mRows[row] >> column;
-    return static_cast<unsigned char>(bp) & static_cast<unsigned char>(0xff);
+    return static_cast<unsigned char>((mRows[row] >> column) & 0xff);
   }
 
 public:
