@@ -368,6 +368,11 @@ public:
    */
   static constexpr dim_type mLastSquare = Board::BOARD_DIM * Board::BOARD_DIM;
 
+  /**
+   * Default constructor is deleted.
+   */
+  BoardIterator() = delete;
+
 private:
   /**
    * A pointer to the @c Board.
