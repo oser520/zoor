@@ -438,6 +438,14 @@ public:
    */
   BoardIterator operator++(int);
 
+  /**
+   * @brief Move the iterator forward by a given value.
+   * @param value The value by which the iterator should move forward.
+   * @return A reference to the iterator after being moved.
+   * @throw BoardIteratorError if iterator is moved beyond end iterator.
+   */
+  BoardIterator& operator+=(dim_type value);
+
 private:
   /**
    * A pointer to the @c Board.
