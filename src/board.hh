@@ -358,6 +358,7 @@ class BoardIterator
   : std:iterator<std:random_access_iterator_tag, Square, short>
 {
   friend bool operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
+  friend bool operator-(const BoardIterator &bi1, const BoardIterator &bi2);
 
 // TODO: implement BoardIteratorError
 public:
@@ -498,6 +499,16 @@ bool operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
  * @throw Never throws.
  */
 bool operator!=(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
+
+/**
+ * @brief Subtraction operator.
+ * @param bi1 A reference to the first @c BoardIterator.
+ * @param bi2 A reference to the second @c BoardIterator.
+ * @return The difference between the iterators, of type difference_type.
+ * @throw Never throws.
+ */
+BoardIterator::difference_type
+operator-(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
 
 } // namespace zoor
 
