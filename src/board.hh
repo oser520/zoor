@@ -49,6 +49,10 @@ public:
    * Alias for the type of the row of the @c Board.
    */
   using row_type = uint64_t;
+
+  /**
+   * Specifies the number of rows and columns on the @c Board.
+   */
   static constexpr dim_type BOARD_DIM = 8;
   
 private:
