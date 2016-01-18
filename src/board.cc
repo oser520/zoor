@@ -156,6 +156,11 @@ Square Board::operator()(dim_type row, dim_type column) const noexcept
   return Square();
 }
 
+iterator Board::begin() const noexcept
+{
+  return iterator(this);
+}
+
 /**
  * TODO: implement output operator for Board
  */
