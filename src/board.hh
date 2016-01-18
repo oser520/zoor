@@ -41,7 +41,7 @@ class Board {
   
 public:
   /**
-   * Alias for the type of the dimension of the board.
+   * Alias for the type of the dimension of the @c Board.
    */
   using dim_type = unsigned short;
 
