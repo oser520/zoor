@@ -55,7 +55,7 @@ public:
   using row_type = uint64_t;
 
   /**
-   * Alias for the type of the row of the @c Board.
+   * Alias for the iterator.
    */
   using iterator = BoardIterator;
 
@@ -299,6 +299,14 @@ public:
    * @throw Never throws.
    */
   Square operator()(dim_type row, dim_type column) const noexcept;
+
+  /**
+   * @brief Provide an iterator to the first @c Square in the @c Board.
+   * @detail The iterator cannot modify the @c Board.
+   * @return An iterator to the first @c Square.
+   * @throw Never throws.
+   */
+  iterator begin() const noexcept;
 };
 
 /**
