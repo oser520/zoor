@@ -373,6 +373,13 @@ public:
    */
   BoardIterator() = delete;
 
+  /**
+   * @brief Constructs iterator to first @c Square on a @c Board.
+   * @param board Pointer to the @c Board.
+   * @throw Never throws.
+   */
+  BoardIterator(Board const *board) noexcept;
+
 private:
   /**
    * A pointer to the @c Board.
