@@ -110,6 +110,11 @@ Board& Board::makeMove(const Square &square1, const Square &square2) noexcept
   return *this;
 }
 
+Board& Board::undo() noexcept
+{
+  return *this;
+}
+
 /**
  * TODO: implement output operator for Board
  */
