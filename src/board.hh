@@ -389,6 +389,13 @@ public:
    */
   BoardIterator(Board const *board, int) noexcept;
 
+  /**
+   * @brief Default copy constructor.
+   * @param boardIterator The @c BoardIterator being copied.
+   * @throw Never throws.
+   */
+  BoardIterator(const BoardIterator &boardIterator) noexcept = default;
+
 private:
   /**
    * A pointer to the @c Board.
