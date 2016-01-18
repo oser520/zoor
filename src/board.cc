@@ -36,6 +36,14 @@ Board Board::moveCopy(const Square &square1, const Square &square2) const noexce
 }
 
 /**
+ * TODO: implement moveRef
+ */
+Board& Board::moveRef(const Square &square1, const Square &square2) noexcept
+{
+  return *this;
+}
+
+/**
  * TODO: implement getBoardsFromMoves function
  */
 vector<Board> Board::getBoardsFromMoves() const noexcept
