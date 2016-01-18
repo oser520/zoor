@@ -372,7 +372,7 @@ private:
    * @brief The current index in the @Board.
    * @detail Index goes from 0 to 63.
    */
-  Board::dim_type mIndex;
+  dim_type mIndex;
 };
 
 } // namespace zoor
