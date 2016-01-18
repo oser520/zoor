@@ -28,6 +28,14 @@ vector<PieceMoves> Board::getMoves() const noexcept
 }
 
 /**
+ * TODO: implement moveCopy
+ */
+Board Board::moveCopy(const Square &square1, const Square &square2) const noexcept
+{
+  return Board();
+}
+
+/**
  * TODO: implement getBoardsFromMoves function
  */
 vector<Board> Board::getBoardsFromMoves() const noexcept
