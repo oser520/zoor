@@ -354,9 +354,11 @@ bool operator!=(const Board &boar1, const Board &board2) noexcept;
  * @brief Provides an iterator interface to access each @c Square of a @c Board.
  * @detail The iterators can only read the board, and connot modify it.
  */
-class BoardIterator: std:iterator<std:random_access_iterator_tag, Square, short>
+class BoardIterator
+  : std:iterator<std:random_access_iterator_tag, Square, short>
 {
   friend bool operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
+
 // TODO: implement BoardIteratorError
 public:
   /**
