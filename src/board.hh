@@ -22,6 +22,9 @@
 
 namespace zoor {
 
+// forward declaration
+class BoardIterator;
+
 /**
  * The Board class maintains the current state of the chess board.
  *
@@ -36,6 +39,7 @@ namespace zoor {
  * led to a given position.
  */
 class Board {
+  friend BoardIterator;
   friend std:ostream& operator<<(std:ostream &os, const Board &board);
   friend bool operator==(const Board &boar1, const Board &board2) noexcept;
   
