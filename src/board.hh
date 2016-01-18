@@ -446,6 +446,14 @@ public:
    */
   BoardIterator& operator+=(dim_type value);
 
+  /**
+   * @brief Move the iterator backward by a given value.
+   * @param value The value by which the iterator should move backward.
+   * @return A reference to the iterator after being moved.
+   * @throw BoardIteratorError if value takes the iterator beyond zero.
+   */
+  BoardIterator& operator-=(dim_type value);
+
 private:
   /**
    * A pointer to the @c Board.
