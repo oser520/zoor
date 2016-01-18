@@ -115,12 +115,12 @@ Board& Board::undo() noexcept
   return *this;
 }
 
-PieceCount whiteCount() const noexcept
+PieceCount Board::whiteCount() const noexcept
 {
   return PieceCount();
 }
 
-PieceCount blackCount() const noexcept
+PieceCount Board::blackCount() const noexcept
 {
   return PieceCount();
 }
