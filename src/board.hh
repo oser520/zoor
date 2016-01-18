@@ -362,6 +362,12 @@ public:
    */
   using dim_type = Board::dim_type;
 
+  /**
+   * @brief The number of squres in a row.
+   * @detail Also represents the number of squares in a column.
+   */
+  static constexpr dim_type mLastSquare = Board::BOARD_DIM * Board::BOARD_DIM;
+
 private:
   /**
    * A pointer to the @c Board.
