@@ -483,7 +483,7 @@ private:
 /**
  * @brief Equality operator.
  * @param bi1 A reference to the first @c BoardIterator.
- * @param bi2 A reference to the first @c BoardIterator.
+ * @param bi2 A reference to the second @c BoardIterator.
  * @return The iterators are only equal if they point to the same @c Square on the
  *  same @c Board.
  * @throw Never throws.
@@ -493,7 +493,7 @@ bool operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
 /**
  * @brief Non-equality operator.
  * @param bi1 A reference to the first @c BoardIterator.
- * @param bi2 A reference to the first @c BoardIterator.
+ * @param bi2 A reference to the second @c BoardIterator.
  * @return The iterators are only equal if they point to the same @c Square on the
  *  same @c Board.
  * @throw Never throws.
