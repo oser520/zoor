@@ -404,6 +404,13 @@ public:
   BoardIterator(BoardIterator &&boardIterator) noexcept = default;
 
   /**
+   * @brief Default copy assignment.
+   * @param boardIterator The @c BoardIterator being copied.
+   * @throw Never throws.
+   */
+  BoardIterator& operator=(const BoardIterator &boardIterator) noexcept = default;
+
+  /**
    * @brief Default move assignment.
    * @param boardIterator The @c BoardIterator being moved.
    * @throw Never throws.
