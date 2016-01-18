@@ -120,6 +120,11 @@ PieceCount whiteCount() const noexcept
   return PieceCount();
 }
 
+PieceCount blackCount() const noexcept
+{
+  return PieceCount();
+}
+
 /**
  * TODO: implement output operator for Board
  */
