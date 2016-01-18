@@ -417,6 +417,12 @@ public:
    */
   BoardIterator& operator=(BoardIterator &&boardIterator) noexcept = default;
 
+  /**
+   * @brief Default destructor.
+   * @throw Never throws.
+   */
+  ~BoardIterator() noexcept = default;
+
 private:
   /**
    * A pointer to the @c Board.
