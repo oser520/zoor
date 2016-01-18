@@ -99,37 +99,58 @@ vector<Board> Board::getBoardsFromMoves() const noexcept
   return vector<Board>();
 }
 
+/**
+ * TODO: implement makeMoveCopy function
+ */
 Board
 Board::makeMoveCopy(const Square &square1, const Square &square2) const noexcept
 {
   return Board();
 }
 
+/**
+ * TODO: implement makeMove function
+ */
 Board& Board::makeMove(const Square &square1, const Square &square2) noexcept
 {
   return *this;
 }
 
+/**
+ * TODO: implement undo function
+ */
 Board& Board::undo() noexcept
 {
   return *this;
 }
 
+/**
+ * TODO: implement whiteCount function
+ */
 PieceCount Board::whiteCount() const noexcept
 {
   return PieceCount();
 }
 
+/**
+ * TODO: implement blackCount function
+ */
 PieceCount Board::blackCount() const noexcept
 {
   return PieceCount();
 }
 
+/**
+ * TODO: implement lastMove function
+ */
 pair<Square, Square> Board::lastMove() const noexcept
 {
   return std::make_pair(Squre(), Square());
 }
 
+/**
+ * TODO: implement operator() function
+ */
 Square Board::operator()(dim_type row, dim_type column) const noexcept
 {
   return Square();
