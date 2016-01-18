@@ -358,7 +358,8 @@ class BoardIterator
   : std:iterator<std:random_access_iterator_tag, Square, short>
 {
   friend bool operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
-  friend difference_type operator-(const BoardIterator &bi1, const BoardIterator &bi2);
+  friend difference_type
+  operator-(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
   friend BoardIterator operator-(const BoardIterator &bi, difference_type value);
   friend BoardIterator operator+(const BoardIterator &bi, difference_type value);
 
