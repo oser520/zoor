@@ -454,6 +454,15 @@ public:
    */
   BoardIterator& operator-=(dim_type value);
 
+  /**
+   * @brief Obtain a @c Square from the iterator.
+   * @detail The @c Baord cannot be modified via the @c Square.
+   * @return A @c Square that represents the current position of the iterator in the
+   *  @c Board.
+   * @throw BoardIteratorError if this is the end iterator.
+   */
+  Square operator*() const;
+
 private:
   /**
    * A pointer to the @c Board.
