@@ -44,6 +44,10 @@ public:
    * Alias for the type of the dimension of the board.
    */
   using dim_type = unsigned short;
+
+  /**
+   * Alias for the type of the row of the @c Board.
+   */
   using row_type = uint64_t;
   static constexpr dim_type BOARD_DIM = 8;
   
