@@ -115,6 +115,11 @@ Board& Board::undo() noexcept
   return *this;
 }
 
+PieceCount whiteCount() const noexcept
+{
+  return PieceCount();
+}
+
 /**
  * TODO: implement output operator for Board
  */
