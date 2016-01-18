@@ -40,6 +40,9 @@ class Board {
   friend bool operator==(const Board &boar1, const Board &board2) noexcept;
   
 public:
+  /**
+   * Alias for the type of the dimension of the board.
+   */
   using dim_type = unsigned short;
   using row_type = uint64_t;
   static constexpr dim_type BOARD_DIM = 8;
