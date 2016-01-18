@@ -130,6 +130,11 @@ pair<Square, Square> Board::lastMove() const noexcept
   return std::make_pair(Squre(), Square());
 }
 
+Square Board::operator()(dim_type row, dim_type column) const noexcept
+{
+  return Square();
+}
+
 /**
  * TODO: implement output operator for Board
  */
