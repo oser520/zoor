@@ -358,7 +358,7 @@ class BoardIterator: std:iterator<std:random_access_iterator_tag, Square, short>
 {
 public:
   /**
-   * Alias for the type of the dimension of the a @c Board.
+   * Alias for the type of the dimension of a @c Board.
    */
   using dim_type = Board::dim_type;
 
