@@ -380,6 +380,15 @@ public:
    */
   BoardIterator(Board const *board) noexcept;
 
+  /**
+   * @brief Constructs iterator to one past the last @c Square on a @c Board.
+   * @detail Second paramter is ignored, but differentiates this function from the
+   *  constructor with one paramter to construct the <em>end</em> iterator.
+   * @param board Pointer to the @c Board.
+   * @throw Never throws.
+   */
+  BoardIterator(Board const *board, int) noexcept;
+
 private:
   /**
    * A pointer to the @c Board.
