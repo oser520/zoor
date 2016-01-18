@@ -166,7 +166,11 @@ private:
    * @return An unsigned char representing the bit pattern.
    * @throw Never throws.
    */
-  unsigned char get(dim_type row, dim_type column) const noexcept;
+  unsigned char get(dim_type row, dim_type column) const noexcept
+  {
+    auto bp = mRows[row] >> column;
+    return static_cast<unsigned char>(bp) & static_cast<unsigned char>(0xff);
+  }
 
 public:
   /**
