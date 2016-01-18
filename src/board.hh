@@ -356,6 +356,7 @@ bool operator!=(const Board &boar1, const Board &board2) noexcept;
  */
 class BoardIterator: std:iterator<std:random_access_iterator_tag, Square, short>
 {
+  friend bool operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
 // TODO: implement BoardIteratorError
 public:
   /**
@@ -475,6 +476,16 @@ private:
    */
   dim_type mIndex;
 };
+
+/**
+ * @brief Equality operator.
+ * @param bi1 A reference to the first @c BoardIterator.
+ * @param bi2 A reference to the first @c BoardIterator.
+ * @return The iterators are only equal if they point to the same @c Square on the
+ *  same @c Board.
+ * @throw Never throws.
+ */
+bool operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
 
 } // namespace zoor
 
