@@ -100,7 +100,15 @@ vector<Board> Board::getBoardsFromMoves() const noexcept
 }
 
 Board
-Board::makeMoveCopy(const Square &square1, const Square &square2) const noexcept;
+Board::makeMoveCopy(const Square &square1, const Square &square2) const noexcept
+{
+  return Board();
+}
+
+Board& Board::makeMove(const Square &square1, const Square &square2) noexcept
+{
+  return *this;
+}
 
 /**
  * TODO: implement output operator for Board
