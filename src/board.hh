@@ -492,6 +492,7 @@ private:
  * @return The iterators are only equal if they point to the same @c Square on the
  *  same @c Board.
  * @throw Never throws.
+ * TODO: make definition inline after it has been tested
  */
 bool operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
 
@@ -502,6 +503,7 @@ bool operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
  * @return The iterators are only equal if they point to the same @c Square on the
  *  same @c Board.
  * @throw Never throws.
+ * TODO: make definition inline after it has been tested
  */
 bool operator!=(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
 
@@ -511,6 +513,7 @@ bool operator!=(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
  * @param bi2 A reference to the second @c BoardIterator.
  * @return The difference between the iterators, of type difference_type.
  * @throw Never throws.
+ * TODO: make definition inline after it has been tested
  */
 BoardIterator::difference_type
 operator-(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
@@ -523,6 +526,7 @@ operator-(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
  *  <em>bi</em>.
  * @throw BoardIteratorError if <em>value</em> moves <em>bi</em> beyond the board,
  *  excluding the end iterator.
+ * TODO: make definition inline after it has been tested
  */
 BoardIterator
 operator-(const BoardIterator &bi, BoardIterator::difference_type value);
@@ -535,6 +539,7 @@ operator-(const BoardIterator &bi, BoardIterator::difference_type value);
  *  <em>bi</em>.
  * @throw BoardIteratorError if <em>value</em> moves <em>bi</em> beyond the board,
  *  excluding the end iterator.
+ * TODO: make definition inline after it has been tested
  */
 BoardIterator
 operator+(const BoardIterator &bi, BoardIterator::difference_type value);
