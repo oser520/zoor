@@ -225,7 +225,7 @@ BoardIterator BoardIterator::operator++(int)
   return bi;
 }
 
-BoardIterator& BoardIterator::operator+=(BaordIterator::difference_type value)
+BoardIterator& BoardIterator::operator+=(BoardIterator::difference_type value)
 {
   mIndex += value;
   if (mIndex < static_cast<difference_type>(0)
@@ -235,7 +235,7 @@ BoardIterator& BoardIterator::operator+=(BaordIterator::difference_type value)
   return *this;
 }
 
-BoardIterator& BoardIterator::operator-=(BaordIterator::difference_type value)
+BoardIterator& BoardIterator::operator-=(BoardIterator::difference_type value)
 {
   mIndex -= value;
   if (mIndex < static_cast<difference_type>(0)
