@@ -42,6 +42,16 @@ enum class PieceColor: unsigned char
 };
 
 /**
+ * A mask to get the @c PieceCode and @c PieceColor from a bit pattern that contains
+ * both.
+ */
+enum class PieceMask: unsigned char
+{
+  PIECE = static_cast<unsigned char>(7), // 0b00111
+  COLOR = static_cast<unsigned char>(24) // 0b11000
+};
+
+/**
  * Represents the value of a piece.
  */
 enum class PieceValue: unsigned short
