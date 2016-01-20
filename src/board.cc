@@ -194,4 +194,11 @@ BoardIterator::BoardIterator(const Board *board)
   assert(mBoardPtr != nullptr);
 }
 
+BoardIterator::BoardIterator(const Board *board, int)
+  : mBoardPtr(board),
+    mIndex(mLastIndex)
+{
+  assert(mBoardPtr != nullptr);
+}
+
 } // namespace zoor
