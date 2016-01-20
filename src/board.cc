@@ -196,14 +196,14 @@ BoardIterator::BoardIterator(const Board *board)
 
 BoardIterator::BoardIterator(const Board *board, int)
   : mBoardPtr(board),
-    mIndex(mLastIndex)
+    mIndex(LAST_INDEX)
 {
   assert(mBoardPtr != nullptr);
 }
 
 BoardIterator::operator++()
 {
-  if (mIndex >= mLastIndex)
+  if (mIndex >= LAST_INDEX)
     throw BoardIteratorError("Error: cannot advance beyond end");
   ++mIndex;
   return *this;
