@@ -240,4 +240,15 @@ BoardIterator& BoardIterator::operator-=(BaordIterator::difference_type value)
   return *this;
 }
 
+BoardIterator::value_type BoardIterator::operator*() const
+{
+  if (mIndex >= LAST_INDEX)
+    throw BoardIteratorError("Error: cannot access square beyond board");
+
+  auto row = static_cast<Board::dim_type>(mIndex) / Board::BOARD_DIM;
+  auto col = static_cast<Board::dim_type>(mIndex) % Board::BOARD_DIM;
+  auto pcode = mBoardPtr->get(row, col);
+  return Square(row, col, getPieceCode(pcode), getPieceColor(pcode));
+}
+
 } // namespace zoor
