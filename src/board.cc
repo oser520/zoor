@@ -280,4 +280,12 @@ operator-(const BoardIterator &bi, BoardIterator::difference_type value)
   return newBi;
 }
 
+BoardIterator
+operator+(const BoardIterator &bi, BoardIterator::difference_type value)
+{
+  BoardIterator newBi(bi);
+  newBi += value;
+  return newBi;
+}
+
 } // namespace zoor
