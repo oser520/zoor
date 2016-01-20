@@ -452,7 +452,7 @@ public:
    * @return A reference to the iterator after being moved.
    * @throw BoardIteratorError if iterator is moved beyond end iterator.
    */
-  BoardIterator& operator+=(dim_type value);
+  BoardIterator& operator+=(difference_type value);
 
   /**
    * @brief Move the iterator backward by a given value.
@@ -460,7 +460,7 @@ public:
    * @return A reference to the iterator after being moved.
    * @throw BoardIteratorError if value takes the iterator beyond zero.
    */
-  BoardIterator& operator-=(dim_type value);
+  BoardIterator& operator-=(difference_type value);
 
   /**
    * @brief Obtain a @c Square from the iterator.
@@ -481,7 +481,7 @@ private:
    * @brief The current index in the @Board.
    * @detail Index goes from 0 to 63.
    */
-  dim_type mIndex;
+  difference_type mIndex;
 };
 
 /**

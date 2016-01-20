@@ -220,7 +220,7 @@ BoardIterator BoardIterator::operator++(int)
   return bi;
 }
 
-BoardIterator& BoardIterator::operator+=(dim_type value)
+BoardIterator& BoardIterator::operator+=(BaordIterator::difference_type value)
 {
   mIndex += value;
   if (mIndex < static_cast<difference_type>(0)
