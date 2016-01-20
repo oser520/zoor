@@ -387,7 +387,7 @@ public:
    * @param board Pointer to the @c Board.
    * @throw Never throws.
    */
-  BoardIterator(Board const *board) noexcept;
+  BoardIterator(const Board *board) noexcept;
 
   /**
    * @brief Constructs iterator to one past the last @c Square on a @c Board.
@@ -475,7 +475,7 @@ private:
   /**
    * A pointer to the @c Board.
    */
-  Board *mBoardPtr;
+  const Board *mBoardPtr;
 
   /**
    * @brief The current index in the @Board.
