@@ -74,6 +74,14 @@ enum class PieceValue: unsigned short
 PieceCode getPieceCode(unsigned char code) noexcept;
 
 /**
+ * @brief Get a @c PieceColor from a bit pattern.
+ * @param code The bit pattern containing a @c PieceColor.
+ * @return A @c PieceColor.
+ * @throw Never throws.
+ */
+PieceColor getPieceColor(unsigned char code) noexcept;
+
+/**
  * Output operator for a @c PieceCode.
  *
  * The @c PieceCode names are:
