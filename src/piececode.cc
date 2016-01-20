@@ -16,6 +16,12 @@ PieceCode getPieceCode(unsigned char code) noexcept
   return static_cast<PieceCode>(code);
 }
 
+PieceColor getPieceColor(unsigned char code) noexcept
+{
+  code &= static_cast<unsigned char>(PieceMask::COLOR);
+  return static_cast<PieceColor>(code);
+}
+
 std::ostream& operator<<(std::ostream &os, const PieceCode &piece)
 {
   switch (piece) {
