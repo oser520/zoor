@@ -187,4 +187,11 @@ bool operator!=(const Board &boar1, const Board &board2) noexcept
 
 // BoardIterator
 
+BoardIterator::BoardIterator(const Board *board)
+  : mBoardPtr(board),
+    mIndex(0)
+{
+  assert(mBoardPtr != nullptr);
+}
+
 } // namespace zoor
