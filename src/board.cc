@@ -8,8 +8,13 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <utility>
 
 // zoor headers
+#include "piececode.hh"
+#include "piececount.hh"
+#include "square.hh"
+#include "piecemoves.hh"
 #include "board.hh"
 
 namespace zoor {
