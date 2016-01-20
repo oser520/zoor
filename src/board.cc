@@ -256,4 +256,9 @@ BoardIterator::value_type BoardIterator::operator*() const
   return Square(row, col, getPieceCode(pcode), getPieceColor(pcode));
 }
 
+bool operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept
+{
+  return bi1.mBoardPtr == bi2.mBoardPtr && bi1.mIndex == bi2.mIndex;
+}
+
 } // namespace zoor
