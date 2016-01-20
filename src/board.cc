@@ -230,4 +230,14 @@ BoardIterator& BoardIterator::operator+=(BaordIterator::difference_type value)
   return *this;
 }
 
+BoardIterator& BoardIterator::operator-=(BaordIterator::difference_type value)
+{
+  mIndex -= value;
+  if (mIndex < static_cast<difference_type>(0)
+      || mIndex > static_cast<difference_type>(LAST_INDEX))
+    throw BoardIteratorError("Error: iterator cannot move beyond board");
+
+  return *this;
+}
+
 } // namespace zoor
