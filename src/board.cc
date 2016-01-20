@@ -272,4 +272,12 @@ operator-(const BoardIterator &bi1, const BoardIterator &bi2) noexcept
   return bi1.mIndex - bi2.mIndex;
 }
 
+BoardIterator
+operator-(const BoardIterator &bi, BoardIterator::difference_type value)
+{
+  BoardIterator newBi(bi);
+  newBi -= value;
+  return newBi;
+}
+
 } // namespace zoor
