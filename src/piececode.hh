@@ -70,6 +70,7 @@ enum class PieceValue: unsigned short
  * @param code The bit pattern containing a @c PieceCode.
  * @return A @c PieceCode.
  * @throw Never throws.
+ * TODO: make definition inline after I've tested this function
  */
 PieceCode getPieceCode(unsigned char code) noexcept;
 
@@ -78,6 +79,7 @@ PieceCode getPieceCode(unsigned char code) noexcept;
  * @param code The bit pattern containing a @c PieceColor.
  * @return A @c PieceColor.
  * @throw Never throws.
+ * TODO: make definition inline after I've tested this function
  */
 PieceColor getPieceColor(unsigned char code) noexcept;
 
