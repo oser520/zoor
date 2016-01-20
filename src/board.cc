@@ -209,4 +209,14 @@ BoardIterator::operator++()
   return *this;
 }
 
+BoardIterator::operator++(int)
+{
+  if (mIndex >= LAST_INDEX)
+    throw BoardIteratorError("Error: cannot advance beyond end");
+
+  BoardIterator bi(*this);
+  ++*this;
+  return bi;
+}
+
 } // namespace zoor
