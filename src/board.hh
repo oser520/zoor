@@ -469,7 +469,7 @@ public:
    *  @c Board.
    * @throw BoardIteratorError if this is the end iterator.
    */
-  Square operator*() const;
+  value_type operator*() const;
 
 private:
   /**
