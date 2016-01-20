@@ -66,6 +66,14 @@ enum class PieceValue: unsigned short
 };
 
 /**
+ * @brief Get a @c PieceCode from a bit pattern.
+ * @param code The bit pattern containing a @c PieceCode.
+ * @return A @c PieceCode.
+ * @throw Never throws.
+ */
+PieceCode getPieceCode(unsigned char code) noexcept;
+
+/**
  * Output operator for a @c PieceCode.
  *
  * The @c PieceCode names are:
