@@ -201,21 +201,22 @@ BoardIterator::BoardIterator(const Board *board, int)
   assert(mBoardPtr != nullptr);
 }
 
-BoardIterator::operator++()
+BoardIterator& BoardIterator::operator++()
 {
   if (mIndex >= LAST_INDEX)
     throw BoardIteratorError("Error: cannot advance beyond end");
+
   ++mIndex;
   return *this;
 }
 
-BoardIterator::operator++(int)
+BoardIterator BoardIterator::operator++(int)
 {
   if (mIndex >= LAST_INDEX)
     throw BoardIteratorError("Error: cannot advance beyond end");
 
   BoardIterator bi(*this);
-  ++*this;
+  ++(*this);
   return bi;
 }
 
