@@ -185,4 +185,6 @@ bool operator!=(const Board &boar1, const Board &board2) noexcept
   return !(board1 == board2);
 }
 
+// BoardIterator
+
 } // namespace zoor
