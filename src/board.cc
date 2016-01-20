@@ -266,4 +266,10 @@ bool operator!=(const BoardIterator &bi1, const BoardIterator &bi2) noexcept
   return !(bi1 == bi2);
 }
 
+BoardIterator::difference_type
+operator-(const BoardIterator &bi1, const BoardIterator &bi2) noexcept
+{
+  return bi1.mIndex - bi2.mIndex;
+}
+
 } // namespace zoor
