@@ -10,6 +10,12 @@
 
 namespace zoor {
 
+PieceCode getPieceCode(unsigned char code) noexcept
+{
+  code &= static_cast<unsigned char>(PieceMask::PIECE);
+  return static_cast<PieceCode>(code);
+}
+
 std::ostream& operator<<(std::ostream &os, const PieceCode &piece)
 {
   switch (piece) {
