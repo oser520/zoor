@@ -201,4 +201,12 @@ BoardIterator::BoardIterator(const Board *board, int)
   assert(mBoardPtr != nullptr);
 }
 
+BoardIterator::operator++()
+{
+  if (mIndex >= mLastIndex)
+    throw BoardIteratorError("Error: cannot advance beyond end");
+  ++mIndex;
+  return *this;
+}
+
 } // namespace zoor
