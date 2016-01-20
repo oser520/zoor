@@ -204,7 +204,7 @@ BoardIterator::BoardIterator(const Board *board, int)
 BoardIterator& BoardIterator::operator++()
 {
   if (mIndex >= LAST_INDEX)
-    throw BoardIteratorError("Error: cannot advance beyond end");
+    throw BoardIteratorError("Error: iterator cannot move beyond board");
 
   ++mIndex;
   return *this;
@@ -213,11 +213,21 @@ BoardIterator& BoardIterator::operator++()
 BoardIterator BoardIterator::operator++(int)
 {
   if (mIndex >= LAST_INDEX)
-    throw BoardIteratorError("Error: cannot advance beyond end");
+    throw BoardIteratorError("Error: iterator cannot move beyond board");
 
   BoardIterator bi(*this);
   ++(*this);
   return bi;
+}
+
+BoardIterator& BoardIterator::operator+=(dim_type value)
+{
+  mIndex += value;
+  if (mIndex < static_cast<difference_type>(0)
+      || mIndex > static_cast<difference_type>(LAST_INDEX))
+    throw BoardIteratorError("Error: iterator cannot move beyond board");
+
+  return *this;
 }
 
 } // namespace zoor
