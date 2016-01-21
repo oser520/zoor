@@ -14,6 +14,7 @@
 #include <vector>
 #include <utility>
 #include <iterator>
+#include <stdexcept>
 
 // zoor headers
 #include "piececode.hh"
