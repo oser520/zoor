@@ -349,7 +349,22 @@ bool operator==(const Board &boar1, const Board &board2) noexcept;
  */
 bool operator!=(const Board &boar1, const Board &board2) noexcept;
 
-// BoarIterator
+// BoardIterator
+
+/**
+ * BoardIterator exception.
+ */
+class BoardIteratorError: public std:logic_error
+{
+public:
+  explicit BoardIteratorError(const string& what_arg) noexcept
+    : logic_error(what_arg) {}
+
+  explicit BoardIteratorError(const char *what_arg) noexcept
+    : logic_error(what_arg) {}
+
+  virtual ~BoardIteratorError() noexcept = default;
+};
 
 /**
  * @brief Provides an iterator interface to access each @c Square of a @c Board.
