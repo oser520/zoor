@@ -134,7 +134,7 @@ Board& Board::undo() noexcept
  */
 PieceCount Board::whiteCount() const noexcept
 {
-  return PieceCount();
+  return mWhiteCount;
 }
 
 /**
@@ -142,7 +142,7 @@ PieceCount Board::whiteCount() const noexcept
  */
 PieceCount Board::blackCount() const noexcept
 {
-  return PieceCount();
+  return mBlackCount;
 }
 
 /**
