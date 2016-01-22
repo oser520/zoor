@@ -358,7 +358,7 @@ bool operator!=(const Board &boar1, const Board &board2) noexcept;
 class BoardIteratorError: public std:logic_error
 {
 public:
-  explicit BoardIteratorError(const string& what_arg) noexcept
+  explicit BoardIteratorError(const std::string& what_arg) noexcept
     : logic_error(what_arg) {}
 
   explicit BoardIteratorError(const char *what_arg) noexcept
