@@ -145,12 +145,9 @@ PieceCount Board::blackCount() const noexcept
   return mBlackCount;
 }
 
-/**
- * TODO: implement lastMove function
- */
 pair<Square, Square> Board::lastMove() const noexcept
 {
-  return std::make_pair(Squre(), Square());
+  return mLastMove;
 }
 
 /**
