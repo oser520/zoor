@@ -129,17 +129,11 @@ Board& Board::undo() noexcept
   return *this;
 }
 
-/**
- * TODO: implement whiteCount function
- */
 PieceCount Board::whiteCount() const noexcept
 {
   return mWhiteCount;
 }
 
-/**
- * TODO: implement blackCount function
- */
 PieceCount Board::blackCount() const noexcept
 {
   return mBlackCount;
