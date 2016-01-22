@@ -158,7 +158,7 @@ iterator Board::begin() const noexcept
 
 iterator Board::end() const noexcept
 {
-  return iterator();
+  return iterator(this, int);
 }
 
 /**
