@@ -271,6 +271,15 @@ private:
 bool operator==(const PieceMove &pm1, const PieceMove &pm2) noexcept;
 
 /**
+ * @brief Non-equality operator for @c PieceMove.
+ * @param pm1 The first @c PieceMove.
+ * @param pm2 The second @c PieceMove.
+ * @return True if the moves are not equal, false otherwise.
+ * @throw Never throws.
+ */
+bool operator!=(const PieceMove &pm1, const PieceMove &pm2) noexcept;
+
+/**
  * @brief Represents the list of legal moves that are possible for a given piece from
  * a given square on a board.
  *
