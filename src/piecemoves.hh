@@ -28,14 +28,20 @@ namespace zoor {
 class MoveInfo
 {
 public:
+
   /**
-   * @brief Constructor with two paramters indicating the destination square of the
-   *  move.
-   * @param row The row of the desination square.
-   * @param column The column of the desination square.
+   * @brief Constructor with info for piece that is moving.
+   * @param row The row of the piece that is moving.
+   * @param column The column of the piece that is moving.
+   * @param piece The piece that is moving.
+   * @param color The color of the piece that is moving.
    * @throw Never throws.
    */
-  MoveInfo(dim_type row, dim_type column) noexcept;
+  MoveInfo
+    (dim_type row,
+     dim_type column,
+     PieceCode piece,
+     PieceColor color) noexcept;
 
   /**
    * @brief Default constructor.
