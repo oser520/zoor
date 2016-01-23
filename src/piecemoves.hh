@@ -90,6 +90,15 @@ public:
      PieceCode piece,
      PieceColor color) noexcept;
 
+  /**
+   * @brief Sets the information for the catpured piece.
+   * @param row The row location of the captured piece.
+   * @param column The column location of the captured piece.
+   * @param code The bit code containing color and piece type information.
+   * @throw Never throws.
+   */
+  MoveInfo& setCapture (dim_type row, dim_type column, piececode_t code) noexcept;
+
 private:
   Square mDestination;
   Square mCapture;
