@@ -25,7 +25,7 @@ namespace zoor {
  * a capture, and if there's a promotion (.i.e., the pawn moves to the last row and
  * becomes a more powerful piece).
  */
-class MoveInfo
+class PieceMove
 {
   friend bool operator==(const PieceMove &pm1, const PieceMove &pm2);
   friend std::ostream operator<<(std::ostream &os, const PieceMove &pm);
@@ -40,7 +40,7 @@ public:
    * @param color The color of the piece that is moving.
    * @throw Never throws.
    */
-  MoveInfo
+  PieceMove
     (dim_type row,
      dim_type column,
      PieceCode piece,
@@ -53,47 +53,47 @@ public:
    * @param code The bit pattern containing the piece and color info.
    * @throw Never throws.
    */
-  MoveInfo(dim_type row, dim_type column, piececode_t code) noexcept;
+  PieceMove(dim_type row, dim_type column, piececode_t code) noexcept;
 
   /**
    * @brief Default constructor.
    * @throw Never throws.
    */
-  MoveInfo() noexcept = default;
+  PieceMove() noexcept = default;
 
   /**
    * @brief Default copy constructor.
-   * @param moveInfo The @c MoveInfo being copied.
+   * @param moveInfo The @c PieceMove being copied.
    * @throw Never throws.
    */
-  MoveInfo(const MoveInfo &moveInfo) noexcept = default;
+  PieceMove(const PieceMove &moveInfo) noexcept = default;
 
   /**
    * @brief Default move constructor.
-   * @param moveInfo The @c MoveInfo being moved.
+   * @param moveInfo The @c PieceMove being moved.
    * @throw Never throws.
    */
-  MoveInfo(MoveInfo &&moveInfo) noexcept = default;
+  PieceMove(PieceMove &&moveInfo) noexcept = default;
 
   /**
    * @brief Default copy assignment.
-   * @param moveInfo The @c MoveInfo being copied.
+   * @param moveInfo The @c PieceMove being copied.
    * @throw Never throws.
    */
-  MoveInfo& MoveInfo(const MoveInfo &moveInfo) noexcept = default;
+  PieceMove& PieceMove(const PieceMove &moveInfo) noexcept = default;
 
   /**
    * @brief Default move assignment.
-   * @param moveInfo The @c MoveInfo being moved.
+   * @param moveInfo The @c PieceMove being moved.
    * @throw Never throws.
    */
-  MoveInfo& MoveInfo(MoveInfo &&moveInfo) noexcept = default;
+  PieceMove& PieceMove(PieceMove &&moveInfo) noexcept = default;
 
   /**
    * @brief Default destructor.
    * @throw Never throws.
    */
-  ~MoveInfo() noexcept = default;
+  ~PieceMove() noexcept = default;
 
   /**
    * @brief Obtain the row of source location.
@@ -129,10 +129,10 @@ public:
    * @param column The column location of the piece.
    * @param piece The piece.
    * @param color The color of the piece.
-   * @return A reference to this @c MoveInfo.
+   * @return A reference to this @c PieceMove.
    * @throw Never throws.
    */
-  MoveInfo& setPiece
+  PieceMove& setPiece
     (dim_type row,
      dim_type column,
      PieceCode piece,
@@ -143,10 +143,10 @@ public:
    * @param row The row location of the piece.
    * @param column The column location of the piece.
    * @param code The bit pattern with color and piece info.
-   * @return A reference to this @c MoveInfo.
+   * @return A reference to this @c PieceMove.
    * @throw Never throws.
    */
-  MoveInfo& setPiece(dim_type row, dim_type column, piececode_t code) noexcept;
+  PieceMove& setPiece(dim_type row, dim_type column, piececode_t code) noexcept;
 
   /**
    * @brief Obtain the information of the piece that is moving.
@@ -161,10 +161,10 @@ public:
    * @param column The column location of the captured piece.
    * @param piece The piece captured.
    * @param color The color of the piece captured.
-   * @return A reference to this @c MoveInfo.
+   * @return A reference to this @c PieceMove.
    * @throw Never throws.
    */
-  MoveInfo& setCapture
+  PieceMove& setCapture
     (dim_type row,
      dim_type column,
      PieceCode piece,
@@ -175,10 +175,10 @@ public:
    * @param row The row location of the captured piece.
    * @param column The column location of the captured piece.
    * @param code The bit code containing color and piece type information.
-   * @return A reference to this @c MoveInfo.
+   * @return A reference to this @c PieceMove.
    * @throw Never throws.
    */
-  MoveInfo& setCapture(dim_type row, dim_type column, piececode_t code) noexcept;
+  PieceMove& setCapture(dim_type row, dim_type column, piececode_t code) noexcept;
 
   /**
    * @brief Determine if the move has resulted in a capture.
@@ -200,10 +200,10 @@ public:
    * @param column The column location of the promoted piece.
    * @param piece The piece obtained from the promotion.
    * @param color The color of the promoted piece.
-   * @return A reference to this @c MoveInfo.
+   * @return A reference to this @c PieceMove.
    * @throw Never throws.
    */
-  MoveInfo& setPromotion
+  PieceMove& setPromotion
     (dim_type row,
      dim_type column,
      PieceCode piece,
@@ -213,18 +213,18 @@ public:
    * @brief Sets the color and piece for the promoted piece.
    * @param piece The piece obtained from the promotion.
    * @param color The color of the promoted piece.
-   * @return A reference to this @c MoveInfo.
+   * @return A reference to this @c PieceMove.
    * @throw Never throws.
    */
-  MoveInfo& setPromotion(PieceCode piece, PieceColor color) noexcept;
+  PieceMove& setPromotion(PieceCode piece, PieceColor color) noexcept;
 
   /**
    * @brief Sets the color and piece for the promoted piece.
    * @param code The bit pattern containing the piece and color information.
-   * @return A reference to this @c MoveInfo.
+   * @return A reference to this @c PieceMove.
    * @throw Never throws.
    */
-  MoveInfo& setPromotion(piececode_t code) noexcept;
+  PieceMove& setPromotion(piececode_t code) noexcept;
 
   /**
    * @brief Determine if the move has resulted in a promotion.
