@@ -121,6 +121,21 @@ public:
   dim_type columnTo() const noexcept;
 
   /**
+   * @brief Sets the information for the piece that is moving.
+   * @param row The row location of the piece.
+   * @param column The column location of the piece.
+   * @param piece The piece.
+   * @param color The color of the piece.
+   * @return A reference to this @c MoveInfo.
+   * @throw Never throws.
+   */
+  MoveInfo& setPiece
+    (dim_type row,
+     dim_type column,
+     PieceCode piece,
+     PieceColor color) noexcept;
+
+  /**
    * @brief Sets the information for the catpured piece.
    * @param row The row location of the captured piece.
    * @param column The column location of the captured piece.
