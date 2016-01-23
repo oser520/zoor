@@ -58,6 +58,14 @@ PieceMoves Board::movePawn(dim_type row, dim_type column) const noexcept
 }
 
 /**
+ * TODO: implement moveWhitePawn
+ */
+PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
+{
+  return PieceMoves;
+}
+
+/**
  * TODO: implement moveKnight
  */
 vector<PieceMoves> Board::moveKnight(dim_type row, dim_type column) const noexcept
