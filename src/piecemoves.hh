@@ -83,6 +83,7 @@ public:
    * @param column The column location of the captured piece.
    * @param piece The piece captured.
    * @param color The color of the piece captured.
+   * @return A reference to this @c MoveInfo.
    * @throw Never throws.
    */
   MoveInfo& setCapture
@@ -96,9 +97,17 @@ public:
    * @param row The row location of the captured piece.
    * @param column The column location of the captured piece.
    * @param code The bit code containing color and piece type information.
+   * @return A reference to this @c MoveInfo.
    * @throw Never throws.
    */
   MoveInfo& setCapture(dim_type row, dim_type column, piececode_t code) noexcept;
+
+  /**
+   * @brief Determine if the move has resulted in a capture.
+   * @return True if the move has a capture, false otherwise.
+   * @throw Never throws.
+   */
+  bool isCapture() noexcept;
 
   /**
    * @brief Sets the information for the promoted piece.
@@ -106,6 +115,7 @@ public:
    * @param column The column location of the promoted piece.
    * @param piece The piece obtained from the promotion.
    * @param color The color of the promoted piece.
+   * @return A reference to this @c MoveInfo.
    * @throw Never throws.
    */
   MoveInfo& setPromotion
@@ -118,6 +128,7 @@ public:
    * @brief Sets the color and piece for the promoted piece.
    * @param piece The piece obtained from the promotion.
    * @param color The color of the promoted piece.
+   * @return A reference to this @c MoveInfo.
    * @throw Never throws.
    */
   MoveInfo& setPromotion(PieceCode piece, PieceColor color) noexcept;
@@ -125,6 +136,7 @@ public:
   /**
    * @brief Sets the color and piece for the promoted piece.
    * @param code The bit pattern containing the piece and color information.
+   * @return A reference to this @c MoveInfo.
    * @throw Never throws.
    */
   MoveInfo& setPromotion(piececode_t code) noexcept;
