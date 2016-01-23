@@ -63,31 +63,31 @@ public:
 
   /**
    * @brief Default copy constructor.
-   * @param moveInfo The @c PieceMove being copied.
+   * @param pieceMove The @c PieceMove being copied.
    * @throw Never throws.
    */
-  PieceMove(const PieceMove &moveInfo) noexcept = default;
+  PieceMove(const PieceMove &pieceMove) noexcept = default;
 
   /**
    * @brief Default move constructor.
-   * @param moveInfo The @c PieceMove being moved.
+   * @param pieceMove The @c PieceMove being moved.
    * @throw Never throws.
    */
-  PieceMove(PieceMove &&moveInfo) noexcept = default;
+  PieceMove(PieceMove &&pieceMove) noexcept = default;
 
   /**
    * @brief Default copy assignment.
-   * @param moveInfo The @c PieceMove being copied.
+   * @param pieceMove The @c PieceMove being copied.
    * @throw Never throws.
    */
-  PieceMove& PieceMove(const PieceMove &moveInfo) noexcept = default;
+  PieceMove& PieceMove(const PieceMove &pieceMove) noexcept = default;
 
   /**
    * @brief Default move assignment.
-   * @param moveInfo The @c PieceMove being moved.
+   * @param pieceMove The @c PieceMove being moved.
    * @throw Never throws.
    */
-  PieceMove& PieceMove(PieceMove &&moveInfo) noexcept = default;
+  PieceMove& PieceMove(PieceMove &&pieceMove) noexcept = default;
 
   /**
    * @brief Default destructor.
