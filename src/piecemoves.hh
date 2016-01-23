@@ -29,6 +29,8 @@ class MoveInfo
 public:
   using dim_type = Square::dim_type;
 private:
+  Square mDestination;
+  Square mCapture;
 };
 
 /**
