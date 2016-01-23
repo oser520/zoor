@@ -9,6 +9,7 @@
 #include <vector>
 #include <iostream>
 
+#include "piececode.hh"
 #include "square.hh"
 
 namespace zoor {
