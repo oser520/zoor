@@ -27,6 +27,13 @@ namespace zoor {
 class MoveInfo
 {
 public:
+  MoveInfo(dim_type row, dim_type column) noexcept;
+  MoveInfo() noexcept = default;
+  MoveInfo(const MoveInfo &moveInfo) noexcept = default;
+  MoveInfo(MoveInfo &&moveInfo) noexcept = default;
+  MoveInfo& MoveInfo(const MoveInfo &moveInfo) noexcept = default;
+  MoveInfo& MoveInfo(MoveInfo &&moveInfo) noexcept = default;
+  ~MoveInfo() noexcept = default;
 private:
   Square mDestination;
   Square mCapture;
