@@ -11,13 +11,15 @@
 
 namespace zoor {
 
+using piececode_t = unsigned char;
+
 /**
  * Represents a piece on the board.
  *
  * Since each piece on a board is represented in a byte, the type for
  * each PieceCode is an unsigned char.
  */
-enum class PieceCode: unsigned char
+enum class PieceCode: piececode_t
 {
   NONE = 0,
   PAWN,
@@ -34,7 +36,7 @@ enum class PieceCode: unsigned char
  * The PieceColor can be logically ORed with a PiceCode to
  * make a piece have color.
  */
-enum class PieceColor: unsigned char
+enum class PieceColor: piececode_t
 {
   NONE,
   WHITE = 1 << 4,
@@ -45,10 +47,10 @@ enum class PieceColor: unsigned char
  * A mask to get the @c PieceCode and @c PieceColor from a bit pattern that contains
  * both.
  */
-enum class PieceMask: unsigned char
+enum class PieceMask: piececode_t
 {
-  PIECE = static_cast<unsigned char>(7), // 0b00111
-  COLOR = static_cast<unsigned char>(24) // 0b11000
+  PIECE = static_cast<piececode_t>(7), // 0b00111
+  COLOR = static_cast<piececode_t>(24) // 0b11000
 };
 
 /**
@@ -72,7 +74,7 @@ enum class PieceValue: unsigned short
  * @throw Never throws.
  * TODO: make definition inline after I've tested this function
  */
-PieceCode getPieceCode(unsigned char code) noexcept;
+PieceCode getPieceCode(piececode_t code) noexcept;
 
 /**
  * @brief Get a @c PieceColor from a bit pattern.
@@ -81,7 +83,7 @@ PieceCode getPieceCode(unsigned char code) noexcept;
  * @throw Never throws.
  * TODO: make definition inline after I've tested this function
  */
-PieceColor getPieceColor(unsigned char code) noexcept;
+PieceColor getPieceColor(piececode_t code) noexcept;
 
 /**
  * Output operator for a @c PieceCode.
