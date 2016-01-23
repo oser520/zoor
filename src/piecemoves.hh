@@ -27,6 +27,9 @@ namespace zoor {
  */
 class MoveInfo
 {
+  friend bool operator==(const PieceMove &pm1, const PieceMove &pm2);
+  friend std::ostream operator<<(std::ostream &os, const PieceMove &pm);
+
 public:
 
   /**
