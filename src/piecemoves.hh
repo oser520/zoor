@@ -78,6 +78,13 @@ public:
   ~MoveInfo() noexcept = default;
 
   /**
+   * @brief Obtain the row of the destination square.
+   * @return The row of the destination square.
+   * @throw Never throws.
+   */
+  dim_type row() const noexcept;
+
+  /**
    * @brief Sets the information for the catpured piece.
    * @param row The row location of the captured piece.
    * @param column The column location of the captured piece.
