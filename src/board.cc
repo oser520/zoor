@@ -79,7 +79,7 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
     if (column < 7) {
       code = get(mrow, column+1);
       auto pcolor = getPieceColor(code);
-      if (pcolor == PieceColor::WHITE)
+      if (pcolor != PieceColor::WHITE)
         pm.push_back(Square(mrow, column-1, getPieceCode(code), pcolor);
     }
   }
