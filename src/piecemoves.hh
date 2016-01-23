@@ -136,6 +136,16 @@ public:
      PieceColor color) noexcept;
 
   /**
+   * @brief Sets the information for the piece that is moving.
+   * @param row The row location of the piece.
+   * @param column The column location of the piece.
+   * @param code The bit pattern with color and piece info.
+   * @return A reference to this @c MoveInfo.
+   * @throw Never throws.
+   */
+  MoveInfo& setPiece(dim_type row, dim_type column, piececode_t code) noexcept;
+
+  /**
    * @brief Sets the information for the catpured piece.
    * @param row The row location of the captured piece.
    * @param column The column location of the captured piece.
