@@ -51,7 +51,7 @@ Board& Board::moveRef(const Square &square1, const Square &square2) noexcept
 /**
  * TODO: implement movePawn
  */
-vector<PieceMoves> Board::movePawn(dim_type row, dim_type column) const noexcept
+PieceMoves Board::movePawn(dim_type row, dim_type column) const noexcept
 {
   return (mColorMove == PieceColor::WHITE) ?
           moveWhitePawn(row, column) : moveBlackPawn(row, column);
