@@ -59,7 +59,7 @@ PieceMoves Board::movePawn(dim_type row, dim_type column) const noexcept
  */
 PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
 {
-  PieceMoves pm(row, column, PieceCode::PAWN, mColorMove);
+  PieceMoves pm(row, column, PieceCode::PAWN, PieceColor::WHITE);
 
   // all normal moves
   if (row < static_cast<dim_type>(6)) {
@@ -72,14 +72,14 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
     if (column > 0) {
       code = get(mrow, column-1);
       auto pcolor = getPieceColor(code);
-      if (pcolor != mColorMove)
+      if (pcolor != PieceColor::WHITE)
         pm.push_back(Square(mrow, column-1, getPieceCode(code), pcolor);
     }
     // check one square up and right
     if (column < 7) {
       code = get(mrow, column+1);
       auto pcolor = getPieceColor(code);
-      if (pcolor == mColorMove)
+      if (pcolor == PieceColor::WHITE)
         pm.push_back(Square(mrow, column-1, getPieceCode(code), pcolor);
     }
   }
