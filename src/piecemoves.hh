@@ -280,6 +280,14 @@ bool operator==(const PieceMove &pm1, const PieceMove &pm2) noexcept;
 bool operator!=(const PieceMove &pm1, const PieceMove &pm2) noexcept;
 
 /**
+ * @brief Output operator for @c PieceMove.
+ * @param os A reference to the output stream.
+ * @param pm The @c PieceMove.
+ * @return A reference to the output stream.
+ */
+std::ostream& operator<<(std::ostream &os, const PieceMove &pm);
+
+/**
  * @brief Represents the list of legal moves that are possible for a given piece from
  * a given square on a board.
  *
