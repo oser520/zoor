@@ -97,14 +97,14 @@ public:
    * @return The row of the destination square.
    * @throw Never throws.
    */
-  dim_type row() const noexcept;
+  dim_type rowTo() const noexcept;
 
   /**
    * @brief Obtain the column of the destination square.
    * @return The column of the destination square.
    * @throw Never throws.
    */
-  dim_type column() const noexcept;
+  dim_type columnTo() const noexcept;
 
   /**
    * @brief Sets the information for the catpured piece.
