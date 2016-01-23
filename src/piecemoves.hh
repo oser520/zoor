@@ -177,6 +177,7 @@ public:
   Square promotion() const noexcept;
 
 private:
+  Square mFrom;
   Square mDestination;
   Square mCapture;
 };
