@@ -85,8 +85,8 @@ public:
   dim_type row() const noexcept;
 
   /**
-   * @brief Obtain the row of the destination square.
-   * @return The row of the destination square.
+   * @brief Obtain the column of the destination square.
+   * @return The column of the destination square.
    * @throw Never throws.
    */
   dim_type column() const noexcept;
@@ -121,14 +121,14 @@ public:
    * @return True if the move has a capture, false otherwise.
    * @throw Never throws.
    */
-  bool isCapture() noexcept;
+  bool isCapture() const noexcept;
 
   /**
    * @brief Obtain the information for the captured piece.
    * @return The @c Square reprsenting the captured piece.
    * @throw Never throws.
    */
-  Square capture() noexcept;
+  Square capture() const noexcept;
 
   /**
    * @brief Sets the information for the promoted piece.
