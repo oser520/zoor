@@ -75,6 +75,21 @@ public:
    * @throw Never throws.
    */
   ~MoveInfo() noexcept = default;
+
+  /**
+   * @brief Sets the information for the catpured piece.
+   * @param row The row location of the captured piece.
+   * @param column The column location of the captured piece.
+   * @param piece The piece captured.
+   * @param color The color of the piece captured.
+   * @throw Never throws.
+   */
+  MoveInfo& setCapture
+    (dim_type row,
+     dim_type column,
+     PieceCode piece,
+     PieceColor color) noexcept;
+
 private:
   Square mDestination;
   Square mCapture;
