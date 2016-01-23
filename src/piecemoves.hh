@@ -110,6 +110,13 @@ public:
   bool isCapture() noexcept;
 
   /**
+   * @brief Obtain the information for the captured piece.
+   * @return The @c Square reprsenting the captured piece.
+   * @throw Never throws.
+   */
+  Square capture() noexcept;
+
+  /**
    * @brief Sets the information for the promoted piece.
    * @param row The row location of the promoted piece.
    * @param column The column location of the promoted piece.
