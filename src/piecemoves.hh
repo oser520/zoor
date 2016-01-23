@@ -27,12 +27,53 @@ namespace zoor {
 class MoveInfo
 {
 public:
+  /**
+   * @brief Constructor with two paramters indicating the destination square of the
+   *  move.
+   * @param row The row of the desination square.
+   * @param column The column of the desination square.
+   * @throw Never throws.
+   */
   MoveInfo(dim_type row, dim_type column) noexcept;
+
+  /**
+   * @brief Default constructor.
+   * @throw Never throws.
+   */
   MoveInfo() noexcept = default;
+
+  /**
+   * @brief Default copy constructor.
+   * @param moveInfo The @c MoveInfo being copied.
+   * @throw Never throws.
+   */
   MoveInfo(const MoveInfo &moveInfo) noexcept = default;
+
+  /**
+   * @brief Default move constructor.
+   * @param moveInfo The @c MoveInfo being moved.
+   * @throw Never throws.
+   */
   MoveInfo(MoveInfo &&moveInfo) noexcept = default;
+
+  /**
+   * @brief Default copy assignment.
+   * @param moveInfo The @c MoveInfo being copied.
+   * @throw Never throws.
+   */
   MoveInfo& MoveInfo(const MoveInfo &moveInfo) noexcept = default;
+
+  /**
+   * @brief Default move assignment.
+   * @param moveInfo The @c MoveInfo being moved.
+   * @throw Never throws.
+   */
   MoveInfo& MoveInfo(MoveInfo &&moveInfo) noexcept = default;
+
+  /**
+   * @brief Default destructor.
+   * @throw Never throws.
+   */
   ~MoveInfo() noexcept = default;
 private:
   Square mDestination;
