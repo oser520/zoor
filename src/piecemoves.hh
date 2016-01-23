@@ -44,6 +44,15 @@ public:
      PieceColor color) noexcept;
 
   /**
+   * @brief Constructor with info for piece that is moving.
+   * @param row The row of the piece that is moving.
+   * @param column The column of the piece that is moving.
+   * @param code The bit pattern containing the piece and color info.
+   * @throw Never throws.
+   */
+  MoveInfo(dim_type row, dim_type column, piececode_t code) noexcept;
+
+  /**
    * @brief Default constructor.
    * @throw Never throws.
    */
