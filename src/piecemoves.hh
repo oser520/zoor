@@ -98,7 +98,7 @@ public:
    * @param code The bit code containing color and piece type information.
    * @throw Never throws.
    */
-  MoveInfo& setCapture (dim_type row, dim_type column, piececode_t code) noexcept;
+  MoveInfo& setCapture(dim_type row, dim_type column, piececode_t code) noexcept;
 
   /**
    * @brief Sets the information for the promoted piece.
