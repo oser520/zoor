@@ -162,6 +162,20 @@ public:
    */
   MoveInfo& setPromotion(piececode_t code) noexcept;
 
+  /**
+   * @brief Determine if the move has resulted in a promotion.
+   * @return True if the move has a promotion, false otherwise.
+   * @throw Never throws.
+   */
+  bool isPromotion() const noexcept;
+
+  /**
+   * @brief Obtain the information for the promoted piece.
+   * @return The @c Square reprsenting the promoted piece.
+   * @throw Never throws.
+   */
+  Square promotion() const noexcept;
+
 private:
   Square mDestination;
   Square mCapture;
