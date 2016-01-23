@@ -100,6 +100,35 @@ public:
    */
   MoveInfo& setCapture (dim_type row, dim_type column, piececode_t code) noexcept;
 
+  /**
+   * @brief Sets the information for the promoted piece.
+   * @param row The row location of the promoted piece.
+   * @param column The column location of the promoted piece.
+   * @param piece The piece obtained from the promotion.
+   * @param color The color of the promoted piece.
+   * @throw Never throws.
+   */
+  MoveInfo& setPromotion
+    (dim_type row,
+     dim_type column,
+     PieceCode piece,
+     PieceColor color) noexcept;
+
+  /**
+   * @brief Sets the color and piece for the promoted piece.
+   * @param piece The piece obtained from the promotion.
+   * @param color The color of the promoted piece.
+   * @throw Never throws.
+   */
+  MoveInfo& setPromotion(PieceCode piece, PieceColor color) noexcept;
+
+  /**
+   * @brief Sets the color and piece for the promoted piece.
+   * @param code The bit pattern containing the piece and color information.
+   * @throw Never throws.
+   */
+  MoveInfo& setPromotion(piececode_t code) noexcept;
+
 private:
   Square mDestination;
   Square mCapture;
