@@ -10,15 +10,15 @@
 
 namespace zoor {
 
-PieceCode getPieceCode(unsigned char code) noexcept
+PieceCode getPieceCode(piececode_t code) noexcept
 {
-  code &= static_cast<unsigned char>(PieceMask::PIECE);
+  code &= static_cast<piececode_t>(PieceMask::PIECE);
   return static_cast<PieceCode>(code);
 }
 
-PieceColor getPieceColor(unsigned char code) noexcept
+PieceColor getPieceColor(piececode_t code) noexcept
 {
-  code &= static_cast<unsigned char>(PieceMask::COLOR);
+  code &= static_cast<piececode_t>(PieceMask::COLOR);
   return static_cast<PieceColor>(code);
 }
 
