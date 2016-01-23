@@ -93,6 +93,20 @@ public:
   ~MoveInfo() noexcept = default;
 
   /**
+   * @brief Obtain the row of source location.
+   * @return The row of the source location.
+   * @throw Never throws.
+   */
+  dim_type rowFrom() const noexcept;
+
+  /**
+   * @brief Obtain the column of the source location.
+   * @return The column of the source location.
+   * @throw Never throws.
+   */
+  dim_type columnFrom() const noexcept;
+
+  /**
    * @brief Obtain the row of the destination square.
    * @return The row of the destination square.
    * @throw Never throws.
