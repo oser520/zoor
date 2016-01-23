@@ -137,6 +137,15 @@ private:
   PieceMoves movePawn(dim_type row, dim_type column) const noexcept;
 
   /**
+   * @brief Move a white pawn at the given row and column.
+   * @param row The row where the pawn is located.
+   * @param column The column where the pawn is located.
+   * @return A @c PieceMoves.
+   * @throw Never throws.
+   */
+  PieceMoves moveWhitePawn(dim_type row, dim_type column) const noexcept;
+
+  /**
    * @brief Move the knight at the given row and column.
    * @param row The row where the knight is located.
    * @param column The column where the knight is located.
