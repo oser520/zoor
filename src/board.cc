@@ -59,6 +59,45 @@ PieceMoves Board::movePawn(dim_type row, dim_type column) const noexcept
  */
 PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
 {
+  PieceMoves pm(row, column, PieceCode::PAWN, mColorMove);
+
+  // all normal moves
+  if (row < static_cast<dim_type>(6)) {
+    auto mrow = row + static_cast<dim_type>(1);
+    // check one square up
+    auto code = get(mrow, column);
+    if (getPieceCode(code) == PieceCode::NONE)
+      pm.push_back(Square(mrow, column, PieceCode::NONE, PieceColor::NONE));
+    // check one square up and left
+    if (column > 0) {
+      code = get(mrow, column-1);
+      auto pcolor = getPieceColor(code);
+      if (pcolor != mColorMove)
+        pm.push_back(Square(mrow, column-1, getPieceCode(code), pcolor);
+    }
+    // check one square up and right
+    if (column < 7) {
+      code = get(mrow, column+1);
+      auto pcolor = getPieceColor(code);
+      if (pcolor == mColorMove)
+        pm.push_back(Square(mrow, column-1, getPieceCode(code), pcolor);
+    }
+  }
+
+  // two moves up on first move
+  if (row == static_cast<dim_type>(1)) {
+    auto mrow = row + static_cast<dim_type>(2);
+    auto code = get(mrow, column);
+    if (getPieceCode(code) == PieceCode::NONE)
+      pm.push_back(Square(mrow, column, PieceCode::NONE, PieceColor::NONE));
+  }
+
+  // TODO: implement promotion
+  if (row == static_cast<dim_type>(6)) {
+
+  }
+
+  // TODO: implement en passant
   return PieceMoves;
 }
 
