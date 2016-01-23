@@ -20,6 +20,15 @@ namespace zoor {
  */
 
 /**
+ * Maintains information about a move, including the destination square, if there's
+ * a capture, and if there's a promotion (.i.e., the pawn moves to the last row and
+ * becomes a more powerful piece).
+ */
+class MoveInfo
+{
+};
+
+/**
  * @brief Represents the list of legal moves that are possible for a given piece from
  * a given square on a board.
  *
