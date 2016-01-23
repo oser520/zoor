@@ -146,6 +146,13 @@ public:
   MoveInfo& setPiece(dim_type row, dim_type column, piececode_t code) noexcept;
 
   /**
+   * @brief Obtain the information of the piece that is moving.
+   * @return A @c Square representing the piece.
+   * @throw Never throws.
+   */
+  Square piece() const noexcept;
+
+  /**
    * @brief Sets the information for the catpured piece.
    * @param row The row location of the captured piece.
    * @param column The column location of the captured piece.
