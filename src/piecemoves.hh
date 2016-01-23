@@ -177,8 +177,23 @@ public:
   Square promotion() const noexcept;
 
 private:
+  /**
+   * Represents the piece tha is making the move.
+   */
   Square mFrom;
+
+  /**
+   * @brief Represents the location where the piece is moving to.
+   * @detail If there is a capture, then the only time when <em>mDestination</em>
+   *  and <em>mCapture</em> will not overlap is when a pawn is captured by
+   *  <em>en passant</em>. If there is a pawn promotion, then <em>mDestination</em>
+   *  will hold the information for the promoted piece.
+   */
   Square mDestination;
+
+  /**
+   * Represents the location of the captured piece.
+   */
   Square mCapture;
 };
 
