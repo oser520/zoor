@@ -149,6 +149,11 @@ bool PieceMove::isPromotion() const noexcept
   return mPromotion.piece() != PieceCode::NONE;
 }
 
+Square PieceMove::promotion() const noexcept
+{
+  return mPromotion;
+}
+
 // PieceMoves
 
 PieceMoves::PieceMoves(const Square &square) noexcept
