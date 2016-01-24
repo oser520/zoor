@@ -70,6 +70,17 @@ PieceMove& PieceMove::setPiece
   return *this;
 }
 
+PieceMove& PieceMove::setPiece
+  (dim_type row,
+   dim_type column,
+   piececode_t code) noexcept
+{
+  mFrom.setRow(row)
+       .setColumn(column)
+       .setPieceCode(piece);
+  return *this;
+}
+
 // PieceMoves
 
 PieceMoves::PieceMoves(const Square &square) noexcept
