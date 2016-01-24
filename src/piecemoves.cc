@@ -110,14 +110,14 @@ PieceMove& PieceMove::setCapture
   return *this;
 }
 
-Square PieceMove::capture() const noexcept
-{
-  return mCapture;
-}
-
 bool PieceMove::isCapture() const noexcept
 {
   return mCapture.piece() != PieceCode::NONE;
+}
+
+Square PieceMove::capture() const noexcept
+{
+  return mCapture;
 }
 
 // PieceMoves
