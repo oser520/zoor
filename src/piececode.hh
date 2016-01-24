@@ -4,6 +4,8 @@
  * @date 2015-12-24
  */
 
+// TODO: add output operator for PieceMask
+
 #ifndef _PIECECODES_H
 #define _PIECECODES_H
 
