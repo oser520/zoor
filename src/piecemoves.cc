@@ -133,6 +133,17 @@ PieceMove& PieceMove::setPromotion
   return *this;
 }
 
+PieceMove& PieceMove::setPromotion
+  (dim_type row,
+   dim_type column,
+   piececode_t code) noexcept
+{
+  mPromotion.setRow(row)
+            .setColumn(column)
+            .setPieceCode(piece);
+  return *this;
+}
+
 // PieceMoves
 
 PieceMoves::PieceMoves(const Square &square) noexcept
