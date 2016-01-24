@@ -115,6 +115,11 @@ Square PieceMove::capture() const noexcept
   return mCapture;
 }
 
+bool PieceMove::isCapture() const noexcept
+{
+  return mCapture.piece() != PieceCode::NONE;
+}
+
 // PieceMoves
 
 PieceMoves::PieceMoves(const Square &square) noexcept
