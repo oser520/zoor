@@ -161,6 +161,11 @@ bool operator==(const PieceMove &pm1, const PieceMove &pm2) noexcept
       && pm1.mCapture == pm2.mCapture;
 }
 
+bool operator!=(const PieceMove &pm1, const PieceMove &pm2) noexcept
+{
+  return !(pm1 == pm2);
+}
+
 // PieceMoves
 
 PieceMoves::PieceMoves(const Square &square) noexcept
