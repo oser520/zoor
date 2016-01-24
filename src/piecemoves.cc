@@ -81,6 +81,11 @@ PieceMove& PieceMove::setPiece
   return *this;
 }
 
+Square PieceMove::piece() const noexcept
+{
+  return mFrom;
+}
+
 // PieceMoves
 
 PieceMoves::PieceMoves(const Square &square) noexcept
