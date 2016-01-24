@@ -4,6 +4,8 @@
  * @date 2016-01-05
  */
 
+// TODO: test new constructor with piececode_t parameter
+
 #include "square.hh"
 #include "gtest/gtest.h"
 
