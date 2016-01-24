@@ -57,6 +57,19 @@ dim_type PieceMove::columnTo() const noexcept
   return mDestination.column();
 }
 
+PieceMove& PieceMove::setPiece
+  (dim_type row,
+   dim_type column,
+   PieceCode piece,
+   PieceColor color) noexcept
+{
+  mFrom.setRow(row)
+       .setColumn(column)
+       .setPiece(piece)
+       .setColor(color);
+  return *this;
+}
+
 // PieceMoves
 
 PieceMoves::PieceMoves(const Square &square) noexcept
