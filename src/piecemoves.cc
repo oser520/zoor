@@ -99,6 +99,17 @@ PieceMove& PieceMove::setCapture
   return *this;
 }
 
+PieceMove& PieceMove::setCapture
+  (dim_type row,
+   dim_type column,
+   piececode_t code) noexcept
+{
+  mCapture.setRow(row)
+          .setColumn(column)
+          .setPieceCode(piece);
+  return *this;
+}
+
 // PieceMoves
 
 PieceMoves::PieceMoves(const Square &square) noexcept
