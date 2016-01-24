@@ -154,6 +154,13 @@ Square PieceMove::promotion() const noexcept
   return mPromotion;
 }
 
+bool operator==(const PieceMove &pm1, const PieceMove &pm2) noexcept
+{
+  return pm1.mFrom == pm2.mFrom
+      && pm1.mDestination == pm2.mDestination
+      && pm1.mCapture == pm2.mCapture;
+}
+
 // PieceMoves
 
 PieceMoves::PieceMoves(const Square &square) noexcept
