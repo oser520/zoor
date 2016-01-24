@@ -37,6 +37,11 @@ PieceMove::PieceMove
 PieceMove::PieceMove(dim_type row, dim_type column, piececode_t code) noexcept
   : mFrom(row, column, code) {}
 
+dim_type PieceMove::rowFrom() const noexcept
+{
+  return mFrom.row();
+}
+
 // PieceMoves
 
 PieceMoves::PieceMoves(const Square &square) noexcept
