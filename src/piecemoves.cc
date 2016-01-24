@@ -47,6 +47,11 @@ dim_type PieceMove::columnFrom() const noexcept
   return mFrom.column();
 }
 
+dim_type PieceMove::rowTo() const noexcept
+{
+  return mDestination.row();
+}
+
 // PieceMoves
 
 PieceMoves::PieceMoves(const Square &square) noexcept
