@@ -119,6 +119,19 @@ std::ostream& operator<<(std::ostream &os, const PieceCode &piece);
  */
 std::ostream& operator<<(std::ostream &os, const PieceColor &color);
 
+/**
+ * Output operator for a @c PieceMask.
+ *
+ * The @c PieceMask names are:
+ * @li PIECE
+ * @li COLOR
+ *
+ * @param os The output stream.
+ * @param mask The @c PieceMask.
+ * @return A reference to the output stream.
+ */
+std::ostream& operator<<(std::ostream &os, const PieceMask &mask);
+
 } // namespace zoor
 
 #endif 
