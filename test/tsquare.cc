@@ -5,6 +5,7 @@
  */
 
 // TODO: test new constructor with piececode_t parameter
+// TODO: test setPieceCode
 
 #include "square.hh"
 #include "gtest/gtest.h"
