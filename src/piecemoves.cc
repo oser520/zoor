@@ -166,6 +166,15 @@ bool operator!=(const PieceMove &pm1, const PieceMove &pm2) noexcept
   return !(pm1 == pm2);
 }
 
+std::ostream& operator<<(std::ostream &os, const PieceMove &pm)
+{
+  os << "("
+     << pm.mFrom << ", "
+     << pm.mDestination << ", "
+     << pm.mCapture << ")";
+  return os;
+}
+
 // PieceMoves
 
 PieceMoves::PieceMoves(const Square &square) noexcept
