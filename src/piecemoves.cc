@@ -25,6 +25,17 @@ using iterator = PieceMoves::iterator;
 using const_iterator = PieceMoves::const_iterator;
 using size_type = PieceMoves::size_type;
 
+// PieceMove
+
+PieceMove::PieceMove
+  (dim_type row,
+   dim_type column,
+   PieceCode piece,
+   PieceColor color) noexcept
+  : mFrom(row, column, piece, color) {}
+
+// PieceMoves
+
 PieceMoves::PieceMoves(const Square &square) noexcept
   : mSquare(square)
 {
