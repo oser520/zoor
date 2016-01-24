@@ -100,6 +100,13 @@ Square& Square::setColor(PieceColor color) noexcept
   return *this;
 }
 
+Square& Square::setPieceCode(piececode_t code) noexcept
+{
+  mPiece = getPieceCode(code);
+  mColor = getPieceColor(code);
+  return *this;
+}
+
 bool operator==(const Square& square1, const Square& square2) noexcept
 {
   return square1.mPiece == square2.mPiece
