@@ -4,6 +4,8 @@
  * @date 2016-01-09
  */
 
+// TODO: add unit tests for getPieceCode and getPieceColor
+
 #include <sstream>
 #include "piececode.hh"
 #include "gtest/gtest.h"
