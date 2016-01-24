@@ -78,4 +78,12 @@ std::ostream& operator<<(std::ostream &os, const PieceColor &color)
   return os;
 }
 
+std::ostream& operator<<(std::ostream &os, const PieceMask &mask)
+{
+  os << std::hex << std::showbase
+     << static_cast<piececode_t>(mask)
+     << std::dec << std::noshowbase;
+  return os;
+}
+
 } // namespace zoor
