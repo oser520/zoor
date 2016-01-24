@@ -171,6 +171,14 @@ public:
    */
   Square& setColor(PieceColor color) noexcept;
 
+  /**
+   * @brief Sets the piece and color.
+   * @param code The piece code with piece and color info.
+   * @return A reference to this @c Square.
+   * @throw Does not throw exception.
+   */
+  Square& setPieceCode(piececode_t code) noexcept;
+
 private:
   /**
    * @brief The piece sitting on this @c Square, which maybe <em>NONE</em>.
