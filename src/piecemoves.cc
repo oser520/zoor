@@ -110,6 +110,11 @@ PieceMove& PieceMove::setCapture
   return *this;
 }
 
+Square PieceMove::capture() const noexcept
+{
+  return mCapture;
+}
+
 // PieceMoves
 
 PieceMoves::PieceMoves(const Square &square) noexcept
