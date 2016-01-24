@@ -86,6 +86,19 @@ Square PieceMove::piece() const noexcept
   return mFrom;
 }
 
+PieceMove& PieceMove::setCapture
+  (dim_type row,
+   dim_type column,
+   PieceCode piece,
+   PieceColor color) noexcept
+{
+  mCapture.setRow(row)
+          .setColumn(column)
+          .setPiece(piece)
+          .setColor(color);
+  return *this;
+}
+
 // PieceMoves
 
 PieceMoves::PieceMoves(const Square &square) noexcept
