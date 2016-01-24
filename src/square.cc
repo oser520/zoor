@@ -30,6 +30,16 @@ Square::Square(dim_type row, dim_type column) noexcept
   assert(mColumn < BOARD_DIM);
 }
 
+Square::Square(dim_type row, dim_type column, piececode_t code) noexcept
+  : mPiece(getPieceCode(code)),
+    mColor(getPieceColor(code)),
+    mRow(row),
+    mColumn(column)
+{
+  assert(mRow < BOARD_DIM);
+  assert(mColumn < BOARD_DIM);
+}
+
 Square::Square
   (dim_type row,
    dim_type column,
