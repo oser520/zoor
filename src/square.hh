@@ -61,7 +61,7 @@ public:
   Square(dim_type row, dim_type column, piececode_t code) noexcept;
 
   /**
-   * @brief Constructs a @c Square with a specific row,column, and piece.
+   * @brief Constructs a @c Square with a specific row, column, and piece.
    * @param row The row of the @c Square. Assumption: row <= BOARD_DIM.
    * @param column The column of the @c Square. Assumption: column <= BOARD_DIM.
    * @param piece The piece sitting on the @c Square.
