@@ -52,6 +52,15 @@ public:
   Square(dim_type row, dim_type column) noexcept;
 
   /**
+   * @brief Constructs a @c Square with row, column, and piece.
+   * @param row The row of the @c Square. Assumption: row <= BOARD_DIM.
+   * @param column The column of the @c Square. Assumption: column <= BOARD_DIM.
+   * @param code The bit pattern containing the piece and color info.
+   * @throw Never throws exception.
+   */
+  Square(dim_type row, dim_type column, piececode_t code) noexcept;
+
+  /**
    * @brief Constructs a @c Square with a specific row,column, and piece.
    * @param row The row of the @c Square. Assumption: row <= BOARD_DIM.
    * @param column The column of the @c Square. Assumption: column <= BOARD_DIM.
