@@ -4,6 +4,8 @@
  * @date 2016-01-12
  */
 
+// TODO: add unit tests for PieceMove
+
 #include <sstream>
 #include "piececode.hh"
 #include "square.hh"
