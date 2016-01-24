@@ -34,6 +34,9 @@ PieceMove::PieceMove
    PieceColor color) noexcept
   : mFrom(row, column, piece, color) {}
 
+PieceMove::PieceMove(dim_type row, dim_type column, piececode_t code) noexcept
+  : mFrom(row, column, code) {}
+
 // PieceMoves
 
 PieceMoves::PieceMoves(const Square &square) noexcept
