@@ -7,9 +7,9 @@ downloading this repo, at least not yet. I'm currently working on the class that
 represents the board, which also handles the logic for piece moves.
 
 Todo list (short term goals):
-* finish board class
-* implement search logic
-* implement evaluation logic
+[ ] finish board class
+[ ] implement search logic
+[ ] implement evaluation logic
 
 More long term goals:
 * Create chess games database, by either designing one from scratch or creating an
