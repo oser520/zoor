@@ -14,13 +14,13 @@ Todo list (short term goals):
 More long term goals:
 * Create chess games database, by either designing one from scratch or creating an
   interface for an SQL or NoSQL database.
-** games should be stored compactly
-** do fast queries for games
+  * games should be stored compactly
+  * do fast queries for games
 * Create beginning game chess database.
 * Create end game chess database.
 * Use machine learning techniques to train evaluation functions.
 * Explore GUI options
-** What are good open source chess engine GUIs?
-** What would it take to create one from scratch?
+  * What are good open source chess engine GUIs?
+  * What would it take to create one from scratch?
 * Investigate chess engine standards?
-** What are other chess engines doing that *zoor* should do.
+  * What are other chess engines doing that *zoor* should do.
