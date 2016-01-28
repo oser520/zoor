@@ -25,8 +25,8 @@ downloading this repo, at least not yet.
 * Create beginning game chess database.
 * Create end game chess database.
 * Use machine learning techniques to train evaluation functions.
-* Explore GUI options
+* Explore GUI options.
   * What are good open source chess engine GUIs?
   * What would it take to create one from scratch?
-* Investigate chess engine standards?
+* Investigate chess engine standards.
   * What are other chess engines doing that **zoor** should do?
