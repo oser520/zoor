@@ -6,8 +6,12 @@ Still have plenty to code before this is a working chess engine, so I don't reco
 downloading this repo, at least not yet.
 
 ## Requirements
+
+### Hard Requirements
 * C++11 compiler
 * [GNU make](https://www.gnu.org/software/make/)
+
+### Soft Requirements
 * Unit Tests
   * [googletest](https://github.com/google/googletest)
   * [python](https://www.python.org/)
