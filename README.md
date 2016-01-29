@@ -7,14 +7,14 @@ downloading this repo, at least not yet.
 
 ## Requirements
 
-### Hard Requirements
+#### Hard Requirements
 
 These are required to compile and build the engine.
 
 * C++11 compiler
 * [GNU make](https://www.gnu.org/software/make/)
 
-### Soft Requirements
+#### Soft Requirements
 
 These are only necessary to run unit tests, but the engine does not depend on them.
 
