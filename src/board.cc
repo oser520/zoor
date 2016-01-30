@@ -131,16 +131,9 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
   if (row == static_cast<dim_type>(5)) {
     if (column > 0) {
       auto mcol = column-1;
-      auto toCode = get(row, mcol);
-      if (getPieceCode(toCode) == PieceCode::PAWN
-          && getPieceColor(toCode) != mColorMove
-          && mLastMove.piece() == PieceCode::PAWN
-          && mLastMove.rowFrom() == static_cast<dim_type>(6)
-          && mLastMove.columnFrom() == mcol
-          && mLastMove.rowTo() == static_cast<dim_type>(4)
-          && mLastMove.columnTo() = mcol) {
+      if (isEnPassant(mColorMove, mcol)) {
         moveList.emplace_back(row, column, fromCode);
-        moveList.back().setCapture(row, mcol, toCode);
+        moveList.back().setCapture(row, mcol, get(row, mcol));
         moveList.back().setRowTo(row+1).setColumnTo(mcol);
       }
     }
