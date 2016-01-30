@@ -137,6 +137,15 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
         moveList.back().setToRow(row+1).setToColumn(mcol);
       }
     }
+
+    if (column < 7) {
+      auto mcol = column+1;
+      if (isEnPassant(mColorMove, mcol)) {
+        moveList.emplace_back(row, column, fromCode);
+        moveList.back().setCapture(row, mcol, get(row, mcol));
+        moveList.back().setToRow(row+1).setToColumn(mcol);
+      }
+    }
   }
 
   // TODO: implement promotion
