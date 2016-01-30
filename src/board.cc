@@ -105,7 +105,8 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
           && mLastMove.rowTo() == static_cast<dim_type>(4)
           && mLastMove.columnTo() = mcol) {
         moveList.emplace_back(row, column, PieceCode::PAWN, mColorMove);
-        // TODO: check if last move was a pawn move of two squares
+        moveList.back().setCapture(row, mcol, ~mColorMove & PieceCode::PAWN);
+        moveList.back().setRowTo(row+1).setColumnTo(mcol);
       }
     }
   }
