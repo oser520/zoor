@@ -100,14 +100,14 @@ public:
    * @return The row of the source location.
    * @throw Never throws.
    */
-  dim_type rowFrom() const noexcept;
+  dim_type fromRow() const noexcept;
 
   /**
    * @brief Obtain the column of the source location.
    * @return The column of the source location.
    * @throw Never throws.
    */
-  dim_type columnFrom() const noexcept;
+  dim_type fromColumn() const noexcept;
 
   /**
    * @brief Obtain the row of the destination square.
