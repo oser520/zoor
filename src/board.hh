@@ -143,7 +143,7 @@ private:
    * @return True if there is an en passant at the given column.
    * @throw Never throws.
    */
-  bool isEnPassant(const PieceColor color, dim_type toColumn) const noexcept;
+  bool isEnPassant(PieceColor color, dim_type toColumn) const noexcept;
 
   /**
    * @brief Move a white pawn at the given row and column.
