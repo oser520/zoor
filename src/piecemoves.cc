@@ -159,6 +159,12 @@ Square PieceMove::promotion() const noexcept
   return mPromotion;
 }
 
+PieceMove& PieceMove::setRowTo(dim_type row) noexcept
+{
+  mPromotion.setRow(row);
+  return *this;
+}
+
 bool operator==(const PieceMove &pm1, const PieceMove &pm2) noexcept
 {
   return pm1.mFrom == pm2.mFrom
