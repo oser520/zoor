@@ -98,7 +98,7 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
       auto code = get(row, column-1);
       if (getPieceCode(code) == PieceCode::PAWN
           && getPieceColor(code) == mColorMove) {
-        // check if last move was a pawn move of two squares
+        // TODO: check if last move was a pawn move of two squares
       }
     }
   }
