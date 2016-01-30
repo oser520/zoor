@@ -137,6 +137,15 @@ private:
   PieceMoves movePawn(dim_type row, dim_type column) const noexcept;
 
   /**
+   * @brief Determine if there is an en passant at a given column.
+   * @param color The @c PieceColor.
+   * @param toColumn The column where there might be an en passant.
+   * @return True if there is an en passant at the given column.
+   * @throw Never throws.
+   */
+  bool isEnPassant(const PieceColor color, dim_type toColumn) const noexcept;
+
+  /**
    * @brief Move a white pawn at the given row and column.
    * @param row The row where the pawn is located.
    * @param column The column where the pawn is located.
