@@ -60,54 +60,64 @@ PieceMoves Board::movePawn(dim_type row, dim_type column) const noexcept
 PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
 {
   vector<PieceMove> moveList;
-  auto bitcode = mColorMove & PieceCode::PAWN;
+  auto fromCode = mColorMove & PieceCode::PAWN;
   PieceMoves pm(row, column, PieceCode::PAWN, PieceColor::WHITE);
 
   // all normal moves
   if (row < static_cast<dim_type>(6)) {
     auto mrow = row + static_cast<dim_type>(1);
     // check one square up
-    auto code = get(mrow, column);
-    if (getPieceCode(code) == PieceCode::NONE)
-      pm.push_back(Square(mrow, column, PieceCode::NONE, PieceColor::NONE));
+    auto toCode = get(mrow, column);
+    if (getPieceCode(toCode) == PieceCode::NONE) {
+      moveList.emplace_back(row, column, fromCode);
+      moveList.back().setRowTo(mrow).setColumnTo(column);
+    }
     // check one square up and left
     if (column > 0) {
-      code = get(mrow, column-1);
-      auto pcolor = getPieceColor(code);
-      if (pcolor != PieceColor::WHITE)
-        pm.push_back(Square(mrow, column-1, getPieceCode(code), pcolor);
+      auto mcol = column-1;
+      toCode = get(mrow, mcol);
+      if (getPieceColor(toCode) != PieceColor::WHITE) {
+        moveList.emplace_back(row, column, fromCode);
+        moveList.back().setCapture(mrow, mcol, toCode);
+        moveList.back().setRowTo(mrow).setColumnTo(mcol);
+      }
     }
     // check one square up and right
     if (column < 7) {
-      code = get(mrow, column+1);
-      auto pcolor = getPieceColor(code);
-      if (pcolor != PieceColor::WHITE)
-        pm.push_back(Square(mrow, column-1, getPieceCode(code), pcolor);
+      auto mcol = column+1;
+      toCode = get(mrow, mcol);
+      if (getPieceColor(toCode) != PieceColor::WHITE) {
+        moveList.emplace_back(row, column, fromCode);
+        moveList.back().setCapture(mrow, mcol, toCode);
+        moveList.back().setRowTo(mrow).setColumnTo(mcol);
+      }
     }
   }
 
   // two moves up on first move
   if (row == static_cast<dim_type>(1)) {
     auto mrow = row + static_cast<dim_type>(2);
-    auto code = get(mrow, column);
-    if (getPieceCode(code) == PieceCode::NONE)
-      pm.push_back(Square(mrow, column, PieceCode::NONE, PieceColor::NONE));
+    auto toCode = get(mrow, column);
+    if (getPieceCode(toCode) == PieceCode::NONE) {
+      moveList.emplace_back(row, column, fromCode);
+      moveList.back().setRowTo(mrow).setColumnTo(column);
+    }
   }
 
-  // TODO: implement en passant
+  // en passant
   if (row == static_cast<dim_type>(5)) {
     if (column > 0) {
       auto mcol = column-1;
-      auto code = get(row, mcol);
-      if (getPieceCode(code) == PieceCode::PAWN
-          && getPieceColor(code) == mColorMove
+      auto toCode = get(row, mcol);
+      if (getPieceCode(toCode) == PieceCode::PAWN
+          && getPieceColor(toCode) != mColorMove
           && mLastMove.piece() == PieceCode::PAWN
-          && mLastMove.rowFrom() == static_cast<dim_type>(6))
+          && mLastMove.rowFrom() == static_cast<dim_type>(6)
           && mLastMove.columnFrom() == mcol
           && mLastMove.rowTo() == static_cast<dim_type>(4)
           && mLastMove.columnTo() = mcol) {
-        moveList.emplace_back(row, column, bitcode);
-        moveList.back().setCapture(row, mcol, ~mColorMove & PieceCode::PAWN);
+        moveList.emplace_back(row, column, fromCode);
+        moveList.back().setCapture(row, mcol, toCode);
         moveList.back().setRowTo(row+1).setColumnTo(mcol);
       }
     }
