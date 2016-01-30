@@ -59,6 +59,8 @@ PieceMoves Board::movePawn(dim_type row, dim_type column) const noexcept
  */
 PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
 {
+  vector<PieceMove> moveList;
+  auto bitcode = mColorMove & PieceCode::PAWN;
   PieceMoves pm(row, column, PieceCode::PAWN, PieceColor::WHITE);
 
   // all normal moves
@@ -104,7 +106,7 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
           && mLastMove.columnFrom() == mcol
           && mLastMove.rowTo() == static_cast<dim_type>(4)
           && mLastMove.columnTo() = mcol) {
-        moveList.emplace_back(row, column, PieceCode::PAWN, mColorMove);
+        moveList.emplace_back(row, column, bitcode);
         moveList.back().setCapture(row, mcol, ~mColorMove & PieceCode::PAWN);
         moveList.back().setRowTo(row+1).setColumnTo(mcol);
       }
