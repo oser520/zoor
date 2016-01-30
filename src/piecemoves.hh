@@ -247,6 +247,14 @@ public:
    */
   Square promotion() const noexcept;
 
+  /**
+   * @brief Set the destination row.
+   * @param row The destination row.
+   * @return A reference to this @c PieceMove.
+   * @throw Never throws.
+   */
+  PieceMove& setRowTo(dim_type row) noexcept;
+
 private:
   /**
    * Represents the piece tha is making the move.
