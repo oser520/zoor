@@ -130,6 +130,15 @@ std::ostream& operator<<(std::ostream &os, const PieceColor &color);
  */
 std::ostream& operator<<(std::ostream &os, const PieceMask &mask);
 
+/**
+ * @brief Logical and operator for @c PieceColor and @c PieceCode.
+ * @param color The @c PieceColor.
+ * @param piece The @c PieceCode.
+ * @return The bit pattern of ANDing the color and piece.
+ * @throw Never throws.
+ */
+piececode_t operator&(const PieceColor color, const PieceCode piece) noexcept;
+
 } // namespace zoor
 
 #endif 
