@@ -54,6 +54,30 @@ PieceMoves Board::movePawn(dim_type row, dim_type column) const noexcept
           moveWhitePawn(row, column) : moveBlackPawn(row, column);
 }
 
+bool Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
+{
+  if (color == PieceColor::NONE)
+    return false;
+
+  dim_type toRow, fromRow;
+  if (color == PieceColor::WHITE) {
+    toRow = 4;
+    fromRow = 6;
+  } else {
+    toRow = 3;
+    fromRow = 1;
+  }
+
+  auto toCode = get(toRow, toColumn);
+  return getPieceCode(toCode) == PieceCode::PAWN
+         && getPieceColor(toCode) != mColorMove
+         && mLastMove.piece() == PieceCode::PAWN
+         && mLastMove.fromRow() == fromRow
+         && mLastMove.fromColumn() == toColumn
+         && mLastMove.toRow() == toRow
+         && mLastMove.toColumn() = toColumn;
+}
+
 /**
  * TODO: implement moveWhitePawn
  */
