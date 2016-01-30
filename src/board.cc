@@ -61,7 +61,6 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
 {
   vector<PieceMove> moveList;
   auto fromCode = mColorMove & PieceCode::PAWN;
-  PieceMoves pm(row, column, PieceCode::PAWN, PieceColor::WHITE);
 
   // all normal moves
   if (row < static_cast<dim_type>(6)) {
