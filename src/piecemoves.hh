@@ -153,7 +153,14 @@ public:
    * @return A @c Square representing the piece.
    * @throw Never throws.
    */
-  Square piece() const noexcept;
+  Square fromSquare() const noexcept;
+
+  /**
+   * @brief Get the @c PieceCode of the piece that is moving.
+   * @return The @c PieceCode of the piece making the move.
+   * @throw Never throws.
+   */
+  PieceCode piece() const noexcept;
 
   /**
    * @brief Sets the information for the catpured piece.
