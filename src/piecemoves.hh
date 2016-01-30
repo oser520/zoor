@@ -253,7 +253,7 @@ public:
    * @return A reference to this @c PieceMove.
    * @throw Never throws.
    */
-  PieceMove& setRowTo(dim_type row) noexcept;
+  PieceMove& setToRow(dim_type row) noexcept;
 
   /**
    * @brief Set the destination column.
@@ -261,7 +261,7 @@ public:
    * @return A reference to this @c PieceMove.
    * @throw Never throws.
    */
-  PieceMove& setColumnTo(dim_type column) noexcept;
+  PieceMove& setToColumn(dim_type column) noexcept;
 
 private:
   /**
