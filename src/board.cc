@@ -129,6 +129,7 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
 
   // en passant
   if (row == static_cast<dim_type>(5)) {
+    // checking column to the left
     if (column > 0) {
       auto mcol = column-1;
       if (isEnPassant(mColorMove, mcol)) {
