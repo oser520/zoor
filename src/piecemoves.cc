@@ -88,7 +88,7 @@ Square PieceMove::fromSquare() const noexcept
 
 Square PieceMove::piece() const noexcept
 {
-  return mFrom;
+  return mFrom.piece();
 }
 
 PieceMove& PieceMove::setCapture
