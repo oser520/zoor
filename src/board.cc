@@ -92,12 +92,22 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
       pm.push_back(Square(mrow, column, PieceCode::NONE, PieceColor::NONE));
   }
 
+  // TODO: implement en passant
+  if (row == static_cast<dim_type>(5)) {
+    if (column > 0) {
+      auto code = get(row, column-1);
+      if (getPieceCode(code) == PieceCode::PAWN
+          && getPieceColor(code) == mColorMove) {
+        // check if last move was a pawn move of two squares
+      }
+    }
+  }
+
   // TODO: implement promotion
   if (row == static_cast<dim_type>(6)) {
 
   }
 
-  // TODO: implement en passant
   return PieceMoves;
 }
 
