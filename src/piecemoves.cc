@@ -37,22 +37,22 @@ PieceMove::PieceMove
 PieceMove::PieceMove(dim_type row, dim_type column, piececode_t code) noexcept
   : mFrom(row, column, code) {}
 
-dim_type PieceMove::rowFrom() const noexcept
+dim_type PieceMove::fromRow() const noexcept
 {
   return mFrom.row();
 }
 
-dim_type PieceMove::columnFrom() const noexcept
+dim_type PieceMove::fromColumn() const noexcept
 {
   return mFrom.column();
 }
 
-dim_type PieceMove::rowTo() const noexcept
+dim_type PieceMove::toRow() const noexcept
 {
   return mDestination.row();
 }
 
-dim_type PieceMove::columnTo() const noexcept
+dim_type PieceMove::toColumn() const noexcept
 {
   return mDestination.column();
 }
@@ -159,13 +159,13 @@ Square PieceMove::promotion() const noexcept
   return mPromotion;
 }
 
-PieceMove& PieceMove::setRowTo(dim_type row) noexcept
+PieceMove& PieceMove::setToRow(dim_type row) noexcept
 {
   mPromotion.setRow(row);
   return *this;
 }
 
-PieceMove& PieceMove::setColumnTo(dim_type column) noexcept
+PieceMove& PieceMove::setToColumn(dim_type column) noexcept
 {
   mPromotion.setColumn(column);
   return *this;
