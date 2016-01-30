@@ -95,9 +95,16 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
   // TODO: implement en passant
   if (row == static_cast<dim_type>(5)) {
     if (column > 0) {
-      auto code = get(row, column-1);
+      auto mcol = column-1;
+      auto code = get(row, mcol);
       if (getPieceCode(code) == PieceCode::PAWN
-          && getPieceColor(code) == mColorMove) {
+          && getPieceColor(code) == mColorMove
+          && mLastMove.piece() == PieceCode::PAWN
+          && mLastMove.rowFrom() == static_cast<dim_type>(6))
+          && mLastMove.columnFrom() == mcol
+          && mLastMove.rowTo() == static_cast<dim_type>(4)
+          && mLastMove.columnTo() = mcol) {
+        moveList.emplace_back(row, column, PieceCode::PAWN, mColorMove);
         // TODO: check if last move was a pawn move of two squares
       }
     }
