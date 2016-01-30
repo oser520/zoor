@@ -139,6 +139,14 @@ std::ostream& operator<<(std::ostream &os, const PieceMask &mask);
  */
 piececode_t operator&(const PieceColor color, const PieceCode piece) noexcept;
 
+/**
+ * @brief Logical negation operator for @c PieceColor.
+ * @param color The @c PieceColor.
+ * @return White if it is black, black if it is white, or none.
+ * @throw Never throws.
+ */
+PieceColor operator~(const PieceColor color) noexcept;
+
 } // namespace zoor
 
 #endif 
