@@ -263,6 +263,15 @@ public:
    */
   PieceMove& setToColumn(dim_type column) noexcept;
 
+  /**
+   * @brief Set the destination row and square.
+   * @param row The destination row.
+   * @param column The destination column.
+   * @return A reference to this @c PieceMove.
+   * @throw Never throws.
+   */
+  PieceMove& setDestination(dim_type row, dim_type column) noexcept;
+
 private:
   /**
    * Represents the piece tha is making the move.
