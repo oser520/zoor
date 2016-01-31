@@ -48,12 +48,6 @@ Board& Board::moveRef(const Square &square1, const Square &square2) noexcept
   return *this;
 }
 
-PieceMoves Board::movePawn(dim_type row, dim_type column) const noexcept
-{
-  return (mColorMove == PieceColor::WHITE) ?
-          moveWhitePawn(row, column) : moveBlackPawn(row, column);
-}
-
 bool Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
 {
   if (color == PieceColor::NONE)
