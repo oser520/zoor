@@ -151,6 +151,16 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
 
   // TODO: implement promotion
   if (row == static_cast<dim_type>(6)) {
+    auto mrow = row+1;
+    // check one square up
+    auto toCode = get(mrow, column);
+    if (getPieceCode(toCode) == PieceCode::NONE) {
+      for (auto pc : {PieceCode::BISHOP, PieceCode::KNIGHT,
+                      PieceCode::ROOK, PieceCode::QUEEN}) {
+        moveList.emplace_back(row, column, fromCode);
+        moveList.back().setPromotion(mrow, column, pc, ~mColorMove);
+      }
+    }
 
   }
 
