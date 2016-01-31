@@ -65,6 +65,16 @@ TEST(PieceValueTest, PieceValue)
   EXPECT_EQ(static_cast<uchar>(0xffff), static_cast<uchar>(PieceValue::KING)); 
 }
 
+TEST(PieceMaskTest, OutputOp)
+{
+  ostringstream ss1, ss2;
+  ss1 << PieceMask::PIECE;
+  ss2 << PieceMask::COLOR;
+
+  EXPECT_STREQ("0x7", ss1.str().c_str());
+  EXPECT_STREQ("0x18", ss2.str().c_str());
+}
+
 TEST(PieceAndColor, LogicOpAnd)
 {
   piececode_t pcolor = static_cast<piececode_t>(PieceColor::NONE);
