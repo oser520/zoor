@@ -192,7 +192,7 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
     }
   }
 
-  return PieceMoves;
+  return moveList;
 }
 
 /**
