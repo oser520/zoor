@@ -78,6 +78,8 @@ bool Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
  */
 vector<PieceMove> Board::movePawn(dim_type row, dim_type column) const noexcept
 {
+  assert(mColorMove != PieceColor::NONE);
+
   vector<PieceMove> moveList;
   auto fromCode = mColorMove & PieceCode::PAWN;
 
