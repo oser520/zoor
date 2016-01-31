@@ -81,7 +81,7 @@ std::ostream& operator<<(std::ostream &os, const PieceColor &color)
 std::ostream& operator<<(std::ostream &os, const PieceMask &mask)
 {
   os << std::hex << std::showbase
-     << static_cast<piececode_t>(mask)
+     << static_cast<int>(mask)
      << std::dec << std::noshowbase;
   return os;
 }
