@@ -149,7 +149,7 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
     }
   }
 
-  // TODO: implement promotion
+  // pawn promotion
   if (row == static_cast<dim_type>(6)) {
     PieceCode pcArr[] = {
       PieceCode::KNIGHT, PieceCode::BISHOP,
@@ -161,10 +161,35 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
     if (getPieceCode(toCode) == PieceCode::NONE) {
       for (auto& pc : pcArr) {
         moveList.emplace_back(row, column, fromCode);
-        moveList.back().setPromotion(mrow, column, pc, ~mColorMove);
+        moveList.back().setPromotion(mrow, column, pc, mColorMove);
       }
     }
-
+    // check diagonal square to the left
+    if (column > 0) {
+      auto mcol = column-1;
+      toCode = get(mrow, mcol);
+      if (getPieceCode(toCode) != PieceCode::NONE
+          && getPieceColor(toCode) != mColorMove) {
+        for (auto& pc : pcArr) {
+          moveList.emplace_back(row, column, fromCode);
+          moveList.back().setCapture(mrow, mcol, toCode);
+          moveList.back().setPromotion(mrow, mcol, pc, mColorMove);
+        }
+      }
+    }
+    // check diagonal square to the right
+    if (column < 7) {
+      auto mcol = column+1;
+      toCode = get(mrow, mcol);
+      if (getPieceCode(toCode) != PieceCode::NONE
+          && getPieceColor(toCode) != mColorMove) {
+        for (auto& pc : pcArr) {
+          moveList.emplace_back(row, column, fromCode);
+          moveList.back().setCapture(mrow, mcol, toCode);
+          moveList.back().setPromotion(mrow, mcol, pc, mColorMove);
+        }
+      }
+    }
   }
 
   return PieceMoves;
