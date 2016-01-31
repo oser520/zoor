@@ -86,15 +86,18 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
   vector<PieceMove> moveList;
   auto fromCode = mColorMove & PieceCode::PAWN;
 
-  dim_type rowCmp;
+  dim_type cmpRow;
   std::function<bool(dim_type, dim_type)> cmpFunc;
+  std::function<dim_type(dim_type, dim_type)> rowOp;
 
   if (mColorMove == PieceColor::WHITE) {
-    rowCmp = 6;
+    cmpRow = 6;
     cmpFunc = std::less<dim_type>;
+    rowOp = std::plus<dim_type>;
   } else {
-    rowCmp = 1;
+    cmpRow = 1;
     cmpFunc = std::greater<dim_type>;
+    rowOp = std::minus<dim_type>;
   }
 
   // all normal moves (i.e., pawn moves one square up)
