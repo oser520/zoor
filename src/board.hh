@@ -131,7 +131,7 @@ private:
    * @brief Move the pawn at the given row and column.
    * @param row The row where the pawn is located.
    * @param column The column where the pawn is located.
-   * @return A @c PieceMoves.
+   * @return A vector of moves.
    * @throw Never throws.
    */
   vector<PieceMove> movePawn(dim_type row, dim_type column) const noexcept;
