@@ -1,6 +1,7 @@
 *.swp
 *~
 *.o
+tags
 tsquare
 tpiececode
 tpiececount
