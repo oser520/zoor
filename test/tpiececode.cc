@@ -65,6 +65,21 @@ TEST(PieceValueTest, PieceValue)
   EXPECT_EQ(static_cast<uchar>(0xffff), static_cast<uchar>(PieceValue::KING)); 
 }
 
+TEST(PieceAndColor, LogicOpAnd)
+{
+  piececode_t pcolor = static_cast<piececode_t>(PieceColor::NONE);
+  piececode_t pcode = static_cast<piececode_t>(PieceCode::PAWN);
+  EXPECT_EQ(pcolor & pcode, PieceColor::NONE & PieceCode::PAWN);
+
+  pcolor = static_cast<piececode_t>(PieceColor::WHITE);
+  pcode = static_cast<piececode_t>(PieceCode::ROOK);
+  EXPECT_EQ(pcolor & pcode, PieceColor::WHITE & PieceCode::ROOK);
+
+  pcolor = static_cast<piececode_t>(PieceColor::BLACK);
+  pcode = static_cast<piececode_t>(PieceCode::BISHOP);
+  EXPECT_EQ(pcolor & pcode, PieceColor::BLACK & PieceCode::BISHOP);
+}
+
 } // anonymous namespace
 
 int main(int argc, char *argv[])
