@@ -134,7 +134,7 @@ private:
    * @return A @c PieceMoves.
    * @throw Never throws.
    */
-  PieceMoves movePawn(dim_type row, dim_type column) const noexcept;
+  vector<PieceMove> movePawn(dim_type row, dim_type column) const noexcept;
 
   /**
    * @brief Determine if there is an en passant at a given column.
