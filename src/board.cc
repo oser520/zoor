@@ -86,7 +86,7 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
   vector<PieceMove> moveList;
   auto fromCode = mColorMove & PieceCode::PAWN;
 
-  // all normal moves
+  // all normal moves (i.e., pawn moves one square up)
   if (row < static_cast<dim_type>(6)) {
     auto mrow = row + static_cast<dim_type>(1);
     // check one square up
