@@ -128,7 +128,7 @@ vector<PieceMove> Board::movePawn(dim_type row, dim_type column) const noexcept
   }
 
   // set comparison row for first pawn move
-  cmpRow = PieceColor::WHITE ? 1 : 6;
+  cmpRow = mColorMove == PieceColor::WHITE ? 1 : 6;
 
   // two moves on first move
   if (row == cmpRow) {
@@ -141,7 +141,7 @@ vector<PieceMove> Board::movePawn(dim_type row, dim_type column) const noexcept
   }
 
   // set comparison row for en passant
-  cmpRow = PieceColor::WHITE ? 5 : 4;
+  cmpRow = mColorMove == PieceColor::WHITE ? 5 : 4;
 
   // en passant
   if (row == cmpRow) {
@@ -166,7 +166,7 @@ vector<PieceMove> Board::movePawn(dim_type row, dim_type column) const noexcept
   }
 
   // set comparison row for promotion
-  cmpRow = PieceColor::WHITE ? 6 : 1;
+  cmpRow = mColorMove == PieceColor::WHITE ? 6 : 1;
 
   // pawn promotion
   if (row == cmpRow) {
