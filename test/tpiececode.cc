@@ -80,6 +80,13 @@ TEST(PieceAndColor, LogicOpAnd)
   EXPECT_EQ(pcolor & pcode, PieceColor::BLACK & PieceCode::BISHOP);
 }
 
+TEST(PieceColorNot, LogicOpNot)
+{
+  EXPECT_EQ(PieceColor::NONE, ~PieceColor::NONE);
+  EXPECT_EQ(PieceColor::BLACK, ~PieceColor::WHITE);
+  EXPECT_EQ(PieceColor::WHITE, ~PieceColor::BLACK);
+}
+
 } // anonymous namespace
 
 int main(int argc, char *argv[])
