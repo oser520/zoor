@@ -102,8 +102,8 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
 
   // all normal moves (i.e., pawn moves one square up)
   if (cmpFunc(row, rowCmp)) {
-    auto mrow = row + static_cast<dim_type>(1);
-    // check one square up
+    auto mrow = rowOp(row, 1);
+    // check one square straight up or down
     auto toCode = get(mrow, column);
     if (getPieceCode(toCode) == PieceCode::NONE) {
       moveList.emplace_back(row, column, fromCode);
