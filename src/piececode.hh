@@ -7,11 +7,12 @@
 #ifndef _PIECECODES_H
 #define _PIECECODES_H
 
+#include <cstdint>
 #include <iostream>
 
 namespace zoor {
 
-using piececode_t = unsigned char;
+using piececode_t = uint8_t;
 
 /**
  * Represents a piece on the board.
