@@ -54,10 +54,12 @@ enum class PieceMask: piececode_t
   COLOR = static_cast<piececode_t>(24) // 0b11000
 };
 
+using piecevalue_t = unsigned short;
+
 /**
  * Represents the value of a piece.
  */
-enum class PieceValue: unsigned short
+enum class PieceValue: piecevalue_t
 {
   NONE,
   PAWN,
