@@ -137,7 +137,7 @@ std::ostream& operator<<(std::ostream &os, const PieceMask &mask);
  * @return The bit pattern of ANDing the color and piece.
  * @throw Never throws.
  */
-piececode_t operator&(const PieceColor color, const PieceCode piece) noexcept;
+piececode_t operator&(const PieceColor &color, const PieceCode &piece) noexcept;
 
 /**
  * @brief Logical negation operator for @c PieceColor.
@@ -145,7 +145,7 @@ piececode_t operator&(const PieceColor color, const PieceCode piece) noexcept;
  * @return White if it is black, black if it is white, or none.
  * @throw Never throws.
  */
-PieceColor operator~(const PieceColor color) noexcept;
+PieceColor operator~(const PieceColor &color) noexcept;
 
 } // namespace zoor
 
