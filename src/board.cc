@@ -132,9 +132,12 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
     }
   }
 
-  // two moves up on first move
-  if (row == static_cast<dim_type>(1)) {
-    auto mrow = row + static_cast<dim_type>(2);
+  // set comparison row for first pawn move
+  cmpRow = PieceColor::WHITE ? 1 : 6;
+
+  // two moves on first move
+  if (row == cmpRow) {
+    auto mrow = rowOp(row, 2);
     auto toCode = get(mrow, column);
     if (getPieceCode(toCode) == PieceCode::NONE) {
       moveList.emplace_back(row, column, fromCode);
@@ -142,15 +145,18 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
     }
   }
 
+  // set comparison row for en passant
+  cmpRow = PieceColor::WHITE ? 5 : 4;
+
   // en passant
-  if (row == static_cast<dim_type>(5)) {
+  if (row == cmpRow) {
     // checking column to the left
     if (column > 0) {
       auto mcol = column-1;
       if (isEnPassant(mColorMove, mcol)) {
         moveList.emplace_back(row, column, fromCode);
         moveList.back().setCapture(row, mcol, get(row, mcol));
-        moveList.back().setDestination(row+1, mcol);
+        moveList.back().setDestination(rowOp(row, 1), mcol);
       }
     }
     // checking column to the right
@@ -159,7 +165,7 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
       if (isEnPassant(mColorMove, mcol)) {
         moveList.emplace_back(row, column, fromCode);
         moveList.back().setCapture(row, mcol, get(row, mcol));
-        moveList.back().setDestination(row+1, mcol);
+        moveList.back().setDestination(rowOp(row, 1), mcol);
       }
     }
   }
