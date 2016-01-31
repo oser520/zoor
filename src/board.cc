@@ -81,7 +81,7 @@ bool Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
 /**
  * TODO: implement moveWhitePawn
  */
-PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
+PieceMoves Board::movePawn(dim_type row, dim_type column) const noexcept
 {
   vector<PieceMove> moveList;
   auto fromCode = mColorMove & PieceCode::PAWN;
@@ -101,7 +101,7 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
     rowOp = std::minus<dim_type>;
   }
 
-  // all normal moves (i.e., pawn moves one square up)
+  // all normal moves (i.e., pawn moves one square up or down)
   if (cmpFunc(row, rowCmp)) {
     auto mrow = rowOp(row, 1);
     // check one square straight up or down
