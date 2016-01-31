@@ -171,6 +171,12 @@ PieceMove& PieceMove::setToColumn(dim_type column) noexcept
   return *this;
 }
 
+PieceMove& PieceMove::setDestination(dim_type row, dim_type column) noexcept
+{
+  mPromotion.setRow(row).setColumn(column);
+  return *this;
+}
+
 bool operator==(const PieceMove &pm1, const PieceMove &pm2) noexcept
 {
   return pm1.mFrom == pm2.mFrom
