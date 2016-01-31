@@ -16,6 +16,8 @@ using std::ostringstream;
 using zoor::PieceCode;
 using zoor::PieceColor;
 using zoor::PieceValue;
+using zoor::PieceMask;
+using zoor::piececode_t;
 
 //class PieceCodeTest: public testing::Test
 //{
