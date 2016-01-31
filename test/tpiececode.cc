@@ -17,10 +17,6 @@ using zoor::PieceValue;
 using zoor::PieceMask;
 using zoor::piececode_t;
 
-//class PieceCodeTest: public testing::Test
-//{
-//};
-
 TEST(PieceCodeTest, PieceCode)
 {
   ostringstream ss1, ss2, ss3, ss4, ss5, ss6, ss7;
