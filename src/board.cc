@@ -170,13 +170,16 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
     }
   }
 
+  // set comparison row for promotion
+  cmpRow = PieceColor::WHITE ? 6 : 1;
+
   // pawn promotion
-  if (row == static_cast<dim_type>(6)) {
+  if (row == cmpRow) {
     PieceCode pcArr[] = {
       PieceCode::KNIGHT, PieceCode::BISHOP,
       PieceCode::ROOK, PieceCode::QUEEN
     };
-    auto mrow = row+1;
+    auto mrow = rowOp(row, 1);
     // check one square up
     auto toCode = get(mrow, column);
     if (getPieceCode(toCode) == PieceCode::NONE) {
