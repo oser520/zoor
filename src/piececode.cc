@@ -47,8 +47,6 @@ std::ostream& operator<<(std::ostream &os, const PieceCode &piece)
     os << "KING";
     break;
   default:
-    // TODO: throw some kind of exception and make error message more informative by
-    // including function name, source file and line number
     std::cerr << "Unknown PieceCode value" << std::endl;
     exit(EXIT_FAILURE);
   }
@@ -69,8 +67,6 @@ std::ostream& operator<<(std::ostream &os, const PieceColor &color)
     os << "BLACK";
     break;
   default:
-    // TODO: throw some kind of exception and make error message more informative by
-    // including function name, source file and line number
     std::cerr << "Unknown PieceColor value" << std::endl;
     exit(EXIT_FAILURE);
   }
