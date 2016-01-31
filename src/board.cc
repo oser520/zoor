@@ -88,12 +88,12 @@ vector<PieceMove> Board::movePawn(dim_type row, dim_type column) const noexcept
   // set handles to deal with black or white pawn move
   if (mColorMove == PieceColor::WHITE) {
     cmpRow = 6;
-    cmpFunc = std::less<dim_type>;
-    rowOp = std::plus<dim_type>;
+    cmpFunc = std::less<dim_type>();
+    rowOp = std::plus<dim_type>();
   } else {
     cmpRow = 1;
-    cmpFunc = std::greater<dim_type>;
-    rowOp = std::minus<dim_type>;
+    cmpFunc = std::greater<dim_type>();
+    rowOp = std::minus<dim_type>();
   }
 
   // all normal moves (i.e., pawn moves one square up or down)
