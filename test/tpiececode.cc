@@ -17,6 +17,9 @@ using zoor::PieceValue;
 using zoor::PieceMask;
 using zoor::piececode_t;
 
+/**
+ * Test PieceCode output string.
+ */
 TEST(PieceCodeTest, PieceCode)
 {
   ostringstream ss1, ss2, ss3, ss4, ss5, ss6, ss7;
@@ -37,6 +40,9 @@ TEST(PieceCodeTest, PieceCode)
   EXPECT_STREQ("KING", ss7.str().c_str()); 
 }
 
+/**
+ * Test PieceColor output string.
+ */
 TEST(PieceColorTest, PieceColor)
 {
   ostringstream ss1, ss2, ss3;
@@ -49,6 +55,9 @@ TEST(PieceColorTest, PieceColor)
   EXPECT_STREQ("BLACK", ss3.str().c_str()); 
 }
 
+/**
+ * Test PieceValue on cast.
+ */
 TEST(PieceValueTest, PieceValue)
 {
   using uchar = unsigned char;
@@ -61,6 +70,9 @@ TEST(PieceValueTest, PieceValue)
   EXPECT_EQ(static_cast<uchar>(0xffff), static_cast<uchar>(PieceValue::KING)); 
 }
 
+/**
+ * Test PieceMask on output.
+ */
 TEST(PieceMaskTest, OutputOp)
 {
   ostringstream ss1, ss2;
@@ -71,6 +83,9 @@ TEST(PieceMaskTest, OutputOp)
   EXPECT_STREQ("0x18", ss2.str().c_str());
 }
 
+/**
+ * Test logical and operator for color and piece.
+ */
 TEST(PieceAndColor, LogicOpAnd)
 {
   piececode_t pcolor = static_cast<piececode_t>(PieceColor::NONE);
@@ -86,6 +101,9 @@ TEST(PieceAndColor, LogicOpAnd)
   EXPECT_EQ(pcolor & pcode, PieceColor::BLACK & PieceCode::BISHOP);
 }
 
+/**
+ * Test logical not operator for color.
+ */
 TEST(PieceColorNot, LogicOpNot)
 {
   EXPECT_EQ(PieceColor::NONE, ~PieceColor::NONE);
