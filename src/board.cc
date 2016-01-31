@@ -90,6 +90,7 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
   std::function<bool(dim_type, dim_type)> cmpFunc;
   std::function<dim_type(dim_type, dim_type)> rowOp;
 
+  // set handles to deal with black or white pawn move
   if (mColorMove == PieceColor::WHITE) {
     cmpRow = 6;
     cmpFunc = std::less<dim_type>;
