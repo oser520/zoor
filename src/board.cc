@@ -9,6 +9,7 @@
 #include <iostream>
 #include <algorithm>
 #include <utility>
+#include <functional>
 
 // zoor headers
 #include "piececode.hh"
