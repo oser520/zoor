@@ -128,15 +128,6 @@ private:
   Board& moveRef(const Square &square1, const Square &square2) noexcept;
 
   /**
-   * @brief Move the pawn at the given row and column.
-   * @param row The row where the pawn is located.
-   * @param column The column where the pawn is located.
-   * @return A vector of moves.
-   * @throw Never throws.
-   */
-  vector<PieceMove> movePawn(dim_type row, dim_type column) const noexcept;
-
-  /**
    * @brief Determine if there is an en passant at a given column.
    * @param color The @c PieceColor.
    * @param toColumn The column where there might be an en passant.
@@ -146,22 +137,13 @@ private:
   bool isEnPassant(PieceColor color, dim_type toColumn) const noexcept;
 
   /**
-   * @brief Move a white pawn at the given row and column.
+   * @brief Move the pawn at the given row and column.
    * @param row The row where the pawn is located.
    * @param column The column where the pawn is located.
-   * @return A @c PieceMoves.
+   * @return A vector of moves.
    * @throw Never throws.
    */
-  PieceMoves moveWhitePawn(dim_type row, dim_type column) const noexcept;
-
-  /**
-   * @brief Move a black pawn at the given row and column.
-   * @param row The row where the pawn is located.
-   * @param column The column where the pawn is located.
-   * @return A @c PieceMoves.
-   * @throw Never throws.
-   */
-  PieceMoves moveBlackPawn(dim_type row, dim_type column) const noexcept;
+  vector<PieceMove> movePawn(dim_type row, dim_type column) const noexcept;
 
   /**
    * @brief Move the knight at the given row and column.
