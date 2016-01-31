@@ -109,7 +109,7 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
       moveList.emplace_back(row, column, fromCode);
       moveList.back().setDestination(mrow, column);
     }
-    // check one square up and left
+    // check one square up or down, and to the left
     if (column > 0) {
       auto mcol = column-1;
       toCode = get(mrow, mcol);
