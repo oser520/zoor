@@ -93,7 +93,7 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
     auto toCode = get(mrow, column);
     if (getPieceCode(toCode) == PieceCode::NONE) {
       moveList.emplace_back(row, column, fromCode);
-      moveList.back().setToRow(mrow).setToColumn(column);
+      moveList.back().setDestination(mrow, column);
     }
     // check one square up and left
     if (column > 0) {
@@ -102,7 +102,7 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
       if (getPieceColor(toCode) != PieceColor::WHITE) {
         moveList.emplace_back(row, column, fromCode);
         moveList.back().setCapture(mrow, mcol, toCode);
-        moveList.back().setToRow(mrow).setToColumn(mcol);
+        moveList.back().setDestination(mrow, mcol);
       }
     }
     // check one square up and right
@@ -112,7 +112,7 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
       if (getPieceColor(toCode) != PieceColor::WHITE) {
         moveList.emplace_back(row, column, fromCode);
         moveList.back().setCapture(mrow, mcol, toCode);
-        moveList.back().setToRow(mrow).setToColumn(mcol);
+        moveList.back().setDestination(mrow, mcol);
       }
     }
   }
@@ -123,7 +123,7 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
     auto toCode = get(mrow, column);
     if (getPieceCode(toCode) == PieceCode::NONE) {
       moveList.emplace_back(row, column, fromCode);
-      moveList.back().setToRow(mrow).setToColumn(column);
+      moveList.back().setDestination(mrow, column);
     }
   }
 
@@ -135,7 +135,7 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
       if (isEnPassant(mColorMove, mcol)) {
         moveList.emplace_back(row, column, fromCode);
         moveList.back().setCapture(row, mcol, get(row, mcol));
-        moveList.back().setToRow(row+1).setToColumn(mcol);
+        moveList.back().setDestination(row+1, mcol);
       }
     }
     // checking column to the right
@@ -144,7 +144,7 @@ PieceMoves Board::moveWhitePawn(dim_type row, dim_type column) const noexcept
       if (isEnPassant(mColorMove, mcol)) {
         moveList.emplace_back(row, column, fromCode);
         moveList.back().setCapture(row, mcol, get(row, mcol));
-        moveList.back().setToRow(row+1).setToColumn(mcol);
+        moveList.back().setDestination(row+1, mcol);
       }
     }
   }
