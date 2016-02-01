@@ -74,6 +74,11 @@ PieceColor Square::color() const noexcept
   return mColor;
 }
 
+piececode_t Square::code() const noexcept
+{
+  return mColor & mPiece;
+}
+
 Square& Square::setRow(dim_type row) noexcept
 {
   assert(row < BOARD_DIM);
