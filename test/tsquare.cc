@@ -84,16 +84,16 @@ TEST(SquareTest, BoolsWork) {
   Square s1(5, 7, PieceCode::KNIGHT, PieceColor::BLACK);
   Square s2(5, 7, PieceCode::KNIGHT, PieceColor::BLACK);
 
-  EXPECT_TRUE(s00 == s11);
-  EXPECT_FALSE(s00 != s11);
+  EXPECT_TRUE(s1 == s2);
+  EXPECT_FALSE(s1 != s2);
 
-  s.setPiece(PieceCode::KNIGHT)
-   .setColor(PieceColor::WHITE)
-   .setRow(5)
-   .setColumn(7);
+  s1.setPiece(PieceCode::KNIGHT)
+    .setColor(PieceColor::WHITE)
+    .setRow(5)
+    .setColumn(7);
 
-  EXPECT_FALSE(s00 == s11);
-  EXPECT_TRUE(s00 != s11);
+  EXPECT_FALSE(s1 == s2);
+  EXPECT_TRUE(s1 != s2);
 }
 
 } // anonymous namespace
