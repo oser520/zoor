@@ -61,22 +61,23 @@ TEST(SquareTest, GettersWork)
   EXPECT_NE(3, s.column());
 }
 
-TEST_F(SquareTest, SettersWork)
+TEST(SquareTest, SettersWork)
 {
-  s00.setPiece(PieceCode::PAWN)
-     .setColor(PieceColor::BLACK)
-     .setRow(5)
-     .setColumn(7);
+  Square s;
+  s.setPiece(PieceCode::PAWN)
+   .setColor(PieceColor::BLACK)
+   .setRow(5)
+   .setColumn(7);
 
-  EXPECT_EQ(PieceCode::PAWN, s00.piece());
-  EXPECT_EQ(PieceColor::BLACK, s00.color());
-  EXPECT_EQ(5, s00.row());
-  EXPECT_EQ(7, s00.column());
+  EXPECT_EQ(PieceCode::PAWN, s.piece());
+  EXPECT_EQ(PieceColor::BLACK, s.color());
+  EXPECT_EQ(5, s.row());
+  EXPECT_EQ(7, s.column());
 
-  EXPECT_NE(PieceCode::QUEEN, s00.piece());
-  EXPECT_NE(PieceColor::WHITE, s00.color());
-  EXPECT_NE(7, s00.row());
-  EXPECT_NE(5, s00.column());
+  EXPECT_NE(PieceCode::QUEEN, s.piece());
+  EXPECT_NE(PieceColor::WHITE, s.color());
+  EXPECT_NE(7, s.row());
+  EXPECT_NE(5, s.column());
 }
 
 TEST_F(SquareTest, BoolsWork) {
