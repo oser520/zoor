@@ -138,7 +138,13 @@ public:
    */
   PieceColor color() const noexcept;
 
-  
+  /**
+   * @brief Gets the bit pattern of the piece and color.
+   * @return The piece code.
+   * @throw Never throws.
+   */
+  piececode_t code() const noexcept;
+
   /**
    * @brief Sets the row number. Enforces the invariant for the row size.
    * @param row The row number.
