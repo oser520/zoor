@@ -4,6 +4,7 @@
  * @date 2016-01-05
  */
 
+#include "piececode.hh"
 #include "square.hh"
 #include "gtest/gtest.h"
 
