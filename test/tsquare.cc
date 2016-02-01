@@ -17,6 +17,9 @@ using zoor::Square;
 using zoor::PieceCode;
 using zoor::PieceColor;
 
+/**
+ * Test for default ctor.
+ */
 TEST(SquareTest, DefaultCtor)
 {
   Square s;
@@ -27,7 +30,7 @@ TEST(SquareTest, DefaultCtor)
 }
 
 /**
- * Test Ctor with 2 parameters.
+ * Test for ctor with 2 parameters.
  */
 TEST(SquareTest, Ctor2Param)
 {
