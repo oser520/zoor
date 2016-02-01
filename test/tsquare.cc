@@ -112,7 +112,10 @@ TEST(SquareTest, Setters)
   EXPECT_EQ(pcode, s.code());
 }
 
-TEST(SquareTest, BoolsWork) {
+/**
+ * Test bools.
+ */
+TEST(SquareTest, Bools) {
   Square s1(5, 7, PieceCode::KNIGHT, PieceColor::BLACK);
   Square s2(5, 7, PieceCode::KNIGHT, PieceColor::BLACK);
 
@@ -128,7 +131,10 @@ TEST(SquareTest, BoolsWork) {
   EXPECT_TRUE(s1 != s2);
 }
 
-TEST(SquareTest, EqualityOpWork)
+/**
+ * Unit tests for equality operators.
+ */
+TEST(SquareTest, EqualityOp)
 {
   Square s1, s2;
   EXPECT_EQ(s1, s2);
@@ -146,6 +152,21 @@ TEST(SquareTest, EqualityOpWork)
 
   s2.setRow(5);
   EXPECT_EQ(s1, s2);
+
+  s1.setLocation(5, 7)
+    .setPiece(PieceCode::KNIGHT)
+    .setColor(PieceColor::BLACK);
+  s2.setLocation(5, 7)
+    .setPiece(PieceCode::KNIGHT)
+    .setColor(PieceColor::BLACK);
+
+  EXPECT_TRUE(s1 == s2);
+  EXPECT_FALSE(s1 != s2);
+
+  s1.setColor(PieceColor::WHITE);
+
+  EXPECT_FALSE(s1 == s2);
+  EXPECT_TRUE(s1 != s2);
 }
 
 
