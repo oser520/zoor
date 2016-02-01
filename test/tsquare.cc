@@ -17,7 +17,7 @@ using zoor::PieceColor;
 /**
  * Test for default ctor.
  */
-TEST(SquareTest, DefaultCtor)
+TEST(SquareTest1, DefaultCtor)
 {
   Square s;
   EXPECT_EQ(0, s.row());
@@ -29,7 +29,7 @@ TEST(SquareTest, DefaultCtor)
 /**
  * Test for ctor with 2 parameters.
  */
-TEST(SquareTest, Ctor2Param)
+TEST(SquareTest2, Ctor2Param)
 {
   Square s(3, 5);
   EXPECT_EQ(3, s.row());
@@ -41,7 +41,7 @@ TEST(SquareTest, Ctor2Param)
 /**
  * Test for ctor with 3 parameters.
  */
-TEST(SquareTest, Ctor3Param)
+TEST(SquareTest3, Ctor3Param)
 {
   Square s(3, 5, PieceColor::WHITE & PieceCode::BISHOP);
   EXPECT_EQ(3, s.row());
@@ -53,7 +53,7 @@ TEST(SquareTest, Ctor3Param)
 /**
  * Test for ctor with 4 parameters.
  */
-TEST(SquareTest, Ctor3Param)
+TEST(SquareTest4, Ctor3Param)
 {
   Square s(3, 5, PieceCode::BISHOP, PieceColor::WHITE);
   EXPECT_EQ(3, s.row());
@@ -65,7 +65,7 @@ TEST(SquareTest, Ctor3Param)
 /**
  * Test getters.
  */
-TEST(SquareTest, Getters)
+TEST(SquareTest5, Getters)
 {
   Square s;
   s.setPiece(PieceCode::KING).setColor(PieceColor::WHITE).setRow(5).setColumn(7);
@@ -85,7 +85,7 @@ TEST(SquareTest, Getters)
 /**
  * Test setters.
  */
-TEST(SquareTest, Setters)
+TEST(SquareTest6, Setters)
 {
   Square s;
   s.setPiece(PieceCode::PAWN)
@@ -112,7 +112,7 @@ TEST(SquareTest, Setters)
 /**
  * Test bools.
  */
-TEST(SquareTest, Bools) {
+TEST(SquareTest7, Bools) {
   Square s1(5, 7, PieceCode::KNIGHT, PieceColor::BLACK);
   Square s2(5, 7, PieceCode::KNIGHT, PieceColor::BLACK);
 
@@ -131,7 +131,7 @@ TEST(SquareTest, Bools) {
 /**
  * Unit tests for equality operators.
  */
-TEST(SquareTest, EqualityOp)
+TEST(SquareTest8, EqualityOp)
 {
   Square s1, s2;
   EXPECT_EQ(s1, s2);
