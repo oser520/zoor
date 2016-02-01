@@ -179,6 +179,15 @@ public:
    */
   Square& setPieceCode(piececode_t code) noexcept;
 
+  /**
+   * @brief Sets the row and column.
+   * @param row The row in the board.
+   * @param column The column in the board.
+   * @return A reference to this @c Square.
+   * @throw Never throws.
+   */
+  Square& setLocation(dim_type row, dim_type column) noexcept;
+
 private:
   /**
    * @brief The piece sitting on this @c Square, which maybe <em>NONE</em>.
