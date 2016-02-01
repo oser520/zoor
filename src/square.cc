@@ -107,6 +107,13 @@ Square& Square::setPieceCode(piececode_t code) noexcept
   return *this;
 }
 
+Square& Square::setLocation(dim_type row, dim_type column) noexcept
+{
+  mRow = row;
+  mColumn = column;
+  return *this;
+}
+
 bool operator==(const Square& square1, const Square& square2) noexcept
 {
   return square1.mPiece == square2.mPiece
