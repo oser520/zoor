@@ -119,9 +119,9 @@ TEST(PieceColorNot, LogicOpNot)
 }
 
 /**
- * Test logical not operator for color.
+ * Test getPieceCode and getPieceColor.
  */
-TEST(PieceCodeFunc, getPieceCode)
+TEST(PieceCodeFunc, GetCodeFunc)
 {
   auto code = PieceColor::WHITE & PieceCode::ROOK;
   EXPECT_EQ(PieceColor::WHITE, getPieceColor(code));
