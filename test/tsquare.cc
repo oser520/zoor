@@ -6,6 +6,7 @@
 
 // TODO: test new constructor with piececode_t parameter
 // TODO: test setPieceCode
+// TODO: test setLocation
 
 #include "square.hh"
 #include "gtest/gtest.h"
