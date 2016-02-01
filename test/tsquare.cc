@@ -17,17 +17,9 @@ using zoor::Square;
 using zoor::PieceCode;
 using zoor::PieceColor;
 
-class SquareTest: public testing::Test
+TEST(SquareTest, Ctor)
 {
-protected:
-
   Square s00;
-  Square s11;
-};
-
-TEST_F(SquareTest, RowColumn)
-{
-  s00.setRow(0).setColumn(0);
   EXPECT_EQ(0, s00.row());
   EXPECT_EQ(0, s00.column());
   EXPECT_NE(2, s00.row());
