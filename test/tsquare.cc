@@ -41,6 +41,18 @@ TEST(SquareTest, Ctor2Param)
   EXPECT_EQ(PieceColor::NONE, s.color());
 }
 
+/**
+ * Test for ctor with 3 parameters.
+ */
+TEST(SquareTest, Ctor3Param)
+{
+  Square s(3, 5, PieceColor::WHITE & PieceCode::BISHOP);
+  EXPECT_EQ(3, s.row());
+  EXPECT_EQ(5, s.column());
+  EXPECT_EQ(PieceCode::NONE, s.piece());
+  EXPECT_EQ(PieceColor::NONE, s.color());
+}
+
 TEST(SquareTest, EqualityOpWork)
 {
   Square s1, s2;
