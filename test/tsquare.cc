@@ -169,8 +169,7 @@ TEST(SquareTest, EqualityOp)
   EXPECT_TRUE(s1 != s2);
 }
 
-
-} // anonymous namespace
+} // namespace
 
 int main(int argc, char *argv[])
 {
