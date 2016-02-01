@@ -65,26 +65,6 @@ TEST(SquareTest, Ctor3Param)
   EXPECT_EQ(PieceColor::WHITE, s.color());
 }
 
-TEST(SquareTest, EqualityOpWork)
-{
-  Square s1, s2;
-  EXPECT_EQ(s1, s2);
-
-  s1.setPiece(PieceCode::KNIGHT);
-  EXPECT_NE(s1, s2);
-
-  s1.setPiece(PieceCode::NONE);
-  s2.setColor(PieceColor::WHITE);
-  EXPECT_NE(s1, s2);
-
-  s1.setPiece(PieceCode::ROOK).setColor(PieceColor::BLACK).setRow(5);
-  s2.setPiece(PieceCode::ROOK).setColor(PieceColor::BLACK).setRow(3);
-  EXPECT_NE(s1, s2);
-
-  s2.setRow(5);
-  EXPECT_EQ(s1, s2);
-}
-
 TEST(SquareTest, GettersWork)
 {
   Square s;
@@ -134,6 +114,27 @@ TEST(SquareTest, BoolsWork) {
   EXPECT_FALSE(s1 == s2);
   EXPECT_TRUE(s1 != s2);
 }
+
+TEST(SquareTest, EqualityOpWork)
+{
+  Square s1, s2;
+  EXPECT_EQ(s1, s2);
+
+  s1.setPiece(PieceCode::KNIGHT);
+  EXPECT_NE(s1, s2);
+
+  s1.setPiece(PieceCode::NONE);
+  s2.setColor(PieceColor::WHITE);
+  EXPECT_NE(s1, s2);
+
+  s1.setPiece(PieceCode::ROOK).setColor(PieceColor::BLACK).setRow(5);
+  s2.setPiece(PieceCode::ROOK).setColor(PieceColor::BLACK).setRow(3);
+  EXPECT_NE(s1, s2);
+
+  s2.setRow(5);
+  EXPECT_EQ(s1, s2);
+}
+
 
 } // anonymous namespace
 
