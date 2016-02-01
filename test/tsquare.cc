@@ -85,7 +85,10 @@ TEST(SquareTest, Getters)
   EXPECT_EQ(PieceColor::BLACK & PieceCode::ROOK, s.code());
 }
 
-TEST(SquareTest, SettersWork)
+/**
+ * Test setters.
+ */
+TEST(SquareTest, Setters)
 {
   Square s;
   s.setPiece(PieceCode::PAWN)
@@ -98,10 +101,15 @@ TEST(SquareTest, SettersWork)
   EXPECT_EQ(5, s.row());
   EXPECT_EQ(7, s.column());
 
-  EXPECT_NE(PieceCode::QUEEN, s.piece());
-  EXPECT_NE(PieceColor::WHITE, s.color());
+  s.setLocation(2, 5);
   EXPECT_NE(7, s.row());
   EXPECT_NE(5, s.column());
+
+  auto pcode = PieceColor::WHITE & PieceCode::QUEEN;
+  s.setPieceCode(pcode);
+  EXPECT_EQ(PieceCode::QUEEN, s.piece());
+  EXPECT_EQ(PieceColor::WHITE, s.color());
+  EXPECT_EQ(pcode, s.code());
 }
 
 TEST(SquareTest, BoolsWork) {
