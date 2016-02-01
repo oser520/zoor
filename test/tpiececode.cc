@@ -118,6 +118,20 @@ TEST(PieceColorNot, LogicOpNot)
   EXPECT_EQ(PieceColor::WHITE, ~PieceColor::BLACK);
 }
 
+/**
+ * Test logical not operator for color.
+ */
+TEST(PieceCodeFunc, getPieceCode)
+{
+  auto code = PieceColor::WHITE & PieceCode::ROOK;
+  EXPECT_EQ(PieceColor::WHITE, getPieceColor(code));
+  EXPECT_EQ(PieceCode::ROOK, getPieceCode(code));
+
+  code = PieceColor::BLACK & PieceCode::BISHOP;
+  EXPECT_EQ(PieceColor::BLACK, getPieceColor(code));
+  EXPECT_EQ(PieceCode::BISHOP, getPieceCode(code));
+}
+
 } // anonymous namespace
 
 int main(int argc, char *argv[])
