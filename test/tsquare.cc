@@ -13,6 +13,8 @@ namespace {
 using zoor::Square;
 using zoor::PieceCode;
 using zoor::PieceColor;
+using zoor::getPieceCode;
+using zoor::getPieceColor;
 
 /**
  * Test for default ctor.
