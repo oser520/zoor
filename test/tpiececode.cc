@@ -15,6 +15,8 @@ using zoor::PieceCode;
 using zoor::PieceColor;
 using zoor::PieceValue;
 using zoor::PieceMask;
+using zoor::getPieceCode;
+using zoor::getPieceColor;
 using zoor::piececode_t;
 using zoor::piecevalue_t;
 
