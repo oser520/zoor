@@ -74,6 +74,7 @@ PieceColor Square::color() const noexcept
   return mColor;
 }
 
+// TODO: replace & operator with | operator
 piececode_t Square::code() const noexcept
 {
   return mColor & mPiece;

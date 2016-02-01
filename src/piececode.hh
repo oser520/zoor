@@ -139,6 +139,7 @@ std::ostream& operator<<(std::ostream &os, const PieceMask &mask);
  * @param piece The @c PieceCode.
  * @return The bit pattern of ANDing the color and piece.
  * @throw Never throws.
+ * TODO: make this operator|
  */
 piececode_t operator&(const PieceColor &color, const PieceCode &piece) noexcept;
 

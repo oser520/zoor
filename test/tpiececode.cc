@@ -4,6 +4,8 @@
  * @date 2016-01-09
  */
 
+// TODO: replace & operator with | operator
+
 #include <sstream>
 #include "piececode.hh"
 #include "gtest/gtest.h"

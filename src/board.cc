@@ -74,6 +74,7 @@ bool Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
 }
 
 // Return a list of all the pawn moves.
+// TODO: replace operator & with operator |
 vector<PieceMove> Board::movePawn(dim_type row, dim_type column) const noexcept
 {
   assert(mColorMove != PieceColor::NONE);
