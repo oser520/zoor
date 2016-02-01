@@ -80,22 +80,18 @@ TEST(SquareTest, SettersWork)
   EXPECT_NE(5, s.column());
 }
 
-TEST_F(SquareTest, BoolsWork) {
-  s00.setPiece(PieceCode::KNIGHT)
-     .setColor(PieceColor::BLACK)
-     .setRow(5)
-     .setColumn(7);
-  s11.setPiece(PieceCode::KNIGHT)
-     .setColor(PieceColor::BLACK)
-     .setRow(5)
-     .setColumn(7);
+TEST(SquareTest, BoolsWork) {
+  Square s1(5, 7, PieceCode::KNIGHT, PieceColor::BLACK);
+  Square s2(5, 7, PieceCode::KNIGHT, PieceColor::BLACK);
+
   EXPECT_TRUE(s00 == s11);
   EXPECT_FALSE(s00 != s11);
 
-  s11.setPiece(PieceCode::KNIGHT)
-     .setColor(PieceColor::WHITE)
-     .setRow(5)
-     .setColumn(7);
+  s.setPiece(PieceCode::KNIGHT)
+   .setColor(PieceColor::WHITE)
+   .setRow(5)
+   .setColumn(7);
+
   EXPECT_FALSE(s00 == s11);
   EXPECT_TRUE(s00 != s11);
 }
