@@ -65,7 +65,10 @@ TEST(SquareTest, Ctor3Param)
   EXPECT_EQ(PieceColor::WHITE, s.color());
 }
 
-TEST(SquareTest, GettersWork)
+/**
+ * Test getters.
+ */
+TEST(SquareTest, Getters)
 {
   Square s;
   s.setPiece(PieceCode::KING).setColor(PieceColor::WHITE).setRow(5).setColumn(7);
@@ -73,6 +76,7 @@ TEST(SquareTest, GettersWork)
   EXPECT_EQ(PieceColor::WHITE, s.color());
   EXPECT_EQ(5, s.row());
   EXPECT_EQ(7, s.column());
+  EXPECT_EQ(PieceColor::WHITE & PieceCode::KING, s.code());
 
   EXPECT_NE(PieceCode::BISHOP, s.piece());
   EXPECT_NE(PieceColor::BLACK, s.color());
