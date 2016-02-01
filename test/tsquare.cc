@@ -17,51 +17,33 @@ using zoor::Square;
 using zoor::PieceCode;
 using zoor::PieceColor;
 
-TEST(SquareTest, Ctor)
+TEST(SquareTest, DefaultCtor)
 {
-  Square s00;
-  EXPECT_EQ(0, s00.row());
-  EXPECT_EQ(0, s00.column());
-  EXPECT_NE(2, s00.row());
-  EXPECT_NE(2, s00.column());
-
-  s00.setRow(1).setColumn(3);
-  EXPECT_EQ(1, s00.row());
-  EXPECT_EQ(3, s00.column());
-  EXPECT_NE(3, s00.row());
-  EXPECT_NE(1, s00.column());
-
-  s00.setRow(7).setColumn(6);
-  EXPECT_EQ(7, s00.row());
-  EXPECT_EQ(6, s00.column());
-  EXPECT_NE(8, s00.row());
-  EXPECT_NE(5, s00.column());
-
-  EXPECT_EQ(5, s00.setRow(5).row());
-  EXPECT_EQ(5, s00.setColumn(5).column());
-  EXPECT_NE(1, s00.row());
-  EXPECT_NE(3, s00.column());
+  Square s;
+  EXPECT_EQ(0, s.row());
+  EXPECT_EQ(0, s.column());
+  EXPECT_EQ(PieceCode::NONE, s.piece());
+  EXPECT_EQ(PieceColor::NONE, s.color());
 }
 
-TEST_F(SquareTest, EqualityOpWork)
+TEST(SquareTest, EqualityOpWork)
 {
-  s00.setPiece(PieceCode::NONE).setColor(PieceColor::NONE).setRow(0).setColumn(0);
-  s11.setPiece(PieceCode::NONE).setColor(PieceColor::NONE).setRow(0).setColumn(0);
-  EXPECT_EQ(s11, s00);
+  Square s1, s2;
+  EXPECT_EQ(s1, s2);
 
-  s00.setPiece(PieceCode::KNIGHT);
-  EXPECT_NE(s11, s00);
+  s1.setPiece(PieceCode::KNIGHT);
+  EXPECT_NE(s1, s2);
 
-  s00.setPiece(PieceCode::NONE);
-  s11.setColor(PieceColor::WHITE);
-  EXPECT_NE(s11, s00);
+  s1.setPiece(PieceCode::NONE);
+  s2.setColor(PieceColor::WHITE);
+  EXPECT_NE(s1, s2);
 
-  s00.setPiece(PieceCode::ROOK).setColor(PieceColor::BLACK).setRow(5);
-  s11.setPiece(PieceCode::ROOK).setColor(PieceColor::BLACK).setRow(3);
-  EXPECT_NE(s11, s00);
+  s1.setPiece(PieceCode::ROOK).setColor(PieceColor::BLACK).setRow(5);
+  s2.setPiece(PieceCode::ROOK).setColor(PieceColor::BLACK).setRow(3);
+  EXPECT_NE(s1, s2);
 
-  s11.setRow(5);
-  EXPECT_EQ(s11, s00);
+  s2.setRow(5);
+  EXPECT_EQ(s1, s2);
 }
 
 TEST_F(SquareTest, GettersWork)
