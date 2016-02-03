@@ -40,8 +40,8 @@ enum class PieceCode: piececode_t
 enum class PieceColor: piececode_t
 {
   NONE,
-  WHITE = 1 << 4,
-  BLACK = 1 << 5
+  WHITE = 1 << 3,
+  BLACK = 1 << 4
 };
 
 /**
