@@ -82,10 +82,9 @@ std::ostream& operator<<(std::ostream &os, const PieceMask &mask)
   return os;
 }
 
-// TODO: make this operator|
-piececode_t operator&(const PieceColor &color, const PieceCode &piece) noexcept
+piececode_t operator|(const PieceColor &color, const PieceCode &piece) noexcept
 {
-  return static_cast<piececode_t>(color) & static_cast<piececode_t>(piece);
+  return static_cast<piececode_t>(color) | static_cast<piececode_t>(piece);
 }
 
 PieceColor operator~(const PieceColor &color) noexcept
