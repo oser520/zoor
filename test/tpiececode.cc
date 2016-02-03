@@ -4,8 +4,6 @@
  * @date 2016-01-09
  */
 
-// TODO: replace & operator with | operator
-
 #include <sstream>
 #include "piececode.hh"
 #include "gtest/gtest.h"
@@ -101,15 +99,15 @@ TEST(PieceAndColor, LogicOpAnd)
 {
   piececode_t pcolor = static_cast<piececode_t>(PieceColor::NONE);
   piececode_t pcode = static_cast<piececode_t>(PieceCode::PAWN);
-  EXPECT_EQ(pcolor & pcode, PieceColor::NONE & PieceCode::PAWN);
+  EXPECT_EQ(pcolor | pcode, PieceColor::NONE | PieceCode::PAWN);
 
   pcolor = static_cast<piececode_t>(PieceColor::WHITE);
   pcode = static_cast<piececode_t>(PieceCode::ROOK);
-  EXPECT_EQ(pcolor & pcode, PieceColor::WHITE & PieceCode::ROOK);
+  EXPECT_EQ(pcolor | pcode, PieceColor::WHITE | PieceCode::ROOK);
 
   pcolor = static_cast<piececode_t>(PieceColor::BLACK);
   pcode = static_cast<piececode_t>(PieceCode::BISHOP);
-  EXPECT_EQ(pcolor & pcode, PieceColor::BLACK & PieceCode::BISHOP);
+  EXPECT_EQ(pcolor | pcode, PieceColor::BLACK | PieceCode::BISHOP);
 }
 
 /**
@@ -127,11 +125,11 @@ TEST(PieceColorNot, LogicOpNot)
  */
 TEST(PieceCodeFunc, GetCodeFunc)
 {
-  auto code = PieceColor::WHITE & PieceCode::ROOK;
+  auto code = PieceColor::WHITE | PieceCode::ROOK;
   EXPECT_EQ(PieceColor::WHITE, getPieceColor(code));
   EXPECT_EQ(PieceCode::ROOK, getPieceCode(code));
 
-  code = PieceColor::BLACK & PieceCode::BISHOP;
+  code = PieceColor::BLACK | PieceCode::BISHOP;
   EXPECT_EQ(PieceColor::BLACK, getPieceColor(code));
   EXPECT_EQ(PieceCode::BISHOP, getPieceCode(code));
 }
