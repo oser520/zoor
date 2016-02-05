@@ -113,7 +113,7 @@ private:
    * @return A vector of all the legal moves from the current position. An empty
    *  vector if there are no moves from the given position.
    */
-  vector<PieceMoves> getMoves(dim_type row, dim_type col) const noexcept;
+  std::vector<PieceMoves> getMoves(dim_type row, dim_type col) const noexcept;
 
   /**
    * @brief Make a move and return a new board.
@@ -156,7 +156,7 @@ private:
    * @return A vector of moves.
    * @throw Never throws.
    */
-  vector<PieceMove> movePawn(dim_type row, dim_type column) const noexcept;
+  std::vector<PieceMove> movePawn(dim_type row, dim_type column) const noexcept;
 
   /**
    * @brief Move the knight at the given row and column.
@@ -165,7 +165,7 @@ private:
    * @return A vector of squares where the knight can move.
    * @throw Never throws.
    */
-  vector<PieceMoves> moveKnight(dim_type row, dim_type column) const noexcept;
+  std::vector<PieceMoves> moveKnight(dim_type row, dim_type column) const noexcept;
 
   /**
    * @brief Move the bishop at the given row and column.
@@ -174,7 +174,7 @@ private:
    * @return A vector of squares where the bishop can move.
    * @throw Never throws.
    */
-  vector<PieceMoves> moveBishop(dim_type row, dim_type column) const noexcept;
+  std::vector<PieceMoves> moveBishop(dim_type row, dim_type column) const noexcept;
 
   /**
    * @brief Move the rook at the given row and column.
@@ -183,7 +183,7 @@ private:
    * @return A vector of squares where the rook can move.
    * @throw Never throws.
    */
-  vector<PieceMoves> moveRook(dim_type row, dim_type column) const noexcept;
+  std::vector<PieceMoves> moveRook(dim_type row, dim_type column) const noexcept;
 
   /**
    * @brief Move the queen at the given row and column.
@@ -192,7 +192,7 @@ private:
    * @return A vector of squares where the queen can move.
    * @throw Never throws.
    */
-  vector<PieceMoves> moveQueen(dim_type row, dim_type column) const noexcept;
+  std::vector<PieceMoves> moveQueen(dim_type row, dim_type column) const noexcept;
 
   /**
    * @brief Move the king at the given row and column.
@@ -201,7 +201,7 @@ private:
    * @return A vector of squares where the king can move.
    * @throw Never throws.
    */
-  vector<PieceMoves> moveKing(dim_type row, dim_type column) const noexcept;
+  std::vector<PieceMoves> moveKing(dim_type row, dim_type column) const noexcept;
 
   /**
    * @brief Get the bit pattern at a specific row and column in the @c Board.
@@ -260,7 +260,7 @@ public:
    *  there are no pieces on the board.
    * @return A vector of all the legal moves from the current position.
    */
-  vector<Board> getBoardsFromMoves() const noexcept;
+  std::vector<Board> getBoardsFromMoves() const noexcept;
 
   /**
    * @brief Make a move and return a new board.
