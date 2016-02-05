@@ -65,12 +65,12 @@ bool Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
 
   auto toCode = get(toRow, toColumn);
   return getPieceCode(toCode) == PieceCode::PAWN
-         && getPieceColor(toCode) != mColorMove
-         && mLastMove.piece() == PieceCode::PAWN
-         && mLastMove.fromRow() == fromRow
-         && mLastMove.fromColumn() == toColumn
-         && mLastMove.toRow() == toRow
-         && mLastMove.toColumn() = toColumn;
+      && getPieceColor(toCode) != mColorMove
+      && mLastMove.piece() == PieceCode::PAWN
+      && mLastMove.fromRow() == fromRow
+      && mLastMove.fromColumn() == toColumn
+      && mLastMove.toRow() == toRow
+      && mLastMove.toColumn() = toColumn;
 }
 
 // Return a list of all the pawn moves.
