@@ -31,6 +31,12 @@ const std:array<row_type, BOARD_DIM>& Board::rows() const noexcept
   return mRows;
 }
 
+std:array<row_type, BOARD_DIM> Board::rowsCopy() const
+{
+  auto rc(mRows);
+  return rc;
+}
+
 /**
  * TODO: implement getMoves function
  */
