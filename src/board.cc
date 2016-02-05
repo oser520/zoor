@@ -217,7 +217,8 @@ std::vector<PieceMove> Board::movePawn(dim_type row, dim_type column) const noex
 /**
  * TODO: implement moveKnight
  */
-std::vector<PieceMoves> Board::moveKnight(dim_type row, dim_type column) const noexcept
+std::vector<PieceMoves>
+Board::moveKnight(dim_type row, dim_type column) const noexcept
 {
   return std::vector<PieceMoves>();
 }
@@ -225,7 +226,8 @@ std::vector<PieceMoves> Board::moveKnight(dim_type row, dim_type column) const n
 /**
  * TODO: implement moveBishop
  */
-std::vector<PieceMoves> Board::moveBishop(dim_type row, dim_type column) const noexcept
+std::vector<PieceMoves>
+Board::moveBishop(dim_type row, dim_type column) const noexcept
 {
   return std::vector<PieceMoves>();
 }
@@ -241,7 +243,8 @@ std::vector<PieceMoves> Board::moveRook(dim_type row, dim_type column) const noe
 /**
  * TODO: implement moveQueen
  */
-std::vector<PieceMoves> Board::moveQueen(dim_type row, dim_type column) const noexcept
+std::vector<PieceMoves>
+Board::moveQueen(dim_type row, dim_type column) const noexcept
 {
   return std::vector<PieceMoves>();
 }
