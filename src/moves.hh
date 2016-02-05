@@ -45,7 +45,7 @@ moveKnight(dim_type row, dim_type column, const Board &board) noexcept;
  * @throw Never throws.
  */
 std::vector<PieceMove>
-moveBishop(dim_type row, dim_type column, const Board &board) const noexcept;
+moveBishop(dim_type row, dim_type column, const Board &board) noexcept;
 
 /**
  * @brief Move the rook at the given row and column.
@@ -56,7 +56,7 @@ moveBishop(dim_type row, dim_type column, const Board &board) const noexcept;
  * @throw Never throws.
  */
 std::vector<PieceMove>
-moveRook(dim_type row, dim_type column, const Board &board) const noexcept;
+moveRook(dim_type row, dim_type column, const Board &board) noexcept;
 
 /**
  * @brief Move the queen at the given row and column.
