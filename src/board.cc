@@ -21,6 +21,8 @@
 
 namespace zoor {
 
+using dim_type = Board::dim_type;
+
 /**
  * TODO: determine how to initialize default board.
  */
