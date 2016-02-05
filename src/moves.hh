@@ -8,7 +8,6 @@
 #include <vector>
 
 // zoor headers
-#include "piececode.hh"
 #include "piecemoves.hh"
 #include "board.hh"
 
