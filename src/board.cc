@@ -308,8 +308,7 @@ pair<Square, Square> Board::lastMove() const noexcept
 Square Board::operator()(dim_type row, dim_type column) const noexcept
 {
   assert(row < BOARD_DIM && column < BOARD_DIM);
-  auto code = get(row, column);
-  return Square(row, column, getPieceCode(code), getPieceColor(code));
+  return Square(row, get(column, code));
 }
 
 iterator Board::begin() const noexcept
