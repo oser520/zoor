@@ -25,6 +25,11 @@ namespace zoor {
  */
 Board::Board() {}
 
+const std:array<row_type, BOARD_DIM>& Board::rows() const noexcept
+{
+  return mRows;
+}
+
 /**
  * TODO: implement getMoves function
  */
