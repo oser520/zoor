@@ -22,7 +22,7 @@ namespace zoor {
  * @return A vector of moves.
  * @throw Never throws.
  */
-vector<PieceMove>
+std::vector<PieceMove>
 movePawn(dim_type row, dim_type column, const Board &board) noexcept;
 
 /**
@@ -33,7 +33,7 @@ movePawn(dim_type row, dim_type column, const Board &board) noexcept;
  * @return A vector of squares where the knight can move.
  * @throw Never throws.
  */
-vector<PieceMove>
+std::vector<PieceMove>
 moveKnight(dim_type row, dim_type column, const Board &board) noexcept;
 
 /**
@@ -44,7 +44,7 @@ moveKnight(dim_type row, dim_type column, const Board &board) noexcept;
  * @return A vector of squares where the bishop can move.
  * @throw Never throws.
  */
-vector<PieceMove>
+std::vector<PieceMove>
 moveBishop(dim_type row, dim_type column, const Board &board) const noexcept;
 
 /**
@@ -55,7 +55,7 @@ moveBishop(dim_type row, dim_type column, const Board &board) const noexcept;
  * @return A vector of squares where the rook can move.
  * @throw Never throws.
  */
-vector<PieceMove>
+std::vector<PieceMove>
 moveRook(dim_type row, dim_type column, const Board &board) const noexcept;
 
 } // namespace zoor
