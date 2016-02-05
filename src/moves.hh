@@ -58,4 +58,15 @@ moveBishop(dim_type row, dim_type column, const Board &board) const noexcept;
 std::vector<PieceMove>
 moveRook(dim_type row, dim_type column, const Board &board) const noexcept;
 
+/**
+ * @brief Move the queen at the given row and column.
+ * @param row The row where the queen is located.
+ * @param column The column where the queen is located.
+ * @param board The board where the pawn will move.
+ * @return A vector of squares where the queen can move.
+ * @throw Never throws.
+ */
+vector<PieceMove>
+moveQueen(dim_type row, dim_type column, const Board &board) noexcept;
+
 } // namespace zoor
