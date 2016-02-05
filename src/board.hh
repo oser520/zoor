@@ -94,6 +94,13 @@ private:
    */
   PieceMove mLastMove;
 
+  /**
+   * @brief Return a reference to the rows of the board.
+   * @return A constant reference to the rows of the board.
+   * @throw Never throws.
+   */
+  const std:array<row_type, BOARD_DIM>& rows() const noexcept;
+
   /* @brief Return a vector of all the legal moves from the given position.
    * @param row The row in the board.
    * @param col The column in the board.
