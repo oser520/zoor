@@ -28,9 +28,9 @@ Board::Board() {}
 /**
  * TODO: implement getMoves function
  */
-vector<PieceMoves> Board::getMoves() const noexcept
+std::vector<PieceMoves> Board::getMoves() const noexcept
 {
-  return vector<PieceMoves>();
+  return std::vector<PieceMoves>();
 }
 
 /**
@@ -74,11 +74,11 @@ bool Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
 }
 
 // Return a list of all the pawn moves.
-vector<PieceMove> Board::movePawn(dim_type row, dim_type column) const noexcept
+std::vector<PieceMove> Board::movePawn(dim_type row, dim_type column) const noexcept
 {
   assert(mColorMove != PieceColor::NONE);
 
-  vector<PieceMove> moveList;
+  std::vector<PieceMove> moveList;
   auto fromCode = mColorMove | PieceCode::PAWN;
 
   dim_type cmpRow;
@@ -217,49 +217,49 @@ vector<PieceMove> Board::movePawn(dim_type row, dim_type column) const noexcept
 /**
  * TODO: implement moveKnight
  */
-vector<PieceMoves> Board::moveKnight(dim_type row, dim_type column) const noexcept
+std::vector<PieceMoves> Board::moveKnight(dim_type row, dim_type column) const noexcept
 {
-  return vector<PieceMoves>();
+  return std::vector<PieceMoves>();
 }
 
 /**
  * TODO: implement moveBishop
  */
-vector<PieceMoves> Board::moveBishop(dim_type row, dim_type column) const noexcept
+std::vector<PieceMoves> Board::moveBishop(dim_type row, dim_type column) const noexcept
 {
-  return vector<PieceMoves>();
+  return std::vector<PieceMoves>();
 }
 
 /**
  * TODO: implement moveRook
  */
-vector<PieceMoves> Board::moveRook(dim_type row, dim_type column) const noexcept
+std::vector<PieceMoves> Board::moveRook(dim_type row, dim_type column) const noexcept
 {
-  return vector<PieceMoves>();
+  return std::vector<PieceMoves>();
 }
 
 /**
  * TODO: implement moveQueen
  */
-vector<PieceMoves> Board::moveQueen(dim_type row, dim_type column) const noexcept
+std::vector<PieceMoves> Board::moveQueen(dim_type row, dim_type column) const noexcept
 {
-  return vector<PieceMoves>();
+  return std::vector<PieceMoves>();
 }
 
 /**
  * TODO: implement moveKing
  */
-vector<PieceMoves> Board::moveKing(dim_type row, dim_type column) const noexcept
+std::vector<PieceMoves> Board::moveKing(dim_type row, dim_type column) const noexcept
 {
-  return vector<PieceMoves>();
+  return std::vector<PieceMoves>();
 }
 
 /**
  * TODO: implement getBoardsFromMoves function
  */
-vector<Board> Board::getBoardsFromMoves() const noexcept
+std::vector<Board> Board::getBoardsFromMoves() const noexcept
 {
-  return vector<Board>();
+  return std::vector<Board>();
 }
 
 /**
