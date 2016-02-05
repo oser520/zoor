@@ -66,7 +66,7 @@ moveRook(dim_type row, dim_type column, const Board &board) const noexcept;
  * @return A vector of squares where the queen can move.
  * @throw Never throws.
  */
-vector<PieceMove>
+std::vector<PieceMove>
 moveQueen(dim_type row, dim_type column, const Board &board) noexcept;
 
 /**
