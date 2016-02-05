@@ -35,4 +35,16 @@ movePawn(dim_type row, dim_type column, const Board &board) noexcept;
  */
 vector<PieceMove>
 moveKnight(dim_type row, dim_type column, const Board &board) noexcept;
+
+/**
+ * @brief Move the bishop at the given row and column.
+ * @param row The row where the bishop is located.
+ * @param column The column where the bishop is located.
+ * @param board The board where the pawn will move.
+ * @return A vector of squares where the bishop can move.
+ * @throw Never throws.
+ */
+vector<PieceMove>
+moveBishop(dim_type row, dim_type column, const Board &board) const noexcept;
+
 } // namespace zoor
