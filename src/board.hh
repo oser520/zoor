@@ -101,6 +101,12 @@ private:
    */
   const std:array<row_type, BOARD_DIM>& rows() const noexcept;
 
+  /**
+   * @brief Return a copy of the rows of the board.
+   * @return A copy of the rows of the board.
+   */
+  std:array<row_type, BOARD_DIM> rowsCopy() const;
+
   /* @brief Return a vector of all the legal moves from the given position.
    * @param row The row in the board.
    * @param col The column in the board.
