@@ -24,4 +24,15 @@ namespace zoor {
  */
 vector<PieceMove>
 movePawn(dim_type row, dim_type column, const Board &board) noexcept;
+
+/**
+ * @brief Move the knight at the given row and column.
+ * @param row The row where the knight is located.
+ * @param column The column where the knight is located.
+ * @param board The board where the pawn will move.
+ * @return A vector of squares where the knight can move.
+ * @throw Never throws.
+ */
+vector<PieceMove>
+moveKnight(dim_type row, dim_type column, const Board &board) noexcept;
 } // namespace zoor
