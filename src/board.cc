@@ -97,10 +97,10 @@ std::vector<PieceMove>
 Board::movePawn(dim_type row, dim_type column) const noexcept
 {
   assert(mColorMove != PieceColor::NONE);
+  auto fromCode = get(row, column);
+  assert(getPieceCode(fromCode) == PieceCode::PAWN);
 
   std::vector<PieceMove> moveList;
-  auto fromCode = mColorMove | PieceCode::PAWN;
-
   dim_type cmpRow;
   std::function<bool(dim_type, dim_type)> cmpFunc;
   std::function<dim_type(dim_type, dim_type)> rowOp;
