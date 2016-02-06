@@ -258,7 +258,32 @@ Board::moveBishop(dim_type row, dim_type column) const noexcept
 std::vector<PieceMove>
 Board::moveRook(dim_type row, dim_type column) const noexcept
 {
-  return std::vector<PieceMove>();
+  assert(mColorMove != PieceColor::NONE);
+  auto fromCode = get(row, column);
+  assert(getPieceCode(fromCode) == PieceCode::ROOK);
+  std::vector<PieceMove> moveList;
+
+  // check all moves up
+  for (auto col = column+1; col < BOARD_DIM; ++col) {
+    auto toCode = get(row, col);
+    if (getPieceColor(toCode) == mColorMove)
+      break;
+    else if (getPieceCode(toCode) == PieceCode::NONE) {
+      moveList.emplace_back(row, column, fromCode);
+      moveList.back().setDestination(row, col);
+    } else {
+      moveList.emplace_back(row, column, fromCode);
+      moveList.back().setCapture(row, col, toCode);
+      moveList.back().setDestination(row, col);
+      break;
+    }
+  }
+
+  // check all moves down
+  // check all moves right
+  // check all moves left
+
+  return moveList;
 }
 
 /**
