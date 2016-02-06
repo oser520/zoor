@@ -52,7 +52,8 @@ std::vector<PieceMove> Board::getMoves() const noexcept
 /**
  * TODO: implement moveCopy
  */
-Board Board::moveCopy(const Square &square1, const Square &square2) const noexcept
+Board
+Board::moveCopy(const Square &square1, const Square &square2) const noexcept
 {
   return Board();
 }
@@ -60,12 +61,14 @@ Board Board::moveCopy(const Square &square1, const Square &square2) const noexce
 /**
  * TODO: implement moveRef
  */
-Board& Board::moveRef(const Square &square1, const Square &square2) noexcept
+Board&
+Board::moveRef(const Square &square1, const Square &square2) noexcept
 {
   return *this;
 }
 
-bool Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
+bool
+Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
 {
   if (color == PieceColor::NONE)
     return false;
@@ -90,7 +93,8 @@ bool Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
 }
 
 // Return a list of all the pawn moves.
-std::vector<PieceMove> Board::movePawn(dim_type row, dim_type column) const noexcept
+std::vector<PieceMove>
+Board::movePawn(dim_type row, dim_type column) const noexcept
 {
   assert(mColorMove != PieceColor::NONE);
 
@@ -251,7 +255,8 @@ Board::moveBishop(dim_type row, dim_type column) const noexcept
 /**
  * TODO: implement moveRook
  */
-std::vector<PieceMove> Board::moveRook(dim_type row, dim_type column) const noexcept
+std::vector<PieceMove>
+Board::moveRook(dim_type row, dim_type column) const noexcept
 {
   return std::vector<PieceMove>();
 }
@@ -268,7 +273,8 @@ Board::moveQueen(dim_type row, dim_type column) const noexcept
 /**
  * TODO: implement moveKing
  */
-std::vector<PieceMove> Board::moveKing(dim_type row, dim_type column) const noexcept
+std::vector<PieceMove>
+Board::moveKing(dim_type row, dim_type column) const noexcept
 {
   return std::vector<PieceMove>();
 }
@@ -276,7 +282,8 @@ std::vector<PieceMove> Board::moveKing(dim_type row, dim_type column) const noex
 /**
  * TODO: implement getBoardsFromMoves function
  */
-std::vector<Board> Board::getBoardsFromMoves() const noexcept
+std::vector<Board>
+Board::getBoardsFromMoves() const noexcept
 {
   return std::vector<Board>();
 }
@@ -293,7 +300,8 @@ Board::makeMoveCopy(const Square &square1, const Square &square2) const noexcept
 /**
  * TODO: implement makeMove function
  */
-Board& Board::makeMove(const Square &square1, const Square &square2) noexcept
+Board&
+Board::makeMove(const Square &square1, const Square &square2) noexcept
 {
   return *this;
 }
@@ -391,7 +399,8 @@ BoardIterator BoardIterator::operator++(int)
   return bi;
 }
 
-BoardIterator& BoardIterator::operator+=(BoardIterator::difference_type value)
+BoardIterator&
+BoardIterator::operator+=(BoardIterator::difference_type value)
 {
   mIndex += value;
   if (mIndex < static_cast<difference_type>(0)
@@ -401,7 +410,8 @@ BoardIterator& BoardIterator::operator+=(BoardIterator::difference_type value)
   return *this;
 }
 
-BoardIterator& BoardIterator::operator-=(BoardIterator::difference_type value)
+BoardIterator&
+BoardIterator::operator-=(BoardIterator::difference_type value)
 {
   mIndex -= value;
   if (mIndex < static_cast<difference_type>(0)
@@ -422,12 +432,14 @@ BoardIterator::value_type BoardIterator::operator*() const
   return Square(row, col, getPieceCode(pcode), getPieceColor(pcode));
 }
 
-bool operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept
+bool
+operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept
 {
   return bi1.mBoardPtr == bi2.mBoardPtr && bi1.mIndex == bi2.mIndex;
 }
 
-bool operator!=(const BoardIterator &bi1, const BoardIterator &bi2) noexcept
+bool
+operator!=(const BoardIterator &bi1, const BoardIterator &bi2) noexcept
 {
   return !(bi1 == bi2);
 }
