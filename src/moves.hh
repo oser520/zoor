@@ -13,6 +13,8 @@
 
 namespace zoor {
 
+using dim_type = Board::dim_type;
+
 /**
  * @brief Move the pawn at the given row and column.
  * @param row The row where the pawn is located.
