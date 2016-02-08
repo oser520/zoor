@@ -280,6 +280,21 @@ Board::moveRook(dim_type row, dim_type column) const noexcept
   }
 
   // check all moves down
+  for (auto col = column-1; col >= 0; --col) {
+    auto toCode = get(row, col);
+    auto toColor = getPieceColor(toCode);
+    if (toColor == mColorMove)
+      break;
+    else if (toColor == PieceColor::NONE) {
+      moveList.emplace_back(row, column, fromCode);
+      moveList.back().setDestination(row, col);
+    } else {
+      moveList.emplace_back(row, column, fromCode);
+      moveList.back().setCapture(row, col, toCode);
+      moveList.back().setDestination(row, col);
+      break;
+    }
+  }
   // check all moves right
   // check all moves left
 
