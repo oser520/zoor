@@ -280,6 +280,7 @@ Board::moveRook(dim_type row, dim_type column) const noexcept
     }
   }
 
+  // TODO: need to make dim_type a signed type so that it can go below zero
   // check all moves down
   for (auto col = column-1; col >= 0; --col) {
     auto toCode = get(row, col);
@@ -296,6 +297,7 @@ Board::moveRook(dim_type row, dim_type column) const noexcept
       break;
     }
   }
+
   // check all moves right
   // check all moves left
 
