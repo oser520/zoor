@@ -266,9 +266,10 @@ Board::moveRook(dim_type row, dim_type column) const noexcept
   // check all moves up
   for (auto col = column+1; col < BOARD_DIM; ++col) {
     auto toCode = get(row, col);
-    if (getPieceColor(toCode) == mColorMove)
+    auto toColor = getPieceColor(toCode);
+    if (toColor == mColorMove)
       break;
-    else if (getPieceCode(toCode) == PieceCode::NONE) {
+    else if (toColor == PieceColor::NONE) {
       moveList.emplace_back(row, column, fromCode);
       moveList.back().setDestination(row, col);
     } else {
