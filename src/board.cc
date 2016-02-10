@@ -281,7 +281,7 @@ Board::moveRook(dim_type row, dim_type column) const noexcept
   }
 
   // TODO: need to make dim_type a signed type so that it can go below zero
-  // check all moves down
+  // check all moves left
   for (auto col = column-1; col >= 0; --col) {
     auto toCode = get(row, col);
     auto toColor = getPieceColor(toCode);
