@@ -298,8 +298,8 @@ Board::moveRook(dim_type row, dim_type column) const noexcept
     }
   }
 
-  // check all moves right
-  for (auto toRow = row+1; toRow >= 0; ++toRow) {
+  // check all moves up
+  for (auto toRow = row+1; toRow < BOARD_DIM; ++toRow) {
     auto toCode = get(toRow, column);
     auto toColor = getPieceColor(toCode);
     if (toColor == mColorMove)
