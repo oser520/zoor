@@ -263,7 +263,7 @@ Board::moveRook(dim_type row, dim_type column) const noexcept
   assert(getPieceCode(fromCode) == PieceCode::ROOK);
   std::vector<PieceMove> moveList;
 
-  // check all moves up
+  // check all moves right
   for (auto col = column+1; col < BOARD_DIM; ++col) {
     auto toCode = get(row, col);
     auto toColor = getPieceColor(toCode);
