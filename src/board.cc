@@ -264,36 +264,36 @@ Board::moveRook(dim_type row, dim_type column) const noexcept
   std::vector<PieceMove> moveList;
 
   // check all moves right
-  for (auto col = column+1; col < BOARD_DIM; ++col) {
-    auto toCode = get(row, col);
+  for (auto toCol = column+1; toCol < BOARD_DIM; ++toCol) {
+    auto toCode = get(row, toCol);
     auto toColor = getPieceColor(toCode);
     if (toColor == mColorMove)
       break;
     else if (toColor == PieceColor::NONE) {
       moveList.emplace_back(row, column, fromCode);
-      moveList.back().setDestination(row, col);
+      moveList.back().setDestination(row, toCol);
     } else {
       moveList.emplace_back(row, column, fromCode);
-      moveList.back().setCapture(row, col, toCode);
-      moveList.back().setDestination(row, col);
+      moveList.back().setCapture(row, toCol, toCode);
+      moveList.back().setDestination(row, toCol);
       break;
     }
   }
 
   // TODO: need to make dim_type a signed type so that it can go below zero
   // check all moves left
-  for (auto col = column-1; col >= 0; --col) {
-    auto toCode = get(row, col);
+  for (auto toCol = column-1; toCol >= 0; --toCol) {
+    auto toCode = get(row, toCol);
     auto toColor = getPieceColor(toCode);
     if (toColor == mColorMove)
       break;
     else if (toColor == PieceColor::NONE) {
       moveList.emplace_back(row, column, fromCode);
-      moveList.back().setDestination(row, col);
+      moveList.back().setDestination(row, toCol);
     } else {
       moveList.emplace_back(row, column, fromCode);
-      moveList.back().setCapture(row, col, toCode);
-      moveList.back().setDestination(row, col);
+      moveList.back().setCapture(row, toCol, toCode);
+      moveList.back().setDestination(row, toCol);
       break;
     }
   }
