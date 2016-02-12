@@ -56,6 +56,22 @@ public:
   PieceMove(dim_type row, dim_type column, piececode_t code) noexcept;
 
   /**
+   * @brief Constructor with info for piece that is moving, and where it is moving.
+   * @param fromRow The row from where the piece is moving.
+   * @param fromColumn The column from where the piece is moving.
+   * @param code The bit pattern containing the piece and color info.
+   * @param toRow The row where the piece is moving.
+   * @param toColumn The column where the piece is moving.
+   * @throw Never throws.
+   */
+  PieceMove
+    (dim_type fromRow,
+     dim_type fromColumn,
+     piececode_t code,
+     dim_type toRow,
+     dim_type toColumn) noexcept;
+
+  /**
    * @brief Default constructor.
    * @throw Never throws.
    */
