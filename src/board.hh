@@ -342,7 +342,7 @@ public:
    * @return A copy of the last move.
    * @throw Never throws.
    */
-  pair<Square, Square> lastMove() const noexcept;
+  PieceMove lastMove() const noexcept;
 
   /**
    * @brief Get the contents of a @c Square at a given row and column.

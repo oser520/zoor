@@ -672,11 +672,12 @@ PieceCount Board::blackCount() const noexcept
   return mBlackCount;
 }
 
-pair<Square, Square> Board::lastMove() const noexcept
+PieceMove Board::lastMove() const noexcept
 {
   return mLastMove;
 }
 
+// get a square from a board
 Square Board::operator()(dim_type row, dim_type column) const noexcept
 {
   assert(row >= 0 && row < BOARD_DIM);
