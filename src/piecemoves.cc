@@ -147,7 +147,7 @@ PieceMove& PieceMove::setPromotion
   return *this;
 }
 
-PieceMove&PieceMove::setPromotion
+PieceMove& PieceMove::setPromotion
   (dim_type row,
    dim_type column,
    piececode_t code) noexcept
