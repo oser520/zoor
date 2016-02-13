@@ -662,16 +662,19 @@ Board& Board::undo() noexcept
   return *this;
 }
 
+// the count for white pieces
 PieceCount Board::whiteCount() const noexcept
 {
   return mWhiteCount;
 }
 
+// the count for black pieces
 PieceCount Board::blackCount() const noexcept
 {
   return mBlackCount;
 }
 
+// get the last move
 PieceMove Board::lastMove() const noexcept
 {
   return mLastMove;
