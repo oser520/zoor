@@ -233,6 +233,19 @@ public:
      PieceColor color) noexcept;
 
   /**
+   * @brief Sets the information for the promoted piece.
+   * @param row The row location of the promoted piece.
+   * @param column The column location of the promoted piece.
+   * @param code The piece obtained from the promotion.
+   * @return A reference to this @c PieceMove.
+   * @throw Never throws.
+   */
+  PieceMove& setPromotion
+    (dim_type row,
+     dim_type column,
+     piececode_t code) noexcept;
+
+  /**
    * @brief Sets the color and piece for the promoted piece.
    * @param piece The piece obtained from the promotion.
    * @param color The color of the promoted piece.
