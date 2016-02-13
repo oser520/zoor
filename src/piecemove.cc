@@ -8,7 +8,7 @@
 #include <utility>
 #include <cassert>
 
-#include "piecemoves.hh"
+#include "piecemove.hh"
 #include "piececode.hh"
 #include "square.hh"
 

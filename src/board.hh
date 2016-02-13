@@ -20,7 +20,7 @@
 #include "piececode.hh"
 #include "piececount.hh"
 #include "square.hh"
-#include "piecemoves.hh"
+#include "piecemove.hh"
 
 namespace zoor {
 
