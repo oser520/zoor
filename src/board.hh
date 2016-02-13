@@ -184,6 +184,16 @@ private:
   std::vector<PieceMove> moveQueen(dim_type row, dim_type column) const noexcept;
 
   /**
+   * @brief Get jump positions for a king at a given row and column.
+   * @param row The row where the king is located.
+   * @param column The column where the king is located.
+   * @return A vector of squares in the board.
+   * @throw Never throws.
+   */
+  std::vector<std::pair<dim_type, dim_type>>
+  jumpKing(dim_type row, dim_type column) const noexcept;
+
+  /**
    * @brief Move the king at the given row and column.
    * @param row The row where the king is located.
    * @param column The column where the king is located.
