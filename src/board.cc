@@ -253,12 +253,29 @@ Board::jumpKnight(dim_type row, dim_type column) const noexcept
   return jumpList;
 }
 
-/**
- * TODO: implement moveKnight
- */
+// move knight
 std::vector<PieceMove>
 Board::moveKnight(dim_type row, dim_type column) const noexcept
 {
+  assert(mColor != PieceColor::NONE);
+  assert(row >= 0 && row < BOARD_DIM);
+  assert(column >= 0 && column < BOARD_DIM);
+  auto fromCode = get(row, column);
+  assert(getPieceCode(fromCode) == PieceCode::KNIGHT);
+  std::vector<PieceMove> moveList;
+
+  auto jumpList = jumpKnight(row, column);
+  for (auto &pos : jumpList) {
+    auto toCode = get(pos.first, pos.second);
+    if (getPieceCode(toCode) == PieceCode::NONE)
+      moveList.emplace_back(row, column, fromCode, pos.first, pos.second);
+    else if (getPieceColor(toCode) != mColor) {
+      moveList.emplace_back(row, column, fromCode);
+      moveList.back().setPromotion(pos.first, pos.second, toCode);
+    }
+  }
+
+  return moveList;
 }
 
 // move bishop
