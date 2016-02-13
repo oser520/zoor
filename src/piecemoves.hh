@@ -31,6 +31,7 @@ class PieceMove
   friend std::ostream& operator<<(std::ostream &os, const PieceMove &pm);
 
 public:
+  using dim_type = short;
 
   /**
    * @brief Constructor with info for piece that is moving.

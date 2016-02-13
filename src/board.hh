@@ -49,7 +49,7 @@ public:
   /**
    * Alias for the type of the dimension of the @c Board.
    */
-  using dim_type = unsigned short;
+  using dim_type = short;
 
   /**
    * Alias for the type of the row of the @c Board.
@@ -394,7 +394,7 @@ public:
  * @detail The iterators can only read the board, and connot modify it.
  */
 class BoardIterator
-  : std:iterator<std:random_access_iterator_tag, Square, short>
+  : std:iterator<std:random_access_iterator_tag, Square, dim_type>
 {
   // see the comments for these declarations below
   friend bool operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
