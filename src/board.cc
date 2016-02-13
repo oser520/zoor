@@ -84,7 +84,7 @@ Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
 
   auto toCode = get(toRow, toColumn);
   return getPieceCode(toCode) == PieceCode::PAWN
-      && getPieceColor(toCode) != mColorMove
+      && getPieceColor(toCode) != mColor
       && mLastMove.piece() == PieceCode::PAWN
       && mLastMove.fromRow() == fromRow
       && mLastMove.fromColumn() == toColumn
@@ -96,7 +96,7 @@ Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
 std::vector<PieceMove>
 Board::movePawn(dim_type row, dim_type column) const noexcept
 {
-  assert(mColorMove != PieceColor::NONE);
+  assert(mColor != PieceColor::NONE);
   auto fromCode = get(row, column);
   assert(getPieceCode(fromCode) == PieceCode::PAWN);
 
@@ -106,7 +106,7 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
   std::function<dim_type(dim_type, dim_type)> rowOp;
 
   // set handles to deal with black or white pawn move
-  if (mColorMove == PieceColor::WHITE) {
+  if (mColor == PieceColor::WHITE) {
     cmpRow = 6;
     cmpFunc = std::less<dim_type>();
     rowOp = std::plus<dim_type>();
@@ -144,7 +144,7 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
   }
 
   // set comparison row for first pawn move
-  cmpRow = mColorMove == PieceColor::WHITE ? 1 : 6;
+  cmpRow = mColor == PieceColor::WHITE ? 1 : 6;
 
   // two moves on first move
   if (row == cmpRow) {
@@ -155,14 +155,14 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
   }
 
   // set comparison row for en passant
-  cmpRow = mColorMove == PieceColor::WHITE ? 5 : 4;
+  cmpRow = mColor == PieceColor::WHITE ? 5 : 4;
 
   // en passant
   if (row == cmpRow) {
     // checking column to the left
     if (column > 0) {
       auto mcol = column-1;
-      if (isEnPassant(mColorMove, mcol)) {
+      if (isEnPassant(mColor, mcol)) {
         moveList.emplace_back(row, column, fromCode, rowOp(row, 1), mcol);
         moveList.back().setCapture(row, mcol, get(row, mcol));
       }
@@ -170,7 +170,7 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
     // checking column to the right
     if (column < 7) {
       auto mcol = column+1;
-      if (isEnPassant(mColorMove, mcol)) {
+      if (isEnPassant(mColor, mcol)) {
         moveList.emplace_back(row, column, fromCode, rowOp(row, 1), mcol);
         moveList.back().setCapture(row, mcol, get(row, mcol));
       }
@@ -178,7 +178,7 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
   }
 
   // set comparison row for promotion
-  cmpRow = mColorMove == PieceColor::WHITE ? 6 : 1;
+  cmpRow = mColor == PieceColor::WHITE ? 6 : 1;
 
   // pawn promotion
   if (row == cmpRow) {
@@ -192,7 +192,7 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
     if (getPieceCode(toCode) == PieceCode::NONE) {
       for (auto& pc : pcArr) {
         moveList.emplace_back(row, column, fromCode);
-        moveList.back().setPromotion(mrow, column, pc, mColorMove);
+        moveList.back().setPromotion(mrow, column, pc, mColor);
       }
     }
     // check diagonal square to the left
@@ -200,11 +200,11 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
       auto mcol = column-1;
       toCode = get(mrow, mcol);
       if (getPieceCode(toCode) != PieceCode::NONE
-          && getPieceColor(toCode) != mColorMove) {
+          && getPieceColor(toCode) != mColor) {
         for (auto& pc : pcArr) {
           moveList.emplace_back(row, column, fromCode);
           moveList.back().setCapture(mrow, mcol, toCode);
-          moveList.back().setPromotion(mrow, mcol, pc, mColorMove);
+          moveList.back().setPromotion(mrow, mcol, pc, mColor);
         }
       }
     }
@@ -213,11 +213,11 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
       auto mcol = column+1;
       toCode = get(mrow, mcol);
       if (getPieceCode(toCode) != PieceCode::NONE
-          && getPieceColor(toCode) != mColorMove) {
+          && getPieceColor(toCode) != mColor) {
         for (auto& pc : pcArr) {
           moveList.emplace_back(row, column, fromCode);
           moveList.back().setCapture(mrow, mcol, toCode);
-          moveList.back().setPromotion(mrow, mcol, pc, mColorMove);
+          moveList.back().setPromotion(mrow, mcol, pc, mColor);
         }
       }
     }
@@ -250,7 +250,7 @@ Board::moveBishop(dim_type row, dim_type column) const noexcept
 std::vector<PieceMove>
 Board::moveRook(dim_type row, dim_type column) const noexcept
 {
-  assert(mColorMove != PieceColor::NONE);
+  assert(mColor != PieceColor::NONE);
   auto fromCode = get(row, column);
   assert(getPieceCode(fromCode) == PieceCode::ROOK);
   std::vector<PieceMove> moveList;
@@ -259,7 +259,7 @@ Board::moveRook(dim_type row, dim_type column) const noexcept
   for (auto toCol = column+1; toCol < BOARD_DIM; ++toCol) {
     auto toCode = get(row, toCol);
     auto toColor = getPieceColor(toCode);
-    if (toColor == mColorMove)
+    if (toColor == mColor)
       break;
     else if (toColor == PieceColor::NONE)
       moveList.emplace_back(row, column, fromCode, row, toCol);
@@ -275,7 +275,7 @@ Board::moveRook(dim_type row, dim_type column) const noexcept
   for (auto toCol = column-1; toCol >= 0; --toCol) {
     auto toCode = get(row, toCol);
     auto toColor = getPieceColor(toCode);
-    if (toColor == mColorMove)
+    if (toColor == mColor)
       break;
     else if (toColor == PieceColor::NONE)
       moveList.emplace_back(row, column, fromCode, row, toCol);
@@ -290,7 +290,7 @@ Board::moveRook(dim_type row, dim_type column) const noexcept
   for (auto toRow = row+1; toRow < BOARD_DIM; ++toRow) {
     auto toCode = get(toRow, column);
     auto toColor = getPieceColor(toCode);
-    if (toColor == mColorMove)
+    if (toColor == mColor)
       break;
     else if (toColor == PieceColor::NONE)
       moveList.emplace_back(row, column, fromCode, toRow, column);
@@ -305,7 +305,7 @@ Board::moveRook(dim_type row, dim_type column) const noexcept
   for (auto toRow = row-1; toRow >= 0; --toRow) {
     auto toCode = get(toRow, column);
     auto toColor = getPieceColor(toCode);
-    if (toColor == mColorMove)
+    if (toColor == mColor)
       break;
     else if (toColor == PieceColor::NONE) {
       moveList.emplace_back(row, column, fromCode, toRow, column);
@@ -413,7 +413,7 @@ std:ostream& operator<<(std:ostream &os, const Board &board)
 
 bool operator==(const Board &boar1, const Board &board2) noexcept
 {
-  return board1.mColorMove == board2.mColorMove
+  return board1.mColor == board2.mColor
       && std::equal(board1.begin(), board1.end(), board2.begin());
 }
 

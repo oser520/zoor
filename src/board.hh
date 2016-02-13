@@ -76,7 +76,7 @@ private:
   /**
    * Indicates the player's turn: either white or black moves.
    */
-  PieceColor mColorMove;
+  PieceColor mColor;
 
   /**
    * The count of white pieces on the board.
