@@ -278,7 +278,7 @@ Board::moveKnight(dim_type row, dim_type column) const noexcept
       moveList.emplace_back(row, column, fromCode, pos.first, pos.second);
     else if (getPieceColor(toCode) != mColor) {
       moveList.emplace_back(row, column, fromCode);
-      moveList.back().setPromotion(pos.first, pos.second, toCode);
+      moveList.back().setCapture(pos.first, pos.second, toCode);
     }
   }
 
