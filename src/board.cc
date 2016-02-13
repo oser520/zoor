@@ -120,27 +120,27 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
 
   // all normal moves (i.e., pawn moves one square up or down)
   if (cmpFunc(row, rowCmp)) {
-    auto mrow = rowOp(row, 1);
+    auto toRow = rowOp(row, 1);
     // check one square straight up or down
-    auto toCode = get(mrow, column);
+    auto toCode = get(toRow, column);
     if (getPieceCode(toCode) == PieceCode::NONE)
-      moveList.emplace_back(row, column, fromCode, mrow, column);
+      moveList.emplace_back(row, column, fromCode, toRow, column);
     // check one square up or down, and to the left
     if (column > 0) {
-      auto mcol = column-1;
-      toCode = get(mrow, mcol);
+      auto toCol = column-1;
+      toCode = get(toRow, toCol);
       if (getPieceColor(toCode) != PieceColor::WHITE) {
-        moveList.emplace_back(row, column, fromCode, mrow, mcol);
-        moveList.back().setCapture(mrow, mcol, toCode);
+        moveList.emplace_back(row, column, fromCode, toRow, toCol);
+        moveList.back().setCapture(toRow, toCol, toCode);
       }
     }
     // check one square up or down, and to the right
     if (column < 7) {
-      auto mcol = column+1;
-      toCode = get(mrow, mcol);
+      auto toCol = column+1;
+      toCode = get(toRow, toCol);
       if (getPieceColor(toCode) != PieceColor::WHITE) {
-        moveList.emplace_back(row, column, fromCode, mrow, mcol);
-        moveList.back().setCapture(mrow, mcol, toCode);
+        moveList.emplace_back(row, column, fromCode, toRow, toCol);
+        moveList.back().setCapture(toRow, toCol, toCode);
       }
     }
   }
@@ -150,10 +150,10 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
 
   // two moves on first move
   if (row == cmpRow) {
-    auto mrow = rowOp(row, 2);
-    auto toCode = get(mrow, column);
+    auto toRow = rowOp(row, 2);
+    auto toCode = get(toRow, column);
     if (getPieceCode(toCode) == PieceCode::NONE)
-      moveList.emplace_back(row, column, fromCode, mrow, column);
+      moveList.emplace_back(row, column, fromCode, toRow, column);
   }
 
   // set comparison row for en passant
@@ -163,18 +163,18 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
   if (row == cmpRow) {
     // checking column to the left
     if (column > 0) {
-      auto mcol = column-1;
-      if (isEnPassant(mColor, mcol)) {
-        moveList.emplace_back(row, column, fromCode, rowOp(row, 1), mcol);
-        moveList.back().setCapture(row, mcol, get(row, mcol));
+      auto toCol = column-1;
+      if (isEnPassant(mColor, toCol)) {
+        moveList.emplace_back(row, column, fromCode, rowOp(row, 1), toCol);
+        moveList.back().setCapture(row, toCol, get(row, toCol));
       }
     }
     // checking column to the right
     if (column < 7) {
-      auto mcol = column+1;
-      if (isEnPassant(mColor, mcol)) {
-        moveList.emplace_back(row, column, fromCode, rowOp(row, 1), mcol);
-        moveList.back().setCapture(row, mcol, get(row, mcol));
+      auto toCol = column+1;
+      if (isEnPassant(mColor, toCol)) {
+        moveList.emplace_back(row, column, fromCode, rowOp(row, 1), toCol);
+        moveList.back().setCapture(row, toCol, get(row, toCol));
       }
     }
   }
@@ -188,38 +188,38 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
       PieceCode::KNIGHT, PieceCode::BISHOP,
       PieceCode::ROOK, PieceCode::QUEEN
     };
-    auto mrow = rowOp(row, 1);
+    auto toRow = rowOp(row, 1);
     // check one square up
-    auto toCode = get(mrow, column);
+    auto toCode = get(toRow, column);
     if (getPieceCode(toCode) == PieceCode::NONE) {
       for (auto& pc : pcArr) {
         moveList.emplace_back(row, column, fromCode);
-        moveList.back().setPromotion(mrow, column, pc, mColor);
+        moveList.back().setPromotion(toRow, column, pc, mColor);
       }
     }
     // check diagonal square to the left
     if (column > 0) {
-      auto mcol = column-1;
-      toCode = get(mrow, mcol);
+      auto toCol = column-1;
+      toCode = get(toRow, toCol);
       if (getPieceCode(toCode) != PieceCode::NONE
           && getPieceColor(toCode) != mColor) {
         for (auto& pc : pcArr) {
           moveList.emplace_back(row, column, fromCode);
-          moveList.back().setCapture(mrow, mcol, toCode);
-          moveList.back().setPromotion(mrow, mcol, pc, mColor);
+          moveList.back().setCapture(toRow, toCol, toCode);
+          moveList.back().setPromotion(toRow, toCol, pc, mColor);
         }
       }
     }
     // check diagonal square to the right
     if (column < 7) {
-      auto mcol = column+1;
-      toCode = get(mrow, mcol);
+      auto toCol = column+1;
+      toCode = get(toRow, toCol);
       if (getPieceCode(toCode) != PieceCode::NONE
           && getPieceColor(toCode) != mColor) {
         for (auto& pc : pcArr) {
           moveList.emplace_back(row, column, fromCode);
-          moveList.back().setCapture(mrow, mcol, toCode);
-          moveList.back().setPromotion(mrow, mcol, pc, mColor);
+          moveList.back().setCapture(toRow, toCol, toCode);
+          moveList.back().setPromotion(toRow, toCol, pc, mColor);
         }
       }
     }
