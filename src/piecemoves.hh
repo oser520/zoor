@@ -31,6 +31,9 @@ class PieceMove
   friend std::ostream& operator<<(std::ostream &os, const PieceMove &pm);
 
 public:
+  /**
+   * Alias for the type of the dimension of the board.
+   */
   using dim_type = short;
 
   /**
