@@ -245,7 +245,7 @@ Board::moveBishop(dim_type row, dim_type column) const noexcept
 }
 
 /**
- * TODO: implement moveRook
+ * move rook
  */
 std::vector<PieceMove>
 Board::moveRook(dim_type row, dim_type column) const noexcept
