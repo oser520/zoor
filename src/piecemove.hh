@@ -15,12 +15,6 @@
 namespace zoor {
 
 /**
- * TODO: implement thread safety
- * TODO: throw exceptions
- * TODO: implement operator[]
- */
-
-/**
  * Maintains information about a move, including the destination square, if there's
  * a capture, and if there's a promotion (.i.e., the pawn moves to the last row and
  * becomes a more powerful piece).
