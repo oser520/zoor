@@ -67,6 +67,12 @@ Board::moveRef(const Square &square1, const Square &square2) noexcept
   return *this;
 }
 
+// TODO: implemente isCheck
+bool Board::isCheck(dim_type row, dim_type column) const noexcept
+{
+  return false;
+}
+
 bool
 Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
 {
