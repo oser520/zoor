@@ -16,6 +16,7 @@ namespace zoor {
 
 using dim_type = PieceMoves::dim_type;
 
+// four param ctro
 PieceMove::PieceMove
   (dim_type row,
    dim_type column,
@@ -23,17 +24,18 @@ PieceMove::PieceMove
    PieceColor color) noexcept
   : mFrom(row, column, piece, color) {}
 
+// three param ctro
 PieceMove::PieceMove(dim_type row, dim_type column, piececode_t code) noexcept
   : mFrom(row, column, code) {}
 
+// five param ctro
 PieceMove::PieceMove
   (dim_type fromRow,
    dim_type fromColumn,
    piececode_t code,
    dim_type toRow,
    dim_type toColumn) noexcept
-  : mFrom(fromRow, fromColumn, code),
-    mPromotion(toRow, toColumn) {}
+  : mFrom(fromRow, fromColumn, code), mPromotion(toRow, toColumn) {}
 
 dim_type PieceMove::fromRow() const noexcept
 {
