@@ -120,6 +120,15 @@ private:
   Board& moveRef(const Square &square1, const Square &square2) noexcept;
 
   /**
+   * @brief Determine if there is a check at the given row and column.
+   * @param row The row where the king is located.
+   * @param column The column where the king is located.
+   * @return True if there is a check at the given square.
+   * @throw Never throws.
+   */
+  bool isCheck(dim_type row, dim_type column) const noexcept;
+
+  /**
    * @brief Determine if there is an en passant at a given column.
    * @param color The @c PieceColor.
    * @param toColumn The column where there might be an en passant.
