@@ -165,6 +165,12 @@ PieceMove::setPromotion(PieceCode piece, PieceColor color) noexcept
   return *this;
 }
 
+PieceMove& PieceMove::setPromotion(piececode_t code) noexcept
+{
+  mPromotion.setPieceCode(code);
+  return *this;
+}
+
 bool PieceMove::isPromotion() const noexcept
 {
   return mPromotion.piece() != PieceCode::NONE;
