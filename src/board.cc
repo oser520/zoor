@@ -228,6 +228,30 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
   return moveList;
 }
 
+// jump positions for a knight from a given square
+std::vector<std::pair<dim_type, dim_type>>
+Board::jumpKnight(dim_type row, dim_type column) const noexcept
+{
+  assert(mColor != PieceColor::NONE);
+  assert(row >= 0 && row < BOARD_DIM);
+  assert(column >= 0 && column < BOARD_DIM);
+  std::vector<std::pair<dim_type, dim_type>> jumpList;
+
+  std::pair<dim_type, dim_type> arrPos[] = {
+    {2, 1}, {1, 2}, {-1, 2}, {-2, 1},
+    {-2, -1}, {-1, -2}, {1, -2}, {2, -1}
+  };
+
+  for (auto& pos : arrPos) {
+    auto toRow = row + pos.first;
+    auto toCol = column + pos.second;
+    if (toRow >= 0 && toRow < BOARD_DIM && toCol >= 0 && toCol < BOARD_DIM)
+      jumpList.emplace_back(toRow, toCol);
+  }
+
+  return jumpList;
+}
+
 /**
  * TODO: implement moveKnight
  */
