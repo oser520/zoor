@@ -235,13 +235,82 @@ Board::moveKnight(dim_type row, dim_type column) const noexcept
   return std::vector<PieceMove>();
 }
 
-/**
- * TODO: implement moveBishop
- */
+// move bishop
 std::vector<PieceMove>
 Board::moveBishop(dim_type row, dim_type column) const noexcept
 {
-  return std::vector<PieceMove>();
+  assert(mColor != PieceColor::NONE);
+  assert(row >= 0 && row < BOARD_DIM);
+  assert(column >= 0 && column < BOARD_DIM);
+  auto fromCode = get(row, column);
+  assert(getPieceCode(fromCode) == PieceCode::BISHOP);
+  std::vector<PieceMove> moveList;
+
+  // check all moves right and up
+  for (auto toCol = column+1, toRow = row+1;
+       toCol < BOARD_DIM && toRow < BOARD_DIM; ++toCol, ++toRow) {
+    auto toCode = get(toRow, toCol);
+    auto toColor = getPieceColor(toCode);
+    if (toColor == mColor)
+      break;
+    else if (toColor == PieceColor::NONE)
+      moveList.emplace_back(row, column, fromCode, toRow, toCol);
+    else {
+      moveList.emplace_back(row, column, fromCode);
+      moveList.back().setCapture(toRow, toCol, toCode);
+      break;
+    }
+  }
+
+  // check all moves right and down
+  for (auto toCol = column+1, toRow = row-1;
+       toCol < BOARD_DIM && toRow >= 0; ++toCol, --toRow) {
+    auto toCode = get(toRow, toCol);
+    auto toColor = getPieceColor(toCode);
+    if (toColor == mColor)
+      break;
+    else if (toColor == PieceColor::NONE)
+      moveList.emplace_back(row, column, fromCode, toRow, toCol);
+    else {
+      moveList.emplace_back(row, column, fromCode);
+      moveList.back().setCapture(toRow, toCol, toCode);
+      break;
+    }
+  }
+
+  // check all moves left and up
+  for (auto toCol = column-1, toRow = row+1;
+       toCol >= 0 && toRow < BOARD_DIM; --toCol, ++toRow) {
+    auto toCode = get(toRow, toCol);
+    auto toColor = getPieceColor(toCode);
+    if (toColor == mColor)
+      break;
+    else if (toColor == PieceColor::NONE)
+      moveList.emplace_back(row, column, fromCode, toRow, toCol);
+    else {
+      moveList.emplace_back(row, column, fromCode);
+      moveList.back().setCapture(toRow, toCol, toCode);
+      break;
+    }
+  }
+
+  // check all moves left and down
+  for (auto toCol = column-1, toRow = row-1;
+       toCol >= 0 && toRow >= 0; --toCol, --toRow) {
+    auto toCode = get(toRow, toCol);
+    auto toColor = getPieceColor(toCode);
+    if (toColor == mColor)
+      break;
+    else if (toColor == PieceColor::NONE)
+      moveList.emplace_back(row, column, fromCode, toRow, toCol);
+    else {
+      moveList.emplace_back(row, column, fromCode);
+      moveList.back().setCapture(toRow, toCol, toCode);
+      break;
+    }
+  }
+
+  return moveList;
 }
 
 /**
