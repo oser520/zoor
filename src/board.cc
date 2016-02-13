@@ -679,7 +679,8 @@ pair<Square, Square> Board::lastMove() const noexcept
 
 Square Board::operator()(dim_type row, dim_type column) const noexcept
 {
-  assert(row < BOARD_DIM && column < BOARD_DIM);
+  assert(row >= 0 && row < BOARD_DIM);
+  assert(column >= 0 && column < BOARD_DIM);
   return Square(row, get(column, code));
 }
 
