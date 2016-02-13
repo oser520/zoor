@@ -82,14 +82,14 @@ piececode_t Square::code() const noexcept
 
 Square& Square::setRow(dim_type row) noexcept
 {
-  assert(row < BOARD_DIM);
+  assert(row >= 0 && row < BOARD_DIM);
   mRow = row;
   return *this;
 }
 
 Square& Square::setColumn(dim_type column) noexcept
 {
-  assert(column < BOARD_DIM);
+  assert(column >= 0 && column < BOARD_DIM);
   mColumn = column;
   return *this;
 }
@@ -115,7 +115,8 @@ Square& Square::setPieceCode(piececode_t code) noexcept
 
 Square& Square::setLocation(dim_type row, dim_type column) noexcept
 {
-  assert(row < BOARD_DIM && column < BOARD_DIM);
+  assert(row >= 0 && row < BOARD_DIM);
+  assert(column >= 0 && column < BOARD_DIM);
   mRow = row;
   mColumn = column;
   return *this;
