@@ -73,6 +73,7 @@ bool Board::isCheck(dim_type row, dim_type column) const noexcept
   return false;
 }
 
+// check if there is an en passant at the given column
 bool
 Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
 {
