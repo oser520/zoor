@@ -269,13 +269,11 @@ Board::moveRook(dim_type row, dim_type column) const noexcept
     auto toColor = getPieceColor(toCode);
     if (toColor == mColorMove)
       break;
-    else if (toColor == PieceColor::NONE) {
-      moveList.emplace_back(row, column, fromCode);
-      moveList.back().setDestination(row, toCol);
-    } else {
-      moveList.emplace_back(row, column, fromCode);
+    else if (toColor == PieceColor::NONE)
+      moveList.emplace_back(row, column, fromCode, row, toCol);
+    else {
+      moveList.emplace_back(row, column, fromCode, row, toCol);
       moveList.back().setCapture(row, toCol, toCode);
-      moveList.back().setDestination(row, toCol);
       break;
     }
   }
@@ -287,13 +285,11 @@ Board::moveRook(dim_type row, dim_type column) const noexcept
     auto toColor = getPieceColor(toCode);
     if (toColor == mColorMove)
       break;
-    else if (toColor == PieceColor::NONE) {
-      moveList.emplace_back(row, column, fromCode);
-      moveList.back().setDestination(row, toCol);
-    } else {
-      moveList.emplace_back(row, column, fromCode);
+    else if (toColor == PieceColor::NONE)
+      moveList.emplace_back(row, column, fromCode, row, toCol);
+    else {
+      moveList.emplace_back(row, column, fromCode, row, toCol);
       moveList.back().setCapture(row, toCol, toCode);
-      moveList.back().setDestination(row, toCol);
       break;
     }
   }
@@ -304,13 +300,11 @@ Board::moveRook(dim_type row, dim_type column) const noexcept
     auto toColor = getPieceColor(toCode);
     if (toColor == mColorMove)
       break;
-    else if (toColor == PieceColor::NONE) {
-      moveList.emplace_back(row, column, fromCode);
-      moveList.back().setDestination(toRow, column);
-    } else {
-      moveList.emplace_back(row, column, fromCode);
+    else if (toColor == PieceColor::NONE)
+      moveList.emplace_back(row, column, fromCode, toRow, column);
+    else {
+      moveList.emplace_back(row, column, fromCode, toRow, column);
       moveList.back().setCapture(toRow, column, toCode);
-      moveList.back().setDestination(toRow, column);
       break;
     }
   }
@@ -322,12 +316,10 @@ Board::moveRook(dim_type row, dim_type column) const noexcept
     if (toColor == mColorMove)
       break;
     else if (toColor == PieceColor::NONE) {
-      moveList.emplace_back(row, column, fromCode);
-      moveList.back().setDestination(toRow, column);
-    } else {
-      moveList.emplace_back(row, column, fromCode);
+      moveList.emplace_back(row, column, fromCode, toRow, column);
+    else {
+      moveList.emplace_back(row, column, fromCode, toRow, column);
       moveList.back().setCapture(toRow, column, toCode);
-      moveList.back().setDestination(toRow, column);
       break;
     }
   }
