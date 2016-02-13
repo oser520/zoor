@@ -313,13 +313,13 @@ Board::moveBishop(dim_type row, dim_type column) const noexcept
   return moveList;
 }
 
-/**
- * move rook
- */
+// move rook
 std::vector<PieceMove>
 Board::moveRook(dim_type row, dim_type column) const noexcept
 {
   assert(mColor != PieceColor::NONE);
+  assert(row >= 0 && row < BOARD_DIM);
+  assert(column >= 0 && column < BOARD_DIM);
   auto fromCode = get(row, column);
   assert(getPieceCode(fromCode) == PieceCode::ROOK);
   std::vector<PieceMove> moveList;
