@@ -232,7 +232,6 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
 std::vector<std::pair<dim_type, dim_type>>
 Board::jumpKnight(dim_type row, dim_type column) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
   assert(row >= 0 && row < BOARD_DIM);
   assert(column >= 0 && column < BOARD_DIM);
   std::vector<std::pair<dim_type, dim_type>> jumpList;
@@ -260,7 +259,6 @@ Board::jumpKnight(dim_type row, dim_type column) const noexcept
 std::vector<PieceMove>
 Board::moveKnight(dim_type row, dim_type column) const noexcept
 {
-  return std::vector<PieceMove>();
 }
 
 // move bishop
