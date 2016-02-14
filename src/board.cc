@@ -286,7 +286,7 @@ Board::jumpKnight(dim_type row, dim_type column) const noexcept
     auto toRow = row + pos.first;
     auto toCol = column + pos.second;
     // check if jump is legal
-    if (toRow >= 0 && toRow < BOARD_DIM && toCol >= 0 && toCol < BOARD_DIM)
+    if (isInBound(toRow, toColumn))
       jumpList.emplace_back(toRow, toCol);
   }
 
