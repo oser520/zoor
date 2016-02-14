@@ -546,13 +546,7 @@ Board::moveKnight(dim_type row, dim_type column) const noexcept
   assert(getPieceCode(fromCode) == PieceCode::KNIGHT);
   std::vector<PieceMove> moveList;
 
-  // move deltas for row and column
-  jump_list jumpList = {
-    {2, 1}, {1, 2}, {-1, 2}, {-2, 1},
-    {-2, -1}, {-1, -2}, {1, -2}, {2, -1}
-  };
-
-  jumpList = jump(row, column, jumpList);
+  jumpList = jump(row, column, JUMP_KNIGHT);
   for (auto &pos : jumpList) {
     auto toCode = get(pos.first, pos.second);
     if (getPieceCode(toCode) == PieceCode::NONE)
