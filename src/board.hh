@@ -125,6 +125,14 @@ private:
   Board& moveRef(const Square &square1, const Square &square2) noexcept;
 
   /**
+   * @brief Determine if position is within bounds of board.
+   * @param position The position in question.
+   * @return True if position is within bounds of board.
+   * @throw Never throws.
+   */
+  bool isInBound(dim_type position) const noexcept;
+
+  /**
    * @brief Get a list of jump positions that are legal from a given row and column.
    * @param row The row where the jump is being made from.
    * @param column The column where the jump is being made from.
