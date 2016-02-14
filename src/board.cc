@@ -67,6 +67,26 @@ Board::moveRef(const Square &square1, const Square &square2) noexcept
   return *this;
 }
 
+// valid jump positions from a given row and column
+jump_list Board::jump
+  (dim_type row,
+   dim_type column,
+   const jump_list &positions) const noexcept
+{
+  assert(row >= 0 && row < BOARD_DIM);
+  assert(column >= 0 && column < BOARD_DIM);
+  jump_list jumpList;
+
+  for (auto& pos : positions) {
+    auto toRow = row + pos.first;
+    auto toCol = column + pos.second;
+    if (toRow >= 0 && toRow < BOARD_DIM && toCol >= 0 && toCol < BOARD_DIM)
+      jumpList.emplace_back(toRow, toCol);
+  }
+
+  return jumpList;
+}
+
 // TODO: implemente isCheck
 bool Board::isCheck(dim_type row, dim_type column) const noexcept
 {
