@@ -125,6 +125,16 @@ private:
   Board& moveRef(const Square &square1, const Square &square2) noexcept;
 
   /**
+   * @brief Get a list of jump positions that are legal from a given row and column.
+   * @param row The row where the jump is being made from.
+   * @param column The column where the jump is being made from.
+   * @return positions The list of jumping positions.
+   * @throw Never throws.
+   */
+  jump_list
+  jump(dim_type row, dim_type column, const jump_list &positions) const noexcept;
+
+  /**
    * @brief Determine if there is a check at the given row and column.
    * @param row The row where the king is located.
    * @param column The column where the king is located.
