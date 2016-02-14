@@ -125,6 +125,15 @@ bool isBishop(piececode_t code) noexcept;
 bool isRook(piececode_t code) noexcept;
 
 /**
+ * @brief Determine if the code represents a queen.
+ * @param code The bit pattern reprsenting a piece and its color.
+ * @return True if the code represents a queen.
+ * @throw Never throws.
+ * TODO: make definition inline
+ */
+bool isQueen(piececode_t code) noexcept;
+
+/**
  * Output operator for a @c PieceCode.
  *
  * The @c PieceCode names are:
