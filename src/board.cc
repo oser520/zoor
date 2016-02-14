@@ -158,7 +158,7 @@ bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
   return false;
 }
 
-// TODO: implemente isCheck
+// check if king is in danger
 bool Board::isCheck(dim_type row, dim_type column) const noexcept
 {
   assert(mColor != PieceColor::NONE);
