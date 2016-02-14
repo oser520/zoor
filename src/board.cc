@@ -22,6 +22,7 @@
 namespace zoor {
 
 using dim_type = Board::dim_type;
+using jump_list = Board::jump_list;
 
 /**
  * TODO: determine how to initialize default board.
