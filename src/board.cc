@@ -232,9 +232,113 @@ bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
   return false;
 }
 
-// TODO: implement
+// is there a check from a queen
 bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
 {
+  assert(mColor != PieceColor::NONE);
+  assert(row >= 0 && row < BOARD_DIM);
+  assert(column >= 0 && column < BOARD_DIM);
+
+  // check against queen above
+  for (auto toRow = row+1; toRow < BOARD_DIM; ++toRow) {
+    auto toCode = get(toRow, column);
+    auto color = getPieceColor(toCode);
+    if (color == PieceColor::NONE)
+      continue;
+    else if (color == mColor || getPieceCode(toCode) != PieceCode::QUEEN)
+      break;
+    else
+      return true;
+  }
+
+  // check against queen below
+  for (auto toRow = row-1; toRow >= 0; --toRow) {
+    auto toCode = get(toRow, column);
+    auto color = getPieceColor(toCode);
+    if (color == PieceColor::NONE)
+      continue;
+    else if (color == mColor || getPieceCode(toCode) != PieceCode::QUEEN)
+      break;
+    else
+      return true;
+  }
+
+  // check against queen to the right
+  for (auto toCol = col+1; toCol < BOARD_DIM; ++toCol) {
+    auto toCode = get(row, toCol);
+    auto color = getPieceColor(toCode);
+    if (color == PieceColor::NONE)
+      continue;
+    else if (color == mColor || getPieceCode(toCode) != PieceCode::QUEEN)
+      break;
+    else
+      return true;
+  }
+
+  // check against queen to the left
+  for (auto toCol = col-1; toCol >= 0; --toCol) {
+    auto toCode = get(row, toCol);
+    auto color = getPieceColor(toCode);
+    if (color == PieceColor::NONE)
+      continue;
+    else if (color == mColor || getPieceCode(toCode) != PieceCode::QUEEN)
+      break;
+    else
+      return true;
+  }
+
+  // check against queen to the right and up
+  for (auto toRow = row+1, toCol = column+1;
+       toRow < BOARD_DIM && toCol < BOARD_DIM; ++toRow, ++toCol) {
+    auto toCode = get(toRow, toCol);
+    auto color = getPieceColor(toCode);
+    if (color == PieceColor::NONE)
+      continue;
+    else if (color == mColor || getPieceCode(toCode) != PieceCode::QUEEN)
+      break;
+    else
+      return true;
+  }
+
+  // check against queen to the right and down
+  for (auto toRow = row-1, toCol = column+1;
+       toRow >= 0 && toCol < BOARD_DIM; --toRow, ++toCol) {
+    auto toCode = get(toRow, toCol);
+    auto color = getPieceColor(toCode);
+    if (color == PieceColor::NONE)
+      continue;
+    else if (color == mColor || getPieceCode(toCode) != PieceCode::QUEEN)
+      break;
+    else
+      return true;
+  }
+
+  // check against queen to the left and down
+  for (auto toRow = row-1, toCol = column-1;
+       toRow >= 0 && toCol >= 0; --toRow, --toCol) {
+    auto toCode = get(toRow, toCol);
+    auto color = getPieceColor(toCode);
+    if (color == PieceColor::NONE)
+      continue;
+    else if (color == mColor || getPieceCode(toCode) != PieceCode::QUEEN)
+      break;
+    else
+      return true;
+  }
+
+  // check against queen to the left and up
+  for (auto toRow = row+1, toCol = column-1;
+       toRow < BOARD_DIM && toCol >= 0; ++toRow, --toCol) {
+    auto toCode = get(toRow, toCol);
+    auto color = getPieceColor(toCode);
+    if (color == PieceColor::NONE)
+      continue;
+    else if (color == mColor || getPieceCode(toCode) != PieceCode::QUEEN)
+      break;
+    else
+      return true;
+  }
+
   return false;
 }
 
