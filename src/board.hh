@@ -62,6 +62,11 @@ public:
   using iterator = BoardIterator;
 
   /**
+   * Alias for a vector of jump positions.
+   */
+  using jump_list = std::vector<std::pair<dim_type, dim_type>>;
+
+  /**
    * Specifies the number of rows and columns on the @c Board.
    */
   static constexpr dim_type BOARD_DIM = 8;
