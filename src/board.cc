@@ -103,6 +103,16 @@ jump_list Board::jump
 // TODO: implemente isCheck
 bool Board::isCheck(dim_type row, dim_type column) const noexcept
 {
+  assert(mColor != PieceColor::NONE);
+  assert(row >= 0 && row < BOARD_DIM);
+  assert(column >= 0 && column < BOARD_DIM);
+
+  // check against rook
+  // check against bishop
+  // check against queen
+  // check against knight
+  // check against king
+  // check against pawn
   return false;
 }
 
