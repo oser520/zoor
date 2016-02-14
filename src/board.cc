@@ -24,6 +24,12 @@ namespace zoor {
 using dim_type = Board::dim_type;
 using jump_list = Board::jump_list;
 
+// initialize JUMP_KNIGHT
+const jump_list Board::JUMP_KNIGHT = {
+  {2, 1}, {1, 2}, {-1, 2}, {-2, 1},
+  {-2, -1}, {-1, -2}, {1, -2}, {2, -1}
+};
+
 /**
  * TODO: determine how to initialize default board.
  */
