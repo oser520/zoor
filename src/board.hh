@@ -179,16 +179,6 @@ private:
   std::vector<PieceMove> movePawn(dim_type row, dim_type column) const noexcept;
 
   /**
-   * @brief Obtain the squares that are within bounds of a knight's jump.
-   * @param row The row where the knight is located.
-   * @param column The column where the knight is located.
-   * @return A vector of pairs of row and column where a knight can jump.
-   * @throw Never throws.
-   */
-  std::vector<std::pair<dim_type, dim_type>
-  jumpKnight(dim_type row, dim_type column) const noexcept;
-
-  /**
    * @brief Move the knight at the given row and column.
    * @param row The row where the knight is located.
    * @param column The column where the knight is located.
