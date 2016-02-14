@@ -617,7 +617,11 @@ Board::moveKing(dim_type row, dim_type column) const noexcept
     }
   }
 
-  // TODO: implement castling
+  /* TODO: implement castling
+   * have to check if we are on check, or if any of the squres through which the
+   * king has to pass would put him on check, and if the king has moved, or if
+   * the rook has moved
+   */
 
   return moveList;
 }
