@@ -367,7 +367,7 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
   return false;
 }
 
-// TODO: implement
+// is there a check from the king
 bool Board::isCheckKing(dim_type row, dim_type column) const noexcept
 {
   assert(mColor != PieceColor::NONE);
