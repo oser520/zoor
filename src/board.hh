@@ -75,6 +75,11 @@ public:
    * The jump deltas for a knight.
    */
   static const jump_list JUMP_KNIGHT;
+
+  /**
+   * The jump deltas for a king.
+   */
+  static const jump_list JUMP_KING;
   
 private:
   /**
