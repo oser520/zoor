@@ -112,24 +112,6 @@ bool Board::isCheckKnight(dim_type row, dim_type column) const noexcept
   return false;
 }
 
-// TODO: implement
-bool Board::isCheckBishop(dim_type row, dim_type column) const noexcept
-{
-  return false;
-}
-
-// TODO: implement
-bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
-{
-  return false;
-}
-
-// TODO: implement
-bool Board::isCheckKing(dim_type row, dim_type column) const noexcept
-{
-  return false;
-}
-
 // is there a check from a rook
 bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
 {
@@ -185,6 +167,24 @@ bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
       return true;
   }
 
+  return false;
+}
+
+// TODO: implement
+bool Board::isCheckBishop(dim_type row, dim_type column) const noexcept
+{
+  return false;
+}
+
+// TODO: implement
+bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
+{
+  return false;
+}
+
+// TODO: implement
+bool Board::isCheckKing(dim_type row, dim_type column) const noexcept
+{
   return false;
 }
 
