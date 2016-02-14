@@ -30,6 +30,12 @@ const jump_list Board::JUMP_KNIGHT = {
   {-2, -1}, {-1, -2}, {1, -2}, {2, -1}
 };
 
+// initialize JUMP_KING
+const jump_list Board::JUMP_KING = {
+  {1, 0}, {1, 1}, {0, 1}, {-1, 1},
+  {-1, 0}, {-1, -1}, {0, -1}, {1, -1}
+};
+
 /**
  * TODO: determine how to initialize default board.
  */
