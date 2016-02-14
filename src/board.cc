@@ -370,6 +370,18 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
 // TODO: implement
 bool Board::isCheckKing(dim_type row, dim_type column) const noexcept
 {
+  assert(mColor != PieceColor::NONE);
+  assert(row >= 0 && row < BOARD_DIM);
+  assert(column >= 0 && column < BOARD_DIM);
+
+  auto jumpList = jump(row, column, JUMP_KING);
+  for (auto& pos : jumpList) {
+    auto pcode = get(pos.first, pos.second);
+    if (getPieceCode(pcode) == PieceCode::KING
+        && getPieceColor(pcode) != mColor)
+      return true;
+  }
+
   return false;
 }
 
