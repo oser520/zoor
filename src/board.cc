@@ -268,31 +268,6 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
   return moveList;
 }
 
-// jump positions for a knight from a given square
-std::vector<std::pair<dim_type, dim_type>>
-Board::jumpKnight(dim_type row, dim_type column) const noexcept
-{
-  assert(row >= 0 && row < BOARD_DIM);
-  assert(column >= 0 && column < BOARD_DIM);
-  std::vector<std::pair<dim_type, dim_type>> jumpList;
-
-  // move deltas for row and column
-  std::pair<dim_type, dim_type> arrPos[] = {
-    {2, 1}, {1, 2}, {-1, 2}, {-2, 1},
-    {-2, -1}, {-1, -2}, {1, -2}, {2, -1}
-  };
-
-  for (auto& pos : arrPos) {
-    auto toRow = row + pos.first;
-    auto toCol = column + pos.second;
-    // check if jump is legal
-    if (isInBound(toRow, toColumn))
-      jumpList.emplace_back(toRow, toCol);
-  }
-
-  return jumpList;
-}
-
 // move knight
 std::vector<PieceMove>
 Board::moveKnight(dim_type row, dim_type column) const noexcept
