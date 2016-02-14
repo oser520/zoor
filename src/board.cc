@@ -21,6 +21,7 @@
 
 namespace zoor {
 
+// aliases
 using dim_type = Board::dim_type;
 using jump_list = Board::jump_list;
 
