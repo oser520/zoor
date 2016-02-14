@@ -67,6 +67,12 @@ Board::moveRef(const Square &square1, const Square &square2) noexcept
   return *this;
 }
 
+// check if position is valid in board
+bool Board::isInBound(dim_type position) const noexcept
+{
+  return position >= 0 && position < BOARD_DIM;
+}
+
 // valid jump positions from a given row and column
 jump_list Board::jump
   (dim_type row,
