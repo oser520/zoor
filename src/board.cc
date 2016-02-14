@@ -170,9 +170,65 @@ bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
   return false;
 }
 
-// TODO: implement
+// is there a check from a bishop
 bool Board::isCheckBishop(dim_type row, dim_type column) const noexcept
 {
+  assert(mColor != PieceColor::NONE);
+  assert(row >= 0 && row < BOARD_DIM);
+  assert(column >= 0 && column < BOARD_DIM);
+
+  // check against bishop to the right and up
+  for (auto toRow = row+1, toCol = column+1;
+       toRow < BOARD_DIM && toCol < BOARD_DIM; ++toRow, ++toCol) {
+    auto toCode = get(toRow, toCol);
+    auto color = getPieceColor(toCode);
+    if (color == PieceColor::NONE)
+      continue;
+    else if (color == mColor || getPieceCode(toCode) != PieceCode::BISHOP)
+      break;
+    else
+      return true;
+  }
+
+  // check against bishop to the right and down
+  for (auto toRow = row-1, toCol = column+1;
+       toRow >= 0 && toCol < BOARD_DIM; --toRow, ++toCol) {
+    auto toCode = get(toRow, toCol);
+    auto color = getPieceColor(toCode);
+    if (color == PieceColor::NONE)
+      continue;
+    else if (color == mColor || getPieceCode(toCode) != PieceCode::BISHOP)
+      break;
+    else
+      return true;
+  }
+
+  // check against bishop to the left and down
+  for (auto toRow = row-1, toCol = column-1;
+       toRow >= 0 && toCol >= 0; --toRow, --toCol) {
+    auto toCode = get(toRow, toCol);
+    auto color = getPieceColor(toCode);
+    if (color == PieceColor::NONE)
+      continue;
+    else if (color == mColor || getPieceCode(toCode) != PieceCode::BISHOP)
+      break;
+    else
+      return true;
+  }
+
+  // check against bishop to the left and up
+  for (auto toRow = row+1, toCol = column-1;
+       toRow < BOARD_DIM && toCol >= 0; ++toRow, --toCol) {
+    auto toCode = get(toRow, toCol);
+    auto color = getPieceColor(toCode);
+    if (color == PieceColor::NONE)
+      continue;
+    else if (color == mColor || getPieceCode(toCode) != PieceCode::BISHOP)
+      break;
+    else
+      return true;
+  }
+
   return false;
 }
 
