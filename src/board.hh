@@ -70,6 +70,11 @@ public:
    * Specifies the number of rows and columns on the @c Board.
    */
   static constexpr dim_type BOARD_DIM = 8;
+
+  /**
+   * The jump deltas for a knight.
+   */
+  static const jump_list JUMP_KNIGHT;
   
 private:
   /**
