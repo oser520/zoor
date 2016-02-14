@@ -170,6 +170,15 @@ private:
   bool isCheckQueen(dim_type row, dim_type column) const noexcept;
 
   /**
+   * @brief Determine if there is a king check at the given row and column.
+   * @param row The row where the king is located.
+   * @param column The column where the king is located.
+   * @return True if there is a check at the given square.
+   * @throw Never throws.
+   */
+  bool isCheckKing(dim_type row, dim_type column) const noexcept;
+
+  /**
    * @brief Determine if there is a check at the given row and column.
    * @param row The row where the king is located.
    * @param column The column where the king is located.
