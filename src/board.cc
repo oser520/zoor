@@ -124,6 +124,12 @@ bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
   return false;
 }
 
+// TODO: implement
+bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
+{
+  return false;
+}
+
 // is there a check from a rook
 bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
 {
