@@ -89,6 +89,15 @@ PieceCode getPieceCode(piececode_t code) noexcept;
 PieceColor getPieceColor(piececode_t code) noexcept;
 
 /**
+ * @brief Determine if the code represents a pawn.
+ * @param code The bit pattern reprsenting a piece and its color.
+ * @return True if the code represents a pawn.
+ * @throw Never throws.
+ * TODO: make definition inline
+ */
+bool isPawn(piececode_t code) noexcept;
+
+/**
  * Output operator for a @c PieceCode.
  *
  * The @c PieceCode names are:
