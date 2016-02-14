@@ -101,7 +101,7 @@ jump_list Board::jump
 }
 
 // TODO: implement
-bool isCheckPawn(dim_type row, dim_type column) const noexcept
+bool Board::isCheckPawn(dim_type row, dim_type column) const noexcept
 {
   return false;
 }
