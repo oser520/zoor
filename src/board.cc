@@ -73,6 +73,13 @@ bool Board::isInBound(dim_type position) const noexcept
   return position >= 0 && position < BOARD_DIM;
 }
 
+// check if position is valid in board
+bool Board::isInBound(dim_type row, dim_type column) const noexcept
+{
+  return row >= 0 && column < BOARD_DIM
+      && column >= 0 && column < BOARD_DIM;
+}
+
 // valid jump positions from a given row and column
 jump_list Board::jump
   (dim_type row,
