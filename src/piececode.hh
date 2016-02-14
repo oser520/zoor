@@ -100,7 +100,7 @@ bool isPawn(piececode_t code) noexcept;
 /**
  * @brief Determine if the code represents a knight.
  * @param code The bit pattern reprsenting a piece and its color.
- * @return True if the code represents a pawn.
+ * @return True if the code represents a knight.
  * @throw Never throws.
  * TODO: make definition inline
  */
