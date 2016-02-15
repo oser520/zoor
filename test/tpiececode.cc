@@ -217,6 +217,24 @@ TEST(isQueenTest, isQueen)
   EXPECT_FALSE(isBlack(code));
 }
 
+// test isKing
+TEST(isKingTest, isKing)
+{
+  auto piece = PieceCode::KING;
+  auto color = PieceColor::WHITE;
+  auto code = color | piece;
+
+  EXPECT_TRUE(isKing(piece));
+  EXPECT_TRUE(isWhite(color));
+  EXPECT_TRUE(isKing(code));
+  EXPECT_TRUE(isWhite(code));
+
+  EXPECT_FALSE(isRook(piece));
+  EXPECT_FALSE(isBlack(color));
+  EXPECT_FALSE(isRook(code));
+  EXPECT_FALSE(isBlack(code));
+}
+
 } // anonymous namespace
 
 int main(int argc, char *argv[])
