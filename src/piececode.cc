@@ -60,6 +60,12 @@ bool isKing(piececode_t code) noexcept
   return getPieceCode(code) == PieceCode::KING;
 }
 
+// determine if code contains a white piece
+bool isWhite(piececode_t code) noexcept
+{
+  return getPieceColor(code) == PieceColor::WHITE;
+}
+
 // output operator for pieces
 std::ostream& operator<<(std::ostream &os, const PieceCode &piece)
 {
