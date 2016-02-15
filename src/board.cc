@@ -944,8 +944,7 @@ PieceMove Board::lastMove() const noexcept
 // get a square from a board
 Square Board::operator()(dim_type row, dim_type column) const noexcept
 {
-  assert(row >= 0 && row < BOARD_DIM);
-  assert(column >= 0 && column < BOARD_DIM);
+  assert(isInBound(row, column));
   return Square(row, get(column, code));
 }
 
