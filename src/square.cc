@@ -111,8 +111,7 @@ Square& Square::setPieceCode(piececode_t code) noexcept
 
 Square& Square::setLocation(dim_type row, dim_type column) noexcept
 {
-  assert(row >= 0 && row < BOARD_DIM);
-  assert(column >= 0 && column < BOARD_DIM);
+  assert(isInBound(row, column));
   mRow = row;
   mColumn = column;
   return *this;
