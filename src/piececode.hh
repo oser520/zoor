@@ -98,6 +98,15 @@ PieceColor getPieceColor(piececode_t code) noexcept;
 bool isPawn(piececode_t code) noexcept;
 
 /**
+ * @brief Determine if piece is a pawn.
+ * @param piece The @c PieceCode.
+ * @return True if piece is a pawn.
+ * @throw Never throws.
+ * TODO: make definition inline
+ */
+bool isPawn(PieceCode piece) noexcept;
+
+/**
  * @brief Determine if the code represents a knight.
  * @param code The bit pattern reprsenting a piece and its color.
  * @return True if the code represents a knight.
@@ -105,6 +114,15 @@ bool isPawn(piececode_t code) noexcept;
  * TODO: make definition inline
  */
 bool isKnight(piececode_t code) noexcept;
+
+/**
+ * @brief Determine if piece is a knight.
+ * @param piece The @c PieceCode.
+ * @return True if piece is a knight.
+ * @throw Never throws.
+ * TODO: make definition inline
+ */
+bool isKnight(PieceCode piece) noexcept;
 
 /**
  * @brief Determine if the code represents a bishop.
@@ -116,6 +134,15 @@ bool isKnight(piececode_t code) noexcept;
 bool isBishop(piececode_t code) noexcept;
 
 /**
+ * @brief Determine if piece is a bishop.
+ * @param piece The @c PieceCode.
+ * @return True if piece is a bishop.
+ * @throw Never throws.
+ * TODO: make definition inline
+ */
+bool isBishop(PieceCode piece) noexcept;
+
+/**
  * @brief Determine if the code represents a rook.
  * @param code The bit pattern reprsenting a piece and its color.
  * @return True if the code represents a rook.
@@ -123,6 +150,15 @@ bool isBishop(piececode_t code) noexcept;
  * TODO: make definition inline
  */
 bool isRook(piececode_t code) noexcept;
+
+/**
+ * @brief Determine if piece is a rook.
+ * @param piece The @c PieceCode.
+ * @return True if piece is a rook.
+ * @throw Never throws.
+ * TODO: make definition inline
+ */
+bool isRook(PieceCode piece) noexcept;
 
 /**
  * @brief Determine if the code represents a queen.
@@ -134,6 +170,15 @@ bool isRook(piececode_t code) noexcept;
 bool isQueen(piececode_t code) noexcept;
 
 /**
+ * @brief Determine if piece is a queen.
+ * @param piece The @c PieceCode.
+ * @return True if piece is a queen.
+ * @throw Never throws.
+ * TODO: make definition inline
+ */
+bool isQueen(PieceCode piece) noexcept;
+
+/**
  * @brief Determine if the code represents a king.
  * @param code The bit pattern reprsenting a piece and its color.
  * @return True if the code represents a king.
@@ -141,6 +186,15 @@ bool isQueen(piececode_t code) noexcept;
  * TODO: make definition inline
  */
 bool isKing(piececode_t code) noexcept;
+
+/**
+ * @brief Determine if piece is a king.
+ * @param piece The @c PieceCode.
+ * @return True if piece is a king.
+ * @throw Never throws.
+ * TODO: make definition inline
+ */
+bool isKing(PieceCode piece) noexcept;
 
 /**
  * @brief Determine if the code represents a piece with white color.
@@ -152,6 +206,15 @@ bool isKing(piececode_t code) noexcept;
 bool isWhite(piececode_t code) noexcept;
 
 /**
+ * @brief Determine if the color is white.
+ * @param color The @c PieceColor.
+ * @return True if the color is white.
+ * @throw Never throws.
+ * TODO: make definition inline
+ */
+bool isWhite(PieceColor color) noexcept;
+
+/**
  * @brief Determine if the code represents a piece with black color.
  * @param code The bit pattern reprsenting a piece and its color.
  * @return True if the code represents a black piece.
@@ -159,6 +222,15 @@ bool isWhite(piececode_t code) noexcept;
  * TODO: make definition inline
  */
 bool isBlack(piececode_t code) noexcept;
+
+/**
+ * @brief Determine if the color is black.
+ * @param color The @c PieceColor.
+ * @return True if the color is black.
+ * @throw Never throws.
+ * TODO: make definition inline
+ */
+bool isBlack(PieceColor color) noexcept;
 
 /**
  * @brief Determine if the code represents a <em>PieceCode::NONE</em>.
@@ -170,6 +242,15 @@ bool isBlack(piececode_t code) noexcept;
 bool isPieceNone(piececode_t code) noexcept;
 
 /**
+ * @brief Determine if the piece is <em>PieceCode::NONE</em>.
+ * @param piece The @c PieceCode.
+ * @return True if piece is <em>PieceCode::NONE</em>.
+ * @throw Never throws.
+ * TODO: make definition inline
+ */
+bool isPieceNone(PieceCode piece) noexcept;
+
+/**
  * @brief Determine if the code represents a <em>PieceColor::NONE</em>.
  * @param code The bit pattern reprsenting a piece and its color.
  * @return True if the code represents <em>PieceColor::NONE</em>.
@@ -177,6 +258,15 @@ bool isPieceNone(piececode_t code) noexcept;
  * TODO: make definition inline
  */
 bool isColorNone(piececode_t code) noexcept;
+
+/**
+ * @brief Determine if the color is <em>PieceColor::NONE</em>.
+ * @param color The @c PieceColor.
+ * @return True if piece is <em>PieceColor::NONE</em>.
+ * @throw Never throws.
+ * TODO: make definition inline
+ */
+bool isColorNone(PieceColor color) noexcept;
 
 /**
  * @brief Determine if the code represents the same <em>piece</em>.
@@ -197,78 +287,6 @@ bool isSamePiece(piececode_t code, PieceCode piece) noexcept;
  * TODO: make definition inline
  */
 bool isSameColor(piececode_t code, PieceColor color) noexcept;
-
-/**
- * @brief Determine if piece is a pawn.
- * @param piece The @c PieceCode.
- * @return True if piece is a pawn.
- * @throw Never throws.
- * TODO: make definition inline
- */
-bool isPawn(PieceCode piece) noexcept;
-
-/**
- * @brief Determine if piece is a knight.
- * @param piece The @c PieceCode.
- * @return True if piece is a knight.
- * @throw Never throws.
- * TODO: make definition inline
- */
-bool isKnight(PieceCode piece) noexcept;
-
-/**
- * @brief Determine if piece is a bishop.
- * @param piece The @c PieceCode.
- * @return True if piece is a bishop.
- * @throw Never throws.
- * TODO: make definition inline
- */
-bool isBishop(PieceCode piece) noexcept;
-
-/**
- * @brief Determine if piece is a rook.
- * @param piece The @c PieceCode.
- * @return True if piece is a rook.
- * @throw Never throws.
- * TODO: make definition inline
- */
-bool isRook(PieceCode piece) noexcept;
-
-/**
- * @brief Determine if piece is a queen.
- * @param piece The @c PieceCode.
- * @return True if piece is a queen.
- * @throw Never throws.
- * TODO: make definition inline
- */
-bool isQueen(PieceCode piece) noexcept;
-
-/**
- * @brief Determine if piece is a king.
- * @param piece The @c PieceCode.
- * @return True if piece is a king.
- * @throw Never throws.
- * TODO: make definition inline
- */
-bool isKing(PieceCode piece) noexcept;
-
-/**
- * @brief Determine if the color is white.
- * @param color The @c PieceColor.
- * @return True if the color is white.
- * @throw Never throws.
- * TODO: make definition inline
- */
-bool isWhite(PieceColor color) noexcept;
-
-/**
- * @brief Determine if the color is black.
- * @param color The @c PieceColor.
- * @return True if the color is black.
- * @throw Never throws.
- * TODO: make definition inline
- */
-bool isBlack(PieceColor color) noexcept;
 
 /**
  * Output operator for a @c PieceCode.
