@@ -181,6 +181,24 @@ TEST(isBishopTest, isBishop)
   EXPECT_FALSE(isBlack(code));
 }
 
+// test isRook
+TEST(isRookTest, isRook)
+{
+  auto piece = PieceCode::ROOK;
+  auto color = PieceColor::WHITE;
+  auto code = color | piece;
+
+  EXPECT_TRUE(isRook(piece));
+  EXPECT_TRUE(isWhite(color));
+  EXPECT_TRUE(isRook(code));
+  EXPECT_TRUE(isWhite(code));
+
+  EXPECT_FALSE(isQueen(piece));
+  EXPECT_FALSE(isBlack(color));
+  EXPECT_FALSE(isQueen(code));
+  EXPECT_FALSE(isBlack(code));
+}
+
 } // anonymous namespace
 
 int main(int argc, char *argv[])
