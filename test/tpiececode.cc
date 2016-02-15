@@ -127,6 +127,27 @@ TEST(PieceCodeFunc, GetCodeFunc)
   EXPECT_EQ(PieceCode::BISHOP, getPieceCode(code));
 }
 
+/**
+ * Test PieceCode output string.
+ */
+TEST(isPawnTest, isPawn)
+{
+  auto piece = PieceCode::PAWN;
+  auto color = PieceColor::WHITE;
+  auto code = color | piece;
+
+  EXPECT_TRUE(isPawn(piece));
+  EXPECT_TRUE(isWhite(color));
+  EXPECT_TRUE(isPawn(code));
+  EXPECT_TRUE(isWhite(code));
+
+  EXPECT_FALSE(isRook(piece));
+  EXPECT_FALSE(isBlack(color));
+  EXPECT_FALSE(isRook(code));
+  EXPECT_FALSE(isBlack(code));
+}
+
+
 } // anonymous namespace
 
 int main(int argc, char *argv[])
