@@ -285,6 +285,22 @@ TEST(isSamePieceTest, isSamePiece)
   EXPECT_FALSE(isSamePiece(code, piece));
 }
 
+// test isSameColor
+TEST(isSameColorTest, isSameColor)
+{
+  auto piece = PieceCode::KING;
+  auto color = PieceColor::WHITE;
+  auto code = color | piece;
+
+  EXPECT_TRUE(isSameColor(code, color));
+  EXPECT_TRUE(isSameColor(code, color));
+
+  color = PieceColor::BLACK;
+
+  EXPECT_FALSE(isSameColor(code, color));
+  EXPECT_FALSE(isSameColor(code, color));
+}
+
 } // anonymous namespace
 
 int main(int argc, char *argv[])
