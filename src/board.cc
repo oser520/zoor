@@ -124,8 +124,7 @@ bool Board::isCheckPawn(dim_type row, dim_type column) const noexcept
 bool Board::isCheckKnight(dim_type row, dim_type column) const noexcept
 {
   assert(mColor != PieceColor::NONE);
-  assert(row >= 0 && row < BOARD_DIM);
-  assert(column >= 0 && column < BOARD_DIM);
+  assert(isInBound(row, column));
 
   auto jumpList = jump(row, column, JUMP_KNIGHT);
   for (auto& pos : jumpList) {
