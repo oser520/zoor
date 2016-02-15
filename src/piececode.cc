@@ -36,6 +36,12 @@ bool isKnight(piececode_t code) noexcept
   return getPieceCode(code) == PieceCode::KNIGHT;
 }
 
+// determine if code contains bishop
+bool isBishop(piececode_t code) noexcept
+{
+  return getPieceCode(code) == PieceCode::BISHOP;
+}
+
 // output operator for pieces
 std::ostream& operator<<(std::ostream &os, const PieceCode &piece)
 {
