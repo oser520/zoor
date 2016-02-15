@@ -262,6 +262,15 @@ bool isKing(PieceCode piece) noexcept;
 bool isWhite(PieceColor color) noexcept;
 
 /**
+ * @brief Determine if the color is black.
+ * @param color The @c PieceColor.
+ * @return True if the color is black.
+ * @throw Never throws.
+ * TODO: make definition inline
+ */
+bool isBlack(PieceColor color) noexcept;
+
+/**
  * Output operator for a @c PieceCode.
  *
  * The @c PieceCode names are:
