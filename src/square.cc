@@ -85,7 +85,7 @@ Square& Square::setRow(dim_type row) noexcept
 
 Square& Square::setColumn(dim_type column) noexcept
 {
-  assert(column >= 0 && column < BOARD_DIM);
+  assert(isInBound(column));
   mColumn = column;
   return *this;
 }
