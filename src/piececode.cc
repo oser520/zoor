@@ -90,6 +90,12 @@ bool isSamePiece(piececode_t code, PieceCode piece) noexcept
   return getPieceCode(code) == piece;
 }
 
+// determine if bit code contains the color
+bool isSameColor(piececode_t code, PieceColor color) noexcept
+{
+  return getPieceColor(code) == color;
+}
+
 // output operator for pieces
 std::ostream& operator<<(std::ostream &os, const PieceCode &piece)
 {
