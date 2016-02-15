@@ -25,14 +25,14 @@ CXXFLAGS += $(GTFLAGS) $(INCDIR)
 OBJ_PIECECODE = tpiececode.o piececode.o
 OBJ_PIECECOUNT = tpiececount.o piececount.o piececode.o
 OBJ_SQUARE = tsquare.o square.o piececode.o
-OBJ_PIECEMOVES = tpiecemoves.o piecemoves.o square.o piececode.o
+OBJ_PIECEMOVE = tpiecemove.o piecemove.o square.o piececode.o
 
 # Combine unique object files.
-OBJ_LIST := $(OBJ_PIECECODE) $(OBJ_PIECECOUNT) $(OBJ_SQUARE) $(OBJ_PIECEMOVES)
+OBJ_LIST := $(OBJ_PIECECODE) $(OBJ_PIECECOUNT) $(OBJ_SQUARE) $(OBJ_PIECEMOVE)
 OBJ_ALL != echo $(OBJ_LIST) | tr " " "\n" | sort | uniq
 
 # Unit test programs.
-TARGETS = tpiececode tpiececount tsquare tpiecemoves
+TARGETS = tpiececode tpiececount tsquare tpiecemove
 
 all: $(TARGETS)
 
@@ -45,14 +45,14 @@ tpiececount: $(OBJ_PIECECOUNT)
 tsquare: $(OBJ_SQUARE)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
 
-tpiecemoves: $(OBJ_PIECEMOVES)
+tpiecemove: $(OBJ_PIECEMOVE)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
 
 # Header dependencies.
 $(OBJ_PIECECODE): piececode.hh
 $(OBJ_PIECECOUNT): piececount.hh piececode.hh
 $(OBJ_SQUARE): square.hh piececode.hh
-$(OBJ_PIECEMOVES): piecemoves.hh square.hh piececode.hh
+$(OBJ_PIECEMOVE): piecemove.hh square.hh piececode.hh
 
 .PHONY: run clean
 # Run all unit tests.
