@@ -66,6 +66,12 @@ bool isRook(piececode_t code) noexcept
   return getPieceCode(code) == PieceCode::ROOK;
 }
 
+// check if the piece is a rook
+bool isRook(PieceCode piece) noexcept
+{
+  return piece == PieceCode::ROOK;
+}
+
 // determine if code contains queen
 bool isQueen(piececode_t code) noexcept
 {
