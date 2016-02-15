@@ -100,8 +100,7 @@ jump_list Board::jump
    dim_type column,
    const jump_list &positions) const noexcept
 {
-  assert(row >= 0 && row < BOARD_DIM);
-  assert(column >= 0 && column < BOARD_DIM);
+  assert(isInBound(row, column));
   jump_list jumpList;
 
   for (auto& pos : positions) {
