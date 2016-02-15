@@ -71,15 +71,14 @@ PieceColor Square::color() const noexcept
   return mColor;
 }
 
-// TODO: replace & operator with | operator
 piececode_t Square::code() const noexcept
 {
-  return mColor & mPiece;
+  return mColor | mPiece;
 }
 
 Square& Square::setRow(dim_type row) noexcept
 {
-  assert(row >= 0 && row < BOARD_DIM);
+  assert(isInBound(row));
   mRow = row;
   return *this;
 }
