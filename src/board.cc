@@ -738,10 +738,9 @@ std::vector<PieceMove>
 Board::moveQueen(dim_type row, dim_type column) const noexcept
 {
   assert(mColor != PieceColor::NONE);
-  assert(row >= 0 && row < BOARD_DIM);
-  assert(column >= 0 && column < BOARD_DIM);
+  assert(isInBound(row, column));
   auto fromCode = get(row, column);
-  assert(getPieceCode(fromCode) == PieceCode::QUEEN);
+  assert(isQueen(fromCode));
   std::vector<PieceMove> moveList;
 
   // check all moves right
@@ -795,7 +794,7 @@ Board::moveQueen(dim_type row, dim_type column) const noexcept
     auto toColor = getPieceColor(toCode);
     if (toColor == mColor)
       break;
-    else if (toColor == PieceColor::NONE) {
+    else if (toColor == PieceColor::NONE)
       moveList.emplace_back(row, column, fromCode, toRow, column);
     else {
       moveList.emplace_back(row, column, fromCode, toRow, column);
