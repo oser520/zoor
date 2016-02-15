@@ -388,8 +388,7 @@ bool Board::isCheckKing(dim_type row, dim_type column) const noexcept
 bool Board::isCheck(dim_type row, dim_type column) const noexcept
 {
   assert(mColor != PieceColor::NONE);
-  assert(row >= 0 && row < BOARD_DIM);
-  assert(column >= 0 && column < BOARD_DIM);
+  assert(isInBound(row, column));
 
   return isCheckRook(row, column) || isCheckBishop(row, column)
       || isCheckKing(row, column) || isCheckQueen(row, column)
