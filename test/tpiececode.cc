@@ -127,9 +127,7 @@ TEST(PieceCodeFunc, GetCodeFunc)
   EXPECT_EQ(PieceCode::BISHOP, getPieceCode(code));
 }
 
-/**
- * Test PieceCode output string.
- */
+// test isPawn
 TEST(isPawnTest, isPawn)
 {
   auto piece = PieceCode::PAWN;
