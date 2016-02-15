@@ -270,7 +270,7 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
     auto color = getPieceColor(toCode);
     if (color == PieceColor::NONE)
       continue;
-    else if (color == mColor || getPieceCode(toCode) != PieceCode::QUEEN)
+    else if (color == mColor || isQueen(toCode))
       break;
     else
       return true;
@@ -282,7 +282,7 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
     auto color = getPieceColor(toCode);
     if (color == PieceColor::NONE)
       continue;
-    else if (color == mColor || getPieceCode(toCode) != PieceCode::QUEEN)
+    else if (color == mColor || isQueen(toCode))
       break;
     else
       return true;
@@ -294,7 +294,7 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
     auto color = getPieceColor(toCode);
     if (color == PieceColor::NONE)
       continue;
-    else if (color == mColor || getPieceCode(toCode) != PieceCode::QUEEN)
+    else if (color == mColor || isQueen(toCode))
       break;
     else
       return true;
@@ -306,7 +306,7 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
     auto color = getPieceColor(toCode);
     if (color == PieceColor::NONE)
       continue;
-    else if (color == mColor || getPieceCode(toCode) != PieceCode::QUEEN)
+    else if (color == mColor || isQueen(toCode))
       break;
     else
       return true;
@@ -319,7 +319,7 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
     auto color = getPieceColor(toCode);
     if (color == PieceColor::NONE)
       continue;
-    else if (color == mColor || getPieceCode(toCode) != PieceCode::QUEEN)
+    else if (color == mColor || isQueen(toCode))
       break;
     else
       return true;
@@ -332,7 +332,7 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
     auto color = getPieceColor(toCode);
     if (color == PieceColor::NONE)
       continue;
-    else if (color == mColor || getPieceCode(toCode) != PieceCode::QUEEN)
+    else if (color == mColor || isQueen(toCode))
       break;
     else
       return true;
@@ -345,7 +345,7 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
     auto color = getPieceColor(toCode);
     if (color == PieceColor::NONE)
       continue;
-    else if (color == mColor || getPieceCode(toCode) != PieceCode::QUEEN)
+    else if (color == mColor || isQueen(toCode))
       break;
     else
       return true;
@@ -358,7 +358,7 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
     auto color = getPieceColor(toCode);
     if (color == PieceColor::NONE)
       continue;
-    else if (color == mColor || getPieceCode(toCode) != PieceCode::QUEEN)
+    else if (color == mColor || isQueen(toCode))
       break;
     else
       return true;
