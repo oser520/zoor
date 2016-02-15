@@ -570,9 +570,9 @@ Board::moveKnight(dim_type row, dim_type column) const noexcept
   jumpList = jump(row, column, JUMP_KNIGHT);
   for (auto &pos : jumpList) {
     auto toCode = get(pos.first, pos.second);
-    if (getPieceCode(toCode) == PieceCode::NONE)
+    if (isPieceNone(toCode))
       moveList.emplace_back(row, column, fromCode, pos.first, pos.second);
-    else if (getPieceColor(toCode) != mColor) {
+    else if (!isSameColor(toCode, mColor)) {
       moveList.emplace_back(row, column, fromCode);
       moveList.back().setCapture(pos.first, pos.second, toCode);
     }
