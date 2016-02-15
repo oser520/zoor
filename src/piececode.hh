@@ -244,6 +244,15 @@ bool isRook(PieceCode piece) noexcept;
 bool isQueen(PieceCode piece) noexcept;
 
 /**
+ * @brief Determine if piece is a king.
+ * @param piece The @c PieceCode.
+ * @return True if piece is a king.
+ * @throw Never throws.
+ * TODO: make definition inline
+ */
+bool isKing(PieceCode piece) noexcept;
+
+/**
  * Output operator for a @c PieceCode.
  *
  * The @c PieceCode names are:
