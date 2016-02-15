@@ -30,7 +30,7 @@ bool isPawn(piececode_t code) noexcept
   return getPieceCode(code) == PieceCode::PAWN;
 }
 
-// determine if code contains pawn
+// check if the piece is a pawn
 bool isPawn(PieceCode piece) noexcept
 {
   return piece == PieceCode::PAWN;
@@ -42,7 +42,7 @@ bool isKnight(piececode_t code) noexcept
   return getPieceCode(code) == PieceCode::KNIGHT;
 }
 
-// determine if code contains knight
+// check if the piece is a knight
 bool isKnight(PieceCode piece) noexcept
 {
   return piece == PieceCode::KNIGHT;
