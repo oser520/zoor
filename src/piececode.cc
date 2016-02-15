@@ -126,6 +126,12 @@ bool isPieceNone(piececode_t code) noexcept
   return getPieceCode(code) == PieceCode::NONE;
 }
 
+// check if the piece is NONE
+bool isPieceNone(PieceCode piece) noexcept
+{
+  return piece == PieceCode::NONE;
+}
+
 // determine if code does not contain a color
 bool isColorNone(piececode_t code) noexcept
 {
