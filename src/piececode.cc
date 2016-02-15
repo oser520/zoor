@@ -54,6 +54,12 @@ bool isBishop(piececode_t code) noexcept
   return getPieceCode(code) == PieceCode::BISHOP;
 }
 
+// check if the piece is a bishop
+bool isBishop(PieceCode piece) noexcept
+{
+  return piece == PieceCode::BISHOP;
+}
+
 // determine if code contains rook
 bool isRook(piececode_t code) noexcept
 {
