@@ -138,6 +138,12 @@ bool isColorNone(piececode_t code) noexcept
   return getPieceColor(code) == PieceColor::NONE;
 }
 
+// check if the piece is NONE
+bool isColorNone(PieceColor color) noexcept
+{
+  return color == PieceColor::NONE;
+}
+
 // determine if bit code contains the piece
 bool isSamePiece(piececode_t code, PieceCode piece) noexcept
 {
