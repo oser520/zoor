@@ -208,6 +208,15 @@ bool isSameColor(piececode_t code, PieceColor color) noexcept;
 bool isPawn(PieceCode piece) noexcept;
 
 /**
+ * @brief Determine if piece is a knight.
+ * @param piece The @c PieceCode.
+ * @return True if piece is a knight.
+ * @throw Never throws.
+ * TODO: make definition inline
+ */
+bool isKnight(PieceCode piece) noexcept;
+
+/**
  * Output operator for a @c PieceCode.
  *
  * The @c PieceCode names are:
