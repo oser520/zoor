@@ -189,6 +189,16 @@ bool isColorNone(piececode_t code) noexcept;
 bool isSamePiece(piececode_t code, PieceCode piece) noexcept;
 
 /**
+ * @brief Determine if the code represents the same <em>color</em>.
+ * @param code The bit pattern reprsenting a piece and its color.
+ * @param color The @c PieceColor.
+ * @return True if the code represents the <em>color</em>.
+ * @throw Never throws.
+ * TODO: make definition inline
+ */
+bool isSameColor(piececode_t code, PieceColor color) noexcept;
+
+/**
  * Output operator for a @c PieceCode.
  *
  * The @c PieceCode names are:
