@@ -377,8 +377,7 @@ bool Board::isCheckKing(dim_type row, dim_type column) const noexcept
   auto jumpList = jump(row, column, JUMP_KING);
   for (auto& pos : jumpList) {
     auto pcode = get(pos.first, pos.second);
-    if (getPieceCode(pcode) == PieceCode::KING
-        && getPieceColor(pcode) != mColor)
+    if (isKing(pcode) && !isSameColor(pcode, mColor))
       return true;
   }
 
