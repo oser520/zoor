@@ -147,6 +147,24 @@ TEST(isPawnTest, isPawn)
   EXPECT_FALSE(isBlack(code));
 }
 
+// test isKnight
+TEST(isKnightTest, isKnight)
+{
+  auto piece = PieceCode::KNIGHT;
+  auto color = PieceColor::WHITE;
+  auto code = color | piece;
+
+  EXPECT_TRUE(isKnight(piece));
+  EXPECT_TRUE(isWhite(color));
+  EXPECT_TRUE(isKnight(code));
+  EXPECT_TRUE(isWhite(code));
+
+  EXPECT_FALSE(isRook(piece));
+  EXPECT_FALSE(isBlack(color));
+  EXPECT_FALSE(isRook(code));
+  EXPECT_FALSE(isBlack(code));
+}
+
 
 } // anonymous namespace
 
