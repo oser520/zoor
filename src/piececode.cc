@@ -102,6 +102,12 @@ bool isWhite(piececode_t code) noexcept
   return getPieceColor(code) == PieceColor::WHITE;
 }
 
+// check if the color is white
+bool isWhite(PieceColor color) noexcept
+{
+  return color == PieceColor::WHITE;
+}
+
 // determine if code contains a black piece
 bool isBlack(piececode_t code) noexcept
 {
