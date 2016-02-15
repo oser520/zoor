@@ -143,6 +143,15 @@ bool isQueen(piececode_t code) noexcept;
 bool isKing(piececode_t code) noexcept;
 
 /**
+ * @brief Determine if the code represents a piece with white color.
+ * @param code The bit pattern reprsenting a piece and its color.
+ * @return True if the code represents a white piece.
+ * @throw Never throws.
+ * TODO: make definition inline
+ */
+bool isWhite(piececode_t code) noexcept;
+
+/**
  * @brief Determine if the code represents a <em>PieceCode::NONE</em>.
  * @param code The bit pattern reprsenting a piece and its color.
  * @return True if the code represents <em>PieceCode::NONE</em>.
