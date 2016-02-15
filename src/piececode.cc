@@ -42,6 +42,12 @@ bool isBishop(piececode_t code) noexcept
   return getPieceCode(code) == PieceCode::BISHOP;
 }
 
+// determine if code contains rook
+bool isRook(piececode_t code) noexcept
+{
+  return getPieceCode(code) == PieceCode::ROOK;
+}
+
 // output operator for pieces
 std::ostream& operator<<(std::ostream &os, const PieceCode &piece)
 {
