@@ -253,6 +253,15 @@ bool isQueen(PieceCode piece) noexcept;
 bool isKing(PieceCode piece) noexcept;
 
 /**
+ * @brief Determine if the color is white.
+ * @param color The @c PieceColor.
+ * @return True if the color is white.
+ * @throw Never throws.
+ * TODO: make definition inline
+ */
+bool isWhite(PieceColor color) noexcept;
+
+/**
  * Output operator for a @c PieceCode.
  *
  * The @c PieceCode names are:
