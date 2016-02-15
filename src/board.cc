@@ -876,8 +876,8 @@ std::vector<PieceMove>
 Board::moveKing(dim_type row, dim_type column) const noexcept
 {
   assert(mColor != PieceColor::NONE);
-  assert(row >= 0 && row < BOARD_DIM);
-  assert(column >= 0 && column < BOARD_DIM);
+  assert(isInBound(row));
+  assert(isInBound(column));
   auto fromCode = get(row, column);
   assert(isKing(fromCode));
   std::vector<PieceMove> moveList;
