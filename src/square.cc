@@ -26,8 +26,7 @@ Square::Square(dim_type row, dim_type column) noexcept
     mRow(row),
     mColumn(column)
 {
-  assert(mRow >= 0 && mRow < BOARD_DIM);
-  assert(mColumn >= 0 && mColumn < BOARD_DIM);
+  assert(isInBound(row, column));
 }
 
 Square::Square(dim_type row, dim_type column, piececode_t code) noexcept
@@ -36,8 +35,7 @@ Square::Square(dim_type row, dim_type column, piececode_t code) noexcept
     mRow(row),
     mColumn(column)
 {
-  assert(mRow >= 0 && mRow < BOARD_DIM);
-  assert(mColumn >= 0 && mColumn < BOARD_DIM);
+  assert(isInBound(row, column));
 }
 
 Square::Square
@@ -50,8 +48,7 @@ Square::Square
     mRow(row),
     mColumn(column)
 {
-  assert(mRow >= 0 && mRow < BOARD_DIM);
-  assert(mColumn >= 0 && mColumn < BOARD_DIM);
+  assert(isInBound(row, column));
 }
 
 dim_type Square::row() const noexcept
