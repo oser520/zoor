@@ -90,6 +90,12 @@ bool isKing(piececode_t code) noexcept
   return getPieceCode(code) == PieceCode::KING;
 }
 
+// check if the piece is a king
+bool isKing(PieceCode piece) noexcept
+{
+  return piece == PieceCode::KING;
+}
+
 // determine if code contains a white piece
 bool isWhite(piececode_t code) noexcept
 {
