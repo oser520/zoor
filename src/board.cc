@@ -453,13 +453,13 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
     auto toRow = rowOp(row, 1);
     // check one square straight up or down
     auto toCode = get(toRow, column);
-    if (getPieceCode(toCode) == PieceCode::NONE)
+    if (isPieceNone(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, column);
     // check one square up or down, and to the left
     if (column > 0) {
       auto toCol = column-1;
       toCode = get(toRow, toCol);
-      if (getPieceColor(toCode) != PieceColor::WHITE) {
+      if (!isSameColor(toCode, mColor)) {
         moveList.emplace_back(row, column, fromCode, toRow, toCol);
         moveList.back().setCapture(toRow, toCol, toCode);
       }
@@ -468,7 +468,7 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
     if (column < 7) {
       auto toCol = column+1;
       toCode = get(toRow, toCol);
-      if (getPieceColor(toCode) != PieceColor::WHITE) {
+      if (!isSameColor(toCode, mColor)) {
         moveList.emplace_back(row, column, fromCode, toRow, toCol);
         moveList.back().setCapture(toRow, toCol, toCode);
       }
@@ -482,7 +482,7 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
   if (row == cmpRow) {
     auto toRow = rowOp(row, 2);
     auto toCode = get(toRow, column);
-    if (getPieceCode(toCode) == PieceCode::NONE)
+    if (isPieceNone(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, column);
   }
 
@@ -521,7 +521,7 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
     auto toRow = rowOp(row, 1);
     // check one square up
     auto toCode = get(toRow, column);
-    if (getPieceCode(toCode) == PieceCode::NONE) {
+    if (isPieceNone(toCode)) {
       for (auto& pc : pcArr) {
         moveList.emplace_back(row, column, fromCode);
         moveList.back().setPromotion(toRow, column, pc, mColor);
@@ -531,8 +531,7 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
     if (column > 0) {
       auto toCol = column-1;
       toCode = get(toRow, toCol);
-      if (getPieceCode(toCode) != PieceCode::NONE
-          && getPieceColor(toCode) != mColor) {
+      if (!isPieceNone(toCode) && !isSameColor(toCode, mColor)) {
         for (auto& pc : pcArr) {
           moveList.emplace_back(row, column, fromCode);
           moveList.back().setCapture(toRow, toCol, toCode);
@@ -544,8 +543,7 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
     if (column < 7) {
       auto toCol = column+1;
       toCode = get(toRow, toCol);
-      if (getPieceCode(toCode) != PieceCode::NONE
-          && getPieceColor(toCode) != mColor) {
+      if (!isPieceNone(toCode) && !isSameColor(toCode, mColor)) {
         for (auto& pc : pcArr) {
           moveList.emplace_back(row, column, fromCode);
           moveList.back().setCapture(toRow, toCol, toCode);
