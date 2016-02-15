@@ -48,6 +48,12 @@ bool isRook(piececode_t code) noexcept
   return getPieceCode(code) == PieceCode::ROOK;
 }
 
+// determine if code contains queen
+bool isQueen(piececode_t code) noexcept
+{
+  return getPieceCode(code) == PieceCode::QUEEN;
+}
+
 // output operator for pieces
 std::ostream& operator<<(std::ostream &os, const PieceCode &piece)
 {
