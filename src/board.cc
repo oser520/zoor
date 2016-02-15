@@ -130,8 +130,7 @@ bool Board::isCheckKnight(dim_type row, dim_type column) const noexcept
   auto jumpList = jump(row, column, JUMP_KNIGHT);
   for (auto& pos : jumpList) {
     auto pcode = get(pos.first, pos.second);
-    if (getPieceCode(pcode) == PieceCode::KNIGHT
-        && getPieceColor(pcode) != mColor)
+    if (isKnight(pcode) && !isSameColor(pcode, mColor))
       return true;
   }
 
