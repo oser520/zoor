@@ -427,10 +427,9 @@ std::vector<PieceMove>
 Board::movePawn(dim_type row, dim_type column) const noexcept
 {
   assert(mColor != PieceColor::NONE);
-  assert(row >= 0 && row < BOARD_DIM);
-  assert(column >= 0 && column < BOARD_DIM);
+  assert(isInBound(row, column));
   auto fromCode = get(row, column);
-  assert(getPieceCode(fromCode) == PieceCode::PAWN);
+  assert(isPawn(fromCode));
 
   std::vector<PieceMove> moveList;
   dim_type cmpRow;
