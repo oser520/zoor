@@ -152,7 +152,7 @@ bool Board::isCheckBishop(dim_type row, dim_type column) const noexcept
     auto color = getPieceColor(toCode);
     if (color == PieceColor::NONE)
       continue;
-    else if (color == mColor || getPieceCode(toCode) != PieceCode::BISHOP)
+    else if (color == mColor || isBishop(toCode))
       break;
     else
       return true;
@@ -165,7 +165,7 @@ bool Board::isCheckBishop(dim_type row, dim_type column) const noexcept
     auto color = getPieceColor(toCode);
     if (color == PieceColor::NONE)
       continue;
-    else if (color == mColor || getPieceCode(toCode) != PieceCode::BISHOP)
+    else if (color == mColor || isBishop(toCode))
       break;
     else
       return true;
@@ -178,7 +178,7 @@ bool Board::isCheckBishop(dim_type row, dim_type column) const noexcept
     auto color = getPieceColor(toCode);
     if (color == PieceColor::NONE)
       continue;
-    else if (color == mColor || getPieceCode(toCode) != PieceCode::BISHOP)
+    else if (color == mColor || isBishop(toCode))
       break;
     else
       return true;
@@ -191,7 +191,7 @@ bool Board::isCheckBishop(dim_type row, dim_type column) const noexcept
     auto color = getPieceColor(toCode);
     if (color == PieceColor::NONE)
       continue;
-    else if (color == mColor || getPieceCode(toCode) != PieceCode::BISHOP)
+    else if (color == mColor || isBishop(toCode))
       break;
     else
       return true;
