@@ -63,20 +63,13 @@ TEST(PieceColorTest, PieceColor)
  */
 TEST(PieceValueTest, PieceValue)
 {
-  EXPECT_EQ(static_cast<piecevalue_t>(0),
-            static_cast<piecevalue_t>(PieceValue::NONE));
-  EXPECT_EQ(static_cast<piecevalue_t>(1),
-            static_cast<piecevalue_t>(PieceValue::PAWN));
-  EXPECT_EQ(static_cast<piecevalue_t>(3),
-            static_cast<piecevalue_t>(PieceValue::KNIGHT));
-  EXPECT_EQ(static_cast<piecevalue_t>(3),
-            static_cast<piecevalue_t>(PieceValue::BISHOP));
-  EXPECT_EQ(static_cast<piecevalue_t>(5),
-            static_cast<piecevalue_t>(PieceValue::ROOK));
-  EXPECT_EQ(static_cast<piecevalue_t>(9),
-            static_cast<piecevalue_t>(PieceValue::QUEEN));
-  EXPECT_EQ(static_cast<piecevalue_t>(0xffff),
-            static_cast<piecevalue_t>(PieceValue::KING));
+  EXPECT_EQ(0, static_cast<piecevalue_t>(PieceValue::NONE));
+  EXPECT_EQ(1, static_cast<piecevalue_t>(PieceValue::PAWN));
+  EXPECT_EQ(3, static_cast<piecevalue_t>(PieceValue::KNIGHT));
+  EXPECT_EQ(3, static_cast<piecevalue_t>(PieceValue::BISHOP));
+  EXPECT_EQ(5, static_cast<piecevalue_t>(PieceValue::ROOK));
+  EXPECT_EQ(9, static_cast<piecevalue_t>(PieceValue::QUEEN));
+  EXPECT_EQ(0x7fff, static_cast<piecevalue_t>(PieceValue::KING));
 }
 
 /**
