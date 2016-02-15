@@ -212,7 +212,7 @@ bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
     auto color = getPieceColor(toCode);
     if (color == PieceColor::NONE)
       continue;
-    else if (color == mColor || getPieceCode(toCode) != PieceCode::ROOK)
+    else if (color == mColor || isRook(toCode))
       break;
     else
       return true;
@@ -224,7 +224,7 @@ bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
     auto color = getPieceColor(toCode);
     if (color == PieceColor::NONE)
       continue;
-    else if (color == mColor || getPieceCode(toCode) != PieceCode::ROOK)
+    else if (color == mColor || isRook(toCode))
       break;
     else
       return true;
@@ -236,7 +236,7 @@ bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
     auto color = getPieceColor(toCode);
     if (color == PieceColor::NONE)
       continue;
-    else if (color == mColor || getPieceCode(toCode) != PieceCode::ROOK)
+    else if (color == mColor || isRook(toCode))
       break;
     else
       return true;
@@ -248,7 +248,7 @@ bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
     auto color = getPieceColor(toCode);
     if (color == PieceColor::NONE)
       continue;
-    else if (color == mColor || getPieceCode(toCode) != PieceCode::ROOK)
+    else if (color == mColor || isRook(toCode))
       break;
     else
       return true;
