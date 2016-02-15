@@ -78,6 +78,12 @@ bool isQueen(piececode_t code) noexcept
   return getPieceCode(code) == PieceCode::QUEEN;
 }
 
+// check if the piece is a queen
+bool isQueen(PieceCode piece) noexcept
+{
+  return piece == PieceCode::QUEEN;
+}
+
 // determine if code contains king
 bool isKing(piececode_t code) noexcept
 {
