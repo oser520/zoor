@@ -279,7 +279,7 @@ TEST(isSamePieceTest, isSamePiece)
   EXPECT_TRUE(isSamePiece(code, piece));
   EXPECT_TRUE(isSamePiece(code, piece));
 
-  piece = PieceColor::ROOK;
+  piece = PieceCode::ROOK;
 
   EXPECT_FALSE(isSamePiece(code, piece));
   EXPECT_FALSE(isSamePiece(code, piece));
