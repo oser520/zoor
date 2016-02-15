@@ -72,6 +72,12 @@ bool isBlack(piececode_t code) noexcept
   return getPieceColor(code) == PieceColor::BLACK;
 }
 
+// determine if code does not contain a color
+bool isColorNone(piececode_t code) noexcept
+{
+  return getPieceColor(code) == PieceColor::NONE;
+}
+
 // output operator for pieces
 std::ostream& operator<<(std::ostream &os, const PieceCode &piece)
 {
