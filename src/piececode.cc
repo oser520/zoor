@@ -10,18 +10,21 @@
 
 namespace zoor {
 
+// get the piece value
 PieceCode getPieceCode(piececode_t code) noexcept
 {
   code &= static_cast<piececode_t>(PieceMask::PIECE);
   return static_cast<PieceCode>(code);
 }
 
+// get the color value
 PieceColor getPieceColor(piececode_t code) noexcept
 {
   code &= static_cast<piececode_t>(PieceMask::COLOR);
   return static_cast<PieceColor>(code);
 }
 
+// output operator for pieces
 std::ostream& operator<<(std::ostream &os, const PieceCode &piece)
 {
   switch (piece) {
@@ -54,6 +57,7 @@ std::ostream& operator<<(std::ostream &os, const PieceCode &piece)
   return os;
 }
 
+// output operator for color
 std::ostream& operator<<(std::ostream &os, const PieceColor &color)
 {
   switch (color) {
@@ -74,6 +78,7 @@ std::ostream& operator<<(std::ostream &os, const PieceColor &color)
   return os;
 }
 
+// output operator for piece mask
 std::ostream& operator<<(std::ostream &os, const PieceMask &mask)
 {
   os << std::hex << std::showbase
@@ -82,11 +87,13 @@ std::ostream& operator<<(std::ostream &os, const PieceMask &mask)
   return os;
 }
 
+// logical or operator for color and piece to get bit pattern
 piececode_t operator|(const PieceColor &color, const PieceCode &piece) noexcept
 {
   return static_cast<piececode_t>(color) | static_cast<piececode_t>(piece);
 }
 
+// logical not operator for color
 PieceColor operator~(const PieceColor &color) noexcept
 {
   if (color == PieceColor::WHITE)
