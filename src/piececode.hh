@@ -67,7 +67,7 @@ enum class PieceValue: piecevalue_t
   BISHOP = KNIGHT,
   ROOK = 5,
   QUEEN = 9,
-  KING = 0xffff
+  KING = 0x7fff
 };
 
 /**
