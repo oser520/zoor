@@ -261,8 +261,7 @@ bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
 bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
 {
   assert(mColor != PieceColor::NONE);
-  assert(row >= 0 && row < BOARD_DIM);
-  assert(column >= 0 && column < BOARD_DIM);
+  assert(isInBound(row, column));
 
   // check against queen above
   for (auto toRow = row+1; toRow < BOARD_DIM; ++toRow) {
