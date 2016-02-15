@@ -98,15 +98,6 @@ PieceColor getPieceColor(piececode_t code) noexcept;
 bool isPawn(piececode_t code) noexcept;
 
 /**
- * @brief Determine if piece is a pawn.
- * @param piece The @c PieceCode.
- * @return True if piece is a pawn.
- * @throw Never throws.
- * TODO: make definition inline
- */
-bool isPawn(PieceCode piece) noexcept;
-
-/**
  * @brief Determine if the code represents a knight.
  * @param code The bit pattern reprsenting a piece and its color.
  * @return True if the code represents a knight.
@@ -206,6 +197,15 @@ bool isSamePiece(piececode_t code, PieceCode piece) noexcept;
  * TODO: make definition inline
  */
 bool isSameColor(piececode_t code, PieceColor color) noexcept;
+
+/**
+ * @brief Determine if piece is a pawn.
+ * @param piece The @c PieceCode.
+ * @return True if piece is a pawn.
+ * @throw Never throws.
+ * TODO: make definition inline
+ */
+bool isPawn(PieceCode piece) noexcept;
 
 /**
  * Output operator for a @c PieceCode.
