@@ -24,6 +24,12 @@ PieceColor getPieceColor(piececode_t code) noexcept
   return static_cast<PieceColor>(code);
 }
 
+// determine if code contains pawn
+bool isPawn(piececode_t code) noexcept
+{
+  return getPieceCode(code) == PieceCode::PAWN;
+}
+
 // output operator for pieces
 std::ostream& operator<<(std::ostream &os, const PieceCode &piece)
 {
