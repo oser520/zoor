@@ -79,7 +79,7 @@ TEST(SquareTest5, Getters)
   EXPECT_NE(PieceColor::BLACK, s.color());
   EXPECT_NE(1, s.row());
   EXPECT_NE(3, s.column());
-  EXPECT_EQ(PieceColor::BLACK | PieceCode::ROOK, s.code());
+  EXPECT_NE(PieceColor::BLACK | PieceCode::ROOK, s.code());
 }
 
 /**
