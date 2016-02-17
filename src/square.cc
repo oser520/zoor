@@ -122,6 +122,12 @@ bool Square::isInBound(dim_type position) noexcept
   return position >= 0 && position < BOARD_DIM;
 }
 
+bool Square::isInBound(dim_type row, dim_type column) noexcept
+{
+  return row >= 0 && row < BOARD_DIM
+      && column >= 0 && column < BOARD_DIM;
+}
+
 bool operator==(const Square& square1, const Square& square2) noexcept
 {
   return square1.mPiece == square2.mPiece
