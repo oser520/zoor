@@ -194,6 +194,15 @@ public:
    */
   Square& setLocation(dim_type row, dim_type column) noexcept;
 
+  /**
+   * @brief Check if the row and column are in the board.
+   * @param row The row in the board.
+   * @param column The column in the board.
+   * @return True if the row and column are in the board.
+   * @throw Never throws.
+   */
+  bool isInBound(dim_type row, dim_type column) noexcept;
+
 private:
   /**
    * @brief The piece sitting on this @c Square, which maybe <em>NONE</em>.
