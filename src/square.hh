@@ -201,7 +201,7 @@ public:
    * @return True if the position is in the board.
    * @throw Never throws.
    */
-  bool isInBound(dim_type position) noexcept;
+  static bool isInBound(dim_type position) noexcept;
 
   /**
    * @brief Check if the row and column are in the board.
@@ -210,7 +210,7 @@ public:
    * @return True if the row and column are in the board.
    * @throw Never throws.
    */
-  bool isInBound(dim_type row, dim_type column) noexcept;
+  static bool isInBound(dim_type row, dim_type column) noexcept;
 
 private:
   /**
