@@ -169,37 +169,17 @@ TEST(SquareTest8, EqualityOp)
 // unit tests for isInBound
 TEST(isInBoundTest, isInBound)
 {
-  EXPECT_TRUE(true);
-  EXPECT_EQ(s1, s2);
+  EXPECT_TRUE(Square::isInBound(7, 7));
+  EXPECT_TRUE(Square::isInBound(7));
+  EXPECT_TRUE(Square::isInBound(0, 0));
+  EXPECT_TRUE(Square::isInBound(0));
+  EXPECT_TRUE(Square::isInBound(2, 5));
 
-  s1.setPiece(PieceCode::KNIGHT);
-  EXPECT_NE(s1, s2);
-
-  s1.setPiece(PieceCode::NONE);
-  s2.setColor(PieceColor::WHITE);
-  EXPECT_NE(s1, s2);
-
-  s1.setPiece(PieceCode::ROOK).setColor(PieceColor::BLACK).setRow(5);
-  s2.setPiece(PieceCode::ROOK).setColor(PieceColor::BLACK).setRow(3);
-  EXPECT_NE(s1, s2);
-
-  s2.setRow(5);
-  EXPECT_EQ(s1, s2);
-
-  s1.setLocation(5, 7)
-    .setPiece(PieceCode::KNIGHT)
-    .setColor(PieceColor::BLACK);
-  s2.setLocation(5, 7)
-    .setPiece(PieceCode::KNIGHT)
-    .setColor(PieceColor::BLACK);
-
-  EXPECT_TRUE(s1 == s2);
-  EXPECT_FALSE(s1 != s2);
-
-  s1.setColor(PieceColor::WHITE);
-
-  EXPECT_FALSE(s1 == s2);
-  EXPECT_TRUE(s1 != s2);
+  EXPECT_FALSE(Square::isInBound(-1, -2));
+  EXPECT_FALSE(Square::isInBound(9));
+  EXPECT_FALSE(Square::isInBound(10,1));
+  EXPECT_FALSE(Square::isInBound(-3));
+  EXPECT_FALSE(Square::isInBound(2, 20));
 }
 
 } // namespace
