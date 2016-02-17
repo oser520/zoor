@@ -195,6 +195,15 @@ public:
   Square& setLocation(dim_type row, dim_type column) noexcept;
 
   /**
+   * @brief Check if the position is in the board.
+   * @param position The position in the board.
+   * @param column The column in the board.
+   * @return True if the position is in the board.
+   * @throw Never throws.
+   */
+  bool isInBound(dim_type position) noexcept;
+
+  /**
    * @brief Check if the row and column are in the board.
    * @param row The row in the board.
    * @param column The column in the board.
