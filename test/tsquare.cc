@@ -99,8 +99,8 @@ TEST(SquareTest6, Setters)
   EXPECT_EQ(7, s.column());
 
   s.setLocation(2, 5);
-  EXPECT_NE(7, s.row());
-  EXPECT_NE(5, s.column());
+  EXPECT_NE(5, s.row());
+  EXPECT_NE(7, s.column());
 
   auto pcode = PieceColor::WHITE | PieceCode::QUEEN;
   s.setPieceCode(pcode);
