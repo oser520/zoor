@@ -43,7 +43,7 @@ TEST(SquareTest2, Ctor2Param)
  */
 TEST(SquareTest3, Ctor3Param)
 {
-  Square s(3, 5, PieceColor::WHITE & PieceCode::BISHOP);
+  Square s(3, 5, PieceColor::WHITE | PieceCode::BISHOP);
   EXPECT_EQ(3, s.row());
   EXPECT_EQ(5, s.column());
   EXPECT_EQ(PieceCode::BISHOP, s.piece());
@@ -73,13 +73,13 @@ TEST(SquareTest5, Getters)
   EXPECT_EQ(PieceColor::WHITE, s.color());
   EXPECT_EQ(5, s.row());
   EXPECT_EQ(7, s.column());
-  EXPECT_EQ(PieceColor::WHITE & PieceCode::KING, s.code());
+  EXPECT_EQ(PieceColor::WHITE | PieceCode::KING, s.code());
 
   EXPECT_NE(PieceCode::BISHOP, s.piece());
   EXPECT_NE(PieceColor::BLACK, s.color());
   EXPECT_NE(1, s.row());
   EXPECT_NE(3, s.column());
-  EXPECT_EQ(PieceColor::BLACK & PieceCode::ROOK, s.code());
+  EXPECT_EQ(PieceColor::BLACK | PieceCode::ROOK, s.code());
 }
 
 /**
@@ -102,7 +102,7 @@ TEST(SquareTest6, Setters)
   EXPECT_NE(7, s.row());
   EXPECT_NE(5, s.column());
 
-  auto pcode = PieceColor::WHITE & PieceCode::QUEEN;
+  auto pcode = PieceColor::WHITE | PieceCode::QUEEN;
   s.setPieceCode(pcode);
   EXPECT_EQ(PieceCode::QUEEN, s.piece());
   EXPECT_EQ(PieceColor::WHITE, s.color());
