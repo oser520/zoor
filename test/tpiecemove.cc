@@ -96,6 +96,33 @@ TEST(PieceMove3, ThreeParamCtor)
 }
 
 /**
+ * Test the values of the piece making the moves with all-param constructor.
+ */
+TEST(PieceMove4, FiveParamCtor)
+{
+  auto pcode = PieceColor::WHITE | PieceCode::ROOK;
+  PieceMove pm(3, 5, pcode, 2, 6);
+
+  auto sq = pm.fromSquare();
+  EXPECT_EQ(PieceCode::ROOK, sq.piece());
+  EXPECT_EQ(PieceColor::WHITE, sq.color());
+  EXPECT_EQ(3, sq.row());
+  EXPECT_EQ(5, sq.column());
+
+  sq = pm.captureSquare();
+  EXPECT_EQ(PieceCode::NONE, sq.piece());
+  EXPECT_EQ(PieceColor::NONE, sq.color());
+  EXPECT_EQ(0, sq.row());
+  EXPECT_EQ(0, sq.column());
+
+  sq = pm.promoSquare();
+  EXPECT_EQ(PieceCode::NONE, sq.piece());
+  EXPECT_EQ(PieceColor::NONE, sq.color());
+  EXPECT_EQ(2, sq.row());
+  EXPECT_EQ(6, sq.column());
+}
+
+/**
  * Test inserting and querying moves.
  */
 TEST(PieceMove4, InsertMoves)
