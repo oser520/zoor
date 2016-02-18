@@ -273,6 +273,12 @@ PieceMove& PieceMove::setGoTo(dim_type row, dim_type column) noexcept
   return *this;
 }
 
+// check if the move results in mate
+bool PieceMove::isMate() const noexcept
+{
+  return isKing(mCapture.piece());
+}
+
 // are moves equal
 bool operator==(const PieceMove &pm1, const PieceMove &pm2) noexcept
 {

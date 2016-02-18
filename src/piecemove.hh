@@ -382,6 +382,13 @@ public:
    */
   PieceMove& setGoTo(dim_type row, dim_type column) noexcept;
 
+  /**
+   * @brief Determine if it is check mate.
+   * @return True if the move results in a captured king.
+   * @throw Never throws.
+   */
+  bool isMate() const noexcept;
+
 private:
   /**
    * Represents the piece tha is making the move.
