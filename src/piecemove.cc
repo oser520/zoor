@@ -83,6 +83,14 @@ PieceMove::setPiece(dim_type row, dim_type column, piececode_t code) noexcept
   return *this;
 }
 
+// source piece setter
+PieceMove&
+PieceMove::setPiece(PieceCode piece, PieceColor color) noexcept
+{
+  mFrom.setPiece(piece).setColor(color);
+  return *this;
+}
+
 // source square getter
 Square PieceMove::fromSquare() const noexcept
 {
