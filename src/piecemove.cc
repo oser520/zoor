@@ -171,6 +171,12 @@ PieceCode PieceMove::capturePiece() const noexcept
   return mCapture.piece();
 }
 
+// get the captured piece's color
+PieceColor PieceMove::captureColor() const noexcept
+{
+  return mCapture.color();
+}
+
 // promotion setter
 PieceMove& PieceMove::setPromo
   (dim_type row,
