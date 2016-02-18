@@ -268,36 +268,36 @@ TEST(PieceMove11, isPromo)
 TEST(PieceMove12, setToRow)
 {
   PieceMove pm;
-  EXPECT_EQ(0, pm.fromRow());
-  EXPECT_EQ(0, pm.fromColumn());
+  EXPECT_EQ(0, pm.toRow());
+  EXPECT_EQ(0, pm.toColumn());
 
   pm.setToRow(2);
-  EXPECT_EQ(2, pm.fromRow());
-  EXPECT_EQ(0, pm.fromColumn());
+  EXPECT_EQ(2, pm.toRow());
+  EXPECT_EQ(0, pm.toColumn());
 }
 
 // test setToColumn
 TEST(PieceMove13, setToColumn)
 {
   PieceMove pm;
-  EXPECT_EQ(0, pm.fromRow());
-  EXPECT_EQ(0, pm.fromColumn());
+  EXPECT_EQ(0, pm.toRow());
+  EXPECT_EQ(0, pm.toColumn());
 
   pm.setToColumn(2);
-  EXPECT_EQ(0, pm.fromRow());
-  EXPECT_EQ(2, pm.fromColumn());
+  EXPECT_EQ(0, pm.toRow());
+  EXPECT_EQ(2, pm.toColumn());
 }
 
 // test setGoTo
 TEST(PieceMove14, setGoTo)
 {
   PieceMove pm;
-  EXPECT_EQ(0, pm.fromRow());
-  EXPECT_EQ(0, pm.fromColumn());
+  EXPECT_EQ(0, pm.toRow());
+  EXPECT_EQ(0, pm.toColumn());
 
   pm.setGoTo(2, 3);
-  EXPECT_EQ(2, pm.fromRow());
-  EXPECT_EQ(3, pm.fromColumn());
+  EXPECT_EQ(2, pm.toRow());
+  EXPECT_EQ(3, pm.toColumn());
 }
 
 // test isMate
