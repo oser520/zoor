@@ -132,7 +132,7 @@ TEST(PieceMove5, fromRowColumn)
   EXPECT_EQ(5, pm.fromColumn());
 }
 
-// test fromRow
+// test toRow and toColumn
 TEST(PieceMove6, toRowColumn)
 {
   auto pcode = PieceColor::WHITE | PieceCode::ROOK;
