@@ -142,7 +142,7 @@ TEST(PieceMove6, toRowColumn)
   EXPECT_EQ(6, pm.toColumn());
 }
 
-// test toRow and toColumn
+// test setPiece
 TEST(PieceMove7, setPiece)
 {
   PieceMove pm;
