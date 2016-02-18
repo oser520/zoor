@@ -264,6 +264,13 @@ public:
   PieceCode capturePiece() const noexcept;
 
   /**
+   * @brief Obtain the captured @c PieceColor.
+   * @return The @c PieceColor for the captured piece.
+   * @throw Never throws.
+   */
+  PieceColor captureColor() const noexcept;
+
+  /**
    * @brief Sets the information for the promoted piece.
    * @param row The row location of the promoted piece.
    * @param column The column location of the promoted piece.
