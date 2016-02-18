@@ -142,6 +142,40 @@ TEST(PieceMove6, toRowColumn)
   EXPECT_EQ(6, pm.toColumn());
 }
 
+// test toRow and toColumn
+TEST(PieceMove7, setPiece)
+{
+  PieceMove pm;
+
+  // 4 param setPiece
+  pm.setPiece(1, 3, PieceCode::ROOK, PieceColor::WHITE);
+  EXPECT_EQ(1, pm.fromRow());
+  EXPECT_EQ(3, pm.fromColumn());
+  EXPECT_EQ(PieceCode::ROOK, pm.fromPiece());
+  EXPECT_EQ(PieceColor::WHITE, pm.fromColor());
+
+  // 3 param setPiece
+  pm.setPiece(2, 5, PieceColor::BLACK | PieceCode::KNIGHT);
+  EXPECT_EQ(2, pm.fromRow());
+  EXPECT_EQ(5, pm.fromColumn());
+  EXPECT_EQ(PieceCode::KNIGHT, pm.fromPiece());
+  EXPECT_EQ(PieceColor::BLACK, pm.fromColor());
+
+  // 2 param setPiece
+  pm.setPiece(PieceCode::QUEEN, PieceColor::WHITE);
+  EXPECT_EQ(2, pm.fromRow());
+  EXPECT_EQ(5, pm.fromColumn());
+  EXPECT_EQ(PieceCode::QUEEN, pm.fromPiece());
+  EXPECT_EQ(PieceColor::WHITE, pm.fromColor());
+
+  // 1 param setPiece
+  pm.setPiece(PieceCode::BLACK | PieceCode::PAWN);
+  EXPECT_EQ(2, pm.fromRow());
+  EXPECT_EQ(5, pm.fromColumn());
+  EXPECT_EQ(PieceCode::PAWN, pm.fromPiece());
+  EXPECT_EQ(PieceColor::BLACK, pm.fromColor());
+}
+
 /**
  * Test inserting and querying moves.
  */
