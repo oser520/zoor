@@ -129,6 +129,12 @@ Square PieceMove::captureSquare() const noexcept
   return mCapture;
 }
 
+// get the captured piece
+PieceCode PieceMove::capturePiece() const noexcept
+{
+  return mCapture.piece();
+}
+
 // promotion setter
 PieceMove& PieceMove::setPromotion
   (dim_type row,
