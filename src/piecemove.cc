@@ -136,7 +136,7 @@ PieceCode PieceMove::capturePiece() const noexcept
 }
 
 // promotion setter
-PieceMove& PieceMove::setPromotion
+PieceMove& PieceMove::setPromo
   (dim_type row,
    dim_type column,
    PieceCode piece,
@@ -150,7 +150,7 @@ PieceMove& PieceMove::setPromotion
 }
 
 // promotion setter
-PieceMove& PieceMove::setPromotion
+PieceMove& PieceMove::setPromo
   (dim_type row,
    dim_type column,
    piececode_t code) noexcept
@@ -161,27 +161,27 @@ PieceMove& PieceMove::setPromotion
 
 // promotion setter
 PieceMove&
-PieceMove::setPromotion(PieceCode piece, PieceColor color) noexcept
+PieceMove::setPromo(PieceCode piece, PieceColor color) noexcept
 {
   mPromo.setPiece(piece).setColor(color);
   return *this;
 }
 
 // promotion setter
-PieceMove& PieceMove::setPromotion(piececode_t code) noexcept
+PieceMove& PieceMove::setPromo(piececode_t code) noexcept
 {
   mPromo.setPieceCode(code);
   return *this;
 }
 
 // does move result in promotion
-bool PieceMove::isPromotion() const noexcept
+bool PieceMove::isPromo() const noexcept
 {
   return mPromo.piece() != PieceCode::NONE;
 }
 
 // promotion square
-Square PieceMove::promotionSquare() const noexcept
+Square PieceMove::promoSquare() const noexcept
 {
   return mPromo;
 }
