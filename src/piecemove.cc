@@ -14,7 +14,7 @@
 
 namespace zoor {
 
-using dim_type = PieceMoves::dim_type;
+using dim_type = PieceMove::dim_type;
 
 // four param ctro
 PieceMove::PieceMove
