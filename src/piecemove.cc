@@ -80,10 +80,7 @@ PieceMove& PieceMove::setPiece
    PieceCode piece,
    PieceColor color) noexcept
 {
-  mFrom.setRow(row)
-       .setColumn(column)
-       .setPiece(piece)
-       .setColor(color);
+  mFrom.setLocation(row, column).setPiece(piece).setColor(color);
   return *this;
 }
 
@@ -135,10 +132,7 @@ PieceMove& PieceMove::setCapture
    PieceCode piece,
    PieceColor color) noexcept
 {
-  mCapture.setRow(row)
-          .setColumn(column)
-          .setPiece(piece)
-          .setColor(color);
+  mCapture.setLocation(row, column).setPiece(piece).setColor(color);
   return *this;
 }
 
@@ -196,10 +190,7 @@ PieceMove& PieceMove::setPromo
    PieceCode piece,
    PieceColor color) noexcept
 {
-  mPromo.setRow(row)
-        .setColumn(column)
-        .setPiece(piece)
-        .setColor(color);
+  mPromo.setLocation(row, column).setPiece(piece).setColor(color);
   return *this;
 }
 
