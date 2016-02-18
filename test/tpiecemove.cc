@@ -254,6 +254,16 @@ TEST(PieceMove10, isCapture)
   EXPECT_TRUE(pm.isCapture());
 }
 
+// test isPromo
+TEST(PieceMove11, isPromo)
+{
+  PieceMove pm;
+  EXPECT_FALSE(pm.isPromo());
+
+  pm.setPromo(2, 5, PieceColor::BLACK | PieceCode::KNIGHT);
+  EXPECT_TRUE(pm.isPromo());
+}
+
 /**
  * Test inserting and querying moves.
  */
