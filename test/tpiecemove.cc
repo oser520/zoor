@@ -315,7 +315,7 @@ TEST(PieceMove16, EqualOp) {
   auto code = PieceColor::BLACK | PieceCode::ROOK;
   PieceMove pm1(1, 2, code, 3, 3);
   pm1.setCapture(3, 3, PieceCode::PAWN, PieceColor::WHITE);
-  PiecedMove pm2(pm1);
+  PieceMove pm2(pm1);
 
   EXPECT_TRUE(pm1 == pm2);
   EXPECT_FALSE(pm1 != pm2);
@@ -327,7 +327,7 @@ TEST(PieceMove16, EqualOp) {
 
 // test the output operator
 TEST(PieceMove17, OutputOp) {
-  PieceMoves pm(1, 2, PieceCode::ROOK, PieceColor::BLACK);
+  PieceMove pm(1, 2, PieceCode::ROOK, PieceColor::BLACK);
   pm.setCapture(3, 3, PieceCode::PAWN, PieceColor::WHITE);
   pm.setGoTo(3, 3);
 
