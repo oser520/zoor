@@ -515,7 +515,7 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
     if (isPieceNone(toCode)) {
       for (auto& pc : pcArr) {
         moveList.emplace_back(row, column, fromCode);
-        moveList.back().setPromotion(toRow, column, pc, mColor);
+        moveList.back().setPromo(toRow, column, pc, mColor);
       }
     }
     // check diagonal square to the left
@@ -526,7 +526,7 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
         for (auto& pc : pcArr) {
           moveList.emplace_back(row, column, fromCode);
           moveList.back().setCapture(toRow, toCol, toCode);
-          moveList.back().setPromotion(toRow, toCol, pc, mColor);
+          moveList.back().setPromo(toRow, toCol, pc, mColor);
         }
       }
     }
@@ -538,7 +538,7 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
         for (auto& pc : pcArr) {
           moveList.emplace_back(row, column, fromCode);
           moveList.back().setCapture(toRow, toCol, toCode);
-          moveList.back().setPromotion(toRow, toCol, pc, mColor);
+          moveList.back().setPromo(toRow, toCol, pc, mColor);
         }
       }
     }
