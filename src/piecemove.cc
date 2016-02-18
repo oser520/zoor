@@ -183,7 +183,7 @@ bool PieceMove::isPromotion() const noexcept
 }
 
 // promotion square
-Square PieceMove::promotion() const noexcept
+Square PieceMove::promotionSquare() const noexcept
 {
   return mPromotion;
 }

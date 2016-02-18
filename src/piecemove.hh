@@ -279,7 +279,7 @@ public:
    * @return The @c Square reprsenting the promoted piece.
    * @throw Never throws.
    */
-  Square promotion() const noexcept;
+  Square promotionSquare() const noexcept;
 
   /**
    * @brief Set the destination row.
