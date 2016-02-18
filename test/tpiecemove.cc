@@ -276,6 +276,18 @@ TEST(PieceMove12, setToRow)
   EXPECT_EQ(0, pm.fromColumn());
 }
 
+// test setToColumn
+TEST(PieceMove13, setToColumn)
+{
+  PieceMove pm;
+  EXPECT_EQ(0, pm.fromRow());
+  EXPECT_EQ(0, pm.fromColumn());
+
+  pm.setToColumn(2);
+  EXPECT_EQ(0, pm.fromRow());
+  EXPECT_EQ(2, pm.fromColumn());
+}
+
 /**
  * Test inserting and querying moves.
  */
