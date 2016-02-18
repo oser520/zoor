@@ -138,6 +138,20 @@ public:
   dim_type toColumn() const noexcept;
 
   /**
+   * @brief Obtain the row of captured piece.
+   * @return The row of the captured piece.
+   * @throw Never throws.
+   */
+  dim_type captureRow() const noexcept;
+
+  /**
+   * @brief Obtain the column of the captured piece.
+   * @return The column of the captured piece.
+   * @throw Never throws.
+   */
+  dim_type captureColumn() const noexcept;
+
+  /**
    * @brief Sets the information for the piece that is moving.
    * @param row The row location of the piece.
    * @param column The column location of the piece.
