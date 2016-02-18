@@ -314,7 +314,7 @@ TEST(PieceMove15, isMate)
 TEST(PieceMove16, EqualOp) {
   auto code = PieceColor::BLACK | PieceCode::ROOK;
   PieceMove pm1(1, 2, code, 3, 3);
-  pm.setCapture(3, 3, PieceCode::PAWN, PieceColor::WHITE);
+  pm1.setCapture(3, 3, PieceCode::PAWN, PieceColor::WHITE);
   PiecedMove pm2(pm1);
 
   EXPECT_TRUE(pm1 == pm2);
