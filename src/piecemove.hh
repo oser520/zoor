@@ -94,14 +94,14 @@ public:
    * @param pieceMove The @c PieceMove being copied.
    * @throw Never throws.
    */
-  PieceMove& PieceMove(const PieceMove &pieceMove) noexcept = default;
+  PieceMove& operator=(const PieceMove &pieceMove) noexcept = default;
 
   /**
    * @brief Default move assignment.
    * @param pieceMove The @c PieceMove being moved.
    * @throw Never throws.
    */
-  PieceMove& PieceMove(PieceMove &&pieceMove) noexcept = default;
+  PieceMove& operator=(PieceMove &&pieceMove) noexcept = default;
 
   /**
    * @brief Default destructor.
