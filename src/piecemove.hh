@@ -163,6 +163,15 @@ public:
   PieceMove& setPiece(dim_type row, dim_type column, piececode_t code) noexcept;
 
   /**
+   * @brief Sets the color and piece for the piece that is moving.
+   * @param piece The piece that is moving.
+   * @param color The color of the piece that is moving.
+   * @return A reference to this @c PieceMove.
+   * @throw Never throws.
+   */
+  PieceMove& setPiece(PieceCode piece, PieceColor color) noexcept;
+
+  /**
    * @brief Obtain the information of the piece that is moving.
    * @return A @c Square representing the piece.
    * @throw Never throws.
