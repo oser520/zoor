@@ -201,10 +201,9 @@ bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
   // check against rook above
   for (auto toRow = row+1; toRow < BOARD_DIM; ++toRow) {
     auto toCode = get(toRow, column);
-    auto color = getPieceColor(toCode);
-    if (color == PieceColor::NONE)
+    if (isColorNone(toCode))
       continue;
-    else if (color == mColor || isRook(toCode))
+    else if (isSameColor(toCode, mColor) || !isRook(toCode))
       break;
     else
       return true;
@@ -213,10 +212,9 @@ bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
   // check against rook below
   for (auto toRow = row-1; toRow >= 0; --toRow) {
     auto toCode = get(toRow, column);
-    auto color = getPieceColor(toCode);
-    if (color == PieceColor::NONE)
+    if (isColorNone(toCode))
       continue;
-    else if (color == mColor || isRook(toCode))
+    else if (isSameColor(toCode, mColor) || !isRook(toCode))
       break;
     else
       return true;
@@ -225,10 +223,9 @@ bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
   // check against rook to the right
   for (auto toCol = col+1; toCol < BOARD_DIM; ++toCol) {
     auto toCode = get(row, toCol);
-    auto color = getPieceColor(toCode);
-    if (color == PieceColor::NONE)
+    if (isColorNone(color))
       continue;
-    else if (color == mColor || isRook(toCode))
+    else if (isSameColor(toCode, mColor) || !isRook(toCode))
       break;
     else
       return true;
@@ -237,10 +234,9 @@ bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
   // check against rook to the left
   for (auto toCol = col-1; toCol >= 0; --toCol) {
     auto toCode = get(row, toCol);
-    auto color = getPieceColor(toCode);
-    if (color == PieceColor::NONE)
+    if (isColorNone(toCode))
       continue;
-    else if (color == mColor || isRook(toCode))
+    else if (isSameColor(toCode, mColor) || !isRook(toCode))
       break;
     else
       return true;
