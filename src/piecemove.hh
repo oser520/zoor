@@ -311,7 +311,7 @@ public:
    * @return A reference to this @c PieceMove.
    * @throw Never throws.
    */
-  PieceMove& setDestination(dim_type row, dim_type column) noexcept;
+  PieceMove& setGoTo(dim_type row, dim_type column) noexcept;
 
 private:
   /**

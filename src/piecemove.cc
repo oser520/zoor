@@ -201,7 +201,7 @@ PieceMove& PieceMove::setToColumn(dim_type column) noexcept
 }
 
 // to row and to column setter
-PieceMove& PieceMove::setDestination(dim_type row, dim_type column) noexcept
+PieceMove& PieceMove::setGoTo(dim_type row, dim_type column) noexcept
 {
   mPromo.setRow(row).setColumn(column);
   return *this;
