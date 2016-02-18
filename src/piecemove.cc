@@ -35,7 +35,7 @@ PieceMove::PieceMove
    piececode_t code,
    dim_type toRow,
    dim_type toColumn) noexcept
-  : mFrom(fromRow, fromColumn, code), mPromotion(toRow, toColumn) {}
+  : mFrom(fromRow, fromColumn, code), mPromo(toRow, toColumn) {}
 
 // from row getter
 dim_type PieceMove::fromRow() const noexcept
@@ -52,13 +52,13 @@ dim_type PieceMove::fromColumn() const noexcept
 // to row getter
 dim_type PieceMove::toRow() const noexcept
 {
-  return mDestination.row();
+  return mPromo.row();
 }
 
 // to column getter
 dim_type PieceMove::toColumn() const noexcept
 {
-  return mDestination.column();
+  return mPromo.column();
 }
 
 // source piece setter
@@ -142,7 +142,7 @@ PieceMove& PieceMove::setPromotion
    PieceCode piece,
    PieceColor color) noexcept
 {
-  mPromotion.setRow(row)
+  mPromo.setRow(row)
             .setColumn(column)
             .setPiece(piece)
             .setColor(color);
@@ -155,7 +155,7 @@ PieceMove& PieceMove::setPromotion
    dim_type column,
    piececode_t code) noexcept
 {
-  mPromotion.setRow(row)
+  mPromo.setRow(row)
             .setColumn(column)
             .setPieceCode(piece);
   return *this;
@@ -165,47 +165,47 @@ PieceMove& PieceMove::setPromotion
 PieceMove&
 PieceMove::setPromotion(PieceCode piece, PieceColor color) noexcept
 {
-  mPromotion.setPiece(piece).setColor(color);
+  mPromo.setPiece(piece).setColor(color);
   return *this;
 }
 
 // promotion setter
 PieceMove& PieceMove::setPromotion(piececode_t code) noexcept
 {
-  mPromotion.setPieceCode(code);
+  mPromo.setPieceCode(code);
   return *this;
 }
 
 // does move result in promotion
 bool PieceMove::isPromotion() const noexcept
 {
-  return mPromotion.piece() != PieceCode::NONE;
+  return mPromo.piece() != PieceCode::NONE;
 }
 
 // promotion square
 Square PieceMove::promotionSquare() const noexcept
 {
-  return mPromotion;
+  return mPromo;
 }
 
 // to row setter
 PieceMove& PieceMove::setToRow(dim_type row) noexcept
 {
-  mPromotion.setRow(row);
+  mPromo.setRow(row);
   return *this;
 }
 
 // to column setter
 PieceMove& PieceMove::setToColumn(dim_type column) noexcept
 {
-  mPromotion.setColumn(column);
+  mPromo.setColumn(column);
   return *this;
 }
 
 // to row and to column setter
 PieceMove& PieceMove::setDestination(dim_type row, dim_type column) noexcept
 {
-  mPromotion.setRow(row).setColumn(column);
+  mPromo.setRow(row).setColumn(column);
   return *this;
 }
 
@@ -213,7 +213,7 @@ PieceMove& PieceMove::setDestination(dim_type row, dim_type column) noexcept
 bool operator==(const PieceMove &pm1, const PieceMove &pm2) noexcept
 {
   return pm1.mFrom == pm2.mFrom
-      && pm1.mDestination == pm2.mDestination
+      && pm1.mPromo == pm2.mPromo
       && pm1.mCapture == pm2.mCapture;
 }
 
@@ -228,7 +228,7 @@ std::ostream& operator<<(std::ostream &os, const PieceMove &pm)
 {
   os << "("
      << pm.mFrom << ", "
-     << pm.mDestination << ", "
+     << pm.mPromo << ", "
      << pm.mCapture << ")";
   return os;
 }
