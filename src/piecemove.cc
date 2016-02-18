@@ -90,7 +90,7 @@ Square PieceMove::fromSquare() const noexcept
 }
 
 // source piece getter
-PieceCode PieceMove::piece() const noexcept
+PieceCode PieceMove::fromPiece() const noexcept
 {
   return mFrom.piece();
 }

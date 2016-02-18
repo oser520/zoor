@@ -174,7 +174,7 @@ public:
    * @return The @c PieceCode of the piece making the move.
    * @throw Never throws.
    */
-  PieceCode piece() const noexcept;
+  PieceCode fromPiece() const noexcept;
 
   /**
    * @brief Sets the information for the catpured piece.
