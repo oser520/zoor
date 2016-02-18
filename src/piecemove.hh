@@ -231,7 +231,7 @@ public:
    * @return A reference to this @c PieceMove.
    * @throw Never throws.
    */
-  PieceMove& setPromotion
+  PieceMove& setPromo
     (dim_type row,
      dim_type column,
      PieceCode piece,
@@ -245,7 +245,7 @@ public:
    * @return A reference to this @c PieceMove.
    * @throw Never throws.
    */
-  PieceMove& setPromotion
+  PieceMove& setPromo
     (dim_type row,
      dim_type column,
      piececode_t code) noexcept;
@@ -257,7 +257,7 @@ public:
    * @return A reference to this @c PieceMove.
    * @throw Never throws.
    */
-  PieceMove& setPromotion(PieceCode piece, PieceColor color) noexcept;
+  PieceMove& setPromo(PieceCode piece, PieceColor color) noexcept;
 
   /**
    * @brief Sets the color and piece for the promoted piece.
@@ -265,28 +265,28 @@ public:
    * @return A reference to this @c PieceMove.
    * @throw Never throws.
    */
-  PieceMove& setPromotion(piececode_t code) noexcept;
+  PieceMove& setPromo(piececode_t code) noexcept;
 
   /**
    * @brief Determine if the move has resulted in a promotion.
    * @return True if the move has a promotion, false otherwise.
    * @throw Never throws.
    */
-  bool isPromotion() const noexcept;
+  bool isPromo() const noexcept;
 
   /**
    * @brief Obtain the information for the promoted piece.
    * @return The @c Square reprsenting the promoted piece.
    * @throw Never throws.
    */
-  Square promotionSquare() const noexcept;
+  Square promoSquare() const noexcept;
 
   /**
    * @brief Obtain the promoted @c PieceCode.
    * @return The @c PieceCode for the promoted piece.
    * @throw Never throws.
    */
-  PieceCode promotionPiece() const noexcept;
+  PieceCode promoPiece() const noexcept;
 
   /**
    * @brief Set the destination row.

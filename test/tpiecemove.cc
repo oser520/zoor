@@ -23,7 +23,7 @@ using zoor::Square;
 /**
  * Test the values of the piece making the moves with default constructor.
  */
-TEST(PieceMovesTest, DefaultCtor)
+TEST(PieceMoves1, DefaultCtor)
 {
   PieceMoves pm;
   EXPECT_EQ(PieceCode::NONE, pm.piece());
