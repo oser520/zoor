@@ -228,6 +228,14 @@ public:
   PieceMove& setCapture(PieceCode piece, PieceColor color) noexcept;
 
   /**
+   * @brief Sets the piece and color for the catpured piece.
+   * @param code The bit code for the piece and color of the captured piece.
+   * @return A reference to this @c PieceMove.
+   * @throw Never throws.
+   */
+  PieceMove& setCapture(piececode_t code) noexcept;
+
+  /**
    * @brief Determine if the move has resulted in a capture.
    * @return True if the move has a capture, false otherwise.
    * @throw Never throws.
