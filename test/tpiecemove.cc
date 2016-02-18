@@ -264,6 +264,18 @@ TEST(PieceMove11, isPromo)
   EXPECT_TRUE(pm.isPromo());
 }
 
+// test setToRow
+TEST(PieceMove12, setToRow)
+{
+  PieceMove pm;
+  EXPECT_EQ(0, pm.fromRow());
+  EXPECT_EQ(0, pm.fromColumn());
+
+  pm.setToRow(2);
+  EXPECT_EQ(2, pm.fromRow());
+  EXPECT_EQ(0, pm.fromColumn());
+}
+
 /**
  * Test inserting and querying moves.
  */
