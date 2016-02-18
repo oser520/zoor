@@ -219,6 +219,15 @@ public:
   PieceMove& setCapture(dim_type row, dim_type column, piececode_t code) noexcept;
 
   /**
+   * @brief Sets the piece and color for the catpured piece.
+   * @param piece The piece type of the captured piece.
+   * @param color The color of the captured piece.
+   * @return A reference to this @c PieceMove.
+   * @throw Never throws.
+   */
+  PieceMove& setCapture(PieceCode piece, PieceColor color) noexcept;
+
+  /**
    * @brief Determine if the move has resulted in a capture.
    * @return True if the move has a capture, false otherwise.
    * @throw Never throws.
