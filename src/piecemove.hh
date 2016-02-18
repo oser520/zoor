@@ -321,12 +321,12 @@ private:
 
   /**
    * @brief Represents the location where the piece is moving to.
-   * @detail If there is a capture, then the only time when <em>mDestination</em>
+   * @detail If there is a capture, then the only time when <em>mPromo</em>
    *  and <em>mCapture</em> will not overlap is when a pawn is captured by
-   *  <em>en passant</em>. If there is a pawn promotion, then <em>mDestination</em>
+   *  <em>en passant</em>. If there is a pawn promotion, then <em>mPromo</em>
    *  will hold the information for the promoted piece.
    */
-  Square mDestination;
+  Square mPromo;
 
   /**
    * Represents the location of the captured piece.
