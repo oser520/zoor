@@ -337,6 +337,13 @@ public:
   PieceCode promoPiece() const noexcept;
 
   /**
+   * @brief Obtain the promoted @c PieceColor.
+   * @return The @c PieceColor for the promoted piece.
+   * @throw Never throws.
+   */
+  PieceColor promoColor() const noexcept;
+
+  /**
    * @brief Set the destination row.
    * @param row The destination row.
    * @return A reference to this @c PieceMove.
