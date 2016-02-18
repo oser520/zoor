@@ -310,6 +310,21 @@ TEST(PieceMove15, isMate)
   EXPECT_TRUE(pm.isMate());
 }
 
+// test the equality operators
+TEST(PieceMove16, EqualOp) {
+  auto code = PieceColor::BLACK | PieceCode::ROOK;
+  PieceMove pm1(1, 2, code, 3, 3);
+  pm.setCapture(3, 3, PieceCode::PAWN, PieceColor::WHITE);
+  PiecedMove pm2(pm1);
+
+  EXPECT_TRUE(pm1 == pm2);
+  EXPECT_FALSE(pm1 != pm2);
+
+  pm2.setGoTo(5, 5);
+  EXPECT_TRUE(pm1 != pm2);
+  EXPECT_FALSE(pm1 == pm2);
+}
+
 // test the output operator
 TEST(PieceMove16, OutputOp) {
   PieceMoves pm(1, 2, PieceCode::ROOK, PieceColor::BLACK);
