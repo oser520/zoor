@@ -145,10 +145,9 @@ bool Board::isCheckBishop(dim_type row, dim_type column) const noexcept
   for (auto toRow = row+1, toCol = column+1;
        toRow < BOARD_DIM && toCol < BOARD_DIM; ++toRow, ++toCol) {
     auto toCode = get(toRow, toCol);
-    auto color = getPieceColor(toCode);
-    if (color == PieceColor::NONE)
+    if (isColorNone(toCode))
       continue;
-    else if (color == mColor || isBishop(toCode))
+    else if (isSameColor(toCode, mColor) || !isBishop(toCode))
       break;
     else
       return true;
@@ -158,10 +157,9 @@ bool Board::isCheckBishop(dim_type row, dim_type column) const noexcept
   for (auto toRow = row-1, toCol = column+1;
        toRow >= 0 && toCol < BOARD_DIM; --toRow, ++toCol) {
     auto toCode = get(toRow, toCol);
-    auto color = getPieceColor(toCode);
-    if (color == PieceColor::NONE)
+    if (isColorNone(toCode))
       continue;
-    else if (color == mColor || isBishop(toCode))
+    else if (isSameColor(toCode, mColor) || !isBishop(toCode))
       break;
     else
       return true;
@@ -171,10 +169,9 @@ bool Board::isCheckBishop(dim_type row, dim_type column) const noexcept
   for (auto toRow = row-1, toCol = column-1;
        toRow >= 0 && toCol >= 0; --toRow, --toCol) {
     auto toCode = get(toRow, toCol);
-    auto color = getPieceColor(toCode);
-    if (color == PieceColor::NONE)
+    if (isColorNone(toCode))
       continue;
-    else if (color == mColor || isBishop(toCode))
+    else if (isSameColor(toCode, mColor) || !isBishop(toCode))
       break;
     else
       return true;
@@ -184,10 +181,9 @@ bool Board::isCheckBishop(dim_type row, dim_type column) const noexcept
   for (auto toRow = row+1, toCol = column-1;
        toRow < BOARD_DIM && toCol >= 0; ++toRow, --toCol) {
     auto toCode = get(toRow, toCol);
-    auto color = getPieceColor(toCode);
-    if (color == PieceColor::NONE)
+    if (isColorNone(toCode))
       continue;
-    else if (color == mColor || isBishop(toCode))
+    else if (isSameColor(toCode, mColor) || !isBishop(toCode))
       break;
     else
       return true;
