@@ -123,7 +123,7 @@ bool PieceMove::isCapture() const noexcept
   return mCapture.piece() != PieceCode::NONE;
 }
 
-// capture getter
+// get the captured square
 Square PieceMove::captureSquare() const noexcept
 {
   return mCapture;
