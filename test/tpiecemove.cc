@@ -326,7 +326,7 @@ TEST(PieceMove16, EqualOp) {
 }
 
 // test the output operator
-TEST(PieceMove16, OutputOp) {
+TEST(PieceMove17, OutputOp) {
   PieceMoves pm(1, 2, PieceCode::ROOK, PieceColor::BLACK);
   pm.setCapture(3, 3, PieceCode::PAWN, PieceColor::WHITE);
   pm.setGoTo(3, 3);
