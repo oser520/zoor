@@ -23,7 +23,7 @@ using zoor::Square;
 /**
  * Test the values of the piece making the moves with default constructor.
  */
-TEST(PieceMoves1, DefaultCtor)
+TEST(PieceMove1, DefaultCtor)
 {
   PieceMoves pm;
   EXPECT_EQ(PieceCode::NONE, pm.piece());
@@ -35,7 +35,7 @@ TEST(PieceMoves1, DefaultCtor)
 /**
  * Test the values of the piece making the moves with 1-param constructor.
  */
-TEST(PieceMovesTest, SquareParamCtor)
+TEST(PieceMove2, SquareParamCtor)
 {
   Square sq(1, 2, PieceCode::ROOK, PieceColor::BLACK);
   PieceMoves pm(sq);
@@ -48,7 +48,7 @@ TEST(PieceMovesTest, SquareParamCtor)
 /**
  * Test the values of the piece making the moves with all-param constructor.
  */
-TEST(PieceMovesTest, AllParamCtor)
+TEST(PieceMove3, AllParamCtor)
 {
   PieceMoves pm(1, 2, PieceCode::ROOK, PieceColor::BLACK);
   EXPECT_EQ(PieceCode::ROOK, pm.piece());
@@ -60,7 +60,7 @@ TEST(PieceMovesTest, AllParamCtor)
 /**
  * Test inserting and querying moves.
  */
-TEST(PieceMovesTest, InsertMoves)
+TEST(PieceMove4, InsertMoves)
 {
   PieceMoves pm(1, 2, PieceCode::ROOK, PieceColor::BLACK);
   pm.push_back(Square(1,3, PieceCode::NONE, PieceColor::NONE));
@@ -98,7 +98,7 @@ TEST(PieceMovesTest, InsertMoves)
 /**
  * Test operator==.
  */
-TEST(PieceMovesTest, EqualOp)
+TEST(PieceMove5, EqualOp)
 {
   PieceMoves pm1(1, 2, PieceCode::ROOK, PieceColor::BLACK);
   pm1.push_back(Square(1,3, PieceCode::NONE, PieceColor::NONE));
@@ -119,7 +119,7 @@ TEST(PieceMovesTest, EqualOp)
 /**
  * Test the output operator.
  */
-TEST(PieceMovesTest, OutputOp) {
+TEST(PieceMove6, OutputOp) {
   PieceMoves pm(1, 2, PieceCode::ROOK, PieceColor::BLACK);
   pm.push_back(Square(1,3, PieceCode::NONE, PieceColor::NONE));
   pm.push_back(Square(1,6, PieceCode::NONE, PieceColor::NONE));
