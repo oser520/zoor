@@ -254,10 +254,9 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
   // check against queen above
   for (auto toRow = row+1; toRow < BOARD_DIM; ++toRow) {
     auto toCode = get(toRow, column);
-    auto color = getPieceColor(toCode);
-    if (color == PieceColor::NONE)
+    if (isColorNone(toCode))
       continue;
-    else if (color == mColor || isQueen(toCode))
+    else if (isSameColor(toCode, mColor) || !isQueen(toCode))
       break;
     else
       return true;
@@ -266,10 +265,9 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
   // check against queen below
   for (auto toRow = row-1; toRow >= 0; --toRow) {
     auto toCode = get(toRow, column);
-    auto color = getPieceColor(toCode);
-    if (color == PieceColor::NONE)
+    if (isColorNone(toCode))
       continue;
-    else if (color == mColor || isQueen(toCode))
+    else if (isSameColor(toCode, mColor) || !isQueen(toCode))
       break;
     else
       return true;
@@ -278,10 +276,9 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
   // check against queen to the right
   for (auto toCol = col+1; toCol < BOARD_DIM; ++toCol) {
     auto toCode = get(row, toCol);
-    auto color = getPieceColor(toCode);
-    if (color == PieceColor::NONE)
+    if (isColorNone(toCode))
       continue;
-    else if (color == mColor || isQueen(toCode))
+    else if (isSameColor(toCode, mColor) || !isQueen(toCode))
       break;
     else
       return true;
@@ -290,10 +287,9 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
   // check against queen to the left
   for (auto toCol = col-1; toCol >= 0; --toCol) {
     auto toCode = get(row, toCol);
-    auto color = getPieceColor(toCode);
-    if (color == PieceColor::NONE)
+    if (isColorNone(toCode))
       continue;
-    else if (color == mColor || isQueen(toCode))
+    else if (isSameColor(toCode, mColor) || !isQueen(toCode))
       break;
     else
       return true;
@@ -303,10 +299,9 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
   for (auto toRow = row+1, toCol = column+1;
        toRow < BOARD_DIM && toCol < BOARD_DIM; ++toRow, ++toCol) {
     auto toCode = get(toRow, toCol);
-    auto color = getPieceColor(toCode);
-    if (color == PieceColor::NONE)
+    if (isColorNone(toCode))
       continue;
-    else if (color == mColor || isQueen(toCode))
+    else if (isSameColor(toCode, mColor) || !isQueen(toCode))
       break;
     else
       return true;
@@ -316,10 +311,9 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
   for (auto toRow = row-1, toCol = column+1;
        toRow >= 0 && toCol < BOARD_DIM; --toRow, ++toCol) {
     auto toCode = get(toRow, toCol);
-    auto color = getPieceColor(toCode);
-    if (color == PieceColor::NONE)
+    if (isColorNone(toCode))
       continue;
-    else if (color == mColor || isQueen(toCode))
+    else if (isSameColor(toCode, mColor) || !isQueen(toCode))
       break;
     else
       return true;
@@ -329,10 +323,9 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
   for (auto toRow = row-1, toCol = column-1;
        toRow >= 0 && toCol >= 0; --toRow, --toCol) {
     auto toCode = get(toRow, toCol);
-    auto color = getPieceColor(toCode);
-    if (color == PieceColor::NONE)
+    if (isColorNone(toCode))
       continue;
-    else if (color == mColor || isQueen(toCode))
+    else if (isSameColor(toCode, mColor) || !isQueen(toCode))
       break;
     else
       return true;
@@ -342,10 +335,9 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
   for (auto toRow = row+1, toCol = column-1;
        toRow < BOARD_DIM && toCol >= 0; ++toRow, --toCol) {
     auto toCode = get(toRow, toCol);
-    auto color = getPieceColor(toCode);
-    if (color == PieceColor::NONE)
+    if (isColorNone(toCode))
       continue;
-    else if (color == mColor || isQueen(toCode))
+    else if (isSameColor(toCode, mColor) || !isQueen(toCode))
       break;
     else
       return true;
