@@ -282,6 +282,13 @@ public:
   Square promotionSquare() const noexcept;
 
   /**
+   * @brief Obtain the promoted @c PieceCode.
+   * @return The @c PieceCode for the promoted piece.
+   * @throw Never throws.
+   */
+  PieceCode promotionPiece() const noexcept;
+
+  /**
    * @brief Set the destination row.
    * @param row The destination row.
    * @return A reference to this @c PieceMove.
