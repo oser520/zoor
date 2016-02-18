@@ -300,79 +300,26 @@ TEST(PieceMove14, setGoTo)
   EXPECT_EQ(3, pm.fromColumn());
 }
 
-/**
- * Test inserting and querying moves.
- */
-TEST(PieceMove4, InsertMoves)
+// test isMate
+TEST(PieceMove15, isMate)
 {
-  PieceMoves pm(1, 2, PieceCode::ROOK, PieceColor::BLACK);
-  pm.push_back(Square(1,3, PieceCode::NONE, PieceColor::NONE));
-  pm.push_back(Square(1,6, PieceCode::NONE, PieceColor::NONE));
-  pm.push_back(Square(5,2, PieceCode::PAWN, PieceColor::WHITE));
+  PieceMove pm;
+  EXPECT_FALSE(pm.isMate());
 
-  EXPECT_FALSE(pm.empty());
-  EXPECT_EQ(3, pm.size());
-
-  Square sq = pm.front();
-  EXPECT_EQ(1, sq.row());
-  EXPECT_EQ(3, sq.column());
-  EXPECT_EQ(PieceCode::NONE, sq.piece());
-  EXPECT_EQ(PieceColor::NONE, sq.color());
-
-  sq = pm.back();
-  EXPECT_EQ(5, sq.row());
-  EXPECT_EQ(2, sq.column());
-  EXPECT_EQ(PieceCode::PAWN, sq.piece());
-  EXPECT_EQ(PieceColor::WHITE, sq.color());
-
-  EXPECT_FALSE(pm.pop_back().empty());
-  EXPECT_EQ(2, pm.size());
-
-  int i = 0;
-  auto it = pm.begin();
-  while (it != pm.end())
-    ++i, ++it;
-  EXPECT_EQ(2, i); 
-
-  pm.clear();
-  EXPECT_TRUE(pm.empty());
+  pm.setCapture(PieceCode::KING, PieceColor::BLACK);
+  EXPECT_TRUE(pm.isMate());
 }
 
-/**
- * Test operator==.
- */
-TEST(PieceMove5, EqualOp)
-{
-  PieceMoves pm1(1, 2, PieceCode::ROOK, PieceColor::BLACK);
-  pm1.push_back(Square(1,3, PieceCode::NONE, PieceColor::NONE));
-  pm1.push_back(Square(1,6, PieceCode::NONE, PieceColor::NONE));
-  pm1.push_back(Square(5,2, PieceCode::PAWN, PieceColor::WHITE));
-
-  PieceMoves pm2(1, 2, PieceCode::ROOK, PieceColor::BLACK);
-  pm2.push_back(Square(1,3, PieceCode::NONE, PieceColor::NONE));
-  pm2.push_back(Square(1,6, PieceCode::NONE, PieceColor::NONE));
-  pm2.push_back(Square(5,2, PieceCode::PAWN, PieceColor::WHITE));
-
-  EXPECT_TRUE(pm1 == pm2);
-
-  pm1.pop_back();
-  EXPECT_FALSE(pm1 == pm2);
-}
-
-/**
- * Test the output operator.
- */
-TEST(PieceMove6, OutputOp) {
+// test the output operator
+TEST(PieceMove16, OutputOp) {
   PieceMoves pm(1, 2, PieceCode::ROOK, PieceColor::BLACK);
-  pm.push_back(Square(1,3, PieceCode::NONE, PieceColor::NONE));
-  pm.push_back(Square(1,6, PieceCode::NONE, PieceColor::NONE));
-  pm.push_back(Square(5,2, PieceCode::PAWN, PieceColor::WHITE));
+  pm.setCapture(3, 3, PieceCode::PAWN, PieceColor::WHITE);
+  pm.setGoTo(3, 3);
 
   ostringstream ss1, ss2;
-  ss1 << "((ROOK, BLACK, 1, 2), ("
-      << "(NONE, NONE, 1, 3), "
-      << "(NONE, NONE, 1, 6), "
-      << "(PAWN, WHITE, 5, 2)))";
+  ss1 << "((ROOK, BLACK, 1, 2),"
+      << " (NONE, NONE, 3, 3),"
+      << " (PAWN, WHITE, 3, 3))";
   ss2 << pm;
   
   EXPECT_EQ(ss1.str(), ss2.str()); 
