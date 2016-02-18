@@ -216,6 +216,13 @@ public:
   Square captureSquare() const noexcept;
 
   /**
+   * @brief Obtain the captured @c PieceCode.
+   * @return The @c PieceCode for the captured piece.
+   * @throw Never throws.
+   */
+  PieceCode capturePiece() const noexcept;
+
+  /**
    * @brief Sets the information for the promoted piece.
    * @param row The row location of the promoted piece.
    * @param column The column location of the promoted piece.
