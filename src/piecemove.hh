@@ -194,6 +194,13 @@ public:
   PieceCode fromPiece() const noexcept;
 
   /**
+   * @brief Get the @c PieceColor of the piece that is moving.
+   * @return The @c PieceColor of the piece making the move.
+   * @throw Never throws.
+   */
+  PieceColor fromColor() const noexcept;
+
+  /**
    * @brief Sets the information for the catpured piece.
    * @param row The row location of the captured piece.
    * @param column The column location of the captured piece.
