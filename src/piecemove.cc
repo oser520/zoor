@@ -234,6 +234,12 @@ PieceCode PieceMove::promoPiece() const noexcept
   return mPromo.piece();
 }
 
+// promotion piece color getter
+PieceColor PieceMove::promoColor() const noexcept
+{
+  return mPromo.color();
+}
+
 // to row setter
 PieceMove& PieceMove::setToRow(dim_type row) noexcept
 {
