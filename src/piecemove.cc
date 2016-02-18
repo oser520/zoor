@@ -49,13 +49,13 @@ dim_type PieceMove::fromColumn() const noexcept
   return mFrom.column();
 }
 
-// to row getter
+// the row getter for the destination row
 dim_type PieceMove::toRow() const noexcept
 {
   return mPromo.row();
 }
 
-// to column getter
+// the column getter for the destination column
 dim_type PieceMove::toColumn() const noexcept
 {
   return mPromo.column();
