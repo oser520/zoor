@@ -110,8 +110,8 @@ PieceCode PieceMove::fromPiece() const noexcept
   return mFrom.piece();
 }
 
-// source piece getter
-PieceCode PieceMove::fromColor() const noexcept
+// source piece color getter
+PieceColor PieceMove::fromColor() const noexcept
 {
   return mFrom.color();
 }
