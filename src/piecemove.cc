@@ -110,6 +110,12 @@ PieceCode PieceMove::fromPiece() const noexcept
   return mFrom.piece();
 }
 
+// source piece getter
+PieceCode PieceMove::fromColor() const noexcept
+{
+  return mFrom.color();
+}
+
 // capture setter
 PieceMove& PieceMove::setCapture
   (dim_type row,
