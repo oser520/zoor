@@ -132,6 +132,14 @@ PieceMove::setCapture(dim_type row, dim_type column, piececode_t code) noexcept
   return *this;
 }
 
+// capture setter
+PieceMove&
+PieceMove::setCapture(PieceCode piece, PieceColor color) noexcept
+{
+  mCapture.setPiece(piece).setColor(color);
+  return *this;
+}
+
 // does move result in a capture
 bool PieceMove::isCapture() const noexcept
 {
