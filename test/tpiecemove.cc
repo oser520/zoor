@@ -73,13 +73,26 @@ TEST(PieceMove2, FourParamCtor)
 /**
  * Test the values of the piece making the moves with all-param constructor.
  */
-TEST(PieceMove3, AllParamCtor)
+TEST(PieceMove3, ThreeParamCtor)
 {
-  PieceMoves pm(1, 2, PieceCode::ROOK, PieceColor::BLACK);
-  EXPECT_EQ(PieceCode::ROOK, pm.piece());
-  EXPECT_EQ(PieceColor::BLACK, pm.color());
-  EXPECT_EQ(1, pm.row());
-  EXPECT_EQ(2, pm.column());
+  PieceMove pm(3, 5, PieceColor::WHITE | PieceCode::ROOK);
+  auto sq = pm.fromSquare();
+  EXPECT_EQ(PieceCode::ROOK, sq.piece());
+  EXPECT_EQ(PieceColor::WHITE, sq.color());
+  EXPECT_EQ(3, sq.row());
+  EXPECT_EQ(5, sq.column());
+
+  sq = pm.captureSquare();
+  EXPECT_EQ(PieceCode::NONE, sq.piece());
+  EXPECT_EQ(PieceColor::NONE, sq.color());
+  EXPECT_EQ(0, sq.row());
+  EXPECT_EQ(0, sq.column());
+
+  sq = pm.promoSquare();
+  EXPECT_EQ(PieceCode::NONE, sq.piece());
+  EXPECT_EQ(PieceColor::NONE, sq.color());
+  EXPECT_EQ(0, sq.row());
+  EXPECT_EQ(0, sq.column());
 }
 
 /**
