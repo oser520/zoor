@@ -79,7 +79,7 @@ PieceMove& PieceMove::setPiece
 PieceMove&
 PieceMove::setPiece(dim_type row, dim_type column, piececode_t code) noexcept
 {
-  mFrom.setRow(row).setColumn(column).setPieceCode(piece);
+  mFrom.setLocation(row, column).setPieceCode(piece);
   return *this;
 }
 
@@ -113,7 +113,7 @@ PieceMove& PieceMove::setCapture
 PieceMove&
 PieceMove::setCapture(dim_type row, dim_type column, piececode_t code) noexcept
 {
-  mCapture.setRow(row).setColumn(column).setPieceCode(piece);
+  mCapture.setLocation(row, column).setPieceCode(piece);
   return *this;
 }
 
@@ -155,7 +155,7 @@ PieceMove& PieceMove::setPromo
    dim_type column,
    piececode_t code) noexcept
 {
-  mPromo.setRow(row).setColumn(column).setPieceCode(piece);
+  mPromo.setLocation(row, column).setPieceCode(piece);
   return *this;
 }
 
@@ -203,7 +203,7 @@ PieceMove& PieceMove::setToColumn(dim_type column) noexcept
 // to row and to column setter
 PieceMove& PieceMove::setGoTo(dim_type row, dim_type column) noexcept
 {
-  mPromo.setRow(row).setColumn(column);
+  mPromo.setLocation(row, column);
   return *this;
 }
 
