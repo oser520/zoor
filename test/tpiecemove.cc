@@ -210,6 +210,40 @@ TEST(PieceMove8, setCapture)
   EXPECT_EQ(PieceColor::BLACK, pm.captureColor());
 }
 
+// test setPromo
+TEST(PieceMove9, setPromo)
+{
+  PieceMove pm;
+
+  // 4 param setPromo
+  pm.setPromo(1, 3, PieceCode::ROOK, PieceColor::WHITE);
+  EXPECT_EQ(1, pm.toRow());
+  EXPECT_EQ(3, pm.toColumn());
+  EXPECT_EQ(PieceCode::ROOK, pm.promoPiece());
+  EXPECT_EQ(PieceColor::WHITE, pm.promoColor());
+
+  // 3 param setPromo
+  pm.setPromo(2, 5, PieceColor::BLACK | PieceCode::KNIGHT);
+  EXPECT_EQ(2, pm.toRow());
+  EXPECT_EQ(5, pm.toColumn());
+  EXPECT_EQ(PieceCode::KNIGHT, pm.promoPiece());
+  EXPECT_EQ(PieceColor::BLACK, pm.promoColor());
+
+  // 2 param setPromo
+  pm.setPromo(PieceCode::QUEEN, PieceColor::WHITE);
+  EXPECT_EQ(2, pm.toRow());
+  EXPECT_EQ(5, pm.toColumn());
+  EXPECT_EQ(PieceCode::QUEEN, pm.promoPiece());
+  EXPECT_EQ(PieceColor::WHITE, pm.promoColor());
+
+  // 1 param setPromo
+  pm.setPromo(PieceCode::BLACK | PieceCode::PAWN);
+  EXPECT_EQ(2, pm.toRow());
+  EXPECT_EQ(5, pm.toColumn());
+  EXPECT_EQ(PieceCode::PAWN, pm.promoPiece());
+  EXPECT_EQ(PieceColor::BLACK, pm.promoColor());
+}
+
 /**
  * Test inserting and querying moves.
  */
