@@ -61,6 +61,18 @@ dim_type PieceMove::toColumn() const noexcept
   return mPromo.column();
 }
 
+// the row getter for the captured piece
+dim_type PieceMove::captureRow() const noexcept
+{
+  return mCapture.row();
+}
+
+// the column getter for the captured piece
+dim_type PieceMove::captureColumn() const noexcept
+{
+  return mCapture.column();
+}
+
 // source piece setter
 PieceMove& PieceMove::setPiece
   (dim_type row,
