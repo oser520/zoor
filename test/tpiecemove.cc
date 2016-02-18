@@ -169,7 +169,7 @@ TEST(PieceMove7, setPiece)
   EXPECT_EQ(PieceColor::WHITE, pm.fromColor());
 
   // 1 param setPiece
-  pm.setPiece(PieceCode::BLACK | PieceCode::PAWN);
+  pm.setPiece(PieceColor::BLACK | PieceCode::PAWN);
   EXPECT_EQ(2, pm.fromRow());
   EXPECT_EQ(5, pm.fromColumn());
   EXPECT_EQ(PieceCode::PAWN, pm.fromPiece());
@@ -203,7 +203,7 @@ TEST(PieceMove8, setCapture)
   EXPECT_EQ(PieceColor::WHITE, pm.captureColor());
 
   // 1 param setCapture
-  pm.setCapture(PieceCode::BLACK | PieceCode::PAWN);
+  pm.setCapture(PieceColor::BLACK | PieceCode::PAWN);
   EXPECT_EQ(2, pm.captureRow());
   EXPECT_EQ(5, pm.captureColumn());
   EXPECT_EQ(PieceCode::PAWN, pm.capturePiece());
@@ -237,7 +237,7 @@ TEST(PieceMove9, setPromo)
   EXPECT_EQ(PieceColor::WHITE, pm.promoColor());
 
   // 1 param setPromo
-  pm.setPromo(PieceCode::BLACK | PieceCode::PAWN);
+  pm.setPromo(PieceColor::BLACK | PieceCode::PAWN);
   EXPECT_EQ(2, pm.toRow());
   EXPECT_EQ(5, pm.toColumn());
   EXPECT_EQ(PieceCode::PAWN, pm.promoPiece());
