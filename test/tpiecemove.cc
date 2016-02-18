@@ -9,7 +9,7 @@
 #include <sstream>
 #include "piececode.hh"
 #include "square.hh"
-#include "piecemoves.hh"
+#include "piecemove.hh"
 #include "gtest/gtest.h"
 
 namespace {
