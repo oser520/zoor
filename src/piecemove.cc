@@ -140,6 +140,13 @@ PieceMove::setCapture(PieceCode piece, PieceColor color) noexcept
   return *this;
 }
 
+// capture setter
+PieceMove& PieceMove::setCapture(piececode_t code) noexcept
+{
+  mCapture.setPieceCode(code);
+  return *this;
+}
+
 // does move result in a capture
 bool PieceMove::isCapture() const noexcept
 {
