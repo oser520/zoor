@@ -124,7 +124,7 @@ bool PieceMove::isCapture() const noexcept
 }
 
 // capture getter
-Square PieceMove::capture() const noexcept
+Square PieceMove::captureSquare() const noexcept
 {
   return mCapture;
 }

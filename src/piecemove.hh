@@ -213,7 +213,7 @@ public:
    * @return The @c Square reprsenting the captured piece.
    * @throw Never throws.
    */
-  Square capture() const noexcept;
+  Square captureSquare() const noexcept;
 
   /**
    * @brief Sets the information for the promoted piece.
