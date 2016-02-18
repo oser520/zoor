@@ -172,6 +172,14 @@ public:
   PieceMove& setPiece(PieceCode piece, PieceColor color) noexcept;
 
   /**
+   * @brief Sets the color and piece for the piece that is moving.
+   * @param code The bit code for the piece and piece color.
+   * @return A reference to this @c PieceMove.
+   * @throw Never throws.
+   */
+  PieceMove& setPiece(piececode_t code) noexcept;
+
+  /**
    * @brief Obtain the information of the piece that is moving.
    * @return A @c Square representing the piece.
    * @throw Never throws.
