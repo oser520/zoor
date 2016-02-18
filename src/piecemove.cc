@@ -143,9 +143,9 @@ PieceMove& PieceMove::setPromotion
    PieceColor color) noexcept
 {
   mPromo.setRow(row)
-            .setColumn(column)
-            .setPiece(piece)
-            .setColor(color);
+        .setColumn(column)
+        .setPiece(piece)
+        .setColor(color);
   return *this;
 }
 
@@ -155,9 +155,7 @@ PieceMove& PieceMove::setPromotion
    dim_type column,
    piececode_t code) noexcept
 {
-  mPromo.setRow(row)
-            .setColumn(column)
-            .setPieceCode(piece);
+  mPromo.setRow(row).setColumn(column).setPieceCode(piece);
   return *this;
 }
 
