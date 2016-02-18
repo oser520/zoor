@@ -228,6 +228,12 @@ Square PieceMove::promoSquare() const noexcept
   return mPromo;
 }
 
+// promotion piece getter
+PieceCode PieceMove::promoPiece() const noexcept
+{
+  return mPromo.piece();
+}
+
 // to row setter
 PieceMove& PieceMove::setToRow(dim_type row) noexcept
 {
