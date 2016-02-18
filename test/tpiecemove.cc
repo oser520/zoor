@@ -122,6 +122,16 @@ TEST(PieceMove4, FiveParamCtor)
   EXPECT_EQ(6, sq.column());
 }
 
+// test fromRow
+TEST(PieceMove5, fromRow)
+{
+  auto pcode = PieceColor::WHITE | PieceCode::ROOK;
+  PieceMove pm(3, 5, pcode, 2, 6);
+
+  EXPECT_EQ(3, pm.fromRow());
+  EXPECT_EQ(5, pm.fromColumn());
+}
+
 /**
  * Test inserting and querying moves.
  */
