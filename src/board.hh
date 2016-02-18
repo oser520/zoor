@@ -80,6 +80,23 @@ public:
    * The jump deltas for a king.
    */
   static const jump_list JUMP_KING;
+
+  /**
+   * @brief Determine if position is within bounds of board.
+   * @param position The position in question.
+   * @return True if position is within bounds of board.
+   * @throw Never throws.
+   */
+  static bool isInBound(dim_type position) const noexcept;
+
+  /**
+   * @brief Determine if row and column are in bounds.
+   * @param row The row of the position.
+   * @param column The column of the position.
+   * @return True if position is within bounds of board.
+   * @throw Never throws.
+   */
+  static bool isInBound(dim_type row, dim_type column) const noexcept;
   
 private:
   /**
@@ -133,23 +150,6 @@ private:
    * @throw Never throws.
    */
   Board& moveRef(const Square &square1, const Square &square2) noexcept;
-
-  /**
-   * @brief Determine if position is within bounds of board.
-   * @param position The position in question.
-   * @return True if position is within bounds of board.
-   * @throw Never throws.
-   */
-  static bool isInBound(dim_type position) const noexcept;
-
-  /**
-   * @brief Determine if row and column are in bounds.
-   * @param row The row of the position.
-   * @param column The column of the position.
-   * @return True if position is within bounds of board.
-   * @throw Never throws.
-   */
-  static bool isInBound(dim_type row, dim_type column) const noexcept;
 
   /**
    * @brief Get a list of jump positions that are legal from a given row and column.
