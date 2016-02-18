@@ -140,7 +140,7 @@ private:
    * @return True if position is within bounds of board.
    * @throw Never throws.
    */
-  bool isInBound(dim_type position) const noexcept;
+  static bool isInBound(dim_type position) const noexcept;
 
   /**
    * @brief Determine if row and column are in bounds.
@@ -149,7 +149,7 @@ private:
    * @return True if position is within bounds of board.
    * @throw Never throws.
    */
-  bool isInBound(dim_type row, dim_type column) const noexcept;
+  static bool isInBound(dim_type row, dim_type column) const noexcept;
 
   /**
    * @brief Get a list of jump positions that are legal from a given row and column.
