@@ -25,11 +25,24 @@ using zoor::Square;
  */
 TEST(PieceMove1, DefaultCtor)
 {
-  PieceMoves pm;
-  EXPECT_EQ(PieceCode::NONE, pm.piece());
-  EXPECT_EQ(PieceColor::NONE, pm.color());
-  EXPECT_EQ(static_cast<PieceMoves::size_type>(0), pm.size());
-  EXPECT_TRUE(pm.empty());
+  PieceMove pm;
+  auto sq = pm.fromSquare();
+  EXPECT_EQ(PieceCode::NONE, sq.piece());
+  EXPECT_EQ(PieceColor::NONE, sq.color());
+  EXPECT_EQ(0, sq.row());
+  EXPECT_EQ(0, sq.column());
+
+  sq = pm.captureSquare();
+  EXPECT_EQ(PieceCode::NONE, sq.piece());
+  EXPECT_EQ(PieceColor::NONE, sq.color());
+  EXPECT_EQ(0, sq.row());
+  EXPECT_EQ(0, sq.column());
+
+  sq = pm.promoSquare();
+  EXPECT_EQ(PieceCode::NONE, sq.piece());
+  EXPECT_EQ(PieceColor::NONE, sq.color());
+  EXPECT_EQ(0, sq.row());
+  EXPECT_EQ(0, sq.column());
 }
 
 /**
