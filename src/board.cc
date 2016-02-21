@@ -96,12 +96,7 @@ std::vector<PieceMove> Board::getMoves() const
         break;
       }
 
-      if (moves.empty())
-        continue;
-
-      auto itb = std::make_move_iterator(moves.begin());
-      auto ite = std::make_move_iterator(moves.end());
-      std::copy(itb, ite, std::back_inserter(moveList));
+      std::copy(moves.begin(), moves.end(), std::back_inserter(moveList));
     }
   }
 
