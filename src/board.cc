@@ -123,6 +123,15 @@ bool canWhiteCastleLong() const noexcept
 // TODO: implement
 bool canBlackCastleLong() const noexcept
 {
+  auto isBad |= (mBoardInfo >> 5) & 1U;
+  isBad |= (mBoardInfo >> 6) & 1U;
+  isBad |= (mBoardInfo >> 7) & 1U;
+  if (isBad) return false;
+
+  /* TODO: check if path to rook is not blocked, and if king does not put himself in
+   * check when he moves for the castling.
+   */
+
   return false;
 }
 
