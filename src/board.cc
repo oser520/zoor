@@ -105,7 +105,39 @@ bool Board::canCastle() const noexcept
 // check if king can do long castling
 bool Board::canCastleLong() const noexcept
 {
-  return isWhite(mColor) ? canWhiteCastleLong() : canBlackCastleLong();
+  dim_type row;
+  decltype(mBoardInfo) shift;
+
+  // row and shift parameter for color
+  if (isWhite(mColor)) {
+    row = 1;
+    shift = 1;
+  } else {
+    row = 7;
+    shift = 5;
+  }
+
+  // check conditions
+  // 1. rook a1 has not moved
+  // 2. king has not moved
+  // 3. king is not in check
+  auto cond |= (mBoardInfo >> shift) & 1U;
+  cond |= (mBoardInfo >> ++shift) & 1U;
+  cond |= (mBoardInfo >> ++shift) & 1U;
+
+  // any of the 3 conditions are true
+  if (cond)
+    return false;
+
+  // path for castling is clear
+  if (!isPieceNone(get(row, 3)) || !isPieceNone(get(row, 2)))
+    return false;
+
+  // no checks on path to castle
+  if (isCheck(row, 3) || isCheck(row, 2))
+    return false;
+
+  return true;
 }
 
 // TODO: implement
