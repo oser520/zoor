@@ -398,6 +398,13 @@ public:
   PieceMove& doCastle(PieceColor color) noexcept;
 
   /**
+   * @brief Check if the move represents short castling.
+   * @return True if the move represents short castling.
+   * @throw Never throws.
+   */
+  bool isCastle() const noexcept;
+
+  /**
    * @brief Setup the move as long castling.
    * @param color The color of the king.
    * @return A reference to this @c PieceMove.
