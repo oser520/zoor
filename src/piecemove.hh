@@ -73,7 +73,7 @@ public:
    * @brief Default constructor.
    * @throw Never throws.
    */
-  PieceMove() noexcept = default;
+  PieceMove() noexcept;
 
   /**
    * @brief Default copy constructor.
