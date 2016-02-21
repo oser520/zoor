@@ -43,6 +43,9 @@ TEST(PieceMove1, DefaultCtor)
   EXPECT_EQ(PieceColor::NONE, sq.color());
   EXPECT_EQ(0, sq.row());
   EXPECT_EQ(0, sq.column());
+
+  EXPECT_FALSE(pm.isCastle());
+  EXPECT_FALSE(pm.isCastleLong());
 }
 
 /**
@@ -68,6 +71,9 @@ TEST(PieceMove2, FourParamCtor)
   EXPECT_EQ(PieceColor::NONE, sq.color());
   EXPECT_EQ(0, sq.row());
   EXPECT_EQ(0, sq.column());
+
+  EXPECT_FALSE(pm.isCastle());
+  EXPECT_FALSE(pm.isCastleLong());
 }
 
 /**
@@ -93,6 +99,9 @@ TEST(PieceMove3, ThreeParamCtor)
   EXPECT_EQ(PieceColor::NONE, sq.color());
   EXPECT_EQ(0, sq.row());
   EXPECT_EQ(0, sq.column());
+
+  EXPECT_FALSE(pm.isCastle());
+  EXPECT_FALSE(pm.isCastleLong());
 }
 
 /**
@@ -120,6 +129,9 @@ TEST(PieceMove4, FiveParamCtor)
   EXPECT_EQ(PieceColor::NONE, sq.color());
   EXPECT_EQ(2, sq.row());
   EXPECT_EQ(6, sq.column());
+
+  EXPECT_FALSE(pm.isCastle());
+  EXPECT_FALSE(pm.isCastleLong());
 }
 
 // test fromRow and fromColumn
