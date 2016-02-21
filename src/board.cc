@@ -88,6 +88,12 @@ bool Board::canCastle() const noexcept
 }
 
 // TODO: implement
+bool canWhiteCastle() const noexcept
+{
+  return false;
+}
+
+// TODO: implement
 bool Board::canCastleLong() const noexcept
 {
   return false;
