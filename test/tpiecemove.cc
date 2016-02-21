@@ -310,6 +310,36 @@ TEST(PieceMove15, isMate)
   EXPECT_TRUE(pm.isMate());
 }
 
+// test short castling
+TEST(PieceMove16, shortCastling)
+{
+  PieceMove pm;
+  EXPECT_FALSE(pm.isCastle());
+  EXPECT_FALSE(pm.isCastleLong());
+
+  pm.doCastle(PieceCode::WHITE);
+  // verify from squre
+  EXPECT_EQ(0, pm.fromRow());
+  EXPECT_EQ(4, pm.fromColumn());
+  EXPECT_EQ(PieceCode::KING, pm.fromPiece());
+  EXPECT_EQ(PieceColor::WHITE, pm.fromColor());
+
+  // verify destinatin square
+  EXPECT_EQ(0, pm.toRow());
+  EXPECT_EQ(6, pm.toColumn());
+  EXPECT_EQ(PieceCode::NONE, pm.promoPiece());
+  EXPECT_EQ(PieceColor::NONE, pm.promoColor());
+
+  // verify capture square
+  EXPECT_EQ(0, pm.captureRow());
+  EXPECT_EQ(0, pm.captureColumn());
+  EXPECT_EQ(PieceCode::NONE, pm.capturePiece());
+  EXPECT_EQ(PieceColor::NONE, pm.captureColor());
+
+  EXPECT_TRUE(pm.isCastle());
+  EXPECT_FALSE(pm.isCastleLong());
+}
+
 // test the equality operators
 TEST(PieceMove16, EqualOp) {
   auto code = PieceColor::BLACK | PieceCode::ROOK;
