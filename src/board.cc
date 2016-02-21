@@ -856,10 +856,9 @@ Board::moveQueen(dim_type row, dim_type column) const noexcept
   // check all moves right
   for (auto toCol = column+1; toCol < BOARD_DIM; ++toCol) {
     auto toCode = get(row, toCol);
-    auto toColor = getPieceColor(toCode);
-    if (toColor == mColor)
+    if (isSameColor(toCode, mColor))
       break;
-    else if (toColor == PieceColor::NONE)
+    else if (isColorNone(toCode))
       moveList.emplace_back(row, column, fromCode, row, toCol);
     else {
       moveList.emplace_back(row, column, fromCode, row, toCol);
@@ -871,10 +870,9 @@ Board::moveQueen(dim_type row, dim_type column) const noexcept
   // check all moves left
   for (auto toCol = column-1; toCol >= 0; --toCol) {
     auto toCode = get(row, toCol);
-    auto toColor = getPieceColor(toCode);
-    if (toColor == mColor)
+    if (isSameColor(toCode, mColor))
       break;
-    else if (toColor == PieceColor::NONE)
+    else if (isColorNone(toCode))
       moveList.emplace_back(row, column, fromCode, row, toCol);
     else {
       moveList.emplace_back(row, column, fromCode, row, toCol);
@@ -886,10 +884,9 @@ Board::moveQueen(dim_type row, dim_type column) const noexcept
   // check all moves up
   for (auto toRow = row+1; toRow < BOARD_DIM; ++toRow) {
     auto toCode = get(toRow, column);
-    auto toColor = getPieceColor(toCode);
-    if (toColor == mColor)
+    if (isSameColor(toCode, mColor))
       break;
-    else if (toColor == PieceColor::NONE)
+    else if (isColorNone(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, column);
     else {
       moveList.emplace_back(row, column, fromCode, toRow, column);
@@ -901,10 +898,9 @@ Board::moveQueen(dim_type row, dim_type column) const noexcept
   // check all moves down
   for (auto toRow = row-1; toRow >= 0; --toRow) {
     auto toCode = get(toRow, column);
-    auto toColor = getPieceColor(toCode);
-    if (toColor == mColor)
+    if (isSameColor(toCode, mColor))
       break;
-    else if (toColor == PieceColor::NONE)
+    else if (isColorNone(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, column);
     else {
       moveList.emplace_back(row, column, fromCode, toRow, column);
@@ -917,10 +913,9 @@ Board::moveQueen(dim_type row, dim_type column) const noexcept
   for (auto toCol = column+1, toRow = row+1;
        toCol < BOARD_DIM && toRow < BOARD_DIM; ++toCol, ++toRow) {
     auto toCode = get(toRow, toCol);
-    auto toColor = getPieceColor(toCode);
-    if (toColor == mColor)
+    if (isSameColor(toCode, mColor))
       break;
-    else if (toColor == PieceColor::NONE)
+    else if (isColorNone(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, toCol);
     else {
       moveList.emplace_back(row, column, fromCode);
@@ -933,10 +928,9 @@ Board::moveQueen(dim_type row, dim_type column) const noexcept
   for (auto toCol = column+1, toRow = row-1;
        toCol < BOARD_DIM && toRow >= 0; ++toCol, --toRow) {
     auto toCode = get(toRow, toCol);
-    auto toColor = getPieceColor(toCode);
-    if (toColor == mColor)
+    if (isSameColor(toCode, mColor))
       break;
-    else if (toColor == PieceColor::NONE)
+    else if (isColorNone(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, toCol);
     else {
       moveList.emplace_back(row, column, fromCode);
@@ -949,10 +943,9 @@ Board::moveQueen(dim_type row, dim_type column) const noexcept
   for (auto toCol = column-1, toRow = row+1;
        toCol >= 0 && toRow < BOARD_DIM; --toCol, ++toRow) {
     auto toCode = get(toRow, toCol);
-    auto toColor = getPieceColor(toCode);
-    if (toColor == mColor)
+    if (isSameColor(toCode, mColor))
       break;
-    else if (toColor == PieceColor::NONE)
+    else if (isColorNone(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, toCol);
     else {
       moveList.emplace_back(row, column, fromCode);
@@ -965,10 +958,9 @@ Board::moveQueen(dim_type row, dim_type column) const noexcept
   for (auto toCol = column-1, toRow = row-1;
        toCol >= 0 && toRow >= 0; --toCol, --toRow) {
     auto toCode = get(toRow, toCol);
-    auto toColor = getPieceColor(toCode);
-    if (toColor == mColor)
+    if (isSameColor(toCode, mColor))
       break;
-    else if (toColor == PieceColor::NONE)
+    else if (isColorNone(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, toCol);
     else {
       moveList.emplace_back(row, column, fromCode);
