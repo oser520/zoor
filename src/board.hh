@@ -145,6 +145,17 @@ private:
   jump(dim_type row, dim_type column, const jump_list &positions) const noexcept;
 
   /**
+   * @brief Determine if there is a  check at the given row and column from a piece
+   *  in the diagonal up and to the right.
+   * @detail Can use this to determine if there is a check from a bishop or a queen.
+   * @param row The row where the king might be located.
+   * @param column The column where the king might be located.
+   * @return True if there is a check.
+   * @throw Never throws.
+   */
+  bool isCheckNW(dim_type row, dim_type column, PieceCode piece) const noexcept;
+
+  /**
    * @brief Determine if there is a pawn check at the given row and column.
    * @param row The row where the king is located.
    * @param column The column where the king is located.
