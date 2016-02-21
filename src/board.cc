@@ -102,38 +102,6 @@ bool Board::canCastle() const noexcept
   return true;
 }
 
-// TODO: implement
-bool canWhiteCastle() const noexcept
-{
-  auto isBad |= mBoardInfo & 1U;
-  isBad |= (mBoardInfo >> 2) & 1U;
-  isBad |= (mBoardInfo >> 3) & 1U;
-
-  if (isBad || !isPieceNone(get(0, 5)) || !isPieceNone(get(0, 6)))
-    return false;
-
-  if (isCheck(0, 5) || isCheck(0, 6))
-    return false;
-
-  return true;
-}
-
-// TODO: implement
-bool canBlackCastle() const noexcept
-{
-  auto isBad |= (mBoardInfo >> 4) & 1U;
-  isBad |= (mBoardInfo >> 6) & 1U;
-  isBad |= (mBoardInfo >> 7) & 1U;
-
-  if (isBad || !isPieceNone(get(7, 5)) || !isPieceNone(get(7, 6)))
-    return false;
-
-  if (isCheck(7, 5) || isCheck(7, 6))
-    return false;
-
-  return true;
-}
-
 // check if king can do long castling
 bool Board::canCastleLong() const noexcept
 {
