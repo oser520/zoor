@@ -88,7 +88,7 @@ bool Board::canCastle() const noexcept
   cond |= (mBoardInfo >> ++shift) & 1U;
 
   // any of the 3 conditions are true
-  if (isBad)
+  if (cond)
     return false;
 
   // path for castling is clear
