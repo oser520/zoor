@@ -408,6 +408,12 @@ private:
    * Represents the location of the captured piece.
    */
   Square mCapture;
+
+  /**
+   * First two bits are used to determine if the move represents short or long
+   * castling, respectively.
+   */
+  unsigned short mCastleInfo;
 };
 
 /**
