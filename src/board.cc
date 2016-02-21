@@ -63,7 +63,7 @@ std::vector<PieceMove> Board::getMoves() const noexcept
   return std::vector<PieceMove>();
 }
 
-// check if king can castle
+// check if king can do short castling
 bool Board::canCastle() const noexcept
 {
   return isWhite(mColor) ? canWhiteCastle() : canBlackCastle();
