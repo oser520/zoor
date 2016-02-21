@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <utility>
 #include <functional>
+#include <iterator>
 
 // zoor headers
 #include "piececode.hh"
