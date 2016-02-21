@@ -238,7 +238,7 @@ jump_list Board::jump
 bool
 Board::isCheckNE(dim_type row, dim_type column, PieceCode piece) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
+  assert(!isColorNone(mColor));
   assert(isInBound(row, column));
 
   for (auto toRow = row+1, toCol = column+1;
@@ -259,7 +259,7 @@ Board::isCheckNE(dim_type row, dim_type column, PieceCode piece) const noexcept
 bool
 Board::isCheckSE(dim_type row, dim_type column, PieceCode piece) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
+  assert(!isColorNone(mColor));
   assert(isInBound(row, column));
 
   for (auto toRow = row-1, toCol = column+1;
@@ -280,7 +280,7 @@ Board::isCheckSE(dim_type row, dim_type column, PieceCode piece) const noexcept
 bool
 Board::isCheckSW(dim_type row, dim_type column, PieceCode piece) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
+  assert(!isColorNone(mColor));
   assert(isInBound(row, column));
 
   for (auto toRow = row-1, toCol = column-1;
@@ -301,7 +301,7 @@ Board::isCheckSW(dim_type row, dim_type column, PieceCode piece) const noexcept
 bool
 Board::isCheckNW(dim_type row, dim_type column, PieceCode piece) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
+  assert(!isColorNone(mColor));
   assert(isInBound(row, column));
 
   for (auto toRow = row+1, toCol = column-1;
@@ -322,7 +322,7 @@ Board::isCheckNW(dim_type row, dim_type column, PieceCode piece) const noexcept
 bool
 Board::isCheckN(dim_type row, dim_type column, PieceCode piece) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
+  assert(!isColorNone(mColor));
   assert(isInBound(row, column));
 
   // check against rook above
@@ -343,7 +343,7 @@ Board::isCheckN(dim_type row, dim_type column, PieceCode piece) const noexcept
 bool
 Board::isCheckE(dim_type row, dim_type column, PieceCode piece) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
+  assert(!isColorNone(mColor));
   assert(isInBound(row, column));
 
   // check against rook above
@@ -364,7 +364,7 @@ Board::isCheckE(dim_type row, dim_type column, PieceCode piece) const noexcept
 bool
 Board::isCheckS(dim_type row, dim_type column, PieceCode piece) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
+  assert(!isColorNone(mColor));
   assert(isInBound(row, column));
 
   // check against rook above
@@ -385,7 +385,7 @@ Board::isCheckS(dim_type row, dim_type column, PieceCode piece) const noexcept
 bool
 Board::isCheckW(dim_type row, dim_type column, PieceCode piece) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
+  assert(!isColorNone(mColor));
   assert(isInBound(row, column));
 
   // check against rook above
@@ -405,7 +405,7 @@ Board::isCheckW(dim_type row, dim_type column, PieceCode piece) const noexcept
 // is it check from a pawn
 bool Board::isCheckPawn(dim_type row, dim_type column) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
+  assert(!isColorNone(mColor));
   assert(isInBound(row, column));
 
   switch (mColor) {
@@ -449,7 +449,7 @@ bool Board::isCheckPawn(dim_type row, dim_type column) const noexcept
 // is there check from a knight
 bool Board::isCheckKnight(dim_type row, dim_type column) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
+  assert(!isColorNone(mColor));
   assert(isInBound(row, column));
 
   auto jumpList = jump(row, column, JUMP_KNIGHT);
@@ -465,7 +465,7 @@ bool Board::isCheckKnight(dim_type row, dim_type column) const noexcept
 // is there a check from a bishop
 bool Board::isCheckBishop(dim_type row, dim_type column) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
+  assert(!isColorNone(mColor));
   assert(isInBound(row, column));
   auto piece = PieceCode::BISHOP;
 
@@ -476,7 +476,7 @@ bool Board::isCheckBishop(dim_type row, dim_type column) const noexcept
 // is there a check from a rook
 bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
+  assert(!isColorNone(mColor));
   assert(isInBound(row, column));
   auto piece = PieceCode::ROOK;
 
@@ -487,7 +487,7 @@ bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
 // is there a check from a queen
 bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
+  assert(!isColorNone(mColor));
   assert(isInBound(row, column));
   auto piece = PieceCode::QUEEN;
 
@@ -500,7 +500,7 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
 // is there a check from the king
 bool Board::isCheckKing(dim_type row, dim_type column) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
+  assert(!isColorNone(mColor));
   assert(isInBound(row, column));
 
   auto jumpList = jump(row, column, JUMP_KING);
@@ -516,7 +516,7 @@ bool Board::isCheckKing(dim_type row, dim_type column) const noexcept
 // check if king is in danger
 bool Board::isCheck(dim_type row, dim_type column) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
+  assert(!isColorNone(mColor));
   assert(isInBound(row, column));
 
   return isCheckRook(row, column) || isCheckBishop(row, column)
@@ -553,7 +553,7 @@ Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
 std::vector<PieceMove>
 Board::movePawn(dim_type row, dim_type column) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
+  assert(!isColorNone(mColor));
   assert(isInBound(row, column));
   auto fromCode = get(row, column);
   assert(isPawn(fromCode));
@@ -564,7 +564,7 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
   std::function<dim_type(dim_type, dim_type)> rowOp;
 
   // set handles to deal with black or white pawn move
-  if (mColor == PieceColor::WHITE) {
+  if (isWhite(mColor)) {
     cmpRow = 6;
     cmpFunc = std::less<dim_type>();
     rowOp = std::plus<dim_type>();
@@ -602,7 +602,7 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
   }
 
   // set comparison row for first pawn move
-  cmpRow = mColor == PieceColor::WHITE ? 1 : 6;
+  cmpRow = isWhite(mColor) ? 1 : 6;
 
   // two moves on first move
   if (row == cmpRow) {
@@ -613,7 +613,7 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
   }
 
   // set comparison row for en passant
-  cmpRow = mColor == PieceColor::WHITE ? 5 : 4;
+  cmpRow = isWhite(mColor) ? 5 : 4;
 
   // en passant
   if (row == cmpRow) {
@@ -636,7 +636,7 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
   }
 
   // set comparison row for promotion
-  cmpRow = mColor == PieceColor::WHITE ? 6 : 1;
+  cmpRow = isWhite(mColor) ? 6 : 1;
 
   // pawn promotion
   if (row == cmpRow) {
@@ -686,7 +686,7 @@ Board::movePawn(dim_type row, dim_type column) const noexcept
 std::vector<PieceMove>
 Board::moveKnight(dim_type row, dim_type column) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
+  assert(!isColorNone(mColor));
   assert(isInBound(row, column));
   auto fromCode = get(row, column);
   assert(isKnight(fromCode));
@@ -710,7 +710,7 @@ Board::moveKnight(dim_type row, dim_type column) const noexcept
 std::vector<PieceMove>
 Board::moveBishop(dim_type row, dim_type column) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
+  assert(!isColorNone(mColor));
   assert(isInBound(row, column));
   auto fromCode = get(row, column);
   assert(isBishop(fromCode));
@@ -787,7 +787,7 @@ Board::moveBishop(dim_type row, dim_type column) const noexcept
 std::vector<PieceMove>
 Board::moveRook(dim_type row, dim_type column) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
+  assert(!isColorNone(mColor));
   assert(isInBound(row, column));
   auto fromCode = get(row, column);
   assert(isRook(fromCode));
@@ -860,7 +860,7 @@ Board::moveRook(dim_type row, dim_type column) const noexcept
 std::vector<PieceMove>
 Board::moveQueen(dim_type row, dim_type column) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
+  assert(!isSameColor(mColor));
   assert(isInBound(row, column));
   auto fromCode = get(row, column);
   assert(isQueen(fromCode));
@@ -997,7 +997,7 @@ Board::moveQueen(dim_type row, dim_type column) const noexcept
 std::vector<PieceMove>
 Board::moveKing(dim_type row, dim_type column) const noexcept
 {
-  assert(mColor != PieceColor::NONE);
+  assert(!isColorNone(mColor));
   assert(isInBound(row, column));
   auto fromCode = get(row, column);
   assert(isKing(fromCode));
