@@ -75,13 +75,14 @@ bool canWhiteCastle() const noexcept
   auto isBad |= mBoardInfo & 1U;
   isBad |= (mBoardInfo >> 2) & 1U;
   isBad |= (mBoardInfo >> 3) & 1U;
-  if (isBad) return false;
 
-  /* TODO: check if path to rook is not blocked, and if king does not put himself in
-   * check when he moves for the castling.
-   */
+  if (isBad || !isPieceNone(get(0, 5)) || !isPieceNone(get(0, 6)))
+    return false;
 
-  return false;
+  if (isCheck(0, 5) || isCheck(0, 6))
+    return false;
+
+  return true;
 }
 
 // TODO: implement
