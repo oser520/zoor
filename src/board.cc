@@ -260,6 +260,28 @@ Board::isCheckS(dim_type row, dim_type column, PieceCode piece) const noexcept
   return false;
 }
 
+// is it check in row from left
+bool
+Board::isCheckW(dim_type row, dim_type column, PieceCode piece) const noexcept
+{
+  assert(mColor != PieceColor::NONE);
+  assert(isInBound(row, column));
+
+  // check against rook above
+  for (auto toCol = row-1; toCol >= 0; --toCol) {
+    auto toCode = get(row, toCol);
+    if (isColorNone(toCode))
+      continue;
+    else if (isSameColor(toCode, mColor) || !isSamePiece(toCode, piece))
+      break;
+    else
+      return true;
+  }
+
+  return false;
+}
+
+
 // TODO: implement
 bool Board::isCheckPawn(dim_type row, dim_type column) const noexcept
 {
