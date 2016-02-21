@@ -153,6 +153,7 @@ public:
 
   /**
    * @brief Sets the information for the piece that is moving.
+   * @detail Clears castling information.
    * @param row The row location of the piece.
    * @param column The column location of the piece.
    * @param piece The piece.
@@ -168,6 +169,7 @@ public:
 
   /**
    * @brief Sets the information for the piece that is moving.
+   * @detail Clears castling information.
    * @param row The row location of the piece.
    * @param column The column location of the piece.
    * @param code The bit pattern with color and piece info.
@@ -178,6 +180,7 @@ public:
 
   /**
    * @brief Sets the color and piece for the piece that is moving.
+   * @detail Clears castling information.
    * @param piece The piece that is moving.
    * @param color The color of the piece that is moving.
    * @return A reference to this @c PieceMove.
@@ -187,6 +190,7 @@ public:
 
   /**
    * @brief Sets the color and piece for the piece that is moving.
+   * @detail Clears castling information.
    * @param code The bit code for the piece and piece color.
    * @return A reference to this @c PieceMove.
    * @throw Never throws.
@@ -216,6 +220,7 @@ public:
 
   /**
    * @brief Sets the information for the catpured piece.
+   * @detail Clears castling information.
    * @param row The row location of the captured piece.
    * @param column The column location of the captured piece.
    * @param piece The piece captured.
@@ -231,6 +236,7 @@ public:
 
   /**
    * @brief Sets the information for the catpured piece.
+   * @detail Clears castling information.
    * @param row The row location of the captured piece.
    * @param column The column location of the captured piece.
    * @param code The bit code containing color and piece type information.
@@ -241,6 +247,7 @@ public:
 
   /**
    * @brief Sets the piece and color for the catpured piece.
+   * @detail Clears castling information.
    * @param piece The piece type of the captured piece.
    * @param color The color of the captured piece.
    * @return A reference to this @c PieceMove.
@@ -250,6 +257,7 @@ public:
 
   /**
    * @brief Sets the piece and color for the catpured piece.
+   * @detail Clears castling information.
    * @param code The bit code for the piece and color of the captured piece.
    * @return A reference to this @c PieceMove.
    * @throw Never throws.
@@ -286,6 +294,7 @@ public:
 
   /**
    * @brief Sets the information for the promoted piece.
+   * @detail Clears castling information.
    * @param row The row location of the promoted piece.
    * @param column The column location of the promoted piece.
    * @param piece The piece obtained from the promotion.
@@ -301,6 +310,7 @@ public:
 
   /**
    * @brief Sets the information for the promoted piece.
+   * @detail Clears castling information.
    * @param row The row location of the promoted piece.
    * @param column The column location of the promoted piece.
    * @param code The piece obtained from the promotion.
@@ -314,6 +324,7 @@ public:
 
   /**
    * @brief Sets the color and piece for the promoted piece.
+   * @detail Clears castling information.
    * @param piece The piece obtained from the promotion.
    * @param color The color of the promoted piece.
    * @return A reference to this @c PieceMove.
@@ -323,6 +334,7 @@ public:
 
   /**
    * @brief Sets the color and piece for the promoted piece.
+   * @detail Clears castling information.
    * @param code The bit pattern containing the piece and color information.
    * @return A reference to this @c PieceMove.
    * @throw Never throws.
@@ -359,6 +371,7 @@ public:
 
   /**
    * @brief Set the destination row.
+   * @detail Clears castling information.
    * @param row The destination row.
    * @return A reference to this @c PieceMove.
    * @throw Never throws.
@@ -367,6 +380,7 @@ public:
 
   /**
    * @brief Set the destination column.
+   * @detail Clears castling information.
    * @param column The destination column.
    * @return A reference to this @c PieceMove.
    * @throw Never throws.
@@ -375,6 +389,7 @@ public:
 
   /**
    * @brief Set the destination row and square.
+   * @detail Clears castling information.
    * @param row The destination row.
    * @param column The destination column.
    * @return A reference to this @c PieceMove.
