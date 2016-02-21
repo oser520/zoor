@@ -715,10 +715,9 @@ Board::moveBishop(dim_type row, dim_type column) const noexcept
   for (auto toCol = column+1, toRow = row+1;
        toCol < BOARD_DIM && toRow < BOARD_DIM; ++toCol, ++toRow) {
     auto toCode = get(toRow, toCol);
-    auto toColor = getPieceColor(toCode);
-    if (toColor == mColor)
+    if (isSameColor(toCode, mColor))
       break;
-    else if (toColor == PieceColor::NONE)
+    else if (isColorNone(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, toCol);
     else {
       moveList.emplace_back(row, column, fromCode);
@@ -731,10 +730,9 @@ Board::moveBishop(dim_type row, dim_type column) const noexcept
   for (auto toCol = column+1, toRow = row-1;
        toCol < BOARD_DIM && toRow >= 0; ++toCol, --toRow) {
     auto toCode = get(toRow, toCol);
-    auto toColor = getPieceColor(toCode);
-    if (toColor == mColor)
+    if (isSameColor(toCode, mColor))
       break;
-    else if (toColor == PieceColor::NONE)
+    else if (isColorNone(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, toCol);
     else {
       moveList.emplace_back(row, column, fromCode);
@@ -747,10 +745,9 @@ Board::moveBishop(dim_type row, dim_type column) const noexcept
   for (auto toCol = column-1, toRow = row+1;
        toCol >= 0 && toRow < BOARD_DIM; --toCol, ++toRow) {
     auto toCode = get(toRow, toCol);
-    auto toColor = getPieceColor(toCode);
-    if (toColor == mColor)
+    if (isSameColor(toCode, mColor))
       break;
-    else if (toColor == PieceColor::NONE)
+    else if (isColorNone(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, toCol);
     else {
       moveList.emplace_back(row, column, fromCode);
@@ -763,10 +760,9 @@ Board::moveBishop(dim_type row, dim_type column) const noexcept
   for (auto toCol = column-1, toRow = row-1;
        toCol >= 0 && toRow >= 0; --toCol, --toRow) {
     auto toCode = get(toRow, toCol);
-    auto toColor = getPieceColor(toCode);
-    if (toColor == mColor)
+    if (isSameColor(toCode, mColor))
       break;
-    else if (toColor == PieceColor::NONE)
+    else if (isColorNone(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, toCol);
     else {
       moveList.emplace_back(row, column, fromCode);
