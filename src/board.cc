@@ -63,6 +63,12 @@ std::vector<PieceMove> Board::getMoves() const noexcept
   return std::vector<PieceMove>();
 }
 
+// TODO: implement
+bool Board::canCastle() const noexcept
+{
+  return false;
+}
+
 /**
  * TODO: implement moveCopy
  */
