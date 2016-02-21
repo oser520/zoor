@@ -71,7 +71,7 @@ std::vector<PieceMove> Board::getMoves() const
         continue;
 
       switch (getPieceCode(code)) {
-      case PiceCode::NONE:
+      case PiceCode::PAWN:
         moves = movePawn(i, j);
         break;
       case PiceCode::KNIGHT:
