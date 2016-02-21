@@ -390,12 +390,12 @@ public:
   bool isMate() const noexcept;
 
   /**
-   * @brief Mark the move as short castling.
+   * @brief Setup the move as short castling.
    * @param color The color of the king.
    * @return A reference to this @c PieceMove.
    * @throw Never throws.
    */
-  PieceMove& doCastling(PieceColor color) noexcept;
+  PieceMove& doCastle(PieceColor color) noexcept;
 
   /**
    * @brief Setup the move as long castling.
