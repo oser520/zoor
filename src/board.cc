@@ -176,6 +176,27 @@ Board::isCheckSW(dim_type row, dim_type column, PieceCode piece) const noexcept
   return false;
 }
 
+// is there a check in the diagonal from the up and to the left
+bool
+Board::isCheckNW(dim_type row, dim_type column, PieceCode piece) const noexcept
+{
+  assert(mColor != PieceColor::NONE);
+  assert(isInBound(row, column));
+
+  for (auto toRow = row+1, toCol = column-1;
+       toRow < BOARD_DIM && toCol >= 0; ++toRow, --toCol) {
+    auto toCode = get(toRow, toCol);
+    if (isColorNone(toCode))
+      continue;
+    else if (isSameColor(toCode, mColor) || !isSamePiece(toCode, piece))
+      break;
+    else
+      return true;
+  }
+
+  return false;
+}
+
 // TODO: implement
 bool Board::isCheckPawn(dim_type row, dim_type column) const noexcept
 {
