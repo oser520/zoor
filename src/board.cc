@@ -281,9 +281,47 @@ Board::isCheckW(dim_type row, dim_type column, PieceCode piece) const noexcept
   return false;
 }
 
-// TODO: implement
+// is it check from a pawn
 bool Board::isCheckPawn(dim_type row, dim_type column) const noexcept
 {
+  assert(mColor != PieceColor::NONE);
+  assert(isInBound(row, column));
+
+  switch (mColor) {
+  case PieceColor::WHITE:
+    auto toRow = row+1;
+    if (toRow < BOARD_DIM) {
+      if (column < BOARD_DIM-1) {
+        auto code = get(toRow, column+1);
+        if (isPawn(code) && isBlack(code))
+          return true;
+      }
+      if (column > 0) {
+        auto code = get(toRow, column-1);
+        if (isPawn(code) && isBlack(code))
+          return true;
+      }
+    }
+    break;
+  case PieceColor:BLACK
+    auto toRow = row-1;
+    if (toRow >= 0) {
+      if (column < BOARD_DIM-1) {
+        auto code = get(toRow, column+1);
+        if (isPawn(code) && isWhite(code))
+          return true;
+      }
+      if (column > 0) {
+        auto code = get(toRow, column-1);
+        if (isPawn(code) && isWhite(code))
+          return true;
+      }
+    }
+    break;
+  default:
+    break;
+  }
+
   return false;
 }
 
