@@ -55,12 +55,56 @@ Board::rowsCopy() const
   return rc;
 }
 
-/**
- * TODO: implement getMoves function
- */
+// get all the moves from all the pieces
 std::vector<PieceMove> Board::getMoves() const
 {
-  return std::vector<PieceMove>();
+  assert(!isColorNone(mColor));
+
+  std::vector<PieceMove> moves, moveList;
+
+  for (dim_type i = 0; i < BOAR_DIM; ++i) {
+    for (dim_type j = 0; j < BOARD_DIM; ++j) {
+
+      auto code = get(i, j);
+
+      if (isPieceNone(code) || !isSameColor(code, mColor))
+        continue;
+
+      switch (getPieceCode(code)) {
+      case PiceCode::NONE:
+        moves = movePawn(i, j);
+        break;
+      case PiceCode::KNIGHT:
+        moves = moveKnight(i, j);
+        break;
+      case PiceCode::BISHOP:
+        moves = moveBishop(i, j);
+        break;
+      case PiceCode::ROOK:
+        moves = moveRook(i, j);
+        break;
+      case PiceCode::QUEEN:
+        moves = moveQueen(i, j);
+        break;
+      case PiceCode::KING:
+        moves = moveKing(i, j);
+        break;
+      default:
+        // should never get here
+        assert(false);
+        break;
+      }
+
+      if (moves.empty())
+        continue;
+
+      auto itb = std::make_move_iterator(moves.begin());
+      auto ite = std::make_move_iterator(moves.end());
+      std::copy(itb, ite, std::back_inserter(moveList));
+    }
+  }
+
+  return moveList;
 }
 
 // check if king can do short castling
