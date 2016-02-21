@@ -91,13 +91,14 @@ bool canBlackCastle() const noexcept
   auto isBad |= (mBoardInfo >> 4) & 1U;
   isBad |= (mBoardInfo >> 6) & 1U;
   isBad |= (mBoardInfo >> 7) & 1U;
-  if (isBad) return false;
 
-  /* TODO: check if path to rook is not blocked, and if king does not put himself in
-   * check when he moves for the castling.
-   */
+  if (isBad || !isPieceNone(get(7, 5)) || !isPieceNone(get(7, 6)))
+    return false;
 
-  return false;
+  if (isCheck(7, 5) || isCheck(7, 6))
+    return false;
+
+  return true;
 }
 
 // check if king can do long castling
