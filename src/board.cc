@@ -319,52 +319,10 @@ bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
 {
   assert(mColor != PieceColor::NONE);
   assert(isInBound(row, column));
+  auto piece = PieceCode::ROOK;
 
-  // check against rook above
-  for (auto toRow = row+1; toRow < BOARD_DIM; ++toRow) {
-    auto toCode = get(toRow, column);
-    if (isColorNone(toCode))
-      continue;
-    else if (isSameColor(toCode, mColor) || !isRook(toCode))
-      break;
-    else
-      return true;
-  }
-
-  // check against rook below
-  for (auto toRow = row-1; toRow >= 0; --toRow) {
-    auto toCode = get(toRow, column);
-    if (isColorNone(toCode))
-      continue;
-    else if (isSameColor(toCode, mColor) || !isRook(toCode))
-      break;
-    else
-      return true;
-  }
-
-  // check against rook to the right
-  for (auto toCol = col+1; toCol < BOARD_DIM; ++toCol) {
-    auto toCode = get(row, toCol);
-    if (isColorNone(color))
-      continue;
-    else if (isSameColor(toCode, mColor) || !isRook(toCode))
-      break;
-    else
-      return true;
-  }
-
-  // check against rook to the left
-  for (auto toCol = col-1; toCol >= 0; --toCol) {
-    auto toCode = get(row, toCol);
-    if (isColorNone(toCode))
-      continue;
-    else if (isSameColor(toCode, mColor) || !isRook(toCode))
-      break;
-    else
-      return true;
-  }
-
-  return false;
+  return isCheckN(row, column, piece) || isCheckW(row, column piece)
+      || isCheckS(row, column, piece) || isCheckE(row, column, piece);
 }
 
 // is there a check from a queen
