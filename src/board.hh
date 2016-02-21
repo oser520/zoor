@@ -140,6 +140,13 @@ private:
   bool canWhiteCastle() const noexcept;
 
   /**
+   * @brief Determine if the black king can do short castling.
+   * @return True if the black king can do short castling.
+   * @throw Never throws.
+   */
+  bool canBlackCastle() const noexcept;
+
+  /**
    * @brief Determine if the king whose turn is it to move can do long castling.
    * @return True if the king whose turn can move can do long castling.
    * @throw Never throws.
