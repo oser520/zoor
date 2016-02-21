@@ -82,7 +82,7 @@ bool Board::canCastle() const noexcept
   // 1. rook a1 has not moved
   // 2. king has not moved
   // 3. king is not in check
-  auto cond |= (mBoardInfo >> shift) & 1U;
+  auto cond = (mBoardInfo >> shift) & 1U;
   shift += 2;
   cond |= (mBoardInfo >> shift) & 1U;
   cond |= (mBoardInfo >> ++shift) & 1U;
@@ -121,7 +121,7 @@ bool Board::canCastleLong() const noexcept
   // 1. rook a1 has not moved
   // 2. king has not moved
   // 3. king is not in check
-  auto cond |= (mBoardInfo >> shift) & 1U;
+  auto cond = (mBoardInfo >> shift) & 1U;
   cond |= (mBoardInfo >> ++shift) & 1U;
   cond |= (mBoardInfo >> ++shift) & 1U;
 
