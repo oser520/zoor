@@ -322,8 +322,8 @@ TEST(PieceMove15, isMate)
   EXPECT_TRUE(pm.isMate());
 }
 
-// test short castling
-TEST(PieceMove16, shortCastling)
+// test short white castling
+TEST(PieceMove16, shortWhiteCastle)
 {
   PieceMove pm;
   EXPECT_FALSE(pm.isCastle());
@@ -352,8 +352,8 @@ TEST(PieceMove16, shortCastling)
   EXPECT_FALSE(pm.isCastleLong());
 }
 
-// test long castling
-TEST(PieceMove17, longWhiteCastling)
+// test long white castling
+TEST(PieceMove17, longWhiteCastle)
 {
   PieceMove pm;
   EXPECT_FALSE(pm.isCastle());
