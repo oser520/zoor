@@ -66,7 +66,40 @@ std::vector<PieceMove> Board::getMoves() const noexcept
 // check if king can do short castling
 bool Board::canCastle() const noexcept
 {
-  return isWhite(mColor) ? canWhiteCastle() : canBlackCastle();
+  dim_type row;
+  decltype(mBoardInfo) shift;
+
+  // row and shift parameter for color
+  if (isWhite(mColor)) {
+    row = 0;
+    shift = 0;
+  } else {
+    row = 7;
+    shift = 4;
+  }
+
+  // check conditions
+  // 1. rook a1 has not moved
+  // 2. king has not moved
+  // 3. king is not in check
+  auto cond |= (mBoardInfo >> shift) & 1U;
+  shift += 2;
+  cond |= (mBoardInfo >> shift) & 1U;
+  cond |= (mBoardInfo >> ++shift) & 1U;
+
+  // any of the 3 conditions are true
+  if (isBad)
+    return false;
+
+  // path for castling is clear
+  if (!isPieceNone(get(row, 5)) || !isPieceNone(get(row, 6)))
+    return false;
+
+  // no checks on path to castle
+  if (isCheck(row, 5) || isCheck(row, 6))
+    return false;
+
+  return true;
 }
 
 // TODO: implement
