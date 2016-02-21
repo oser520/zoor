@@ -281,7 +281,6 @@ Board::isCheckW(dim_type row, dim_type column, PieceCode piece) const noexcept
   return false;
 }
 
-
 // TODO: implement
 bool Board::isCheckPawn(dim_type row, dim_type column) const noexcept
 {
@@ -309,56 +308,10 @@ bool Board::isCheckBishop(dim_type row, dim_type column) const noexcept
 {
   assert(mColor != PieceColor::NONE);
   assert(isInBound(row, column));
+  auto piece = PieceCode::BISHOP;
 
-  // check against bishop to the right and up
-  for (auto toRow = row+1, toCol = column+1;
-       toRow < BOARD_DIM && toCol < BOARD_DIM; ++toRow, ++toCol) {
-    auto toCode = get(toRow, toCol);
-    if (isColorNone(toCode))
-      continue;
-    else if (isSameColor(toCode, mColor) || !isBishop(toCode))
-      break;
-    else
-      return true;
-  }
-
-  // check against bishop to the right and down
-  for (auto toRow = row-1, toCol = column+1;
-       toRow >= 0 && toCol < BOARD_DIM; --toRow, ++toCol) {
-    auto toCode = get(toRow, toCol);
-    if (isColorNone(toCode))
-      continue;
-    else if (isSameColor(toCode, mColor) || !isBishop(toCode))
-      break;
-    else
-      return true;
-  }
-
-  // check against bishop to the left and down
-  for (auto toRow = row-1, toCol = column-1;
-       toRow >= 0 && toCol >= 0; --toRow, --toCol) {
-    auto toCode = get(toRow, toCol);
-    if (isColorNone(toCode))
-      continue;
-    else if (isSameColor(toCode, mColor) || !isBishop(toCode))
-      break;
-    else
-      return true;
-  }
-
-  // check against bishop to the left and up
-  for (auto toRow = row+1, toCol = column-1;
-       toRow < BOARD_DIM && toCol >= 0; ++toRow, --toCol) {
-    auto toCode = get(toRow, toCol);
-    if (isColorNone(toCode))
-      continue;
-    else if (isSameColor(toCode, mColor) || !isBishop(toCode))
-      break;
-    else
-      return true;
-  }
-
-  return false;
+  return isCheckNW(row, column, piece) || isCheckSW(row, column piece)
+      || isCheckNE(row, column, piece) || isCheckSE(row, column, piece);
 }
 
 // is there a check from a rook
