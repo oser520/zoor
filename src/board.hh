@@ -114,10 +114,12 @@ private:
    * @detail Maintains the following information:
    * @li If rook in <em>a1</em> has moved.
    * @li If rook in <em>h1</em> has moved.
+   * @li If the white king has moved.
+   * @li If the white king is in check.
    * @li If rook in <em>a8</em> has moved.
    * @li If rook in <em>h8</em> has moved.
-   * @li If the king has moved.
-   * @li If there is a check.
+   * @li If the black king has moved.
+   * @li If the black king is in check.
    * This information is mainly used to check if the king can do castling, or
    * if the king must move because it is in check.
    */
