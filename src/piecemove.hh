@@ -412,6 +412,13 @@ public:
    */
   PieceMove& doCastleLong(PieceColor color) noexcept;
 
+  /**
+   * @brief Check if the move represents long castling.
+   * @return True if the move represents long castling.
+   * @throw Never throws.
+   */
+  bool isCastleLong() const noexcept;
+
 private:
   /**
    * Represents the piece tha is making the move.
