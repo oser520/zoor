@@ -270,6 +270,25 @@ bool PieceMove::isMate() const noexcept
   return isKing(mCapture.piece());
 }
 
+// setup the move for short castling
+PieceMove& PieceMove::doCastle(PieceColor color) noexcept
+{
+  auto code = PieceColor::NONE | PieceCode::NONE;
+  if (isWhite(color)) {
+    setPiece(0, 4, PieceCode::KING, color);
+    setPromo(0, 6, code);
+    setCapture(0, 0, code);
+    mCastleInfo = 0x1;
+  } else {
+    setPiece(7, 4, PieceCode::KING, color);
+    setPromo(7, 6, code);
+    setCapture(0, 0, code);
+    mCastleInfo = 0x2;
+  }
+
+  return *this;
+}
+
 // are moves equal
 bool operator==(const PieceMove &pm1, const PieceMove &pm2) noexcept
 {
