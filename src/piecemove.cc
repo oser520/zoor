@@ -16,6 +16,9 @@ namespace zoor {
 
 using dim_type = PieceMove::dim_type;
 
+// default ctor
+PieceMove::PieceMove(): mCastleInfo(0) {}
+
 // four param ctro
 PieceMove::PieceMove
   (dim_type row,
