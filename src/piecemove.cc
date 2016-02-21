@@ -295,6 +295,18 @@ bool PieceMove::isCastle() const noexcept
   return mCastleInfo == 0x1;
 }
 
+// setup the move for short castling
+PieceMove& PieceMove::doCastleLong(PieceColor color) noexcept
+{
+  auto row = isWhite(color) ? 0 : 7;
+  setPiece(row, 4, PieceCode::KING, color);
+  setPromo(row, 2, 0);
+  setCapture(0, 0, 0);
+  mCastleInfo = 0x2;
+
+  return *this;
+}
+
 // are moves equal
 bool operator==(const PieceMove &pm1, const PieceMove &pm2) noexcept
 {
