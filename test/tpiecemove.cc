@@ -383,7 +383,7 @@ TEST(PieceMove17, shortBlackCastle)
 }
 
 // test long white castling
-TEST(PieceMove17, longWhiteCastle)
+TEST(PieceMove18, longWhiteCastle)
 {
   PieceMove pm;
   EXPECT_FALSE(pm.isCastle());
