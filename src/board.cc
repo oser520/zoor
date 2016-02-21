@@ -330,100 +330,12 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
 {
   assert(mColor != PieceColor::NONE);
   assert(isInBound(row, column));
+  auto piece = PieceCode::QUEEN;
 
-  // check against queen above
-  for (auto toRow = row+1; toRow < BOARD_DIM; ++toRow) {
-    auto toCode = get(toRow, column);
-    if (isColorNone(toCode))
-      continue;
-    else if (isSameColor(toCode, mColor) || !isQueen(toCode))
-      break;
-    else
-      return true;
-  }
-
-  // check against queen below
-  for (auto toRow = row-1; toRow >= 0; --toRow) {
-    auto toCode = get(toRow, column);
-    if (isColorNone(toCode))
-      continue;
-    else if (isSameColor(toCode, mColor) || !isQueen(toCode))
-      break;
-    else
-      return true;
-  }
-
-  // check against queen to the right
-  for (auto toCol = col+1; toCol < BOARD_DIM; ++toCol) {
-    auto toCode = get(row, toCol);
-    if (isColorNone(toCode))
-      continue;
-    else if (isSameColor(toCode, mColor) || !isQueen(toCode))
-      break;
-    else
-      return true;
-  }
-
-  // check against queen to the left
-  for (auto toCol = col-1; toCol >= 0; --toCol) {
-    auto toCode = get(row, toCol);
-    if (isColorNone(toCode))
-      continue;
-    else if (isSameColor(toCode, mColor) || !isQueen(toCode))
-      break;
-    else
-      return true;
-  }
-
-  // check against queen to the right and up
-  for (auto toRow = row+1, toCol = column+1;
-       toRow < BOARD_DIM && toCol < BOARD_DIM; ++toRow, ++toCol) {
-    auto toCode = get(toRow, toCol);
-    if (isColorNone(toCode))
-      continue;
-    else if (isSameColor(toCode, mColor) || !isQueen(toCode))
-      break;
-    else
-      return true;
-  }
-
-  // check against queen to the right and down
-  for (auto toRow = row-1, toCol = column+1;
-       toRow >= 0 && toCol < BOARD_DIM; --toRow, ++toCol) {
-    auto toCode = get(toRow, toCol);
-    if (isColorNone(toCode))
-      continue;
-    else if (isSameColor(toCode, mColor) || !isQueen(toCode))
-      break;
-    else
-      return true;
-  }
-
-  // check against queen to the left and down
-  for (auto toRow = row-1, toCol = column-1;
-       toRow >= 0 && toCol >= 0; --toRow, --toCol) {
-    auto toCode = get(toRow, toCol);
-    if (isColorNone(toCode))
-      continue;
-    else if (isSameColor(toCode, mColor) || !isQueen(toCode))
-      break;
-    else
-      return true;
-  }
-
-  // check against queen to the left and up
-  for (auto toRow = row+1, toCol = column-1;
-       toRow < BOARD_DIM && toCol >= 0; ++toRow, --toCol) {
-    auto toCode = get(toRow, toCol);
-    if (isColorNone(toCode))
-      continue;
-    else if (isSameColor(toCode, mColor) || !isQueen(toCode))
-      break;
-    else
-      return true;
-  }
-
-  return false;
+  return isCheckN(row, column, piece) || isCheckNE(row, column, piece)
+      || isCheckW(row, column, piece) || isCheckSE(row, column, piece)
+      || isCheckS(row, column, piece) || isCheckSW(row, column, piece)
+      || isCheckE(row, column, piece) || isCheckNW(row, column, piece);
 }
 
 // is there a check from the king
