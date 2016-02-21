@@ -395,9 +395,9 @@ private:
    * @return An unsigned char representing the bit pattern.
    * @throw Never throws.
    */
-  unsigned char get(dim_type row, dim_type column) const noexcept
+  piececode_t get(dim_type row, dim_type column) const noexcept
   {
-    return static_cast<unsigned char>((mRows[row] >> (column * BOARD_DIM)) & 0xff);
+    return static_cast<piececode_t>((mRows[row] >> (column * BOARD_DIM)) & 0xff);
   }
 
 public:
