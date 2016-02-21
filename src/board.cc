@@ -94,6 +94,12 @@ bool canWhiteCastle() const noexcept
 }
 
 // TODO: implement
+bool canBlackCastle() const noexcept
+{
+  return false;
+}
+
+// TODO: implement
 bool Board::canCastleLong() const noexcept
 {
   return false;
