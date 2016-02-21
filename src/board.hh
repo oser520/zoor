@@ -118,6 +118,8 @@ private:
    * @li If rook in <em>h8</em> has moved.
    * @li If the king has moved.
    * @li If there is a check.
+   * This information is mainly used to check if the king can do castling, or
+   * if the king must move because it is in check.
    */
   unsigned short mBoardInfo;
 
