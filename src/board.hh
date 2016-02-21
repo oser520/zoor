@@ -222,6 +222,17 @@ private:
   bool isCheckS(dim_type row, dim_type column, PieceCode piece) const noexcept;
 
   /**
+   * @brief Determine if there is a check at the given row and column from a piece
+   *  in the row from the left.
+   * @detail Can use this to determine if there is a check from a rook or a queen.
+   * @param row The row where the king might be located.
+   * @param column The column where the king might be located.
+   * @return True if there is a check.
+   * @throw Never throws.
+   */
+  bool isCheckW(dim_type row, dim_type column, PieceCode piece) const noexcept;
+
+  /**
    * @brief Determine if there is a pawn check at the given row and column.
    * @param row The row where the king is located.
    * @param column The column where the king is located.
