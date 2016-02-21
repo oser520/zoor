@@ -63,28 +63,10 @@ std::vector<PieceMove> Board::getMoves() const noexcept
   return std::vector<PieceMove>();
 }
 
-// TODO: implement
+// check if king can castle
 bool Board::canCastle() const noexcept
 {
-  // setup shift sizes
-  if (isWhite(mColor)) {
-    auto shift1 = 0; // rook a1 has moved
-    auto shift2 = 2; // white king has moved
-    auto shift3 = 3; // white king is in check
-  } else {
-    auto shift1 = 4; // rook a8 has moved
-    auto shift2 = 7; // black king has moved
-    auto shift3 = 8; // black king is in check
-  }
-
-  auto isBad |= (mBoardInfo >> shift1) & 1U;
-  isBad |= (mBoardInfo >> shift2) & 1U;
-  isBad |= (mBoardInfo >> shift3) & 1U;
-
-  if (isBad)
-    return false;
-
-  return false;
+  return isWhite(mColor) ? canWhiteCastle() : canBlackCastle();
 }
 
 // TODO: implement
