@@ -72,6 +72,15 @@ bool Board::canCastle() const noexcept
 // TODO: implement
 bool canWhiteCastle() const noexcept
 {
+  auto isBad |= mBoardInfo & 1U;
+  isBad |= (mBoardInfo >> 2) & 1U;
+  isBad |= (mBoardInfo >> 3) & 1U;
+  if (isBad) return false;
+
+  /* TODO: check if path to rook is not blocked, and if king does not put himself in
+   * check when he moves for the castling.
+   */
+
   return false;
 }
 
