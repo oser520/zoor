@@ -295,7 +295,7 @@ bool PieceMove::isCastle() const noexcept
   return mCastleInfo == 0x1;
 }
 
-// setup the move for short castling
+// setup the move for long castling
 PieceMove& PieceMove::doCastleLong(PieceColor color) noexcept
 {
   auto row = isWhite(color) ? 0 : 7;
