@@ -127,7 +127,7 @@ private:
 
   /**
    * @brief Determine if the king whose turn is it to move can do short castling.
-   * @return True if the king whose turn can move can do short castling.
+   * @return True if the king can do short castling.
    * @throw Never throws.
    */
   bool canCastle() const noexcept;
@@ -148,7 +148,7 @@ private:
 
   /**
    * @brief Determine if the king whose turn is it to move can do long castling.
-   * @return True if the king whose turn can move can do long castling.
+   * @return True if the king can do long castling.
    * @throw Never throws.
    */
   bool canCastleLong() const noexcept;
