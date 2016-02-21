@@ -111,6 +111,12 @@ bool canWhiteCastleLong() const noexcept
   return false;
 }
 
+// TODO: implement
+bool canBlackCastleLong() const noexcept
+{
+  return false;
+}
+
 /**
  * TODO: implement moveCopy
  */
