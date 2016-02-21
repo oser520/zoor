@@ -397,6 +397,14 @@ public:
    */
   PieceMove& doCastling(PieceColor color) noexcept;
 
+  /**
+   * @brief Setup the move as long castling.
+   * @param color The color of the king.
+   * @return A reference to this @c PieceMove.
+   * @throw Never throws.
+   */
+  PieceMove& doCastleLong(PieceColor color) noexcept;
+
 private:
   /**
    * Represents the piece tha is making the move.
