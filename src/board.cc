@@ -959,6 +959,7 @@ Board::moveKing(dim_type row, dim_type column) const noexcept
   assert(isKing(fromCode));
   std::vector<PieceMove> moveList;
 
+  // normal moves
   jumpList = jump(row, column, JUMP_KING);
   for (auto& pos : jumpList) {
     auto toCode = get(pos.first, pos.second);
@@ -970,11 +971,17 @@ Board::moveKing(dim_type row, dim_type column) const noexcept
     }
   }
 
-  /* TODO: implement castling
-   * have to check if we are on check, or if any of the squres through which the
-   * king has to pass would put him on check, and if the king has moved, or if
-   * the rook has moved
-   */
+  // short castling
+  if (canCastle()) {
+    moveList.emplace_back();
+    moveList.back().doCastle();
+  }
+
+  // long castling
+  if (canCastleLong()) {
+    moveList.emplace_back();
+    moveList.back().doCastleLong();
+  }
 
   return moveList;
 }
