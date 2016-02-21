@@ -408,8 +408,7 @@ bool Board::isCheckPawn(dim_type row, dim_type column) const noexcept
   assert(!isColorNone(mColor));
   assert(isInBound(row, column));
 
-  switch (mColor) {
-  case PieceColor::WHITE:
+  if (isWhite(mColor)) {
     auto toRow = row+1;
     if (toRow < BOARD_DIM) {
       if (column < BOARD_DIM-1) {
@@ -423,8 +422,7 @@ bool Board::isCheckPawn(dim_type row, dim_type column) const noexcept
           return true;
       }
     }
-    break;
-  case PieceColor:BLACK
+  } else {
     auto toRow = row-1;
     if (toRow >= 0) {
       if (column < BOARD_DIM-1) {
@@ -438,9 +436,6 @@ bool Board::isCheckPawn(dim_type row, dim_type column) const noexcept
           return true;
       }
     }
-    break;
-  default:
-    break;
   }
 
   return false;
