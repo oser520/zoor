@@ -110,6 +110,18 @@ private:
   PieceMove mLastMove;
 
   /**
+   * @brief Maintains information that impacts the moves a player can make.
+   * @detail Maintains the following information:
+   * @li If rook in <em>a1</em> has moved.
+   * @li If rook in <em>h1</em> has moved.
+   * @li If rook in <em>a8</em> has moved.
+   * @li If rook in <em>h8</em> has moved.
+   * @li If the king has moved.
+   * @li If there is a check.
+   */
+  unsigned short mBoardInfo;
+
+  /**
    * @brief Make a move and return a new board.
    * @detail Does not affect last move on the current board, nor any other aspect of
    *  the board.
