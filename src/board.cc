@@ -68,6 +68,12 @@ bool Board::canCastle() const noexcept
 {
   return false;
 }
+//
+// TODO: implement
+bool Board::canCastleLong() const noexcept
+{
+  return false;
+}
 
 /**
  * TODO: implement moveCopy
