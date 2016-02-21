@@ -22,11 +22,11 @@ PieceMove::PieceMove
    dim_type column,
    PieceCode piece,
    PieceColor color) noexcept
-  : mFrom(row, column, piece, color) {}
+  : mFrom(row, column, piece, color), mCastleInfo(0) {}
 
 // three param ctro
 PieceMove::PieceMove(dim_type row, dim_type column, piececode_t code) noexcept
-  : mFrom(row, column, code) {}
+  : mFrom(row, column, code), mCastleInfo(0) {}
 
 // five param ctro
 PieceMove::PieceMove
@@ -35,7 +35,9 @@ PieceMove::PieceMove
    piececode_t code,
    dim_type toRow,
    dim_type toColumn) noexcept
-  : mFrom(fromRow, fromColumn, code), mPromo(toRow, toColumn) {}
+  : mFrom(fromRow, fromColumn, code),
+    mPromo(toRow, toColumn),
+    mCastleInfo(0) {}
 
 // from row getter
 dim_type PieceMove::fromRow() const noexcept
