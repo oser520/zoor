@@ -81,10 +81,10 @@ bool canBlackCastle() const noexcept
   return false;
 }
 
-// TODO: implement
+// check if king can do long castling
 bool Board::canCastleLong() const noexcept
 {
-  return false;
+  return isWhite(mColor) ? canWhiteCastleLong() : canBlackCastleLong();
 }
 
 // TODO: implement
