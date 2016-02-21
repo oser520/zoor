@@ -289,6 +289,12 @@ PieceMove& PieceMove::doCastle(PieceColor color) noexcept
   return *this;
 }
 
+// check if the move represents short castling
+bool PieceMove::isCastle() const noexcept
+{
+  return mCastleInfo == 0x1;
+}
+
 // are moves equal
 bool operator==(const PieceMove &pm1, const PieceMove &pm2) noexcept
 {
