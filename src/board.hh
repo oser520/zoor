@@ -122,6 +122,13 @@ private:
   unsigned short mBoardInfo;
 
   /**
+   * @brief Determine if the king whose turn is it to move can do long castling.
+   * @return True if the king whose turn can move can do long castling.
+   * @throw Never throws.
+   */
+  bool canCastleLong() const noexcept;
+
+  /**
    * @brief Make a move and return a new board.
    * @detail Does not affect last move on the current board, nor any other aspect of
    *  the board.
