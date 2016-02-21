@@ -329,7 +329,7 @@ TEST(PieceMove16, shortWhiteCastle)
   EXPECT_FALSE(pm.isCastle());
   EXPECT_FALSE(pm.isCastleLong());
 
-  pm.doCastle(PieceCode::WHITE);
+  pm.doCastle(PieceColor::WHITE);
   // verify from squre
   EXPECT_EQ(0, pm.fromRow());
   EXPECT_EQ(4, pm.fromColumn());
@@ -359,7 +359,7 @@ TEST(PieceMove17, shortBlackCastle)
   EXPECT_FALSE(pm.isCastle());
   EXPECT_FALSE(pm.isCastleLong());
 
-  pm.doCastle(PieceCode::BLACK);
+  pm.doCastle(PieceColor::BLACK);
   // verify from squre
   EXPECT_EQ(7, pm.fromRow());
   EXPECT_EQ(4, pm.fromColumn());
@@ -389,7 +389,7 @@ TEST(PieceMove18, longWhiteCastle)
   EXPECT_FALSE(pm.isCastle());
   EXPECT_FALSE(pm.isCastleLong());
 
-  pm.doCastleLong(PieceCode::WHITE);
+  pm.doCastleLong(PieceColor::WHITE);
   // verify from squre
   EXPECT_EQ(0, pm.fromRow());
   EXPECT_EQ(4, pm.fromColumn());
@@ -419,7 +419,7 @@ TEST(PieceMove19, longBlackCastle)
   EXPECT_FALSE(pm.isCastle());
   EXPECT_FALSE(pm.isCastleLong());
 
-  pm.doCastleLong(PieceCode::BLACK);
+  pm.doCastleLong(PieceColor::BLACK);
   // verify from squre
   EXPECT_EQ(7, pm.fromRow());
   EXPECT_EQ(4, pm.fromColumn());
