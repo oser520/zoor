@@ -58,7 +58,7 @@ Board::rowsCopy() const
 /**
  * TODO: implement getMoves function
  */
-std::vector<PieceMove> Board::getMoves() const noexcept
+std::vector<PieceMove> Board::getMoves() const
 {
   return std::vector<PieceMove>();
 }

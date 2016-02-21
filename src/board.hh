@@ -474,7 +474,7 @@ public:
    * @return A vector of all the legal moves from the current position. An empty
    *  vector if there are no moves from the given position.
    */
-  std::vector<PieceMove> getMoves(dim_type row, dim_type col) const noexcept;
+  std::vector<PieceMove> getMoves(dim_type row, dim_type col) const;
 
   /* @brief Return a vector of all the boards that can be reached from this board in
    *  one move.
