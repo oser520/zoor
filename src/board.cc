@@ -230,7 +230,7 @@ jump_list Board::jump
   return jumpList;
 }
 
-// is there a check in the diagonal from the up and to the right
+// is there a check in the diagonal from above and to the right
 bool
 Board::isCheckNE(dim_type row, dim_type column, PieceCode piece) const noexcept
 {
@@ -251,7 +251,7 @@ Board::isCheckNE(dim_type row, dim_type column, PieceCode piece) const noexcept
   return false;
 }
 
-// is there a check in the diagonal from the down and to the right
+// is there a check in the diagonal from below and to the right
 bool
 Board::isCheckSE(dim_type row, dim_type column, PieceCode piece) const noexcept
 {
@@ -272,7 +272,7 @@ Board::isCheckSE(dim_type row, dim_type column, PieceCode piece) const noexcept
   return false;
 }
 
-// is there a check in the diagonal from the down and to the left
+// is there a check in the diagonal from below and to the left
 bool
 Board::isCheckSW(dim_type row, dim_type column, PieceCode piece) const noexcept
 {
@@ -293,7 +293,7 @@ Board::isCheckSW(dim_type row, dim_type column, PieceCode piece) const noexcept
   return false;
 }
 
-// is there a check in the diagonal from the up and to the left
+// is there a check in the diagonal from above and to the left
 bool
 Board::isCheckNW(dim_type row, dim_type column, PieceCode piece) const noexcept
 {
@@ -321,7 +321,7 @@ Board::isCheckN(dim_type row, dim_type column, PieceCode piece) const noexcept
   assert(!isColorNone(mColor));
   assert(isInBound(row, column));
 
-  // check against rook above
+  // check against piece in colomn from above
   for (auto toRow = row+1; toRow < BOARD_DIM; ++toRow) {
     auto toCode = get(toRow, column);
     if (isColorNone(toCode))
@@ -342,7 +342,7 @@ Board::isCheckE(dim_type row, dim_type column, PieceCode piece) const noexcept
   assert(!isColorNone(mColor));
   assert(isInBound(row, column));
 
-  // check against rook above
+  // check against piece in row from the right
   for (auto toCol = row+1; toCol < BOARD_DIM; ++toCol) {
     auto toCode = get(row, toCol);
     if (isColorNone(toCode))
@@ -363,7 +363,7 @@ Board::isCheckS(dim_type row, dim_type column, PieceCode piece) const noexcept
   assert(!isColorNone(mColor));
   assert(isInBound(row, column));
 
-  // check against rook above
+  // check against piece in column from below
   for (auto toRow = row-1; toRow >= 0; --toRow) {
     auto toCode = get(toRow, column);
     if (isColorNone(toCode))
@@ -384,7 +384,7 @@ Board::isCheckW(dim_type row, dim_type column, PieceCode piece) const noexcept
   assert(!isColorNone(mColor));
   assert(isInBound(row, column));
 
-  // check against rook above
+  // check against piece in row from left
   for (auto toCol = row-1; toCol >= 0; --toCol) {
     auto toCode = get(row, toCol);
     if (isColorNone(toCode))
