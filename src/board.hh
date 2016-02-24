@@ -392,6 +392,15 @@ private:
    */
   void put(dim_type row, dim_type column, PieceCode piece) const noexcept
 
+  /**
+   * @brief Clear the bits in a square.
+   * @param row The row of the location.
+   * @param column The column of the location.
+   * @return The bit pattern in the square.
+   * @throw Never throws.
+   */
+  piececode_t clearSq(dim_type row, dim_type column, PieceCode piece) noexcept
+
 public:
   /**
    * @brief Default constructor.
