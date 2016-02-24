@@ -478,12 +478,9 @@ public:
   Board makeMoveCopy(const PieceMove &pieceMove) const;
 
   /**
-   * @brief Make a move the current board.
+   * @brief Make a move on the current board.
    * @detail This move will become the new last move.
-   * @param square1 The @c Square that is making the move. The Square must contain a
-   *  valid piece with a valid color.
-   * @param square2 The @c Square where the piece is moving to. If it contains a
-   *  piece, then it represents a capture.
+   * @param pieceMove The @c PieceMove.
    * @return A reference to this @c Board.
    * @throw Never throws.
    */
