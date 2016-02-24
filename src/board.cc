@@ -72,22 +72,22 @@ std::vector<PieceMove> Board::getMoves() const
         continue;
 
       switch (getPieceCode(code)) {
-      case PiceCode::PAWN:
+      case PieceCode::PAWN:
         moves = movePawn(i, j);
         break;
-      case PiceCode::KNIGHT:
+      case PieceCode::KNIGHT:
         moves = moveKnight(i, j);
         break;
-      case PiceCode::BISHOP:
+      case PieceCode::BISHOP:
         moves = moveBishop(i, j);
         break;
-      case PiceCode::ROOK:
+      case PieceCode::ROOK:
         moves = moveRook(i, j);
         break;
-      case PiceCode::QUEEN:
+      case PieceCode::QUEEN:
         moves = moveQueen(i, j);
         break;
-      case PiceCode::KING:
+      case PieceCode::KING:
         moves = moveKing(i, j);
         break;
       default:
