@@ -303,9 +303,8 @@ private:
    * @param row The row where the king is located.
    * @param column The column where the king is located.
    * @return True if there is a check at the given square.
-   * @throw Never throws.
    */
-  bool isCheckKing(dim_type row, dim_type column) const noexcept;
+  bool isCheckKing(dim_type row, dim_type column) const;
 
   /**
    * @brief Determine if there is a check at the given row and column.

@@ -489,7 +489,7 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
 }
 
 // is there a check from the king
-bool Board::isCheckKing(dim_type row, dim_type column) const noexcept
+bool Board::isCheckKing(dim_type row, dim_type column) const
 {
   assert(!isColorNone(mColor));
   assert(isInBound(row, column));
