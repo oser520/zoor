@@ -164,7 +164,7 @@ private:
    * @throw Never throws.
    */
   jump_list
-  jump(dim_type row, dim_type column, const jump_list &positions) const noexcept;
+  jump(dim_type row, dim_type column, const jump_list &positions) const;
 
   /**
    * @brief Determine if there is a check at the given row and column from a piece
