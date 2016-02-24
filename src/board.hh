@@ -344,9 +344,8 @@ private:
    * @param row The row where the bishop is located.
    * @param column The column where the bishop is located.
    * @return A vector of squares where the bishop can move.
-   * @throw Never throws.
    */
-  std::vector<PieceMove> moveBishop(dim_type row, dim_type column) const noexcept;
+  std::vector<PieceMove> moveBishop(dim_type row, dim_type column) const;
 
   /**
    * @brief Move the rook at the given row and column.

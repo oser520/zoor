@@ -699,7 +699,7 @@ Board::moveKnight(dim_type row, dim_type column) const
 
 // move bishop
 std::vector<PieceMove>
-Board::moveBishop(dim_type row, dim_type column) const noexcept
+Board::moveBishop(dim_type row, dim_type column) const
 {
   assert(!isColorNone(mColor));
   assert(isInBound(row, column));
