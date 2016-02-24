@@ -180,13 +180,12 @@ bool Board::canCastleLong() const noexcept
   return true;
 }
 
-/**
- * TODO: implement moveCopy
- */
-Board
-Board::moveCopy(const PieceMove &pieceMove) const
+// get a copy of the board after making a move
+Board Board::moveCopy(const PieceMove &pieceMove) const
 {
-  return Board();
+  Board board(*this);
+  board.moveRef(pieceMove);
+  return board;
 }
 
 /**
