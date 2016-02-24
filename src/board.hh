@@ -380,6 +380,7 @@ private:
    */
   piececode_t get(dim_type row, dim_type column) const noexcept
   {
+    assert(isInBound(row, column));
     return static_cast<piececode_t>((mRows[row] >> (column * BOARD_DIM)) & 0xff);
   }
 
