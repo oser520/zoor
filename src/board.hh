@@ -328,9 +328,8 @@ private:
    * @param row The row where the pawn is located.
    * @param column The column where the pawn is located.
    * @return A vector of moves.
-   * @throw Never throws.
    */
-  std::vector<PieceMove> movePawn(dim_type row, dim_type column) const noexcept;
+  std::vector<PieceMove> movePawn(dim_type row, dim_type column) const;
 
   /**
    * @brief Move the knight at the given row and column.

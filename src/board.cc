@@ -505,7 +505,7 @@ bool Board::isCheckKing(dim_type row, dim_type column) const
 }
 
 // check if king is in danger
-bool Board::isCheck(dim_type row, dim_type column) const noexcept
+bool Board::isCheck(dim_type row, dim_type column) const
 {
   assert(!isColorNone(mColor));
   assert(isInBound(row, column));
@@ -542,7 +542,7 @@ Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
 
 // Return a list of all the pawn moves.
 std::vector<PieceMove>
-Board::movePawn(dim_type row, dim_type column) const noexcept
+Board::movePawn(dim_type row, dim_type column) const
 {
   assert(!isColorNone(mColor));
   assert(isInBound(row, column));
