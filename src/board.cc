@@ -438,7 +438,7 @@ bool Board::isCheckPawn(dim_type row, dim_type column) const noexcept
 }
 
 // is there check from a knight
-bool Board::isCheckKnight(dim_type row, dim_type column) const noexcept
+bool Board::isCheckKnight(dim_type row, dim_type column) const
 {
   assert(!isColorNone(mColor));
   assert(isInBound(row, column));
