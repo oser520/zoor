@@ -399,7 +399,7 @@ private:
    * @return The bit pattern in the square.
    * @throw Never throws.
    */
-  piececode_t clearSq(dim_type row, dim_type column, PieceCode piece) noexcept
+  piececode_t clearSq(dim_type row, dim_type column) noexcept
 
 public:
   /**
