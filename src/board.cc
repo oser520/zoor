@@ -675,7 +675,7 @@ Board::movePawn(dim_type row, dim_type column) const
 
 // move knight
 std::vector<PieceMove>
-Board::moveKnight(dim_type row, dim_type column) const noexcept
+Board::moveKnight(dim_type row, dim_type column) const
 {
   assert(!isColorNone(mColor));
   assert(isInBound(row, column));

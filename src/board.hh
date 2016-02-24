@@ -336,9 +336,8 @@ private:
    * @param row The row where the knight is located.
    * @param column The column where the knight is located.
    * @return A vector of squares where the knight can move.
-   * @throw Never throws.
    */
-  std::vector<PieceMove> moveKnight(dim_type row, dim_type column) const noexcept;
+  std::vector<PieceMove> moveKnight(dim_type row, dim_type column) const;
 
   /**
    * @brief Move the bishop at the given row and column.
