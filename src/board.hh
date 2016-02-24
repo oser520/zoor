@@ -352,9 +352,8 @@ private:
    * @param row The row where the rook is located.
    * @param column The column where the rook is located.
    * @return A vector of squares where the rook can move.
-   * @throw Never throws.
    */
-  std::vector<PieceMove> moveRook(dim_type row, dim_type column) const noexcept;
+  std::vector<PieceMove> moveRook(dim_type row, dim_type column) const;
 
   /**
    * @brief Move the queen at the given row and column.

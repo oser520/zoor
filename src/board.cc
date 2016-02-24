@@ -772,7 +772,7 @@ Board::moveBishop(dim_type row, dim_type column) const
 
 // move rook
 std::vector<PieceMove>
-Board::moveRook(dim_type row, dim_type column) const noexcept
+Board::moveRook(dim_type row, dim_type column) const
 {
   assert(!isColorNone(mColor));
   assert(isInBound(row, column));
