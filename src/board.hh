@@ -384,6 +384,14 @@ private:
     return static_cast<piececode_t>((mRows[row] >> (column * BOARD_DIM)) & 0xff);
   }
 
+  /**
+   * @brief Put a bit pattern for a piece on the board.
+   * @param row The row of the location.
+   * @param column The column of the location.
+   * @throw Never throws.
+   */
+  void put(dim_type row, dim_type column, PieceCode piece) const noexcept
+
 public:
   /**
    * @brief Default constructor.
