@@ -388,6 +388,7 @@ private:
    * @brief Put a bit pattern for a piece on the board.
    * @param row The row of the location.
    * @param column The column of the location.
+   * @param piece The @c PieceCode.
    * @throw Never throws.
    */
   void put(dim_type row, dim_type column, PieceCode piece) noexcept
