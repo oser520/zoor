@@ -390,7 +390,7 @@ private:
    * @param column The column of the location.
    * @throw Never throws.
    */
-  void put(dim_type row, dim_type column, PieceCode piece) const noexcept
+  void put(dim_type row, dim_type column, PieceCode piece) noexcept
 
   /**
    * @brief Clear the bits in a square.
