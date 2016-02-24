@@ -184,7 +184,7 @@ bool Board::canCastleLong() const noexcept
  * TODO: implement moveCopy
  */
 Board
-Board::moveCopy(const Square &square1, const Square &square2) const noexcept
+Board::moveCopy(const PieceMove &pieceMove) const
 {
   return Board();
 }

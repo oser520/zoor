@@ -140,17 +140,12 @@ private:
   bool canCastleLong() const noexcept;
 
   /**
-   * @brief Make a move and return a new board.
-   * @detail Does not affect last move on the current board, nor any other aspect of
-   *  the board.
-   * @param square1 The @c Square that is making the move. The Square must contain a
-   *  valid piece with a valid color.
-   * @param square2 The @c Square where the piece is moving to. If it contains a
-   *  piece, then it represents a capture.
+   * @brief Make a move on a new board.
+   * @detail Does not affect state of this board.
+   * @param pieceMove The @c PieceMove.
    * @return A copy of the board after the move.
-   * @throw Never throws.
    */
-  Board moveCopy(const Square &square1, const Square &square2) const noexcept;
+  Board moveCopy(const PieceMove &pieceMove) const;
 
   /**
    * @brief Make a move on the board.
