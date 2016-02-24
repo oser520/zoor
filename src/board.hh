@@ -368,9 +368,8 @@ private:
    * @param row The row where the king is located.
    * @param column The column where the king is located.
    * @return A vector of squares where the king can move.
-   * @throw Never throws.
    */
-  std::vector<PieceMove> moveKing(dim_type row, dim_type column) const noexcept;
+  std::vector<PieceMove> moveKing(dim_type row, dim_type column) const;
 
   /**
    * @brief Get the bit pattern at a specific row and column in the @c Board.

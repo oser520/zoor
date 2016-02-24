@@ -970,7 +970,7 @@ Board::moveQueen(dim_type row, dim_type column) const
 
 // move king
 std::vector<PieceMove>
-Board::moveKing(dim_type row, dim_type column) const noexcept
+Board::moveKing(dim_type row, dim_type column) const
 {
   assert(!isColorNone(mColor));
   assert(isInBound(row, column));
