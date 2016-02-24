@@ -188,12 +188,53 @@ Board Board::moveCopy(const PieceMove &pieceMove) const
   return board;
 }
 
-/**
- * TODO: implement moveRef
- */
-Board&
-Board::moveRef(const PieceMove &pieceMove) noexcept
+// make a move on this board
+Board& Board::moveRef(const PieceMove &pieceMove) noexcept
 {
+  assert(!isColorNone(mColor));
+
+  // clear piece from where it is moving
+  clearSq(pieceMove.fromRow(), pieceMove.fromColumn());
+
+  // clear captured piece and adjust piece count
+  if (pieceMove.isCapture()) {
+    clearSq(pieceMove.captureRow(), pieceMove.captureColumn());
+    auto& pc = isWhite(mColor) ? mWhiteCount : mBlackCount;
+    pc.minus(pieceMove.capturePiece());
+  }
+
+  if (isPawn(pieceMove.fromPiece())) {
+    if (!pieceMove.isPromo()) {
+      put(pieceMove.toRow(), pieceMove.toColumn(), PieceMove::PAWN);
+    else {
+      put(pieceMove.toRow(), pieceMove.toColumn(), pieceMove.promoPiece());
+      // adjust piece count
+      auto& pc = isWhite(mColor) ? mWhiteCount : mBlackCount;
+      pc.minus(PieceCode::PAWN);
+      pc.plus(pieceMove.promoPiece());
+    }
+  } else if (isKing(pieceMove.fromPiece())) {
+    if (!pieceMove.isCastle() && !pieceMove.isCastleLong())
+      put(pieceMove.toRow(), pieceMove.toColumn(), PieceCode::KING);
+    else if (pieceMove.isCastle()) {
+      auto row = isWhite(mColor) ? 0 : 7;
+      // clear the rook from corner square
+      clearSq(row, 7);
+      put(row, 6, PieceCode::KING);
+      put(row, 5, PieceCode::ROOK);
+    } else {  // is long castling
+      auto row = isWhite(mColor) ? 0 : 7;
+      // clear the rook from corner square
+      clearSq(row, 0);
+      put(row, 2, PieceCode::KING);
+      put(row, 3, PieceCode::ROOK);
+    }
+  } else
+    put(pieceMove.toRow(), pieceMove.toColumn(), pieceMove.fromPiece());
+
+  // update the last move
+  mLastMove = pieceMove;
+
   return *this;
 }
 
