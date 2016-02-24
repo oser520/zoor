@@ -471,16 +471,11 @@ public:
 
   /**
    * @brief Make a move and return a new board.
-   * @detail This does not affect the last move of the current board, only the last
-   *  move of the board on which the move is made (i.e., the copy of the board).
-   * @param square1 The @c Square that is making the move. The Square must contain a
-   *  valid piece with a valid color.
-   * @param square2 The @c Square where the piece is moving to. If it contains a
-   *  piece, then it represents a capture.
+   * @detail Does not affect the state of this board.
+   * @param pieceMove The @c PieceMove.
    * @return A copy of the new @c Board after the move.
-   * @throw Never throws.
    */
-  Board makeMoveCopy(const Square &square1, const Square &square2) const noexcept;
+  Board makeMoveCopy(const PieceMove &pieceMove) const;
 
   /**
    * @brief Make a move the current board.

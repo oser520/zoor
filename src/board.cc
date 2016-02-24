@@ -1018,7 +1018,7 @@ Board::getBoardsFromMoves() const noexcept
  * TODO: implement makeMoveCopy function
  */
 Board
-Board::makeMoveCopy(const Square &square1, const Square &square2) const noexcept
+Board::makeMoveCopy(const PieceMove &pieceMove) const
 {
   return Board();
 }
