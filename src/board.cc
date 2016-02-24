@@ -193,7 +193,7 @@ Board::moveCopy(const PieceMove &pieceMove) const
  * TODO: implement moveRef
  */
 Board&
-Board::moveRef(const Square &square1, const Square &square2) noexcept
+Board::moveRef(const PieceMove &pieceMove) noexcept
 {
   return *this;
 }
