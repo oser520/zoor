@@ -360,9 +360,8 @@ private:
    * @param row The row where the queen is located.
    * @param column The column where the queen is located.
    * @return A vector of squares where the queen can move.
-   * @throw Never throws.
    */
-  std::vector<PieceMove> moveQueen(dim_type row, dim_type column) const noexcept;
+  std::vector<PieceMove> moveQueen(dim_type row, dim_type column) const;
 
   /**
    * @brief Move the king at the given row and column.
