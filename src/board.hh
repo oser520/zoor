@@ -15,6 +15,7 @@
 #include <utility>
 #include <iterator>
 #include <stdexcept>
+#include <bitset>
 
 // zoor headers
 #include "piececode.hh"
