@@ -112,18 +112,20 @@ private:
   /**
    * @brief Maintains information that impacts the moves a player can make.
    * @detail Maintains the following information:
-   * @li If rook in <em>a1</em> has moved.
-   * @li If rook in <em>h1</em> has moved.
-   * @li If the white king has moved.
-   * @li If the white king is in check.
-   * @li If rook in <em>a8</em> has moved.
-   * @li If rook in <em>h8</em> has moved.
-   * @li If the black king has moved.
-   * @li If the black king is in check.
-   * This information is mainly used to check if the king can do castling, or
-   * if the king must move because it is in check.
+   * @li 1. The rook at <em>a1</em> has moved.
+   * @li 2. The rook at <em>h1</em> has moved.
+   * @li 3. The white king has moved.
+   * @li 4. The white king is in check.
+   * @li 5. Mate for white king.
+   * @li 6. The rook at <em>a8</em> has moved.
+   * @li 7. The rook at <em>h8</em> has moved.
+   * @li 8. The black king has moved.
+   * @li 9. The black king is in check.
+   * @li 10. Mate for black king.
+   * This information is mainly used to check if the king can do castling,
+   * if the king must move because it is in check, or it is check mate.
    */
-  unsigned short mBoardInfo;
+  std::bitset<16> mBoardInfo;
 
   /**
    * @brief Determine if the king whose turn is it to move can do short castling.
