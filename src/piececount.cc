@@ -15,6 +15,7 @@ namespace zoor {
 
 using count_type = PieceCount::count_type;
 
+// default ctor
 PieceCount::PieceCount() noexcept
   : mKings(1),
     mQueens(1),
@@ -23,6 +24,7 @@ PieceCount::PieceCount() noexcept
     mKnights(2),
     mPawns(8) {}
 
+// quick initialiation to standard piece count
 PieceCount& PieceCount::init() noexcept
 {
   mKings = 1;
@@ -34,6 +36,7 @@ PieceCount& PieceCount::init() noexcept
   return *this;
 }
 
+// clear all the pieces
 PieceCount& PieceCount::clear() noexcept
 {
   mKings = 0;
@@ -103,11 +106,13 @@ PieceCount& PieceCount::operator-=(PieceCode piece) noexcept
   return *this;
 }
 
+// increase the count for piece by one
 count_type PieceCount::plus(PieceCode piece) noexcept
 {
   return plus(piece, static_cast<count_type>(1));
 }
 
+// increase the count for piece by a given value
 count_type PieceCount::plus(PieceCode piece, count_type value) noexcept
 {
   switch (piece) {
@@ -135,11 +140,13 @@ count_type PieceCount::plus(PieceCode piece, count_type value) noexcept
   }
 }
 
+// decrease the count for piece by one
 count_type PieceCount::minus(PieceCode piece) noexcept
 {
   return minus(piece, static_cast<count_type>(1));
 }
 
+// decrease the count for piece by a given value
 count_type PieceCount::minus(PieceCode piece, count_type value) noexcept
 {
   switch (piece) {
@@ -173,6 +180,7 @@ count_type PieceCount::minus(PieceCode piece, count_type value) noexcept
   }
 }
 
+// set the count for a piece
 PieceCount& PieceCount::setCount(PieceCode piece, count_type value) noexcept
 {
   switch (piece) {
@@ -202,6 +210,7 @@ PieceCount& PieceCount::setCount(PieceCode piece, count_type value) noexcept
   return *this;
 }
 
+// output operator for piece count
 std::ostream& operator<<(std::ostream &os, const PieceCount &pc)
 {
   os << "{kings=" << pc.mKings
@@ -214,6 +223,7 @@ std::ostream& operator<<(std::ostream &os, const PieceCount &pc)
   return os;
 }
 
+// equality operator for piece count
 bool operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept
 {
   return pc1.mKings == pc2.mKings
@@ -224,6 +234,7 @@ bool operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept
       && pc1.mPawns == pc2.mPawns;
 }
 
+// non-equality operator for piece count
 bool operator!=(const PieceCount &pc1, const PieceCount &pc2) noexcept
 {
   return !(pc1 == pc2);
