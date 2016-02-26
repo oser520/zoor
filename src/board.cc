@@ -12,6 +12,7 @@
 #include <utility>
 #include <functional>
 #include <iterator>
+#include <bitset>
 
 // zoor headers
 #include "piececode.hh"
