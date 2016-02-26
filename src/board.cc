@@ -203,7 +203,7 @@ Board& Board::moveRef(const PieceMove &pieceMove) noexcept
     pc.minus(pieceMove.capturePiece());
     // check if it is mate
     if (isKing(pieceMove.capturePiece())
-      mBoardInfo.set(isWhite(mColor) ? 9 : 4);
+      mBoardInfo.set(isWhite(mColor) ? BK_MATE : WK_MATE);
   }
 
   auto piece = pieceMove.fromPiece();
@@ -227,7 +227,7 @@ Board& Board::moveRef(const PieceMove &pieceMove) noexcept
       put(row, 6, PieceCode::KING);
       put(row, 5, PieceCode::ROOK);
       // note that rook in h column has moved
-      mBoardInfo.set(isWhite(mColor) ? 1 : 6);
+      mBoardInfo.set(isWhite(mColor) ? RK_H1_MOVED : RK_H8_MOVED);
     } else {  // is long castling
       auto row = isWhite(mColor) ? 0 : 7;
       // clear the rook from corner square
@@ -235,28 +235,25 @@ Board& Board::moveRef(const PieceMove &pieceMove) noexcept
       put(row, 2, PieceCode::KING);
       put(row, 3, PieceCode::ROOK);
       // note that rook in a column has moved
-      mBoardInfo.set(isWhite(mColor) ? 0 : 5);
+      mBoardInfo.set(isWhite(mColor) ? RK_A1_MOVED : RK_A8_MOVED);
     }
-    mBoardInfo.set(isWhite(mColor) ? 2 : 7);
+    mBoardInfo.set(isWhite(mColor) ? WK_MOVED : BK_MOVED);
   } else {
     put(pieceMove.toRow(), pieceMove.toColumn(), piece);
+    // have any of the rooks moved
     if (isRook(piece)) {
       auto row = pieceMove.fromRow();
       auto col = pieceMove.fromColumn();
       if (isWhite(mColor)) {
-        // check if rook a8 made its first move
-        if (!mBoardInfo[1] && row == 0 && column == 7)
-          mBoardInfo.set(1);
-        // check if rook a1 made its first move
-        else if (!mBoardInfo[0] && row == 0 && column == 0)
-          mBoardInfo.set(0);
+        if (!mBoardInfo[RK_A8_MOVED] && row == 0 && column == 7)
+          mBoardInfo.set(RK_A8_MOVED);
+        else if (!mBoardInfo[RK_A1_MOVED] && row == 0 && column == 0)
+          mBoardInfo.set(RK_A1_MOVED);
       } else {
-        // check if rook h8 made its first move
-        if (!mBoardInfo[6] && row == 7 && column == 7)
-          mBoardInfo.set(6);
-        // check if rook h1 made its first move
-        else if (!mBoardInfo[5] && row == 7 && column == 0)
-          mBoardInfo.set(7);
+        if (!mBoardInfo[RK_H8_MOVED] && row == 7 && column == 7)
+          mBoardInfo.set(RK_H8_MOVED);
+        else if (!mBoardInfo[RK_H1_MOVED] && row == 7 && column == 0)
+          mBoardInfo.set(RK_H1_MOVED);
       }
     }
   }
