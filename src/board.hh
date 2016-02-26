@@ -129,6 +129,14 @@ private:
   std::bitset<16> mBoardInfo;
 
   /**
+   * Bit indexes for <em>mBoardInfo</em>.
+   */
+  enum {
+    RK_A1_MOVED, RK_H1_MOVED, WK_MOVED, WK_CHECK, WK_MATE,
+    RK_A8_MOVED, RK_H8_MOVED, BK_MOVED, BK_CHECK, BK_MATE
+  };
+
+  /**
    * @brief Determine if the king whose turn is it to move can do short castling.
    * @return True if the king can do short castling.
    * @throw Never throws.
