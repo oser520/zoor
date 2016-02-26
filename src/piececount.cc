@@ -45,6 +45,35 @@ PieceCount& PieceCount::clear() noexcept
   return *this;
 }
 
+// increase the count of a piece
+PieceCount& PieceCount::operator+=(PieceCode piece) noexcept
+{
+  switch (piece) {
+  case PieceCode::PAWN:
+    ++mPawns;
+    break;
+  case PieceCode::KNIGHT:
+    ++mKnights;
+    break;
+  case PieceCode::BISHOP:
+    ++mBishops;
+    break;
+  case PieceCode::ROOK:
+    ++mRooks;
+    break;
+  case PieceCode::QUEEN:
+    ++mQueens;
+    break;
+  case PieceCode::KING:
+    ++mKings;
+    break;
+  default:
+    break;
+  }
+
+  return *this;
+}
+
 PieceCount& PieceCount::operator-=(PieceCode piece) noexcept
 {
   switch (piece) {
