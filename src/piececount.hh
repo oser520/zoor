@@ -94,6 +94,14 @@ public:
   PieceCount& clear() noexcept;
 
   /**
+   * @brief Increase the count for a piece.
+   * @param piece The @c PieceCode.
+   * @return A reference to this @c PieceCount.
+   * @throw Never throws.
+   */
+  PieceCount& operator+=(PieceCode piece) noexcept;
+
+  /**
    * @brief Decrease the count for a piece.
    * @detail Count is not taken below zero.
    * @param piece The @c PieceCode.
