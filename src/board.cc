@@ -113,10 +113,10 @@ bool Board::canCastle() const noexcept
   // row and shift parameter for color
   if (isWhite(mColor)) {
     row = 0;
-    shift = 0;
+    shift = RK_H1_MOVED;
   } else {
     row = 7;
-    shift = 5;
+    shift = RK_H8_MOVED;
   }
 
   // check conditions
@@ -151,10 +151,10 @@ bool Board::canCastleLong() const noexcept
   // row and shift parameter for color
   if (isWhite(mColor)) {
     row = 1;
-    shift = 1;
+    shift = RK_A1_MOVED;
   } else {
     row = 7;
-    shift = 6;
+    shift = RK_A8_MOVED;
   }
 
   // check conditions
