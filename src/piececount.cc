@@ -74,6 +74,7 @@ PieceCount& PieceCount::operator+=(PieceCode piece) noexcept
   return *this;
 }
 
+// decrease the count of a piece
 PieceCount& PieceCount::operator-=(PieceCode piece) noexcept
 {
   switch (piece) {
