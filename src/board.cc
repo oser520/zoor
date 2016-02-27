@@ -103,39 +103,9 @@ std::vector<PieceMove> Board::getMoves() const
 
   std::vector<PieceMove> moves, moveList;
 
-  for (dim_type i = 0; i < BOAR_DIM; ++i) {
-    for (dim_type j = 0; j < BOARD_DIM; ++j) {
-
-      auto code = get(i, j);
-
-      if (isPieceNone(code) || !isSameColor(code, mColor))
-        continue;
-
-      switch (getPieceCode(code)) {
-      case PieceCode::PAWN:
-        moves = movePawn(i, j);
-        break;
-      case PieceCode::KNIGHT:
-        moves = moveKnight(i, j);
-        break;
-      case PieceCode::BISHOP:
-        moves = moveBishop(i, j);
-        break;
-      case PieceCode::ROOK:
-        moves = moveRook(i, j);
-        break;
-      case PieceCode::QUEEN:
-        moves = moveQueen(i, j);
-        break;
-      case PieceCode::KING:
-        moves = moveKing(i, j);
-        break;
-      default:
-        // should never get here
-        assert(false);
-        break;
-      }
-
+  for (dim_type row = 0; row < BOAR_DIM; ++row) {
+    for (dim_type col = 0; col < BOARD_DIM; ++col) {
+      moves = getMoves(row, col);
       std::copy(moves.begin(), moves.end(), std::back_inserter(moveList));
     }
   }
