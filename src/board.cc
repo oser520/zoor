@@ -585,11 +585,11 @@ bool Board::isCheck(dim_type row, dim_type column) const
 bool
 Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
 {
-  if (color == PieceColor::NONE)
+  if (isColorNone(color))
     return false;
 
   dim_type toRow, fromRow;
-  if (color == PieceColor::WHITE) {
+  if (isWhite(color)) {
     toRow = 4;
     fromRow = 6;
   } else {
