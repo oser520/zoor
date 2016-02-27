@@ -413,6 +413,7 @@ private:
 
   /**
    * @brief Put a bit pattern for a piece on the board.
+   * @detail Uses the current color for the color of the piece.
    * @param row The row of the location.
    * @param column The column of the location.
    * @param piece The @c PieceCode.
