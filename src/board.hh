@@ -446,6 +446,12 @@ private:
    * @throw Never throws.
    */
   piececode_t clearSq(dim_type row, dim_type column) noexcept
+  {
+    auto shift = BOARD_DIM * column;
+    auto code = static_cast<piececode_t>((mRows[row]>>shift) & 0xff);
+    mRows &= ~(static_cast<row_type>(0xff) << shift);
+    return code;
+  }
 
 public:
   /**
