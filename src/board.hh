@@ -403,6 +403,13 @@ private:
    * @throw Never throws.
    */
   void put(dim_type row, dim_type column, piececode_t code) noexcept
+  {
+    assert(isInBound(row, column));
+
+    auto shift = (BOARD_DIM * column);
+    mRows[row] &= ~((static_cast<row_type>(0xff) << shift);
+    mRows[row] | = static_cast<row_type>(code) << shift;
+  }
 
   /**
    * @brief Put a bit pattern for a piece on the board.
