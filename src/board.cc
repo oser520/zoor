@@ -57,6 +57,45 @@ Board::rowsCopy() const
   return rc;
 }
 
+// get the moves that can be made from a given square
+std::vector<PieceMove> getMoves(dim_type row, dim_type colum) const
+{
+  assert(!isColorNone(mColor));
+  std::vector<PieceMove> moveList;
+
+  auto code = get(row, column);
+
+  if (isPieceNone(code) || !isSameColor(code, mColor))
+    return moveList;
+
+  switch (getPieceCode(code)) {
+  case PieceCode::PAWN:
+    moveList = movePawn(row, column);
+    break;
+  case PieceCode::KNIGHT:
+    moveList = moveKnight(row, column);
+    break;
+  case PieceCode::BISHOP:
+    moveList = moveBishop(row, column);
+    break;
+  case PieceCode::ROOK:
+    moveList = moveRook(row, column);
+    break;
+  case PieceCode::QUEEN:
+    moveList = moveQueen(row, column);
+    break;
+  case PieceCode::KING:
+    moveList = moveKing(row, column);
+    break;
+  default:
+    // should never get here
+    assert(false);
+    break;
+  }
+
+  return moveList;
+}
+
 // get all the moves from all the pieces
 std::vector<PieceMove> Board::getMoves() const
 {
