@@ -407,7 +407,7 @@ private:
     assert(isInBound(row, column));
 
     auto shift = (BOARD_DIM * column);
-    mRows[row] &= ~((static_cast<row_type>(0xff) << shift);
+    mRows[row] &= ~(static_cast<row_type>(0xff) << shift);
     mRows[row] | = static_cast<row_type>(code) << shift;
   }
 
