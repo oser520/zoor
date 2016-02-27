@@ -536,7 +536,7 @@ public:
    *  there are no pieces on the board.
    * @return A vector of all the legal moves from the current position.
    */
-  std::vector<Board> getBoardsFromMoves() const noexcept;
+  std::vector<Board> getBoards() const;
 
   /**
    * @brief Make a move and return a new board.
