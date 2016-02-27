@@ -529,6 +529,14 @@ public:
    */
   std::vector<PieceMove> getMoves(dim_type row, dim_type col) const;
 
+  /* @brief Return a vector of all the legal moves from all the pieces on the board.
+   * @param row The row in the board.
+   * @param col The column in the board.
+   * @return A vector of all the legal moves from the all the pieces on the board.
+   *  An empty vector if there are no moves from the given position.
+   */
+  std::vector<PieceMove> getMoves() const;
+
   /* @brief Return a vector of all the boards that can be reached from this board in
    *  one move.
    * @detail If there are no legal moves, then the vector of boards will be empty.
