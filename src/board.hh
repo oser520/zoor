@@ -431,7 +431,11 @@ private:
    * @param color The @c PieceColor.
    * @throw Never throws.
    */
-  void put(dim_type row, dim_type column, PieceCode piece, PieceColor) noexcept
+  void
+  put(dim_type row, dim_type column, PieceCode piece, PieceColor color) noexcept
+  {
+    put(row, column, color | piece);
+  }
 
   /**
    * @brief Clear the bits in a square.
