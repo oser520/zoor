@@ -1071,13 +1071,18 @@ Board::moveKing(dim_type row, dim_type column) const
   return moveList;
 }
 
-/**
- * TODO: implement getBoardsFromMoves function
- */
-std::vector<Board>
-Board::getBoardsFromMoves() const noexcept
+// return all the positions attainable from this board
+std::vector<Board> Board::getBoards() const
 {
-  return std::vector<Board>();
+  std::vector<Board> boardList;
+  auto moveList = getMoves();
+
+  for (auto& pm : moveList) {
+    boardList.emplace_back(*this);
+    boardList.back().moveRef(pm);
+  }
+
+  return boardList;
 }
 
 /**
