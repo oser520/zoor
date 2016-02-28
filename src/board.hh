@@ -560,6 +560,7 @@ public:
    * @param pieceMove The @c PieceMove.
    * @return A reference to this @c Board.
    * @throw Never throws.
+   * @TODO throw exception if the move is not legal (ChessError)
    */
   Board& makeMove(const PieceMove &pieceMove);
 
