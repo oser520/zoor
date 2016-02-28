@@ -673,11 +673,12 @@ Board::movePawn(dim_type row, dim_type column) const
   cmpRow = isWhite(mColor) ? 1 : 6;
 
   // two moves on first move
-  if (row == cmpRow) {
-    auto toRow = rowOp(row, 2);
-    auto toCode = get(toRow, column);
-    if (isPieceNone(toCode))
-      moveList.emplace_back(row, column, fromCode, toRow, column);
+  if (row == cmpRow)) {
+    if (isPieceNone(get(rowOp(row, 1), column)) {
+      toRow = rowOp(row, 2);
+      if (isPieceNone(get(toRow, column)))
+        moveList.emplace_back(row, column, fromCode, toRow, column);
+    }
   }
 
   // set comparison row for en passant
