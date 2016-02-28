@@ -55,7 +55,7 @@ public:
   /**
    * Alias for the type of the row of the @c Board.
    */
-  using row_type = uint64_t;
+  using row_type = std::array<piececode_t, 8>;
 
   /**
    * Alias for the iterator.
