@@ -405,10 +405,7 @@ private:
   void put(dim_type row, dim_type column, piececode_t code) noexcept
   {
     assert(isInBound(row, column));
-
-    auto shift = (BOARD_DIM * column);
-    mRows[row] &= ~(static_cast<row_type>(0xff) << shift);
-    mRows[row] | = static_cast<row_type>(code) << shift;
+    mRows[row][column] = code;
   }
 
   /**
