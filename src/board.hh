@@ -561,7 +561,7 @@ public:
    * @return A reference to this @c Board.
    * @throw Never throws.
    */
-  Board& makeMove(const Square &square1, const Square &square2) noexcept;
+  Board& makeMove(const PieceMove &pieceMove);
 
   /**
    * @brief Reverses the last move.

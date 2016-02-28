@@ -1117,7 +1117,7 @@ Board::makeMoveCopy(const PieceMove &pieceMove) const
 /**
  * TODO: implement makeMove function
  */
-Board& Board::makeMove(const PieceMove &pieceMove) noexcept
+Board& Board::makeMove(const PieceMove &pieceMove)
 {
   return *this;
 }
