@@ -1119,6 +1119,22 @@ Board::makeMoveCopy(const PieceMove &pieceMove) const
  */
 Board& Board::makeMove(const PieceMove &pieceMove)
 {
+  auto sq = pieceMove.fromSquare();
+  auto fromCode = get(sq.row(), sq.column());
+
+  // verify correct piece in square
+  assert(isSamePiece(fromCode, sq.piece()) && isSameColor(fromCode, sq.color()));
+
+  // fetch legal moves
+  auto moveList = getMoves(sq.row(), sq.column());
+  auto it = std::find(moveList.begin(), moveList.end(), pieceMove);
+
+  // verify move is legal
+  assert(it != moveList.end());
+
+  // make the move
+  moveRef(pieceMove);
+
   return *this;
 }
 
