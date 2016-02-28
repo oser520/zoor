@@ -549,6 +549,7 @@ public:
    * @detail Does not affect the state of this board.
    * @param pieceMove The @c PieceMove.
    * @return A copy of the new @c Board after the move.
+   * @TODO throw exception if the move is not legal (ChessError)
    */
   Board makeMoveCopy(const PieceMove &pieceMove) const;
 
