@@ -1095,21 +1095,10 @@ std::vector<Board> Board::getBoards() const
 }
 
 // make a move on a copy of the board
-Board
-Board::makeMoveCopy(const PieceMove &pieceMove) const
+Board Board::makeMoveCopy(const PieceMove &pieceMove) const
 {
-  auto sq = pieceMove.fromSquare();
-  auto fromCode = get(sq.row(), sq.column());
-
-  // verify correct piece in square
-  assert(isSamePiece(fromCode, sq.piece()) && isSameColor(fromCode, sq.color()));
-  auto moveList = getMoves(sq.row(), sq.column());
-  auto it = std::find(moveList.begin(), moveList.end(), pieceMove);
-
-  // verify move is legal
-  assert(it != moveList.end());
   Board board(*this);
-  board.moveRef(pieceMove);
+  board.makeMove(pieceMove);
 
   return board;
 }
