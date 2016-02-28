@@ -545,6 +545,7 @@ public:
 
   /**
    * @brief Make a move and return a new board.
+   * @detail Meant to be used to take a board to a position.
    * @detail Does not affect the state of this board.
    * @param pieceMove The @c PieceMove.
    * @return A copy of the new @c Board after the move.
@@ -553,7 +554,8 @@ public:
 
   /**
    * @brief Make a move on the current board.
-   * @detail This move will become the new last move.
+   * @detail This move will become the new last move. Meant to be used to take a
+   *  board to a position.
    * @param pieceMove The @c PieceMove.
    * @return A reference to this @c Board.
    * @throw Never throws.
