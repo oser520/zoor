@@ -612,7 +612,7 @@ Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
   return isPawn(toCode) && !isSameColor(toCode, mColor)
       && mLastMove.piece() == PieceCode::PAWN
       && mLastMove.fromRow() == fromRow
-      && mLastMove.fromColumn() == toColumn
+      && mLastMove.fromColumn() == fromColumn
       && mLastMove.toRow() == toRow
       && mLastMove.toColumn() = toColumn;
 }
