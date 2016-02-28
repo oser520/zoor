@@ -44,12 +44,14 @@ const jump_list Board::JUMP_KING = {
  */
 Board::Board() {}
 
+// return a reference to the rows
 const std:array<row_type, Board::BOARD_DIM>&
 Board::rows() const noexcept
 {
   return mRows;
 }
 
+// return a copy of the rows
 std:array<row_type, Board::BOARD_DIM>
 Board::rowsCopy() const
 {
