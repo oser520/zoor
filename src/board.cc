@@ -1114,9 +1114,7 @@ Board::makeMoveCopy(const PieceMove &pieceMove) const
   return board;
 }
 
-/**
- * TODO: implement makeMove function
- */
+// make a move on this board
 Board& Board::makeMove(const PieceMove &pieceMove)
 {
   auto sq = pieceMove.fromSquare();
