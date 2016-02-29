@@ -119,24 +119,24 @@ std::vector<PieceMove> Board::getMoves() const
 bool Board::canCastle() const noexcept
 {
   dim_type row;
-  size_t shift;
+  size_t bit;
 
   // row and shift parameter for color
   if (isWhite(mColor)) {
     row = 0;
-    shift = RK_H1_MOVED;
+    bit = RK_H1_MOVED;
   } else {
     row = 7;
-    shift = RK_H8_MOVED;
+    bit = RK_H8_MOVED;
   }
 
   // check conditions
   // 1. rook a1 or a8 has not moved
   // 2. king has not moved
   // 3. king is not in check
-  bool cond = mBoardInfo[shift++];
-  cond |= mBoardInfo[++shift];
-  cond |= mBoardInfo[++shift];
+  bool cond = mBoardInfo[bit++];
+  cond |= mBoardInfo[++bit];
+  cond |= mBoardInfo[++bit];
 
   // any of the 3 conditions are true
   if (cond)
