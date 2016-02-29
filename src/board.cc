@@ -157,24 +157,24 @@ bool Board::canCastle() const noexcept
 bool Board::canCastleLong() const noexcept
 {
   dim_type row;
-  size_t shift;
+  size_t bit;
 
   // row and shift parameter for color
   if (isWhite(mColor)) {
     row = 1;
-    shift = RK_A1_MOVED;
+    bit = RK_A1_MOVED;
   } else {
     row = 7;
-    shift = RK_A8_MOVED;
+    bit = RK_A8_MOVED;
   }
 
   // check conditions
   // 1. rook h1 or h8 has not moved
   // 2. king has not moved
   // 3. king is not in check
-  bool cond = mBoardInfo[shift];
-  cond |= mBoardInfo[++shift];
-  cond |= mBoardInfo[++shift];
+  bool cond = mBoardInfo[bit];
+  cond |= mBoardInfo[++bit];
+  cond |= mBoardInfo[++bit];
 
   // any of the 3 conditions are true
   if (cond)
