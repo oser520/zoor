@@ -6,4 +6,32 @@
 
 #ifndef _CHESSERROR_H
 #define _CHESSERROR_H
+
+#include <stdexcept>
+#include <string>
+
+/**
+ * A simple exception class to represent chess errors.
+ */
+class ChessError: public std::logic_error
+{
+public:
+  /**
+   * @brief Default ctor.
+   */
+  ChessError(): std::logic_error("Bad chess logic") {}
+
+  /**
+   * @brief Constructor.
+   * @param msg The exception message.
+   */
+  explicit ChessError(const char *msg): std::logic_error(msg) {}
+
+  /**
+   * @brief Constructor.
+   * @param msg The exception message.
+   */
+  explicit ChessError(const std::string &msg): std::logic_error(msg) {}
+};
+
 #endif /* _CHESSERROR_H */
