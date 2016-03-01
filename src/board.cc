@@ -1225,10 +1225,10 @@ BoardIterator BoardIterator::operator++(int)
 BoardIterator&
 BoardIterator::operator+=(BoardIterator::difference_type value)
 {
-  mIndex += value;
-  if (mIndex < static_cast<difference_type>(0)
-      || mIndex > static_cast<difference_type>(LAST_INDEX))
-    throw BoardIteratorError("Error: iterator cannot move beyond board");
+  auto tmp = mIndex + value;
+  if (tmp < 0 || tmp > LAST_INDEX)
+    throw ChessError("Iterator cannot move beyond board");
+  mIndex = tmp;
 
   return *this;
 }
