@@ -1195,12 +1195,9 @@ bool operator!=(const Board &boar1, const Board &board2) noexcept
 
 // BoardIterator
 
-BoardIterator::BoardIterator(const Board *board)
-  : mBoardPtr(board),
-    mIndex(0)
-{
-  assert(mBoardPtr != nullptr);
-}
+BoardIterator::BoardIterator(const Board &board)
+  : mBoard(board),
+    mIndex(0) {}
 
 BoardIterator::BoardIterator(const Board *board, int)
   : mBoardPtr(board),
