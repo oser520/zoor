@@ -680,7 +680,6 @@ class BoardIterator
   friend BoardIterator operator-(const BoardIterator &bi, difference_type value);
   friend BoardIterator operator+(const BoardIterator &bi, difference_type value);
 
-// TODO: implement BoardIteratorError
 public:
   /**
    * Alias for the type of the dimension of a @c Board.
