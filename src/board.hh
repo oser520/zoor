@@ -778,6 +778,14 @@ public:
    */
   PieceCode piece() const;
 
+  /**
+   * @brief Obtain the piece's color from the iterator.
+   * @detail Only provides read access.
+   * @return The color of the piece in the square.
+   * @throw ChessError if iterator is <em>end</em> iterator.
+   */
+  PieceColor color() const;
+
 private:
   /**
    * A pointer to the @c Board.
