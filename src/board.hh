@@ -770,6 +770,14 @@ public:
    */
   value_type operator*() const;
 
+  /**
+   * @brief Obtain the piece from the iterator.
+   * @detail Only provides read access.
+   * @return The piece in the square.
+   * @throw ChessError if iterator is <em>end</em> iterator.
+   */
+  PieceCode piece() const;
+
 private:
   /**
    * A pointer to the @c Board.
