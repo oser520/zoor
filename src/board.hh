@@ -700,19 +700,19 @@ public:
 
   /**
    * @brief Constructs iterator to first @c Square on a @c Board.
-   * @param board Pointer to the @c Board.
+   * @param board Reference to the @c Board.
    * @throw Never throws.
    */
-  BoardIterator(const Board *board) noexcept;
+  BoardIterator(const Board &board) noexcept;
 
   /**
    * @brief Constructs iterator to one past the last @c Square on a @c Board.
    * @detail Second paramter is ignored, but differentiates this function from the
    *  constructor with one paramter to construct the <em>end</em> iterator.
-   * @param board Pointer to the @c Board.
+   * @param board Reference to the @c Board.
    * @throw Never throws.
    */
-  BoardIterator(Board const *board, int) noexcept;
+  BoardIterator(Board const &board, int) noexcept;
 
   /**
    * @brief Default copy constructor.
@@ -779,11 +779,10 @@ public:
   BoardIterator& operator-=(difference_type value);
 
   /**
-   * @brief Obtain a @c Square from the iterator.
-   * @detail The @c Baord cannot be modified via the @c Square.
-   * @return A @c Square that represents the current position of the iterator in the
-   *  @c Board.
-   * @throw BoardIteratorError if this is the end iterator.
+   * @brief Obtain the piece code from the iterator.
+   * @detail Only provides read access.
+   * @return The piece code in the square.
+   * @throw ChessError if iterator is <em>end</em> iterator.
    */
   value_type operator*() const;
 
@@ -791,7 +790,7 @@ private:
   /**
    * A pointer to the @c Board.
    */
-  const Board *mBoardPtr;
+  const Board mBoard;
 
   /**
    * @brief The current index in the @Board.
