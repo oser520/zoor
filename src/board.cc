@@ -1249,10 +1249,9 @@ BoardIterator::value_type BoardIterator::operator*() const
   if (mIndex >= LAST_INDEX)
     throw BoardIteratorError("Error: cannot access square beyond board");
 
-  auto row = static_cast<Board::dim_type>(mIndex) / Board::BOARD_DIM;
-  auto col = static_cast<Board::dim_type>(mIndex) % Board::BOARD_DIM;
-  auto code = mBoardPtr->get(row, col);
-  return Square(row, col, code);
+  auto row = mIndex / Board::BOARD_DIM;
+  auto col = mIndex % Board::BOARD_DIM;
+  return mBoard.get(row, col);
 }
 
 bool
