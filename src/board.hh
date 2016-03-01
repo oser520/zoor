@@ -671,7 +671,7 @@ public:
  * @detail The iterators can only read the board, and connot modify it.
  */
 class BoardIterator
-  : std:iterator<std:random_access_iterator_tag, Square, dim_type>
+  : std:iterator<std:random_access_iterator_tag, piececode_t, Board::dim_type>
 {
   // see the comments for these declarations below
   friend bool operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
