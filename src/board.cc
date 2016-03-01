@@ -1199,12 +1199,9 @@ BoardIterator::BoardIterator(const Board &board)
   : mBoard(board),
     mIndex(0) {}
 
-BoardIterator::BoardIterator(const Board *board, int)
-  : mBoardPtr(board),
-    mIndex(LAST_INDEX)
-{
-  assert(mBoardPtr != nullptr);
-}
+BoardIterator::BoardIterator(const Board &board, int)
+  : mBoard(board),
+    mIndex(LAST_INDEX) {}
 
 BoardIterator& BoardIterator::operator++()
 {
