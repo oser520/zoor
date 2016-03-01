@@ -1238,7 +1238,7 @@ BoardIterator::operator-=(BoardIterator::difference_type value)
 {
   auto tmp = mIndex - value;
   if (tmp < 0 || tmp > LAST_INDEX)
-    throw ChessError("Error: iterator cannot move beyond board");
+    throw ChessError("Iterator cannot move beyond board");
   mIndex = tmp;
 
   return *this;
@@ -1247,7 +1247,7 @@ BoardIterator::operator-=(BoardIterator::difference_type value)
 BoardIterator::value_type BoardIterator::operator*() const
 {
   if (mIndex >= LAST_INDEX)
-    throw BoardIteratorError("Error: cannot access square beyond board");
+    throw ChessError("Iterator cannot move beyond board");
 
   auto row = mIndex / Board::BOARD_DIM;
   auto col = mIndex % Board::BOARD_DIM;
