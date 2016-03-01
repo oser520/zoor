@@ -272,6 +272,9 @@ Board& Board::moveRef(const PieceMove &pieceMove) noexcept
   // update the last move
   mLastMove = pieceMove;
 
+  // flip color's turn
+  mColor = ~mColor;
+
   return *this;
 }
 
