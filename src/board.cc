@@ -1215,10 +1215,10 @@ BoardIterator& BoardIterator::operator++()
 BoardIterator BoardIterator::operator++(int)
 {
   if (mIndex >= LAST_INDEX)
-    throw BoardIteratorError("Error: iterator cannot move beyond board");
+    throw ChessError("Iterator cannot move beyond board");
 
   BoardIterator bi(*this);
-  ++(*this);
+  ++*this;
   return bi;
 }
 
