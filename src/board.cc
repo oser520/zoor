@@ -1212,6 +1212,7 @@ BoardIterator& BoardIterator::operator++()
 
   ++mIndex;
   mCode = mBoard.get(row(), column());
+
   return *this;
 }
 
@@ -1222,6 +1223,7 @@ BoardIterator BoardIterator::operator++(int)
 
   BoardIterator bi(*this);
   ++*this;
+
   return bi;
 }
 
