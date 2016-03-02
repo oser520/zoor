@@ -1195,16 +1195,19 @@ bool operator!=(const Board &boar1, const Board &board2) noexcept
 
 // BoardIterator
 
+// ctor to beginning of board
 BoardIterator::BoardIterator(const Board &board)
   : mBoard(board),
     mIndex(0),
     mCode(mBoard.get(0, 0)) {}
 
+// ctor to end of board
 BoardIterator::BoardIterator(const Board &board, int)
   : mBoard(board),
     mIndex(LAST_INDEX),
     mCode(0) {}
 
+// prefix increment operator
 BoardIterator& BoardIterator::operator++()
 {
   if (mIndex >= LAST_INDEX)
@@ -1216,6 +1219,7 @@ BoardIterator& BoardIterator::operator++()
   return *this;
 }
 
+// postfix increment operator
 BoardIterator BoardIterator::operator++(int)
 {
   if (mIndex >= LAST_INDEX)
@@ -1227,6 +1231,7 @@ BoardIterator BoardIterator::operator++(int)
   return bi;
 }
 
+// increment and assignment operator
 BoardIterator&
 BoardIterator::operator+=(BoardIterator::difference_type value)
 {
@@ -1240,6 +1245,7 @@ BoardIterator::operator+=(BoardIterator::difference_type value)
   return *this;
 }
 
+// decrement and assignment operator
 BoardIterator&
 BoardIterator::operator-=(BoardIterator::difference_type value)
 {
@@ -1253,6 +1259,7 @@ BoardIterator::operator-=(BoardIterator::difference_type value)
   return *this;
 }
 
+// dereference operator
 BoardIterator::value_type BoardIterator::operator*() const
 {
   if (mIndex >= LAST_INDEX)
@@ -1297,24 +1304,28 @@ BoardIterator::dim_type BoardIterator::column() const
   return mIndex & (Board::BOARD_DIM-1);
 }
 
+// compare two board iterators for equality
 bool
 operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept
 {
   return &bi1.mBoard == &bi2.mBoard && bi1.mIndex == bi2.mIndex;
 }
 
+// compare two board iterators for non-equality
 bool
 operator!=(const BoardIterator &bi1, const BoardIterator &bi2) noexcept
 {
   return !(bi1 == bi2);
 }
 
+// get the difference between two iterators
 BoardIterator::difference_type
 operator-(const BoardIterator &bi1, const BoardIterator &bi2) noexcept
 {
   return bi1.mIndex - bi2.mIndex;
 }
 
+// get the iterator obtained by subtracting an integral value
 BoardIterator
 operator-(const BoardIterator &bi, BoardIterator::difference_type value)
 {
@@ -1323,6 +1334,7 @@ operator-(const BoardIterator &bi, BoardIterator::difference_type value)
   return newBi;
 }
 
+// get the iterator obtained by adding an integral value
 BoardIterator
 operator+(const BoardIterator &bi, BoardIterator::difference_type value)
 {
