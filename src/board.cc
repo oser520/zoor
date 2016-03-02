@@ -1214,7 +1214,7 @@ BoardIterator& BoardIterator::operator++()
     throw ChessError("Iterator cannot move beyond board");
 
   ++mIndex;
-  mCode = mBoard.get(row(), column());
+  mCode = mIndex == LAST_INDEX ? 0 : mBoard.get(row(), column());
 
   return *this;
 }
