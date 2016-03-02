@@ -395,59 +395,6 @@ public:
 
 private:
   /**
-   * The actual board, in the sense that 8 bits represent one square, and each row
-   * cotains 8 squares.
-   */
-  std::array<row_type, BOARD_DIM> mRows;
-
-  /**
-   * Indicates the player's turn: either white or black moves.
-   */
-  PieceColor mColor;
-
-  /**
-   * The count of white pieces on the board.
-   */
-  PieceCount mWhiteCount;
-
-  /**
-   * The count of black pieces on the board.
-   */
-  PieceCount mBlackCount;
-
-  /**
-   * The last move. The first @c Square is the piece that made the move, and the
-   * second @c Square is where the piece moves.
-   */
-  PieceMove mLastMove;
-
-  /**
-   * @brief Maintains information that impacts the moves a player can make.
-   * @detail Maintains the following information:
-   * @li 1. The rook at <em>a1</em> has moved.
-   * @li 2. The rook at <em>h1</em> has moved.
-   * @li 3. The white king has moved.
-   * @li 4. The white king is in check.
-   * @li 5. Mate for white king.
-   * @li 6. The rook at <em>a8</em> has moved.
-   * @li 7. The rook at <em>h8</em> has moved.
-   * @li 8. The black king has moved.
-   * @li 9. The black king is in check.
-   * @li 10. Mate for black king.
-   * This information is mainly used to check if the king can do castling,
-   * if the king must move because it is in check, or it is check mate.
-   */
-  std::bitset<16> mBoardInfo;
-
-  /**
-   * Bit indexes for <em>mBoardInfo</em>.
-   */
-  enum {
-    RK_A1_MOVED, RK_H1_MOVED, WK_MOVED, WK_CHECK, WK_MATE,
-    RK_A8_MOVED, RK_H8_MOVED, BK_MOVED, BK_CHECK, BK_MATE
-  };
-
-  /**
    * @brief Make a move on a new board.
    * @detail Does not affect state of this board.
    * @param pieceMove The @c PieceMove.
@@ -619,6 +566,59 @@ private:
     mRows[row][column] = 0;
     return code;
   }
+
+  /**
+   * The actual board, in the sense that 8 bits represent one square, and each row
+   * cotains 8 squares.
+   */
+  std::array<row_type, BOARD_DIM> mRows;
+
+  /**
+   * Indicates the player's turn: either white or black moves.
+   */
+  PieceColor mColor;
+
+  /**
+   * The count of white pieces on the board.
+   */
+  PieceCount mWhiteCount;
+
+  /**
+   * The count of black pieces on the board.
+   */
+  PieceCount mBlackCount;
+
+  /**
+   * The last move. The first @c Square is the piece that made the move, and the
+   * second @c Square is where the piece moves.
+   */
+  PieceMove mLastMove;
+
+  /**
+   * @brief Maintains information that impacts the moves a player can make.
+   * @detail Maintains the following information:
+   * @li 1. The rook at <em>a1</em> has moved.
+   * @li 2. The rook at <em>h1</em> has moved.
+   * @li 3. The white king has moved.
+   * @li 4. The white king is in check.
+   * @li 5. Mate for white king.
+   * @li 6. The rook at <em>a8</em> has moved.
+   * @li 7. The rook at <em>h8</em> has moved.
+   * @li 8. The black king has moved.
+   * @li 9. The black king is in check.
+   * @li 10. Mate for black king.
+   * This information is mainly used to check if the king can do castling,
+   * if the king must move because it is in check, or it is check mate.
+   */
+  std::bitset<16> mBoardInfo;
+
+  /**
+   * Bit indexes for <em>mBoardInfo</em>.
+   */
+  enum {
+    RK_A1_MOVED, RK_H1_MOVED, WK_MOVED, WK_CHECK, WK_MATE,
+    RK_A8_MOVED, RK_H8_MOVED, BK_MOVED, BK_CHECK, BK_MATE
+  };
 
 }; // Board
 
