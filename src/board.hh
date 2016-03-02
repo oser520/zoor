@@ -87,6 +87,172 @@ public:
    */
   static const std::array<row_type, BOARD_DIM> INIT_BOARD;
   
+public:
+  /**
+   * @brief Default constructor.
+   * @detail Initializes a board with the standard number of pieces, with
+   *  white's turn to move.
+   */
+  Board();
+
+  /**
+   * @brief Default copy constructor.
+   * @param board The @c Board being copied.
+   */
+  Board(const Board &board) = default;
+
+  /**
+   * @brief Default move constructor.
+   * @param board The @c Board being moved.
+   */
+  Board(Board &&board) = default;
+
+  /**
+   * @brief Default copy assignment.
+   * @param board The @c Board being copied.
+   */
+  Board& operator=(const Board &board) = default;
+
+  /**
+   * @brief Default move assignment.
+   * @param board The @c Board being moved.
+   */
+  Board& operator=(Board &&board) = default;
+
+  /**
+   * @brief Default move destructor.
+   * @throw Never throws.
+   */
+  ~Board() noexcept = default;
+
+  /**
+   * @brief Determine if position is within bounds of board.
+   * @param position The position in question.
+   * @return True if position is within bounds of board.
+   * @throw Never throws.
+   */
+  static bool isInBound(dim_type position) const noexcept;
+
+  /**
+   * @brief Determine if row and column are in bounds.
+   * @param row The row of the position.
+   * @param column The column of the position.
+   * @return True if position is within bounds of board.
+   * @throw Never throws.
+   */
+  static bool isInBound(dim_type row, dim_type column) const noexcept;
+
+  /**
+   * @brief Return a reference to the rows of the board.
+   * @return A constant reference to the rows of the board.
+   * @throw Never throws.
+   */
+  const std:array<row_type, BOARD_DIM>& rows() const noexcept;
+
+  /**
+   * @brief Return a copy of the rows of the board.
+   * @return A copy of the rows of the board.
+   */
+  std:array<row_type, BOARD_DIM> rowsCopy() const;
+
+  /* @brief Return a vector of all the legal moves from the given position.
+   * @param row The row in the board.
+   * @param col The column in the board.
+   * @return A vector of all the legal moves from the current position. An empty
+   *  vector if there are no moves from the given position.
+   */
+  std::vector<PieceMove> getMoves(dim_type row, dim_type col) const;
+
+  /* @brief Return a vector of all the legal moves from all the pieces on the board.
+   * @param row The row in the board.
+   * @param col The column in the board.
+   * @return A vector of all the legal moves from the all the pieces on the board.
+   *  An empty vector if there are no moves from the given position.
+   */
+  std::vector<PieceMove> getMoves() const;
+
+  /* @brief Return a vector of all the boards that can be reached from this board in
+   *  one move.
+   * @detail If there are no legal moves, then the vector of boards will be empty.
+   *  This may mean that the current position is a checkmate, a stalemate, or that
+   *  there are no pieces on the board.
+   * @return A vector of all the legal moves from the current position.
+   */
+  std::vector<Board> getBoards() const;
+
+  /**
+   * @brief Make a move and return a new board.
+   * @detail Meant to be used to take a board to a position.
+   * @detail Does not affect the state of this board.
+   * @param pieceMove The @c PieceMove.
+   * @return A copy of the new @c Board after the move.
+   * @TODO throw exception if the move is not legal (ChessError)
+   */
+  Board makeMoveCopy(const PieceMove &pieceMove) const;
+
+  /**
+   * @brief Make a move on the current board.
+   * @detail This move will become the new last move. Meant to be used to take a
+   *  board to a position.
+   * @param pieceMove The @c PieceMove.
+   * @return A reference to this @c Board.
+   * @throw Never throws.
+   * @TODO throw exception if the move is not legal (ChessError)
+   */
+  Board& makeMove(const PieceMove &pieceMove);
+
+  /**
+   * @brief Reverses the last move.
+   * @return A reference to this board.
+   * @throw Never throws exception.
+   */
+  Board& undo() noexcept;
+
+  /**
+   * @brief Obtain the count of white pieces on the board. The object is not modified
+   *  and no exceptions are thrown.
+   * @return A copy of the white PieceCount.
+   */
+  PieceCount whiteCount() const noexcept;
+
+  /**
+   * @brief Obtain the count of black pieces on the board. The object is not modified
+   *  and no exceptions are thrown.
+   * @return A copy of the black PieceCount.
+   */
+  PieceCount blackCount() const noexcept;
+
+  /**
+   * @brief Get the last move made on this board.
+   * @return A copy of the last move.
+   * @throw Never throws.
+   */
+  PieceMove lastMove() const noexcept;
+
+  /**
+   * @brief Get the contents of a @c Square at a given row and column.
+   * @param row The row of the @c Board.
+   * @param column The column of the @c Board.
+   * @return A copy of the @c Square at the specified row and column.
+   * @throw Never throws.
+   */
+  Square operator()(dim_type row, dim_type column) const noexcept;
+
+  /**
+   * @brief Provide an iterator to the first @c Square in the @c Board.
+   * @detail The iterator cannot modify the @c Board.
+   * @return An iterator to the first @c Square.
+   * @throw Never throws.
+   */
+  iterator begin() const noexcept;
+
+  /**
+   * @brief Provide an iterator to one past the last @c Square in the @c Board.
+   * @return An iterator to one past the last @c Square in the board.
+   * @throw Never throws.
+   */
+  iterator end() const noexcept;
+
 private:
   /**
    * The actual board, in the sense that 8 bits represent one square, and each row
@@ -455,171 +621,6 @@ private:
     return code;
   }
 
-public:
-  /**
-   * @brief Default constructor.
-   * @detail Initializes a board with the standard number of pieces, with
-   *  white's turn to move.
-   */
-  Board();
-
-  /**
-   * @brief Default copy constructor.
-   * @param board The @c Board being copied.
-   */
-  Board(const Board &board) = default;
-
-  /**
-   * @brief Default move constructor.
-   * @param board The @c Board being moved.
-   */
-  Board(Board &&board) = default;
-
-  /**
-   * @brief Default copy assignment.
-   * @param board The @c Board being copied.
-   */
-  Board& operator=(const Board &board) = default;
-
-  /**
-   * @brief Default move assignment.
-   * @param board The @c Board being moved.
-   */
-  Board& operator=(Board &&board) = default;
-
-  /**
-   * @brief Default move destructor.
-   * @throw Never throws.
-   */
-  ~Board() noexcept = default;
-
-  /**
-   * @brief Determine if position is within bounds of board.
-   * @param position The position in question.
-   * @return True if position is within bounds of board.
-   * @throw Never throws.
-   */
-  static bool isInBound(dim_type position) const noexcept;
-
-  /**
-   * @brief Determine if row and column are in bounds.
-   * @param row The row of the position.
-   * @param column The column of the position.
-   * @return True if position is within bounds of board.
-   * @throw Never throws.
-   */
-  static bool isInBound(dim_type row, dim_type column) const noexcept;
-
-  /**
-   * @brief Return a reference to the rows of the board.
-   * @return A constant reference to the rows of the board.
-   * @throw Never throws.
-   */
-  const std:array<row_type, BOARD_DIM>& rows() const noexcept;
-
-  /**
-   * @brief Return a copy of the rows of the board.
-   * @return A copy of the rows of the board.
-   */
-  std:array<row_type, BOARD_DIM> rowsCopy() const;
-
-  /* @brief Return a vector of all the legal moves from the given position.
-   * @param row The row in the board.
-   * @param col The column in the board.
-   * @return A vector of all the legal moves from the current position. An empty
-   *  vector if there are no moves from the given position.
-   */
-  std::vector<PieceMove> getMoves(dim_type row, dim_type col) const;
-
-  /* @brief Return a vector of all the legal moves from all the pieces on the board.
-   * @param row The row in the board.
-   * @param col The column in the board.
-   * @return A vector of all the legal moves from the all the pieces on the board.
-   *  An empty vector if there are no moves from the given position.
-   */
-  std::vector<PieceMove> getMoves() const;
-
-  /* @brief Return a vector of all the boards that can be reached from this board in
-   *  one move.
-   * @detail If there are no legal moves, then the vector of boards will be empty.
-   *  This may mean that the current position is a checkmate, a stalemate, or that
-   *  there are no pieces on the board.
-   * @return A vector of all the legal moves from the current position.
-   */
-  std::vector<Board> getBoards() const;
-
-  /**
-   * @brief Make a move and return a new board.
-   * @detail Meant to be used to take a board to a position.
-   * @detail Does not affect the state of this board.
-   * @param pieceMove The @c PieceMove.
-   * @return A copy of the new @c Board after the move.
-   * @TODO throw exception if the move is not legal (ChessError)
-   */
-  Board makeMoveCopy(const PieceMove &pieceMove) const;
-
-  /**
-   * @brief Make a move on the current board.
-   * @detail This move will become the new last move. Meant to be used to take a
-   *  board to a position.
-   * @param pieceMove The @c PieceMove.
-   * @return A reference to this @c Board.
-   * @throw Never throws.
-   * @TODO throw exception if the move is not legal (ChessError)
-   */
-  Board& makeMove(const PieceMove &pieceMove);
-
-  /**
-   * @brief Reverses the last move.
-   * @return A reference to this board.
-   * @throw Never throws exception.
-   */
-  Board& undo() noexcept;
-
-  /**
-   * @brief Obtain the count of white pieces on the board. The object is not modified
-   *  and no exceptions are thrown.
-   * @return A copy of the white PieceCount.
-   */
-  PieceCount whiteCount() const noexcept;
-
-  /**
-   * @brief Obtain the count of black pieces on the board. The object is not modified
-   *  and no exceptions are thrown.
-   * @return A copy of the black PieceCount.
-   */
-  PieceCount blackCount() const noexcept;
-
-  /**
-   * @brief Get the last move made on this board.
-   * @return A copy of the last move.
-   * @throw Never throws.
-   */
-  PieceMove lastMove() const noexcept;
-
-  /**
-   * @brief Get the contents of a @c Square at a given row and column.
-   * @param row The row of the @c Board.
-   * @param column The column of the @c Board.
-   * @return A copy of the @c Square at the specified row and column.
-   * @throw Never throws.
-   */
-  Square operator()(dim_type row, dim_type column) const noexcept;
-
-  /**
-   * @brief Provide an iterator to the first @c Square in the @c Board.
-   * @detail The iterator cannot modify the @c Board.
-   * @return An iterator to the first @c Square.
-   * @throw Never throws.
-   */
-  iterator begin() const noexcept;
-
-  /**
-   * @brief Provide an iterator to one past the last @c Square in the @c Board.
-   * @return An iterator to one past the last @c Square in the board.
-   * @throw Never throws.
-   */
-  iterator end() const noexcept;
 };
 
 /**
