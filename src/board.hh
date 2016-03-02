@@ -811,6 +811,11 @@ private:
    * @detail Index goes from 0 to 63.
    */
   difference_type mIndex;
+
+  /**
+   * The code representing the piece on the current square.
+   */
+  piececode_t mCode;
 };
 
 /**
