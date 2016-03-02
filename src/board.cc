@@ -1257,7 +1257,7 @@ BoardIterator::value_type BoardIterator::operator*() const
 bool
 operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept
 {
-  return bi1.mBoardPtr == bi2.mBoardPtr && bi1.mIndex == bi2.mIndex;
+  return &bi1.mBoard == &bi2.mBoard && bi1.mIndex == bi2.mIndex;
 }
 
 bool
