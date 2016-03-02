@@ -1254,6 +1254,12 @@ BoardIterator::value_type BoardIterator::operator*() const
   return mBoard.get(row, col);
 }
 
+// get the piece on the current square
+PieceCode BoardIterator::piece() const noexcept
+{
+  return getPieceCode(mCode);
+}
+
 bool
 operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept
 {
