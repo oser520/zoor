@@ -1281,6 +1281,15 @@ BoardIterator::dim_type BoardIterator::row() const
   return mIndex >> 3;
 }
 
+// get the column of the current square
+BoardIterator::dim_type BoardIterator::column() const
+{
+  if (mIndex >= LAST_INDEX)
+    throw ChessError("Iterator cannot move beyond board");
+
+  return mIndex & (Board::BOARD_DIM-1);
+}
+
 bool
 operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept
 {
