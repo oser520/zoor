@@ -1263,6 +1263,15 @@ PieceCode BoardIterator::piece() const noexcept
   return getPieceCode(mCode);
 }
 
+// get the color of the piece on the current square
+PieceColor BoardIterator::color() const
+{
+  if (mIndex >= LAST_INDEX)
+    throw ChessError("Iterator cannot move beyond board");
+
+  return getPieceColor(mCode);
+}
+
 bool
 operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept
 {
