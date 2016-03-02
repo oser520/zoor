@@ -346,6 +346,14 @@ public:
   bool isEnPassant(PieceColor color, dim_type toColumn) const noexcept;
 
   /**
+   * @brief Move the pawn at the given row and column.
+   * @param row The row where the pawn is located.
+   * @param column The column where the pawn is located.
+   * @return A vector of moves.
+   */
+  std::vector<PieceMove> movePawn(dim_type row, dim_type column) const;
+
+  /**
    * @brief Move the knight at the given row and column.
    * @param row The row where the knight is located.
    * @param column The column where the knight is located.
@@ -543,14 +551,6 @@ private:
    * @throw Never throws.
    */
   bool isCheckW(dim_type row, dim_type column, PieceCode piece) const noexcept;
-
-  /**
-   * @brief Move the pawn at the given row and column.
-   * @param row The row where the pawn is located.
-   * @param column The column where the pawn is located.
-   * @return A vector of moves.
-   */
-  std::vector<PieceMove> movePawn(dim_type row, dim_type column) const;
 
   /**
    * @brief Get the bit pattern at a specific row and column in the @c Board.
