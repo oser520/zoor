@@ -1272,6 +1272,15 @@ PieceColor BoardIterator::color() const
   return getPieceColor(mCode);
 }
 
+// get the row of the current square
+BoardIterator::dim_type BoardIterator::row() const
+{
+  if (mIndex >= LAST_INDEX)
+    throw ChessError("Iterator cannot move beyond board");
+
+  return mIndex >> 3;
+}
+
 bool
 operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept
 {
