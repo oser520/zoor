@@ -1249,8 +1249,8 @@ BoardIterator::value_type BoardIterator::operator*() const
   if (mIndex >= LAST_INDEX)
     throw ChessError("Iterator cannot move beyond board");
 
-  auto row = mIndex / Board::BOARD_DIM;
-  auto col = mIndex % Board::BOARD_DIM;
+  auto row = mIndex >> 3;
+  auto col = mIndex & (Board::BOARD_DIM-1);
   return mBoard.get(row, col);
 }
 
