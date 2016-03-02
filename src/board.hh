@@ -88,20 +88,6 @@ public:
   static const std::array<row_type, BOARD_DIM> INIT_BOARD;
 
   /**
-   * @brief Determine if the king whose turn is it to move can do short castling.
-   * @return True if the king can do short castling.
-   * @throw Never throws.
-   */
-  bool canCastle() const noexcept;
-
-  /**
-   * @brief Determine if the king whose turn is it to move can do long castling.
-   * @return True if the king can do long castling.
-   * @throw Never throws.
-   */
-  bool canCastleLong() const noexcept;
-  
-  /**
    * @brief Default constructor.
    * @detail Initializes a board with the standard number of pieces, with
    *  white's turn to move.
@@ -154,6 +140,20 @@ public:
    * @throw Never throws.
    */
   static bool isInBound(dim_type row, dim_type column) const noexcept;
+
+  /**
+   * @brief Determine if the king whose turn is it to move can do short castling.
+   * @return True if the king can do short castling.
+   * @throw Never throws.
+   */
+  bool canCastle() const noexcept;
+
+  /**
+   * @brief Determine if the king whose turn is it to move can do long castling.
+   * @return True if the king can do long castling.
+   * @throw Never throws.
+   */
+  bool canCastleLong() const noexcept;
 
   /**
    * @brief Return a reference to the rows of the board.
