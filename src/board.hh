@@ -345,6 +345,46 @@ public:
    */
   bool isEnPassant(PieceColor color, dim_type toColumn) const noexcept;
 
+  /**
+   * @brief Move the knight at the given row and column.
+   * @param row The row where the knight is located.
+   * @param column The column where the knight is located.
+   * @return A vector of squares where the knight can move.
+   */
+  std::vector<PieceMove> moveKnight(dim_type row, dim_type column) const;
+
+  /**
+   * @brief Move the bishop at the given row and column.
+   * @param row The row where the bishop is located.
+   * @param column The column where the bishop is located.
+   * @return A vector of squares where the bishop can move.
+   */
+  std::vector<PieceMove> moveBishop(dim_type row, dim_type column) const;
+
+  /**
+   * @brief Move the rook at the given row and column.
+   * @param row The row where the rook is located.
+   * @param column The column where the rook is located.
+   * @return A vector of squares where the rook can move.
+   */
+  std::vector<PieceMove> moveRook(dim_type row, dim_type column) const;
+
+  /**
+   * @brief Move the queen at the given row and column.
+   * @param row The row where the queen is located.
+   * @param column The column where the queen is located.
+   * @return A vector of squares where the queen can move.
+   */
+  std::vector<PieceMove> moveQueen(dim_type row, dim_type column) const;
+
+  /**
+   * @brief Move the king at the given row and column.
+   * @param row The row where the king is located.
+   * @param column The column where the king is located.
+   * @return A vector of squares where the king can move.
+   */
+  std::vector<PieceMove> moveKing(dim_type row, dim_type column) const;
+
 private:
   /**
    * The actual board, in the sense that 8 bits represent one square, and each row
@@ -511,46 +551,6 @@ private:
    * @return A vector of moves.
    */
   std::vector<PieceMove> movePawn(dim_type row, dim_type column) const;
-
-  /**
-   * @brief Move the knight at the given row and column.
-   * @param row The row where the knight is located.
-   * @param column The column where the knight is located.
-   * @return A vector of squares where the knight can move.
-   */
-  std::vector<PieceMove> moveKnight(dim_type row, dim_type column) const;
-
-  /**
-   * @brief Move the bishop at the given row and column.
-   * @param row The row where the bishop is located.
-   * @param column The column where the bishop is located.
-   * @return A vector of squares where the bishop can move.
-   */
-  std::vector<PieceMove> moveBishop(dim_type row, dim_type column) const;
-
-  /**
-   * @brief Move the rook at the given row and column.
-   * @param row The row where the rook is located.
-   * @param column The column where the rook is located.
-   * @return A vector of squares where the rook can move.
-   */
-  std::vector<PieceMove> moveRook(dim_type row, dim_type column) const;
-
-  /**
-   * @brief Move the queen at the given row and column.
-   * @param row The row where the queen is located.
-   * @param column The column where the queen is located.
-   * @return A vector of squares where the queen can move.
-   */
-  std::vector<PieceMove> moveQueen(dim_type row, dim_type column) const;
-
-  /**
-   * @brief Move the king at the given row and column.
-   * @param row The row where the king is located.
-   * @param column The column where the king is located.
-   * @return A vector of squares where the king can move.
-   */
-  std::vector<PieceMove> moveKing(dim_type row, dim_type column) const;
 
   /**
    * @brief Get the bit pattern at a specific row and column in the @c Board.
