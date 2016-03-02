@@ -788,10 +788,17 @@ public:
 
   /**
    * @brief Obtain the current row.
-   * @return The color of the piece in the square.
+   * @return The row of the current square.
    * @throw ChessError if iterator is <em>end</em> iterator.
    */
   dim_type row() const;
+
+  /**
+   * @brief Obtain the current column.
+   * @return The column of the current square.
+   * @throw ChessError if iterator is <em>end</em> iterator.
+   */
+  dim_type column() const;
 
 private:
   /**
