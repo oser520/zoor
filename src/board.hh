@@ -81,6 +81,11 @@ public:
    * The jump deltas for a king.
    */
   static const jump_list JUMP_KING;
+
+  /**
+   * Used to initialize the board at construction.
+   */
+  static const std::array<row_type, BOARD_DIM> INIT_BOARD;
   
 private:
   /**
