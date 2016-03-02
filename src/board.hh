@@ -786,6 +786,13 @@ public:
    */
   PieceColor color() const noexcept;
 
+  /**
+   * @brief Obtain the current row.
+   * @return The color of the piece in the square.
+   * @throw ChessError if iterator is <em>end</em> iterator.
+   */
+  dim_type row() const;
+
 private:
   /**
    * A pointer to the @c Board.
