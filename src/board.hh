@@ -86,6 +86,20 @@ public:
    * Used to initialize the board at construction.
    */
   static const std::array<row_type, BOARD_DIM> INIT_BOARD;
+
+  /**
+   * @brief Determine if the king whose turn is it to move can do short castling.
+   * @return True if the king can do short castling.
+   * @throw Never throws.
+   */
+  bool canCastle() const noexcept;
+
+  /**
+   * @brief Determine if the king whose turn is it to move can do long castling.
+   * @return True if the king can do long castling.
+   * @throw Never throws.
+   */
+  bool canCastleLong() const noexcept;
   
 public:
   /**
@@ -306,20 +320,6 @@ private:
     RK_A1_MOVED, RK_H1_MOVED, WK_MOVED, WK_CHECK, WK_MATE,
     RK_A8_MOVED, RK_H8_MOVED, BK_MOVED, BK_CHECK, BK_MATE
   };
-
-  /**
-   * @brief Determine if the king whose turn is it to move can do short castling.
-   * @return True if the king can do short castling.
-   * @throw Never throws.
-   */
-  bool canCastle() const noexcept;
-
-  /**
-   * @brief Determine if the king whose turn is it to move can do long castling.
-   * @return True if the king can do long castling.
-   * @throw Never throws.
-   */
-  bool canCastleLong() const noexcept;
 
   /**
    * @brief Make a move on a new board.
