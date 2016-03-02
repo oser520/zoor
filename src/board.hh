@@ -101,7 +101,6 @@ public:
    */
   bool canCastleLong() const noexcept;
   
-public:
   /**
    * @brief Default constructor.
    * @detail Initializes a board with the standard number of pieces, with
