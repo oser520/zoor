@@ -53,10 +53,10 @@ Board::INIT_BOARD = {
     {0x14, 0x12, 0x13, 0x15, 0x16, 0x13, 0x12, 0x14}, // 8
 };
 
-/**
- * TODO: determine how to initialize default board.
- */
-Board::Board() {}
+// default ctor
+Board::Board()
+  : mRows(INIT_BOARD),
+    mColor(PieceColor::WHITE) {}
 
 // return a reference to the rows
 const std:array<row_type, Board::BOARD_DIM>&
