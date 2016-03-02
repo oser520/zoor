@@ -621,7 +621,7 @@ private:
     return code;
   }
 
-};
+}; // Board
 
 /**
  * @brief Writes the current board position to an output stream.
