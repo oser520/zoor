@@ -1197,11 +1197,13 @@ bool operator!=(const Board &boar1, const Board &board2) noexcept
 
 BoardIterator::BoardIterator(const Board &board)
   : mBoard(board),
-    mIndex(0) {}
+    mIndex(0),
+    mCode(mBoard.get(0, 0)) {}
 
 BoardIterator::BoardIterator(const Board &board, int)
   : mBoard(board),
-    mIndex(LAST_INDEX) {}
+    mIndex(LAST_INDEX),
+    mCode(0) {}
 
 BoardIterator& BoardIterator::operator++()
 {
