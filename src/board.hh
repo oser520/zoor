@@ -336,6 +336,15 @@ public:
    */
   bool isCheck(dim_type row, dim_type column) const;
 
+  /**
+   * @brief Determine if there is an en passant at a given column.
+   * @param color The @c PieceColor.
+   * @param toColumn The column where there might be an en passant.
+   * @return True if there is an en passant at the given column.
+   * @throw Never throws.
+   */
+  bool isEnPassant(PieceColor color, dim_type toColumn) const noexcept;
+
 private:
   /**
    * The actual board, in the sense that 8 bits represent one square, and each row
@@ -494,15 +503,6 @@ private:
    * @throw Never throws.
    */
   bool isCheckW(dim_type row, dim_type column, PieceCode piece) const noexcept;
-
-  /**
-   * @brief Determine if there is an en passant at a given column.
-   * @param color The @c PieceColor.
-   * @param toColumn The column where there might be an en passant.
-   * @return True if there is an en passant at the given column.
-   * @throw Never throws.
-   */
-  bool isEnPassant(PieceColor color, dim_type toColumn) const noexcept;
 
   /**
    * @brief Move the pawn at the given row and column.
