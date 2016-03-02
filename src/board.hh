@@ -266,6 +266,16 @@ public:
    */
   iterator end() const noexcept;
 
+  /**
+   * @brief Get a list of jump positions that are legal from a given row and column.
+   * @param row The row where the jump is being made from.
+   * @param column The column where the jump is being made from.
+   * @return positions The list of jumping positions.
+   * @throw Never throws.
+   */
+  jump_list
+  jump(dim_type row, dim_type column, const jump_list &positions) const;
+
 private:
   /**
    * The actual board, in the sense that 8 bits represent one square, and each row
@@ -336,16 +346,6 @@ private:
    * @throw Never throws.
    */
   Board& moveRef(const PieceMove &pieceMove) noexcept;
-
-  /**
-   * @brief Get a list of jump positions that are legal from a given row and column.
-   * @param row The row where the jump is being made from.
-   * @param column The column where the jump is being made from.
-   * @return positions The list of jumping positions.
-   * @throw Never throws.
-   */
-  jump_list
-  jump(dim_type row, dim_type column, const jump_list &positions) const;
 
   /**
    * @brief Determine if there is a check at the given row and column from a piece
