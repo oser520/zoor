@@ -92,7 +92,7 @@ private:
    * The actual board, in the sense that 8 bits represent one square, and each row
    * cotains 8 squares.
    */
-  array<row_type, BOARD_DIM> mRows;
+  std::array<row_type, BOARD_DIM> mRows;
 
   /**
    * Indicates the player's turn: either white or black moves.
