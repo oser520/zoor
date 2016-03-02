@@ -776,7 +776,7 @@ public:
    * @return The piece in the square.
    * @throw ChessError if iterator is <em>end</em> iterator.
    */
-  PieceCode piece() const noexcept;
+  PieceCode piece() const;
 
   /**
    * @brief Obtain the piece's color from the iterator.
@@ -784,7 +784,7 @@ public:
    * @return The color of the piece in the square.
    * @throw ChessError if iterator is <em>end</em> iterator.
    */
-  PieceColor color() const noexcept;
+  PieceColor color() const;
 
   /**
    * @brief Obtain the current row.
