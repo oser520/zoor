@@ -276,6 +276,66 @@ public:
   jump_list
   jump(dim_type row, dim_type column, const jump_list &positions) const;
 
+  /**
+   * @brief Determine if there is a pawn check at the given row and column.
+   * @param row The row where the king is located.
+   * @param column The column where the king is located.
+   * @return True if there is a check at the given square.
+   * @throw Never throws.
+   */
+  bool isCheckPawn(dim_type row, dim_type column) const noexcept;
+
+  /**
+   * @brief Determine if there is a knight check at the given row and column.
+   * @param row The row where the king is located.
+   * @param column The column where the king is located.
+   * @return True if there is a check at the given square.
+   */
+  bool isCheckKnight(dim_type row, dim_type column) const;
+
+  /**
+   * @brief Determine if there is a bishop check at the given row and column.
+   * @param row The row where the king is located.
+   * @param column The column where the king is located.
+   * @return True if there is a check at the given square.
+   * @throw Never throws.
+   */
+  bool isCheckBishop(dim_type row, dim_type column) const noexcept;
+
+  /**
+   * @brief Determine if there is a rook check at the given row and column.
+   * @param row The row where the king is located.
+   * @param column The column where the king is located.
+   * @return True if there is a check at the given square.
+   * @throw Never throws.
+   */
+  bool isCheckRook(dim_type row, dim_type column) const noexcept;
+
+  /**
+   * @brief Determine if there is a queen check at the given row and column.
+   * @param row The row where the king is located.
+   * @param column The column where the king is located.
+   * @return True if there is a check at the given square.
+   * @throw Never throws.
+   */
+  bool isCheckQueen(dim_type row, dim_type column) const noexcept;
+
+  /**
+   * @brief Determine if there is a king check at the given row and column.
+   * @param row The row where the king is located.
+   * @param column The column where the king is located.
+   * @return True if there is a check at the given square.
+   */
+  bool isCheckKing(dim_type row, dim_type column) const;
+
+  /**
+   * @brief Determine if there is a check at the given row and column.
+   * @param row The row where the king is located.
+   * @param column The column where the king is located.
+   * @return True if there is a check at the given square.
+   */
+  bool isCheck(dim_type row, dim_type column) const;
+
 private:
   /**
    * The actual board, in the sense that 8 bits represent one square, and each row
@@ -434,66 +494,6 @@ private:
    * @throw Never throws.
    */
   bool isCheckW(dim_type row, dim_type column, PieceCode piece) const noexcept;
-
-  /**
-   * @brief Determine if there is a pawn check at the given row and column.
-   * @param row The row where the king is located.
-   * @param column The column where the king is located.
-   * @return True if there is a check at the given square.
-   * @throw Never throws.
-   */
-  bool isCheckPawn(dim_type row, dim_type column) const noexcept;
-
-  /**
-   * @brief Determine if there is a knight check at the given row and column.
-   * @param row The row where the king is located.
-   * @param column The column where the king is located.
-   * @return True if there is a check at the given square.
-   */
-  bool isCheckKnight(dim_type row, dim_type column) const;
-
-  /**
-   * @brief Determine if there is a bishop check at the given row and column.
-   * @param row The row where the king is located.
-   * @param column The column where the king is located.
-   * @return True if there is a check at the given square.
-   * @throw Never throws.
-   */
-  bool isCheckBishop(dim_type row, dim_type column) const noexcept;
-
-  /**
-   * @brief Determine if there is a rook check at the given row and column.
-   * @param row The row where the king is located.
-   * @param column The column where the king is located.
-   * @return True if there is a check at the given square.
-   * @throw Never throws.
-   */
-  bool isCheckRook(dim_type row, dim_type column) const noexcept;
-
-  /**
-   * @brief Determine if there is a queen check at the given row and column.
-   * @param row The row where the king is located.
-   * @param column The column where the king is located.
-   * @return True if there is a check at the given square.
-   * @throw Never throws.
-   */
-  bool isCheckQueen(dim_type row, dim_type column) const noexcept;
-
-  /**
-   * @brief Determine if there is a king check at the given row and column.
-   * @param row The row where the king is located.
-   * @param column The column where the king is located.
-   * @return True if there is a check at the given square.
-   */
-  bool isCheckKing(dim_type row, dim_type column) const;
-
-  /**
-   * @brief Determine if there is a check at the given row and column.
-   * @param row The row where the king is located.
-   * @param column The column where the king is located.
-   * @return True if there is a check at the given square.
-   */
-  bool isCheck(dim_type row, dim_type column) const;
 
   /**
    * @brief Determine if there is an en passant at a given column.
