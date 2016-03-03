@@ -29,19 +29,19 @@ namespace zoor {
 using dim_type = Board::dim_type;
 using jump_list = Board::jump_list;
 
-// initialize JUMP_KNIGHT
+///////////////////////////////////////////////////////////////////////////////
+// initialize static vars
+///////////////////////////////////////////////////////////////////////////////
 const jump_list Board::JUMP_KNIGHT = {
   {2, 1}, {1, 2}, {-1, 2}, {-2, 1},
   {-2, -1}, {-1, -2}, {1, -2}, {2, -1}
 };
 
-// initialize JUMP_KING
 const jump_list Board::JUMP_KING = {
   {1, 0}, {1, 1}, {0, 1}, {-1, 1},
   {-1, 0}, {-1, -1}, {0, -1}, {1, -1}
 };
 
-// initialize INIT_BOARD
 const std::array<Board::row_type, Board::BOARD_DIM>
 Board::INIT_BOARD = {
 //    a     b     c     d     e     f     g     h
