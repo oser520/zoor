@@ -58,6 +58,19 @@ Board::Board()
   : mRows(INIT_BOARD),
     mColor(PieceColor::WHITE) {}
 
+// check if position is valid in board
+bool Board::isInBound(dim_type position) const noexcept
+{
+  return position >= 0 && position < BOARD_DIM;
+}
+
+// check if row and column are within bounds of board
+bool Board::isInBound(dim_type row, dim_type column) const noexcept
+{
+  return row >= 0 && column < BOARD_DIM
+      && column >= 0 && column < BOARD_DIM;
+}
+
 // return a reference to the rows
 const std:array<row_type, Board::BOARD_DIM>&
 Board::rows() const noexcept
@@ -292,19 +305,6 @@ Board& Board::moveRef(const PieceMove &pieceMove) noexcept
   mColor = ~mColor;
 
   return *this;
-}
-
-// check if position is valid in board
-bool Board::isInBound(dim_type position) const noexcept
-{
-  return position >= 0 && position < BOARD_DIM;
-}
-
-// check if row and column are within bounds of board
-bool Board::isInBound(dim_type row, dim_type column) const noexcept
-{
-  return row >= 0 && column < BOARD_DIM
-      && column >= 0 && column < BOARD_DIM;
 }
 
 // valid jump positions from a given row and column
