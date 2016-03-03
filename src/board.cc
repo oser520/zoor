@@ -71,79 +71,6 @@ bool Board::isInBound(dim_type row, dim_type column) const noexcept
       && column >= 0 && column < BOARD_DIM;
 }
 
-// return a reference to the rows
-const std:array<row_type, Board::BOARD_DIM>&
-Board::rows() const noexcept
-{
-  return mRows;
-}
-
-// return a copy of the rows
-std:array<row_type, Board::BOARD_DIM>
-Board::rowsCopy() const
-{
-  auto rc(mRows);
-  return rc;
-}
-
-// get the moves that can be made from a given square
-std::vector<PieceMove> getMoves(dim_type row, dim_type colum) const
-{
-  assert(!isColorNone(mColor));
-  std::vector<PieceMove> moveList;
-
-  auto code = get(row, column);
-
-  if (isPieceNone(code) || !isSameColor(code, mColor))
-    return moveList;
-
-  switch (getPieceCode(code)) {
-  case PieceCode::PAWN:
-    moveList = movePawn(row, column);
-    break;
-  case PieceCode::KNIGHT:
-    moveList = moveKnight(row, column);
-    break;
-  case PieceCode::BISHOP:
-    moveList = moveBishop(row, column);
-    break;
-  case PieceCode::ROOK:
-    moveList = moveRook(row, column);
-    break;
-  case PieceCode::QUEEN:
-    moveList = moveQueen(row, column);
-    break;
-  case PieceCode::KING:
-    moveList = moveKing(row, column);
-    break;
-  default:
-    // should never get here
-    assert(false);
-    break;
-  }
-
-  return moveList;
-}
-
-// get all the moves from all the pieces
-std::vector<PieceMove> Board::getMoves() const
-{
-  assert(!isColorNone(mColor));
-
-  std::vector<PieceMove> moves, moveList;
-
-  for (dim_type row = 0; row < BOAR_DIM; ++row) {
-    for (dim_type col = 0; col < BOARD_DIM; ++col) {
-      if (isSameColor(get(row, col), mColor)) {
-        moves = getMoves(row, col);
-        std::copy(moves.begin(), moves.end(), std::back_inserter(moveList));
-      }
-    }
-  }
-
-  return moveList;
-}
-
 // check if king can do short castling
 bool Board::canCastle() const noexcept
 {
@@ -218,6 +145,79 @@ bool Board::canCastleLong() const noexcept
     return false;
 
   return true;
+}
+
+// return a reference to the rows
+const std:array<row_type, Board::BOARD_DIM>&
+Board::rows() const noexcept
+{
+  return mRows;
+}
+
+// return a copy of the rows
+std:array<row_type, Board::BOARD_DIM>
+Board::rowsCopy() const
+{
+  auto rc(mRows);
+  return rc;
+}
+
+// get the moves that can be made from a given square
+std::vector<PieceMove> getMoves(dim_type row, dim_type colum) const
+{
+  assert(!isColorNone(mColor));
+  std::vector<PieceMove> moveList;
+
+  auto code = get(row, column);
+
+  if (isPieceNone(code) || !isSameColor(code, mColor))
+    return moveList;
+
+  switch (getPieceCode(code)) {
+  case PieceCode::PAWN:
+    moveList = movePawn(row, column);
+    break;
+  case PieceCode::KNIGHT:
+    moveList = moveKnight(row, column);
+    break;
+  case PieceCode::BISHOP:
+    moveList = moveBishop(row, column);
+    break;
+  case PieceCode::ROOK:
+    moveList = moveRook(row, column);
+    break;
+  case PieceCode::QUEEN:
+    moveList = moveQueen(row, column);
+    break;
+  case PieceCode::KING:
+    moveList = moveKing(row, column);
+    break;
+  default:
+    // should never get here
+    assert(false);
+    break;
+  }
+
+  return moveList;
+}
+
+// get all the moves from all the pieces
+std::vector<PieceMove> Board::getMoves() const
+{
+  assert(!isColorNone(mColor));
+
+  std::vector<PieceMove> moves, moveList;
+
+  for (dim_type row = 0; row < BOAR_DIM; ++row) {
+    for (dim_type col = 0; col < BOARD_DIM; ++col) {
+      if (isSameColor(get(row, col), mColor)) {
+        moves = getMoves(row, col);
+        std::copy(moves.begin(), moves.end(), std::back_inserter(moveList));
+      }
+    }
+  }
+
+  return moveList;
 }
 
 // get a copy of the board after making a move
