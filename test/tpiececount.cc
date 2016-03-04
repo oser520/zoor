@@ -151,7 +151,7 @@ TEST(PieceCount9, opPlusAssign)
   EXPECT_EQ(4, cp.knights());
 
   cp += PieceCode::BISHOP;
-  EXPECT_EQ(3, cp.bishop());
+  EXPECT_EQ(3, cp.bishops());
 
   cp += PieceCode::ROOK;
   EXPECT_EQ(3, cp.rooks());
