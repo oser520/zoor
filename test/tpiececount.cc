@@ -146,8 +146,8 @@ TEST(PieceCount9, opPlusAssign)
   cp += PieceCode::PAWN;
   EXPECT_EQ(9, cp.pawns());
 
-  cp += PiecCode::KNIGHT;
-  cp += PiecCode::KNIGHT;
+  cp += PieceCode::KNIGHT;
+  cp += PieceCode::KNIGHT;
   EXPECT_EQ(4, cp.knights());
 
   cp += PieceCode::BISHOP;
@@ -173,12 +173,12 @@ TEST(PieceCount10, opMinusAssign)
   cp -= PieceCode::PAWN;
   EXPECT_EQ(7, cp.pawns());
 
-  cp -= PiecCode::KNIGHT;
-  cp -= PiecCode::KNIGHT;
+  cp -= PieceCode::KNIGHT;
+  cp -= PieceCode::KNIGHT;
   EXPECT_EQ(0, cp.knights());
 
   cp -= PieceCode::BISHOP;
-  EXPECT_EQ(1, cp.bishop());
+  EXPECT_EQ(1, cp.bishops());
 
   cp -= PieceCode::ROOK;
   EXPECT_EQ(1, cp.rooks());
