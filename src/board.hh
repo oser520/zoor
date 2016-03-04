@@ -545,13 +545,7 @@ private:
    * @return The bit pattern in the square.
    * @throw Never throws.
    */
-  piececode_t clearSq(dim_type row, dim_type column) noexcept
-  {
-    auto shift = BOARD_DIM * column;
-    auto code = mRows[row][column];
-    mRows[row][column] = 0;
-    return code;
-  }
+  piececode_t clearSq(dim_type row, dim_type column) noexcept;
 
   /**
    * The actual board, in the sense that 8 bits represent one square, and each row
