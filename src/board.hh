@@ -515,11 +515,7 @@ private:
    * @param code The bit pattern representing the piece.
    * @throw Never throws.
    */
-  void put(dim_type row, dim_type column, piececode_t code) noexcept
-  {
-    assert(isInBound(row, column));
-    mRows[row][column] = code;
-  }
+  void put(dim_type row, dim_type column, piececode_t code) noexcept;
 
   /**
    * @brief Put a bit pattern for a piece on the board.
