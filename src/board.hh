@@ -506,11 +506,7 @@ private:
    * @return An unsigned char representing the bit pattern.
    * @throw Never throws.
    */
-  piececode_t get(dim_type row, dim_type column) const noexcept
-  {
-    assert(isInBound(row, column));
-    return mRows[row][column];
-  }
+  piececode_t get(dim_type row, dim_type column) const noexcept;
 
   /**
    * @brief Put a bit pattern for a piece on the board.
