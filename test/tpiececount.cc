@@ -20,7 +20,7 @@ using zoor::PieceCount;
 /**
  * Test the default constructor yields a board with the default number of pieces.
  */
-TEST(PieceCountTest, CtorValues)
+TEST(PieceCount1, CtorValues)
 {
   PieceCount cp;
   EXPECT_EQ(1, cp.kings()); 
@@ -34,7 +34,7 @@ TEST(PieceCountTest, CtorValues)
 /**
  * Test PieceCount::init().
  */
-TEST(PieceCountTest, InitFn)
+TEST(PieceCount2, InitFn)
 {
   PieceCount cp;
   cp.setCount(PieceCode::KING, 5);
@@ -52,7 +52,7 @@ TEST(PieceCountTest, InitFn)
 /**
  * Test PieceCount::clear().
  */
-TEST(PieceCountTest, ClearFn)
+TEST(PieceCount3, ClearFn)
 {
   PieceCount cp;
   cp.clear();
@@ -67,7 +67,7 @@ TEST(PieceCountTest, ClearFn)
 /**
  * Test PieceCount::plus().
  */
-TEST(PieceCountTest, PlusFn)
+TEST(PieceCount4, PlusFn)
 {
   PieceCount cp;
 
@@ -87,7 +87,7 @@ TEST(PieceCountTest, PlusFn)
 /**
  * Test PieceCount::minus().
  */
-TEST(PieceCountTest, MinusFn)
+TEST(PieceCount5, MinusFn)
 {
   PieceCount cp;
   cp.minus(PieceCode::ROOK);
@@ -99,7 +99,7 @@ TEST(PieceCountTest, MinusFn)
 /**
  * Test PieceCount::setCount().
  */
-TEST(PieceCountTest, SetCountFn)
+TEST(PieceCount6, SetCountFn)
 {
   PieceCount cp;
   cp.clear();
@@ -112,7 +112,7 @@ TEST(PieceCountTest, SetCountFn)
 /**
  * Test equality and non-equality operators.
  */
-TEST(PieceCountTest, EqualityOp)
+TEST(PieceCount7, EqualityOp)
 {
   PieceCount cp1, cp2;
   EXPECT_TRUE(cp1 == cp2);
@@ -126,7 +126,7 @@ TEST(PieceCountTest, EqualityOp)
 /**
  * Test the value functions.
  */
-TEST(PieceCountTest, ValueFn)
+TEST(PieceCount8, ValueFn)
 {
   PieceCount cp;
   EXPECT_EQ(8, cp.valuePawns());
@@ -137,9 +137,36 @@ TEST(PieceCountTest, ValueFn)
 }
 
 /**
+ * Test the addition and assignment operator functions.
+ */
+TEST(PieceCount9, opPlusAssign)
+{
+  PieceCount cp;
+
+  cp += PieceCode::PAWN;
+  EXPECT_EQ(9, cp.pawns());
+
+  cp += PiecCode::KNIGHT;
+  cp += PiecCode::KNIGHT;
+  EXPECT_EQ(4, cp.knights());
+
+  cp += PieceCode::BISHOP;
+  EXPECT_EQ(3, cp.bishop());
+
+  cp += PieceCode::ROOK;
+  EXPECT_EQ(3, cp.rooks());
+
+  cp += PieceCode::QUEEN;
+  EXPECT_EQ(2, cp.queens());
+
+  cp += PieceCode::KING;
+  EXPECT_EQ(2, cp.kings());
+}
+
+/**
  * Test the output operator.
  */
-TEST(PieceCountTest, OutputOp) {
+TEST(PieceCount10, OutputOp) {
   PieceCount cp;
   ostringstream ss1;
   ss1 << cp;
