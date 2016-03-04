@@ -536,10 +536,7 @@ private:
    * @throw Never throws.
    */
   void
-  put(dim_type row, dim_type column, PieceCode piece, PieceColor color) noexcept
-  {
-    put(row, column, color | piece);
-  }
+  put(dim_type row, dim_type column, PieceCode piece, PieceColor color) noexcept;
 
   /**
    * @brief Clear the bits in a square.
