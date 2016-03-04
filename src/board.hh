@@ -525,10 +525,7 @@ private:
    * @param piece The @c PieceCode.
    * @throw Never throws.
    */
-  void put(dim_type row, dim_type column, PieceCode piece) noexcept
-  {
-    put(row, column, mColor | piece);
-  }
+  void put(dim_type row, dim_type column, PieceCode piece) noexcept;
 
   /**
    * @brief Put a bit pattern for a piece on the board.
