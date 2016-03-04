@@ -226,12 +226,12 @@ std::vector<PieceMove> Board::getMoves() const
 {
   assert(!isColorNone(mColor));
 
-  std::vector<PieceMove> moves, moveList;
+  std::vector<PieceMove> moveList;
 
   for (dim_type row = 0; row < BOAR_DIM; ++row) {
     for (dim_type col = 0; col < BOARD_DIM; ++col) {
       if (isSameColor(get(row, col), mColor)) {
-        moves = getMoves(row, col);
+        auto moves = getMoves(row, col);
         std::copy(moves.begin(), moves.end(), std::back_inserter(moveList));
       }
     }
