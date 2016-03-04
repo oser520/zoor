@@ -164,9 +164,36 @@ TEST(PieceCount9, opPlusAssign)
 }
 
 /**
+ * Test the subtraction and assignment operator functions.
+ */
+TEST(PieceCount10, opMinusAssign)
+{
+  PieceCount cp;
+
+  cp -= PieceCode::PAWN;
+  EXPECT_EQ(7, cp.pawns());
+
+  cp -= PiecCode::KNIGHT;
+  cp -= PiecCode::KNIGHT;
+  EXPECT_EQ(0, cp.knights());
+
+  cp -= PieceCode::BISHOP;
+  EXPECT_EQ(1, cp.bishop());
+
+  cp -= PieceCode::ROOK;
+  EXPECT_EQ(1, cp.rooks());
+
+  cp -= PieceCode::QUEEN;
+  EXPECT_EQ(0, cp.queens());
+
+  cp -= PieceCode::KING;
+  EXPECT_EQ(0, cp.kings());
+}
+
+/**
  * Test the output operator.
  */
-TEST(PieceCount10, OutputOp) {
+TEST(PieceCount11, OutputOp) {
   PieceCount cp;
   ostringstream ss1;
   ss1 << cp;
