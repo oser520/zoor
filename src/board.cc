@@ -1309,7 +1309,7 @@ inline void Board::put(dim_type row, dim_type column, PieceCode piece) noexcept
 ////////////////////////////////////////////////////////////////////////////////
 // put a piece on the board
 ////////////////////////////////////////////////////////////////////////////////
-void
+inline void
 Board::put(dim_type row, dim_type column, PieceCode piece, PieceColor color) noexcept
 {
   put(row, column, color | piece);
