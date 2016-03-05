@@ -402,6 +402,12 @@ public:
    */
   size_t hashCode() const noexcept;
 
+  /**
+   * @brief Get the color of whose turn it is to move.
+   * @return The color of the player whose turn it is to move.
+   */
+  PieceColor colorToMove() const noexcept;
+
 private:
   /**
    * @brief Make a move on a new board.
