@@ -392,6 +392,12 @@ public:
    */
   std::string toString() const;
 
+  /**
+   * @brief Get the hash code for this board.
+   * @return The numeric hash code for this board.
+   */
+  size_t hashCode() const noexcept;
+
 private:
   /**
    * @brief Make a move on a new board.
