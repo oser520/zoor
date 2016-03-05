@@ -395,6 +395,8 @@ public:
 
   /**
    * @brief Get the hash code for this board.
+   * @details Hashes the raw contents of the board and the color reprsenting whose
+   *  turn is it to move. Implemented using One-at-a-Time hash
    * @return The numeric hash code for this board.
    */
   size_t hashCode() const noexcept;

@@ -1007,11 +1007,31 @@ std::string Board::toString() const
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// TODO: implement
+// return a hash code of the board using One-at-a-Time hash
 ////////////////////////////////////////////////////////////////////////////////
 size_t Board::hashCode() const noexcept
 {
-  return 0;
+  size_t hsh = 0;
+
+  // hash the contents of board
+  for (auto &row : mRows) {
+    for (auto &c : row) {
+      hsh += static_cast<size_t>(c);
+      hsh += h << 10;
+      hsh ^= h >> 6;
+    }
+  }
+
+  // hash the turn to move of white or black
+  hsh += static_cast<size_t>(mColor);
+  hsh += h << 10;
+  hsh ^= h >> 6;
+
+  hsh += h << 3;
+  hsh += h >> 11;
+  hsh += h << 15;
+
+  return hsh;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
