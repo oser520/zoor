@@ -350,6 +350,14 @@ piececode_t operator|(const PieceColor &color, const PieceCode &piece) noexcept;
  */
 PieceColor operator~(const PieceColor &color) noexcept;
 
+/**
+ * @brief Obtain a short string code representing the piece.
+ * @param code The bit code representing the piece and its color.
+ * @return A short, 1 to 2 char, string code.
+ * @throw Never throws.
+ */
+const char *shortStringCode(piececode_t code) noexcept;
+
 } // namespace zoor
 
 #endif 

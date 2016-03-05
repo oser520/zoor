@@ -294,4 +294,50 @@ PieceColor operator~(const PieceColor &color) noexcept
     return color;
 }
 
+////////////////////////////////////////////////////////////////////////////////
+// get a short string code representing a piece
+////////////////////////////////////////////////////////////////////////////////
+const char *shortStringCode(piececode_t code) noexcept
+{
+  if (isWhite(code)) {
+    switch (getPieceCode(code)) {
+      case PieceCode::PAWN:
+        return "WP";
+      case PieceCode::KNIGHT:
+        return "WKn";
+      case PieceCode::BISHOP:
+        return "WB";
+      case PieceCode::ROOK:
+        return "WR";
+      case PieceCode::QUEEN:
+        return "WQ";
+      case PieceCode::KING:
+        return "WKi";
+      case PieceCode::NONE:
+        return "0";
+      case default:
+        assert(false);
+    }
+  } else {
+    switch (getPieceCode(code)) {
+      case PieceCode::PAWN:
+        return "BP";
+      case PieceCode::KNIGHT:
+        return "BKn";
+      case PieceCode::BISHOP:
+        return "BB";
+      case PieceCode::ROOK:
+        return "BR";
+      case PieceCode::QUEEN:
+        return "BQ";
+      case PieceCode::KING:
+        return "BKi";
+      case PieceCode::NONE:
+        return "0";
+      case default:
+        assert(false);
+    }
+  }
+}
+
 } // namespace zoor
