@@ -1363,10 +1363,34 @@ inline piececode_t Board::clearSq(dim_type row, dim_type column) noexcept
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// TODO: implement output operator for Board
+// output string representation of the board
 ////////////////////////////////////////////////////////////////////////////////
 std:ostream& operator<<(std:ostream &os, const Board &board)
 {
+  // begin the board
+  os << "{";
+
+  // everything but the last row
+  for (size_t row = 0; row < BOARD_DIM-1; ++row) {
+    // begin the row
+    os << "{";
+    // everything but last square in row
+    for (size_t col = 0; col < BOARD_DIM-1; ++col)
+      os << shortStringCode(get(row, col)) << ", ";
+    // last square in row
+    os << shortStringCode(get(row, BOARD_DIM-1)) << "}, ";
+  }
+
+  // everything but last square in last row
+  os << "{";
+  for (size_t col = 0; col < BOARD_DIM-1; ++col)
+      os << shortStringCode(get(BOARD_DIM-1, col)) << ", ";
+  // handle last square in last row
+  os << shortStringCode(get(BOARD_DIM-1, BOARD_DIM-1)) << "},";
+
+  // close the board
+  os << "}";
+
   return os;
 }
 
