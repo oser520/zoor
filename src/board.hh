@@ -215,16 +215,6 @@ public:
   Board& makeMove(const PieceMove &pieceMove);
 
   /**
-   * @brief Reverses the last move.
-   * @param last The last move, also the move that is being undone.
-   * @param beforeLast The second to last move. Becomes the new last move
-   *  after <em>last</em> is undone.
-   * @return A reference to this board.
-   * @throw Never throws exception.
-   */
-  Board& undo(const PieceMove &last, const PieceMove &beforeLast) noexcept;
-
-  /**
    * @brief Obtain the count of white pieces on the board. The object is not modified
    *  and no exceptions are thrown.
    * @return A copy of the white PieceCount.
