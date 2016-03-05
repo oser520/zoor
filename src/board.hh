@@ -386,6 +386,12 @@ public:
    */
   std::vector<PieceMove> moveKing(dim_type row, dim_type column) const;
 
+  /**
+   * @brief Return string representation of the board.
+   * @return A string representing the board.
+   */
+  std::string toString() const;
+
 private:
   /**
    * @brief Make a move on a new board.
