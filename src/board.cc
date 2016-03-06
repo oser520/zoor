@@ -1128,6 +1128,8 @@ Board& Board::moveRef(const PieceMove &pieceMove) noexcept
     }
   }
 
+  // TODO: if there was a check, but not any more, remove it
+
   // update the last move
   mLastMove = pieceMove;
 
