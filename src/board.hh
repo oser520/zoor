@@ -20,7 +20,6 @@
 
 // zoor headers
 #include "piececode.hh"
-#include "piececount.hh"
 #include "square.hh"
 #include "piecemove.hh"
 
@@ -214,20 +213,6 @@ public:
    * @TODO throw exception if the move is not legal (ChessError)
    */
   Board& makeMove(const PieceMove &pieceMove);
-
-  /**
-   * @brief Obtain the count of white pieces on the board. The object is not modified
-   *  and no exceptions are thrown.
-   * @return A copy of the white PieceCount.
-   */
-  PieceCount whiteCount() const noexcept;
-
-  /**
-   * @brief Obtain the count of black pieces on the board. The object is not modified
-   *  and no exceptions are thrown.
-   * @return A copy of the black PieceCount.
-   */
-  PieceCount blackCount() const noexcept;
 
   /**
    * @brief Get the last move made on this board.
@@ -572,16 +557,6 @@ private:
    * Indicates the player's turn: either white or black moves.
    */
   PieceColor mColor;
-
-  /**
-   * The count of white pieces on the board.
-   */
-  PieceCount mWhiteCount;
-
-  /**
-   * The count of black pieces on the board.
-   */
-  PieceCount mBlackCount;
 
   /**
    * The last move. The first @c Square is the piece that made the move, and the
