@@ -1357,6 +1357,7 @@ Board::put(dim_type row, dim_type column, PieceCode piece, PieceColor color) noe
 ////////////////////////////////////////////////////////////////////////////////
 inline piececode_t Board::clearSq(dim_type row, dim_type column) noexcept
 {
+  assert(isInBound(row, column));
   auto code = mRows[row][column];
   mRows[row][column] = 0;
   return code;
