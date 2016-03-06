@@ -18,7 +18,6 @@
 
 // zoor headers
 #include "piececode.hh"
-#include "piececount.hh"
 #include "square.hh"
 #include "piecemove.hh"
 #include "board.hh"
