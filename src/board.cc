@@ -14,6 +14,7 @@
 #include <iterator>
 #include <bitset>
 #include <string>
+#include <sstream>
 
 // zoor headers
 #include "piececode.hh"
@@ -1003,7 +1004,10 @@ Board::moveKing(dim_type row, dim_type column) const
 ////////////////////////////////////////////////////////////////////////////////
 std::string Board::toString() const
 {
-  return std::string();
+  std::ostringstream oss;
+  oss << *this;
+
+  return oss.str();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
