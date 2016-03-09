@@ -1111,7 +1111,10 @@ Board& Board::moveRef(const PieceMove &pieceMove) noexcept
     }
   }
 
-  // TODO: if there was a check, but not any more, remove it
+  // if there was a check, but not any more, remove it
+  auto check = isWhite(mColor) ? WK_CHECK : BK_CHECK;
+  if (mBoardInfo[check] && !isCheck(pieceMove.toRow(), pieceMove.toColumn()))
+    mBoardInfo.flip(check);
 
   // update the last move
   mLastMove = pieceMove;
