@@ -1054,8 +1054,6 @@ Board& Board::moveRef(const PieceMove &pieceMove) noexcept
   // clear captured piece and adjust piece count
   if (pieceMove.isCapture()) {
     clearSq(pieceMove.captureRow(), pieceMove.captureColumn());
-    auto& pc = isWhite(mColor) ? mBlackCount : mWhiteCount;
-    pc -= pieceMove.capturePiece();
     // check if it is mate
     if (isKing(pieceMove.capturePiece())
       mBoardInfo.set(isWhite(mColor) ? BK_MATE : WK_MATE);
@@ -1063,15 +1061,8 @@ Board& Board::moveRef(const PieceMove &pieceMove) noexcept
 
   auto piece = pieceMove.fromPiece();
   if (isPawn(piece)) {
-    if (!pieceMove.isPromo()) {
-      put(toRow, toCol, PieceMove::PAWN);
-    else {
-      put(toRow, toCol, pieceMove.promoPiece());
-      // adjust piece count
-      auto& pc = isWhite(mColor) ? mWhiteCount : mBlackCount;
-      pc -= PieceCode::PAWN;
-      pc += pieceMove.promoPiece();
-    }
+    auto piece = pieceMove.isPromo() ? pieceMove.promoPiece() : PieceCode::PAWN;
+    put(toRow, toCol, piece);
   } else if (isKing(piece)) {
     if (!pieceMove.isCastle() && !pieceMove.isCastleLong())
       put(toRow, toCol, PieceCode::KING);
