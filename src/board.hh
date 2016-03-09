@@ -624,6 +624,25 @@ bool operator==(const Board &boar1, const Board &board2) noexcept;
  */
 bool operator!=(const Board &boar1, const Board &board2) noexcept;
 
+/**
+ * Board specialization for <em>hash</em>. Needs to be defined within std namespece.
+ */
+namespace std {
+
+template<>
+struct hash<Board>
+{
+  using argument_type = Board;
+  using result_type = decltype(Board::hashCode());
+
+  result_type operator()(const argument_type& arg)
+  {
+    return arg.hashCode();
+  }
+};
+
+} // std
+
 // BoardIterator
 
 /**
