@@ -249,6 +249,7 @@ std::vector<Board> Board::getBoards() const
   std::vector<Board> boardList;
   auto moveList = getMoves();
 
+  // copy this board and make a move
   for (auto& pm : moveList) {
     boardList.emplace_back(*this);
     boardList.back().moveRef(pm);
