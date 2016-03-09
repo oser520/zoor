@@ -1045,6 +1045,8 @@ Board Board::moveCopy(const PieceMove &pieceMove) const
 Board& Board::moveRef(const PieceMove &pieceMove) noexcept
 {
   assert(!isColorNone(mColor));
+  auto toRow = pieceMove.toRow();
+  auto toCol = pieceMove.toColumn();
 
   // clear piece from where it is moving
   clearSq(pieceMove.fromRow(), pieceMove.fromColumn());
@@ -1062,9 +1064,9 @@ Board& Board::moveRef(const PieceMove &pieceMove) noexcept
   auto piece = pieceMove.fromPiece();
   if (isPawn(piece)) {
     if (!pieceMove.isPromo()) {
-      put(pieceMove.toRow(), pieceMove.toColumn(), PieceMove::PAWN);
+      put(toRow, toCol, PieceMove::PAWN);
     else {
-      put(pieceMove.toRow(), pieceMove.toColumn(), pieceMove.promoPiece());
+      put(toRow, toCol, pieceMove.promoPiece());
       // adjust piece count
       auto& pc = isWhite(mColor) ? mWhiteCount : mBlackCount;
       pc -= PieceCode::PAWN;
@@ -1072,7 +1074,7 @@ Board& Board::moveRef(const PieceMove &pieceMove) noexcept
     }
   } else if (isKing(piece)) {
     if (!pieceMove.isCastle() && !pieceMove.isCastleLong())
-      put(pieceMove.toRow(), pieceMove.toColumn(), PieceCode::KING);
+      put(toRow, toCol, PieceCode::KING);
     else if (pieceMove.isCastle()) {
       auto row = isWhite(mColor) ? 0 : 7;
       // clear the rook from corner square
@@ -1092,7 +1094,7 @@ Board& Board::moveRef(const PieceMove &pieceMove) noexcept
     }
     mBoardInfo.set(isWhite(mColor) ? WK_MOVED : BK_MOVED);
   } else {
-    put(pieceMove.toRow(), pieceMove.toColumn(), piece);
+    put(toRow, toCol, piece);
     // have any of the rooks moved
     if (isRook(piece)) {
       auto row = pieceMove.fromRow();
@@ -1113,7 +1115,7 @@ Board& Board::moveRef(const PieceMove &pieceMove) noexcept
 
   // if there was a check, but not any more, remove it
   auto check = isWhite(mColor) ? WK_CHECK : BK_CHECK;
-  if (mBoardInfo[check] && !isCheck(pieceMove.toRow(), pieceMove.toColumn()))
+  if (mBoardInfo[check] && !isCheck(toRow, toCol))
     mBoardInfo.flip(check);
 
   // update the last move
