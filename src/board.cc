@@ -332,7 +332,7 @@ iterator Board::end() const noexcept
 jump_list Board::jump
   (dim_type row,
    dim_type column,
-   const jump_list &positions) const
+   const jump_list& positions) const
 {
   assert(isInBound(row, column));
   jump_list jumpList;
