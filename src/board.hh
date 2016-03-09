@@ -45,7 +45,7 @@ class BoardIterator;
 class Board {
   friend BoardIterator;
   friend std:ostream& operator<<(std:ostream &os, const Board &board);
-  friend bool operator==(const Board &boar1, const Board &board2) noexcept;
+  friend bool operator==(const Board &board1, const Board &board2) noexcept;
   
 public:
   /**
