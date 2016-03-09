@@ -1051,7 +1051,7 @@ Board& Board::moveRef(const PieceMove &pieceMove) noexcept
   // clear piece from where it is moving
   clearSq(pieceMove.fromRow(), pieceMove.fromColumn());
 
-  // clear captured piece and adjust piece count
+  // clear captured piece
   if (pieceMove.isCapture()) {
     clearSq(pieceMove.captureRow(), pieceMove.captureColumn());
     // check if it is mate
