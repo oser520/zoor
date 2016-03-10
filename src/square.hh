@@ -195,6 +195,13 @@ public:
   Square& setLocation(dim_type row, dim_type column) noexcept;
 
   /**
+   * @brief Get the hash code for the square.
+   * @return The hash code.
+   * @throw Never throws.
+   */
+  size_t hashCode() const noexcept;
+
+  /**
    * @brief Check if the position is in the board.
    * @param position The position in the board.
    * @param column The column in the board.
