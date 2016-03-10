@@ -195,6 +195,12 @@ public:
   Square& setLocation(dim_type row, dim_type column) noexcept;
 
   /**
+   * @brief Get the string representation of the square.
+   * @return A string representing the square.
+   */
+  std::string toString() const;
+
+  /**
    * @brief Get the hash code for the square.
    * @return The hash code.
    * @throw Never throws.
