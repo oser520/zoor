@@ -427,6 +427,13 @@ public:
    */
   std::string toString() const;
 
+  /**
+   * @brief Get the hash code for this @c PieceMove.
+   * @return The numeric hash code for this @c PieceMove.
+   * @throw Never throws.
+   */
+  size_t hashCode() const noexcept;
+
 private:
   /**
    * Represents the piece tha is making the move.
