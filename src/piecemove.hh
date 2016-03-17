@@ -10,6 +10,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <functional>
 
 #include "piececode.hh"
 #include "square.hh"
