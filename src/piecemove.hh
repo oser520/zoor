@@ -8,6 +8,8 @@
 
 #include <vector>
 #include <iostream>
+#include <string>
+#include <sstream>
 
 #include "piececode.hh"
 #include "square.hh"
@@ -418,6 +420,12 @@ public:
    * @throw Never throws.
    */
   bool isCastleLong() const noexcept;
+
+  /**
+   * @brief Return string representation of the @c PieceMove.
+   * @return A string representing the @c PiecMove.
+   */
+  std::string toString() const;
 
 private:
   /**
