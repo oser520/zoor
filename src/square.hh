@@ -7,6 +7,8 @@
 #define _SQUARE_H
 
 #include <iostream>
+#include <string>
+#include <functional>
 
 #include "piececode.hh"
 
