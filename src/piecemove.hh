@@ -463,6 +463,25 @@ private:
 };
 
 /**
+ * PieceMove specialization for <em>hash</em>. Needs to be defined within std namespece.
+ */
+namespace std {
+
+template<>
+struct hash<PieceMove>
+{
+  using argument_type = PieceMove;
+  using result_type = size_t;
+
+  result_type operator()(const argument_type& arg)
+  {
+    return arg.hashCode();
+  }
+};
+
+} // std
+
+/**
  * @brief Equality operator for @c PieceMove.
  * @param pm1 The first @c PieceMove.
  * @param pm2 The second @c PieceMove.
