@@ -279,6 +279,25 @@ bool operator!=(const Square& square1, const Square& square2) noexcept;
  */
 std::ostream& operator<<(std::ostream& os, const Square& square);
 
+/**
+ * Square specialization for <em>hash</em>. Needs to be defined within std namespece.
+ */
+namespace std {
+
+template<>
+struct hash<Square>
+{
+  using argument_type = Square;
+  using return_type = size_t;
+
+  return_type operator()(const argument_type& arg) const noexcept
+  {
+    return arg.hashCode();
+  };
+};
+
+} // std
+
 } // namespace zoor
 
 #endif // _SQUARE_H
