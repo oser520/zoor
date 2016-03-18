@@ -6,6 +6,8 @@
 
 #include <iostream>
 #include <utility>
+#include <string>
+#include <sstream>
 #include <cassert>
 
 #include "piecemove.hh"
@@ -391,6 +393,17 @@ PieceMove& PieceMove::doCastleLong(PieceColor color) noexcept
 bool PieceMove::isCastleLong() const noexcept
 {
   return mCastleInfo == 0x2;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// check if the move represents long castling
+////////////////////////////////////////////////////////////////////////////////
+std::string PieceMove::toString() const
+{
+  std::ostringstream oss;
+  oss << *this;
+
+  return oss.str();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
