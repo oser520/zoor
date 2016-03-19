@@ -16,9 +16,7 @@ using zoor::Square;
 using zoor::PieceCode;
 using zoor::PieceColor;
 
-/**
- * Test for default ctor.
- */
+// Test for default ctor.
 TEST(SquareTest1, DefaultCtor)
 {
   Square s;
@@ -28,9 +26,7 @@ TEST(SquareTest1, DefaultCtor)
   EXPECT_EQ(PieceColor::NONE, s.color());
 }
 
-/**
- * Test for ctor with 2 parameters.
- */
+// Test for ctor with 2 parameters.
 TEST(SquareTest2, Ctor2Param)
 {
   Square s(3, 5);
@@ -40,9 +36,7 @@ TEST(SquareTest2, Ctor2Param)
   EXPECT_EQ(PieceColor::NONE, s.color());
 }
 
-/**
- * Test for ctor with 3 parameters.
- */
+// Test for ctor with 3 parameters.
 TEST(SquareTest3, Ctor3Param)
 {
   Square s(3, 5, PieceColor::WHITE | PieceCode::BISHOP);
@@ -52,9 +46,7 @@ TEST(SquareTest3, Ctor3Param)
   EXPECT_EQ(PieceColor::WHITE, s.color());
 }
 
-/**
- * Test for ctor with 4 parameters.
- */
+// Test for ctor with 4 parameters.
 TEST(SquareTest4, Ctor3Param)
 {
   Square s(3, 5, PieceCode::BISHOP, PieceColor::WHITE);
@@ -64,9 +56,7 @@ TEST(SquareTest4, Ctor3Param)
   EXPECT_EQ(PieceColor::WHITE, s.color());
 }
 
-/**
- * Test getters.
- */
+// Test getters.
 TEST(SquareTest5, Getters)
 {
   Square s;
@@ -84,9 +74,7 @@ TEST(SquareTest5, Getters)
   EXPECT_NE(PieceColor::BLACK | PieceCode::ROOK, s.code());
 }
 
-/**
- * Test setters.
- */
+// Test setters.
 TEST(SquareTest6, Setters)
 {
   Square s;
@@ -111,9 +99,7 @@ TEST(SquareTest6, Setters)
   EXPECT_EQ(pcode, s.code());
 }
 
-/**
- * Test bools.
- */
+// Test bools.
 TEST(SquareTest7, Bools) {
   Square s1(5, 7, PieceCode::KNIGHT, PieceColor::BLACK);
   Square s2(5, 7, PieceCode::KNIGHT, PieceColor::BLACK);
@@ -130,9 +116,7 @@ TEST(SquareTest7, Bools) {
   EXPECT_TRUE(s1 != s2);
 }
 
-/**
- * Unit tests for equality operators.
- */
+// Unit tests for equality operators.
 TEST(SquareTest8, EqualityOp)
 {
   Square s1, s2;
@@ -169,7 +153,7 @@ TEST(SquareTest8, EqualityOp)
 }
 
 // unit tests for toString
-TEST(toStringTest, toString)
+TEST(SquareTest9, toString)
 {
   Square sq1(5, 7, PieceCode::ROOK, PieceColor::WHITE);
   Square sq2(3, 2, PieceCode::QUEEN, PieceColor::BLACK);
@@ -182,7 +166,7 @@ TEST(toStringTest, toString)
 }
 
 // unit tests for hashCode
-TEST(hashCodeTest, hashCode)
+TEST(SquareTest10, hashCode)
 {
   Square sq1(5, 7, PieceCode::ROOK, PieceColor::WHITE);
   Square sq2(3, 2, PieceCode::QUEEN, PieceColor::BLACK);
@@ -191,7 +175,7 @@ TEST(hashCodeTest, hashCode)
 }
 
 // unit tests for isInBound
-TEST(isInBoundTest, isInBound)
+TEST(SquareTest11, isInBound)
 {
   EXPECT_TRUE(Square::isInBound(7, 7));
   EXPECT_TRUE(Square::isInBound(7));
