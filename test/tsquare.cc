@@ -11,7 +11,7 @@
 
 namespace {
 
-using std:string;
+using std::string;
 using zoor::Square;
 using zoor::PieceCode;
 using zoor::PieceColor;
@@ -159,7 +159,7 @@ TEST(SquareTest9, toString)
   Square sq2(3, 2, PieceCode::QUEEN, PieceColor::BLACK);
 
   string s1("(ROOK, WHITE, 5, 7)");
-  string s1("(QUEEN, BLACK, 3, 2)");
+  string s2("(QUEEN, BLACK, 3, 2)");
 
   EXPECT_EQ(s1, sq1.toString());
   EXPECT_EQ(s2, sq2.toString());
