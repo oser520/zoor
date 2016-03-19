@@ -4,12 +4,14 @@
  * @date 2016-01-05
  */
 
+#include <string>
 #include "piececode.hh"
 #include "square.hh"
 #include "gtest/gtest.h"
 
 namespace {
 
+using std:string;
 using zoor::Square;
 using zoor::PieceCode;
 using zoor::PieceColor;
@@ -164,6 +166,28 @@ TEST(SquareTest8, EqualityOp)
 
   EXPECT_FALSE(s1 == s2);
   EXPECT_TRUE(s1 != s2);
+}
+
+// unit tests for toString
+TEST(toStringTest, toString)
+{
+  Square sq1(5, 7, PieceCode::ROOK, PieceColor::WHITE);
+  Square sq2(3, 2, PieceCode::QUEEN, PieceColor::BLACK);
+
+  string s1("(ROOK, WHITE, 5, 7)");
+  string s1("(QUEEN, BLACK, 3, 2)");
+
+  EXPECT_EQ(s1, sq1.toString());
+  EXPECT_EQ(s2, sq2.toString());
+}
+
+// unit tests for hashCode
+TEST(hashCodeTest, hashCode)
+{
+  Square sq1(5, 7, PieceCode::ROOK, PieceColor::WHITE);
+  Square sq2(3, 2, PieceCode::QUEEN, PieceColor::BLACK);
+
+  EXPECT_NE(sq1.hashCode(), sq2.hashCode());
 }
 
 // unit tests for isInBound
