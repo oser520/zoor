@@ -176,11 +176,34 @@ std::string Square::toString() const
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// TODO: implement
+// get the hash value for the square
 ////////////////////////////////////////////////////////////////////////////////
 size_t Square::hashCode() const noexcept
 {
-  return 0;
+  // the hash value
+  size_t h = 0;
+
+  h += static_cast<size_t>(mPiece);
+  h += h << 10;
+  h ^= h >> 6;
+
+  h += static_cast<size_t>(mColor);
+  h += h << 10;
+  h ^= h >> 6;
+
+  h += static_cast<size_t>(mRow);
+  h += h << 10;
+  h ^= h >> 6;
+
+  h += static_cast<size_t>(mColumn);
+  h += h << 10;
+  h ^= h >> 6;
+
+  h += h << 3;
+  h += h >> 11;
+  h += h << 15;
+
+  return h;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
