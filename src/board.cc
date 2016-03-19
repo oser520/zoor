@@ -999,27 +999,27 @@ std::string Board::toString() const
 ////////////////////////////////////////////////////////////////////////////////
 size_t Board::hashCode() const noexcept
 {
-  size_t hsh = 0;
+  size_t h = 0;
 
   // hash the contents of board
   for (auto &row : mRows) {
     for (auto &c : row) {
-      hsh += static_cast<size_t>(c);
-      hsh += h << 10;
-      hsh ^= h >> 6;
+      h += static_cast<size_t>(c);
+      h += h << 10;
+      h ^= h >> 6;
     }
   }
 
   // hash the turn to move of white or black
-  hsh += static_cast<size_t>(mColor);
-  hsh += h << 10;
-  hsh ^= h >> 6;
+  h += static_cast<size_t>(mColor);
+  h += h << 10;
+  h ^= h >> 6;
 
-  hsh += h << 3;
-  hsh += h >> 11;
-  hsh += h << 15;
+  h += h << 3;
+  h += h >> 11;
+  h += h << 15;
 
-  return hsh;
+  return h;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
