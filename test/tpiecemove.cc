@@ -455,6 +455,17 @@ TEST(PieceMove20, toString)
   EXPECT_EQ(s1, pm.toString());
 }
 
+// test hashCode
+TEST(PieceMove21, hashCode)
+{
+  auto pcode = PieceColor::WHITE | PieceCode::ROOK;
+  PieceMove pm(3, 5, pcode, 6, 5);
+  pm.setCapture(PieceCode::PAWN, PieceColor::BLACK);
+  PieceMove pm1(3, 5, pcode, 6, 5);
+
+  EXPECT_NE(pm.hashCode(), pm1.hashCode());
+}
+
 // test the equality operators
 TEST(PieceMove20, EqualOp) {
   auto code = PieceColor::BLACK | PieceCode::ROOK;
