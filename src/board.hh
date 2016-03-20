@@ -44,7 +44,7 @@ class BoardIterator;
  */
 class Board {
   friend BoardIterator;
-  friend std:ostream& operator<<(std:ostream &os, const Board &board);
+  friend std::ostream& operator<<(std::ostream &os, const Board &board);
   friend bool operator==(const Board &board1, const Board &board2) noexcept;
   
 public:
@@ -599,7 +599,7 @@ private:
  * @param board The board.
  * @return The output stream.
  */
-std:ostream& operator<<(std:ostream &os, const Board &board);
+std::ostream& operator<<(std::ostream &os, const Board &board);
 
 /**
  * @brief Equality operator.
@@ -861,9 +861,9 @@ namespace std {
  * Board specialization for <em>hash</em>. Needs to be defined within std namespece.
  */
 template<>
-struct hash<Board>
+struct hash<zoor::Board>
 {
-  using argument_type = Board;
+  using argument_type = zoor::Board;
   using result_type = size_t;
 
   result_type operator()(const argument_type& arg)
