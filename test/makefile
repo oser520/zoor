@@ -26,13 +26,15 @@ OBJ_PIECECODE = tpiececode.o piececode.o
 OBJ_PIECECOUNT = tpiececount.o piececount.o piececode.o
 OBJ_SQUARE = tsquare.o square.o piececode.o
 OBJ_PIECEMOVE = tpiecemove.o piecemove.o square.o piececode.o
+OBJ_BOARD = tboard.o board.o piecemove.o square.o piececode.o
 
 # Combine unique object files.
-OBJ_LIST := $(OBJ_PIECECODE) $(OBJ_PIECECOUNT) $(OBJ_SQUARE) $(OBJ_PIECEMOVE)
+OBJ_LIST := $(OBJ_PIECECODE) $(OBJ_PIECECOUNT) \
+            $(OBJ_SQUARE) $(OBJ_PIECEMOVE) $(OBJ_BOARD)
 OBJ_ALL != echo $(OBJ_LIST) | tr " " "\n" | sort | uniq
 
 # Unit test programs.
-TARGETS = tpiececode tpiececount tsquare tpiecemove
+TARGETS = tpiececode tpiececount tsquare tpiecemove tboard
 
 all: $(TARGETS)
 
@@ -48,11 +50,15 @@ tsquare: $(OBJ_SQUARE)
 tpiecemove: $(OBJ_PIECEMOVE)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
 
+tboard: $(OBJ_BOARD)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
+
 # Header dependencies.
 $(OBJ_PIECECODE): piececode.hh
 $(OBJ_PIECECOUNT): piececount.hh piececode.hh
 $(OBJ_SQUARE): square.hh piececode.hh
 $(OBJ_PIECEMOVE): piecemove.hh square.hh piececode.hh
+$(OBJ_BOARD): board.hh piecemove.hh square.hh piececode.hh
 
 .PHONY: run clean
 # Run all unit tests.

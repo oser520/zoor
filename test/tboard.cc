@@ -6,6 +6,8 @@
 
 #include <string>
 #include "piececode.hh"
+#include "square.hh"
+#include "piecemove.hh"
 #include "board.hh"
 #include "gtest/gtest.h"
 
