@@ -864,7 +864,7 @@ template<>
 struct hash<Board>
 {
   using argument_type = Board;
-  using result_type = decltype(Board::hashCode());
+  using result_type = size_t;
 
   result_type operator()(const argument_type& arg)
   {
