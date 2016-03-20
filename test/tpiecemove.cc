@@ -7,6 +7,7 @@
 // TODO: add unit tests for PieceMove
 
 #include <sstream>
+#include <string>
 #include "piececode.hh"
 #include "square.hh"
 #include "piecemove.hh"
@@ -440,6 +441,18 @@ TEST(PieceMove19, longBlackCastle)
 
   EXPECT_FALSE(pm.isCastle());
   EXPECT_TRUE(pm.isCastleLong());
+}
+
+// test toString
+TEST(PieceMove20, toString)
+{
+  auto pcode = PieceColor::WHITE | PieceCode::ROOK;
+  PieceMove pm(3, 5, pcode, 6, 5);
+  pm.setCapture(PieceCode::PAWN, PieceColor::BLACK);
+
+  string s1("((ROOK, WHITE, 3, 5), (NONE, NONE, 6, 5), (PAWN, BLACK, 0, 0))");
+
+  EXPECT_EQ(s1, pm.toString());
 }
 
 // test the equality operators
