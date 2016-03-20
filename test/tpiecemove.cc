@@ -468,7 +468,7 @@ TEST(PieceMove21, hashCode)
 }
 
 // test the equality operators
-TEST(PieceMove20, EqualOp) {
+TEST(PieceMove22, EqualOp) {
   auto code = PieceColor::BLACK | PieceCode::ROOK;
   PieceMove pm1(1, 2, code, 3, 3);
   pm1.setCapture(3, 3, PieceCode::PAWN, PieceColor::WHITE);
@@ -483,7 +483,7 @@ TEST(PieceMove20, EqualOp) {
 }
 
 // test the output operator
-TEST(PieceMove21, OutputOp) {
+TEST(PieceMove23, OutputOp) {
   PieceMove pm(1, 2, PieceCode::ROOK, PieceColor::BLACK);
   pm.setCapture(3, 3, PieceCode::PAWN, PieceColor::WHITE);
   pm.setGoTo(3, 3);
