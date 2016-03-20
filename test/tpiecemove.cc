@@ -22,9 +22,7 @@ using zoor::PieceColor;
 using zoor::PieceMove;
 using zoor::Square;
 
-/**
- * Test the values of the piece making the moves with default constructor.
- */
+// Test the values of the piece making the moves with default constructor.
 TEST(PieceMove1, DefaultCtor)
 {
   PieceMove pm;
@@ -50,9 +48,7 @@ TEST(PieceMove1, DefaultCtor)
   EXPECT_FALSE(pm.isCastleLong());
 }
 
-/**
- * Test the values of the piece making the moves with 1-param constructor.
- */
+// Test the values of the piece making the moves with 1-param constructor.
 TEST(PieceMove2, FourParamCtor)
 {
   PieceMove pm(3, 5, PieceCode::ROOK, PieceColor::WHITE);
@@ -78,9 +74,7 @@ TEST(PieceMove2, FourParamCtor)
   EXPECT_FALSE(pm.isCastleLong());
 }
 
-/**
- * Test the values of the piece making the moves with all-param constructor.
- */
+// Test the values of the piece making the moves with all-param constructor.
 TEST(PieceMove3, ThreeParamCtor)
 {
   PieceMove pm(3, 5, PieceColor::WHITE | PieceCode::ROOK);
@@ -106,9 +100,7 @@ TEST(PieceMove3, ThreeParamCtor)
   EXPECT_FALSE(pm.isCastleLong());
 }
 
-/**
- * Test the values of the piece making the moves with all-param constructor.
- */
+// Test the values of the piece making the moves with all-param constructor.
 TEST(PieceMove4, FiveParamCtor)
 {
   auto pcode = PieceColor::WHITE | PieceCode::ROOK;
