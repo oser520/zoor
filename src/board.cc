@@ -402,6 +402,95 @@ PieceMove Board::lastMove() const noexcept
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+// check if the last move is valid, given the current position on the board
+////////////////////////////////////////////////////////////////////////////////
+bool Board::isLastMoveOk() const noexcept
+{
+  auto piece = mLastMove.fromPiece();
+  if (!isPieceNone(piece)) {
+    // check that there is no piece from square where piece moved from
+    if (!isPieceNone(get(mLastMove.fromRow(), mLastMove.fromColumn())))
+      return false;
+
+    if (mLastMove.isCastle()) {
+      if (isWhite(mLastMove.fromColor())) {
+        auto pcode = get(0, 7);
+        if (!isRook(pcode) || !isWhite(pcode))
+          return false;
+        pcode = get(0, 4);
+        if (!isKing(pcode) || !isWhite(pcode))
+          return false;
+        // check if the rook h1 has moved, the white king has moved
+        // the white king is in check, or it is mate for white, making short
+        // castling an illegal move
+        if (mBoardInfo & 0x1e)
+          return false;
+      } else {
+        auto pcode = get(7, 7);
+        if (!isRook(pcode) || !isBlack(pcode))
+          return false;
+        pcode = get(7, 4);
+        if (!isKing(pcode) || !isBlack(pcode))
+          return false;
+        // check if the rook h8 has moved, the black king has moved
+        // the black king is in check, or black is in mate, making long
+        // castling an illegal move
+        if (mBoardInfo & 0x3c0)
+          return false;
+      }
+    } else if (mLastMove.isCastleLong()) {
+      if (isWhite(mLastMove.fromColor())) {
+        auto pcode = get(0, 0);
+        if (!isRook(pcode) || !isWhite(pcode))
+          return false;
+        pcode = get(0, 2);
+        if (!isKing(pcode) || !isWhite(pcode))
+          return false;
+        // check if the rook a1 has moved, the white king has moved
+        // the white king is in check, or it is mate for white, making short
+        // castling an illegal move
+        if (mBoardInfo & 0x1d)
+          return false;
+      } else {
+        auto pcode = get(7, 0);
+        if (!isRook(pcode) || !isBlack(pcode))
+          return false;
+        pcode = get(7, 2);
+        if (!isKing(pcode) || !isBlack(pcode))
+          return false;
+        // check if the rook a8 has moved, the black king has moved
+        // the black king is in check, or black is in mate, making long
+        // castling an illegal move
+        if (mBoardInfo & 0x3a0)
+          return false;
+      }
+    } else if (mLastMove.isPromo()) {
+      auto pcode = get(mLastMove.toRow(), mLastMove.toColumn());
+      auto pcolor = mLastMove.fromColor();
+      auto ppromo = mLastMove.promoPiece();
+      if (!isSamePiece(pcode, ppromo) || !isSameColor(pcode, pcolor))
+        return false;
+    } else if (mLastMove.isEnPassant()) {
+      // check there's no piece at capture square
+      auto pcode = get(mLastMove.captureRow(), mLastMove.captureColumn());
+      if (!isPieceNone(pcode))
+        return false;
+      pcode = get(mLastMove.toRow(), mLastMove.toColumn());
+      auto pcolor = mLastMove.fromColor();
+      if (!isPawn(pcode) || !isSameColor(pcode, pcolor))
+        return false;
+    } else {
+      auto pcode = get(mLastMove.toRow(), mLastMove.toColumn());
+      auto pcolor = mLastMove.fromColor();
+      if (!isSamePiece(pcode, piece) || !isSameColor(pcode, pcolor))
+        return false;
+    }
+  }
+
+  return true;
+}
+
+////////////////////////////////////////////////////////////////////////////////
 // get a square from a board
 ////////////////////////////////////////////////////////////////////////////////
 Square Board::operator()(dim_type row, dim_type column) const noexcept
