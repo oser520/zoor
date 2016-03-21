@@ -434,6 +434,20 @@ TEST(PieceMove19, longBlackCastle)
   EXPECT_TRUE(pm.isCastleLong());
 }
 
+// test isEnPassant
+TEST(PieceMove20, isEnPassant)
+{
+  PieceMove pm(4, 5, PieceCode::PAWN, PieceColor::WHITE, 5, 6);
+  pm.setCapture(4, 6, PieceCode::PAWN, PieceCode::BLACK);
+
+  EXPECT_TRUE(pm.isEnPassant());
+
+  auto pcode = PieceColor::WHITE | PieceCode::ROOK;
+  PieceMove pm1(3, 5, pcode, 6, 5);
+  pm1.setCapture(PieceCode::PAWN, PieceColor::BLACK);
+  EXPECT_FALSE(pm1.isEnPassant());
+}
+
 // test toString
 TEST(PieceMove20, toString)
 {
