@@ -71,8 +71,8 @@ Board::Board
    const PieceColor color,
    const std::bitset<16> &boardInfo,
    const PieceMove &lastMove)
-  : mColor(color)
-    mLastMove(lastMove)
+  : mColor(color),
+    mLastMove(lastMove),
     mBoardInfo(boardInfo)
 {
   assert(!isColorNone(mColor));
