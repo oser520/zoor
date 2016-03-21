@@ -449,7 +449,7 @@ TEST(PieceMove20, isEnPassant)
 }
 
 // test toString
-TEST(PieceMove20, toString)
+TEST(PieceMove21, toString)
 {
   auto pcode = PieceColor::WHITE | PieceCode::ROOK;
   PieceMove pm(3, 5, pcode, 6, 5);
@@ -461,7 +461,7 @@ TEST(PieceMove20, toString)
 }
 
 // test hashCode
-TEST(PieceMove21, hashCode)
+TEST(PieceMove22, hashCode)
 {
   auto pcode = PieceColor::WHITE | PieceCode::ROOK;
   PieceMove pm(3, 5, pcode, 6, 5);
@@ -472,7 +472,7 @@ TEST(PieceMove21, hashCode)
 }
 
 // test the equality operators
-TEST(PieceMove22, EqualOp) {
+TEST(PieceMove23, EqualOp) {
   auto code = PieceColor::BLACK | PieceCode::ROOK;
   PieceMove pm1(1, 2, code, 3, 3);
   pm1.setCapture(3, 3, PieceCode::PAWN, PieceColor::WHITE);
@@ -487,7 +487,7 @@ TEST(PieceMove22, EqualOp) {
 }
 
 // test the output operator
-TEST(PieceMove23, OutputOp) {
+TEST(PieceMove24, OutputOp) {
   PieceMove pm(1, 2, PieceCode::ROOK, PieceColor::BLACK);
   pm.setCapture(3, 3, PieceCode::PAWN, PieceColor::WHITE);
   pm.setGoTo(3, 3);
