@@ -111,9 +111,13 @@ public:
    * @brief Uses a list of squres to construct board.
    * @param squareList The list of pieces to put on the board.
    * @param color The color to move next.
+   * @param lastMove The last move made.
    * @throw Never throws.
    */
-  Board(const vector<Square> &squareList, const PieceColor color) noexcept;
+  Board
+    (const vector<Square> &squareList,
+     const PieceColor color,
+     const PieceMove &lastMove = PieceMove()) noexcept;
 
   /**
    * @brief Default copy assignment.
