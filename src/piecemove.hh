@@ -423,6 +423,13 @@ public:
   bool isCastleLong() const noexcept;
 
   /**
+   * @brief Check if the move represents en passant.
+   * @return True if the move represents en passant.
+   * @throw Never throws.
+   */
+  bool isEnPassant() const noexcept;
+
+  /**
    * @brief Return string representation of the @c PieceMove.
    * @return A string representing the @c PiecMove.
    */
