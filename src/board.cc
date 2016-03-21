@@ -81,86 +81,8 @@ Board::Board
   for (auto& sq : squareList)
     put(sq.row(), sq.column(), sq.code());
 
-  auto piece = mLastMove.fromPiece();
-  if (!isPieceNone(piece)) {
-    // check that there is no piece from square where piece moved from
-    if (!isPieceNone(get(mLastMove.fromRow(), mLastMove.fromColumn())))
-      throw ChessError("Bad last move");
-
-    if (mLastMove.isCastle()) {
-      if (isWhite(mLastMove.fromColor())) {
-        auto pcode = get(0, 7);
-        if (!isRook(pcode) || !isWhite(pcode))
-          throw ChessError("Bad last move");
-        pcode = get(0, 4);
-        if (!isKing(pcode) || !isWhite(pcode))
-          throw ChessError("Bad last move");
-        // check if the rook h1 has moved, the white king has moved
-        // the white king is in check, or it is mate for white, making short
-        // castling an illegal move
-        if (mBoardInfo & 0x1e)
-          throw ChessError("Inconsistent last move and board info");
-      } else {
-        auto pcode = get(7, 7);
-        if (!isRook(pcode) || !isBlack(pcode))
-          throw ChessError("Bad last move");
-        pcode = get(7, 4);
-        if (!isKing(pcode) || !isBlack(pcode))
-          throw ChessError("Bad last move");
-        // check if the rook h8 has moved, the black king has moved
-        // the black king is in check, or black is in mate, making long
-        // castling an illegal move
-        if (mBoardInfo & 0x3c0)
-          throw ChessError("Inconsistent last move and board info");
-      }
-    } else if (mLastMove.isCastleLong()) {
-      if (isWhite(mLastMove.fromColor())) {
-        auto pcode = get(0, 0);
-        if (!isRook(pcode) || !isWhite(pcode))
-          throw ChessError("Bad last move");
-        pcode = get(0, 2);
-        if (!isKing(pcode) || !isWhite(pcode))
-          throw ChessError("Bad last move");
-        // check if the rook a1 has moved, the white king has moved
-        // the white king is in check, or it is mate for white, making short
-        // castling an illegal move
-        if (mBoardInfo & 0x1d)
-          throw ChessError("Inconsistent last move and board info");
-      } else {
-        auto pcode = get(7, 0);
-        if (!isRook(pcode) || !isBlack(pcode))
-          throw ChessError("Bad last move");
-        pcode = get(7, 2);
-        if (!isKing(pcode) || !isBlack(pcode))
-          throw ChessError("Bad last move");
-        // check if the rook a8 has moved, the black king has moved
-        // the black king is in check, or black is in mate, making long
-        // castling an illegal move
-        if (mBoardInfo & 0x3a0)
-          throw ChessError("Inconsistent last move and board info");
-      }
-    } else if (mLastMove.isPromo()) {
-      auto pcode = get(mLastMove.toRow(), mLastMove.toColumn());
-      auto pcolor = mLastMove.fromColor();
-      auto ppromo = mLastMove.promoPiece();
-      if (!isSamePiece(pcode, ppromo) || !isSameColor(pcode, pcolor))
-        throw ChessError("Bad last move");
-    } else if (mLastMove.isEnPassant()) {
-      // check there's no piece at capture square
-      auto pcode = get(mLastMove.captureRow(), mLastMove.captureColumn());
-      if (!isPieceNone(pcode))
-        throw ChessError("Bad last move");
-      pcode = get(mLastMove.toRow(), mLastMove.toColumn());
-      auto pcolor = mLastMove.fromColor();
-      if (!isPawn(pcode) || !isSameColor(pcode, pcolor))
-        throw ChessError("Bad last move");
-    } else {
-      auto pcode = get(mLastMove.toRow(), mLastMove.toColumn());
-      auto pcolor = mLastMove.fromColor();
-      if (!isSamePiece(pcode, piece) || !isSameColor(pcode, pcolor))
-        throw ChessError("Bad last move");
-    }
-  }
+  if (!isLastMoveOk())
+    throw ChessError("Bad last move");
 }
 
 ////////////////////////////////////////////////////////////////////////////////
