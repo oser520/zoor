@@ -108,6 +108,14 @@ public:
   Board(Board &&board) = default;
 
   /**
+   * @brief Uses a list of squres to construct board.
+   * @param squareList The list of pieces to put on the board.
+   * @param color The color to move next.
+   * @throw Never throws.
+   */
+  Board(const vector<Square> &squareList, const PieceColor color) noexcept;
+
+  /**
    * @brief Default copy assignment.
    * @param board The @c Board being copied.
    */
