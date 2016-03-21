@@ -437,7 +437,8 @@ TEST(PieceMove19, longBlackCastle)
 // test isEnPassant
 TEST(PieceMove20, isEnPassant)
 {
-  PieceMove pm(4, 5, PieceCode::PAWN, PieceColor::WHITE, 5, 6);
+  PieceMove pm(4, 5, PieceCode::PAWN, PieceColor::WHITE);
+  pm.setGoTo(5, 6);
   pm.setCapture(4, 6, PieceCode::PAWN, PieceColor::BLACK);
 
   EXPECT_TRUE(pm.isEnPassant());
