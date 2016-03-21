@@ -235,6 +235,13 @@ public:
   PieceMove lastMove() const noexcept;
 
   /**
+   * @brief Check if the last move is valid, given the current position.
+   * @return True if the last move is valid, false otherwise.
+   * @throw Never throws.
+   */
+  bool isLastMoveOk() const noexcept;
+
+  /**
    * @brief Get the contents of a @c Square at a given row and column.
    * @param row The row of the @c Board.
    * @param column The column of the @c Board.
