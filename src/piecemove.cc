@@ -400,7 +400,9 @@ bool PieceMove::isCastleLong() const noexcept
 ////////////////////////////////////////////////////////////////////////////////
 bool PieceMove::isEnPassant() const noexcept
 {
-  return isPawn(mFrom.piece()) && !isPieceNone(mPromo.piece());
+  return isPawn(mFrom.piece())
+      && isPawn(mCapture.piece())
+      && mCapture.row() != mPromo.row();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
