@@ -78,7 +78,7 @@ Board::Board
     mBoardInfo(boardInfo)
 {
   assert(!isColorNone(mColor));
-  assert(!squareList.isEmpty());
+  assert(!squareList.empty());
 
   for (auto& sq : squareList)
     put(sq.row(), sq.column(), sq.code());
