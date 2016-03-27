@@ -1137,7 +1137,7 @@ size_t Board::hashCode() const noexcept
 ////////////////////////////////////////////////////////////////////////////////
 // determine whether it is white's or black's turn to move
 ////////////////////////////////////////////////////////////////////////////////
-PieceColor Board::colorToMove() const noexcept;
+PieceColor Board::colorToMove() const noexcept
 {
   return mColor;
 }
