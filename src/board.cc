@@ -675,7 +675,7 @@ Board::movePawn(dim_type row, dim_type column) const
   cmpRow = isWhite(mColor) ? 1 : 6;
 
   // two moves on first move
-  if (row == cmpRow)) {
+  if (row == cmpRow) {
     if (isPieceNone(get(rowOp(row, 1), column)) {
       toRow = rowOp(row, 2);
       if (isPieceNone(get(toRow, column)))
