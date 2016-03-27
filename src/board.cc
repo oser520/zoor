@@ -645,7 +645,7 @@ Board::movePawn(dim_type row, dim_type column) const
   }
 
   // all normal moves (i.e., pawn moves one square up or down)
-  if (cmpFunc(row, rowCmp)) {
+  if (cmpFunc(row, cmpRow)) {
     auto toRow = rowOp(row, 1);
     // check one square straight up or down
     auto toCode = get(toRow, column);
