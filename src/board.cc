@@ -1603,7 +1603,7 @@ BoardIterator::value_type BoardIterator::operator*() const
 ////////////////////////////////////////////////////////////////////////////////
 // get the piece on the current square
 ////////////////////////////////////////////////////////////////////////////////
-PieceCode BoardIterator::piece() const noexcept
+PieceCode BoardIterator::piece() const
 {
   if (mIndex >= LAST_INDEX)
     throw ChessError("Iterator cannot move beyond board");
