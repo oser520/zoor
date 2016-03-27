@@ -1496,7 +1496,7 @@ std::ostream& operator<<(std::ostream &os, const Board &board)
 ////////////////////////////////////////////////////////////////////////////////
 // compare boards for equality
 ////////////////////////////////////////////////////////////////////////////////
-bool operator==(const Board &boar1, const Board &board2) noexcept
+bool operator==(const Board &board1, const Board &board2) noexcept
 {
   return board1.mColor == board2.mColor
       && std::equal(board1.begin(), board1.end(), board2.begin());
