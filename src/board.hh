@@ -116,7 +116,7 @@ public:
    * @throw Never throws.
    */
   Board
-    (const vector<Square> &squareList,
+    (const std::vector<Square> &squareList,
      const PieceColor color,
      const BoardInfo<16> &boardInfo,
      const PieceMove &lastMove = PieceMove()) noexcept;
