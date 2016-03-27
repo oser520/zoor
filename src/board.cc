@@ -186,7 +186,7 @@ bool Board::canCastleLong() const noexcept
 ////////////////////////////////////////////////////////////////////////////////
 // return a reference to the rows
 ////////////////////////////////////////////////////////////////////////////////
-const std:array<row_type, Board::BOARD_DIM>&
+const std::array<row_type, Board::BOARD_DIM>&
 Board::rows() const noexcept
 {
   return mRows;
@@ -195,7 +195,7 @@ Board::rows() const noexcept
 ////////////////////////////////////////////////////////////////////////////////
 // return a copy of the rows
 ////////////////////////////////////////////////////////////////////////////////
-std:array<row_type, Board::BOARD_DIM>
+std::array<row_type, Board::BOARD_DIM>
 Board::rowsCopy() const
 {
   auto rc(mRows);
@@ -1464,7 +1464,7 @@ inline piececode_t Board::clearSq(dim_type row, dim_type column) noexcept
 ////////////////////////////////////////////////////////////////////////////////
 // output string representation of the board
 ////////////////////////////////////////////////////////////////////////////////
-std:ostream& operator<<(std:ostream &os, const Board &board)
+std::ostream& operator<<(std::ostream &os, const Board &board)
 {
   // begin the board
   os << "{";
