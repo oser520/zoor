@@ -931,7 +931,7 @@ Board::moveRook(dim_type row, dim_type column) const
 std::vector<PieceMove>
 Board::moveQueen(dim_type row, dim_type column) const
 {
-  assert(!isSameColor(mColor));
+  assert(!isColorNone(mColor));
   assert(isInBound(row, column));
   auto fromCode = get(row, column);
   assert(isQueen(fromCode));
