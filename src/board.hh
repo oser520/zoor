@@ -118,7 +118,7 @@ public:
   Board
     (const std::vector<Square> &squareList,
      const PieceColor color,
-     const BoardInfo<16> &boardInfo,
+     const std::bitset<16> &boardInfo,
      const PieceMove &lastMove = PieceMove()) noexcept;
 
   /**
