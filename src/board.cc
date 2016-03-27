@@ -253,7 +253,7 @@ std::vector<PieceMove> Board::getMoves() const
 
   std::vector<PieceMove> moveList;
 
-  for (dim_type row = 0; row < BOAR_DIM; ++row) {
+  for (dim_type row = 0; row < BOARD_DIM; ++row) {
     for (dim_type col = 0; col < BOARD_DIM; ++col) {
       if (isSameColor(get(row, col), mColor)) {
         auto moves = getMoves(row, col);
