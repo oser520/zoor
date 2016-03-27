@@ -145,7 +145,7 @@ public:
    * @return True if position is within bounds of board.
    * @throw Never throws.
    */
-  static bool isInBound(dim_type position) const noexcept;
+  static bool isInBound(dim_type position) noexcept;
 
   /**
    * @brief Determine if row and column are in bounds.
@@ -154,7 +154,7 @@ public:
    * @return True if position is within bounds of board.
    * @throw Never throws.
    */
-  static bool isInBound(dim_type row, dim_type column) const noexcept;
+  static bool isInBound(dim_type row, dim_type column) noexcept;
 
   /**
    * @brief Determine if the king whose turn is it to move can do short castling.
