@@ -452,7 +452,7 @@ jump_list Board::jump
   for (auto& pos : positions) {
     auto toRow = row + pos.first;
     auto toCol = column + pos.second;
-    if (isInBound(toRow, toColumn))
+    if (isInBound(toRow, toCol))
       jumpList.emplace_back(toRow, toCol);
   }
 
