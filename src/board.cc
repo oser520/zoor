@@ -677,7 +677,7 @@ Board::movePawn(dim_type row, dim_type column) const
 
   // two moves on first move
   if (row == cmpRow) {
-    if (isPieceNone(get(rowOp(row, 1), column)) {
+    if (isPieceNone(get(rowOp(row, 1), column))) {
       toRow = rowOp(row, 2);
       if (isPieceNone(get(toRow, column)))
         moveList.emplace_back(row, column, fromCode, toRow, column);
