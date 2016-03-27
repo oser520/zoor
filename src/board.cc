@@ -1515,7 +1515,7 @@ bool operator!=(const Board &board1, const Board &board2) noexcept
 ////////////////////////////////////////////////////////////////////////////////
 // ctor to beginning of board
 ////////////////////////////////////////////////////////////////////////////////
-BoardIterator::BoardIterator(const Board &board)
+BoardIterator::BoardIterator(const Board &board) noexcept
   : mBoard(board),
     mIndex(0),
     mCode(mBoard.get(0, 0)) {}
@@ -1523,7 +1523,7 @@ BoardIterator::BoardIterator(const Board &board)
 ////////////////////////////////////////////////////////////////////////////////
 // ctor to end of board
 ////////////////////////////////////////////////////////////////////////////////
-BoardIterator::BoardIterator(const Board &board, int)
+BoardIterator::BoardIterator(const Board &board, int) noexcept
   : mBoard(board),
     mIndex(LAST_INDEX),
     mCode(0) {}
