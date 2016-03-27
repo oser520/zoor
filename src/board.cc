@@ -615,7 +615,7 @@ Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
       && mLastMove.fromRow() == fromRow
       && mLastMove.fromColumn() == toColumn
       && mLastMove.toRow() == toRow
-      && mLastMove.toColumn() = toColumn;
+      && mLastMove.toColumn() == toColumn;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
