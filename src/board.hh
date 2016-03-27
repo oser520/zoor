@@ -694,7 +694,7 @@ public:
    * @param board Reference to the @c Board.
    * @throw Never throws.
    */
-  BoardIterator(Board const &board, int) noexcept;
+  BoardIterator(const Board &board, int) noexcept;
 
   /**
    * @brief Default copy constructor.
