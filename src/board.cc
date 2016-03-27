@@ -1476,17 +1476,17 @@ std::ostream& operator<<(std::ostream &os, const Board &board)
     os << "{";
     // everything but last square in row
     for (size_t col = 0; col < Board::BOARD_DIM-1; ++col)
-      os << shortStringCode(get(row, col)) << ", ";
+      os << shortStringCode(board.get(row, col)) << ", ";
     // last square in row
-    os << shortStringCode(get(row, Board::BOARD_DIM-1)) << "}, ";
+    os << shortStringCode(board.get(row, Board::BOARD_DIM-1)) << "}, ";
   }
 
   // everything but last square in last row
   os << "{";
   for (size_t col = 0; col < Board::BOARD_DIM-1; ++col)
-      os << shortStringCode(get(Board::BOARD_DIM-1, col)) << ", ";
+      os << shortStringCode(board.get(Board::BOARD_DIM-1, col)) << ", ";
   // handle last square in last row
-  os << shortStringCode(get(Board::BOARD_DIM-1, Board::BOARD_DIM-1)) << "},";
+  os << shortStringCode(board.get(Board::BOARD_DIM-1, Board::BOARD_DIM-1)) << "},";
 
   // close the board
   os << "}";
