@@ -1083,13 +1083,13 @@ Board::moveKing(dim_type row, dim_type column) const
   // short castling
   if (canCastle()) {
     moveList.emplace_back();
-    moveList.back().doCastle();
+    moveList.back().doCastle(mColor);
   }
 
   // long castling
   if (canCastleLong()) {
     moveList.emplace_back();
-    moveList.back().doCastleLong();
+    moveList.back().doCastleLong(mColor);
   }
 
   return moveList;
