@@ -527,7 +527,7 @@ bool Board::isCheckBishop(dim_type row, dim_type column) const noexcept
   assert(isInBound(row, column));
   auto piece = PieceCode::BISHOP;
 
-  return isCheckNW(row, column, piece) || isCheckSW(row, column piece)
+  return isCheckNW(row, column, piece) || isCheckSW(row, column, piece)
       || isCheckNE(row, column, piece) || isCheckSE(row, column, piece);
 }
 
@@ -540,7 +540,7 @@ bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
   assert(isInBound(row, column));
   auto piece = PieceCode::ROOK;
 
-  return isCheckN(row, column, piece) || isCheckW(row, column piece)
+  return isCheckN(row, column, piece) || isCheckW(row, column, piece)
       || isCheckS(row, column, piece) || isCheckE(row, column, piece);
 }
 
