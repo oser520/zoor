@@ -1168,7 +1168,7 @@ Board& Board::moveRef(const PieceMove &pieceMove) noexcept
   if (pieceMove.isCapture()) {
     clearSq(pieceMove.captureRow(), pieceMove.captureColumn());
     // check if it is mate
-    if (isKing(pieceMove.capturePiece())
+    if (isKing(pieceMove.capturePiece()))
       mBoardInfo.set(isWhite(mColor) ? BK_MATE : WK_MATE);
   }
 
