@@ -654,10 +654,14 @@ bool operator!=(const Board &boar1, const Board &board2) noexcept;
  * @detail The iterators can only read the board, and connot modify it.
  */
 class BoardIterator
-  : std::iterator<std::random_access_iterator_tag, piececode_t, Board::dim_type>
+  : public std::iterator<
+      std::random_access_iterator_tag,
+      piececode_t,
+      Board::dim_type>
 {
   // see the comments for these declarations below
-  friend bool operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
+  friend bool
+  operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
   friend difference_type
   operator-(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
   friend BoardIterator operator-(const BoardIterator &bi, difference_type value);
