@@ -66,196 +66,196 @@ TEST(Board4, canCastleLong)
 
 // test getMoves with row and column specified
 // TODO: enable test
-DISABLED_TEST(Board5, getMovesRowCol)
+TEST(Board5, DISABLED_getMovesRowCol)
 {
   // TODO: try different scenarios
 }
 
 // test getMoves for all moves on the board
 // TODO: enable test
-DISABLED_TEST(Board6, getMoves)
+TEST(Board6, DISABLED_getMoves)
 {
   // TODO: try different scenarios
 }
 
 // test getBoards
 // TODO: enable test
-DISABLED_TEST(Board7, getBoards)
+TEST(Board7, DISABLED_getBoards)
 {
   // TODO: try different scenarios
 }
 
 // test makeMoveCopy
 // TODO: enable test
-DISABLED_TEST(Board8, makeMoveCopy)
+TEST(Board8, DISABLED_makeMoveCopy)
 {
   // TODO: try different scenarios
 }
 
 // test makeMove
 // TODO: enable test
-DISABLED_TEST(Board9, makeMove)
+TEST(Board9, DISABLED_makeMove)
 {
   // TODO: try different scenarios
 }
 
 // test lastMove
 // TODO: enable test
-DISABLED_TEST(Board10, lastMove)
+TEST(Board10, DISABLED_lastMove)
 {
   // TODO: try different scenarios
 }
 
 // test operator()
 // TODO: enable test
-DISABLED_TEST(Board11, callOp)
+TEST(Board11, DISABLED_callOp)
 {
   // TODO: try different scenarios
 }
 
 // test begin
 // TODO: enable test
-DISABLED_TEST(Board12, begin)
+TEST(Board12, DISABLED_begin)
 {
   // TODO: try different scenarios
 }
 
 // test end
 // TODO: enable test
-DISABLED_TEST(Board13, end)
+TEST(Board13, DISABLED_end)
 {
   // TODO: try different scenarios
 }
 
 // test jump
 // TODO: enable test
-DISABLED_TEST(Board14, jump)
+TEST(Board14, DISABLED_jump)
 {
   // TODO: try different scenarios
 }
 
 // test isCheckPawn
 // TODO: enable test
-DISABLED_TEST(Board15, isCheckPawn)
+TEST(Board15, DISABLED_isCheckPawn)
 {
   // TODO: try different scenarios
 }
 
 // test isCheckKnight
 // TODO: enable test
-DISABLED_TEST(Board16, isCheckKnight)
+TEST(Board16, DISABLED_isCheckKnight)
 {
   // TODO: try different scenarios
 }
 
 // test isCheckBishop
 // TODO: enable test
-DISABLED_TEST(Board17, isCheckBishop)
+TEST(Board17, DISABLED_isCheckBishop)
 {
   // TODO: try different scenarios
 }
 
 // test isCheckRook
 // TODO: enable test
-DISABLED_TEST(Board18, isCheckRook)
+TEST(Board18, DISABLED_isCheckRook)
 {
   // TODO: try different scenarios
 }
 
 // test isCheckQueen
 // TODO: enable test
-DISABLED_TEST(Board19, isCheckQueen)
+TEST(Board19, DISABLED_isCheckQueen)
 {
   // TODO: try different scenarios
 }
 
 // test isCheckKing
 // TODO: enable test
-DISABLED_TEST(Board20, isCheckKing)
+TEST(Board20, DISABLED_isCheckKing)
 {
   // TODO: try different scenarios
 }
 
 // test isCheck
 // TODO: enable test
-DISABLED_TEST(Board21, isCheck)
+TEST(Board21, DISABLED_isCheck)
 {
   // TODO: try different scenarios
 }
 
 // test isEnPassant
 // TODO: enable test
-DISABLED_TEST(Board22, isEnPassant)
+TEST(Board22, DISABLED_isEnPassant)
 {
   // TODO: try different scenarios
 }
 
 // test movePawn
 // TODO: enable test
-DISABLED_TEST(Board23, movePawn)
+TEST(Board23, DISABLED_movePawn)
 {
   // TODO: try different scenarios
 }
 
 // test moveKnight
 // TODO: enable test
-DISABLED_TEST(Board24, moveKnight)
+TEST(Board24, DISABLED_moveKnight)
 {
   // TODO: try different scenarios
 }
 
 // test moveBishop
 // TODO: enable test
-DISABLED_TEST(Board25, moveBishop)
+TEST(Board25, DISABLED_moveBishop)
 {
   // TODO: try different scenarios
 }
 
 // test moveRook
 // TODO: enable test
-DISABLED_TEST(Board26, moveRook)
+TEST(Board26, DISABLED_moveRook)
 {
   // TODO: try different scenarios
 }
 
 // test moveQueen
 // TODO: enable test
-DISABLED_TEST(Board27, moveQueen)
+TEST(Board27, DISABLED_moveQueen)
 {
   // TODO: try different scenarios
 }
 
 // test moveKing
 // TODO: enable test
-DISABLED_TEST(Board28, moveKing)
+TEST(Board28, DISABLED_moveKing)
 {
   // TODO: try different scenarios
 }
 
 // test toString
 // TODO: enable test
-DISABLED_TEST(Board29, toString)
+TEST(Board29, DISABLED_toString)
 {
   // TODO: try different scenarios
 }
 
 // test hashCode
 // TODO: enable test
-DISABLED_TEST(Board30, hashCode)
+TEST(Board30, DISABLED_hashCode)
 {
   // TODO: try different scenarios
 }
 
 // test colorToMove
 // TODO: enable test
-DISABLED_TEST(Board31, colorToMove)
+TEST(Board31, DISABLED_colorToMove)
 {
   // TODO: try different scenarios
 }
 
 // test equality operator
 // TODO: enable test
-DISABLED_TEST(Board32, EqualityOp)
+TEST(Board32, DISABLED_EqualityOp)
 {
   // TODO: try different scenarios
 }
