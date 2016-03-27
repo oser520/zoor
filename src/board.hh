@@ -120,7 +120,7 @@ public:
     (const std::vector<Square> &squareList,
      const PieceColor color,
      const std::bitset<16> &boardInfo,
-     const PieceMove &lastMove = PieceMove()) noexcept;
+     const PieceMove &lastMove = PieceMove());
 
   /**
    * @brief Default copy assignment.
