@@ -345,7 +345,7 @@ bool Board::isLastMoveOk() const noexcept
         // check if the rook h1 has moved, the white king has moved
         // the white king is in check, or it is mate for white, making short
         // castling an illegal move
-        if (mBoardInfo & 0x1e)
+        if (mBoardInfo.to_ulong() & 0x1e)
           return false;
       } else {
         auto pcode = get(7, 7);
@@ -357,7 +357,7 @@ bool Board::isLastMoveOk() const noexcept
         // check if the rook h8 has moved, the black king has moved
         // the black king is in check, or black is in mate, making long
         // castling an illegal move
-        if (mBoardInfo & 0x3c0)
+        if (mBoardInfo.to_ulong() & 0x3c0)
           return false;
       }
     } else if (mLastMove.isCastleLong()) {
@@ -371,7 +371,7 @@ bool Board::isLastMoveOk() const noexcept
         // check if the rook a1 has moved, the white king has moved
         // the white king is in check, or it is mate for white, making short
         // castling an illegal move
-        if (mBoardInfo & 0x1d)
+        if (mBoardInfo.to_ulong() & 0x1d)
           return false;
       } else {
         auto pcode = get(7, 0);
@@ -383,7 +383,7 @@ bool Board::isLastMoveOk() const noexcept
         // check if the rook a8 has moved, the black king has moved
         // the black king is in check, or black is in mate, making long
         // castling an illegal move
-        if (mBoardInfo & 0x3a0)
+        if (mBoardInfo.to_ulong() & 0x3a0)
           return false;
       }
     } else if (mLastMove.isPromo()) {
