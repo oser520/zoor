@@ -68,8 +68,8 @@ TEST(Board1, Ctor)
   EXPECT_EQ(PieceColor::BLACK, sq.color());
 
   sq = board(0, 7);
-  EXPECT_EQ(7, sq.row());
-  EXPECT_EQ(6, sq.column());
+  EXPECT_EQ(0, sq.row());
+  EXPECT_EQ(7, sq.column());
   EXPECT_EQ(PieceCode::ROOK, sq.piece());
   EXPECT_EQ(PieceColor::WHITE, sq.color());
 
