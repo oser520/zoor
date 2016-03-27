@@ -18,7 +18,7 @@ using namespace zoor;
 
 // test Board default ctor
 // TODO: enable test
-DISABLED_TEST(Board1, Ctor)
+TEST(Board1, Ctor)
 {
   Board board;
   // TODO: check that all pieces are lined up correctly
