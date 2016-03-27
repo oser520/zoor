@@ -17,8 +17,7 @@ using std::ostringstream;
 using namespace zoor;
 
 // test Board default ctor
-// TODO: enable test
-TEST(Board1, Ctor)
+TEST(Board1, DefaultCtor)
 {
   Board board;
   EXPECT_FALSE(board.canCastle());
