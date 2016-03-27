@@ -206,7 +206,7 @@ Board::rowsCopy() const
 ////////////////////////////////////////////////////////////////////////////////
 // get the moves that can be made from a given square
 ////////////////////////////////////////////////////////////////////////////////
-std::vector<PieceMove> Board::getMoves(dim_type row, dim_type colum) const
+std::vector<PieceMove> Board::getMoves(dim_type row, dim_type column) const
 {
   assert(!isColorNone(mColor));
   std::vector<PieceMove> moveList;
