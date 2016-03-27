@@ -15,6 +15,7 @@
 #include <bitset>
 #include <string>
 #include <sstream>
+#include <cassert>
 
 // zoor headers
 #include "piececode.hh"
