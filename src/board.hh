@@ -23,6 +23,7 @@
 #include "piececode.hh"
 #include "square.hh"
 #include "piecemove.hh"
+#include "chesserror.hh"
 
 namespace zoor {
 
