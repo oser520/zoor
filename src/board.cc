@@ -765,7 +765,7 @@ Board::moveKnight(dim_type row, dim_type column) const
   assert(isKnight(fromCode));
   std::vector<PieceMove> moveList;
 
-  jumpList = jump(row, column, JUMP_KNIGHT);
+  auto jumpList = jump(row, column, JUMP_KNIGHT);
   for (auto &pos : jumpList) {
     auto toCode = get(pos.first, pos.second);
     if (isPieceNone(toCode))
