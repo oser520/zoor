@@ -175,13 +175,13 @@ public:
    * @return A constant reference to the rows of the board.
    * @throw Never throws.
    */
-  const std:array<row_type, BOARD_DIM>& rows() const noexcept;
+  const std::array<row_type, BOARD_DIM>& rows() const noexcept;
 
   /**
    * @brief Return a copy of the rows of the board.
    * @return A copy of the rows of the board.
    */
-  std:array<row_type, BOARD_DIM> rowsCopy() const;
+  std::array<row_type, BOARD_DIM> rowsCopy() const;
 
   /* @brief Return a vector of all the legal moves from the given position.
    * @param row The row in the board.
@@ -653,7 +653,7 @@ bool operator!=(const Board &boar1, const Board &board2) noexcept;
  * @detail The iterators can only read the board, and connot modify it.
  */
 class BoardIterator
-  : std:iterator<std:random_access_iterator_tag, piececode_t, Board::dim_type>
+  : std::iterator<std::random_access_iterator_tag, piececode_t, Board::dim_type>
 {
   // see the comments for these declarations below
   friend bool operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept;
