@@ -1204,14 +1204,14 @@ Board& Board::moveRef(const PieceMove &pieceMove) noexcept
       auto row = pieceMove.fromRow();
       auto col = pieceMove.fromColumn();
       if (isWhite(mColor)) {
-        if (!mBoardInfo[RK_A8_MOVED] && row == 0 && column == 7)
+        if (!mBoardInfo[RK_A8_MOVED] && row == 0 && col == 7)
           mBoardInfo.set(RK_A8_MOVED);
-        else if (!mBoardInfo[RK_A1_MOVED] && row == 0 && column == 0)
+        else if (!mBoardInfo[RK_A1_MOVED] && row == 0 && col == 0)
           mBoardInfo.set(RK_A1_MOVED);
       } else {
-        if (!mBoardInfo[RK_H8_MOVED] && row == 7 && column == 7)
+        if (!mBoardInfo[RK_H8_MOVED] && row == 7 && col == 7)
           mBoardInfo.set(RK_H8_MOVED);
-        else if (!mBoardInfo[RK_H1_MOVED] && row == 7 && column == 0)
+        else if (!mBoardInfo[RK_H1_MOVED] && row == 7 && col == 0)
           mBoardInfo.set(RK_H1_MOVED);
       }
     }
