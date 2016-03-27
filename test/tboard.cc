@@ -21,7 +21,63 @@ using namespace zoor;
 TEST(Board1, Ctor)
 {
   Board board;
-  // TODO: check that all pieces are lined up correctly
+  EXPECT_FALSE(board.canCastle());
+  EXPECT_FALSE(board.canCastleLong());
+  EXPECT_EQ(PieceColor::WHITE, board.colorToMove());
+
+  auto sq = board(0, 0);
+  EXPTECT_EQ(0, sq.row());
+  EXPTECT_EQ(0, sq.column());
+  EXPTECT_EQ(PieceCode::ROOK, sq.piece());
+  EXPTECT_EQ(PieceColor::WHITE, sq.color());
+
+  sq = board(6, 2);
+  EXPTECT_EQ(6, sq.row());
+  EXPTECT_EQ(2, sq.column());
+  EXPTECT_EQ(PieceCode::PAWN, sq.piece());
+  EXPTECT_EQ(PieceColor::BLACK, sq.color());
+
+  sq = board(7, 2);
+  EXPTECT_EQ(7, sq.row());
+  EXPTECT_EQ(2, sq.column());
+  EXPTECT_EQ(PieceCode::BISHOP, sq.piece());
+  EXPTECT_EQ(PieceColor::BLACK, sq.color());
+
+  sq = board(0, 3);
+  EXPTECT_EQ(0, sq.row());
+  EXPTECT_EQ(3, sq.column());
+  EXPTECT_EQ(PieceCode::QUEEN, sq.piece());
+  EXPTECT_EQ(PieceColor::WHITE, sq.color());
+
+  sq = board(7, 4);
+  EXPTECT_EQ(7, sq.row());
+  EXPTECT_EQ(4, sq.column());
+  EXPTECT_EQ(PieceCode::KING, sq.piece());
+  EXPTECT_EQ(PieceColor::BLACK, sq.color());
+
+  sq = board(0, 5);
+  EXPTECT_EQ(0, sq.row());
+  EXPTECT_EQ(5, sq.column());
+  EXPTECT_EQ(PieceCode::BISHOP, sq.piece());
+  EXPTECT_EQ(PieceColor::WHITE, sq.color());
+
+  sq = board(7, 6);
+  EXPTECT_EQ(7, sq.row());
+  EXPTECT_EQ(6, sq.column());
+  EXPTECT_EQ(PieceCode::KNIGHT, sq.piece());
+  EXPTECT_EQ(PieceColor::BLACK, sq.color());
+
+  sq = board(0, 7);
+  EXPTECT_EQ(7, sq.row());
+  EXPTECT_EQ(6, sq.column());
+  EXPTECT_EQ(PieceCode::ROOK, sq.piece());
+  EXPTECT_EQ(PieceColor::WHITE, sq.color());
+
+  sq = board(4, 5);
+  EXPTECT_EQ(4, sq.row());
+  EXPTECT_EQ(5, sq.column());
+  EXPTECT_EQ(PieceCode::NONE, sq.piece());
+  EXPTECT_EQ(PieceColor::NONE, sq.color());
 }
 
 // test isInBound
