@@ -1568,7 +1568,7 @@ BoardIterator::operator+=(BoardIterator::difference_type value)
     throw ChessError("Iterator cannot move beyond board");
 
   mIndex = tmp;
-  mCode = mIndex == LAST_INDEX ? 0 : mBoard.get(row(), colum());
+  mCode = mIndex == LAST_INDEX ? 0 : mBoard.get(row(), column());
 
   return *this;
 }
