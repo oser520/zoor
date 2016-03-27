@@ -90,7 +90,7 @@ Board::Board
 ////////////////////////////////////////////////////////////////////////////////
 // check if position is valid in board
 ////////////////////////////////////////////////////////////////////////////////
-bool Board::isInBound(dim_type position) const noexcept
+bool Board::isInBound(dim_type position) noexcept
 {
   return position >= 0 && position < BOARD_DIM;
 }
@@ -98,7 +98,7 @@ bool Board::isInBound(dim_type position) const noexcept
 ////////////////////////////////////////////////////////////////////////////////
 // check if row and column are within bounds of board
 ////////////////////////////////////////////////////////////////////////////////
-bool Board::isInBound(dim_type row, dim_type column) const noexcept
+bool Board::isInBound(dim_type row, dim_type column) noexcept
 {
   return row >= 0 && column < BOARD_DIM
       && column >= 0 && column < BOARD_DIM;
