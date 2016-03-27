@@ -1069,7 +1069,7 @@ Board::moveKing(dim_type row, dim_type column) const
   std::vector<PieceMove> moveList;
 
   // normal moves
-  jumpList = jump(row, column, JUMP_KING);
+  auto jumpList = jump(row, column, JUMP_KING);
   for (auto& pos : jumpList) {
     auto toCode = get(pos.first, pos.second);
     if (isPieceNone(toCode))
