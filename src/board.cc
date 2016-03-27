@@ -419,7 +419,7 @@ bool Board::isLastMoveOk() const noexcept
 Square Board::operator()(dim_type row, dim_type column) const noexcept
 {
   assert(isInBound(row, column));
-  return Square(row, get(column, code));
+  return Square(row, column, get(row, column));
 }
 
 ////////////////////////////////////////////////////////////////////////////////
