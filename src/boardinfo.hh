@@ -52,15 +52,15 @@ public:
    * Access and getters for info about white the white king and rooks.
    */
   bool rookA1() const noexcept;
-  bool rookA1On() noexcept;
+  BoardInfo& rookA1On() noexcept;
   bool rookH1() const noexcept;
-  bool rookH1On() noexcept;
+  BoardInfo& rookH1On() noexcept;
   bool wkMoved() const noexcept;
-  bool wkMovedOn() noexcept;
+  BoardInfo& wkMovedOn() noexcept;
   bool wkCheck() const noexcept;
-  bool wkCheckSet(bool value) const noexcept;
+  BoardInfo& wkCheckSet(bool value) noexcept;
   bool wkMate() const noexcept;
-  bool wkMateOn() noexcept;
+  BoardInfo& wkMateOn() noexcept;
   bool wkCastle() const noexcept;
   bool wkCastleLong() const noexcept;
 
@@ -68,15 +68,15 @@ public:
    * Access and getters for info about the black king and rooks.
    */
   bool rookA8() const noexcept;
-  bool rookA8On() noexcept;
+  BoardInfo& rookA8On() noexcept;
   bool rookH8() const noexcept;
-  bool rookH8On() noexcept;
+  BoardInfo& rookH8On() noexcept;
   bool bkMoved() const noexcept;
-  bool bkMovedOn() noexcept;
+  BoardInfo& bkMovedOn() noexcept;
   bool bkCheck() const noexcept;
-  bool bkCheckSet(bool value) const noexcept;
+  BoardInfo& bkCheckSet(bool value) noexcept;
   bool bkMate() const noexcept;
-  bool bkMateOn() noexcept;
+  BoardInfo& bkMateOn() noexcept;
   bool bkCastle() const noexcept;
   bool bkCastleLong() const noexcept;
 
@@ -117,7 +117,7 @@ private:
  */
 bool operator==(const BoardInfo& info1, const BoardInfo& info2) noexcept;
 bool operator!=(const BoardInfo& info1, const BoardInfo& info2) noexcept;
-std::ostream& operator<<(std::ostream& os, const BoardInfo& info) noexcept;
+std::ostream& operator<<(std::ostream& os, const BoardInfo& info);
 
 /**
  * Open standard namespace to specialize STL template.
