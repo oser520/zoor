@@ -463,6 +463,8 @@ inline std::ostream& operator<<(std::ostream& os, const BoardInfo& info)
   return os;
 }
 
+} // zoor
+
 /**
  * Open standard namespace to specialize STL template.
  */
@@ -484,5 +486,4 @@ struct hash<zoor::BoardInfo>
 };
 } // std
 
-} // zoor
 #endif // _BOARDINFO_H
