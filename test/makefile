@@ -23,6 +23,7 @@ CXXFLAGS += $(GTFLAGS) $(INCDIR)
 
 # Dependencies for each unit test program.
 OBJ_PIECECODE = tpiececode.o piececode.o
+OBJ_BOARDINFO = tboardinfo.o
 OBJ_PIECECOUNT = tpiececount.o piececount.o piececode.o
 OBJ_SQUARE = tsquare.o square.o piececode.o
 OBJ_PIECEMOVE = tpiecemove.o piecemove.o square.o piececode.o
@@ -30,14 +31,18 @@ OBJ_BOARD = tboard.o board.o piecemove.o square.o piececode.o
 
 # Combine unique object files.
 OBJ_LIST := $(sort $(OBJ_PIECECODE) $(OBJ_PIECECOUNT) \
-              $(OBJ_SQUARE) $(OBJ_PIECEMOVE) $(OBJ_BOARD))
+              $(OBJ_SQUARE) $(OBJ_PIECEMOVE) $(OBJ_BOARD) \
+              $(OBJ_BOARDINFO))
 
 # Unit test programs.
-TARGETS = tpiececode tpiececount tsquare tpiecemove tboard
+TARGETS = tpiececode tboardinfo tpiececount tsquare tpiecemove tboard
 
 all: $(TARGETS)
 
 tpiececode: $(OBJ_PIECECODE)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
+
+tboardinfo: $(OBJ_BOARDINFO)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
 
 tpiececount: $(OBJ_PIECECOUNT)
@@ -54,6 +59,7 @@ tboard: $(OBJ_BOARD)
 
 # Header dependencies.
 $(OBJ_PIECECODE): piececode.hh
+$(OBJ_PIECECODE): boardinfo.hh
 $(OBJ_PIECECOUNT): piececount.hh piececode.hh
 $(OBJ_SQUARE): square.hh piececode.hh
 $(OBJ_PIECEMOVE): piecemove.hh square.hh piececode.hh
