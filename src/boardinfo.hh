@@ -35,8 +35,8 @@ public:
   BoardInfo() noexcept = default;
   BoardInfo(const BoardInfo& info) noexcept = default;
   BoardInfo(BoardInfo&& info) noexcept = default;
-  BoardInfo& BoardInfo(const BoardInfo& info) noexcept = default;
-  BoardInfo& BoardInfo(BoardInfo&& info) noexcept = default;
+  BoardInfo& operator=(const BoardInfo& info) noexcept = default;
+  BoardInfo& operator=(BoardInfo&& info) noexcept = default;
   ~BoardInfo() noexcept = default;
 
   /**
@@ -207,7 +207,7 @@ inline bool BoardInfo::wkCheck() const noexcept
  * @return A reference to this @c BoardInfo.
  * @throw Never throws.
  */
-inline BoardInfo& Board::wkCheckSet(bool value) noexcept
+inline BoardInfo& BoardInfo::wkCheckSet(bool value) noexcept
 {
   mInfo.set(WK_CHECK, value);
   return *this;
@@ -476,8 +476,8 @@ namespace std {
 template<>
 struct hash<zoor::BoardInfo>
 {
-  argument_type = zoor::BoardInfo;
-  result_type = size_t;
+  using argument_type = zoor::BoardInfo;
+  using result_type = size_t;
 
   result_type operator()(const argument_type& arg)
   {
