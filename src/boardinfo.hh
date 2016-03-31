@@ -266,7 +266,7 @@ inline bool BoardInfo::wkCastleLong() const noexcept
  */
 inline bool BoardInfo::rookA8() const noexcept
 {
-  return mInfo[RK_A1_MOVED];
+  return mInfo[RK_A8_MOVED];
 }
 
 /**
