@@ -15,13 +15,13 @@
 #include <utility>
 #include <iterator>
 #include <stdexcept>
-#include <bitset>
 #include <string>
 #include <functional>
 
 // zoor headers
 #include "piececode.hh"
 #include "square.hh"
+#include "boardinfo.hh"
 #include "piecemove.hh"
 #include "chesserror.hh"
 
@@ -588,30 +588,11 @@ private:
   PieceMove mLastMove;
 
   /**
-   * @brief Maintains information that impacts the moves a player can make.
-   * @detail Maintains the following information:
-   * @li 1. The rook at <em>a1</em> has moved.
-   * @li 2. The rook at <em>h1</em> has moved.
-   * @li 3. The white king has moved.
-   * @li 4. The white king is in check.
-   * @li 5. Mate for white king.
-   * @li 6. The rook at <em>a8</em> has moved.
-   * @li 7. The rook at <em>h8</em> has moved.
-   * @li 8. The black king has moved.
-   * @li 9. The black king is in check.
-   * @li 10. Mate for black king.
-   * This information is mainly used to check if the king can do castling,
-   * if the king must move because it is in check, or it is check mate.
+   * @brief Maintains information about that may limit the moves a king can make.
+   * @details Knows if a king or any of the rooks have moved, and if either king is
+   * in check or if it's mate for one of them.
    */
-  std::bitset<16> mBoardInfo;
-
-  /**
-   * Bit indexes for <em>mBoardInfo</em>.
-   */
-  enum {
-    RK_A1_MOVED, RK_H1_MOVED, WK_MOVED, WK_CHECK, WK_MATE,
-    RK_A8_MOVED, RK_H8_MOVED, BK_MOVED, BK_CHECK, BK_MATE
-  };
+  BoardInfo mInfo;
 
 }; // Board
 
