@@ -71,11 +71,11 @@ Board::Board()
 Board::Board
   (const std::vector<Square> &squareList,
    const PieceColor color,
-   const std::bitset<16> &boardInfo,
+   const BoardInfo &boardInfo,
    const PieceMove &lastMove)
   : mColor(color),
     mLastMove(lastMove),
-    mBoardInfo(boardInfo)
+    mInfo(boardInfo)
 {
   assert(!isColorNone(mColor));
   assert(!squareList.empty());
@@ -110,28 +110,17 @@ bool Board::isInBound(dim_type row, dim_type column) noexcept
 bool Board::canCastle() const noexcept
 {
   dim_type row;
-  size_t bit;
 
-  // row and shift parameter for color
+  // set row to first or last
   if (isWhite(mColor)) {
+    if (!mInfo.wkCastle())
+      return false;
     row = 0;
-    bit = RK_H1_MOVED;
   } else {
+    if (!mInfo.bkCastle())
+      return false;
     row = 7;
-    bit = RK_H8_MOVED;
   }
-
-  // check conditions
-  // 1. rook a1 or a8 has not moved
-  // 2. king has not moved
-  // 3. king is not in check
-  bool cond = mBoardInfo[bit++];
-  cond |= mBoardInfo[++bit];
-  cond |= mBoardInfo[++bit];
-
-  // any of the 3 conditions are true
-  if (cond)
-    return false;
 
   // path for castling is clear
   if (!isPieceNone(get(row, 5)) || !isPieceNone(get(row, 6)))
@@ -150,28 +139,17 @@ bool Board::canCastle() const noexcept
 bool Board::canCastleLong() const noexcept
 {
   dim_type row;
-  size_t bit;
 
   // row and shift parameter for color
   if (isWhite(mColor)) {
+    if (!mInfo.wkCastleLong())
+      return false;
     row = 1;
-    bit = RK_A1_MOVED;
   } else {
+    if (!mInfo.bkCastleLong())
+      return false;
     row = 7;
-    bit = RK_A8_MOVED;
   }
-
-  // check conditions
-  // 1. rook h1 or h8 has not moved
-  // 2. king has not moved
-  // 3. king is not in check
-  bool cond = mBoardInfo[bit];
-  cond |= mBoardInfo[++bit];
-  cond |= mBoardInfo[++bit];
-
-  // any of the 3 conditions are true
-  if (cond)
-    return false;
 
   // path for castling is clear
   if (!isPieceNone(get(row, 3)) || !isPieceNone(get(row, 2)))
@@ -344,10 +322,8 @@ bool Board::isLastMoveOk() const noexcept
         pcode = get(0, 4);
         if (!isKing(pcode) || !isWhite(pcode))
           return false;
-        // check if the rook h1 has moved, the white king has moved
-        // the white king is in check, or it is mate for white, making short
-        // castling an illegal move
-        if (mBoardInfo.to_ulong() & 0x1e)
+        // check if board info allows castling
+        if (!mInfo.wkCastle())
           return false;
       } else {
         auto pcode = get(7, 7);
@@ -356,10 +332,8 @@ bool Board::isLastMoveOk() const noexcept
         pcode = get(7, 4);
         if (!isKing(pcode) || !isBlack(pcode))
           return false;
-        // check if the rook h8 has moved, the black king has moved
-        // the black king is in check, or black is in mate, making long
-        // castling an illegal move
-        if (mBoardInfo.to_ulong() & 0x3c0)
+        // check if board info allows castling
+        if (!mInfo.bkCastle())
           return false;
       }
     } else if (mLastMove.isCastleLong()) {
@@ -370,10 +344,8 @@ bool Board::isLastMoveOk() const noexcept
         pcode = get(0, 2);
         if (!isKing(pcode) || !isWhite(pcode))
           return false;
-        // check if the rook a1 has moved, the white king has moved
-        // the white king is in check, or it is mate for white, making short
-        // castling an illegal move
-        if (mBoardInfo.to_ulong() & 0x1d)
+        // check if board info allows castling
+        if (!mInfo.wkCastleLong())
           return false;
       } else {
         auto pcode = get(7, 0);
@@ -382,10 +354,8 @@ bool Board::isLastMoveOk() const noexcept
         pcode = get(7, 2);
         if (!isKing(pcode) || !isBlack(pcode))
           return false;
-        // check if the rook a8 has moved, the black king has moved
-        // the black king is in check, or black is in mate, making long
-        // castling an illegal move
-        if (mBoardInfo.to_ulong() & 0x3a0)
+        // check if board info allows castling
+        if (!mInfo.bkCastleLong())
           return false;
       }
     } else if (mLastMove.isPromo()) {
@@ -1170,7 +1140,7 @@ Board& Board::moveRef(const PieceMove &pieceMove) noexcept
     clearSq(pieceMove.captureRow(), pieceMove.captureColumn());
     // check if it is mate
     if (isKing(pieceMove.capturePiece()))
-      mBoardInfo.set(isWhite(mColor) ? BK_MATE : WK_MATE);
+      mInfo.mateOn(pieceMove.captureColor());
   }
 
   auto piece = pieceMove.fromPiece();
@@ -1181,52 +1151,69 @@ Board& Board::moveRef(const PieceMove &pieceMove) noexcept
     if (!pieceMove.isCastle() && !pieceMove.isCastleLong())
       put(toRow, toCol, PieceCode::KING);
     else if (pieceMove.isCastle()) {
-      auto row = isWhite(mColor) ? 0 : 7;
+      dim_type row;
+      if (isWhite(mColor)) {
+        row = 0;
+        mInfo.rookH1On();
+        mInfo.wkMovedOn();
+      } else {
+        row = 7;
+        mInfo.rookH8On();
+        mInfo.bkMovedOn();
+      }
       // clear the rook from corner square
       clearSq(row, 7);
       put(row, 6, PieceCode::KING);
       put(row, 5, PieceCode::ROOK);
-      // note that rook in h column has moved
-      mBoardInfo.set(isWhite(mColor) ? RK_H1_MOVED : RK_H8_MOVED);
     } else {  // is long castling
-      auto row = isWhite(mColor) ? 0 : 7;
+      dim_type row;
+      if (isWhite(mColor)) {
+        row = 0;
+        mInfo.rookA1On();
+        mInfo.wkMovedOn();
+      } else {
+        row = 7;
+        mInfo.rookA8On();
+        mInfo.bkMovedOn();
+      }
       // clear the rook from corner square
       clearSq(row, 0);
       put(row, 2, PieceCode::KING);
       put(row, 3, PieceCode::ROOK);
-      // note that rook in a column has moved
-      mBoardInfo.set(isWhite(mColor) ? RK_A1_MOVED : RK_A8_MOVED);
     }
-    mBoardInfo.set(isWhite(mColor) ? WK_MOVED : BK_MOVED);
   } else {
     put(toRow, toCol, piece);
-    // have any of the rooks moved
+    // set flag if a rook has moved
     if (isRook(piece)) {
       auto row = pieceMove.fromRow();
       auto col = pieceMove.fromColumn();
       if (isWhite(mColor)) {
-        if (!mBoardInfo[RK_A8_MOVED] && row == 0 && col == 7)
-          mBoardInfo.set(RK_A8_MOVED);
-        else if (!mBoardInfo[RK_A1_MOVED] && row == 0 && col == 0)
-          mBoardInfo.set(RK_A1_MOVED);
+        if (!mInfo.rookH1() && row == 0 && col == 7)
+          mInfo.rookH1On();
+        else if (!mInfo.rookA1() && row == 0 && col == 0)
+          mInfo.rookA1On();
       } else {
-        if (!mBoardInfo[RK_H8_MOVED] && row == 7 && col == 7)
-          mBoardInfo.set(RK_H8_MOVED);
-        else if (!mBoardInfo[RK_H1_MOVED] && row == 7 && col == 0)
-          mBoardInfo.set(RK_H1_MOVED);
+        if (!mInfo.rookH8() && row == 7 && col == 7)
+          mInfo.rookH8On();
+        else if (!mInfo.rookH1() && row == 7 && col == 0)
+          mInfo.rookH1On();
       }
     }
   }
 
   // if there was a check, but not any more, remove it
-  auto check = isWhite(mColor) ? WK_CHECK : BK_CHECK;
-  if (mBoardInfo[check] && !isCheck(toRow, toCol))
-    mBoardInfo.flip(check);
+  if (isWhite(mColor) ) {
+    if (mInfo.wkCheck() && !isCheck(toRow, toCol))
+      mInfo.wkCheckSet(false);
+  } else {
+    if (mInfo.bkCheck() && !isCheck(toRow, toCol))
+      mInfo.bkCheckSet(false);
+  }
 
   // update the last move
   mLastMove = pieceMove;
 
-  // flip color's turn
+  // flip the color
   mColor = ~mColor;
 
   return *this;
