@@ -9,7 +9,10 @@ downloading this repo, at least not yet.
 
 #### Hard Requirements
 
-These are required to compile and build the engine.
+These are required to compile and build the engine. Currently, it is not possible to
+build the engine, because the engine is still missing most pieces, but it is possible
+to build the unit tests for most of the parts that I've implemented. If you'd like to
+build the unit tests, then I recommend doing so in the *stable-test* branch.
 
 * C++11 compiler
 * [GNU make][1]
