@@ -35,23 +35,23 @@ much fiddling.
 
 ## Short Term Goals
 
-* [ ] *Board Logic* The board logic is for the most part complete, but I'm not
+* [ ] ***Board Logic*** The board logic is for the most part complete, but I'm not
 marking it as complete yet, because I need to verify that the logic is correct.
 Verifying that the logic works entails writing unit tests to check that moves are
-generated correctly, which means constructing *Board*s with specific positions --
+generated correctly, which means constructing `Board`s with specific positions --
 many of them because move logic is complex. Instead of proceeding to write code
-to manually construct these *Board*s, this is a natural stopping point to look
+to manually construct these `Board`s, this is a natural stopping point to look
 into chess-notation systems for computers, and thus use chess notation files
-construct *Board*s. Therefore, add logic to use one of the following computer chess
+construct `Board`s. Therefore, add logic to use one of the following computer chess
 notations:
-  * *Portable game notation* (PGN) See [here][4] and [here][5].
-  * *Forsyth-Edwards notation* (FEN) See [here][6] and [here][7]. My initial
+  * ***Portable game notation*** (PGN) See [here][4] and [here][5].
+  * ***Forsyth-Edwards notation*** (FEN) See [here][6] and [here][7]. My initial
     impression is that this might be the easiest to implement.
-  * *Extended position description* (EPD) See [here][8].
-* [ ] *Search Logic*
-* [ ] *Evaluation Logic*
-* [ ] *Player Logic*
-* [ ] *Game Logic*
+  * ***Extended position description*** (EPD) See [here][8].
+* [ ] ***Search Logic***
+* [ ] ***Evaluation Logic***
+* [ ] ***Player Logic***
+* [ ] ***Game Logic***
 
 Once all of these pieces are in place, it will be possible to play against the
 engine. At this point the engine might not be very good, but the goal is for it
