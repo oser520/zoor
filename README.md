@@ -25,6 +25,14 @@ These are only necessary to run unit tests, but the engine does not depend on th
   * [googletest][2]
   * [python][3]
 
+## Developmnet Environment
+
+I use [Debian][9], and that's what I'm using as my develoment environment. Anything
+I say about building or compiling is thus only applicable to an operating system
+environment similar to mine; however, if you have a compliant C++11 compiler, and a
+recent version of *make*, then you should be able to build the unit tests without too
+much fiddling.
+
 ## Short Term Goals
 
 * [ ] *Board Logic* The board logic is for the most part complete, but I'm not
@@ -50,7 +58,7 @@ engine. At this point the engine might not be very good, but the goal is for it
 to be able to play a complete game, following the most important rules of the game
 (e.g. non-tournament rules), with the ability to make every legal move,
 such as castling and *en passant*. The next step will be to take on some of the
-long term goals, and make *zoor* a good chess engine, which means that it will be
+long term goals, and make **zoor** a good chess engine, which means that it will be
 able to beat good chess players and other chess engines.
 
 ## Long Term Goals
@@ -76,3 +84,4 @@ able to beat good chess players and other chess engines.
 [6]: https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation
 [7]: https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation
 [8]: https://chessprogramming.wikispaces.com/Extended+Position+Description
+[9]: https://www.debian.org/
