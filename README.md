@@ -12,21 +12,43 @@ downloading this repo, at least not yet.
 These are required to compile and build the engine.
 
 * C++11 compiler
-* [GNU make](https://www.gnu.org/software/make/)
+* [GNU make][1]
 
 #### Soft Requirements
 
 These are only necessary to run unit tests, but the engine does not depend on them.
 
 * Unit Tests
-  * [googletest](https://github.com/google/googletest)
-  * [python](https://www.python.org/)
+  * [googletest][2]
+  * [python][3]
 
 ## Short Term Goals
 
-* [ ] board class
-* [ ] search logic
-* [ ] evaluation logic
+* [ ] *Board Logic* The board logic is for the most part complete, but I'm not
+marking it as complete yet, because I need to verify that the logic is correct.
+Verifying that the logic works entails writing unit tests to check that moves are
+generated correctly, which means constructing *Board*s with specific positions --
+many of them because move logic is complex. Instead of proceeding to write code
+to manually construct these *Board*s, this is a natural stopping point to look
+into chess-notation systems for computers, and thus use chess notation files
+construct *Board*s. Therefore, add logic to use one of the following computer chess
+notations:
+  * *Portable game notation* (PGN) See [here][4] and [here][5].
+  * *Forsyth-Edwards notation* (FEN) See [here][6] and [here][7]. My initial
+    impression is that this might be the easiest to implement.
+  * *Extended position description* (EPD) See [here][8].
+* [ ] *Search Logic*
+* [ ] *Evaluation Logic*
+* [ ] *Player Logic*
+* [ ] *Game Logic*
+
+Once all of these pieces are in place, it will be possible to play against the
+engine. At this point the engine might not be very good, but the goal is for it
+to be able to play a complete game, following the most important rules of the game
+(e.g. non-tournament rules), with the ability to make every legal move,
+such as castling and *en passant*. The next step will be to take on some of the
+long term goals, and make *zoor* a good chess engine, which means that it will be
+able to beat good chess players and other chess engines.
 
 ## Long Term Goals
 
@@ -42,3 +64,12 @@ These are only necessary to run unit tests, but the engine does not depend on th
   * What would it take to create one from scratch?
 * Investigate chess engine standards.
   * What are other chess engines doing that **zoor** should do?
+
+[1]: https://www.gnu.org/software/make/
+[2]: https://github.com/google/googletest
+[3]: https://www.python.org/
+[4]: https://en.wikipedia.org/wiki/Portable_Game_Notation
+[5]: https://chessprogramming.wikispaces.com/Portable+Game+Notation
+[6]: https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation
+[7]: https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation
+[8]: https://chessprogramming.wikispaces.com/Extended+Position+Description
