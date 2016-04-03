@@ -38,11 +38,11 @@ much fiddling.
 * [ ] ***Board Logic*** The board logic is for the most part complete, but I'm not
 marking it as complete yet, because I need to verify that the logic is correct.
 Verifying that the logic works entails writing unit tests to check that moves are
-generated correctly, which means constructing `Board`s with specific positions --
+generated correctly, which means constructing boards with specific positions --
 many of them because move logic is complex. Instead of proceeding to write code
-to manually construct these `Board`s, this is a natural stopping point to look
-into chess-notation systems for computers, and thus use chess notation files
-construct `Board`s. Therefore, add logic to use one of the following computer chess
+to manually construct these boards, this is a natural stopping point to look
+into chess-notation systems for computers, and thus use chess notation files to
+construct boards. Therefore, add logic to use one of the following computer chess
 notations:
   * ***Portable game notation*** (PGN) See [here][4] and [here][5].
   * ***Forsyth-Edwards notation*** (FEN) See [here][6] and [here][7]. My initial
