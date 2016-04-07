@@ -4,6 +4,8 @@ You need to install [googletest][1] in order to build and run the unit tests. Fo
 detailed instructions, please see the their Github website. If you are running a
 linux system, then you can probably install them via your package manager.
 
+## Installing *googletest*
+
 ### For Debian (or a derivation)
 
 Use these commands to search for and install the package.
