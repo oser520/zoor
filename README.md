@@ -1,9 +1,6 @@
 # *zoor*
 
-My personal chess engine. The seed has been planted!
-
-Still have plenty to code before this is a working chess engine, so I don't recommend
-downloading this repo, at least not yet.
+My chess engine. The seed has been planted!
 
 ## Requirements
 
