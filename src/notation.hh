@@ -114,6 +114,16 @@ struct FenSymbols
 };
 
 /**
+ * @brief Read a chess position in FEN notation from a string.
+ * @details If the string contains more than a FEN record, but the record begins
+ * with a valid FEN record, then whatever else remains after the FEN record is
+ * ignored.
+ * @param fenLine A FEN record string.
+ * @return A vector of boards.
+ */
+Board readFEN(std::string &fenLine);
+
+/**
  * @brief Read a chess position in FEN notation from a file.
  * @param inFile The name of the file.
  * @return A vector of boards.
