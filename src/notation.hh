@@ -30,6 +30,89 @@
 namespace zoor {
 
 /**
+ * @brief A POD (plain old data) with symbols that are used in FEN notation.
+ * @details Used to parse files with FEN notation. If this POD was long lived, then
+ * it might make sense to make its members static; however, it is very unlikely to
+ * have a frequent need to read files with FEN notation.
+ */
+struct FenSymbols
+{
+  /**
+   * @brief Default ctor.
+   */
+  FenSymbols()
+    : wPiece("RNBQK"),
+      bPiece("rnbqk"),
+      wCastle("KQ"),
+      bCastle("kq") {}
+
+  /**
+   * @brief Default copy ctor.
+   */
+  FenSymbols(const FenSymbols &fenSymbols) = default;
+
+  /**
+   * @brief Default move ctor.
+   */
+  FenSymbols(FenSymbols &&fenSymbols) noexcept = default;
+
+  /**
+   * @brief Default copy assignment.
+   */
+  FenSymbols& operator=(const FenSymbols &fenSymbols) = default;
+
+  /**
+   * @brief Default move assignment.
+   */
+  FenSymbols& operator=(FenSymbols &&fenSymbols) noexcept = default;
+
+  /**
+   * @brief Default dtor.
+   */
+  ~FenSymbols() noexcept = default;
+
+  /**
+   * @brief Symbols for white pieces.
+   */
+  const std::string wPiece;
+
+  /**
+   * @brief Symbols for black pieces.
+   */
+  const std::string bPiece;
+
+  /**
+   * @brief Symbols for white can castle.
+   */
+  const std::string wCastle;
+
+  /**
+   * @brief Symbols for black can castle.
+   */
+  const std::string bCastle;
+
+  /**
+   * @brief Symbol for white's turn.
+   */
+  constexpr char cWhite('w');
+
+  /**
+   * @brief Symbol for black's turn.
+   */
+  constexpr char cBlack('b');
+
+  /**
+   * @brief Symbol for rank divider.
+   */
+  constexpr char slash('/');
+
+  /**
+   * @brief Symbols for field divider.
+   */
+  constexpr char space(' ');
+};
+
+/**
  * @brief Read a chess position FEN notation from a file.
  * @param fileName The name of the file.
  * @return A vector of @c Boards, which may contain 0 or more boards.
