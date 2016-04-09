@@ -45,11 +45,7 @@ struct FenSymbols
   /**
    * @brief Default ctor.
    */
-  FenSymbols()
-    : wPiece("RNBQK"),
-      bPiece("rnbqk"),
-      wCastle("KQ"),
-      bCastle("kq") {}
+  FenSymbols();
 
   /**
    * @brief Default copy ctor.
@@ -174,6 +170,12 @@ void writeFEN(const std::string &fileName, const std::vector<Board> &boardList);
 /////////////////////////////////////////////////////////////////////////////////////
 // Inline implementations.
 /////////////////////////////////////////////////////////////////////////////////////
+
+FenSymbols::FenSymbols()
+  : wPiece("RNBQK"),
+    bPiece("rnbqk"),
+    wCastle("KQ"),
+    bCastle("kq") {}
 
 }
 
