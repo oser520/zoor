@@ -171,11 +171,26 @@ void writeFEN(const std::string &fileName, const std::vector<Board> &boardList);
 // Inline implementations.
 /////////////////////////////////////////////////////////////////////////////////////
 
+// Default ctor for FenSymbols
 FenSymbols::FenSymbols()
   : wPiece("RNBQK"),
     bPiece("rnbqk"),
     wCastle("KQ"),
     bCastle("kq") {}
+
+// readFEN with param const char*
+inline std::vector<Board> readFEN(const char *fileName)
+{
+  std::ifstream if(fileName);
+  return readFEN(if);
+}
+
+// readFEN with param const std::string&
+inline std::vector<Board> readFEN(const std::string &fileName)
+{
+  std::ifstream if(fileName);
+  return readFEN(if);
+}
 
 }
 
