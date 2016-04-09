@@ -35,9 +35,9 @@ void writeFEN(const char *fileName, const Board &board);
 /**
  * @brief Write a board to a file in FEN notation.
  * @param fileName The name of the file.
- * @param boards A vector of boards, each of which gets one line.
+ * @param boardList A vector of boards, each of which gets one line.
  */
-void writeFEN(const char *fileName, const std::vector<Board> &board);
+void writeFEN(const char *fileName, const std::vector<Board> &boardList);
 
 /**
  * @copydoc writeFen(const char*,const &)
@@ -47,7 +47,7 @@ void writeFEN(const std::string &fileName, const Board &board);
 /**
  * @copydoc writeFen(const char*,const std::vector<Board>&)
  */
-void writeFEN(const std::string &fileName, const std::vector<Board> &board);
+void writeFEN(const std::string &fileName, const std::vector<Board> &boardList);
 
 }
 
