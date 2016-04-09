@@ -8,6 +8,7 @@
 
 #include <string>
 #include <vector>
+#include <fstream>
 
 #include "board.hh"
 
@@ -111,6 +112,13 @@ struct FenSymbols
    */
   constexpr char space(' ');
 };
+
+/**
+ * @brief Read a chess position in FEN notation from a file.
+ * @param inFile The name of the file.
+ * @return A vector of boards.
+ */
+std::vector<Board> readFEN(std::ifstream &inFile);
 
 /**
  * @brief Read a chess position FEN notation from a file.
