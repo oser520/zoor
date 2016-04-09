@@ -120,6 +120,7 @@ struct FenSymbols
  * ignored.
  * @param fenLine A FEN record string.
  * @return A vector of boards.
+ * @throw ChessError if the FEN record is not valid.
  */
 Board readFEN(std::string &fenLine);
 
