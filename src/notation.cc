@@ -4,6 +4,7 @@
  * @date 2016-04-09
  */
 #include <string>
+#include <sstream>
 #include <vector>
 #include <ifstream>
 #include <utility>
@@ -13,6 +14,14 @@
 #include "square.hh"
 #include "board.hh"
 #include "chesserror.hh"
+
+// using from STL
+using std::vector;
+using std::string;
+using std::istringstream;
+
+// using from zoor
+using Board::dim_type;
 
 namespace zoor {
 
@@ -224,5 +233,48 @@ Board readFEN(std::string &fenLine)
 
   return Board();
 }
+
+namespace { // private function definitions
+
+// @copydoc readRank(const std::string&, Square::dim_type)
+//
+size_t
+readRank(const string &rankLine, vector<Square> &squareList, dim_type row)
+{
+  // check rank line is not empty and does not exceed max chars
+  if (rankLine.empty() || rankLine.size() > FenSymbols::RANK_LENGTH)
+    throw ChessError("FEN record is not valid");
+
+  // check that we only have valid chars
+  if (rankLine.find_first_not_of(FenSymbols::RANK_CHR) != string::npos)
+    throw ChessError("FEN record is not valid");
+
+  char c;
+  dim_type col = 0;
+  size_t numPieces = 0;
+  istringstream iss(fenline);
+
+  while (iss >> c) {
+    // check for empty squares
+    if (c >= '1' && c <= '8') {
+      col += c - '0';
+      continue;
+    }
+
+    // convert code to piece
+    auto code = fenPiece(c);
+    squareList.emplace_back(row, col, code);
+    ++col;
+    ++numPieces;
+  }
+
+  // check that number of empty squares doesn't exceed length of row
+  if (col > FenSymbols::RANK_LENGTH)
+    throw ChessError("FEN record is not valid");
+
+  return numPieces;
+}
+
+} // anonymous namespace
 
 } // zoor
