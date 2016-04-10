@@ -16,6 +16,22 @@
 
 namespace zoor {
 
+namespace {
+
+// @brief Read the contents of one single rank from the first field in a FEN record.
+// @details The assumptions are listed here:
+// @li Does not contain more than 8 characters.
+// @li Valid digits are 1 to 8, but if there are multiple digits their sum cannot
+// exceed 8.
+// @li The only valid letters are those that represent white or black pieces.
+// @param fenLine The string representing the one rank.
+// @return A vector of squares where pieces are located.
+//
+std::vector<Square>
+readRank(std::string &fenLine);
+
+} // anonymous namespace
+
 // readFEN with param std::ifstream.
 // TODO: optionally add logging information, such as how many boards are processed
 // and if there are any errors.
