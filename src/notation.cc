@@ -24,6 +24,7 @@ std::vector<Board> readFEN(std::ifstream &inFile)
   std::vector<Board> boardList;
 
   while (std::getline(inFile, line)) {
+    if (line.empty()) continue;
     auto board = readFEN(line);
     boardList.emplace_back(std::move(board));
   }
