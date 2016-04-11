@@ -302,6 +302,20 @@ readRank(const string &rankLine, vector<Square> &squareList, dim_type row)
   return numPieces;
 }
 
+// @copydoc readColor(const string&)
+//
+PieceColor
+readColor(const string &colorLine)
+{
+  if (colorLine.size() != 1)
+    throw ChessError("FEN record is not valid");
+
+  if (colorLine.find_first_not_of(FenSymbols::VALID_COLOR) != string::npos)
+    throw ChessError("FEN record is not valid");
+
+  return colorLine.front() == 'w' ? PieceColor::WHITE : PieceColor::BLACK;
+}
+
 // @copydoc readBoardInfo(string&)
 //
 BoardInfo
