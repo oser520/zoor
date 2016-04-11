@@ -42,7 +42,7 @@ namespace {
 // @throw ChessError if the rankLine violates any of the assumptions.
 //
 size_t
-readRank(string &rankLine, vector<Square>& squareList, dim_type row);
+readRank(const string &rankLine, vector<Square>& squareList, dim_type row);
 
 // @brief Reads the color of the player who moves next.
 // @details The assumptions are:
