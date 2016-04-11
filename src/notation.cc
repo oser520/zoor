@@ -8,6 +8,7 @@
 #include <vector>
 #include <ifstream>
 #include <utility>
+#include <algorithm>
 
 #include "notation.hh"
 #include "piececode.hh"
