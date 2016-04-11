@@ -236,7 +236,7 @@ Board readFEN(std::string &fenLine)
 
 namespace { // private function definitions
 
-// @copydoc readRank(const std::string&, Square::dim_type)
+// @copydoc readRank(const string&,vector<Square>&,dim_type)
 //
 size_t
 readRank(const string &rankLine, vector<Square> &squareList, dim_type row)
