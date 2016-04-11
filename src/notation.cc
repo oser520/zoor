@@ -19,6 +19,8 @@
 using std::vector;
 using std::string;
 using std::istringstream;
+using std::sort;
+using std::unique;
 
 // using from zoor
 using Board::dim_type;
@@ -287,6 +289,88 @@ readRank(const string &rankLine, vector<Square> &squareList, dim_type row)
     throw ChessError("FEN record is not valid");
 
   return numPieces;
+}
+
+// @copydoc readBoardInfo(string&)
+//
+BoardInfo
+readBoardInfo(string &infoLine)
+{
+  // check info line is not empty and does not exceed max chars
+  if (infoLine.empty() || infoLine.size() > FenSymbols::CASTLE_LENGTH)
+    throw ChessError("FEN record is not valid");
+
+  if (infoLine.size() == 1) {
+    // if only one char, then it should be dash
+    if (infoLine[0] != FenSymbols::DASH)
+      throw ChessError("FEN record is not valid");
+
+    // remove castling rights
+    BoardInfo info;
+    info.rookA1On();
+    info.rookH1On();
+    info.rookA8On();
+    info.rookH8On();
+
+    return info;
+  }
+
+  // check that we only have valid chars
+  if (infoLine.find_first_not_of(FenSymbols::CASTLE_CHR) != string::npos)
+    throw ChessError("FEN record is not valid");
+
+  // check that we only have unique values
+  auto itend = infoLine.end();
+  sort(infoLine.begin(), itend);
+  if (unique(infoLine.begin(), itend) != itend)
+    throw ChessError("FEN record is not valid");
+
+  // assume no castling rights
+  bool wCastle = false;
+  bool wCastleLong = false;
+  bool bCastle = false;
+  bool bCastleLong = false;
+
+  // process castling rights
+  for (auto &c : infoLine) {
+    switch (c) {
+    case 'K':
+      wCastle = true;
+      break;
+    case 'Q':
+      wCastleLong = true;
+      break;
+    case 'k':
+      bCastle = true;
+      break;
+    case 'q':
+      bCastleLong = true;
+      break;
+    default:
+      // should never get here
+      throw ChessError("FEN record is not valid");
+    }
+  }
+
+  BoardInfo info;
+
+  // remove short castling for white
+  if (!wCastle)
+    info.rookH1On();
+
+  // remove long castling for white
+  if (!wCastleLong)
+    info.rookA1On();
+
+  // remove short castling for black
+  if (!bCastle)
+    info.rookH1On();
+
+  // remove long castling for black
+  if (!bCastleLong)
+    info.rookA1On();
+
+  return info;
 }
 
 } // anonymous namespace
