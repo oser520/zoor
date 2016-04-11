@@ -44,6 +44,17 @@ namespace {
 size_t
 readRank(string &rankLine, vector<Square>& squareList, dim_type row);
 
+// @brief Reads the color of the player who moves next.
+// @details The assumptions are:
+// @li Contains exactly one character.
+// @li Valid characters are <em>w</em> and <em>b</em>.
+// @param colorLine The string representing the color.
+// @return The @c PieceColor for black or white.
+// @throw ChessError if the rankLine violates any of the assumptions.
+//
+PieceColor
+readColor(const string &colorLine);
+
 // @brief Read the castling rights from the 3rd field in a FEN record.
 // @details The assumptions are:
 // @li Does not contain more than 4 characters.
