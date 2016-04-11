@@ -61,7 +61,8 @@ readColor(const string &colorLine);
 // @li Legal characters are -, K, Q, k, and q.
 // @li If - is present, then this should be the only character available.
 // @li Valid characters should not repeat.
-// @param infoLine The string representing the castling rights.
+// @param infoLine The string representing the castling rights. Should not be marked
+// as const, because it is sorted in order to find unique values in string.
 // @return A @c BoardInfo representing the castling rights.
 // @throw ChessError if the infoLine violates any of the assumptions.
 //
