@@ -89,7 +89,8 @@ readEnPassant(const string &field);
 
 // readFEN with param std::ifstream.
 // TODO: this is a good place to add logging info
-std::vector<Board> readFEN(std::ifstream &inFile)
+std::vector<Board>
+readFEN(std::ifstream &inFile)
 {
   std::string line;
   std::vector<Board> boardList;
@@ -107,7 +108,8 @@ std::vector<Board> readFEN(std::ifstream &inFile)
 }
 
 // readFEN with param std::string.
-Board readFEN(std::string &fenLine)
+Board
+readFEN(std::string &fenLine)
 {
   FenSymbols fen;
   auto it = fenLine.begin();
