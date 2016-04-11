@@ -42,6 +42,19 @@ namespace {
 size_t
 readRank(string &rankLine, vector<Square>& squareList, dim_type row);
 
+// @brief Read the castling rights from the 3rd field in a FEN record.
+// @details The assumptions are:
+// @li Does not contain more than 4 characters.
+// @li Legal characters are -, K, Q, k, and q.
+// @li If - is present, then this should be the only character available.
+// @li Valid characters should not repeat.
+// @param infoLine The string representing the castling rights.
+// @return A @c BoardInfo representing the castling rights.
+// @throw ChessError if the infoLine violates any of the assumptions.
+//
+BoardInfo
+readBoardInfo(string &infoLine);
+
 } // anonymous namespace
 
 // readFEN with param std::ifstream.
