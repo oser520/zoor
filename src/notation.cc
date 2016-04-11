@@ -68,6 +68,22 @@ readColor(const string &colorLine);
 BoardInfo
 readBoardInfo(string &infoLine);
 
+// @brief Read en passant info from the 4th field in a FEN record.
+// @details The assumptions are:
+// @li Does not contain more than 2 characters.
+// @li Legal characters are -, a-h, 3, and 6.
+// @li If - is present, then the field should not contain more chars.
+// @li If - is not present, then the field should contain 2 chars, the first should
+// be a letter in a-h, and second should be 3 or 6.
+// @details If there is an en passant, then the caller of this function should
+// enforce that there is a pawn that makes this info true.
+// @param field The string representing the 4th field in the FEN record.
+// @return A @c PieceMove representing the last move.
+// @throw ChessError if the field violates any of the assumptions.
+//
+PieceMove
+readEnPassant(const string &field);
+
 } // anonymous namespace
 
 // readFEN with param std::ifstream.
