@@ -252,12 +252,10 @@ readRank(const string &rankLine, vector<Square> &squareList, dim_type row)
   if (rankLine.find_first_not_of(FenSymbols::RANK_CHR) != string::npos)
     throw ChessError("FEN record is not valid");
 
-  char c;
   dim_type col = 0;
   size_t numPieces = 0;
-  istringstream iss(fenline);
 
-  while (iss >> c) {
+  for (auto &c : rankLine) {
     // check for empty squares
     if (c >= '1' && c <= '8') {
       col += c - '0';
