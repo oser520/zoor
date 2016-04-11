@@ -15,6 +15,12 @@
 #include "board.hh"
 #include "chesserror.hh"
 
+// TODO: Declare and define fenPiece.
+// fenPiece will convert a valid char to a piececode_t.
+
+// TODO: Add const static members to FenSymbols.
+// These static members contain valid fen symbols, such as valid chars for a rank.
+
 // using from STL
 using std::vector;
 using std::string;
