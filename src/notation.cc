@@ -414,6 +414,53 @@ readBoardInfo(string &infoLine)
   return info;
 }
 
+// @copydoc readEnPassant(const string&)
+//
+PieceMove
+readEnPassant(const string &field)
+{
+  // field cannot be empty or exceed two chars
+  if (field.empty() || field.size() > 2)
+    throw ChessError("FEN record is not valid");
+
+  if (field.size() == 1) {
+    // if only one char, it needs to be dash
+    if (field.front() != FenSymbols::DASH)
+      throw ChessError("FEN record is not valid");
+
+    return PieceMove();
+  }
+
+  // check column letter is valid
+  auto colChr = field.front();
+  if (colChr < 'a' || colChr > 'h')
+    throw ChessError("FEN record is not valid");
+
+  // set the column number
+  dim_type col = colChr - 'a';
+
+  // check row number is valid
+  auto rowChr = field.back();
+  if (rowChr != '3' && rowChr != '6')
+    throw ChessError("FEN record is not valid");
+
+  // set the row numbers and the piece code
+  piececode_t code;
+  dim_type fromRow, toRow;
+
+  if (rowChr == '3') {
+    fromRow = 1;
+    toRow = 3;
+    code = PieceColor::WHITE | PieceCode::PAWN;
+  } else {
+    fromRow = 6;
+    toRow = 4;
+    code = PieceColor::BLACK | PieceCode::PAWN;
+  }
+
+  return PieceMove(fromRow, col, code, toRow, col);
+}
+
 } // anonymous namespace
 
 } // zoor
