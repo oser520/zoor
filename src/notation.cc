@@ -33,11 +33,14 @@ namespace {
 // @li Valid digits are 1 to 8, but if there are multiple digits their sum cannot
 // exceed 8.
 // @li The only valid letters are those that represent white or black pieces.
-// @param fenLine The string representing the one rank.
-// @return A vector of squares where pieces are located.
+// @param rankLine The string representing one rank.
+// @param squareList A reference to a vector of squares where squares are added.
+// @param row The number of row representing the current rank.
+// @return The total number of pieces found in the rank.
+// @throw ChessError if the rankLine violates any of the assumptions.
 //
-std::vector<Square>
-readRank(std::string &fenLine);
+size_t
+readRank(string &rankLine, vector<Square>& squareList, dim_type row);
 
 } // anonymous namespace
 
