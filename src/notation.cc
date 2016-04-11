@@ -42,7 +42,7 @@ namespace {
 // @throw ChessError if the rankLine violates any of the assumptions.
 //
 size_t
-readRank(const string &rankLine, vector<Square>& squareList, dim_type row);
+readRank(const string &rankLine, vector<Square>& squareList, const dim_type row);
 
 // @brief Reads the color of the player who moves next.
 // @details The assumptions are:
@@ -281,10 +281,10 @@ Board readFEN(std::string &fenLine)
 
 namespace { // private function definitions
 
-// @copydoc readRank(const string&,vector<Square>&,dim_type)
+// @copydoc readRank(const string&,vector<Square>&,const dim_type)
 //
 size_t
-readRank(const string &rankLine, vector<Square> &squareList, dim_type row)
+readRank(const string &rankLine, vector<Square> &squareList, const dim_type row)
 {
   // check rank line is not empty and does not exceed max chars
   if (rankLine.empty() || rankLine.size() > FenSymbols::RANK_LENGTH)
