@@ -22,6 +22,8 @@
 // TODO: Add const static members to FenSymbols.
 // These static members contain valid fen symbols, such as valid chars for a rank.
 
+// TODO: Move assumptions comments to location of function defintion.
+
 // using from STL
 using std::vector;
 using std::string;
