@@ -88,8 +88,7 @@ readEnPassant(const string &field);
 } // anonymous namespace
 
 // readFEN with param std::ifstream.
-// TODO: optionally add logging information, such as how many boards are processed
-// and if there are any errors.
+// TODO: this is a good place to add logging info
 std::vector<Board> readFEN(std::ifstream &inFile)
 {
   std::string line;
