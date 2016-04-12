@@ -128,6 +128,7 @@ namespace { // private function definitions
 // characters that a FEN row may contain. Empty squares are marked with digits,
 // but a row may not contain more than 8 empty squares, and this is enforced by
 // summing the number of empty squares found in a row.
+//
 size_t
 readRank(const string &rankLine, vector<Square> &squareList, const dim_type row)
 {
