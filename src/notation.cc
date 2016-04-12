@@ -122,8 +122,12 @@ readFEN(std::string &fenLine)
 
 namespace { // private function definitions
 
-// @copydoc readRank(const string&,vector<Square>&,const dim_type)
-//
+// readRank enforces the assumptions about rankLine by looking at some fields in
+// FenSymbols: RANK_LENGTH and RANK_CHR. RANK_LENGTH represents the maximum number
+// of characters that that a row may contain, and RANK_CHR represents the valid
+// characters that a FEN row may contain. Empty squares are marked with digits,
+// but a row may not contain more than 8 empty squares, and this is enforced by
+// summing the number of empty squares found in a row.
 size_t
 readRank(const string &rankLine, vector<Square> &squareList, const dim_type row)
 {
