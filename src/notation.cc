@@ -117,6 +117,64 @@ readFEN(std::ifstream &inFile)
 Board
 readFEN(std::string &fenLine)
 {
+  string buff;
+  int numRank = 7, numPiece = 0;
+  vector<Square> squareList;
+  istringstream iss(fenLine);
+
+  // process the last ranks, 8 through 2
+  for (; numRank > 0; --numRank) {
+    if (!getline(iss, buff, "/"))
+      throw ChessError("FEN record is not valid");
+
+    numPiece += readRank(buff, squareList, numRank);
+  }
+
+  // process the 1st rank
+  if (!(iss >> buff))
+    throw ChessError("FEN record is not valid");
+
+  numPiece += readRank(buff, squareList, numRank);
+
+  // check that we don't have more than 32 pieces
+  if (numPieces > 32)
+    throw ChessError("FEN record is not valid");
+
+  // TODO: check that we have only two kings, one each for blak and white
+  // TODO: check that we don't have more than 16 pawns
+  // TODO: check that we don't have more than 10 pieces of bishop, rook, knight
+  // TODO: check that we don't have more than 9 queens
+
+  // process color to move next
+  if (!(iss >> buff))
+    throw ChessError("FEN record is not valid");
+
+  auto color = readColor(buff);
+
+  // process board info
+  if (!(iss >> buff))
+    throw ChessError("FEN record is not valid");
+
+  auto info = readBoardInfo(buff);
+
+  // process en passant
+  if (!(iss >> buff))
+    throw ChessError("FEN record is not valid");
+
+  auto pieceMove = readEnPassant(buff);
+
+  // process half moves
+  size_t halfMoves;
+  if (!(iss >> halfMoves))
+    throw ChessError("FEN record is not valid");
+
+  // process full moves
+  size_t fullMoves;
+  if (!(iss >> fullMoves))
+    throw ChessError("FEN record is not valid");
+
+  // TODO: create class object to hold the board and the move counts
+
   return Board();
 }
 
