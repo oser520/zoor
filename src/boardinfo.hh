@@ -45,12 +45,12 @@ public:
   using bitset_type = std::bitset<NUMBITS>;
 
   /**
-   * Access and getters for info about white the white king and rooks.
+   * Access the underlying bitset.
    */
   const bitset_type get() const noexcept;
 
   /**
-   * Access and getters for info about white the white king and rooks.
+   * Access and getters for info about the white king and rooks.
    */
   bool rookA1() const noexcept;
   BoardInfo& rookA1On() noexcept;
