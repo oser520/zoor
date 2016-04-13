@@ -26,6 +26,7 @@
 
 // using from STL
 using std::vector;
+using std::ifstream;
 using std::string;
 using std::istringstream;
 using std::sort;
