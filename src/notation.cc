@@ -172,7 +172,10 @@ readFEN(string &fenLine)
 
   // process full moves
   size_t fullMoves;
-  if (!(iss >> fullMoves))
+  iss >> fullMoves;
+
+  // can't use !(iss >> fullMove) above, because it will be true if eof
+  if (iss.fail() && !iss.eof())
     throw ChessError("FEN record is not valid");
 
   // TODO: create class object to hold the board and the move counts
