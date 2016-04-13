@@ -144,6 +144,7 @@ readFEN(std::string &fenLine)
   // TODO: check that we don't have more than 16 pawns
   // TODO: check that we don't have more than 10 pieces of bishop, rook, knight
   // TODO: check that we don't have more than 9 queens
+  // TODO: check that neither black nor white each has move than 16 pieces
 
   // process color to move next
   if (!(iss >> buff))
