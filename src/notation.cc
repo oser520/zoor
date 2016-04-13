@@ -92,18 +92,18 @@ readEnPassant(const string &field);
 
 } // anonymous namespace
 
-// readFEN with param std::ifstream.
+// readFEN with param ifstream.
 // TODO: this is a good place to add logging info
-std::vector<Board>
-readFEN(std::ifstream &inFile)
+vector<Board>
+readFEN(ifstream &inFile)
 {
-  std::string line;
-  std::vector<Board> boardList;
+  string line;
+  vector<Board> boardList;
 
-  while (std::getline(inFile, line)) {
+  while (getline(inFile, line)) {
     if (line.empty()) continue;
     auto board = readFEN(line);
-    boardList.emplace_back(std::move(board));
+    boardList.emplace_back(move(board));
   }
 
   if (inFile.fail() && !inFile.eof())
@@ -112,10 +112,10 @@ readFEN(std::ifstream &inFile)
   return boardList;
 }
 
-// readFEN with param std::string.
+// readFEN with param string.
 // TODO: implement
 Board
-readFEN(std::string &fenLine)
+readFEN(string &fenLine)
 {
   string buff;
   int numRank = 7, numPiece = 0;
