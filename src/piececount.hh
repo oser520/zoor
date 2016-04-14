@@ -14,109 +14,82 @@
 
 namespace zoor {
 
-/**
- * @brief PieceCount counts the number of pieces on a board, and enforces the count
- * for each piece is valid (e.g., no more than 8 pawns per player).
- */
-class PieceCount {
+/// @brief PieceCount counts the number of pieces on a board, and enforces the count
+/// for each piece is valid (e.g., no more than 8 pawns per player).
+class PieceCount
+{
   friend bool operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept;
   friend std::ostream& operator<<(std::ostream &os, const PieceCount &pc);
 
 public:
-  /**
-   * Alias for the integral type for the count of each piece.
-   */
+  /// @brief Alias for the integral type for the count of each piece.
   using count_type = unsigned short;
 
-  /**
-   * Construct a PieceCount with the normal number of pieces at the beginning of
-   * a game, with:
-   *
-   * @li 1 king
-   * @li 1 queen
-   * @li 2 rooks
-   * @li 2 bishops
-   * @li 2 knights
-   * @li 8 pawns
-   */
+  /// @brief Construct a PieceCount with the normal number of pieces at the beginning
+  /// of a game, with:
+  /// @li 1 king
+  /// @li 1 queen
+  /// @li 2 rooks
+  /// @li 2 bishops
+  /// @li 2 knights
+  /// @li 8 pawns
   PieceCount() noexcept;
 
-  /**
-   * @brief Copy constructor.
-   * @param pcount The @c PieceCount to be copied.
-   * @throw Never throws.
-   */
+  /// @brief Copy constructor.
+  /// @param pcount The @c PieceCount to be copied.
+  /// @throw Never throws.
   PieceCount(const PieceCount &pcount) noexcept = default;
 
-  /**
-   * @brief Move constructor.
-   * @param pcount The @c PieceCount to be moved.
-   * @throw Never throws.
-   */
+  /// @brief Move constructor.
+  /// @param pcount The @c PieceCount to be moved.
+  /// @throw Never throws.
   PieceCount(PieceCount &&pcount) noexcept = default;
 
-  /**
-   * @brief Copy assignment operator.
-   * @param pcount The @c PieceCount to be copied.
-   * @return A reference to this @c PieceCount.
-   * @throw Never throws.
-   */
+  /// @brief Copy assignment operator.
+  /// @param pcount The @c PieceCount to be copied.
+  /// @return A reference to this @c PieceCount.
+  /// @throw Never throws.
   PieceCount& operator=(const PieceCount &pcount) noexcept = default;
 
-  /**
-   * @brief Move assignment operator.
-   * @param pcount The @c PieceCount to be moved.
-   * @return A reference to this @c PieceCount.
-   * @throw Never throws.
-   */
+  /// @brief Move assignment operator.
+  /// @param pcount The @c PieceCount to be moved.
+  /// @return A reference to this @c PieceCount.
+  /// @throw Never throws.
   PieceCount& operator=(PieceCount &&pcount) noexcept = default;
 
-  /**
-   * @brief Default destructor.
-   * @throw Never throws.
-   */
+  /// @brief Default destructor.
+  /// @throw Never throws.
   ~PieceCount() noexcept = default;
 
-  /**
-   * Sets the piece count to what it would be at the beginning of the game.
-   * The default constructor initializes a PieceCount to the same state,
-   * so we would use this after a board has already been in use and we want
-   * to re-set the state.
-   *
-   * @return A reference to this PieceCount.
-   */
+  /// Sets the piece count to what it would be at the beginning of the game.
+  /// The default constructor initializes a PieceCount to the same state,
+  /// so we would use this after a board has already been in use and we want
+  /// to re-set the state.
+  /// @return A reference to this PieceCount.
   PieceCount& init() noexcept;
 
-  /**
-   * @brief Sets the count of every piece to zero.
-   * @return A reference to this PieceCount.
-   * @throw Never throws.
-   */
+  /// @brief Sets the count of every piece to zero.
+  /// @return A reference to this PieceCount.
+  /// @throw Never throws.
   PieceCount& clear() noexcept;
 
-  /**
-   * @brief Increase the count for a piece.
-   * @param piece The @c PieceCode.
-   * @return A reference to this @c PieceCount.
-   * @throw Never throws.
-   */
+  /// @brief Increase the count for a piece.
+  /// @param piece The @c PieceCode.
+  /// @return A reference to this @c PieceCount.
+  /// @throw Never throws.
   PieceCount& operator+=(PieceCode piece) noexcept;
 
-  /**
-   * @brief Decrease the count for a piece.
-   * @detail Count is not taken below zero.
-   * @param piece The @c PieceCode.
-   * @return A reference to this @c PieceCount.
-   * @throw Never throws.
-   */
+  /// @brief Decrease the count for a piece.
+  /// @detail Count is not taken below zero.
+  /// @param piece The @c PieceCode.
+  /// @return A reference to this @c PieceCount.
+  /// @throw Never throws.
   PieceCount& operator-=(PieceCode piece) noexcept;
 
-  /**
-   * @brief Increments the count for a given piece by one.
-   * @param piece The @c PieceCode of the piece to be incremented.
-   * @return The new count for the piece.
-   * @throw Never throws.
-   */
+  /// @brief Increments the count for a given piece by one.
+  /// @param piece The @c PieceCode of the piece to be incremented.
+  /// @return The new count for the piece.
+  /// @throw Never throws.
   count_type plus(PieceCode piece) noexcept;
 
   /**
