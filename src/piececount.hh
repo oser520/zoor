@@ -15,7 +15,8 @@
 namespace zoor {
 
 /**
- * PieceCount maintains a count of the number of pieces on the board.
+ * @brief PieceCount counts the number of pieces on a board, and enforces the count
+ * for each piece is valid (e.g., no more than 8 pawns per player).
  */
 class PieceCount {
   friend bool operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept;
