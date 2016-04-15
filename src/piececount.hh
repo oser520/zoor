@@ -193,12 +193,9 @@ public:
   size_t valueQueens() const noexcept;
 
 private:
-  count_type mKings;
-  count_type mQueens;
-  count_type mRooks;
-  count_type mBishops;
-  count_type mKnights;
-  count_type mPawns;
+  // Mantain the count of white and black pieces.
+  count_type mWhite;
+  count_type mBlack;
 };
 
 /// @breief Format a PieceCount for an output stream.
