@@ -33,8 +33,8 @@ class PieceCount
   friend std::ostream& operator<<(std::ostream &os, const PieceCount &pc);
 
 public:
-  /// @brief Alias for the integral type for the count of each piece.
-  using count_type = unsigned short;
+  /// @brief The type used to count pieces.
+  using count_type = uint32_t;
 
   /// @brief Default ctor.
   /// @details Initializes count to 0 for all pieces.
