@@ -92,134 +92,99 @@ public:
   /// @throw Never throws.
   count_type plus(PieceCode piece) noexcept;
 
-  /**
-   * @brief Increments the count for a given piece by a given number.
-   * @param pc The @c PieceCode of the piece to be incremented.
-   * @param value The value to be incremented by.
-   * @return The new count for the piece.
-   * @throw Never throws.
-   */
+  /// @brief Increments the count for a given piece by a given number.
+  /// @param pc The @c PieceCode of the piece to be incremented.
+  /// @param value The value to be incremented by.
+  /// @return The new count for the piece.
+  /// @throw Never throws.
   count_type plus(PieceCode piece, count_type value) noexcept;
 
-  /**
-   * @brief Decreases the count for a given piece by one.
-   * @detail Won't decrease the count of a given piece below zero.
-   * @param piece The @c PieceCode with count being decreased.
-   * @return The new count for the piece.
-   * @throw Never throws.
-   */
+  /// @brief Decreases the count for a given piece by one.
+  /// @detail Won't decrease the count of a given piece below zero.
+  /// @param piece The @c PieceCode with count being decreased.
+  /// @return The new count for the piece.
+  /// @throw Never throws.
   count_type minus(PieceCode piece) noexcept;
 
-  /**
-   * @brief Decreases the count for a given piece by a given value.
-   * @detail Won't decrease the count of a given piece below zero.
-   * @param piece The @c PieceCode with count being decreased.
-   * @param value The value by which the count of the piece is being decreased.
-   * @return The new count for the piece.
-   * @throw Never throws.
-   */
+  /// @brief Decreases the count for a given piece by a given value.
+  /// @detail Won't decrease the count of a given piece below zero.
+  /// @param piece The @c PieceCode with count being decreased.
+  /// @param value The value by which the count of the piece is being decreased.
+  /// @return The new count for the piece.
+  /// @throw Never throws.
   count_type minus(PieceCode piece, count_type value) noexcept;
 
-  /**
-   * @brief Sets the count for a given piece.
-   * @detail Won't set value below zero.
-   * @param piece The @c PieceCode for the piece's count being set.
-   * @param value The value of the count for the piece.
-   * @return A reference to this @c PieceCount.
-   * @throw Never throws.
-   */
+  /// @brief Sets the count for a given piece.
+  /// @detail Won't set value below zero.
+  /// @param piece The @c PieceCode for the piece's count being set.
+  /// @param value The value of the count for the piece.
+  /// @return A reference to this @c PieceCount.
+  /// @throw Never throws.
   PieceCount& setCount(PieceCode piece, count_type value) noexcept;
 
-  /**
-   * @brief Get the piece count for kings.
-   * @return A copy of the count for kings.
-   * @throw Never throws.
-   */
+  /// @brief Get the piece count for kings.
+  /// @return A copy of the count for kings.
+  /// @throw Never throws.
   count_type kings() const noexcept { return mKings; }
 
-  /**
-   * @brief Get the piece count for queens.
-   * @return A copy of the count for queens.
-   * @throw Never throws.
-   */
+  /// @brief Get the piece count for queens.
+  /// @return A copy of the count for queens.
+  /// @throw Never throws.
   count_type queens() const noexcept { return mQueens; }
 
-  /**
-   * @brief Get the piece count for rooks.
-   * @return A copy of the count for rooks.
-   * @throw Never throws.
-   */
+  /// @brief Get the piece count for rooks.
+  /// @return A copy of the count for rooks.
+  /// @throw Never throws.
   count_type rooks() const noexcept { return mRooks; }
 
-  /**
-   * @brief Get the piece count for bishops.
-   * @return A copy of the count for bishops.
-   * @throw Never throws.
-   */
+  /// @brief Get the piece count for bishops.
+  /// @return A copy of the count for bishops.
+  /// @throw Never throws.
   count_type bishops() const noexcept { return mBishops; }
 
-  /**
-   * @brief Get the piece count for knights.
-   * @return A copy of the count for knights.
-   * @throw Never throws.
-   */
+  /// @brief Get the piece count for knights.
+  /// @return A copy of the count for knights.
+  /// @throw Never throws.
   count_type knights() const noexcept { return mKnights; }
 
-  /**
-   * @brief Get the piece count for pawns.
-   * @return A copy of the count for pawns.
-   * @throw Never throws.
-   */
+  /// @brief Get the piece count for pawns.
+  /// @return A copy of the count for pawns.
+  /// @throw Never throws.
   count_type pawns() const noexcept { return mPawns; }
 
-  /**
-   * Obtain the value of the pawns on the board.
-   *
-   * The value of the pawns on the board is simply the number of pawns times the
-   * value of each pawn. The object is not modified and no exceptions are thrown.
-   *
-   * @return The value of the pawns on the board.
-   */
+  /// @brief Obtain the value of the pawns on the board.
+  /// @details The value of the pawns on the board is simply the number of pawns
+  /// times the value of each pawn. The object is not modified and no exceptions are
+  /// thrown.
+  /// @return The value of the pawns on the board.
   size_t valuePawns() const noexcept;
 
-  /**
-   * Obtain the value of the knights on the board.
-   *
-   * The value of the knights on the board is simply the number of knights times the
-   * value of each knight. The object is not modified and no exceptions are thrown.
-   *
-   * @return The value of the knights on the board.
-   */
+  /// @brief Obtain the value of the knights on the board.
+  /// @details The value of the knights on the board is simply the number of knights
+  /// times the value of each knight. The object is not modified and no exceptions
+  /// are thrown.
+  /// @return The value of the knights on the board.
   size_t valueKnights() const noexcept;
 
-  /**
-   * Obtain the value of the bishops in the board.
-   *
-   * The value of the bishops on the board is simply the number of bishops times the
-   * value of each bishop. The object is not modified and no exceptions are thrown.
-   *
-   * @return The value of the bishops on the board.
-   */
+  /// @brief Obtain the value of the bishops in the board.
+  /// @details The value of the bishops on the board is simply the number of bishops
+  /// times the value of each bishop. The object is not modified and no exceptions
+  /// are thrown.
+  /// @return The value of the bishops on the board.
   size_t valueBishops() const noexcept;
 
-  /**
-   * Obtain the value of the rooks in the board.
-   *
-   * The value of the rooks on the board is simply the number of rooks times the
-   * value of each rook. The object is not modified and no exceptions are thrown.
-   *
-   * @return The value of the rooks on the board.
-   */
+  /// @brief Obtain the value of the rooks in the board.
+  /// @details The value of the rooks on the board is simply the number of rooks
+  /// times the value of each rook. The object is not modified and no exceptions are
+  /// thrown.
+  /// @return The value of the rooks on the board.
   size_t valueRooks() const noexcept;
 
-  /**
-   * Obtain the value of the queens in the board.
-   *
-   * The value of the queens on the board is simply the number of queens times the
-   * value of each queen. The object is not modified and no exceptions are thrown.
-   *
-   * @return The value of the queens on the board.
-   */
+  /// @brief Obtain the value of the queens in the board.
+  /// @details The value of the queens on the board is simply the number of queens
+  /// times the value of each queen. The object is not modified and no exceptions are
+  /// thrown.
+  /// @return The value of the queens on the board.
   size_t valueQueens() const noexcept;
 
 private:
@@ -231,37 +196,24 @@ private:
   count_type mPawns;
 };
 
-/**
- * Format a PieceCount for an output stream.
- *
- * @param os The output stream.
- * @param pc A PieceCount object.
- * @return A reference to the output stream.
- */
+/// @breief Format a PieceCount for an output stream.
+/// @param os The output stream.
+/// @param pc A PieceCount object.
+/// @return A reference to the output stream.
 std::ostream& operator<<(std::ostream &os, const PieceCount &pc);
 
-/**
- * @function operator==
- * @brief Compares two PieceCount objects for equality.
- *
- * The function is guaranteed not to throw an exception.
- *
- * @param pc1 The first *PieceCount* object.
- * @param pc2 The second *PieceCount* object.
- * @return True if they are equal, false otherwise.
- */
+/// @brief Compares two PieceCount objects for equality.
+/// @param pc1 The first *PieceCount* object.
+/// @param pc2 The second *PieceCount* object.
+/// @return True if they are equal, false otherwise.
+/// @throw Never throws.
 bool operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept;
 
-/**
- * @function operator!=
- * @brief Compares two PieceCount objects for non-equality.
- *
- * The function is guaranteed not to throw an exception.
- *
- * @param pc1 The first *PieceCount* object.
- * @param pc2 The second *PieceCount* object.
- * @return False if they are equal, true otherwise.
- */
+/// @brief Compares two PieceCount objects for non-equality.
+/// @param pc1 The first *PieceCount* object.
+/// @param pc2 The second *PieceCount* object.
+/// @return False if they are equal, true otherwise.
+/// @throw Never throws.
 bool operator!=(const PieceCount &pc1, const PieceCount &pc2) noexcept;
 
 inline size_t PieceCount::valuePawns() const noexcept
