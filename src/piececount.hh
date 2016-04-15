@@ -196,6 +196,16 @@ private:
   // Mantain the count of white and black pieces.
   count_type mWhite;
   count_type mBlack;
+
+  // bit shifting counts for pieces
+  enum CountShift {
+    PSHIFT = 5 * 0,
+    NSHIFT = 5 * 1,
+    BSHIFT = 5 * 2,
+    RSHIFT = 5 * 3,
+    QSHIFT = 5 * 4,
+    KSHIFT = 5 * 5
+  };
 };
 
 /// @breief Format a PieceCount for an output stream.
