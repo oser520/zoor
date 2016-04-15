@@ -15,6 +15,10 @@
 
 namespace zoor {
 
+/////////////////////////////////////////////////////////////////////////////////////
+// Declarations
+/////////////////////////////////////////////////////////////////////////////////////
+
 /// @brief PieceCount counts the number of pieces on a board.
 /// @details Maintains the following invariants:
 /// @li At least one king, and no more than two kings.
@@ -32,14 +36,8 @@ public:
   /// @brief Alias for the integral type for the count of each piece.
   using count_type = unsigned short;
 
-  /// @brief Construct a PieceCount with the normal number of pieces at the beginning
-  /// of a game, with:
-  /// @li 1 king
-  /// @li 1 queen
-  /// @li 2 rooks
-  /// @li 2 bishops
-  /// @li 2 knights
-  /// @li 8 pawns
+  /// @brief Default ctor.
+  /// @details Initializes count to 0 for all pieces.
   PieceCount() noexcept;
 
   /// @brief Copy constructor.
@@ -222,6 +220,17 @@ bool operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept;
 /// @return False if they are equal, true otherwise.
 /// @throw Never throws.
 bool operator!=(const PieceCount &pc1, const PieceCount &pc2) noexcept;
+
+/////////////////////////////////////////////////////////////////////////////////////
+// Inline definitions
+/////////////////////////////////////////////////////////////////////////////////////
+
+//
+// Defualt Ctor
+//
+PieceCount::PieceCount()
+  : mWhite(),
+    mBlack() {}
 
 inline size_t PieceCount::valuePawns() const noexcept
 {
