@@ -141,7 +141,7 @@ readFEN(string &fenLine)
   if (numPieces > 32)
     throw ChessError("FEN record is not valid");
 
-  // TODO: check that we have only two kings, one each for blak and white
+  // TODO: check that we have only two kings, one each for black and white
   // TODO: check that we don't have more than 16 pawns
   // TODO: check that we don't have more than 10 pieces of bishop, rook, knight
   // TODO: check that we don't have more than 9 queens
