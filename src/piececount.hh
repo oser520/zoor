@@ -15,8 +15,14 @@
 
 namespace zoor {
 
-/// @brief PieceCount counts the number of pieces on a board, and enforces the count
-/// for each piece is valid (e.g., no more than 8 pawns per player).
+/// @brief PieceCount counts the number of pieces on a board.
+/// @details Maintains the following invariants:
+/// @li At least one king, and no more than two kings.
+/// @li No more than 8 pawns per player.
+/// @li No more than 10 pieces of type knight, bishop, or rook.
+/// @li No more than 9 queen.
+/// @li No more than 16 pieces total per player.
+
 class PieceCount
 {
   friend bool operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept;
