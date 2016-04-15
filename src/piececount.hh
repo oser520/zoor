@@ -10,6 +10,7 @@
 #include <iostream>
 #include <stdexcept>
 
+#include "board.hh"
 #include "piececode.hh"
 
 namespace zoor {
