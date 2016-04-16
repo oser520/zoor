@@ -103,7 +103,12 @@ public:
   /// @brief Get the underlying data for white piece count.
   /// @return Data with count for white pieces.
   /// @throw Never throws.
-  count_type white() const noexcept;
+  const count_type& white() const noexcept;
+
+  /// @brief Get the underlying data for black pieces count.
+  /// @return Data with count for black pieces.
+  /// @throw Never throws.
+  const count_type& black() const noexcept;
 
   /// @brief Get number of white kings.
   /// @return The number of white kings.
