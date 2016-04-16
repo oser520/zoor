@@ -31,9 +31,6 @@ namespace zoor {
 
 class PieceCount
 {
-  friend bool operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept;
-  friend std::ostream& operator<<(std::ostream &os, const PieceCount &pc);
-
 public:
   /// @brief The type used to count pieces.
   using count_type = uint32_t;
