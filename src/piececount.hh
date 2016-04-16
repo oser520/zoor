@@ -206,7 +206,7 @@ bool operator!=(const PieceCount &pc1, const PieceCount &pc2) noexcept;
 /////////////////////////////////////////////////////////////////////////////////////
 
 //
-// Defualt Ctor
+// default Ctor
 //
 PieceCount::PieceCount()
   : mWhite(),
