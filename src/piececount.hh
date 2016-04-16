@@ -192,6 +192,114 @@ PieceCount& PieceCount::clear() noexcept
   return *this;
 }
 
+//
+// get the number of white kings
+//
+inline const count_type
+PieceCount::wKing() const noexcept
+{
+  return (mWhite >> KSHIFT) & CMASK;
+}
+
+//
+// get the number of white queens
+//
+inline const count_type
+PieceCount::wQueen() const noexcept
+{
+  return (mWhite >> QSHIFT) & CMASK;
+}
+
+//
+// get the number of white rooks
+//
+inline const count_type
+PieceCount::wRook() const noexcept
+{
+  return (mWhite >> RSHIFT) & CMASK;
+}
+
+//
+// get the number of white bishops
+//
+inline const count_type
+PieceCount::wBishop() const noexcept
+{
+  return (mWhite >> BSHIFT) & CMASK;
+}
+
+//
+// get the number of white knights
+//
+inline const count_type
+PieceCount::wKnight() const noexcept
+{
+  return (mWhite >> NSHIFT) & CMASK;
+}
+
+//
+// get the number of white pawns
+//
+inline const count_type
+PieceCount::wPawn() const noexcept
+{
+  return (mWhite >> PSHIFT) & CMASK;
+}
+
+//
+// get the number of black kings
+//
+inline const count_type
+PieceCount::bKing() const noexcept
+{
+  return (mBlack >> KSHIFT) & CMASK;
+}
+
+//
+// get the number of black queens
+//
+inline const count_type
+PieceCount::bQueen() const noexcept
+{
+  return (mBlack >> QSHIFT) & CMASK;
+}
+
+//
+// get the number of black rooks
+//
+inline const count_type
+PieceCount::bRook() const noexcept
+{
+  return (mBlack >> RSHIFT) & CMASK;
+}
+
+//
+// get the number of black bishops
+//
+inline const count_type
+PieceCount::bBishop() const noexcept
+{
+  return (mBlack >> BSHIFT) & CMASK;
+}
+
+//
+// get the number of black knights
+//
+inline const count_type
+PieceCount::bKnight() const noexcept
+{
+  return (mBlack >> NSHIFT) & CMASK;
+}
+
+//
+// get the number of black pawns
+//
+inline const count_type
+PieceCount::bPawn() const noexcept
+{
+  return (mBlack >> PSHIFT) & CMASK;
+}
+
 } // namespace zoor
 
 #endif 
