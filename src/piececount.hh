@@ -86,10 +86,10 @@ public:
   /// @throw Never throws.
   count_type wRook() const noexcept;
 
-  /// @brief Get the piece count for bishops.
-  /// @return A copy of the count for bishops.
+  /// @brief Get the number of white bishops.
+  /// @return The number of white bishops.
   /// @throw Never throws.
-  count_type bishops() const noexcept { return mBishops; }
+  count_type wBishop() const noexcept;
 
   /// @brief Get the piece count for knights.
   /// @return A copy of the count for knights.
