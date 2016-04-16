@@ -226,6 +226,16 @@ PieceCount::PieceCount()
   : mWhite(),
     mBlack() {}
 
+//
+// clear the piece count for each piece
+//
+PieceCount& PieceCount::clear() noexcept
+{
+  mWhite = mBlack = 0;
+  return *this;
+}
+
+
 inline size_t PieceCount::valuePawns() const noexcept
 {
   return static_cast<size_t>(mPawns) * static_cast<size_t>(PieceValue::PAWN);
