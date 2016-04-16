@@ -8,8 +8,10 @@
 #define _PIECECOUNT_H
 
 #include <iostream>
+#include <vector>
 #include <stdexcept>
 
+#include "square.hh"
 #include "board.hh"
 #include "piececode.hh"
 
@@ -71,6 +73,12 @@ public:
   /// @return A reference to this PieceCount.
   /// @throw Never throws.
   PieceCount& count(const Board &board) noexcept;
+
+  /// @brief Count the number of pieces in a list of @c Squares.
+  /// @param squareList A list of @c Squares with pieces.
+  /// @return A reference to this PieceCount.
+  /// @throw Never throws.
+  PieceCount& count(const std::vector<Square> &squareList) noexcept;
 
   /// @brief Checks that invariants hold.
   /// @return True if invariants hold, false otherwise.
