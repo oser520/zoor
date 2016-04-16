@@ -101,41 +101,6 @@ public:
   /// @throw Never throws.
   count_type wPawn() const noexcept;
 
-  /// @brief Obtain the value of the pawns on the board.
-  /// @details The value of the pawns on the board is simply the number of pawns
-  /// times the value of each pawn. The object is not modified and no exceptions are
-  /// thrown.
-  /// @return The value of the pawns on the board.
-  size_t valuePawns() const noexcept;
-
-  /// @brief Obtain the value of the knights on the board.
-  /// @details The value of the knights on the board is simply the number of knights
-  /// times the value of each knight. The object is not modified and no exceptions
-  /// are thrown.
-  /// @return The value of the knights on the board.
-  size_t valueKnights() const noexcept;
-
-  /// @brief Obtain the value of the bishops in the board.
-  /// @details The value of the bishops on the board is simply the number of bishops
-  /// times the value of each bishop. The object is not modified and no exceptions
-  /// are thrown.
-  /// @return The value of the bishops on the board.
-  size_t valueBishops() const noexcept;
-
-  /// @brief Obtain the value of the rooks in the board.
-  /// @details The value of the rooks on the board is simply the number of rooks
-  /// times the value of each rook. The object is not modified and no exceptions are
-  /// thrown.
-  /// @return The value of the rooks on the board.
-  size_t valueRooks() const noexcept;
-
-  /// @brief Obtain the value of the queens in the board.
-  /// @details The value of the queens on the board is simply the number of queens
-  /// times the value of each queen. The object is not modified and no exceptions are
-  /// thrown.
-  /// @return The value of the queens on the board.
-  size_t valueQueens() const noexcept;
-
 private:
   // Mantain the count of white and black pieces.
   count_type mWhite;
@@ -195,32 +160,6 @@ PieceCount& PieceCount::clear() noexcept
 {
   mWhite = mBlack = 0;
   return *this;
-}
-
-
-inline size_t PieceCount::valuePawns() const noexcept
-{
-  return static_cast<size_t>(mPawns) * static_cast<size_t>(PieceValue::PAWN);
-}
-
-inline size_t PieceCount::valueKnights() const noexcept
-{
-  return static_cast<size_t>(mKnights) * static_cast<size_t>(PieceValue::KNIGHT);
-}
-
-inline size_t PieceCount::valueBishops() const noexcept
-{
-  return static_cast<size_t>(mBishops) * static_cast<size_t>(PieceValue::BISHOP);
-}
-
-inline size_t PieceCount::valueRooks() const noexcept
-{
-  return static_cast<size_t>(mRooks) * static_cast<size_t>(PieceValue::ROOK);
-}
-
-inline size_t PieceCount::valueQueens() const noexcept
-{
-  return static_cast<size_t>(mQueens) * static_cast<size_t>(PieceValue::QUEEN);
 }
 
 } // namespace zoor
