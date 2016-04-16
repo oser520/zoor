@@ -142,7 +142,7 @@ private:
   count_type mBlack;
 
   // bit shifting counts for pieces
-  enum CountShift {
+  enum CountShift: count_type {
     PSHIFT = 5 * 0,
     NSHIFT = 5 * 1,
     BSHIFT = 5 * 2,
