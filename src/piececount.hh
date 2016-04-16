@@ -66,6 +66,12 @@ public:
   /// @throw Never throws.
   ~PieceCount() noexcept = default;
 
+  /// @brief Count the number of pieces in board.
+  /// @param board The board whose pieces are counted.
+  /// @return A reference to this PieceCount.
+  /// @throw Never throws.
+  PieceCount& count(const Board &board) noexcept;
+
   /// @brief Sets the count of every piece to zero.
   /// @return A reference to this PieceCount.
   /// @throw Never throws.
