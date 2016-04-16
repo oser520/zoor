@@ -168,6 +168,11 @@ public:
   const count_type bPawn() const noexcept;
 
 private:
+  // @brief Add the piece to white or black count.
+  // @param code The piece code representing the piece.
+  // @throw Never throws.
+  void add(const piececode_t code) noexcept;
+
   // Mantain the count of white and black pieces.
   count_type mWhite;
   count_type mBlack;
