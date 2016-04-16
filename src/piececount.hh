@@ -96,10 +96,10 @@ public:
   /// @throw Never throws.
   count_type wKnight() const noexcept;
 
-  /// @brief Get the piece count for pawns.
-  /// @return A copy of the count for pawns.
+  /// @brief Get the number of white pawns.
+  /// @return The number of white pawns.
   /// @throw Never throws.
-  count_type pawns() const noexcept { return mPawns; }
+  count_type wPawn() const noexcept;
 
   /// @brief Obtain the value of the pawns on the board.
   /// @details The value of the pawns on the board is simply the number of pawns
