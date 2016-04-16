@@ -42,6 +42,11 @@ public:
   /// @details Initializes count to 0 for all pieces.
   PieceCount() noexcept;
 
+  /// @brief Constructor with a @c Board.
+  /// @param board The board whose pieces are counted.
+  /// @throw Never throws.
+  PieceCount(const Board &board) noexcept;
+
   /// @brief Copy constructor.
   /// @param pcount The @c PieceCount to be copied.
   /// @throw Never throws.
