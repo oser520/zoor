@@ -76,10 +76,10 @@ public:
   /// @throw Never throws.
   count_type wKing() const noexcept;
 
-  /// @brief Get the piece count for queens.
-  /// @return A copy of the count for queens.
+  /// @brief Get the number of white queens.
+  /// @return The number of white queens.
   /// @throw Never throws.
-  count_type queens() const noexcept { return mQueens; }
+  count_type wQueens() const noexcept;
 
   /// @brief Get the piece count for rooks.
   /// @return A copy of the count for rooks.
