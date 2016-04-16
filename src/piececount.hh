@@ -72,6 +72,11 @@ public:
   /// @throw Never throws.
   PieceCount& count(const Board &board) noexcept;
 
+  /// @brief Checks that invariants hold.
+  /// @return True if invariants hold, false otherwise.
+  /// @throw Never throws.
+  bool good() const noexcept;
+
   /// @brief Sets the count of every piece to zero.
   /// @return A reference to this PieceCount.
   /// @throw Never throws.
