@@ -71,21 +71,6 @@ public:
   /// @throw Never throws.
   PieceCount& clear() noexcept;
 
-  /// @brief Decreases the count for a given piece by one.
-  /// @detail Won't decrease the count of a given piece below zero.
-  /// @param piece The @c PieceCode with count being decreased.
-  /// @return The new count for the piece.
-  /// @throw Never throws.
-  count_type minus(PieceCode piece) noexcept;
-
-  /// @brief Decreases the count for a given piece by a given value.
-  /// @detail Won't decrease the count of a given piece below zero.
-  /// @param piece The @c PieceCode with count being decreased.
-  /// @param value The value by which the count of the piece is being decreased.
-  /// @return The new count for the piece.
-  /// @throw Never throws.
-  count_type minus(PieceCode piece, count_type value) noexcept;
-
   /// @brief Sets the count for a given piece.
   /// @detail Won't set value below zero.
   /// @param piece The @c PieceCode for the piece's count being set.
