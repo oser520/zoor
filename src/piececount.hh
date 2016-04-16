@@ -79,12 +79,12 @@ public:
   /// @brief Get the number of white queens.
   /// @return The number of white queens.
   /// @throw Never throws.
-  count_type wQueens() const noexcept;
+  count_type wQueen() const noexcept;
 
-  /// @brief Get the piece count for rooks.
-  /// @return A copy of the count for rooks.
+  /// @brief Get the number of white rooks.
+  /// @return The number of white rooks.
   /// @throw Never throws.
-  count_type rooks() const noexcept { return mRooks; }
+  count_type wRook() const noexcept;
 
   /// @brief Get the piece count for bishops.
   /// @return A copy of the count for bishops.
