@@ -101,6 +101,36 @@ public:
   /// @throw Never throws.
   count_type wPawn() const noexcept;
 
+  /// @brief Get number of black kings.
+  /// @return The number of black kings.
+  /// @throw Never throws.
+  count_type bKing() const noexcept;
+
+  /// @brief Get the number of black queens.
+  /// @return The number of black queens.
+  /// @throw Never throws.
+  count_type bQueen() const noexcept;
+
+  /// @brief Get the number of black rooks.
+  /// @return The number of black rooks.
+  /// @throw Never throws.
+  count_type bRook() const noexcept;
+
+  /// @brief Get the number of black bishops.
+  /// @return The number of black bishops.
+  /// @throw Never throws.
+  count_type bBishop() const noexcept;
+
+  /// @brief Get the number of black knights.
+  /// @return The number of black knights.
+  /// @throw Never throws.
+  count_type bKnight() const noexcept;
+
+  /// @brief Get the number of black pawns.
+  /// @return The number of black pawns.
+  /// @throw Never throws.
+  count_type bPawn() const noexcept;
+
 private:
   // Mantain the count of white and black pieces.
   count_type mWhite;
