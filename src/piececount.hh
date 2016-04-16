@@ -91,10 +91,10 @@ public:
   /// @throw Never throws.
   count_type wBishop() const noexcept;
 
-  /// @brief Get the piece count for knights.
-  /// @return A copy of the count for knights.
+  /// @brief Get the number of white knights.
+  /// @return The number of white knights.
   /// @throw Never throws.
-  count_type knights() const noexcept { return mKnights; }
+  count_type wKnight() const noexcept;
 
   /// @brief Get the piece count for pawns.
   /// @return A copy of the count for pawns.
