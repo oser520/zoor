@@ -71,10 +71,10 @@ public:
   /// @throw Never throws.
   PieceCount& clear() noexcept;
 
-  /// @brief Get the piece count for kings.
-  /// @return A copy of the count for kings.
+  /// @brief Get number of white kings.
+  /// @return The number of white kings.
   /// @throw Never throws.
-  count_type kings() const noexcept { return mKings; }
+  count_type wKing() const noexcept;
 
   /// @brief Get the piece count for queens.
   /// @return A copy of the count for queens.
