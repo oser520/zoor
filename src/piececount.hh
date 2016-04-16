@@ -218,7 +218,8 @@ bool operator!=(const PieceCount &pc1, const PieceCount &pc2) noexcept;
 //
 // default Ctor
 //
-PieceCount::PieceCount()
+inline
+PieceCount::PieceCount() noexcept
   : mWhite(),
     mBlack() {}
 
