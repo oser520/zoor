@@ -71,19 +71,6 @@ public:
   /// @throw Never throws.
   PieceCount& clear() noexcept;
 
-  /// @brief Increments the count for a given piece by one.
-  /// @param piece The @c PieceCode of the piece to be incremented.
-  /// @return The new count for the piece.
-  /// @throw Never throws.
-  count_type plus(PieceCode piece) noexcept;
-
-  /// @brief Increments the count for a given piece by a given number.
-  /// @param pc The @c PieceCode of the piece to be incremented.
-  /// @param value The value to be incremented by.
-  /// @return The new count for the piece.
-  /// @throw Never throws.
-  count_type plus(PieceCode piece, count_type value) noexcept;
-
   /// @brief Decreases the count for a given piece by one.
   /// @detail Won't decrease the count of a given piece below zero.
   /// @param piece The @c PieceCode with count being decreased.

@@ -16,44 +16,6 @@ namespace zoor {
 using count_type = PieceCount::count_type;
 
 ////////////////////////////////////////////////////////////////////////////////
-// increase the count for piece by one
-////////////////////////////////////////////////////////////////////////////////
-count_type PieceCount::plus(PieceCode piece) noexcept
-{
-  return plus(piece, static_cast<count_type>(1));
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// increase the count for piece by a given value
-////////////////////////////////////////////////////////////////////////////////
-count_type PieceCount::plus(PieceCode piece, count_type value) noexcept
-{
-  switch (piece) {
-  case PieceCode::PAWN:
-    mPawns += value;
-    return mPawns;
-  case PieceCode::KNIGHT:
-    mKnights += value;
-    return mKnights;
-  case PieceCode::BISHOP:
-    mBishops += value;
-    return mBishops;
-  case PieceCode::ROOK:
-    mRooks += value;
-    return mRooks;
-  case PieceCode::QUEEN:
-    mQueens += value;
-    return mQueens;
-  case PieceCode::KING:
-    mKings += value;
-    return mKings;
-  default:
-    std::cerr << "Bad PieceCode value for plus." << std::endl;
-    exit(EXIT_FAILURE);
-  }
-}
-
-////////////////////////////////////////////////////////////////////////////////
 // decrease the count for piece by one
 ////////////////////////////////////////////////////////////////////////////////
 count_type PieceCount::minus(PieceCode piece) noexcept
