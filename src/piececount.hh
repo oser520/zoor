@@ -188,7 +188,7 @@ private:
   }
 };
 
-/// @breief Format a PieceCount for an output stream.
+/// @brief Format a PieceCount for an output stream.
 /// @param os The output stream.
 /// @param pc A PieceCount object.
 /// @return A reference to the output stream.
