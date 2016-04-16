@@ -16,38 +16,6 @@ namespace zoor {
 using count_type = PieceCount::count_type;
 
 ////////////////////////////////////////////////////////////////////////////////
-// set the count for a piece
-////////////////////////////////////////////////////////////////////////////////
-PieceCount& PieceCount::setCount(PieceCode piece, count_type value) noexcept
-{
-  switch (piece) {
-  case PieceCode::PAWN:
-    mPawns = value;
-    break;
-  case PieceCode::KNIGHT:
-    mKnights = value;
-    break;
-  case PieceCode::BISHOP:
-    mBishops = value;
-    break;
-  case PieceCode::ROOK:
-    mRooks = value;
-    break;
-  case PieceCode::QUEEN:
-    mQueens = value;
-    break;
-  case PieceCode::KING:
-    mKings = value;
-    break;
-  default:
-    std::cerr << "Bad PieceCode value for minus." << std::endl;
-    exit(EXIT_FAILURE);
-  }
-
-  return *this;
-}
-
-////////////////////////////////////////////////////////////////////////////////
 // output operator for piece count
 ////////////////////////////////////////////////////////////////////////////////
 std::ostream& operator<<(std::ostream &os, const PieceCount &pc)

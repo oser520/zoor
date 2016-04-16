@@ -71,14 +71,6 @@ public:
   /// @throw Never throws.
   PieceCount& clear() noexcept;
 
-  /// @brief Sets the count for a given piece.
-  /// @detail Won't set value below zero.
-  /// @param piece The @c PieceCode for the piece's count being set.
-  /// @param value The value of the count for the piece.
-  /// @return A reference to this @c PieceCount.
-  /// @throw Never throws.
-  PieceCount& setCount(PieceCode piece, count_type value) noexcept;
-
   /// @brief Get the piece count for kings.
   /// @return A copy of the count for kings.
   /// @throw Never throws.
