@@ -226,6 +226,7 @@ PieceCount::PieceCount() noexcept
 //
 // clear the piece count for each piece
 //
+inline
 PieceCount& PieceCount::clear() noexcept
 {
   mWhite = mBlack = 0;
