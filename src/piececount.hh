@@ -66,13 +66,6 @@ public:
   /// @throw Never throws.
   ~PieceCount() noexcept = default;
 
-  /// Sets the piece count to what it would be at the beginning of the game.
-  /// The default constructor initializes a PieceCount to the same state,
-  /// so we would use this after a board has already been in use and we want
-  /// to re-set the state.
-  /// @return A reference to this PieceCount.
-  PieceCount& init() noexcept;
-
   /// @brief Sets the count of every piece to zero.
   /// @return A reference to this PieceCount.
   /// @throw Never throws.
