@@ -150,6 +150,11 @@ private:
     QSHIFT = 5 * 4,
     KSHIFT = 5 * 5
   };
+
+  // 5 bit mask
+  enum CountMask: count_type {
+    CMASK = 0x1f
+  }
 };
 
 /// @breief Format a PieceCount for an output stream.
