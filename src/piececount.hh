@@ -47,6 +47,11 @@ public:
   /// @throw Never throws.
   PieceCount(const Board &board) noexcept;
 
+  /// @brief Constructor with a list of squares.
+  /// @param squareList The list of squres with pieces.
+  /// @throw Never throws.
+  PieceCount(const std::vector<Square> &squareList) noexcept;
+
   /// @brief Copy constructor.
   /// @param pcount The @c PieceCount to be copied.
   /// @throw Never throws.
