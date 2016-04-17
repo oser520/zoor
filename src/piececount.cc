@@ -13,7 +13,7 @@
 
 namespace zoor {
 
-using count_type = PieceCount::count_type;
+using PieceCount::count_type;
 
 ////////////////////////////////////////////////////////////////////////////////
 // output operator for piece count
