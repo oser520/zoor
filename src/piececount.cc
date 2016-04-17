@@ -7,13 +7,19 @@
 #include <cstdlib>
 #include <cassert>
 #include <iostream>
+#include <vector>
 
 #include "piececode.hh"
+#include "square.hh"
 #include "piececount.hh"
 
 namespace zoor {
 
+//
+// using declarations
+//
 using PieceCount::count_type;
+using std::vector;
 
 //
 // constructor with Board
@@ -24,6 +30,17 @@ PieceCount::PieceCount(const Board &board) noexcept
 {
   for (auto &it : board)
     add(*it);
+}
+
+//
+// constructor with list of squares
+//
+PieceCount::PieceCount(const vector<Square> &squareList) noexcept
+  : mWhite(),
+    mBlack()
+{
+  for (auto it : squareList)
+    add(it->code());
 }
 
 //
