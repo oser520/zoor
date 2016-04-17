@@ -201,19 +201,21 @@ private:
   };
 };
 
-/// @brief Compares two PieceCount objects for equality.
-/// @param pc1 The first *PieceCount* object.
-/// @param pc2 The second *PieceCount* object.
+/// @brief Compares two @c PieceCount objects for equality.
+/// @param pc1 The first @c PieceCount object.
+/// @param pc2 The second @c PieceCount object.
 /// @return True if they are equal, false otherwise.
 /// @throw Never throws.
-bool operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept;
+bool
+operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept;
 
-/// @brief Compares two PieceCount objects for non-equality.
-/// @param pc1 The first *PieceCount* object.
-/// @param pc2 The second *PieceCount* object.
+/// @brief Compares two @c PieceCount objects for non-equality.
+/// @param pc1 The first @c PieceCount object.
+/// @param pc2 The second @c PieceCount object.
 /// @return False if they are equal, true otherwise.
 /// @throw Never throws.
-bool operator!=(const PieceCount &pc1, const PieceCount &pc2) noexcept;
+bool
+operator!=(const PieceCount &pc1, const PieceCount &pc2) noexcept;
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Inline definitions
