@@ -111,25 +111,4 @@ PieceCount::add(const piececode_t code) noexcept
   cnt |= value << shift;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// equality operator for piece count
-////////////////////////////////////////////////////////////////////////////////
-bool operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept
-{
-  return pc1.mKings == pc2.mKings
-      && pc1.mQueens == pc2.mQueens
-      && pc1.mRooks == pc2.mRooks
-      && pc1.mBishops == pc2.mBishops
-      && pc1.mKnights == pc2.mKnights
-      && pc1.mPawns == pc2.mPawns;
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// non-equality operator for piece count
-////////////////////////////////////////////////////////////////////////////////
-bool operator!=(const PieceCount &pc1, const PieceCount &pc2) noexcept
-{
-  return !(pc1 == pc2);
-}
-
 } // namespace zoor

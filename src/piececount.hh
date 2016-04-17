@@ -206,7 +206,7 @@ private:
 /// @param pc2 The second @c PieceCount object.
 /// @return True if they are equal, false otherwise.
 /// @throw Never throws.
-bool
+const bool
 operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept;
 
 /// @brief Compares two @c PieceCount objects for non-equality.
@@ -214,7 +214,7 @@ operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept;
 /// @param pc2 The second @c PieceCount object.
 /// @return False if they are equal, true otherwise.
 /// @throw Never throws.
-bool
+const bool
 operator!=(const PieceCount &pc1, const PieceCount &pc2) noexcept;
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -369,6 +369,24 @@ PieceCount::bPawn() const noexcept
   return (mBlack >> PSHIFT) & CMASK;
 }
 
-} // namespace zoor
+//
+// compare for equality
+//
+inline const bool
+operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept
+{
+  return pc1.white() == pc2.white()
+      && pc1.black() == pc2.black();
+}
 
+//
+// compare for non-equality
+//
+inline const bool
+operator!=(const PieceCount &pc1, const PieceCount &pc2) noexcept
+{
+  return !(pc1 == pc2);
+}
+
+} // namespace zoor
 #endif 
