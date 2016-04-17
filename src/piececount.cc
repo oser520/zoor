@@ -22,26 +22,6 @@ using PieceCount::count_type;
 using std::vector;
 
 //
-// constructor with Board
-//
-PieceCount::PieceCount(const Board &board) noexcept
-  : mWhite(),
-    mBlack()
-{
-  count(board);
-}
-
-//
-// constructor with list of squares
-//
-PieceCount::PieceCount(const vector<Square> &squareList) noexcept
-  : mWhite(),
-    mBlack()
-{
-  count(squareList);
-}
-
-//
 // count the number of pieces in board
 //
 PieceCount&

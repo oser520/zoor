@@ -226,6 +226,28 @@ PieceCount::PieceCount() noexcept
     mBlack() {}
 
 //
+// constructor with Board
+//
+inline
+PieceCount::PieceCount(const Board &board) noexcept
+  : mWhite(),
+    mBlack()
+{
+  count(board);
+}
+
+//
+// constructor with list of squares
+//
+inline
+PieceCount::PieceCount(const std::vector<Square> &squareList) noexcept
+  : mWhite(),
+    mBlack()
+{
+  count(squareList);
+}
+
+//
 // clear the piece count for each piece
 //
 inline PieceCount&
