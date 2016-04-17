@@ -3,15 +3,14 @@
  * @author Omar A Serrano
  * @date 2015-12-19
  */
-
 #ifndef _PIECECOUNT_H
 #define _PIECECOUNT_H
 
 #include <vector>
 
-#include "square.hh"
 #include "board.hh"
 #include "piececode.hh"
+#include "square.hh"
 
 namespace zoor {
 

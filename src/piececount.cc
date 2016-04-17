@@ -6,9 +6,10 @@
 #include <cassert>
 #include <vector>
 
+#include "board.hh"
 #include "piececode.hh"
-#include "square.hh"
 #include "piececount.hh"
+#include "square.hh"
 
 namespace zoor {
 
