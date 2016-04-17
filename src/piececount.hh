@@ -191,6 +191,16 @@ private:
   enum CountMask: count_type {
     CMASK = 0x1f
   }
+
+  // max number of pieces by type of piece
+  enum CountMax: count_type {
+    PMAX = 8,
+    NMAX = 10,
+    BMAX = NMAX,
+    RMAX = NMAX,
+    QMAX = 9,
+    KMAX = 1
+  };
 };
 
 /// @brief Format a PieceCount for an output stream.
