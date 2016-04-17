@@ -60,13 +60,15 @@ public:
   /// @param pcount The @c PieceCount to be copied.
   /// @return A reference to this @c PieceCount.
   /// @throw Never throws.
-  PieceCount& operator=(const PieceCount &pcount) noexcept = default;
+  PieceCount&
+  operator=(const PieceCount &pcount) noexcept = default;
 
   /// @brief Move assignment operator.
   /// @param pcount The @c PieceCount to be moved.
   /// @return A reference to this @c PieceCount.
   /// @throw Never throws.
-  PieceCount& operator=(PieceCount &&pcount) noexcept = default;
+  PieceCount&
+  operator=(PieceCount &&pcount) noexcept = default;
 
   /// @brief Default destructor.
   /// @throw Never throws.
@@ -76,99 +78,118 @@ public:
   /// @param board The board whose pieces are counted.
   /// @return A reference to this PieceCount.
   /// @throw Never throws.
-  PieceCount& count(const Board &board) noexcept;
+  PieceCount&
+  count(const Board &board) noexcept;
 
   /// @brief Count the number of pieces in a list of @c Squares.
   /// @param squareList A list of @c Squares with pieces.
   /// @return A reference to this PieceCount.
   /// @throw Never throws.
-  PieceCount& count(const std::vector<Square> &squareList) noexcept;
+  PieceCount&
+  count(const std::vector<Square> &squareList) noexcept;
 
   /// @brief Checks that invariants hold.
   /// @return True if invariants hold, false otherwise.
   /// @throw Never throws.
-  const bool good() const noexcept;
+  const bool
+  good() const noexcept;
 
   /// @brief Sets the count of every piece to zero.
   /// @return A reference to this PieceCount.
   /// @throw Never throws.
-  PieceCount& clear() noexcept;
+  PieceCount&
+  clear() noexcept;
 
   /// @brief Get the underlying data for white piece count.
   /// @return Data with count for white pieces.
   /// @throw Never throws.
-  const count_type white() const noexcept;
+  const count_type
+  white() const noexcept;
 
   /// @brief Get the underlying data for black pieces count.
   /// @return Data with count for black pieces.
   /// @throw Never throws.
-  const count_type black() const noexcept;
+  const count_type
+  black() const noexcept;
 
   /// @brief Get number of white kings.
   /// @return The number of white kings.
   /// @throw Never throws.
-  const count_type wKing() const noexcept;
+  const count_type
+  wKing() const noexcept;
 
   /// @brief Get the number of white queens.
   /// @return The number of white queens.
   /// @throw Never throws.
-  const count_type wQueen() const noexcept;
+  const count_type
+  wQueen() const noexcept;
 
   /// @brief Get the number of white rooks.
   /// @return The number of white rooks.
   /// @throw Never throws.
-  const count_type wRook() const noexcept;
+  const count_type
+  wRook() const noexcept;
 
   /// @brief Get the number of white bishops.
   /// @return The number of white bishops.
   /// @throw Never throws.
-  const count_type wBishop() const noexcept;
+  const count_type
+  wBishop() const noexcept;
 
   /// @brief Get the number of white knights.
   /// @return The number of white knights.
   /// @throw Never throws.
-  const count_type wKnight() const noexcept;
+  const count_type
+  wKnight() const noexcept;
 
   /// @brief Get the number of white pawns.
   /// @return The number of white pawns.
   /// @throw Never throws.
-  const count_type wPawn() const noexcept;
+  const count_type
+  wPawn() const noexcept;
 
   /// @brief Get number of black kings.
   /// @return The number of black kings.
   /// @throw Never throws.
-  const count_type bKing() const noexcept;
+  const count_type
+  bKing() const noexcept;
 
   /// @brief Get the number of black queens.
   /// @return The number of black queens.
   /// @throw Never throws.
-  const count_type bQueen() const noexcept;
+  const count_type
+  bQueen() const noexcept;
 
   /// @brief Get the number of black rooks.
   /// @return The number of black rooks.
   /// @throw Never throws.
-  const count_type bRook() const noexcept;
+  const count_type
+  bRook() const noexcept;
 
   /// @brief Get the number of black bishops.
   /// @return The number of black bishops.
   /// @throw Never throws.
-  const count_type bBishop() const noexcept;
+  const count_type
+  bBishop() const noexcept;
 
   /// @brief Get the number of black knights.
   /// @return The number of black knights.
   /// @throw Never throws.
-  const count_type bKnight() const noexcept;
+  const count_type
+  bKnight() const noexcept;
 
   /// @brief Get the number of black pawns.
   /// @return The number of black pawns.
   /// @throw Never throws.
-  const count_type bPawn() const noexcept;
+  const count_type
+  bPawn() const noexcept;
 
 private:
   // @brief Add the piece to white or black count.
   // @param code The piece code representing the piece.
   // @throw Never throws.
-  void add(const piececode_t code) noexcept;
+  void
+  add(const piececode_t code) noexcept;
 
   // Mantain the count of white and black pieces.
   count_type mWhite;
