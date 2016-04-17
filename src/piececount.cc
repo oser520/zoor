@@ -15,6 +15,59 @@ namespace zoor {
 
 using PieceCount::count_type;
 
+//
+// add the piece code to the white or black count
+//
+void
+PieceCount::add(const piececode_t code) noexcept
+{
+  count_type shift = 0;
+
+  switch (getPieceCode(code)) {
+  case PieceCode::PAWN:
+    shift = PSHIFT;
+    break;
+  case PieceCode::KNIGHT:
+    shift = NSHIFT;
+    break;
+  case PieceCode::BISHOP:
+    shift = BSHIFT;
+    break;
+  case PieceCode::ROOK:
+    shift = RSHIFT;
+    break;
+  case PieceCode::QUEEN:
+    shift = QSHIFT;
+    break;
+  case PieceCode::KING:
+    shift = KSHIFT;
+    break;
+  default:
+    return;
+  }
+
+  assert(!isColorNone(code));
+
+  // point to either black or white count
+  auto &cnt = isWhite(code) ? mWhite : mBlack;
+
+  // get the count for the given piece
+  // allow us to detect errors
+  auto value = (cnt >> shift) & CMASK;
+
+  // don't add more if 5 bits are used
+  if (value == CMASK)
+    return;
+
+  ++value;
+
+  // clear the 5 bits for the count
+  cnt |= ~(CMASK << shift)
+
+  // set the new count
+  cnt |= value << shift;
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // output operator for piece count
 ////////////////////////////////////////////////////////////////////////////////
