@@ -16,6 +16,17 @@ namespace zoor {
 using PieceCount::count_type;
 
 //
+// constructor with Board
+//
+PieceCount::PieceCount(const Board &board) noexcept
+  : mWhite(),
+    mBlack()
+{
+  for (auto &it : board)
+    add(*it);
+}
+
+//
 // add the piece code to the white or black count
 //
 void
