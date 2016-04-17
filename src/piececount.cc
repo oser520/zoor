@@ -44,6 +44,30 @@ PieceCount::PieceCount(const vector<Square> &squareList) noexcept
 }
 
 //
+// count the number of pieces in board
+//
+PieceCount&
+PiceCount::count(const Board &board) noexcept
+{
+  for (auto it : board)
+    add(*it);
+
+  return *this;
+}
+
+//
+// count the number of pieces in squareList
+//
+PieceCount&
+PiceCount::count(const vector<Square> &squareList) noexcept
+{
+  for (auto it : board)
+    add(it->code());
+
+  return *this;
+}
+
+//
 // add the piece code to the white or black count
 //
 void
