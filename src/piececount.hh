@@ -209,7 +209,7 @@ private:
   // 5 bit mask
   enum CountMask: count_type {
     CMASK = 0x1f
-  }
+  };
 
   // max number of pieces by type of piece
   enum CountMax: count_type {
