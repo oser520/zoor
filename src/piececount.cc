@@ -3,8 +3,6 @@
  * @author Omar A Serrano
  * @date 2015-12-21
  */
-
-#include <cstdlib>
 #include <cassert>
 #include <vector>
 
