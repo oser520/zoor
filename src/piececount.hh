@@ -6,6 +6,7 @@
 #ifndef _PIECECOUNT_H
 #define _PIECECOUNT_H
 
+#include <cstdint>
 #include <vector>
 
 #include "board.hh"
