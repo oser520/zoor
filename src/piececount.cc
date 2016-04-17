@@ -28,8 +28,7 @@ PieceCount::PieceCount(const Board &board) noexcept
   : mWhite(),
     mBlack()
 {
-  for (auto &it : board)
-    add(*it);
+  count(board);
 }
 
 //
@@ -39,8 +38,7 @@ PieceCount::PieceCount(const vector<Square> &squareList) noexcept
   : mWhite(),
     mBlack()
 {
-  for (auto it : squareList)
-    add(it->code());
+  count(squareList);
 }
 
 //
