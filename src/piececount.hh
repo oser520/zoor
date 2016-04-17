@@ -9,7 +9,6 @@
 
 #include <iostream>
 #include <vector>
-#include <stdexcept>
 
 #include "square.hh"
 #include "board.hh"
