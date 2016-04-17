@@ -16,7 +16,6 @@ namespace zoor {
 //
 // using declarations
 //
-using PieceCount::count_type;
 using std::vector;
 
 //
