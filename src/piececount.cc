@@ -6,7 +6,6 @@
 
 #include <cstdlib>
 #include <cassert>
-#include <iostream>
 #include <vector>
 
 #include "piececode.hh"
@@ -110,21 +109,6 @@ PieceCount::add(const piececode_t code) noexcept
 
   // set the new count
   cnt |= value << shift;
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// output operator for piece count
-////////////////////////////////////////////////////////////////////////////////
-std::ostream& operator<<(std::ostream &os, const PieceCount &pc)
-{
-  os << "{kings=" << pc.mKings
-     << ", queens=" << pc.mQueens
-     << ", rooks=" << pc.mRooks
-     << ", bishops=" << pc.mBishops
-     << ", knights=" << pc.mKnights
-     << ", pawns=" << pc.mPawns
-     << "}";
-  return os;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

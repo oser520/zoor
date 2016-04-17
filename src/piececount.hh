@@ -7,7 +7,6 @@
 #ifndef _PIECECOUNT_H
 #define _PIECECOUNT_H
 
-#include <iostream>
 #include <vector>
 
 #include "square.hh"
@@ -201,12 +200,6 @@ private:
     KMAX = 1
   };
 };
-
-/// @brief Format a PieceCount for an output stream.
-/// @param os The output stream.
-/// @param pc A PieceCount object.
-/// @return A reference to the output stream.
-std::ostream& operator<<(std::ostream &os, const PieceCount &pc);
 
 /// @brief Compares two PieceCount objects for equality.
 /// @param pc1 The first *PieceCount* object.
