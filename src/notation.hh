@@ -167,6 +167,15 @@ void writeFEN(const std::string &fileName, const Board &board);
  */
 void writeFEN(const std::string &fileName, const std::vector<Board> &boardList);
 
+/// @brief Get the piece code from a FEN piece.
+/// @param fenCode The symbol representing a piece. For white pieces, legal values
+/// are P, N, B, R, Q, and K. Black pieces use the same symbols in lowercase.
+/// @return A piece code representing the piece and the color of the piece. If
+/// fenCode is not a valid symbol for a piece, then the piece code is none.
+/// @throw Never throws.
+piececode_t
+fenPiece(const char fenCode) noexcept;
+
 /////////////////////////////////////////////////////////////////////////////////////
 // Inline implementations.
 /////////////////////////////////////////////////////////////////////////////////////
