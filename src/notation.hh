@@ -174,7 +174,7 @@ void writeFEN(const std::string &fileName, const std::vector<Board> &boardList);
 /// fenCode is not a valid symbol for a piece, then the piece code is none.
 /// @throw Never throws.
 piececode_t
-fenPiece(const char fenCode) noexcept;
+fenPiece(char fenCode) noexcept;
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Inline implementations.
