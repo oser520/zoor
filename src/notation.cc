@@ -2,7 +2,7 @@
 /// @author Omar A Serrano
 /// @date 2016-04-09
 
-// TODO: create class object to hold the board and the move counts
+// TODO: change function return types so that they return FenRecord when appropriate
 
 //
 // STL headers
@@ -158,7 +158,7 @@ readFEN(string &fenLine)
   if (iss.fail() && !iss.eof())
     throw ChessError("FEN record is not valid");
 
-  // TODO: create class object to hold the board and the move counts
+  // TODO: return a FenRecord
 
   return Board();
 }
