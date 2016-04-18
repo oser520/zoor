@@ -149,11 +149,10 @@ readFEN(string &fenLine)
   if (numPieces > 32)
     throw ChessError("FEN record is not valid");
 
-  // TODO: check that we have only two kings, one each for black and white
-  // TODO: check that we don't have more than 16 pawns
-  // TODO: check that we don't have more than 10 pieces of bishop, rook, knight
-  // TODO: check that we don't have more than 9 queens
-  // TODO: check that neither black nor white each has move than 16 pieces
+  // check that number of pieces makes sense
+  PieceCount pc(squareList);
+  if (!pc.good())
+    throw ChessError("FEN record is not valid");
 
   // process color to move next
   if (!(iss >> buff))
