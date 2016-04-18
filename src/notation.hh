@@ -122,7 +122,7 @@ struct FenSymbols
  * @return A vector of boards.
  * @throw ChessError if the FEN record is not valid.
  */
-Board readFEN(std::string &fenLine);
+Board readFEN(const std::string &fenLine);
 
 /**
  * @brief Read a chess position in FEN notation from a file.
