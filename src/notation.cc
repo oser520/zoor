@@ -16,8 +16,6 @@
 #include "board.hh"
 #include "chesserror.hh"
 
-// TODO: Move assumptions comments to location of function defintion.
-
 //
 // using from STL
 //
@@ -35,62 +33,6 @@ using Board::dim_type;
 
 namespace zoor {
 
-namespace {
-
-/// @brief Read the contents of one single rank from the first field in a FEN record.
-/// @details The assumptions are listed here:
-/// @li Does not contain more than 8 characters.
-/// @li Valid digits are 1 to 8, but if there are multiple digits their sum cannot
-/// exceed 8.
-/// @li The only valid letters are those that represent white or black pieces.
-/// @param rankLine The string representing one rank.
-/// @param squareList A reference to a vector of squares where squares are added.
-/// @param row The number of row representing the current rank.
-/// @return The total number of pieces found in the rank.
-/// @throw ChessError if the rankLine violates any of the assumptions.
-size_t
-readRank(const string &rankLine, vector<Square>& squareList, const dim_type row);
-
-/// @brief Reads the color of the player who moves next.
-/// @details The assumptions are:
-/// @li Contains exactly one character.
-/// @li Valid characters are <em>w</em> and <em>b</em>.
-/// @param colorLine The string representing the color.
-/// @return The @c PieceColor for black or white.
-/// @throw ChessError if the rankLine violates any of the assumptions.
-PieceColor
-readColor(const string &colorLine);
-
-/// @brief Read the castling rights from the 3rd field in a FEN record.
-/// @details The assumptions are:
-/// @li Does not contain more than 4 characters.
-/// @li Legal characters are -, K, Q, k, and q.
-/// @li If - is present, then this should be the only character available.
-/// @li Valid characters should not repeat.
-/// @param infoLine The string representing the castling rights. Should not be marked
-/// as const, because it is sorted in order to find unique values in string.
-/// @return A @c BoardInfo representing the castling rights.
-/// @throw ChessError if the infoLine violates any of the assumptions.
-BoardInfo
-readBoardInfo(string &infoLine);
-
-/// @brief Read en passant info from the 4th field in a FEN record.
-/// @details The assumptions are:
-/// @li Does not contain more than 2 characters.
-/// @li Legal characters are -, a-h, 3, and 6.
-/// @li If - is present, then the field should not contain more chars.
-/// @li If - is not present, then the field should contain 2 chars, the first should
-/// be a letter in a-h, and second should be 3 or 6.
-/// @details If there is an en passant, then the caller of this function should
-/// enforce that there is a pawn that makes this info true.
-/// @param field The string representing the 4th field in the FEN record.
-/// @return A @c PieceMove representing the last move.
-/// @throw ChessError if the field violates any of the assumptions.
-PieceMove
-readEnPassant(const string &field);
-
-} // anonymous namespace
-
 /////////////////////////////////////////////////////////////////////////////////////
 // static member definitions
 /////////////////////////////////////////////////////////////////////////////////////
@@ -98,6 +40,26 @@ readEnPassant(const string &field);
 const string FenSymbols::RANK_CHR("PNBRQKpnbrqk");
 const string FenSymbols::CASTLE_CHR("KQkq");
 const string FenSymbols::COLOR_CHR("wb");
+
+/////////////////////////////////////////////////////////////////////////////////////
+// static function declarations
+/////////////////////////////////////////////////////////////////////////////////////
+
+namespace {
+
+//
+// helper functions for readFen(const string&)
+//
+size_t
+readRank(const string &rankLine, vector<Square>& squareList, const dim_type row);
+PieceColor
+readColor(const string &colorLine);
+BoardInfo
+readBoardInfo(string &infoLine);
+PieceMove
+readEnPassant(const string &field);
+
+} // namespace
 
 /////////////////////////////////////////////////////////////////////////////////////
 // function definitions
@@ -237,16 +199,23 @@ fenPiece(char fenCode) noexcept
   return color | piece;
 }
 
-namespace { // private function definitions
+/////////////////////////////////////////////////////////////////////////////////////
+// static function definitions
+/////////////////////////////////////////////////////////////////////////////////////
 
-//
-// readRank enforces the assumptions about rankLine by looking at some fields in
-// FenSymbols: RANK_LENGTH and RANK_CHR. RANK_LENGTH represents the maximum number
-// of characters that that a row may contain, and RANK_CHR represents the valid
-// characters that a FEN row may contain. Empty squares are marked with digits,
-// but a row may not contain more than 8 empty squares, and this is enforced by
-// summing the number of empty squares found in a row.
-//
+namespace {
+
+// @brief Read the contents of one single rank from the first field in a FEN record.
+// @details The assumptions are listed here:
+// @li Does not contain more than 8 characters.
+// @li Valid digits are 1 to 8, but if there are multiple digits their sum cannot
+// exceed 8.
+// @li The only valid letters are those that represent white or black pieces.
+// @param rankLine The string representing one rank.
+// @param squareList A reference to a vector of squares where squares are added.
+// @param row The number of row representing the current rank.
+// @return The total number of pieces found in the rank.
+// @throw ChessError if the rankLine violates any of the assumptions.
 size_t
 readRank(const string &rankLine, vector<Square> &squareList, const dim_type row)
 {
@@ -282,9 +251,13 @@ readRank(const string &rankLine, vector<Square> &squareList, const dim_type row)
   return numPieces;
 }
 
-//
-// @copydoc readColor(const string&)
-//
+// @brief Reads the color of the player who moves next.
+// @details The assumptions are:
+// @li Contains exactly one character.
+// @li Valid characters are <em>w</em> and <em>b</em>.
+// @param colorLine The string representing the color.
+// @return The @c PieceColor for black or white.
+// @throw ChessError if the rankLine violates any of the assumptions.
 PieceColor
 readColor(const string &colorLine)
 {
@@ -297,9 +270,16 @@ readColor(const string &colorLine)
   return colorLine.front() == 'w' ? PieceColor::WHITE : PieceColor::BLACK;
 }
 
-//
-// @copydoc readBoardInfo(string&)
-//
+// @brief Read the castling rights from the 3rd field in a FEN record.
+// @details The assumptions are:
+// @li Does not contain more than 4 characters.
+// @li Legal characters are -, K, Q, k, and q.
+// @li If - is present, then this should be the only character available.
+// @li Valid characters should not repeat.
+// @param infoLine The string representing the castling rights. Should not be marked
+// as const, because it is sorted in order to find unique values in string.
+// @return A @c BoardInfo representing the castling rights.
+// @throw ChessError if the infoLine violates any of the assumptions.
 BoardInfo
 readBoardInfo(string &infoLine)
 {
@@ -380,9 +360,18 @@ readBoardInfo(string &infoLine)
   return info;
 }
 
-//
-// @copydoc readEnPassant(const string&)
-//
+// @brief Read en passant info from the 4th field in a FEN record.
+// @details The assumptions are:
+// @li Does not contain more than 2 characters.
+// @li Legal characters are -, a-h, 3, and 6.
+// @li If - is present, then the field should not contain more chars.
+// @li If - is not present, then the field should contain 2 chars, the first should
+// be a letter in a-h, and second should be 3 or 6.
+// @details If there is an en passant, then the caller of this function should
+// enforce that there is a pawn that makes this info true.
+// @param field The string representing the 4th field in the FEN record.
+// @return A @c PieceMove representing the last move.
+// @throw ChessError if the field violates any of the assumptions.
 PieceMove
 readEnPassant(const string &field)
 {
@@ -428,6 +417,6 @@ readEnPassant(const string &field)
   return PieceMove(fromRow, col, code, toRow, col);
 }
 
-} // anonymous namespace
+} // namespace
 
 } // zoor
