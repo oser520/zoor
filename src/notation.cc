@@ -228,8 +228,8 @@ readRank(const string &rankLine, vector<Square> &squareList, const dim_type row)
     ++numPieces;
   }
 
-  // check that number of empty squares doesn't exceed length of row
-  if (col > FenSymbols::RANK_LENGTH)
+  // check that we processed 8 squares
+  if (col != FenSymbols::RANK_LENGTH)
     throw ChessError("FEN record is not valid");
 
   return numPieces;
