@@ -34,12 +34,11 @@ namespace zoor {
 // Declarations.
 /////////////////////////////////////////////////////////////////////////////////////
 
-/**
- * @brief A POD (plain old data) with symbols that are used in FEN notation.
- * @details Used to parse files with FEN notation. If this POD was long lived, then
- * it might make sense to make its members static; however, it is very unlikely to
- * have a frequent need to read files with FEN notation.
- */
+/// @brief FenSymbols contains static members that are used by functions to parse a
+/// FEN record and build a board from it.
+/// @details Copy control for FenSymbols has been removed, because it is not meant to
+/// instantiated.
+
 struct FenSymbols
 {
   // Remove copy control
@@ -49,45 +48,26 @@ struct FenSymbols
   FenSymbols& operator=(const FenSymbols&) = delete;
   FenSymbols& operator=(FenSymbols&&) = delete;
 
-  /**
-   * @brief Symbols for white pieces.
-   */
-  const std::string wPiece;
+  /// @brief The maximum number of chars that can be on a rank.
+  static constexpr size_t RANK_LENGTH(8);
 
-  /**
-   * @brief Symbols for black pieces.
-   */
-  const std::string bPiece;
+  /// @brief The maximum number of chars that can be on the 3rd field of a FEN
+  /// record.
+  static constexpr size_t CASTLE_LENGTH(4);
 
-  /**
-   * @brief Symbols for white can castle.
-   */
-  const std::string wCastle;
+  /// @brief The char symbols for valid pieces.
+  static const std::string RANK_CHR;
 
-  /**
-   * @brief Symbols for black can castle.
-   */
-  const std::string bCastle;
+  /// @brief The char symbols to represent castling rights in the 3rd field of a FEN
+  /// record.
+  static const std::string CASTLE_CHR;
 
-  /**
-   * @brief Symbol for white's turn.
-   */
-  constexpr char cWhite('w');
+  /// @brief The char symbols for a valid color.
+  static const std::string VALID_COLOR;
 
-  /**
-   * @brief Symbol for black's turn.
-   */
-  constexpr char cBlack('b');
-
-  /**
-   * @brief Symbol for rank divider.
-   */
-  constexpr char slash('/');
-
-  /**
-   * @brief Symbols for field divider.
-   */
-  constexpr char space(' ');
+  /// @brief Used in 3rd and 4th fields to indicate that there are no castling rights
+  /// or that there is no en passant.
+  static constexpr char DASH('-');
 };
 
 /**

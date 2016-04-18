@@ -16,9 +16,6 @@
 #include "board.hh"
 #include "chesserror.hh"
 
-// TODO: Add const static members to FenSymbols.
-// These static members contain valid fen symbols, such as valid chars for a rank.
-
 // TODO: Move assumptions comments to location of function defintion.
 
 //
@@ -93,6 +90,18 @@ PieceMove
 readEnPassant(const string &field);
 
 } // anonymous namespace
+
+/////////////////////////////////////////////////////////////////////////////////////
+// static member definitions
+/////////////////////////////////////////////////////////////////////////////////////
+
+const string FenSymbols::RANK_CHR("PNBRQKpnbrqk");
+const string FenSymbols::CASTLE_CHR("KQkq");
+const string FenSymbols::COLOR_CHR("wb");
+
+/////////////////////////////////////////////////////////////////////////////////////
+// function definitions
+/////////////////////////////////////////////////////////////////////////////////////
 
 //
 // readFEN with param ifstream.
