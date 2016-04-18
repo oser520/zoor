@@ -24,7 +24,9 @@
 
 // TODO: Move assumptions comments to location of function defintion.
 
+//
 // using from STL
+//
 using std::vector;
 using std::ifstream;
 using std::string;
@@ -32,7 +34,9 @@ using std::istringstream;
 using std::sort;
 using std::unique;
 
+//
 // using from zoor
+//
 using Board::dim_type;
 
 namespace zoor {
@@ -93,8 +97,10 @@ readEnPassant(const string &field);
 
 } // anonymous namespace
 
+//
 // readFEN with param ifstream.
 // TODO: this is a good place to add logging info
+//
 vector<Board>
 readFEN(ifstream &inFile)
 {
@@ -113,8 +119,10 @@ readFEN(ifstream &inFile)
   return boardList;
 }
 
+//
 // readFEN with param string.
 // TODO: implement
+//
 Board
 readFEN(string &fenLine)
 {
@@ -185,12 +193,14 @@ readFEN(string &fenLine)
 
 namespace { // private function definitions
 
+//
 // readRank enforces the assumptions about rankLine by looking at some fields in
 // FenSymbols: RANK_LENGTH and RANK_CHR. RANK_LENGTH represents the maximum number
 // of characters that that a row may contain, and RANK_CHR represents the valid
 // characters that a FEN row may contain. Empty squares are marked with digits,
 // but a row may not contain more than 8 empty squares, and this is enforced by
 // summing the number of empty squares found in a row.
+//
 size_t
 readRank(const string &rankLine, vector<Square> &squareList, const dim_type row)
 {
@@ -226,6 +236,7 @@ readRank(const string &rankLine, vector<Square> &squareList, const dim_type row)
   return numPieces;
 }
 
+//
 // @copydoc readColor(const string&)
 //
 PieceColor
@@ -240,6 +251,7 @@ readColor(const string &colorLine)
   return colorLine.front() == 'w' ? PieceColor::WHITE : PieceColor::BLACK;
 }
 
+//
 // @copydoc readBoardInfo(string&)
 //
 BoardInfo
@@ -322,6 +334,7 @@ readBoardInfo(string &infoLine)
   return info;
 }
 
+//
 // @copydoc readEnPassant(const string&)
 //
 PieceMove
