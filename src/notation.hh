@@ -63,7 +63,7 @@ struct FenSymbols
   static const std::string CASTLE_CHR;
 
   /// @brief The char symbols for a valid color.
-  static const std::string VALID_COLOR;
+  static const std::string COLOR_CHR;
 
   /// @brief Used in 3rd and 4th fields to indicate that there are no castling rights
   /// or that there is no en passant.
