@@ -99,7 +99,6 @@ readEnPassant(const string &field);
 
 //
 // readFEN with param ifstream.
-// TODO: this is a good place to add logging info
 //
 vector<Board>
 readFEN(ifstream &inFile)
@@ -121,7 +120,6 @@ readFEN(ifstream &inFile)
 
 //
 // readFEN with param string.
-// TODO: implement
 //
 Board
 readFEN(string &fenLine)
