@@ -1,8 +1,10 @@
-/**
- * @file notation.cc
- * @author Omar A Serrano
- * @date 2016-04-09
- */
+/// @file notation.cc
+/// @author Omar A Serrano
+/// @date 2016-04-09
+
+//
+// STL headers
+//
 #include <string>
 #include <sstream>
 #include <vector>
@@ -10,6 +12,9 @@
 #include <utility>
 #include <algorithm>
 
+//
+// zoor headers
+//
 #include "notation.hh"
 #include "piececode.hh"
 #include "square.hh"
