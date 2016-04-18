@@ -2,6 +2,8 @@
 /// @author Omar A Serrano
 /// @date 2016-04-09
 
+// TODO: create class object to hold the board and the move counts
+
 //
 // STL headers
 //
