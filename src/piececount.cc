@@ -48,12 +48,12 @@ PiceCount::count(const vector<Square> &squareList) noexcept
 const bool
 PiceCount::good() const noexcept
 {
-  return wKing() > KMAX || bKing() > KMAX
-      || wQueen() > QMAX || bQueen() > QMAX
-      || wRook() > RMAX || bRook() > RMAX
-      || wBishop() > BMAX || bBishop() > BMAX
-      || wKnight() > NMAX || bKnight() > NMAX
-      || wPawn() > PMAX || bPawn() > PMAX;
+  return wKing() <= KMAX && bKing() <= KMAX
+      && wQueen() <= QMAX && bQueen() <= QMAX
+      && wRook() <= RMAX && bRook() <= RMAX
+      && wBishop() <= BMAX && bBishop() <= BMAX
+      && wKnight() <= NMAX && bKnight() <= NMAX
+      && wPawn() <= PMAX && bPawn() <= PMAX;
 }
 
 //
