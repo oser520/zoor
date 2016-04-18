@@ -1,15 +1,19 @@
-/**
- * @file fennotation.hh
- * @author Omar A Serrano
- * @date 2016-04-07
- */
+/// @file fennotation.hh
+/// @author Omar A Serrano
+/// @date 2016-04-07
 #ifndef _FENNOTATION_H
 #define _FENNOTATION_H
 
+//
+// STL headers
+//
 #include <string>
 #include <vector>
 #include <fstream>
 
+//
+// zoor headers
+//
 #include "board.hh"
 
 /**
@@ -70,59 +74,57 @@ struct FenSymbols
   static constexpr char DASH('-');
 };
 
-/**
- * @brief Read a chess position in FEN notation from a string.
- * @details If the string contains more than a FEN record, but the record begins
- * with a valid FEN record, then whatever else remains after the FEN record is
- * ignored.
- * @param fenLine A FEN record string.
- * @return A vector of boards.
- * @throw ChessError if the FEN record is not valid.
- */
-Board readFEN(const std::string &fenLine);
+/// @brief Read a chess position in FEN notation from a string.
+/// @details If the string contains more than a FEN record, but the record begins
+/// with a valid FEN record, then whatever else remains after the FEN record is
+/// ignored.
+/// @param fenLine A FEN record string.
+/// @return A vector of boards.
+/// @throw ChessError if the FEN record is not valid.
+Board
+readFEN(const std::string &fenLine);
 
-/**
- * @brief Read a chess position in FEN notation from a file.
- * @param inFile The name of the file.
- * @return A vector of boards.
- */
-std::vector<Board> readFEN(std::ifstream &inFile);
+/// @brief Read a chess position in FEN notation from a file.
+/// @param inFile The name of the file.
+/// @return A vector of boards.
+std::vector<Board>
+readFEN(std::ifstream &inFile);
 
-/**
- * @brief Read a chess position FEN notation from a file.
- * @param fileName The name of the file.
- * @return A vector of @c Boards, which may contain 0 or more boards.
- */
-std::vector<Board> readFEN(const char *fileName);
+/// @brief Read a chess position FEN notation from a file.
+/// @param fileName The name of the file.
+/// @return A vector of @c Boards, which may contain 0 or more boards.
+std::vector<Board>
+readFEN(const char *fileName);
 
-/**
- * @copydoc readFEN(const char*)
- */
-std::vector<Board> readFEN(const std::string &fileName);
+///
+/// @copydoc readFEN(const char*)
+///
+std::vector<Board>
+readFEN(const std::string &fileName);
 
-/**
- * @brief Write a board to a file in FEN notation.
- * @param fileName The name of the file.
- * @param board The @c Board to be written.
- */
-void writeFEN(const char *fileName, const Board &board);
+/// @brief Write a board to a file in FEN notation.
+/// @param fileName The name of the file.
+/// @param board The @c Board to be written.
+void
+writeFEN(const char *fileName, const Board &board);
 
-/**
- * @brief Write a board to a file in FEN notation.
- * @param fileName The name of the file.
- * @param boardList A vector of boards, each of which gets one line.
- */
-void writeFEN(const char *fileName, const std::vector<Board> &boardList);
+/// @brief Write a board to a file in FEN notation.
+/// @param fileName The name of the file.
+/// @param boardList A vector of boards, each of which gets one line.
+void
+writeFEN(const char *fileName, const std::vector<Board> &boardList);
 
-/**
- * @copydoc writeFen(const char*,const &)
- */
-void writeFEN(const std::string &fileName, const Board &board);
+///
+/// @copydoc writeFen(const char*,const &)
+///
+void
+writeFEN(const std::string &fileName, const Board &board);
 
-/**
- * @copydoc writeFen(const char*,const std::vector<Board>&)
- */
-void writeFEN(const std::string &fileName, const std::vector<Board> &boardList);
+///
+/// @copydoc writeFen(const char*,const std::vector<Board>&)
+///
+void
+writeFEN(const std::string &fileName, const std::vector<Board> &boardList);
 
 /// @brief Get the piece code from a FEN piece.
 /// @param fenCode The symbol representing a piece. For white pieces, legal values
@@ -134,23 +136,29 @@ piececode_t
 fenPiece(char fenCode) noexcept;
 
 /////////////////////////////////////////////////////////////////////////////////////
-// Inline implementations.
+// inline implementations
 /////////////////////////////////////////////////////////////////////////////////////
 
+//
 // readFEN with param const char*
-inline std::vector<Board> readFEN(const char *fileName)
+//
+inline std::vector<Board>
+readFEN(const char *fileName)
 {
   std::ifstream if(fileName);
   return readFEN(if);
 }
 
+//
 // readFEN with param const std::string&
-inline std::vector<Board> readFEN(const std::string &fileName)
+//
+inline std::vector<Board>
+readFEN(const std::string &fileName)
 {
   std::ifstream if(fileName);
   return readFEN(if);
 }
 
-}
+} // namesapce zoor
 
 #endif // _FENNOTATION_H
