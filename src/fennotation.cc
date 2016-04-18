@@ -1,4 +1,4 @@
-/// @file notation.cc
+/// @file fennotation.cc
 /// @author Omar A Serrano
 /// @date 2016-04-09
 

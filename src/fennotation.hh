@@ -1,10 +1,10 @@
 /**
- * @file notation.hh
+ * @file fennotation.hh
  * @author Omar A Serrano
  * @date 2016-04-07
  */
-#ifndef _NOTATION_H
-#define _NOTATION_H
+#ifndef _FENNOTATION_H
+#define _FENNOTATION_H
 
 #include <string>
 #include <vector>
@@ -153,4 +153,4 @@ inline std::vector<Board> readFEN(const std::string &fileName)
 
 }
 
-#endif // _NOTATION_H
+#endif // _FENNOTATION_H
