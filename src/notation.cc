@@ -188,6 +188,49 @@ readFEN(string &fenLine)
   return Board();
 }
 
+//
+// convert a FEN symbol to a piece code
+//
+piececode_t
+fenPiece(char fenCode) noexcept
+{
+  // get the color
+  PieceColor color;
+  if (std::islower(fenCode))
+    color = PieceColor::WHITE;
+  else {
+    color = PieceColor::BLACK;
+    fenCode = std::tolower(fenCode);
+  }
+
+  // get the piece type
+  PieceCode piece;
+  switch (fenCode) {
+  case 'p':
+    piece = PieceCode::PAWN;
+    break;
+  case 'n':
+    piece = PieceCode::KNIGHT;
+    break;
+  case 'b':
+    piece = PieceCode::BISHOP;
+    break;
+  case 'r':
+    piece = PieceCode::ROOK;
+    break;
+  case 'q':
+    piece = PieceCode::QUEEN;
+    break;
+  case 'k':
+    piece = PieceCode::KING;
+    break;
+  default;
+    return 0;
+  }
+
+  return color | piece;
+}
+
 namespace { // private function definitions
 
 //
