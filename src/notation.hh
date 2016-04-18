@@ -42,35 +42,12 @@ namespace zoor {
  */
 struct FenSymbols
 {
-  /**
-   * @brief Default ctor.
-   */
-  FenSymbols();
-
-  /**
-   * @brief Default copy ctor.
-   */
-  FenSymbols(const FenSymbols &fenSymbols) = default;
-
-  /**
-   * @brief Default move ctor.
-   */
-  FenSymbols(FenSymbols &&fenSymbols) noexcept = default;
-
-  /**
-   * @brief Default copy assignment.
-   */
-  FenSymbols& operator=(const FenSymbols &fenSymbols) = default;
-
-  /**
-   * @brief Default move assignment.
-   */
-  FenSymbols& operator=(FenSymbols &&fenSymbols) noexcept = default;
-
-  /**
-   * @brief Default dtor.
-   */
-  ~FenSymbols() noexcept = default;
+  // Remove copy control
+  FenSymbols() = delete;
+  FenSymbols(const FenSymbols&) = delete;
+  FenSymbols(FenSymbols&&) = delete;
+  FenSymbols& operator=(const FenSymbols&) = delete;
+  FenSymbols& operator=(FenSymbols&&) = delete;
 
   /**
    * @brief Symbols for white pieces.
@@ -179,13 +156,6 @@ fenPiece(char fenCode) noexcept;
 /////////////////////////////////////////////////////////////////////////////////////
 // Inline implementations.
 /////////////////////////////////////////////////////////////////////////////////////
-
-// Default ctor for FenSymbols
-FenSymbols::FenSymbols()
-  : wPiece("RNBQK"),
-    bPiece("rnbqk"),
-    wCastle("KQ"),
-    bCastle("kq") {}
 
 // readFEN with param const char*
 inline std::vector<Board> readFEN(const char *fileName)
