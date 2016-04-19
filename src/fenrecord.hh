@@ -148,5 +148,14 @@ FenRecord::halfMove() const noexcept
   return mHalfMove;
 }
 
+//
+// get the full move count
+//
+inline const size_t
+FenRecord::fullMove() const noexcept
+{
+  return mFullMove;
+}
+
 } // namespace zoor
 #endif // _FENRECORD_H
