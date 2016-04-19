@@ -120,5 +120,24 @@ private:
   board_ptr mBoardPtr;
 };
 
+/////////////////////////////////////////////////////////////////////////////////////
+// inline definitions
+/////////////////////////////////////////////////////////////////////////////////////
+
+//
+// initializer
+//
+inline
+FenRecord::FenRecord
+  (const board_ptr &boardPtr,
+   size_t halfMove,
+   size_t fullMove) noexcept
+  : mHalfMove(halfMove),
+    mFullMove(fullMove),
+    mBoardPtr(boardPtr)
+{
+  assert(mBoardPtr != nullptr);
+}
+
 } // namespace zoor
 #endif // _FENRECORD_H
