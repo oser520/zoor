@@ -10,6 +10,7 @@
 //
 // STL headers
 //
+#include <cassert>
 #include <cstdint>
 #include <memory>
 
