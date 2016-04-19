@@ -95,7 +95,7 @@ public:
   /// @return The number of half moves.
   /// @throw Never throws.
   ///
-  size_t
+  const size_t
   halfMove() const noexcept;
 
   ///
@@ -103,7 +103,7 @@ public:
   /// @return The number of full moves.
   /// @throw Never throws.
   ///
-  size_t
+  const size_t
   fullMove() const noexcept;
 
   ///
@@ -111,7 +111,7 @@ public:
   /// @return The pointer to the board.
   /// @throw Never throws.
   ///
-  size_t
+  board_ptr
   boardPtr() const noexcept;
 
 private:
