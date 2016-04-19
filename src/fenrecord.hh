@@ -139,5 +139,14 @@ FenRecord::FenRecord
   assert(mBoardPtr != nullptr);
 }
 
+//
+// get the half move count
+//
+inline const size_t
+FenRecord::halfMove() const noexcept
+{
+  return mHalfMove;
+}
+
 } // namespace zoor
 #endif // _FENRECORD_H
