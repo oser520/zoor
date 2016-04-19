@@ -157,5 +157,14 @@ FenRecord::fullMove() const noexcept
   return mFullMove;
 }
 
+//
+// get the pointer to the board
+//
+inline FenRecord::board_ptr
+FenRecord::boardPtr() const noexcept
+{
+  return mBoardPtr;
+}
+
 } // namespace zoor
 #endif // _FENRECORD_H
