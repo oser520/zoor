@@ -27,7 +27,7 @@ OBJ_BOARDINFO = tboardinfo.o
 OBJ_PIECECOUNT = tpiececount.o piececount.o piececode.o
 OBJ_SQUARE = tsquare.o square.o piececode.o
 OBJ_PIECEMOVE = tpiecemove.o piecemove.o square.o piececode.o
-OBJ_FENRECORD = tfenrecord.o board.o
+OBJ_FENRECORD = tfenrecord.o board.o piecemove.o square.o piececode.o
 OBJ_BOARD = tboard.o board.o piecemove.o square.o piececode.o
 
 # Combine unique object files.
