@@ -75,17 +75,17 @@ readEnPassant(const string &field);
 /////////////////////////////////////////////////////////////////////////////////////
 
 //
-// readFEN with param ifstream.
+// readFen with param ifstream.
 //
 vector<FenRecord>
-readFEN(ifstream &inFile)
+readFen(ifstream &inFile)
 {
   string line;
   vector<FenRecord> fenList;
 
   while (getline(inFile, line)) {
     if (line.empty()) continue;
-    auto fenrec = readFEN(line);
+    auto fenrec = readFen(line);
     fenList.push_back(fenrec);
   }
 
@@ -96,10 +96,10 @@ readFEN(ifstream &inFile)
 }
 
 //
-// readFEN with param string.
+// readFen with param string.
 //
 const FenRecord
-readFEN(string &fenLine)
+readFen(string &fenLine)
 {
   string buff;
   int numRank = 7, numPiece = 0;

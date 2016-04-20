@@ -88,7 +88,7 @@ struct FenSymbols
 /// @throw ChessError if the FEN record is not valid.
 ///
 const FenRecord
-readFEN(const std::string &fenLine);
+readFen(const std::string &fenLine);
 
 ///
 /// @brief Read a chess position in FEN notation from a file.
@@ -96,7 +96,7 @@ readFEN(const std::string &fenLine);
 /// @return A vector of @c FenRecord.
 ///
 std::vector<FenRecord>
-readFEN(std::ifstream &inFile);
+readFen(std::ifstream &inFile);
 
 ///
 /// @brief Read a chess position FEN notation from a file.
@@ -104,13 +104,13 @@ readFEN(std::ifstream &inFile);
 /// @return A vector of @c FenRecord, which may contain 0 or more @c FenRecord.
 ///
 std::vector<FenRecord>
-readFEN(const char *fileName);
+readFen(const char *fileName);
 
 ///
 /// @copydoc readFEN(const char*)
 ///
 std::vector<FenRecord>
-readFEN(const std::string &fileName);
+readFen(const std::string &fileName);
 
 ///
 /// @brief Write a board to a file in FEN notation.
@@ -118,7 +118,7 @@ readFEN(const std::string &fileName);
 /// @param board The @c Board to be written.
 ///
 void
-writeFEN(const char *fileName, const Board &board);
+writeFen(const char *fileName, const Board &board);
 
 ///
 /// @brief Write a board to a file in FEN notation.
@@ -126,19 +126,19 @@ writeFEN(const char *fileName, const Board &board);
 /// @param boardList A vector of boards, each of which gets one line.
 ///
 void
-writeFEN(const char *fileName, const std::vector<Board> &boardList);
+writeFen(const char *fileName, const std::vector<Board> &boardList);
 
 ///
 /// @copydoc writeFen(const char*,const &)
 ///
 void
-writeFEN(const std::string &fileName, const Board &board);
+writeFen(const std::string &fileName, const Board &board);
 
 ///
 /// @copydoc writeFen(const char*,const std::vector<Board>&)
 ///
 void
-writeFEN(const std::string &fileName, const std::vector<Board> &boardList);
+writeFen(const std::string &fileName, const std::vector<Board> &boardList);
 
 ///
 /// @brief Get the piece code from a FEN piece.
@@ -159,7 +159,7 @@ fenPiece(char fenCode) noexcept;
 // readFEN with param const char*
 //
 inline std::vector<FenRecord>
-readFEN(const char *fileName)
+readFen(const char *fileName)
 {
   std::ifstream if(fileName);
   return readFEN(if);
@@ -169,7 +169,7 @@ readFEN(const char *fileName)
 // readFEN with param const std::string&
 //
 inline std::vector<FenRecord>
-readFEN(const std::string &fileName)
+readFen(const std::string &fileName)
 {
   std::ifstream if(fileName);
   return readFEN(if);
