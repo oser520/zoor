@@ -6,6 +6,7 @@
 
 //
 // STL headers
+//
 #include <memory>
 
 //
