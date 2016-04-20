@@ -170,8 +170,8 @@ operator<<(std::ostream& os, const BoardInfo& info);
 /// @return A reference to the underlying bitset used.
 /// @throw Never throws.
 ///
-inline const
-BoardInfo::bitset_type BoardInfo::get() const noexcept
+inline const BoardInfo::bitset_type
+BoardInfo::get() const noexcept
 {
   return mInfo;
 }
