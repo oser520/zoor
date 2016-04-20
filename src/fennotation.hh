@@ -93,23 +93,23 @@ readFEN(const std::string &fenLine);
 ///
 /// @brief Read a chess position in FEN notation from a file.
 /// @param inFile The name of the file.
-/// @return A vector of boards.
+/// @return A vector of @c FenRecord.
 ///
-std::vector<Board>
+std::vector<FenRecord>
 readFEN(std::ifstream &inFile);
 
 ///
 /// @brief Read a chess position FEN notation from a file.
 /// @param fileName The name of the file.
-/// @return A vector of @c Boards, which may contain 0 or more boards.
+/// @return A vector of @c FenRecord, which may contain 0 or more @c FenRecord.
 ///
-std::vector<Board>
+std::vector<FenRecord>
 readFEN(const char *fileName);
 
 ///
 /// @copydoc readFEN(const char*)
 ///
-std::vector<Board>
+std::vector<FenRecord>
 readFEN(const std::string &fileName);
 
 ///
@@ -158,7 +158,7 @@ fenPiece(char fenCode) noexcept;
 //
 // readFEN with param const char*
 //
-inline std::vector<Board>
+inline std::vector<FenRecord>
 readFEN(const char *fileName)
 {
   std::ifstream if(fileName);
@@ -168,7 +168,7 @@ readFEN(const char *fileName)
 //
 // readFEN with param const std::string&
 //
-inline std::vector<Board>
+inline std::vector<FenRecord>
 readFEN(const std::string &fileName)
 {
   std::ifstream if(fileName);

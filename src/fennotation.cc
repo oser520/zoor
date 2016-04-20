@@ -75,7 +75,7 @@ readEnPassant(const string &field);
 //
 // readFEN with param ifstream.
 //
-vector<Board>
+vector<FenRecord>
 readFEN(ifstream &inFile)
 {
   string line;
