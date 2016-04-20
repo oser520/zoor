@@ -1,6 +1,8 @@
+/////////////////////////////////////////////////////////////////////////////////////
 /// @file fennotation.cc
 /// @author Omar A Serrano
 /// @date 2016-04-09
+/////////////////////////////////////////////////////////////////////////////////////
 
 // TODO: change function return types so that they return FenRecord when appropriate
 
@@ -212,6 +214,7 @@ fenPiece(char fenCode) noexcept
 
 namespace {
 
+//
 // @brief Read the contents of one single rank from the first field in a FEN record.
 // @details The assumptions are listed here:
 // @li Does not contain more than 8 characters.
@@ -223,6 +226,7 @@ namespace {
 // @param row The number of row representing the current rank.
 // @return The total number of pieces found in the rank.
 // @throw ChessError if the rankLine violates any of the assumptions.
+//
 size_t
 readRank(const string &rankLine, vector<Square> &squareList, const dim_type row)
 {
@@ -258,6 +262,7 @@ readRank(const string &rankLine, vector<Square> &squareList, const dim_type row)
   return numPieces;
 }
 
+//
 // @brief Reads the color of the player who moves next.
 // @details The assumptions are:
 // @li Contains exactly one character.
@@ -265,6 +270,7 @@ readRank(const string &rankLine, vector<Square> &squareList, const dim_type row)
 // @param colorLine The string representing the color.
 // @return The @c PieceColor for black or white.
 // @throw ChessError if the rankLine violates any of the assumptions.
+//
 PieceColor
 readColor(const string &colorLine)
 {
@@ -277,6 +283,7 @@ readColor(const string &colorLine)
   return colorLine.front() == 'w' ? PieceColor::WHITE : PieceColor::BLACK;
 }
 
+//
 // @brief Read the castling rights from the 3rd field in a FEN record.
 // @details The assumptions are:
 // @li Does not contain more than 4 characters.
@@ -287,6 +294,7 @@ readColor(const string &colorLine)
 // as const, because it is sorted in order to find unique values in string.
 // @return A @c BoardInfo representing the castling rights.
 // @throw ChessError if the infoLine violates any of the assumptions.
+//
 BoardInfo
 readBoardInfo(string &infoLine)
 {
@@ -367,6 +375,7 @@ readBoardInfo(string &infoLine)
   return info;
 }
 
+//
 // @brief Read en passant info from the 4th field in a FEN record.
 // @details The assumptions are:
 // @li Does not contain more than 2 characters.
@@ -379,6 +388,7 @@ readBoardInfo(string &infoLine)
 // @param field The string representing the 4th field in the FEN record.
 // @return A @c PieceMove representing the last move.
 // @throw ChessError if the field violates any of the assumptions.
+//
 PieceMove
 readEnPassant(const string &field)
 {
