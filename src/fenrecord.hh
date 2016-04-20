@@ -96,7 +96,7 @@ public:
   /// @return The number of half moves.
   /// @throw Never throws.
   ///
-  const size_t
+  size_t
   halfMove() const noexcept;
 
   ///
@@ -104,7 +104,7 @@ public:
   /// @return The number of full moves.
   /// @throw Never throws.
   ///
-  const size_t
+  size_t
   fullMove() const noexcept;
 
   ///
@@ -143,7 +143,7 @@ FenRecord::FenRecord
 //
 // get the half move count
 //
-inline const size_t
+inline size_t
 FenRecord::halfMove() const noexcept
 {
   return mHalfMove;
@@ -152,7 +152,7 @@ FenRecord::halfMove() const noexcept
 //
 // get the full move count
 //
-inline const size_t
+inline size_t
 FenRecord::fullMove() const noexcept
 {
   return mFullMove;

@@ -30,6 +30,7 @@ using std::make_shared;
 // using from zoor
 //
 using zoor::Board;
+using zoor::FenRecord;
 
 //
 // Test FenRecord
