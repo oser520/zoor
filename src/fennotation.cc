@@ -96,7 +96,7 @@ readFEN(ifstream &inFile)
 //
 // readFEN with param string.
 //
-Board
+const FenRecord
 readFEN(string &fenLine)
 {
   string buff;

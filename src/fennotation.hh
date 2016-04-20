@@ -81,13 +81,13 @@ struct FenSymbols
 ///
 /// @brief Read a chess position in FEN notation from a string.
 /// @details If the string contains more than a FEN record, but the record begins
-/// with a valid FEN record, then whatever else remains after the FEN record is
-/// ignored.
+/// with a valid FEN record, then the record is consumed and whatever else remains
+/// is ignored.
 /// @param fenLine A FEN record string.
-/// @return A vector of boards.
+/// @return A @c FenRecord.
 /// @throw ChessError if the FEN record is not valid.
 ///
-Board
+const FenRecord
 readFEN(const std::string &fenLine);
 
 ///
