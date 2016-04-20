@@ -81,18 +81,18 @@ vector<FenRecord>
 readFEN(ifstream &inFile)
 {
   string line;
-  vector<Board> boardList;
+  vector<FenRecord> fenList;
 
   while (getline(inFile, line)) {
     if (line.empty()) continue;
-    auto board = readFEN(line);
-    boardList.emplace_back(move(board));
+    auto fenrec = readFEN(line);
+    fenList.push_back(fenrec);
   }
 
   if (inFile.fail() && !inFile.eof())
     throw ChessError("Error processing FEN file");
 
-  return boardList;
+  return fenList;
 }
 
 //
