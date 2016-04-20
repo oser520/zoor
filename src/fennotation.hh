@@ -1,3 +1,4 @@
+/////////////////////////////////////////////////////////////////////////////////////
 /// @file fennotation.hh
 /// @author Omar A Serrano
 /// @date 2016-04-07
@@ -18,6 +19,7 @@
 ///
 /// After the move 2. Nf3:
 /// rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2
+/////////////////////////////////////////////////////////////////////////////////////
 #ifndef _FENNOTATION_H
 #define _FENNOTATION_H
 
@@ -39,11 +41,12 @@ namespace zoor {
 // Declarations.
 /////////////////////////////////////////////////////////////////////////////////////
 
+///
 /// @brief FenSymbols contains static members that are used by functions to parse a
 /// FEN record and build a board from it.
 /// @details Copy control for FenSymbols has been removed, because it is not meant to
 /// instantiated.
-
+///
 struct FenSymbols
 {
   // Remove copy control
@@ -75,6 +78,7 @@ struct FenSymbols
   static constexpr char DASH('-');
 };
 
+///
 /// @brief Read a chess position in FEN notation from a string.
 /// @details If the string contains more than a FEN record, but the record begins
 /// with a valid FEN record, then whatever else remains after the FEN record is
@@ -82,18 +86,23 @@ struct FenSymbols
 /// @param fenLine A FEN record string.
 /// @return A vector of boards.
 /// @throw ChessError if the FEN record is not valid.
+///
 Board
 readFEN(const std::string &fenLine);
 
+///
 /// @brief Read a chess position in FEN notation from a file.
 /// @param inFile The name of the file.
 /// @return A vector of boards.
+///
 std::vector<Board>
 readFEN(std::ifstream &inFile);
 
+///
 /// @brief Read a chess position FEN notation from a file.
 /// @param fileName The name of the file.
 /// @return A vector of @c Boards, which may contain 0 or more boards.
+///
 std::vector<Board>
 readFEN(const char *fileName);
 
@@ -103,15 +112,19 @@ readFEN(const char *fileName);
 std::vector<Board>
 readFEN(const std::string &fileName);
 
+///
 /// @brief Write a board to a file in FEN notation.
 /// @param fileName The name of the file.
 /// @param board The @c Board to be written.
+///
 void
 writeFEN(const char *fileName, const Board &board);
 
+///
 /// @brief Write a board to a file in FEN notation.
 /// @param fileName The name of the file.
 /// @param boardList A vector of boards, each of which gets one line.
+///
 void
 writeFEN(const char *fileName, const std::vector<Board> &boardList);
 
@@ -127,12 +140,14 @@ writeFEN(const std::string &fileName, const Board &board);
 void
 writeFEN(const std::string &fileName, const std::vector<Board> &boardList);
 
+///
 /// @brief Get the piece code from a FEN piece.
 /// @param fenCode The symbol representing a piece. For white pieces, legal values
 /// are P, N, B, R, Q, and K. Black pieces use the same symbols in lowercase.
 /// @return A piece code representing the piece and the color of the piece. If
 /// fenCode is not a valid symbol for a piece, then the piece code is none.
 /// @throw Never throws.
+///
 piececode_t
 fenPiece(char fenCode) noexcept;
 
