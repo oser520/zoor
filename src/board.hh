@@ -112,14 +112,14 @@ public:
    * @brief Uses a list of squres to construct board.
    * @param squareList The list of pieces to put on the board.
    * @param color The color to move next.
-   * @param boardInfo A bitset with information about board.
+   * @param boardInfo The @c BoardInfo.
    * @param lastMove The last move made.
    * @throw Never throws.
    */
   Board
     (const std::vector<Square> &squareList,
      const PieceColor color,
-     const std::bitset<16> &boardInfo,
+     const BoardInfo &boardInfo,
      const PieceMove &lastMove = PieceMove());
 
   /**
