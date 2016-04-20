@@ -21,6 +21,7 @@
 #include "board.hh"
 #include "chesserror.hh"
 #include "fennotation.hh"
+#include "fenrecord.hh"
 #include "piececode.hh"
 #include "square.hh"
 
