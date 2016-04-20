@@ -396,6 +396,7 @@ inline bool BoardInfo::bkCastleLong() const noexcept
  * @details The representation is the same as the string representation for the
  * underlying bitset.
  */
+inline
 std::string BoardInfo::toString() const
 {
   std::ostringstream oss;
@@ -407,6 +408,7 @@ std::string BoardInfo::toString() const
  * @return The hash code for the @c BoardInfo.
  * @throw Never throws.
  */
+inline
 size_t BoardInfo::hashCode() const noexcept
 {
   // hash the first 5 bits
