@@ -107,7 +107,7 @@ std::vector<FenRecord>
 readFen(const char *fileName);
 
 ///
-/// @copydoc readFEN(const char*)
+/// @copydoc readFen(const char*)
 ///
 std::vector<FenRecord>
 readFen(const std::string &fileName);
@@ -156,23 +156,23 @@ fenPiece(char fenCode) noexcept;
 /////////////////////////////////////////////////////////////////////////////////////
 
 //
-// readFEN with param const char*
+// readFen with param const char*
 //
 inline std::vector<FenRecord>
 readFen(const char *fileName)
 {
   std::ifstream if(fileName);
-  return readFEN(if);
+  return readFen(if);
 }
 
 //
-// readFEN with param const std::string&
+// readFen with param const std::string&
 //
 inline std::vector<FenRecord>
 readFen(const std::string &fileName)
 {
   std::ifstream if(fileName);
-  return readFEN(if);
+  return readFen(if);
 }
 
 } // namesapce zoor
