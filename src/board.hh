@@ -925,7 +925,7 @@ inline PieceMove Board::lastMove() const noexcept
 ////////////////////////////////////////////////////////////////////////////////
 inline Square Board::operator()(dim_type row, dim_type column) const noexcept
 {
-  std::assert(isInBound(row, column));
+  assert(isInBound(row, column));
   return Square(row, column, get(row, column));
 }
 
@@ -979,7 +979,7 @@ inline Board Board::moveCopy(const PieceMove &pieceMove) const
 ////////////////////////////////////////////////////////////////////////////////
 inline piececode_t Board::get(dim_type row, dim_type column) const noexcept
 {
-  std::assert(isInBound(row, column));
+  assert(isInBound(row, column));
   return mRows[row][column];
 }
 
@@ -988,7 +988,7 @@ inline piececode_t Board::get(dim_type row, dim_type column) const noexcept
 ////////////////////////////////////////////////////////////////////////////////
 inline void Board::put(dim_type row, dim_type column, piececode_t code) noexcept
 {
-  std::assert(isInBound(row, column));
+  assert(isInBound(row, column));
   mRows[row][column] = code;
 }
 
@@ -1014,7 +1014,7 @@ Board::put(dim_type row, dim_type column, PieceCode piece, PieceColor color) noe
 ////////////////////////////////////////////////////////////////////////////////
 inline piececode_t Board::clearSq(dim_type row, dim_type column) noexcept
 {
-  std::assert(isInBound(row, column));
+  assert(isInBound(row, column));
   auto code = mRows[row][column];
   mRows[row][column] = 0;
   return code;
