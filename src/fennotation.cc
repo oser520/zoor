@@ -9,21 +9,22 @@
 //
 // STL headers
 //
-#include <string>
-#include <sstream>
-#include <vector>
-#include <ifstream>
-#include <utility>
 #include <algorithm>
+#include <ifstream>
+#include <memory>
+#include <sstream>
+#include <string>
+#include <vector>
+#include <utility>
 
 //
 // zoor headers
 //
-#include "notation.hh"
-#include "piececode.hh"
-#include "square.hh"
 #include "board.hh"
 #include "chesserror.hh"
+#include "fennotation.hh"
+#include "piececode.hh"
+#include "square.hh"
 
 //
 // using from STL
