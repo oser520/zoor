@@ -4,8 +4,6 @@
 /// @date 2016-04-09
 /////////////////////////////////////////////////////////////////////////////////////
 
-// TODO: change function return types so that they return FenRecord when appropriate
-
 //
 // STL headers
 //
@@ -35,6 +33,7 @@ using std::string;
 using std::istringstream;
 using std::sort;
 using std::unique;
+using std::make_shared;
 
 //
 // using from zoor
@@ -146,7 +145,7 @@ readFEN(string &fenLine)
   if (!(iss >> buff))
     throw ChessError("FEN record is not valid");
 
-  auto pieceMove = readEnPassant(buff);
+  auto pmove = readEnPassant(buff);
 
   // process half moves
   size_t halfMoves;
@@ -161,9 +160,9 @@ readFEN(string &fenLine)
   if (iss.fail() && !iss.eof())
     throw ChessError("FEN record is not valid");
 
-  // TODO: return a FenRecord
+  auto pb = make_shared<Board>(squareList, color, info, pmove);
 
-  return Board();
+  return FenRecord(pb, halfMove, fullMove);
 }
 
 //
