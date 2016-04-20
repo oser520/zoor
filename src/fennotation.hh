@@ -112,6 +112,9 @@ readFen(const char *fileName);
 std::vector<FenRecord>
 readFen(const std::string &fileName);
 
+#if 0
+// TODO: implement these after I have implemented Game and Player
+
 ///
 /// @brief Write a board to a file in FEN notation.
 /// @param fileName The name of the file.
@@ -139,6 +142,7 @@ writeFen(const std::string &fileName, const Board &board);
 ///
 void
 writeFen(const std::string &fileName, const std::vector<Board> &boardList);
+#endif
 
 ///
 /// @brief Get the piece code from a FEN piece.
