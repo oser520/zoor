@@ -33,7 +33,7 @@
 //
 // zoor headers
 //
-#include "board.hh"
+#include "fenrecord.hh"
 
 namespace zoor {
 
