@@ -788,7 +788,7 @@ private:
   /**
    * A pointer to the @c Board.
    */
-  const Board mBoard;
+  const Board &mBoard;
 
   /**
    * @brief The current index in the @Board.
