@@ -29,10 +29,13 @@ using zoor::readFen;
 TEST(IOFen1, defaultBoard)
 {
   Board board;
-  auto fenrec = readFen("test1.fen");
+  auto fenList = readFen("test1.fen");
 
-  EXPECT_EQ(0, fr.halfMove());
-  EXPECT_EQ(0, fr.fullMove());
+  EXPECT_EQ(1, fenList.size());
+
+  auto fenrec = fenList.front();
+  EXPECT_EQ(0, fenrec.halfMove());
+  EXPECT_EQ(0, fenrec.fullMove());
   EXPECT_EQ(board, *fenrec.boardPtr());
 }
 

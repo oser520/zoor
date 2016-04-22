@@ -57,11 +57,11 @@ struct FenSymbols
   FenSymbols& operator=(FenSymbols&&) = delete;
 
   /// @brief The maximum number of chars that can be on a rank.
-  static constexpr size_t RANK_LENGTH(8);
+  static constexpr size_t RANK_LENGTH = 8;
 
   /// @brief The maximum number of chars that can be on the 3rd field of a FEN
   /// record.
-  static constexpr size_t CASTLE_LENGTH(4);
+  static constexpr size_t CASTLE_LENGTH = 4;
 
   /// @brief The char symbols for valid pieces.
   static const std::string RANK_CHR;
@@ -75,7 +75,7 @@ struct FenSymbols
 
   /// @brief Used in 3rd and 4th fields to indicate that there are no castling rights
   /// or that there is no en passant.
-  static constexpr char DASH('-');
+  static constexpr char DASH = '-';
 };
 
 ///
@@ -88,7 +88,7 @@ struct FenSymbols
 /// @throw ChessError if the FEN record is not valid.
 ///
 const FenRecord
-readFen(const std::string &fenLine);
+readFenLine(const std::string &fenLine);
 
 ///
 /// @brief Read a chess position in FEN notation from a file.
@@ -165,8 +165,8 @@ fenPiece(char fenCode) noexcept;
 inline std::vector<FenRecord>
 readFen(const char *fileName)
 {
-  std::ifstream if(fileName);
-  return readFen(if);
+  std::ifstream ifs(fileName);
+  return readFen(ifs);
 }
 
 //
@@ -175,8 +175,8 @@ readFen(const char *fileName)
 inline std::vector<FenRecord>
 readFen(const std::string &fileName)
 {
-  std::ifstream if(fileName);
-  return readFen(if);
+  std::ifstream ifs(fileName);
+  return readFen(ifs);
 }
 
 } // namesapce zoor

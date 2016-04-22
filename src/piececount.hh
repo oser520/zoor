@@ -92,7 +92,7 @@ public:
   /// @brief Checks that invariants hold.
   /// @return True if invariants hold, false otherwise.
   /// @throw Never throws.
-  const bool
+  bool
   good() const noexcept;
 
   /// @brief Sets the count of every piece to zero.
@@ -104,85 +104,85 @@ public:
   /// @brief Get the underlying data for white piece count.
   /// @return Data with count for white pieces.
   /// @throw Never throws.
-  const count_type
+  count_type
   white() const noexcept;
 
   /// @brief Get the underlying data for black pieces count.
   /// @return Data with count for black pieces.
   /// @throw Never throws.
-  const count_type
+  count_type
   black() const noexcept;
 
   /// @brief Get number of white kings.
   /// @return The number of white kings.
   /// @throw Never throws.
-  const count_type
+  count_type
   wKing() const noexcept;
 
   /// @brief Get the number of white queens.
   /// @return The number of white queens.
   /// @throw Never throws.
-  const count_type
+  count_type
   wQueen() const noexcept;
 
   /// @brief Get the number of white rooks.
   /// @return The number of white rooks.
   /// @throw Never throws.
-  const count_type
+  count_type
   wRook() const noexcept;
 
   /// @brief Get the number of white bishops.
   /// @return The number of white bishops.
   /// @throw Never throws.
-  const count_type
+  count_type
   wBishop() const noexcept;
 
   /// @brief Get the number of white knights.
   /// @return The number of white knights.
   /// @throw Never throws.
-  const count_type
+  count_type
   wKnight() const noexcept;
 
   /// @brief Get the number of white pawns.
   /// @return The number of white pawns.
   /// @throw Never throws.
-  const count_type
+  count_type
   wPawn() const noexcept;
 
   /// @brief Get number of black kings.
   /// @return The number of black kings.
   /// @throw Never throws.
-  const count_type
+  count_type
   bKing() const noexcept;
 
   /// @brief Get the number of black queens.
   /// @return The number of black queens.
   /// @throw Never throws.
-  const count_type
+  count_type
   bQueen() const noexcept;
 
   /// @brief Get the number of black rooks.
   /// @return The number of black rooks.
   /// @throw Never throws.
-  const count_type
+  count_type
   bRook() const noexcept;
 
   /// @brief Get the number of black bishops.
   /// @return The number of black bishops.
   /// @throw Never throws.
-  const count_type
+  count_type
   bBishop() const noexcept;
 
   /// @brief Get the number of black knights.
   /// @return The number of black knights.
   /// @throw Never throws.
-  const count_type
+  count_type
   bKnight() const noexcept;
 
   /// @brief Get the number of black pawns.
   /// @return The number of black pawns.
   /// @throw Never throws.
-  const count_type
+  count_type
   bPawn() const noexcept;
 
 private:
@@ -227,7 +227,7 @@ private:
 /// @param pc2 The second @c PieceCount object.
 /// @return True if they are equal, false otherwise.
 /// @throw Never throws.
-const bool
+bool
 operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept;
 
 /// @brief Compares two @c PieceCount objects for non-equality.
@@ -235,7 +235,7 @@ operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept;
 /// @param pc2 The second @c PieceCount object.
 /// @return False if they are equal, true otherwise.
 /// @throw Never throws.
-const bool
+bool
 operator!=(const PieceCount &pc1, const PieceCount &pc2) noexcept;
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -285,7 +285,7 @@ PieceCount::clear() noexcept
 //
 // get the number of white kings
 //
-inline const PieceCount::count_type
+inline PieceCount::count_type
 PieceCount::wKing() const noexcept
 {
   return (mWhite >> KSHIFT) & CMASK;
@@ -294,7 +294,7 @@ PieceCount::wKing() const noexcept
 //
 // get the number of white queens
 //
-inline const PieceCount::count_type
+inline PieceCount::count_type
 PieceCount::wQueen() const noexcept
 {
   return (mWhite >> QSHIFT) & CMASK;
@@ -303,7 +303,7 @@ PieceCount::wQueen() const noexcept
 //
 // get the number of white rooks
 //
-inline const PieceCount::count_type
+inline PieceCount::count_type
 PieceCount::wRook() const noexcept
 {
   return (mWhite >> RSHIFT) & CMASK;
@@ -312,7 +312,7 @@ PieceCount::wRook() const noexcept
 //
 // get the number of white bishops
 //
-inline const PieceCount::count_type
+inline PieceCount::count_type
 PieceCount::wBishop() const noexcept
 {
   return (mWhite >> BSHIFT) & CMASK;
@@ -321,7 +321,7 @@ PieceCount::wBishop() const noexcept
 //
 // get the number of white knights
 //
-inline const PieceCount::count_type
+inline PieceCount::count_type
 PieceCount::wKnight() const noexcept
 {
   return (mWhite >> NSHIFT) & CMASK;
@@ -330,7 +330,7 @@ PieceCount::wKnight() const noexcept
 //
 // get the number of white pawns
 //
-inline const PieceCount::count_type
+inline PieceCount::count_type
 PieceCount::wPawn() const noexcept
 {
   return (mWhite >> PSHIFT) & CMASK;
@@ -339,7 +339,7 @@ PieceCount::wPawn() const noexcept
 //
 // get the number of black kings
 //
-inline const PieceCount::count_type
+inline PieceCount::count_type
 PieceCount::bKing() const noexcept
 {
   return (mBlack >> KSHIFT) & CMASK;
@@ -348,7 +348,7 @@ PieceCount::bKing() const noexcept
 //
 // get the number of black queens
 //
-inline const PieceCount::count_type
+inline PieceCount::count_type
 PieceCount::bQueen() const noexcept
 {
   return (mBlack >> QSHIFT) & CMASK;
@@ -357,7 +357,7 @@ PieceCount::bQueen() const noexcept
 //
 // get the number of black rooks
 //
-inline const PieceCount::count_type
+inline PieceCount::count_type
 PieceCount::bRook() const noexcept
 {
   return (mBlack >> RSHIFT) & CMASK;
@@ -366,7 +366,7 @@ PieceCount::bRook() const noexcept
 //
 // get the number of black bishops
 //
-inline const PieceCount::count_type
+inline PieceCount::count_type
 PieceCount::bBishop() const noexcept
 {
   return (mBlack >> BSHIFT) & CMASK;
@@ -375,7 +375,7 @@ PieceCount::bBishop() const noexcept
 //
 // get the number of black knights
 //
-inline const PieceCount::count_type
+inline PieceCount::count_type
 PieceCount::bKnight() const noexcept
 {
   return (mBlack >> NSHIFT) & CMASK;
@@ -384,7 +384,7 @@ PieceCount::bKnight() const noexcept
 //
 // get the number of black pawns
 //
-inline const PieceCount::count_type
+inline PieceCount::count_type
 PieceCount::bPawn() const noexcept
 {
   return (mBlack >> PSHIFT) & CMASK;
@@ -393,7 +393,7 @@ PieceCount::bPawn() const noexcept
 //
 // compare for equality
 //
-inline const bool
+inline bool
 operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept
 {
   return pc1.white() == pc2.white()
@@ -403,7 +403,7 @@ operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept
 //
 // compare for non-equality
 //
-inline const bool
+inline bool
 operator!=(const PieceCount &pc1, const PieceCount &pc2) noexcept
 {
   return !(pc1 == pc2);

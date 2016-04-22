@@ -22,7 +22,7 @@ using std::vector;
 // count the number of pieces in board
 //
 PieceCount&
-PiceCount::count(const Board &board) noexcept
+PieceCount::count(const Board &board) noexcept
 {
   for (auto it : board)
     add(*it);
@@ -34,10 +34,10 @@ PiceCount::count(const Board &board) noexcept
 // count the number of pieces in squareList
 //
 PieceCount&
-PiceCount::count(const vector<Square> &squareList) noexcept
+PieceCount::count(const vector<Square> &squareList) noexcept
 {
-  for (auto it : board)
-    add(it->code());
+  for (auto& sq : squareList)
+    add(sq.code());
 
   return *this;
 }
@@ -45,8 +45,8 @@ PiceCount::count(const vector<Square> &squareList) noexcept
 //
 // check invariants
 //
-const bool
-PiceCount::good() const noexcept
+bool
+PieceCount::good() const noexcept
 {
   return wKing() <= KMAX && bKing() <= KMAX
       && wQueen() <= QMAX && bQueen() <= QMAX
@@ -103,7 +103,7 @@ PieceCount::add(const piececode_t code) noexcept
   ++value;
 
   // clear the 5 bits for the count
-  cnt |= ~(CMASK << shift)
+  cnt |= ~(CMASK << shift);
 
   // set the new count
   cnt |= value << shift;

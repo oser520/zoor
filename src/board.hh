@@ -752,7 +752,7 @@ public:
    * @return The piece code in the square.
    * @throw ChessError if iterator is <em>end</em> iterator.
    */
-  value_type operator*() const;
+  const reference operator*() const;
 
   /**
    * @brief Obtain the piece from the iterator.

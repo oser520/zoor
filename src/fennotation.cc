@@ -8,7 +8,7 @@
 // STL headers
 //
 #include <algorithm>
-#include <ifstream>
+#include <fstream>
 #include <memory>
 #include <sstream>
 #include <string>
@@ -23,7 +23,10 @@
 #include "fennotation.hh"
 #include "fenrecord.hh"
 #include "piececode.hh"
+#include "piececount.hh"
 #include "square.hh"
+
+namespace zoor {
 
 //
 // using from STL
@@ -35,13 +38,12 @@ using std::istringstream;
 using std::sort;
 using std::unique;
 using std::make_shared;
+using std::getline;
 
 //
 // using from zoor
 //
-using Board::dim_type;
-
-namespace zoor {
+using dim_type = Board::dim_type;
 
 /////////////////////////////////////////////////////////////////////////////////////
 // static member definitions
@@ -86,7 +88,7 @@ readFen(ifstream &inFile)
 
   while (getline(inFile, line)) {
     if (line.empty()) continue;
-    auto fenrec = readFen(line);
+    auto fenrec = readFenLine(line);
     fenList.push_back(fenrec);
   }
 
@@ -100,30 +102,26 @@ readFen(ifstream &inFile)
 // readFen with param string.
 //
 const FenRecord
-readFen(string &fenLine)
+readFenLine(string &fenLine)
 {
   string buff;
-  int numRank = 7, numPiece = 0;
+  int numRank = 7;
   vector<Square> squareList;
   istringstream iss(fenLine);
 
   // process the last ranks, 8 through 2
   for (; numRank > 0; --numRank) {
-    if (!getline(iss, buff, "/"))
+    if (!getline(iss, buff, '/'))
       throw ChessError("FEN record is not valid");
 
-    numPiece += readRank(buff, squareList, numRank);
+    readRank(buff, squareList, numRank);
   }
 
   // process the 1st rank
   if (!(iss >> buff))
     throw ChessError("FEN record is not valid");
 
-  numPiece += readRank(buff, squareList, numRank);
-
-  // check that we don't have more than 32 pieces
-  if (numPieces > 32)
-    throw ChessError("FEN record is not valid");
+  readRank(buff, squareList, numRank);
 
   // check that number of pieces makes sense
   PieceCount pc(squareList);
@@ -163,7 +161,7 @@ readFen(string &fenLine)
 
   auto pb = make_shared<Board>(squareList, color, info, pmove);
 
-  return FenRecord(pb, halfMove, fullMove);
+  return FenRecord(pb, halfMoves, fullMoves);
 }
 
 //
@@ -202,7 +200,7 @@ fenPiece(char fenCode) noexcept
   case 'k':
     piece = PieceCode::KING;
     break;
-  default;
+  default:
     return 0;
   }
 

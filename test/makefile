@@ -28,16 +28,18 @@ OBJ_PIECECOUNT = tpiececount.o piececount.o piececode.o
 OBJ_SQUARE = tsquare.o square.o piececode.o
 OBJ_PIECEMOVE = tpiecemove.o piecemove.o square.o piececode.o
 OBJ_FENRECORD = tfenrecord.o board.o piecemove.o square.o piececode.o
+OBJ_IOFEN = tiofen.o fennotation.o fenrecord.o board.o piecemove.o \
+            square.o piececode.o piececount.o
 OBJ_BOARD = tboard.o board.o piecemove.o square.o piececode.o
 
 # Combine unique object files.
 OBJ_LIST := $(sort $(OBJ_PIECECODE) $(OBJ_PIECECOUNT) \
               $(OBJ_SQUARE) $(OBJ_PIECEMOVE) $(OBJ_BOARD) \
-              $(OBJ_BOARDINFO) $(OBJ_FENRECORD))
+              $(OBJ_BOARDINFO) $(OBJ_FENRECORD) $(OBJ_IOFEN))
 
 # Unit test programs.
 TARGETS = tpiececode tboardinfo tpiececount tsquare tpiecemove \
-          tboard tfenrecord
+          tboard tfenrecord tiofen
 
 all: $(TARGETS)
 
@@ -59,6 +61,9 @@ tpiecemove: $(OBJ_PIECEMOVE)
 tfenrecord: $(OBJ_FENRECORD)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
 
+tiofen: $(OBJ_IOFEN)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
+
 tboard: $(OBJ_BOARD)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
 
@@ -69,6 +74,7 @@ $(OBJ_PIECECOUNT): piececount.hh piececode.hh
 $(OBJ_SQUARE): square.hh piececode.hh
 $(OBJ_PIECEMOVE): piecemove.hh square.hh piececode.hh
 $(OBJ_FENRECORD): fenrecord.hh board.hh
+$(OBJ_IOFEN): fennotation.hh fenrecord.hh board.hh
 $(OBJ_BOARD): board.hh piecemove.hh square.hh piececode.hh
 
 .PHONY: run clean
