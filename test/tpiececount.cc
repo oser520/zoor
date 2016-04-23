@@ -61,35 +61,6 @@ TEST(PieceCount1, DefaultCtor)
   EXPECT_TRUE(cp.good());
 }
 
-//
-// Test PieceCount::clear().
-//
-TEST(PieceCount3, ClearFn)
-{
-  PieceCount cp;
-  cp.clear();
-  EXPECT_EQ(0, cp.kings());
-  EXPECT_EQ(0, cp.queens());
-  EXPECT_EQ(0, cp.rooks());
-  EXPECT_EQ(0, cp.bishops());
-  EXPECT_EQ(0, cp.knights());
-  EXPECT_EQ(0, cp.pawns());
-}
-
-//
-// Test equality and non-equality operators.
-//
-TEST(PieceCount7, EqualityOp)
-{
-  PieceCount cp1, cp2;
-  EXPECT_TRUE(cp1 == cp2);
-  EXPECT_FALSE(cp1 != cp2);
-
-  cp2.setCount(PieceCode::PAWN, 5);
-  EXPECT_FALSE(cp1 == cp2);
-  EXPECT_TRUE(cp1 != cp2);
-}
-
 } // anonymous namespace
 
 int main(int argc, char *argv[])
