@@ -24,7 +24,8 @@ CXXFLAGS += $(GTFLAGS) $(INCDIR)
 # Dependencies for each unit test program.
 OBJ_PIECECODE = tpiececode.o piececode.o
 OBJ_BOARDINFO = tboardinfo.o
-OBJ_PIECECOUNT = tpiececount.o piececount.o piececode.o
+OBJ_PIECECOUNT = tpiececount.o piececount.o board.o square.o \
+                 piecemove.o piececode.o
 OBJ_SQUARE = tsquare.o square.o piececode.o
 OBJ_PIECEMOVE = tpiecemove.o piecemove.o square.o piececode.o
 OBJ_FENRECORD = tfenrecord.o board.o piecemove.o square.o piececode.o
