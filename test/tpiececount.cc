@@ -144,14 +144,14 @@ TEST(PieceCount2, SquareListCtor)
   EXPECT_EQ(2, pc.wRook());
   EXPECT_EQ(2, pc.wBishop());
   EXPECT_EQ(2, pc.wKnight());
-  EXPECT_EQ(5, pc.wPawn());
+  EXPECT_EQ(6, pc.wPawn());
 
   EXPECT_EQ(1, pc.bKing());
   EXPECT_EQ(1, pc.bQueen());
   EXPECT_EQ(2, pc.bRook());
   EXPECT_EQ(2, pc.bBishop());
   EXPECT_EQ(2, pc.bKnight());
-  EXPECT_EQ(5, pc.bPawn());
+  EXPECT_EQ(6, pc.bPawn());
 
   EXPECT_TRUE(pc.good());
 }
