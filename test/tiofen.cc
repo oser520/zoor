@@ -29,7 +29,7 @@ using zoor::readFen;
 TEST(IOFen1, defaultBoard)
 {
   Board board;
-  auto fenList = readFen("test1.fen");
+  auto fenList = readFen("fen/init.fen");
 
   EXPECT_EQ(1, fenList.size());
 
