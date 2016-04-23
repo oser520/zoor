@@ -183,6 +183,69 @@ TEST(PieceCount3, BoardCtor)
   EXPECT_TRUE(pc.good());
 }
 
+//
+// Test count
+//
+TEST(PieceCount4, Count)
+{
+  Board board;
+  PieceCount pc(board);
+
+  vector<Square> sqList;
+
+  // add white queen
+  auto wqueen = PieceColor::WHITE | PieceCode::QUEEN;
+  sqList.emplace_back(0, 3, wqueen);
+
+  // add white king
+  auto wking = PieceColor::WHITE | PieceCode::KING;
+  sqList.emplace_back(0, 4, wking);
+
+  // add black queen
+  auto bqueen = PieceColor::BLACK | PieceCode::QUEEN;
+  sqList.emplace_back(7, 3, bqueen);
+
+  // add black king
+  auto bking = PieceColor::BLACK | PieceCode::KING;
+  sqList.emplace_back(7, 4, bking);
+
+  pc.count(sqList);
+
+  EXPECT_EQ(1, pc.wKing());
+  EXPECT_EQ(1, pc.wQueen());
+  EXPECT_EQ(0, pc.wRook());
+  EXPECT_EQ(0, pc.wBishop());
+  EXPECT_EQ(0, pc.wKnight());
+  EXPECT_EQ(0, pc.wPawn());
+
+  EXPECT_EQ(1, pc.bKing());
+  EXPECT_EQ(1, pc.bQueen());
+  EXPECT_EQ(0, pc.bRook());
+  EXPECT_EQ(0, pc.bBishop());
+  EXPECT_EQ(0, pc.bKnight());
+  EXPECT_EQ(0, pc.bPawn());
+
+  EXPECT_TRUE(pc.good());
+
+  pc.count(board);
+
+  EXPECT_EQ(1, pc.wKing());
+  EXPECT_EQ(1, pc.wQueen());
+  EXPECT_EQ(2, pc.wRook());
+  EXPECT_EQ(2, pc.wBishop());
+  EXPECT_EQ(2, pc.wKnight());
+  EXPECT_EQ(8, pc.wPawn());
+
+  EXPECT_EQ(1, pc.bKing());
+  EXPECT_EQ(1, pc.bQueen());
+  EXPECT_EQ(2, pc.bRook());
+  EXPECT_EQ(2, pc.bBishop());
+  EXPECT_EQ(2, pc.bKnight());
+  EXPECT_EQ(8, pc.bPawn());
+
+  EXPECT_TRUE(pc.good());
+}
+
 } // anonymous namespace
 
 int main(int argc, char *argv[])
