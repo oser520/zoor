@@ -1322,7 +1322,7 @@ std::ostream& operator<<(std::ostream &os, const Board &board)
   for (size_t col = 0; col < Board::BOARD_DIM-1; ++col)
       os << shortStringCode(board.get(Board::BOARD_DIM-1, col)) << ", ";
   // handle last square in last row
-  os << shortStringCode(board.get(Board::BOARD_DIM-1, Board::BOARD_DIM-1)) << "},";
+  os << shortStringCode(board.get(Board::BOARD_DIM-1, Board::BOARD_DIM-1)) << "}";
 
   // close the board
   os << "}";
