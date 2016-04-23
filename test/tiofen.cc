@@ -35,7 +35,7 @@ TEST(IOFen1, defaultBoard)
 
   auto fenrec = fenList.front();
   EXPECT_EQ(0, fenrec.halfMove());
-  EXPECT_EQ(0, fenrec.fullMove());
+  EXPECT_EQ(1, fenrec.fullMove());
   EXPECT_EQ(board, *fenrec.boardPtr());
 }
 
