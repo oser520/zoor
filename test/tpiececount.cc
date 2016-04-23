@@ -14,6 +14,7 @@
 //
 // zoor
 //
+#include "board.hh"
 #include "piececode.hh"
 #include "piececount.hh"
 #include "square.hh"
@@ -35,6 +36,7 @@ using std::vector;
 //
 // using from zoor
 //
+using zoor::Board;
 using zoor::PieceCode;
 using zoor::PieceColor;
 using zoor::PieceCount;
@@ -152,6 +154,31 @@ TEST(PieceCount2, SquareListCtor)
   EXPECT_EQ(2, pc.bBishop());
   EXPECT_EQ(2, pc.bKnight());
   EXPECT_EQ(6, pc.bPawn());
+
+  EXPECT_TRUE(pc.good());
+}
+
+//
+// Test the ctor with a board
+//
+TEST(PieceCount3, BoardCtor)
+{
+  Board board;
+  PieceCount pc(board);
+
+  EXPECT_EQ(1, pc.wKing());
+  EXPECT_EQ(1, pc.wQueen());
+  EXPECT_EQ(2, pc.wRook());
+  EXPECT_EQ(2, pc.wBishop());
+  EXPECT_EQ(2, pc.wKnight());
+  EXPECT_EQ(8, pc.wPawn());
+
+  EXPECT_EQ(1, pc.bKing());
+  EXPECT_EQ(1, pc.bQueen());
+  EXPECT_EQ(2, pc.bRook());
+  EXPECT_EQ(2, pc.bBishop());
+  EXPECT_EQ(2, pc.bKnight());
+  EXPECT_EQ(8, pc.bPawn());
 
   EXPECT_TRUE(pc.good());
 }
