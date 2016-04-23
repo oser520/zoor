@@ -103,7 +103,7 @@ PieceCount::add(const piececode_t code) noexcept
   ++value;
 
   // clear the 5 bits for the count
-  cnt |= ~(CMASK << shift);
+  cnt &= ~(CMASK << shift);
 
   // set the new count
   cnt |= value << shift;
