@@ -93,10 +93,9 @@ PieceCount::add(const piececode_t code) noexcept
   auto &cnt = isWhite(code) ? mWhite : mBlack;
 
   // get the count for the given piece
-  // allow us to detect errors
   auto value = (cnt >> shift) & CMASK;
 
-  // don't add more if 5 bits are used
+  // don't add more if 5 bits are used to detect errors
   if (value == CMASK)
     return;
 
