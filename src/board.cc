@@ -1411,7 +1411,8 @@ BoardIterator::operator-=(BoardIterator::difference_type value)
 ////////////////////////////////////////////////////////////////////////////////
 // dereference operator
 ////////////////////////////////////////////////////////////////////////////////
-const BoardIterator::reference BoardIterator::operator*() const
+BoardIterator::value_type
+BoardIterator::operator*() const
 {
   if (mIndex >= LAST_INDEX)
     throw ChessError("Iterator cannot move beyond board");

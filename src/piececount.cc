@@ -25,7 +25,7 @@ PieceCount&
 PieceCount::count(const Board &board) noexcept
 {
   for (auto it : board)
-    add(*it);
+    add(it);
 
   return *this;
 }

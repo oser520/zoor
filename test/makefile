@@ -28,7 +28,7 @@ OBJ_PIECECOUNT = tpiececount.o piececount.o piececode.o
 OBJ_SQUARE = tsquare.o square.o piececode.o
 OBJ_PIECEMOVE = tpiecemove.o piecemove.o square.o piececode.o
 OBJ_FENRECORD = tfenrecord.o board.o piecemove.o square.o piececode.o
-OBJ_IOFEN = tiofen.o fennotation.o fenrecord.o board.o piecemove.o \
+OBJ_IOFEN = tiofen.o fennotation.o board.o piecemove.o \
             square.o piececode.o piececount.o
 OBJ_BOARD = tboard.o board.o piecemove.o square.o piececode.o
 

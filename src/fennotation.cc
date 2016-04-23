@@ -102,7 +102,7 @@ readFen(ifstream &inFile)
 // readFen with param string.
 //
 const FenRecord
-readFenLine(string &fenLine)
+readFenLine(const string &fenLine)
 {
   string buff;
   int numRank = 7;
