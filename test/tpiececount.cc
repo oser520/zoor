@@ -38,15 +38,27 @@ using zoor::PieceCount;
 //
 // Test the default constructor yields a board with the default number of pieces.
 //
-TEST(PieceCount1, CtorValues)
+TEST(PieceCount1, DefaultCtor)
 {
   PieceCount cp;
-  EXPECT_EQ(1, cp.kings()); 
-  EXPECT_EQ(1, cp.queens()); 
-  EXPECT_EQ(2, cp.rooks()); 
-  EXPECT_EQ(2, cp.bishops()); 
-  EXPECT_EQ(2, cp.knights()); 
-  EXPECT_EQ(8, cp.pawns()); 
+  EXPECT_EQ(0, cp.wKing());
+  EXPECT_EQ(0, cp.wQueen());
+  EXPECT_EQ(0, cp.wRook());
+  EXPECT_EQ(0, cp.wBishop());
+  EXPECT_EQ(0, cp.wKnight());
+  EXPECT_EQ(0, cp.wPawn());
+  EXPECT_EQ(0, cp.white());
+  EXPECT_EQ(0, cp.white());
+
+  EXPECT_EQ(0, cp.bKing());
+  EXPECT_EQ(0, cp.bQueen());
+  EXPECT_EQ(0, cp.bRook());
+  EXPECT_EQ(0, cp.bBishop());
+  EXPECT_EQ(0, cp.bKnight());
+  EXPECT_EQ(0, cp.bPawn());
+  EXPECT_EQ(0, cp.black());
+
+  EXPECT_TRUE(cp.good());
 }
 
 //
