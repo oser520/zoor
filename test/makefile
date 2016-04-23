@@ -18,7 +18,7 @@ LDFLAGS  = -L/opt/googletest
 LFLAGS   = -lgtest -lpthread
 
 # Compiler flags.
-CXXFLAGS = -Wall -Wextra -std=c++11 -O2
+CXXFLAGS = -g -Wall -Wextra -std=c++11 -O0
 CXXFLAGS += $(GTFLAGS) $(INCDIR)
 
 # Dependencies for each unit test program.
