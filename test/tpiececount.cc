@@ -1,25 +1,43 @@
-/**
- * @file tpiececode.cc
- * @author Omar A Serrano
- * @date 2016-01-09
- */
+/////////////////////////////////////////////////////////////////////////////////////
+/// @file tpiececode.cc
+/// @author Omar A Serrano
+/// @date 2016-01-09
+/////////////////////////////////////////////////////////////////////////////////////
 
+//
+// STL
+//
 #include <string>
 #include <sstream>
+
+//
+// zoor
+//
 #include "piececode.hh"
 #include "piececount.hh"
+
+//
+// gtest
+//
 #include "gtest/gtest.h"
 
 namespace {
 
+//
+// using from STL
+//
 using std::string;
 using std::ostringstream;
+
+//
+// using from zoor
+//
 using zoor::PieceCode;
 using zoor::PieceCount;
 
-/**
- * Test the default constructor yields a board with the default number of pieces.
- */
+//
+// Test the default constructor yields a board with the default number of pieces.
+//
 TEST(PieceCount1, CtorValues)
 {
   PieceCount cp;
@@ -31,9 +49,9 @@ TEST(PieceCount1, CtorValues)
   EXPECT_EQ(8, cp.pawns()); 
 }
 
-/**
- * Test PieceCount::init().
- */
+//
+// Test PieceCount::init().
+//
 TEST(PieceCount2, InitFn)
 {
   PieceCount cp;
@@ -49,9 +67,9 @@ TEST(PieceCount2, InitFn)
   EXPECT_EQ(8, cp.pawns());
 }
 
-/**
- * Test PieceCount::clear().
- */
+//
+// Test PieceCount::clear().
+//
 TEST(PieceCount3, ClearFn)
 {
   PieceCount cp;
@@ -64,9 +82,9 @@ TEST(PieceCount3, ClearFn)
   EXPECT_EQ(0, cp.pawns());
 }
 
-/**
- * Test PieceCount::plus().
- */
+//
+// Test PieceCount::plus().
+//
 TEST(PieceCount4, PlusFn)
 {
   PieceCount cp;
@@ -84,9 +102,9 @@ TEST(PieceCount4, PlusFn)
   EXPECT_EQ(7, cp.bishops());
 }
 
-/**
- * Test PieceCount::minus().
- */
+//
+// Test PieceCount::minus().
+//
 TEST(PieceCount5, MinusFn)
 {
   PieceCount cp;
@@ -96,9 +114,9 @@ TEST(PieceCount5, MinusFn)
   EXPECT_EQ(5, cp.pawns());
 }
 
-/**
- * Test PieceCount::setCount().
- */
+//
+// Test PieceCount::setCount().
+//
 TEST(PieceCount6, SetCountFn)
 {
   PieceCount cp;
@@ -109,9 +127,9 @@ TEST(PieceCount6, SetCountFn)
   EXPECT_EQ(3, cp.pawns());
 }
 
-/**
- * Test equality and non-equality operators.
- */
+//
+// Test equality and non-equality operators.
+//
 TEST(PieceCount7, EqualityOp)
 {
   PieceCount cp1, cp2;
@@ -123,9 +141,9 @@ TEST(PieceCount7, EqualityOp)
   EXPECT_TRUE(cp1 != cp2);
 }
 
-/**
- * Test the value functions.
- */
+//
+// Test the value functions.
+//
 TEST(PieceCount8, ValueFn)
 {
   PieceCount cp;
@@ -136,9 +154,9 @@ TEST(PieceCount8, ValueFn)
   EXPECT_EQ(9, cp.valueQueens());
 }
 
-/**
- * Test the addition and assignment operator functions.
- */
+//
+// Test the addition and assignment operator functions.
+//
 TEST(PieceCount9, opPlusAssign)
 {
   PieceCount cp;
@@ -163,9 +181,9 @@ TEST(PieceCount9, opPlusAssign)
   EXPECT_EQ(2, cp.kings());
 }
 
-/**
- * Test the subtraction and assignment operator functions.
- */
+//
+// Test the subtraction and assignment operator functions.
+//
 TEST(PieceCount10, opMinusAssign)
 {
   PieceCount cp;
@@ -190,9 +208,9 @@ TEST(PieceCount10, opMinusAssign)
   EXPECT_EQ(0, cp.kings());
 }
 
-/**
- * Test the output operator.
- */
+//
+// Test the output operator.
+//
 TEST(PieceCount11, OutputOp) {
   PieceCount cp;
   ostringstream ss1;
