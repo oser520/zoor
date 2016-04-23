@@ -50,24 +50,6 @@ TEST(PieceCount1, CtorValues)
 }
 
 //
-// Test PieceCount::init().
-//
-TEST(PieceCount2, InitFn)
-{
-  PieceCount cp;
-  cp.setCount(PieceCode::KING, 5);
-  cp.setCount(PieceCode::ROOK, 1);
-  cp.setCount(PieceCode::PAWN, 1);
-  cp.init();
-  EXPECT_EQ(1, cp.kings());
-  EXPECT_EQ(1, cp.queens());
-  EXPECT_EQ(2, cp.rooks());
-  EXPECT_EQ(2, cp.bishops());
-  EXPECT_EQ(2, cp.knights());
-  EXPECT_EQ(8, cp.pawns());
-}
-
-//
 // Test PieceCount::clear().
 //
 TEST(PieceCount3, ClearFn)
@@ -83,51 +65,6 @@ TEST(PieceCount3, ClearFn)
 }
 
 //
-// Test PieceCount::plus().
-//
-TEST(PieceCount4, PlusFn)
-{
-  PieceCount cp;
-
-  cp.plus(PieceCode::PAWN);
-  cp.plus(PieceCode::KING);
-  cp.plus(PieceCode::ROOK);
-  EXPECT_EQ(9, cp.pawns());
-  EXPECT_EQ(2, cp.kings());
-  EXPECT_EQ(3, cp.rooks());
-
-  cp.plus(PieceCode::QUEEN, 6);
-  cp.plus(PieceCode::BISHOP, 5);
-  EXPECT_EQ(7, cp.queens());
-  EXPECT_EQ(7, cp.bishops());
-}
-
-//
-// Test PieceCount::minus().
-//
-TEST(PieceCount5, MinusFn)
-{
-  PieceCount cp;
-  cp.minus(PieceCode::ROOK);
-  cp.minus(PieceCode::PAWN, 3);
-  EXPECT_EQ(1, cp.rooks());
-  EXPECT_EQ(5, cp.pawns());
-}
-
-//
-// Test PieceCount::setCount().
-//
-TEST(PieceCount6, SetCountFn)
-{
-  PieceCount cp;
-  cp.clear();
-  cp.setCount(PieceCode::ROOK, 7);
-  cp.setCount(PieceCode::PAWN, 3);
-  EXPECT_EQ(7, cp.rooks());
-  EXPECT_EQ(3, cp.pawns());
-}
-
-//
 // Test equality and non-equality operators.
 //
 TEST(PieceCount7, EqualityOp)
@@ -139,85 +76,6 @@ TEST(PieceCount7, EqualityOp)
   cp2.setCount(PieceCode::PAWN, 5);
   EXPECT_FALSE(cp1 == cp2);
   EXPECT_TRUE(cp1 != cp2);
-}
-
-//
-// Test the value functions.
-//
-TEST(PieceCount8, ValueFn)
-{
-  PieceCount cp;
-  EXPECT_EQ(8, cp.valuePawns());
-  EXPECT_EQ(6, cp.valueKnights());
-  EXPECT_EQ(6, cp.valueBishops());
-  EXPECT_EQ(10, cp.valueRooks());
-  EXPECT_EQ(9, cp.valueQueens());
-}
-
-//
-// Test the addition and assignment operator functions.
-//
-TEST(PieceCount9, opPlusAssign)
-{
-  PieceCount cp;
-
-  cp += PieceCode::PAWN;
-  EXPECT_EQ(9, cp.pawns());
-
-  cp += PieceCode::KNIGHT;
-  cp += PieceCode::KNIGHT;
-  EXPECT_EQ(4, cp.knights());
-
-  cp += PieceCode::BISHOP;
-  EXPECT_EQ(3, cp.bishops());
-
-  cp += PieceCode::ROOK;
-  EXPECT_EQ(3, cp.rooks());
-
-  cp += PieceCode::QUEEN;
-  EXPECT_EQ(2, cp.queens());
-
-  cp += PieceCode::KING;
-  EXPECT_EQ(2, cp.kings());
-}
-
-//
-// Test the subtraction and assignment operator functions.
-//
-TEST(PieceCount10, opMinusAssign)
-{
-  PieceCount cp;
-
-  cp -= PieceCode::PAWN;
-  EXPECT_EQ(7, cp.pawns());
-
-  cp -= PieceCode::KNIGHT;
-  cp -= PieceCode::KNIGHT;
-  EXPECT_EQ(0, cp.knights());
-
-  cp -= PieceCode::BISHOP;
-  EXPECT_EQ(1, cp.bishops());
-
-  cp -= PieceCode::ROOK;
-  EXPECT_EQ(1, cp.rooks());
-
-  cp -= PieceCode::QUEEN;
-  EXPECT_EQ(0, cp.queens());
-
-  cp -= PieceCode::KING;
-  EXPECT_EQ(0, cp.kings());
-}
-
-//
-// Test the output operator.
-//
-TEST(PieceCount11, OutputOp) {
-  PieceCount cp;
-  ostringstream ss1;
-  ss1 << cp;
-  string s("{kings=1, queens=1, rooks=2, bishops=2, knights=2, pawns=8}");
-  
-  EXPECT_EQ(s, ss1.str()); 
 }
 
 } // anonymous namespace
