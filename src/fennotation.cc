@@ -49,7 +49,7 @@ using dim_type = Board::dim_type;
 // static member definitions
 /////////////////////////////////////////////////////////////////////////////////////
 
-const string FenSymbols::RANK_CHR("PNBRQKpnbrqk");
+const string FenSymbols::RANK_CHR("PNBRQKpnbrqk12345678");
 const string FenSymbols::CASTLE_CHR("KQkq");
 const string FenSymbols::COLOR_CHR("wb");
 
