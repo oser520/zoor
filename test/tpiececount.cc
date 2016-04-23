@@ -246,6 +246,19 @@ TEST(PieceCount4, Count)
   EXPECT_TRUE(pc.good());
 }
 
+//
+// Test clear
+//
+TEST(PieceCount5, Clear)
+{
+  Board board;
+  PieceCount pc(board);
+  pc.clear();
+
+  EXPECT_EQ(0, pc.white());
+  EXPECT_EQ(0, pc.black());
+}
+
 } // anonymous namespace
 
 int main(int argc, char *argv[])
