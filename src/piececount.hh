@@ -283,6 +283,24 @@ PieceCount::clear() noexcept
 }
 
 //
+// get the underlying data for the white piece count
+//
+inline PieceCount::count_type
+PieceCount::white() const noexcept
+{
+  return mWhite;
+}
+
+//
+// get the underlying data for the black piece count
+//
+inline PieceCount::count_type
+PieceCount::black() const noexcept
+{
+  return mBlack;
+}
+
+//
 // get the number of white kings
 //
 inline PieceCount::count_type
