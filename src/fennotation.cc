@@ -173,9 +173,9 @@ fenPiece(char fenCode) noexcept
   // get the color
   PieceColor color;
   if (std::islower(fenCode))
-    color = PieceColor::WHITE;
-  else {
     color = PieceColor::BLACK;
+  else {
+    color = PieceColor::WHITE;
     fenCode = std::tolower(fenCode);
   }
 
