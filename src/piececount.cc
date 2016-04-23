@@ -24,6 +24,11 @@ using std::vector;
 PieceCount&
 PieceCount::count(const Board &board) noexcept
 {
+  // clear the count
+  mWhite = 0;
+  mBlack = 0;
+
+  // count the pieces
   for (auto it : board)
     add(it);
 
@@ -36,6 +41,11 @@ PieceCount::count(const Board &board) noexcept
 PieceCount&
 PieceCount::count(const vector<Square> &squareList) noexcept
 {
+  // clear the count
+  mWhite = 0;
+  mBlack = 0;
+
+  // count the pieces
   for (auto& sq : squareList)
     add(sq.code());
 
