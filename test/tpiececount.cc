@@ -41,6 +41,7 @@ using zoor::PieceCode;
 using zoor::PieceColor;
 using zoor::PieceCount;
 using zoor::Square;
+using zoor::piececode_t;
 
 //
 // Test the default ctor
@@ -257,6 +258,94 @@ TEST(PieceCount5, Clear)
 
   EXPECT_EQ(0, pc.white());
   EXPECT_EQ(0, pc.black());
+}
+
+//
+// Test PieceCount::good()
+//
+TEST(PieceCount6, Good)
+{
+  PieceCount pc;
+  vector<Square> sqList;
+
+  // add two kings
+  auto code = PieceColor::WHITE | PieceCode::KING;
+  sqList.emplace_back(0, 0, code);
+  sqList.emplace_back(0, 1, code);
+
+  // not good
+  pc.count(sqList);
+  EXPECT_FALSE(pc.good());
+
+  // clear squares and counts
+  sqList.clear();
+  pc.clear();
+
+  // add 10 queens
+  code = PieceColor::WHITE | PieceCode::QUEEN;
+  sqList.emplace_back(0, 0, code);
+  sqList.emplace_back(0, 1, code);
+  sqList.emplace_back(0, 2, code);
+  sqList.emplace_back(0, 3, code);
+  sqList.emplace_back(0, 4, code);
+  sqList.emplace_back(0, 5, code);
+  sqList.emplace_back(0, 6, code);
+  sqList.emplace_back(0, 7, code);
+  sqList.emplace_back(1, 0, code);
+  sqList.emplace_back(1, 1, code);
+
+  // not good
+  pc.count(sqList);
+  EXPECT_FALSE(pc.good());
+
+  // clear squares and counts
+  sqList.clear();
+  pc.clear();
+
+  piececode_t pcArr[] = {
+    PieceColor::WHITE | PieceCode::ROOK,
+    PieceColor::WHITE | PieceCode::BISHOP,
+    PieceColor::WHITE | PieceCode::KNIGHT
+  };
+
+  for (auto pcode : pcArr) {
+    // add 11 pieces
+    sqList.emplace_back(0, 0, pcode);
+    sqList.emplace_back(0, 1, pcode);
+    sqList.emplace_back(0, 2, pcode);
+    sqList.emplace_back(0, 3, pcode);
+    sqList.emplace_back(0, 4, pcode);
+    sqList.emplace_back(0, 5, pcode);
+    sqList.emplace_back(0, 6, pcode);
+    sqList.emplace_back(0, 7, pcode);
+    sqList.emplace_back(1, 0, pcode);
+    sqList.emplace_back(1, 1, pcode);
+    sqList.emplace_back(1, 2, pcode);
+
+    // not good
+    pc.count(sqList);
+    EXPECT_FALSE(pc.good());
+
+    // clear squares and counts
+    sqList.clear();
+    pc.clear();
+  }
+
+  // add 9 pawns
+  code = PieceColor::WHITE | PieceCode::PAWN;
+  sqList.emplace_back(0, 0, code);
+  sqList.emplace_back(0, 1, code);
+  sqList.emplace_back(0, 2, code);
+  sqList.emplace_back(0, 3, code);
+  sqList.emplace_back(0, 4, code);
+  sqList.emplace_back(0, 5, code);
+  sqList.emplace_back(0, 6, code);
+  sqList.emplace_back(0, 7, code);
+  sqList.emplace_back(1, 0, code);
+
+  // not good
+  pc.count(sqList);
+  EXPECT_FALSE(pc.good());
 }
 
 } // anonymous namespace
