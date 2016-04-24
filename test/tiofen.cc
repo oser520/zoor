@@ -24,7 +24,7 @@ using zoor::Board;
 using zoor::readFen;
 
 //
-// Test FenRecord
+// Test readFen with a record that represents the initial position
 //
 TEST(IOFen1, defaultBoard)
 {
