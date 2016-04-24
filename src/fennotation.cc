@@ -301,11 +301,7 @@ readBoardInfo(string &infoLine)
   if (infoLine.empty() || infoLine.size() > FenSymbols::CASTLE_LENGTH)
     throw ChessError("FEN record is not valid");
 
-  if (infoLine.size() == 1) {
-    // if only one char, then it should be dash
-    if (infoLine[0] != FenSymbols::DASH)
-      throw ChessError("FEN record is not valid");
-
+  if (infoLine.size() == 1 && infoLine.front() == FenSymbols::DASH) {
     // remove castling rights
     BoardInfo info;
     info.rookA1On();
