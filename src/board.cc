@@ -73,7 +73,8 @@ Board::Board
    const PieceColor color,
    const BoardInfo &boardInfo,
    const PieceMove &lastMove)
-  : mColor(color),
+  : mRows(),
+    mColor(color),
     mLastMove(lastMove),
     mInfo(boardInfo)
 {
