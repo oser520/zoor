@@ -16,6 +16,7 @@
 #include "boardinfo.hh"
 #include "fennotation.hh"
 #include "piececode.hh"
+#include "piecemove.hh"
 #include "square.hh"
 
 //
@@ -37,6 +38,7 @@ using zoor::Board;
 using zoor::BoardInfo;
 using zoor::PieceCode;
 using zoor::PieceColor;
+using zoor::PieceMove;
 using zoor::Square;
 using zoor::readFen;
 
@@ -222,6 +224,36 @@ TEST(IOFen3, test2)
   sqList[3].setLocation(5, 5);
   Board board19(sqList, PieceColor::BLACK, info);
   EXPECT_EQ(board19, *fenList[18].boardPtr());
+}
+
+//
+// Verify readFen can parse en passant information
+//
+TEST(IOFen4, test3)
+{
+  vector<Square> sqList;
+
+  // create the pieces for the board
+  sqList.emplace_back(7, 4, PieceCode::KING, PieceColor::BLACK);
+
+  sqList.emplace_back(0, 4, PieceCode::KING, PieceColor::WHITE);
+  sqList.emplace_back(3, 4, PieceCode::PAWN, PieceColor::WHITE);
+
+  // only black king can do short castling
+  BoardInfo info;
+  info.rookA1On().rookH1On().rookA8On().rookH8On();
+
+  // last move
+  PieceMove pm(1, 4, PieceColor::WHITE|PieceCode::PAWN, 3, 4);
+
+  Board board(sqList, PieceColor::BLACK, info, pm);
+
+  auto fenList = readFen("fen/test3.fen");
+
+  EXPECT_EQ(1, fenList.size());
+  EXPECT_EQ(0, fenList[0].halfMove());
+  EXPECT_EQ(39, fenList[0].fullMove());
+  EXPECT_EQ(board, *fenList[0].boardPtr());
 }
 
 } // namespace
