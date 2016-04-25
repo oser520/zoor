@@ -300,6 +300,112 @@ operator!=(const Square& square1, const Square& square2) noexcept;
 std::ostream&
 operator<<(std::ostream& os, const Square& square);
 
+//
+// get the row
+//
+inline Square::dim_type
+Square::row() const noexcept
+{
+  return mRow;
+}
+
+//
+// get the column
+//
+inline Square::dim_type
+Square::column() const noexcept
+{
+  return mColumn;
+}
+
+//
+// get the piece type
+//
+inline PieceCode
+Square::piece() const noexcept
+{
+  return mPiece;
+}
+
+//
+// get the piece color
+//
+inline PieceColor
+Square::color() const noexcept
+{
+  return mColor;
+}
+
+//
+// get the bit code for the piece and color
+//
+inline piececode_t
+Square::code() const noexcept
+{
+  return mColor | mPiece;
+}
+
+//
+// set the row
+//
+inline Square&
+Square::setRow(dim_type row) noexcept
+{
+  assert(isInBound(row));
+  mRow = row;
+  return *this;
+}
+
+//
+// set the column
+//
+inline Square&
+Square::setColumn(dim_type column) noexcept
+{
+  assert(isInBound(column));
+  mColumn = column;
+  return *this;
+}
+
+//
+// set the piece
+//
+inline Square&
+Square::setPiece(PieceCode piece) noexcept
+{
+  mPiece = piece;
+  return *this;
+}
+
+//
+// set the color
+//
+inline Square&
+Square::setColor(PieceColor color) noexcept
+{
+  mColor = color;
+  return *this;
+}
+
+//
+// check if position is valid
+//
+inline bool
+Square::isInBound(dim_type position) noexcept
+{
+  return position >= 0 && position < BOARD_DIM;
+}
+
+//
+// check if row and column are valid
+//
+inline bool
+Square::isInBound(dim_type row, dim_type column) noexcept
+{
+  return row >= 0 && row < BOARD_DIM
+      && column >= 0 && column < BOARD_DIM;
+}
+
 } // namespace zoor
 
 namespace std {
