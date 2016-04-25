@@ -113,7 +113,7 @@ TEST(IOFen3, test2)
   for (int i = 1; i < 10; ++i)
     EXPECT_EQ(PieceColor::WHITE, fenList[i].boardPtr()->colorToMove());
 
-  for (int i = 10; i < 20; ++i)
+  for (int i = 10; i < 19; ++i)
     EXPECT_EQ(PieceColor::BLACK, fenList[i].boardPtr()->colorToMove());
 
   // default BoardInfo on all tests
