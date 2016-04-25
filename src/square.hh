@@ -9,6 +9,7 @@
 //
 // STL
 //
+#include <cassert>
 #include <iostream>
 #include <functional>
 #include <string>
