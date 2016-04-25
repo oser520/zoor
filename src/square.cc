@@ -144,10 +144,10 @@ Square::hashCode() const noexcept
 bool
 operator==(const Square& square1, const Square& square2) noexcept
 {
-  return square1.mPiece == square2.mPiece
-      && square1.mColor == square2.mColor
-      && square1.mRow == square2.mRow
-      && square1.mColumn == square2.mColumn;
+  return square1.piece() == square2.piece()
+      && square1.color() == square2.color()
+      && square1.row() == square2.row()
+      && square1.column() == square2.column();
 }
 
 //
@@ -166,10 +166,10 @@ std::ostream&
 operator<<(std::ostream& os, const Square& square)
 {
   os << "("
-     << square.mPiece << ", "
-     << square.mColor << ", "
-     << square.mRow << ", "
-     << square.mColumn
+     << square.piece() << ", "
+     << square.color() << ", "
+     << square.row() << ", "
+     << square.column()
      << ")";
   return os;
 }

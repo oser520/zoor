@@ -33,18 +33,6 @@ namespace zoor {
 ///
 class Square
 {
-  ///
-  /// @copydoc std::ostream& operator<<(std::ostream&, const Square&)
-  ///
-  friend std::ostream&
-  operator<<(std::ostream&, const Square&);
-
-  ///
-  /// @copydoc bool operator==(const Square&, const Square&)
-  ///
-  friend bool
-  operator==(const Square&, const Square&) noexcept;
-
 public:
   ///
   /// @brief Alias for type of row and column.
