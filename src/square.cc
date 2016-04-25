@@ -20,8 +20,6 @@
 
 namespace zoor {
 
-using dim_type = Square::dim_type;
-
 //
 // default ctor
 //
