@@ -4,8 +4,9 @@
  * @date 2016-01-01
  */
 
-#include <cstdlib>
 #include <cassert>
+#include <cstdlib>
+#include <iostream>
 
 #include "piececode.hh"
 
