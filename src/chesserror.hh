@@ -12,6 +12,8 @@
 #include <stdexcept>
 #include <string>
 
+namespace zoor {
+
 ///
 /// @brief A simple exception class to represent chess errors.
 ///
@@ -35,4 +37,6 @@ public:
   ///
   explicit ChessError(const std::string &msg): std::logic_error(msg) {}
 };
+
+} // zoor
 #endif /* _CHESSERROR_H */
