@@ -9,7 +9,7 @@
 //
 #include <cassert>
 #include <cstdlib>
-#include <iostream>
+#include <ostream>
 
 //
 // zoor
