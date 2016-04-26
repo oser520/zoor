@@ -1,11 +1,18 @@
-/**
- * @file piececount.cc
- * @author Omar A Serrano
- * @date 2015-12-21
- */
+/////////////////////////////////////////////////////////////////////////////////////
+/// @file piececount.cc
+/// @author Omar A Serrano
+/// @date 2015-12-21
+/////////////////////////////////////////////////////////////////////////////////////
+
+//
+// STL
+//
 #include <cassert>
 #include <vector>
 
+//
+// zoor
+//
 #include "board.hh"
 #include "piececode.hh"
 #include "piececount.hh"
