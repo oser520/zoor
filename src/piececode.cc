@@ -265,8 +265,8 @@ operator<<(std::ostream &os, const PieceCode &piece)
     os << "KING";
     break;
   default:
-    std::cerr << "Unknown PieceCode value" << std::endl;
-    exit(EXIT_FAILURE);
+    // should never get here
+    assert(false);
   }
 
   return os;
@@ -289,8 +289,8 @@ operator<<(std::ostream &os, const PieceColor &color)
     os << "BLACK";
     break;
   default:
-    std::cerr << "Unknown PieceColor value" << std::endl;
-    exit(EXIT_FAILURE);
+    // should never get here
+    assert(false);
   }
 
   return os;
