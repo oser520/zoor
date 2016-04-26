@@ -10,7 +10,7 @@
 // STL
 //
 #include <cstdint>
-#include <iostream>
+#include <ostream>
 
 namespace zoor {
 
