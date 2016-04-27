@@ -10,7 +10,7 @@
 // STL
 //
 #include <functional>
-#include <iostream>
+#include <ostream>
 #include <sstream>
 #include <string>
 #include <vector>

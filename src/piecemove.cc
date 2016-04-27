@@ -8,7 +8,7 @@
 // STL
 //
 #include <cassert>
-#include <iostream>
+#include <ostream>
 #include <sstream>
 #include <string>
 #include <utility>
