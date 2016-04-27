@@ -546,6 +546,190 @@ operator!=(const PieceMove &pm1, const PieceMove &pm2) noexcept;
 std::ostream&
 operator<<(std::ostream &os, const PieceMove &pm);
 
+/////////////////////////////////////////////////////////////////////////////////////
+// definitions
+/////////////////////////////////////////////////////////////////////////////////////
+
+//
+// from row getter
+//
+inline PieceMove::dim_type
+PieceMove::fromRow() const noexcept
+{
+  return mFrom.row();
+}
+
+//
+// from column getter
+//
+inline PieceMove::dim_type
+PieceMove::fromColumn() const noexcept
+{
+  return mFrom.column();
+}
+
+//
+// the row getter for the destination row
+//
+inline PieceMove::dim_type
+PieceMove::toRow() const noexcept
+{
+  return mPromo.row();
+}
+
+//
+// the column getter for the destination column
+//
+inline PieceMove::dim_type
+PieceMove::toColumn() const noexcept
+{
+  return mPromo.column();
+}
+
+//
+// the row getter for the captured piece
+//
+inline PieceMove::dim_type
+PieceMove::captureRow() const noexcept
+{
+  return mCapture.row();
+}
+
+//
+// the column getter for the captured piece
+//
+inline PieceMove::dim_type
+PieceMove::captureColumn() const noexcept
+{
+  return mCapture.column();
+}
+
+//
+// source square getter
+//
+inline Square
+PieceMove::fromSquare() const noexcept
+{
+  return mFrom;
+}
+
+//
+// source piece getter
+//
+inline PieceCode
+PieceMove::fromPiece() const noexcept
+{
+  return mFrom.piece();
+}
+
+//
+// source piece color getter
+//
+inline PieceColor
+PieceMove::fromColor() const noexcept
+{
+  return mFrom.color();
+}
+
+//
+// get the captured square
+//
+inline Square
+PieceMove::captureSquare() const noexcept
+{
+  return mCapture;
+}
+
+//
+// get the captured piece
+//
+inline PieceCode
+PieceMove::capturePiece() const noexcept
+{
+  return mCapture.piece();
+}
+
+//
+// get the captured piece's color
+//
+inline PieceColor
+PieceMove::captureColor() const noexcept
+{
+  return mCapture.color();
+}
+
+//
+// does move result in promotion
+//
+inline bool
+PieceMove::isPromo() const noexcept
+{
+  return mPromo.piece() != PieceCode::NONE;
+}
+
+//
+// promotion square
+//
+inline Square
+PieceMove::promoSquare() const noexcept
+{
+  return mPromo;
+}
+
+//
+// promotion piece getter
+//
+inline PieceCode
+PieceMove::promoPiece() const noexcept
+{
+  return mPromo.piece();
+}
+
+//
+// promotion piece color getter
+//
+inline PieceColor
+PieceMove::promoColor() const noexcept
+{
+  return mPromo.color();
+}
+
+//
+// check if the move results in mate
+//
+inline bool
+PieceMove::isMate() const noexcept
+{
+  return isKing(mCapture.piece());
+}
+
+//
+// check if the move represents short castling
+//
+inline bool
+PieceMove::isCastle() const noexcept
+{
+  return mCastleInfo == 0x1;
+}
+
+//
+// check if the move represents long castling
+//
+inline bool
+PieceMove::isCastleLong() const noexcept
+{
+  return mCastleInfo == 0x2;
+}
+
+//
+// are moves different
+//
+inline bool
+operator!=(const PieceMove &pm1, const PieceMove &pm2) noexcept
+{
+  return !(pm1 == pm2);
+}
+
 } // namespace zoor
 
 namespace std {
