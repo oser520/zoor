@@ -1,23 +1,27 @@
-/**
- * @file board.cc
- * @author Omar A Serrano
- * @date 2015-12-26
- */
+/////////////////////////////////////////////////////////////////////////////////////
+/// @file board.cc
+/// @author Omar A Serrano
+/// @date 2015-12-26
+/////////////////////////////////////////////////////////////////////////////////////
 
-// STL headers
-#include <vector>
-#include <array>
-#include <iostream>
+//
+// STL
+//
 #include <algorithm>
-#include <utility>
-#include <functional>
-#include <iterator>
+#include <array>
 #include <bitset>
-#include <string>
-#include <sstream>
 #include <cassert>
+#include <functional>
+#include <iostream>
+#include <iterator>
+#include <sstream>
+#include <string>
+#include <utility>
+#include <vector>
 
-// zoor headers
+//
+// zoor
+//
 #include "piececode.hh"
 #include "square.hh"
 #include "piecemove.hh"
@@ -26,15 +30,15 @@
 
 namespace zoor {
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // aliases
-////////////////////////////////////////////////////////////////////////////////
+//
 using dim_type = Board::dim_type;
 using jump_list = Board::jump_list;
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // initialize static vars
-////////////////////////////////////////////////////////////////////////////////
+//
 const jump_list Board::JUMP_KNIGHT = {
   {2, 1}, {1, 2}, {-1, 2}, {-2, 1},
   {-2, -1}, {-1, -2}, {1, -2}, {2, -1}
@@ -58,16 +62,20 @@ Board::INIT_BOARD = {{
     {0x14, 0x12, 0x13, 0x15, 0x16, 0x13, 0x12, 0x14}  // 8
 }};
 
-////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+// Board
+/////////////////////////////////////////////////////////////////////////////////////
+
+//
 // default ctor
-////////////////////////////////////////////////////////////////////////////////
+//
 Board::Board()
   : mRows(INIT_BOARD),
     mColor(PieceColor::WHITE) {}
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // constructor with list of pieces
-////////////////////////////////////////////////////////////////////////////////
+//
 Board::Board
   (const std::vector<Square> &squareList,
    const PieceColor color,
@@ -88,10 +96,11 @@ Board::Board
     throw ChessError("Bad last move");
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // check if king can do short castling
-////////////////////////////////////////////////////////////////////////////////
-bool Board::canCastle() const noexcept
+//
+bool
+Board::canCastle() const noexcept
 {
   dim_type row;
 
@@ -117,10 +126,11 @@ bool Board::canCastle() const noexcept
   return true;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // check if king can do long castling
-////////////////////////////////////////////////////////////////////////////////
-bool Board::canCastleLong() const noexcept
+//
+bool
+Board::canCastleLong() const noexcept
 {
   dim_type row;
 
@@ -146,10 +156,11 @@ bool Board::canCastleLong() const noexcept
   return true;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // get the moves that can be made from a given square
-////////////////////////////////////////////////////////////////////////////////
-std::vector<PieceMove> Board::getMoves(dim_type row, dim_type column) const
+//
+std::vector<PieceMove>
+Board::getMoves(dim_type row, dim_type column) const
 {
   assert(!isColorNone(mColor));
   std::vector<PieceMove> moveList;
@@ -187,10 +198,11 @@ std::vector<PieceMove> Board::getMoves(dim_type row, dim_type column) const
   return moveList;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // get all the moves from all the pieces
-////////////////////////////////////////////////////////////////////////////////
-std::vector<PieceMove> Board::getMoves() const
+//
+std::vector<PieceMove>
+Board::getMoves() const
 {
   assert(!isColorNone(mColor));
 
@@ -208,10 +220,11 @@ std::vector<PieceMove> Board::getMoves() const
   return moveList;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // return all the positions attainable from this board
-////////////////////////////////////////////////////////////////////////////////
-std::vector<Board> Board::getBoards() const
+//
+std::vector<Board>
+Board::getBoards() const
 {
   std::vector<Board> boardList;
   auto moveList = getMoves();
@@ -225,10 +238,11 @@ std::vector<Board> Board::getBoards() const
   return boardList;
 }
 
-///////////////////////////////////////////////////////////////////////////////
+//
 // make a move on this board
-///////////////////////////////////////////////////////////////////////////////
-Board& Board::makeMove(const PieceMove &pieceMove)
+//
+Board&
+Board::makeMove(const PieceMove &pieceMove)
 {
   auto sq = pieceMove.fromSquare();
   auto fromCode = get(sq.row(), sq.column());
@@ -249,10 +263,11 @@ Board& Board::makeMove(const PieceMove &pieceMove)
   return *this;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // check if the last move is valid, given the current position on the board
-////////////////////////////////////////////////////////////////////////////////
-bool Board::isLastMoveOk() const noexcept
+//
+bool
+Board::isLastMoveOk() const noexcept
 {
   auto piece = mLastMove.fromPiece();
   if (!isPieceNone(piece)) {
@@ -330,9 +345,9 @@ bool Board::isLastMoveOk() const noexcept
   return true;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // valid jump positions from a given row and column
-////////////////////////////////////////////////////////////////////////////////
+//
 jump_list Board::jump
   (dim_type row,
    dim_type column,
@@ -351,10 +366,11 @@ jump_list Board::jump
   return jumpList;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // is it check from a pawn
-////////////////////////////////////////////////////////////////////////////////
-bool Board::isCheckPawn(dim_type row, dim_type column) const noexcept
+//
+bool
+Board::isCheckPawn(dim_type row, dim_type column) const noexcept
 {
   assert(!isColorNone(mColor));
   assert(isInBound(row, column));
@@ -392,10 +408,11 @@ bool Board::isCheckPawn(dim_type row, dim_type column) const noexcept
   return false;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // is there check from a knight
-////////////////////////////////////////////////////////////////////////////////
-bool Board::isCheckKnight(dim_type row, dim_type column) const
+//
+bool
+Board::isCheckKnight(dim_type row, dim_type column) const
 {
   assert(!isColorNone(mColor));
   assert(isInBound(row, column));
@@ -410,10 +427,11 @@ bool Board::isCheckKnight(dim_type row, dim_type column) const
   return false;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // is there a check from a bishop
-////////////////////////////////////////////////////////////////////////////////
-bool Board::isCheckBishop(dim_type row, dim_type column) const noexcept
+//
+bool
+Board::isCheckBishop(dim_type row, dim_type column) const noexcept
 {
   assert(!isColorNone(mColor));
   assert(isInBound(row, column));
@@ -423,10 +441,11 @@ bool Board::isCheckBishop(dim_type row, dim_type column) const noexcept
       || isCheckNE(row, column, piece) || isCheckSE(row, column, piece);
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // is there a check from a rook
-////////////////////////////////////////////////////////////////////////////////
-bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
+//
+bool
+Board::isCheckRook(dim_type row, dim_type column) const noexcept
 {
   assert(!isColorNone(mColor));
   assert(isInBound(row, column));
@@ -436,10 +455,11 @@ bool Board::isCheckRook(dim_type row, dim_type column) const noexcept
       || isCheckS(row, column, piece) || isCheckE(row, column, piece);
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // is there a check from a queen
-////////////////////////////////////////////////////////////////////////////////
-bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
+//
+bool
+Board::isCheckQueen(dim_type row, dim_type column) const noexcept
 {
   assert(!isColorNone(mColor));
   assert(isInBound(row, column));
@@ -451,10 +471,11 @@ bool Board::isCheckQueen(dim_type row, dim_type column) const noexcept
       || isCheckE(row, column, piece) || isCheckNW(row, column, piece);
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // is there a check from the king
-////////////////////////////////////////////////////////////////////////////////
-bool Board::isCheckKing(dim_type row, dim_type column) const
+//
+bool
+Board::isCheckKing(dim_type row, dim_type column) const
 {
   assert(!isColorNone(mColor));
   assert(isInBound(row, column));
@@ -469,10 +490,11 @@ bool Board::isCheckKing(dim_type row, dim_type column) const
   return false;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // check if king is in danger
-////////////////////////////////////////////////////////////////////////////////
-bool Board::isCheck(dim_type row, dim_type column) const
+//
+bool
+Board::isCheck(dim_type row, dim_type column) const
 {
   assert(!isColorNone(mColor));
   assert(isInBound(row, column));
@@ -482,9 +504,9 @@ bool Board::isCheck(dim_type row, dim_type column) const
       || isCheckPawn(row, column) || isCheckKnight(row, column);
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // check if there is an en passant at the given column
-////////////////////////////////////////////////////////////////////////////////
+//
 bool
 Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
 {
@@ -509,9 +531,9 @@ Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
       && mLastMove.toColumn() == toColumn;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // Return a list of all the pawn moves.
-////////////////////////////////////////////////////////////////////////////////
+//
 std::vector<PieceMove>
 Board::movePawn(dim_type row, dim_type column) const
 {
@@ -645,9 +667,9 @@ Board::movePawn(dim_type row, dim_type column) const
   return moveList;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // move knight
-////////////////////////////////////////////////////////////////////////////////
+//
 std::vector<PieceMove>
 Board::moveKnight(dim_type row, dim_type column) const
 {
@@ -671,9 +693,9 @@ Board::moveKnight(dim_type row, dim_type column) const
   return moveList;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // move bishop
-////////////////////////////////////////////////////////////////////////////////
+//
 std::vector<PieceMove>
 Board::moveBishop(dim_type row, dim_type column) const
 {
@@ -746,9 +768,9 @@ Board::moveBishop(dim_type row, dim_type column) const
   return moveList;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // move rook
-////////////////////////////////////////////////////////////////////////////////
+//
 std::vector<PieceMove>
 Board::moveRook(dim_type row, dim_type column) const
 {
@@ -817,9 +839,9 @@ Board::moveRook(dim_type row, dim_type column) const
   return moveList;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // move queen
-////////////////////////////////////////////////////////////////////////////////
+//
 std::vector<PieceMove>
 Board::moveQueen(dim_type row, dim_type column) const
 {
@@ -948,9 +970,9 @@ Board::moveQueen(dim_type row, dim_type column) const
   return moveList;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // move king
-////////////////////////////////////////////////////////////////////////////////
+//
 std::vector<PieceMove>
 Board::moveKing(dim_type row, dim_type column) const
 {
@@ -987,10 +1009,11 @@ Board::moveKing(dim_type row, dim_type column) const
   return moveList;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // return a hash code of the board using One-at-a-Time hash
-////////////////////////////////////////////////////////////////////////////////
-size_t Board::hashCode() const noexcept
+//
+size_t
+Board::hashCode() const noexcept
 {
   size_t h = 0;
 
@@ -1015,10 +1038,11 @@ size_t Board::hashCode() const noexcept
   return h;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // make a move on this board
-////////////////////////////////////////////////////////////////////////////////
-Board& Board::moveRef(const PieceMove &pieceMove) noexcept
+//
+Board&
+Board::moveRef(const PieceMove &pieceMove) noexcept
 {
   assert(!isColorNone(mColor));
   auto toRow = pieceMove.toRow();
@@ -1115,9 +1139,9 @@ Board& Board::moveRef(const PieceMove &pieceMove) noexcept
   return *this;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // is there a check in the diagonal from above and to the right
-////////////////////////////////////////////////////////////////////////////////
+//
 bool
 Board::isCheckNE(dim_type row, dim_type column, PieceCode piece) const noexcept
 {
@@ -1138,9 +1162,9 @@ Board::isCheckNE(dim_type row, dim_type column, PieceCode piece) const noexcept
   return false;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // is there a check in the diagonal from below and to the right
-////////////////////////////////////////////////////////////////////////////////
+//
 bool
 Board::isCheckSE(dim_type row, dim_type column, PieceCode piece) const noexcept
 {
@@ -1161,9 +1185,9 @@ Board::isCheckSE(dim_type row, dim_type column, PieceCode piece) const noexcept
   return false;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // is there a check in the diagonal from below and to the left
-////////////////////////////////////////////////////////////////////////////////
+//
 bool
 Board::isCheckSW(dim_type row, dim_type column, PieceCode piece) const noexcept
 {
@@ -1184,9 +1208,9 @@ Board::isCheckSW(dim_type row, dim_type column, PieceCode piece) const noexcept
   return false;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // is there a check in the diagonal from above and to the left
-////////////////////////////////////////////////////////////////////////////////
+//
 bool
 Board::isCheckNW(dim_type row, dim_type column, PieceCode piece) const noexcept
 {
@@ -1207,9 +1231,9 @@ Board::isCheckNW(dim_type row, dim_type column, PieceCode piece) const noexcept
   return false;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // is it check in column from above
-////////////////////////////////////////////////////////////////////////////////
+//
 bool
 Board::isCheckN(dim_type row, dim_type column, PieceCode piece) const noexcept
 {
@@ -1230,9 +1254,9 @@ Board::isCheckN(dim_type row, dim_type column, PieceCode piece) const noexcept
   return false;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // is it check in row from right
-////////////////////////////////////////////////////////////////////////////////
+//
 bool
 Board::isCheckE(dim_type row, dim_type column, PieceCode piece) const noexcept
 {
@@ -1253,9 +1277,9 @@ Board::isCheckE(dim_type row, dim_type column, PieceCode piece) const noexcept
   return false;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // is it check in column from below
-////////////////////////////////////////////////////////////////////////////////
+//
 bool
 Board::isCheckS(dim_type row, dim_type column, PieceCode piece) const noexcept
 {
@@ -1276,9 +1300,9 @@ Board::isCheckS(dim_type row, dim_type column, PieceCode piece) const noexcept
   return false;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // is it check in row from left
-////////////////////////////////////////////////////////////////////////////////
+//
 bool
 Board::isCheckW(dim_type row, dim_type column, PieceCode piece) const noexcept
 {
@@ -1299,10 +1323,11 @@ Board::isCheckW(dim_type row, dim_type column, PieceCode piece) const noexcept
   return false;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // output string representation of the board
-////////////////////////////////////////////////////////////////////////////////
-std::ostream& operator<<(std::ostream &os, const Board &board)
+//
+std::ostream&
+operator<<(std::ostream &os, const Board &board)
 {
   // begin the board
   os << "{";
@@ -1331,28 +1356,31 @@ std::ostream& operator<<(std::ostream &os, const Board &board)
   return os;
 }
 
+/////////////////////////////////////////////////////////////////////////////////////
 // BoardIterator
+/////////////////////////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // ctor to beginning of board
-////////////////////////////////////////////////////////////////////////////////
+//
 BoardIterator::BoardIterator(const Board &board) noexcept
   : mBoard(board),
     mIndex(0),
     mCode(mBoard.get(0, 0)) {}
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // ctor to end of board
-////////////////////////////////////////////////////////////////////////////////
+//
 BoardIterator::BoardIterator(const Board &board, int) noexcept
   : mBoard(board),
     mIndex(LAST_INDEX),
     mCode(0) {}
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // prefix increment operator
-////////////////////////////////////////////////////////////////////////////////
-BoardIterator& BoardIterator::operator++()
+//
+BoardIterator&
+BoardIterator::operator++()
 {
   if (mIndex >= LAST_INDEX)
     throw ChessError("Iterator cannot move beyond board");
@@ -1363,10 +1391,11 @@ BoardIterator& BoardIterator::operator++()
   return *this;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // postfix increment operator
-////////////////////////////////////////////////////////////////////////////////
-BoardIterator BoardIterator::operator++(int)
+//
+BoardIterator
+BoardIterator::operator++(int)
 {
   if (mIndex >= LAST_INDEX)
     throw ChessError("Iterator cannot move beyond board");
@@ -1377,9 +1406,9 @@ BoardIterator BoardIterator::operator++(int)
   return bi;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // increment and assignment operator
-////////////////////////////////////////////////////////////////////////////////
+//
 BoardIterator&
 BoardIterator::operator+=(BoardIterator::difference_type value)
 {
@@ -1393,9 +1422,9 @@ BoardIterator::operator+=(BoardIterator::difference_type value)
   return *this;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // decrement and assignment operator
-////////////////////////////////////////////////////////////////////////////////
+//
 BoardIterator&
 BoardIterator::operator-=(BoardIterator::difference_type value)
 {
@@ -1409,9 +1438,9 @@ BoardIterator::operator-=(BoardIterator::difference_type value)
   return *this;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // dereference operator
-////////////////////////////////////////////////////////////////////////////////
+//
 BoardIterator::value_type
 BoardIterator::operator*() const
 {
@@ -1421,10 +1450,11 @@ BoardIterator::operator*() const
   return mCode;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // get the piece on the current square
-////////////////////////////////////////////////////////////////////////////////
-PieceCode BoardIterator::piece() const
+//
+PieceCode
+BoardIterator::piece() const
 {
   if (mIndex >= LAST_INDEX)
     throw ChessError("Iterator cannot move beyond board");
@@ -1432,10 +1462,11 @@ PieceCode BoardIterator::piece() const
   return getPieceCode(mCode);
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // get the color of the piece on the current square
-////////////////////////////////////////////////////////////////////////////////
-PieceColor BoardIterator::color() const
+//
+PieceColor
+BoardIterator::color() const
 {
   if (mIndex >= LAST_INDEX)
     throw ChessError("Iterator cannot move beyond board");
@@ -1443,10 +1474,11 @@ PieceColor BoardIterator::color() const
   return getPieceColor(mCode);
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // get the row of the current square
-////////////////////////////////////////////////////////////////////////////////
-BoardIterator::dim_type BoardIterator::row() const
+//
+BoardIterator::dim_type
+BoardIterator::row() const
 {
   if (mIndex >= LAST_INDEX)
     throw ChessError("Iterator cannot move beyond board");
@@ -1454,10 +1486,11 @@ BoardIterator::dim_type BoardIterator::row() const
   return mIndex >> 3;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // get the column of the current square
-////////////////////////////////////////////////////////////////////////////////
-BoardIterator::dim_type BoardIterator::column() const
+//
+BoardIterator::dim_type
+BoardIterator::column() const
 {
   if (mIndex >= LAST_INDEX)
     throw ChessError("Iterator cannot move beyond board");
@@ -1465,36 +1498,36 @@ BoardIterator::dim_type BoardIterator::column() const
   return mIndex & (Board::BOARD_DIM-1);
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // compare two board iterators for equality
-////////////////////////////////////////////////////////////////////////////////
+//
 bool
 operator==(const BoardIterator &bi1, const BoardIterator &bi2) noexcept
 {
   return &bi1.mBoard == &bi2.mBoard && bi1.mIndex == bi2.mIndex;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // compare two board iterators for non-equality
-////////////////////////////////////////////////////////////////////////////////
+//
 bool
 operator!=(const BoardIterator &bi1, const BoardIterator &bi2) noexcept
 {
   return !(bi1 == bi2);
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // get the difference between two iterators
-////////////////////////////////////////////////////////////////////////////////
+//
 BoardIterator::difference_type
 operator-(const BoardIterator &bi1, const BoardIterator &bi2) noexcept
 {
   return bi1.mIndex - bi2.mIndex;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // get the iterator obtained by subtracting an integral value
-////////////////////////////////////////////////////////////////////////////////
+//
 BoardIterator
 operator-(const BoardIterator &bi, BoardIterator::difference_type value)
 {
@@ -1503,9 +1536,9 @@ operator-(const BoardIterator &bi, BoardIterator::difference_type value)
   return newBi;
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // get the iterator obtained by adding an integral value
-////////////////////////////////////////////////////////////////////////////////
+//
 BoardIterator
 operator+(const BoardIterator &bi, BoardIterator::difference_type value)
 {
