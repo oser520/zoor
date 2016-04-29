@@ -22,11 +22,11 @@
 //
 // zoor
 //
-#include "piececode.hh"
-#include "square.hh"
-#include "piecemove.hh"
-#include "chesserror.hh"
 #include "board.hh"
+#include "chesserror.hh"
+#include "piececode.hh"
+#include "piecemove.hh"
+#include "square.hh"
 
 namespace zoor {
 
