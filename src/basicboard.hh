@@ -14,7 +14,7 @@
 //
 // zoor
 //
-#include "piececode.hh"
+#include "basictypes.hh"
 
 namespace zoor {
 
