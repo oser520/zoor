@@ -377,7 +377,7 @@ operator|(Color color, Piece piece) noexcept;
 /// @throw Never throws.
 ///
 Color
-operator~(const Color &color) noexcept;
+operator~(Color color) noexcept;
 
 ///
 /// @brief Obtain a short string code representing the piece.
