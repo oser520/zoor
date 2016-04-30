@@ -83,7 +83,7 @@ enum class PieceMask: piece_t
 /// @throw Never throws.
 ///
 Piece
-piece(piece_t piece) noexcept;
+getPiece(piece_t piece) noexcept;
 
 ///
 /// @brief Get a @c Color from a bit pattern.
@@ -92,7 +92,7 @@ piece(piece_t piece) noexcept;
 /// @throw Never throws.
 ///
 Color
-color(piece_t piece) noexcept;
+getColor(piece_t piece) noexcept;
 
 ///
 /// @brief Determine if the code represents a pawn.
@@ -372,7 +372,7 @@ shortString(piece_t code) noexcept;
 // get the piece value
 //
 inline Piece
-piece(piece_t piece) noexcept
+getPiece(piece_t piece) noexcept
 {
   piece &= static_cast<piece_t>(PieceMask::PIECE);
   return static_cast<Piece>(piece);
@@ -382,7 +382,7 @@ piece(piece_t piece) noexcept
 // get the color value
 //
 inline Color
-color(piece_t piece) noexcept
+getColor(piece_t piece) noexcept
 {
   piece &= static_cast<piece_t>(PieceMask::COLOR);
   return static_cast<Color>(piece);
