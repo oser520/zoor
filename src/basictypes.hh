@@ -309,7 +309,7 @@ isSame(piece_t code, Color color) noexcept;
 /// @return A reference to the output stream.
 ///
 std::ostream&
-operator<<(std::ostream &os, const Piece piece);
+operator<<(std::ostream &os, Piece piece);
 
 ///
 /// @brief Output operator for a @c Color.
@@ -322,7 +322,7 @@ operator<<(std::ostream &os, const Piece piece);
 /// @return A reference to the output stream.
 ///
 std::ostream&
-operator<<(std::ostream &os, const Color color);
+operator<<(std::ostream &os, Color color);
 
 ///
 /// @brief Output operator for a @c PieceMask.
@@ -334,7 +334,7 @@ operator<<(std::ostream &os, const Color color);
 /// @return A reference to the output stream.
 ///
 std::ostream&
-operator<<(std::ostream &os, const PieceMask mask);
+operator<<(std::ostream &os, PieceMask mask);
 
 ///
 /// @brief Logical and operator for @c Color and @c Piece.
