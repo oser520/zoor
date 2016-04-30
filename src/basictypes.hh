@@ -368,7 +368,7 @@ operator<<(std::ostream &os, const PieceMask &mask);
 /// @throw Never throws.
 ///
 piece_t
-operator|(const Color &color, const Piece &piece) noexcept;
+operator|(Color color, Piece piece) noexcept;
 
 ///
 /// @brief Logical negation operator for @c Color.
