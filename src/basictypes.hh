@@ -81,7 +81,6 @@ enum class PieceMask: piece_t
 /// @param piece The bit pattern containing a @c Piece.
 /// @return A @c Piece.
 /// @throw Never throws.
-/// TODO: make definition inline after I've tested this function
 ///
 Piece
 piece(piece_t piece) noexcept;
@@ -91,7 +90,6 @@ piece(piece_t piece) noexcept;
 /// @param piece The bit pattern containing a @c Color.
 /// @return A @c Color.
 /// @throw Never throws.
-/// TODO: make definition inline after I've tested this function
 ///
 Color
 color(piece_t piece) noexcept;
@@ -101,7 +99,6 @@ color(piece_t piece) noexcept;
 /// @param code The bit pattern reprsenting a piece and its color.
 /// @return True if the code represents a pawn.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 isPawn(piece_t code) noexcept;
@@ -111,7 +108,6 @@ isPawn(piece_t code) noexcept;
 /// @param piece The @c Piece.
 /// @return True if piece is a pawn.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 isPawn(Piece piece) noexcept;
@@ -121,7 +117,6 @@ isPawn(Piece piece) noexcept;
 /// @param code The bit pattern reprsenting a piece and its color.
 /// @return True if the code represents a knight.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 isKnight(piece_t code) noexcept;
@@ -131,7 +126,6 @@ isKnight(piece_t code) noexcept;
 /// @param piece The @c Piece.
 /// @return True if piece is a knight.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 isKnight(Piece piece) noexcept;
@@ -141,7 +135,6 @@ isKnight(Piece piece) noexcept;
 /// @param code The bit pattern reprsenting a piece and its color.
 /// @return True if the code represents a bishop.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 isBishop(piece_t code) noexcept;
@@ -151,7 +144,6 @@ isBishop(piece_t code) noexcept;
 /// @param piece The @c Piece.
 /// @return True if piece is a bishop.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 isBishop(Piece piece) noexcept;
@@ -161,7 +153,6 @@ isBishop(Piece piece) noexcept;
 /// @param code The bit pattern reprsenting a piece and its color.
 /// @return True if the code represents a rook.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 isRook(piece_t code) noexcept;
@@ -171,7 +162,6 @@ isRook(piece_t code) noexcept;
 /// @param piece The @c Piece.
 /// @return True if piece is a rook.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 isRook(Piece piece) noexcept;
@@ -181,7 +171,6 @@ isRook(Piece piece) noexcept;
 /// @param code The bit pattern reprsenting a piece and its color.
 /// @return True if the code represents a queen.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 isQueen(piece_t code) noexcept;
@@ -191,7 +180,6 @@ isQueen(piece_t code) noexcept;
 /// @param piece The @c Piece.
 /// @return True if piece is a queen.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 isQueen(Piece piece) noexcept;
@@ -201,7 +189,6 @@ isQueen(Piece piece) noexcept;
 /// @param code The bit pattern reprsenting a piece and its color.
 /// @return True if the code represents a king.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 isKing(piece_t code) noexcept;
@@ -211,7 +198,6 @@ isKing(piece_t code) noexcept;
 /// @param piece The @c Piece.
 /// @return True if piece is a king.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 isKing(Piece piece) noexcept;
@@ -221,7 +207,6 @@ isKing(Piece piece) noexcept;
 /// @param code The bit pattern reprsenting a piece and its color.
 /// @return True if the code represents a white piece.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 isWhite(piece_t code) noexcept;
@@ -231,7 +216,6 @@ isWhite(piece_t code) noexcept;
 /// @param color The @c Color.
 /// @return True if the color is white.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 isWhite(Color color) noexcept;
@@ -241,7 +225,6 @@ isWhite(Color color) noexcept;
 /// @param code The bit pattern reprsenting a piece and its color.
 /// @return True if the code represents a black piece.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 isBlack(piece_t code) noexcept;
@@ -251,7 +234,6 @@ isBlack(piece_t code) noexcept;
 /// @param color The @c Color.
 /// @return True if the color is black.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 isBlack(Color color) noexcept;
@@ -261,7 +243,6 @@ isBlack(Color color) noexcept;
 /// @param code The bit pattern reprsenting a piece and its color.
 /// @return True if the code represents <em>Piece::NONE</em>.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 notPiece(piece_t code) noexcept;
@@ -271,7 +252,6 @@ notPiece(piece_t code) noexcept;
 /// @param piece The @c Piece.
 /// @return True if piece is <em>Piece::NONE</em>.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 notPiece(Piece piece) noexcept;
@@ -281,7 +261,6 @@ notPiece(Piece piece) noexcept;
 /// @param code The bit pattern reprsenting a piece and its color.
 /// @return True if the code represents <em>Color::NONE</em>.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 notColor(piece_t code) noexcept;
@@ -291,7 +270,6 @@ notColor(piece_t code) noexcept;
 /// @param color The @c Color.
 /// @return True if piece is <em>Color::NONE</em>.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 notColor(Color color) noexcept;
@@ -302,7 +280,6 @@ notColor(Color color) noexcept;
 /// @param piece The @c Piece.
 /// @return True if the code represents the <em>piece</em>.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 isSame(piece_t code, Piece piece) noexcept;
@@ -313,7 +290,6 @@ isSame(piece_t code, Piece piece) noexcept;
 /// @param color The @c Color.
 /// @return True if the code represents the <em>color</em>.
 /// @throw Never throws.
-/// TODO: make definition inline
 ///
 bool
 isSame(piece_t code, Color color) noexcept;
