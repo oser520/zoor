@@ -48,6 +48,7 @@ public:
   ///
   /// @brief Copy assignment.
   /// @param board The @c SimpleBoard being assigned.
+  /// @return A reference to @c BasicBoard.
   /// @throw Never throws.
   ///
   BasicBoard&
@@ -56,6 +57,7 @@ public:
   ///
   /// @brief Move assignment.
   /// @param board The @c SimpleBoard being moved.
+  /// @return A reference to @c BasicBoard.
   /// @throw Never throws.
   ///
   BasicBoard&
@@ -71,10 +73,11 @@ public:
   /// @brief Obtain the contents of a given square.
   /// @param row The row of the square.
   /// @param column The column of the square.
+  /// @return The piece located at the given square.
   /// @throw Never throws.
   /// TODO: define dim_t in basictypes.hh
   ///
-  piececode_t
+  piece_t
   get(dim_t row, dim_t column) noexcept;
 
   ///
@@ -102,7 +105,7 @@ public:
 
 private:
   // pointer to the array
-  piececode_t *mArr;
+  piece_t *mArr;
 };
 
 } // zoor
