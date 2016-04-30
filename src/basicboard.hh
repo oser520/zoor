@@ -24,11 +24,48 @@ public:
   ///
   static constexpr size_t SIZE = 64;
 
+  ///
+  /// @brief Default ctor.
+  /// @details Initializes the board with the normal setup for beginning game.
+  /// @throw May throw bad memory allocation.
+  ///
   BasicBoard();
-  BasicBoard(const BasicBoard &board) noexcept;
+
+  ///
+  /// @brief Copy ctor.
+  /// @param board The @c SimpleBoard to be copied.
+  /// @throw May throw bad memory allocation.
+  ///
+  BasicBoard(const BasicBoard &board);
+
+  ///
+  /// @brief Move ctor.
+  /// @param board The @c SimpleBoard being moved.
+  /// @throw Never throws.
+  ///
   BasicBoard(BasicBoard &&board) noexcept;
+
+  ///
+  /// @brief Copy assignment.
+  /// @param board The @c SimpleBoard being assigned.
+  /// @throw Never throws.
+  ///
   BasicBoard&
-  operator=(const BasicBoard &board);
+  operator=(const BasicBoard &board) noexcept;
+
+  ///
+  /// @brief Move assignment.
+  /// @param board The @c SimpleBoard being moved.
+  /// @throw Never throws.
+  ///
+  BasicBoard&
+  operator=(BasicBoard &&board) noexcept;
+
+  ///
+  /// @brief Dtor.
+  /// @throw Never throws.
+  ///
+  ~BasicBoard() noexcept;
 
 private:
   // pointer to the array
