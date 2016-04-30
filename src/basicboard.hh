@@ -209,7 +209,6 @@ public:
   /// @param column The column of the square.
   /// @return The piece located at the given square.
   /// @throw Never throws.
-  /// TODO: define dim_t in basictypes.hh
   ///
   piece_t
   get(dim_t row, dim_t column) const noexcept;
@@ -220,7 +219,6 @@ public:
   /// @param column The column of the square.
   /// @param piece The type of chess piece.
   /// @throw Never throws.
-  /// TODO: define piece_t in basictypes.hh
   ///
   void
   put(dim_t row, dim_t column, piece_t piece) noexcept;
@@ -232,7 +230,6 @@ public:
   /// @param piece The type of chess piece.
   /// @param color The color of the chess piece.
   /// @throw Never throws.
-  /// TODO: redefine PieceCode as Piece and PieceColor as Color.
   ///
   void
   put(dim_t row, dim_t column, Piece piece, Color color) noexcept;
