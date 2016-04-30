@@ -21,6 +21,123 @@ namespace zoor {
 // BoardIter
 /////////////////////////////////////////////////////////////////////////////////////
 
+class BoardIter
+  : public std::iterator<std::random_iterator_tag, piece_t>
+{
+public:
+  // don't permit default construction
+  BoardIter() = delete;
+
+  ///
+  /// @brief Initialize with pointer to piece.
+  /// @param piece A pointer to a piece on a board.
+  /// @throw Never throws.
+  ///
+  BoardIter(piece_t *piece) noexcept;
+
+  ///
+  /// @brief Default copy ctor.
+  /// @param iter The @c BoardIter to be copied.
+  /// @throw Never throws.
+  ///
+  BoardIter(const BoardIter &iter) noexcept = default;
+
+  ///
+  /// @brief Default move ctor.
+  /// @param iter The @c BoardIter to be moved.
+  /// @throw Never throws.
+  ///
+  BoardIter(BoardIter &&iter) noexcept = default;
+
+  ///
+  /// @brief Default copy assignment.
+  /// @param iter The @c BoardIter to be copied.
+  /// @return A reference to itself.
+  /// @throw Never throws.
+  ///
+  BoardIter&
+  operator=(const BoardIter &iter) noexcept = default;
+
+  ///
+  /// @brief Default move assignment.
+  /// @param iter The @c BoardIter to be moved.
+  /// @return A reference to itself.
+  /// @throw Never throws.
+  ///
+  BoardIter&
+  operator=(BoardIter &&iter) noexcept = default;
+
+  ///
+  /// @brief Default dtor.
+  /// @throw Never throws.
+  ///
+  ~BoardIter() noexcept = default;
+
+  ///
+  /// @brief Prefix increment.
+  /// @return A reference to itself.
+  /// @throw Never throws.
+  ///
+  BoardIter&
+  operator++() noexcept;
+
+  ///
+  /// @brief Postfix increment.
+  /// @return A reference to itself.
+  /// @throw Never throws.
+  ///
+  BoardIter&
+  operator++(int) noexcept;
+
+  ///
+  /// @brief Prefix decrement.
+  /// @return A reference to itself.
+  /// @throw Never throws.
+  ///
+  BoardIter&
+  operator--() noexcept;
+
+  ///
+  /// @brief Postfix decrement.
+  /// @return A reference to itself.
+  /// @throw Never throws.
+  ///
+  BoardIter&
+  operator--(int) noexcept;
+
+  ///
+  /// @brief Get a reference to piece.
+  /// @return Const reference to piece.
+  /// @throw Never throws.
+  ///
+  const reference
+  operator*() noexcept;
+
+private:
+  // pointer to piece
+  const piece_t *mIter;
+};
+
+///
+/// @brief Increment the iterator by a given value.
+/// @param iter The @c BoardIter.
+/// @param value The value to increment iter.
+/// @return A copy of iter incremented by value.
+/// @throw Never throws.
+///
+BoardIter
+operator+(const BoardIter &iter, BoardIter::difference_type value) noexcept;
+
+///
+/// @brief Decrement the iterator by a given value.
+/// @param iter The @c BoardIter.
+/// @param value The value to decrement iter.
+/// @return A copy of iter decremented by value.
+/// @throw Never throws.
+///
+BoardIter
+operator-(const BoardIter &iter, BoardIter::difference_type value) noexcept;
+
 /////////////////////////////////////////////////////////////////////////////////////
 // BasicBoard
 /////////////////////////////////////////////////////////////////////////////////////
