@@ -78,7 +78,7 @@ public:
   /// TODO: define dim_t in basictypes.hh
   ///
   piece_t
-  get(dim_t row, dim_t column) noexcept;
+  get(dim_t row, dim_t column) const noexcept;
 
   ///
   /// @brief Put a chess piece on a square.
