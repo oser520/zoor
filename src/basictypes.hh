@@ -388,5 +388,236 @@ operator~(const Color &color) noexcept;
 const char*
 shortString(piece_t code) noexcept;
 
+/////////////////////////////////////////////////////////////////////////////////////
+// definitions
+/////////////////////////////////////////////////////////////////////////////////////
+
+//
+// get the piece value
+//
+inline Piece
+piece(piece_t piece) noexcept
+{
+  piece &= static_cast<piece_t>(PieceMask::PIECE);
+  return static_cast<Piece>(piece);
+}
+
+//
+// get the color value
+//
+inline Color
+color(piece_t piece) noexcept
+{
+  piece &= static_cast<piece_t>(PieceMask::COLOR);
+  return static_cast<Color>(piece);
+}
+
+//
+// check if the piece is a pawn
+//
+inline bool
+isPawn(piece_t piece) noexcept
+{
+  return piece(piece) == Piece::P;
+}
+
+//
+// check if the piece is a pawn
+//
+inline bool
+isPawn(Piece piece) noexcept
+{
+  return piece == Piece::P;
+}
+
+//
+// check if the piece is a knight
+//
+inline bool
+isKnight(piece_t piece) noexcept
+{
+  return piece(piece) == Piece::N;
+}
+
+//
+// check if the piece is a knight
+//
+inline bool
+isKnight(Piece piece) noexcept
+{
+  return piece == PieceCode::K;
+}
+
+//
+// check if the piece is a bishop
+//
+inline bool
+isBishop(piece_t piece) noexcept
+{
+  return piece(code) == Piece::B;
+}
+
+//
+// check if the piece is a bishop
+//
+inline bool
+isBishop(Piece piece) noexcept
+{
+  return piece == Piece::B;
+}
+
+//
+// check if the piece is a bishop
+//
+inline bool
+isRook(piece_t piece) noexcept
+{
+  return piece(piece) == Piece::R;
+}
+
+//
+// check if the piece is a rook
+//
+inline bool
+isRook(Piece piece) noexcept
+{
+  return piece == Piece::R;
+}
+
+//
+// checkif the piece is a queen
+//
+inline bool
+isQueen(piece_t piece) noexcept
+{
+  return piece(piece) == Piece::Q;
+}
+
+//
+// check if the piece is a queen
+//
+inline bool
+isQueen(Piece piece) noexcept
+{
+  return piece == Piece::Q;
+}
+
+//
+// check if the piece is a king
+//
+inline bool
+isKing(piece_t piece) noexcept
+{
+  return piece(piece) == Piece::K;
+}
+
+//
+// check if the piece is a king
+//
+inline bool
+isKing(Piece piece) noexcept
+{
+  return piece == Piece::K;
+}
+
+//
+// check if the piece is white
+//
+inline bool
+isWhite(piece_t piece) noexcept
+{
+  return color(piece) == Color::W;
+}
+
+//
+// check if the color is white
+//
+inline bool
+isWhite(Color color) noexcept
+{
+  return color == Color::W;
+}
+
+//
+// check if the color is black
+//
+inline bool
+isBlack(piece_t piece) noexcept
+{
+  return color(piece) == Color::B;
+}
+
+//
+// check if the color is black
+//
+inline bool
+isBlack(Color color) noexcept
+{
+  return color == Color::B;
+}
+
+//
+// check if the piece is NONE
+//
+inline bool
+notPiece(piece_t piece) noexcept
+{
+  return piece(piece) == Piece::NONE;
+}
+
+//
+// check if the piece is NONE
+//
+inline bool
+notPiece(Piece piece) noexcept
+{
+  return piece == Piece::NONE;
+}
+
+//
+// check if color is NONE
+//
+inline bool
+notColor(piece_t piece) noexcept
+{
+  return color(piece) == Color::NONE;
+}
+
+//
+// check if the piece is NONE
+//
+inline bool
+notColor(Color color) noexcept
+{
+  return color == Color::NONE;
+}
+
+//
+// check if code contains piece
+//
+inline bool
+isSame(piece_t code, Piece piece) noexcept
+{
+  return piece(code) == piece;
+}
+
+//
+// check if code contains color
+//
+inline bool
+isSame(piece_t code, Color color) noexcept
+{
+  return color(code) == color;
+}
+
+//
+// logical or operator for color and piece to get bit pattern
+//
+inline piece_t
+operator|(Color color, Piece piece) noexcept
+{
+  return static_cast<piece_t>(color) | static_cast<piece_t>(piece);
+}
+
 } // namespace zoor
 #endif // _BASICTYPES_H
