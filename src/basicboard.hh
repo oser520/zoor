@@ -7,6 +7,11 @@
 #define _BASICBOARD_H
 
 //
+// STL
+//
+#include <iterator>
+
+//
 // zoor
 //
 #include "piececode.hh"
