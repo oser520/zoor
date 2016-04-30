@@ -77,6 +77,29 @@ public:
   piececode_t
   get(dim_t row, dim_t column) noexcept;
 
+  ///
+  /// @brief Put a chess piece on a square.
+  /// @param row The row of the square.
+  /// @param column The column of the square.
+  /// @param piece The type of chess piece.
+  /// @throw Never throws.
+  /// TODO: define piece_t in basictypes.hh
+  ///
+  void
+  put(dim_t row, dim_t column, piece_t piece) noexcept;
+
+  ///
+  /// @brief Put a chess piece on a square.
+  /// @param row The row of the square.
+  /// @param column The column of the square.
+  /// @param piece The type of chess piece.
+  /// @param color The color of the chess piece.
+  /// @throw Never throws.
+  /// TODO: redefine PieceCode as Piece and PieceColor as Color.
+  ///
+  void
+  put(dim_t row, dim_t column, Piece piece, Color color) noexcept;
+
 private:
   // pointer to the array
   piececode_t *mArr;
