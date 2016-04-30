@@ -264,7 +264,7 @@ isBlack(Color color) noexcept;
 /// TODO: make definition inline
 ///
 bool
-isNotPiece(piece_t code) noexcept;
+notPiece(piece_t code) noexcept;
 
 ///
 /// @brief Determine if the piece is <em>Piece::NONE</em>.
@@ -274,7 +274,7 @@ isNotPiece(piece_t code) noexcept;
 /// TODO: make definition inline
 ///
 bool
-isNotPiece(Piece piece) noexcept;
+notPiece(Piece piece) noexcept;
 
 ///
 /// @brief Determine if the code represents a <em>Color::NONE</em>.
@@ -284,7 +284,7 @@ isNotPiece(Piece piece) noexcept;
 /// TODO: make definition inline
 ///
 bool
-isNotColor(piece_t code) noexcept;
+notColor(piece_t code) noexcept;
 
 ///
 /// @brief Determine if the color is <em>Color::NONE</em>.
@@ -294,7 +294,7 @@ isNotColor(piece_t code) noexcept;
 /// TODO: make definition inline
 ///
 bool
-isNotColor(Color color) noexcept;
+notColor(Color color) noexcept;
 
 ///
 /// @brief Determine if the code represents the same <em>piece</em>.
