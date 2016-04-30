@@ -67,6 +67,16 @@ public:
   ///
   ~BasicBoard() noexcept;
 
+  ///
+  /// @brief Obtain the contents of a given square.
+  /// @param row The row of the square.
+  /// @param column The column of the square.
+  /// @throw Never throws.
+  /// TODO: define dim_t in basictypes.hh
+  ///
+  piececode_t
+  get(dim_t row, dim_t column) noexcept;
+
 private:
   // pointer to the array
   piececode_t *mArr;
