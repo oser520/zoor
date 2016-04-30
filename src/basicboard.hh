@@ -119,7 +119,7 @@ public:
   operator*() noexcept;
 
 private:
-  // pointer to piece
+  // pointer to read-only piece
   const piece_t *mIter;
 };
 
