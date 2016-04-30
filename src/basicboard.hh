@@ -103,6 +103,20 @@ public:
   void
   put(dim_t row, dim_t column, Piece piece, Color color) noexcept;
 
+  ///
+  /// @brief Get iterator to the first square on the board.
+  /// @throw Never throws.
+  ///
+  iterator
+  begin() const noexcept;
+
+  ///
+  /// @brief Get iterator to one past the last square.
+  /// @throw Never throws.
+  ///
+  iterator
+  end() const noexcept;
+
 private:
   // pointer to the array
   piece_t *mArr;
