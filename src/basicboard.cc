@@ -81,6 +81,7 @@ operator--(int) noexcept
 BoardIter&
 operator+=(difference_type value) noexcept
 {
+  assert(mIter != nullptr);
   mIter += value;
   return *this;
 }
@@ -91,6 +92,7 @@ operator+=(difference_type value) noexcept
 BoardIter&
 operator-=(difference_type value) noexcept
 {
+  assert(mIter != nullptr);
   mIter -= value;
   return *this;
 }
