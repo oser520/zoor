@@ -139,6 +139,10 @@ public:
 private:
   // pointer to read-only piece
   const piece_t *mIter;
+
+  // friends
+  friend bool
+  operator==(const BoardIter&, const BoardIter&);
 };
 
 ///
