@@ -120,6 +120,15 @@ public:
   operator+=(difference_type value) noexcept;
 
   ///
+  /// @brief Subtraction assignment.
+  /// @param value The value subtracted to the iterator.
+  /// @return A reference to itself.
+  /// @throw Never throws.
+  ///
+  BoardIter&
+  operator-=(difference_type value) noexcept;
+
+  ///
   /// @brief Get a reference to piece.
   /// @return Const reference to piece.
   /// @throw Never throws.
