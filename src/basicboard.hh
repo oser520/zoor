@@ -111,6 +111,15 @@ public:
   operator--(int) noexcept;
 
   ///
+  /// @brief Addition assignment.
+  /// @param value The value added to the iterator.
+  /// @return A reference to itself.
+  /// @throw Never throws.
+  ///
+  BoardIter&
+  operator+=(difference_type value) noexcept;
+
+  ///
   /// @brief Get a reference to piece.
   /// @return Const reference to piece.
   /// @throw Never throws.
