@@ -86,6 +86,16 @@ operator+=(difference_type value) noexcept
 }
 
 //
+// add and subtract to self
+//
+BoardIter&
+operator-=(difference_type value) noexcept
+{
+  mIter -= value;
+  return *this;
+}
+
+//
 // dereference operator
 //
 const BoardIter::reference
