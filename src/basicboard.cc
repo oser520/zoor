@@ -138,4 +138,13 @@ operator==(const BoardIter &iter1, const BoardIter &iter2) noexcept
   return iter1.mIter == iter2.mIter;
 }
 
+//
+// non-equality operator
+//
+bool
+operator!=(const BoardIter &iter1, const BoardIter &iter2) noexcept
+{
+  return !(iter1 == iter2);
+}
+
 } // zoor
