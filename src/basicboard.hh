@@ -201,6 +201,11 @@ public:
   static constexpr size_t SIZE = 64;
 
   ///
+  /// @brief The default initialization board.
+  ///
+  static const piece_t INIT_BOARD[SIZE];
+
+  ///
   /// @brief Default ctor.
   /// @details Initializes the board with the normal setup for beginning game.
   /// @throw May throw bad memory allocation.
