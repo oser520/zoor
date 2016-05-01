@@ -305,5 +305,15 @@ private:
 bool
 operator==(const BasicBoard &board1, const BasicBoard &board2) noexcept;
 
+///
+/// @brief Non-equality operator for two boards.
+/// @param board1 The left hand board.
+/// @param board2 The right hand board.
+/// @return False if the board are equal, true otherwise.
+/// @throw Never throws.
+///
+bool
+operator!=(const BasicBoard &board1, const BasicBoard &board2) noexcept;
+
 } // zoor
 #endif // _BASICBOARD_H
