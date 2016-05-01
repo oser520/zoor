@@ -196,6 +196,11 @@ class BasicBoard:
 {
 public:
   ///
+  /// @brief The number of squares per row and column.
+  ///
+  static constexpr dim_t DIM = 8;
+
+  ///
   /// @brief The number of squares in the @c SimpleBoard.
   ///
   static constexpr size_t SIZE = 64;
