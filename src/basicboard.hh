@@ -91,7 +91,7 @@ public:
   /// @return A reference to itself.
   /// @throw Never throws.
   ///
-  BoardIter&
+  BoardIter
   operator++(int) noexcept;
 
   ///
@@ -107,7 +107,7 @@ public:
   /// @return A reference to itself.
   /// @throw Never throws.
   ///
-  BoardIter&
+  BoardIter
   operator--(int) noexcept;
 
   ///
