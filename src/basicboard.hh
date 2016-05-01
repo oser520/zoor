@@ -295,5 +295,15 @@ private:
   piece_t *mArr;
 };
 
+///
+/// @brief Equality operator for two boards.
+/// @param board1 The left hand board.
+/// @param board2 The right hand board.
+/// @return True if the board are equal, false otherwise.
+/// @throw Never throws.
+///
+bool
+operator==(const BasicBoard &board1, const BasicBoard &board2) noexcept;
+
 } // zoor
 #endif // _BASICBOARD_H
