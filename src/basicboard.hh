@@ -161,6 +161,26 @@ operator+(const BoardIter &iter, BoardIter::difference_type value) noexcept;
 BoardIter
 operator-(const BoardIter &iter, BoardIter::difference_type value) noexcept;
 
+///
+/// @brief Compare iterators for equality.
+/// @param iter1 The first @c BoardIter.
+/// @param iter2 The second @c BoardIter.
+/// @return True if they are pointing to the same square.
+/// @throw Never throws.
+///
+bool
+operator==(const BoardIter &iter1, const BoardIter &iter2) noexcept;
+
+///
+/// @brief Compare iterators for non-equality.
+/// @param iter1 The first @c BoardIter.
+/// @param iter2 The second @c BoardIter.
+/// @return True if they are not pointing to the same square.
+/// @throw Never throws.
+///
+bool
+operator!=(const BoardIter &iter1, const BoardIter &iter2) noexcept;
+
 /////////////////////////////////////////////////////////////////////////////////////
 // BasicBoard
 /////////////////////////////////////////////////////////////////////////////////////
