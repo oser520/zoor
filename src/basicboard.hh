@@ -116,7 +116,7 @@ public:
   /// @throw Never throws.
   ///
   const reference
-  operator*() noexcept;
+  operator*() const noexcept;
 
 private:
   // pointer to read-only piece
