@@ -207,6 +207,25 @@ public:
   static const piece_t INIT_BOARD[SIZE];
 
   ///
+  /// @brief Alias for iterator.
+  /// @details Iterator is read only.
+  ///
+  using iterator = const piece_t*;
+
+  ///
+  /// @brief Alias for const_iterator.
+  /// @details Same as iterator.
+  ///
+  using const_iterator = iterator;
+
+  ///
+  /// @brief Alias for fixed_iterator.
+  /// @details Iterator cannot move and is read only. Don't want the end iterator
+  /// to lose its position.
+  ///
+  using fixed_iterator = const * const piece_t;
+
+  ///
   /// @brief Default ctor.
   /// @details Initializes the board with the normal setup for beginning game.
   /// @throw May throw bad memory allocation.
