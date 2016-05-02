@@ -225,4 +225,14 @@ BasicBoard::~BasicBoard() noexcept
     delete[] mArr;
 }
 
+//
+// get the piece from a given square
+//
+piece_t
+BasicBoard::get(dim_t row, dim_t column) const noexcept
+{
+  assert(inBoard(row, column));
+  return mArr[row*DIM + column];
+}
+
 } // zoor
