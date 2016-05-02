@@ -232,7 +232,7 @@ piece_t
 BasicBoard::get(dim_t row, dim_t column) const noexcept
 {
   assert(inBoard(row, column));
-  return mArr[row*DIM + column];
+  return mArr[index(row, column)];
 }
 
 //
@@ -242,7 +242,7 @@ void
 BasicBoard::clear(dim_t row, dim_t column) noexcept
 {
   assert(inBoard(row, column));
-  mArr[row*DIM + columm] = 0;
+  mArr[index(row, column)] = 0;
 }
 
 //
@@ -252,7 +252,7 @@ void
 BasicBoard::put(dim_t row, dim_t column, piece_t piece) noexcept
 {
   assert(inBoard(row, column));
-  mArr[row*DIM + columm] = piece;
+  mArr[index(row, column)] = piece;
 }
 
 //
@@ -262,7 +262,7 @@ void
 BasicBoard::put(dim_t row, dim_t column, Piece piece, Color color) noexcept
 {
   assert(inBoard(row, column));
-  mArr[row*DIM + columm] = color | piece;
+  mArr[index(row, column)] = color | piece;
 }
 
 } // zoor
