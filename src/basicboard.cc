@@ -190,7 +190,7 @@ BasicBoard::BasicBoard(const BasicBoard &board)
 //
 // Move ctor.
 //
-BasicBoard::BasicBoard(BasicBoard &&board)
+BasicBoard::BasicBoard(BasicBoard &&board) noexcept
   : mArr(board.mArr)
 {
   board.mArr = nullptr;

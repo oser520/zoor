@@ -236,7 +236,7 @@ public:
   /// @param board The @c SimpleBoard to be copied.
   /// @throw May throw bad memory allocation.
   ///
-  BasicBoard(const BasicBoard &board);
+  BasicBoard(const BasicBoard &board) noexcept;
 
   ///
   /// @brief Move ctor.
