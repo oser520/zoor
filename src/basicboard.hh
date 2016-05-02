@@ -303,7 +303,7 @@ public:
   /// @return True if both row and column are in the board, false otherwise.
   /// @throw Never throws.
   ///
-  bool
+  static bool
   inBoard(dim_t row, dim_t column) const noexcept;
 
 private:
