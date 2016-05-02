@@ -186,4 +186,13 @@ BasicBoard::BasicBoard(const BasicBoard &board)
   std::copy(board.begin(), board.end(), begin());
 }
 
+//
+// Move ctor.
+//
+BasicBoard::BasicBoard(BasicBoard &&board)
+  : mArr(board.mArr)
+{
+  board.mArr = nullptr;
+}
+
 } // zoor
