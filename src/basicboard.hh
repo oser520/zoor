@@ -219,6 +219,7 @@ inline
 BasicBoard::BasicBoard(BasicBoard &&board) noexcept
   : mArr(board.mArr)
 {
+  assert(mArr != nullptr);
   board.mArr = nullptr;
 }
 
@@ -228,6 +229,8 @@ BasicBoard::BasicBoard(BasicBoard &&board) noexcept
 inline BasicBoard&
 BasicBoard::operator=(const BasicBoard &board) noexcept
 {
+  assert(mArr != nullptr);
+  assert(board.mArr != nullptr);
   std::copy(board.begin(), board.end(), begin());
   return *this;
 }
@@ -238,6 +241,8 @@ BasicBoard::operator=(const BasicBoard &board) noexcept
 inline BasicBoard&
 BasicBoard::operator=(BasicBoard &&board) noexcept
 {
+  assert(mArr != nullptr);
+  assert(board.mArr != nullptr);
   std::swap(mArr, board.mArr);
   return *this;
 }
@@ -258,6 +263,7 @@ BasicBoard::~BasicBoard() noexcept
 inline piece_t
 BasicBoard::get(dim_t row, dim_t column) const noexcept
 {
+  assert(mArr != nullptr);
   assert(inBoard(row, column));
   return mArr[index(row, column)];
 }
@@ -268,6 +274,7 @@ BasicBoard::get(dim_t row, dim_t column) const noexcept
 inline void
 BasicBoard::clear(dim_t row, dim_t column) noexcept
 {
+  assert(mArr != nullptr);
   assert(inBoard(row, column));
   mArr[index(row, column)] = 0;
 }
@@ -278,6 +285,7 @@ BasicBoard::clear(dim_t row, dim_t column) noexcept
 inline void
 BasicBoard::put(dim_t row, dim_t column, piece_t piece) noexcept
 {
+  assert(mArr != nullptr);
   assert(inBoard(row, column));
   mArr[index(row, column)] = piece;
 }
@@ -288,6 +296,7 @@ BasicBoard::put(dim_t row, dim_t column, piece_t piece) noexcept
 inline void
 BasicBoard::put(dim_t row, dim_t column, Piece piece, Color color) noexcept
 {
+  assert(mArr != nullptr);
   assert(inBoard(row, column));
   mArr[index(row, column)] = color | piece;
 }
@@ -298,6 +307,7 @@ BasicBoard::put(dim_t row, dim_t column, Piece piece, Color color) noexcept
 inline BasicBoard::iterator
 BasicBoard::begin() const noexcept
 {
+  assert(mArr != nullptr);
   return mArr;
 }
 
@@ -307,6 +317,7 @@ BasicBoard::begin() const noexcept
 inline BasicBoard::iterator
 BasicBoard::begin() const noexcept
 {
+  assert(mArr != nullptr);
   return mArr + SIZE;
 }
 

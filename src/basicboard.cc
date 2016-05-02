@@ -52,6 +52,7 @@ BasicBoard::BasicBoard()
 BasicBoard::BasicBoard(const BasicBoard &board)
   : mArr(new piece_t[64])
 {
+  assert(board.mArr != nullptr);
   std::copy(board.begin(), board.end(), begin());
 }
 } // zoor
