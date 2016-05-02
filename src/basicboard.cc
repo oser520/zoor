@@ -292,4 +292,22 @@ BasicBoard::inBoard(dim_t row, dim_t column) const noexcept
   return row >= 0 && row < DIM && column >= 0 && column < DIM;
 }
 
+//
+// equality operator
+//
+bool
+operator==(const BasicBoard &board1, const BasicBoard &board2) noexcept
+{
+  return std::equal(board1.begin(), board1.end(), board2.begin());
+}
+
+//
+// non-equality operator
+//
+bool
+operator!=(const BasicBoard &board1, const BasicBoard &board2) noexcept
+{
+  return !(board1 == board2);
+}
+
 } // zoor
