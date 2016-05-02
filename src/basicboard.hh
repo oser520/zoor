@@ -195,7 +195,7 @@ namespace {
 //
 dim_t
 index(dim_t row, dim_t column) noexcept;
-}
+} // namespace
 
 ///
 /// @brief A simple board that represents the position in a chess board.
@@ -367,7 +367,7 @@ index(dim_t row, dim_t column) noexcept
 {
   return (row * BasicBoard::DIM) + column;
 }
-}
+} // namespace
 
 } // zoor
 #endif // _BASICBOARD_H
