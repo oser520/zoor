@@ -10,7 +10,6 @@
 #include <algorithm>
 #include <cassert>
 #include <iterator>
-#include <utility>
 
 //
 // zoor
@@ -18,6 +17,10 @@
 #include "basicboard.hh"
 
 namespace zoor {
+
+/////////////////////////////////////////////////////////////////////////////////////
+// BasicBoard
+/////////////////////////////////////////////////////////////////////////////////////
 
 //
 // init static vars
@@ -33,141 +36,6 @@ const piece_t BasicBoard::INIT_BOARD[] = {
   0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, // 7
   0x14, 0x12, 0x13, 0x15, 0x16, 0x13, 0x12, 0x14  // 8
 };
-
-/////////////////////////////////////////////////////////////////////////////////////
-// BoardIter
-/////////////////////////////////////////////////////////////////////////////////////
-
-//
-// Ctor with pointer param
-//
-BoardIter(piece_t *piece) noexcept
-  : mIter(piece)
-{
-  assert(mIter != nullptr);
-}
-
-//
-// prefix increment
-//
-BoardIter&
-operator++() noexcept
-{
-  assert(mIter != nullptr);
-  ++mIter;
-  return *this;
-}
-
-//
-// postfix increment
-//
-BoardIter
-operator++(int) noexcept
-{
-  assert(mIter != nullptr);
-  BoardIter iter(*this);
-  ++mIter;
-  return iter;
-}
-
-//
-// prefix decrement
-//
-BoardIter&
-operator--() noexcept
-{
-  assert(mIter != nullptr);
-  --mIter;
-  return *this;
-}
-
-//
-// postfix decrement
-//
-BoardIter
-operator--(int) noexcept
-{
-  assert(mIter != nullptr);
-  BoardIter iter(*this);
-  --mIter;
-  return iter;
-}
-
-//
-// add and assign to self
-//
-BoardIter&
-operator+=(difference_type value) noexcept
-{
-  assert(mIter != nullptr);
-  mIter += value;
-  return *this;
-}
-
-//
-// add and subtract to self
-//
-BoardIter&
-operator-=(difference_type value) noexcept
-{
-  assert(mIter != nullptr);
-  mIter -= value;
-  return *this;
-}
-
-//
-// dereference operator
-//
-const BoardIter::reference
-operator*() const noexcept
-{
-  assert(mIter != nullptr);
-  return *mIter;
-}
-
-//
-// addition operator
-//
-BoardIter
-operator+(const BoardIter &iter, BoardIter::difference_type value) noexcept
-{
-  BoardIter other(iter);
-  other += value;
-  return other;
-}
-
-//
-// subtraction operator
-//
-BoardIter
-operator-(const BoardIter &iter, BoardIter::difference_type value) noexcept
-{
-  BoardIter other(iter);
-  other -= value;
-  return other;
-}
-
-//
-// equality operator
-//
-bool
-operator==(const BoardIter &iter1, const BoardIter &iter2) noexcept
-{
-  return &(*iter1) == &(*iter2);
-}
-
-//
-// non-equality operator
-//
-bool
-operator!=(const BoardIter &iter1, const BoardIter &iter2) noexcept
-{
-  return !(iter1 == iter2);
-}
-
-/////////////////////////////////////////////////////////////////////////////////////
-// BasicBoard
-/////////////////////////////////////////////////////////////////////////////////////
 
 //
 // Default ctor.
@@ -186,128 +54,4 @@ BasicBoard::BasicBoard(const BasicBoard &board)
 {
   std::copy(board.begin(), board.end(), begin());
 }
-
-//
-// Move ctor.
-//
-BasicBoard::BasicBoard(BasicBoard &&board) noexcept
-  : mArr(board.mArr)
-{
-  board.mArr = nullptr;
-}
-
-//
-// Copy Assignment.
-//
-BasicBoard&
-BasicBoard::operator=(const BasicBoard &board) noexcept
-{
-  std::copy(board.begin(), board.end(), begin());
-  return *this;
-}
-
-//
-// Move assignment.
-//
-BasicBoard&
-BasicBoard::operator=(BasicBoard &&board) noexcept
-{
-  std::swap(mArr, board.mArr);
-  return *this;
-}
-
-//
-// Dtor.
-//
-BasicBoard::~BasicBoard() noexcept
-{
-  if (mArr != nullptr)
-    delete[] mArr;
-}
-
-//
-// get the piece from a given square
-//
-piece_t
-BasicBoard::get(dim_t row, dim_t column) const noexcept
-{
-  assert(inBoard(row, column));
-  return mArr[index(row, column)];
-}
-
-//
-// clear the contents of a square
-//
-void
-BasicBoard::clear(dim_t row, dim_t column) noexcept
-{
-  assert(inBoard(row, column));
-  mArr[index(row, column)] = 0;
-}
-
-//
-// put a piece on a square
-//
-void
-BasicBoard::put(dim_t row, dim_t column, piece_t piece) noexcept
-{
-  assert(inBoard(row, column));
-  mArr[index(row, column)] = piece;
-}
-
-//
-// put a piece on a square
-//
-void
-BasicBoard::put(dim_t row, dim_t column, Piece piece, Color color) noexcept
-{
-  assert(inBoard(row, column));
-  mArr[index(row, column)] = color | piece;
-}
-
-//
-// return the begin iterator
-//
-BasicBoard::iterator
-BasicBoard::begin() const noexcept
-{
-  return mArr;
-}
-
-//
-// return the begin iterator
-//
-BasicBoard::iterator
-BasicBoard::begin() const noexcept
-{
-  return mArr + SIZE;
-}
-
-//
-// check row and column are in board
-//
-bool
-BasicBoard::inBoard(dim_t row, dim_t column) const noexcept
-{
-  return row >= 0 && row < DIM && column >= 0 && column < DIM;
-}
-
-//
-// equality operator
-//
-bool
-operator==(const BasicBoard &board1, const BasicBoard &board2) noexcept
-{
-  return std::equal(board1.begin(), board1.end(), board2.begin());
-}
-
-//
-// non-equality operator
-//
-bool
-operator!=(const BasicBoard &board1, const BasicBoard &board2) noexcept
-{
-  return !(board1 == board2);
-}
-
 } // zoor
