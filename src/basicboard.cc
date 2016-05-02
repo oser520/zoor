@@ -177,4 +177,13 @@ BasicBoard::BasicBoard()
   std::copy(std::begin(INIT_BOARD), std::end(INIT_BOARD), begin());
 }
 
+//
+// Copy ctor.
+//
+BasicBoard::BasicBoard(const BasicBoard &board)
+  : mArr(new piece_t[64])
+{
+  std::copy(board.begin(), board.end(), begin());
+}
+
 } // zoor
