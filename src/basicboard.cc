@@ -162,4 +162,17 @@ operator!=(const BoardIter &iter1, const BoardIter &iter2) noexcept
   return !(iter1 == iter2);
 }
 
+/////////////////////////////////////////////////////////////////////////////////////
+// BasicBoard
+/////////////////////////////////////////////////////////////////////////////////////
+
+//
+// Default ctor.
+//
+BasicBoard::BasicBoard()
+  : mArr(new piece_t[64])
+{
+  std::copy(std::begin(INIT_BOARD), std::end(INIT_BOARD), mArr);
+}
+
 } // zoor
