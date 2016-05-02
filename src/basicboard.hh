@@ -298,14 +298,14 @@ public:
   /// @brief Get iterator to the first square on the board.
   /// @throw Never throws.
   ///
-  iterator
+  const_iterator
   begin() const noexcept;
 
   ///
   /// @brief Get iterator to one past the last square.
   /// @throw Never throws.
   ///
-  iterator
+  const_iterator
   end() const noexcept;
 
   ///
