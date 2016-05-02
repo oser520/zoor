@@ -369,5 +369,130 @@ index(dim_t row, dim_t column) noexcept
 }
 } // namespace
 
+//
+// Move ctor.
+//
+inline
+BasicBoard::BasicBoard(BasicBoard &&board) noexcept
+  : mArr(board.mArr)
+{
+  board.mArr = nullptr;
+}
+
+//
+// Copy Assignment.
+//
+inline BasicBoard&
+BasicBoard::operator=(const BasicBoard &board) noexcept
+{
+  std::copy(board.begin(), board.end(), begin());
+  return *this;
+}
+
+//
+// Move assignment.
+//
+inline BasicBoard&
+BasicBoard::operator=(BasicBoard &&board) noexcept
+{
+  std::swap(mArr, board.mArr);
+  return *this;
+}
+
+//
+// Dtor.
+//
+inline
+BasicBoard::~BasicBoard() noexcept
+{
+  if (mArr != nullptr)
+    delete[] mArr;
+}
+
+//
+// get the piece from a given square
+//
+inline piece_t
+BasicBoard::get(dim_t row, dim_t column) const noexcept
+{
+  assert(inBoard(row, column));
+  return mArr[index(row, column)];
+}
+
+//
+// clear the contents of a square
+//
+inline void
+BasicBoard::clear(dim_t row, dim_t column) noexcept
+{
+  assert(inBoard(row, column));
+  mArr[index(row, column)] = 0;
+}
+
+//
+// put a piece on a square
+//
+inline void
+BasicBoard::put(dim_t row, dim_t column, piece_t piece) noexcept
+{
+  assert(inBoard(row, column));
+  mArr[index(row, column)] = piece;
+}
+
+//
+// put a piece on a square
+//
+inline void
+BasicBoard::put(dim_t row, dim_t column, Piece piece, Color color) noexcept
+{
+  assert(inBoard(row, column));
+  mArr[index(row, column)] = color | piece;
+}
+
+//
+// return the begin iterator
+//
+inline BasicBoard::iterator
+BasicBoard::begin() const noexcept
+{
+  return mArr;
+}
+
+//
+// return the begin iterator
+//
+inline BasicBoard::iterator
+BasicBoard::begin() const noexcept
+{
+  return mArr + SIZE;
+}
+
+//
+// check row and column are in board
+//
+inline bool
+BasicBoard::inBoard(dim_t row, dim_t column) const noexcept
+{
+  return row >= 0 && row < DIM && column >= 0 && column < DIM;
+}
+
+//
+// equality operator
+//
+inline bool
+operator==(const BasicBoard &board1, const BasicBoard &board2) noexcept
+{
+  return std::equal(board1.begin(), board1.end(), board2.begin());
+}
+
+//
+// non-equality operator
+//
+inline bool
+operator!=(const BasicBoard &board1, const BasicBoard &board2) noexcept
+{
+  return !(board1 == board2);
+}
+
 } // zoor
 #endif // _BASICBOARD_H
