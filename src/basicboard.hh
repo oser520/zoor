@@ -268,6 +268,15 @@ public:
   get(dim_t row, dim_t column) const noexcept;
 
   ///
+  /// @brief Clear the contents of a given square.
+  /// @param row The row of the square.
+  /// @param column The column of the square.
+  /// @throw Never throws.
+  ///
+  void
+  clear(dim_t row, dim_t column) noexcept;
+
+  ///
   /// @brief Put a chess piece on a square.
   /// @param row The row of the square.
   /// @param column The column of the square.
