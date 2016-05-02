@@ -324,7 +324,7 @@ public:
   end() const noexcept;
 
   ///
-  /// @brief Check that row and column are in board.
+  /// @brief Check that row and column are less than BasicBoard::DIM.
   /// @param row The row number.
   /// @brief column The column number.
   /// @return True if both row and column are in the board, false otherwise.

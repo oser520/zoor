@@ -283,4 +283,13 @@ BasicBoard::begin() const noexcept
   return mArr + SIZE;
 }
 
+//
+// check row and column are in board
+//
+bool
+BasicBoard::inBoard(dim_t row, dim_t column) const noexcept
+{
+  return row >= 0 && row < DIM && column >= 0 && column < DIM;
+}
+
 } // zoor
