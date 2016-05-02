@@ -7,7 +7,9 @@
 //
 // STL
 //
+#include <algorithm>
 #include <cassert>
+#include <iterator>
 
 //
 // zoor
