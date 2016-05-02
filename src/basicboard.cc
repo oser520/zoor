@@ -245,4 +245,24 @@ BasicBoard::clear(dim_t row, dim_t column) noexcept
   mArr[row*DIM + columm] = 0;
 }
 
+//
+// put a piece on a square
+//
+void
+BasicBoard::put(dim_t row, dim_t column, piece_t piece) noexcept
+{
+  assert(inBoard(row, column));
+  mArr[row*DIM + columm] = piece;
+}
+
+//
+// put a piece on a square
+//
+void
+BasicBoard::put(dim_t row, dim_t column, Piece piece, Color color) noexcept
+{
+  assert(inBoard(row, column));
+  mArr[row*DIM + columm] = color | piece;
+}
+
 } // zoor
