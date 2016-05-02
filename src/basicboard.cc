@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <cassert>
 #include <iterator>
+#include <utility>
 
 //
 // zoor
@@ -202,6 +203,16 @@ BasicBoard&
 BasicBoard::operator=(const BasicBoard &board) noexcept
 {
   std::copy(board.begin(), board.end(), begin());
+  return *this;
+}
+
+//
+// Move assignment.
+//
+BasicBoard&
+BasicBoard::operator=(BasicBoard &&board) noexcept
+{
+  std::swap(mArr, board.mArr);
   return *this;
 }
 
