@@ -195,4 +195,14 @@ BasicBoard::BasicBoard(BasicBoard &&board)
   board.mArr = nullptr;
 }
 
+//
+// Copy Assignment.
+//
+BasicBoard&
+BasicBoard::operator=(const BasicBoard &board) noexcept
+{
+  std::copy(board.begin(), board.end(), begin());
+  return *this;
+}
+
 } // zoor
