@@ -216,4 +216,13 @@ BasicBoard::operator=(BasicBoard &&board) noexcept
   return *this;
 }
 
+//
+// Dtor.
+//
+BasicBoard::~BasicBoard() noexcept
+{
+  if (mArr != nullptr)
+    delete[] mArr;
+}
+
 } // zoor
