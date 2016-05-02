@@ -265,4 +265,22 @@ BasicBoard::put(dim_t row, dim_t column, Piece piece, Color color) noexcept
   mArr[index(row, column)] = color | piece;
 }
 
+//
+// return the begin iterator
+//
+BasicBoard::iterator
+BasicBoard::begin() const noexcept
+{
+  return mArr;
+}
+
+//
+// return the begin iterator
+//
+BasicBoard::iterator
+BasicBoard::begin() const noexcept
+{
+  return mArr + SIZE;
+}
+
 } // zoor
