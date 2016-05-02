@@ -235,4 +235,14 @@ BasicBoard::get(dim_t row, dim_t column) const noexcept
   return mArr[row*DIM + column];
 }
 
+//
+// clear the contents of a square
+//
+void
+BasicBoard::clear(dim_t row, dim_t column) noexcept
+{
+  assert(inBoard(row, column));
+  mArr[row*DIM + columm] = 0;
+}
+
 } // zoor
