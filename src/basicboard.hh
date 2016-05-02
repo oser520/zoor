@@ -213,12 +213,6 @@ public:
   using iterator = const piece_t*;
 
   ///
-  /// @brief Alias for const_iterator.
-  /// @details Same as iterator.
-  ///
-  using const_iterator = iterator;
-
-  ///
   /// @brief Default ctor.
   /// @details Initializes the board with the normal setup for beginning game.
   /// @throw May throw bad memory allocation.
@@ -298,14 +292,14 @@ public:
   /// @brief Get iterator to the first square on the board.
   /// @throw Never throws.
   ///
-  const_iterator
+  iterator
   begin() const noexcept;
 
   ///
   /// @brief Get iterator to one past the last square.
   /// @throw Never throws.
   ///
-  const_iterator
+  iterator
   end() const noexcept;
 
   ///
