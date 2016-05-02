@@ -185,6 +185,18 @@ operator!=(const BoardIter &iter1, const BoardIter &iter2) noexcept;
 // BasicBoard
 /////////////////////////////////////////////////////////////////////////////////////
 
+namespace {
+//
+// @brief Compute index from row and column.
+// @param row The row number.
+// @param column The column number.
+// @return The index of the square in range [1, 64].
+// @throw Never throws.
+//
+dim_t
+index(dim_t row, dim_t column) noexcept;
+}
+
 ///
 /// @brief A simple board that represents the position in a chess board.
 ///
@@ -345,6 +357,17 @@ operator==(const BasicBoard &board1, const BasicBoard &board2) noexcept;
 ///
 bool
 operator!=(const BasicBoard &board1, const BasicBoard &board2) noexcept;
+
+namespace {
+//
+// compute index of square
+//
+inline dim_t
+index(dim_t row, dim_t column) noexcept
+{
+  return (row * BasicBoard::DIM) + column;
+}
+}
 
 } // zoor
 #endif // _BASICBOARD_H
