@@ -53,7 +53,7 @@ enum class Piece: piece_t
 
 ///
 /// @brief Represents the color of a piece.
-/// @details The @c Color can be logically ORed with a PiceCode to make a piece
+/// @details The @c Color can be logically ORed with a Pice to make a piece
 /// have color.
 /// @li NONE is no color
 /// @li W for white
@@ -95,13 +95,13 @@ Color
 getColor(piece_t piece) noexcept;
 
 ///
-/// @brief Determine if the code represents a pawn.
-/// @param code The bit pattern reprsenting a piece and its color.
-/// @return True if the code represents a pawn.
+/// @brief Determine if the piece code represents a pawn.
+/// @param piece The bit pattern reprsenting a piece and its color.
+/// @return True if the piece code represents a pawn.
 /// @throw Never throws.
 ///
 bool
-isPawn(piece_t code) noexcept;
+isPawn(piece_t piece) noexcept;
 
 ///
 /// @brief Determine if piece is a pawn.
@@ -113,13 +113,13 @@ bool
 isPawn(Piece piece) noexcept;
 
 ///
-/// @brief Determine if the code represents a knight.
-/// @param code The bit pattern reprsenting a piece and its color.
-/// @return True if the code represents a knight.
+/// @brief Determine if the piece code represents a knight.
+/// @param piece The bit pattern reprsenting a piece and its color.
+/// @return True if the piece code represents a knight.
 /// @throw Never throws.
 ///
 bool
-isKnight(piece_t code) noexcept;
+isKnight(piece_t piece) noexcept;
 
 ///
 /// @brief Determine if piece is a knight.
@@ -131,13 +131,13 @@ bool
 isKnight(Piece piece) noexcept;
 
 ///
-/// @brief Determine if the code represents a bishop.
-/// @param code The bit pattern reprsenting a piece and its color.
-/// @return True if the code represents a bishop.
+/// @brief Determine if the piece code represents a bishop.
+/// @param piece The bit pattern reprsenting a piece and its color.
+/// @return True if the piece code represents a bishop.
 /// @throw Never throws.
 ///
 bool
-isBishop(piece_t code) noexcept;
+isBishop(piece_t piece) noexcept;
 
 ///
 /// @brief Determine if piece is a bishop.
@@ -149,13 +149,13 @@ bool
 isBishop(Piece piece) noexcept;
 
 ///
-/// @brief Determine if the code represents a rook.
-/// @param code The bit pattern reprsenting a piece and its color.
-/// @return True if the code represents a rook.
+/// @brief Determine if the piece code represents a rook.
+/// @param piece The bit pattern reprsenting a piece and its color.
+/// @return True if the piece code represents a rook.
 /// @throw Never throws.
 ///
 bool
-isRook(piece_t code) noexcept;
+isRook(piece_t piece) noexcept;
 
 ///
 /// @brief Determine if piece is a rook.
@@ -167,13 +167,13 @@ bool
 isRook(Piece piece) noexcept;
 
 ///
-/// @brief Determine if the code represents a queen.
-/// @param code The bit pattern reprsenting a piece and its color.
-/// @return True if the code represents a queen.
+/// @brief Determine if the piece code represents a queen.
+/// @param piece The bit pattern reprsenting a piece and its color.
+/// @return True if the piece code represents a queen.
 /// @throw Never throws.
 ///
 bool
-isQueen(piece_t code) noexcept;
+isQueen(piece_t piece) noexcept;
 
 ///
 /// @brief Determine if piece is a queen.
@@ -185,13 +185,13 @@ bool
 isQueen(Piece piece) noexcept;
 
 ///
-/// @brief Determine if the code represents a king.
-/// @param code The bit pattern reprsenting a piece and its color.
-/// @return True if the code represents a king.
+/// @brief Determine if the piece code represents a king.
+/// @param piece The bit pattern reprsenting a piece and its color.
+/// @return True if the piece code represents a king.
 /// @throw Never throws.
 ///
 bool
-isKing(piece_t code) noexcept;
+isKing(piece_t piece) noexcept;
 
 ///
 /// @brief Determine if piece is a king.
@@ -203,13 +203,13 @@ bool
 isKing(Piece piece) noexcept;
 
 ///
-/// @brief Determine if the code represents a piece with white color.
-/// @param code The bit pattern reprsenting a piece and its color.
-/// @return True if the code represents a white piece.
+/// @brief Determine if the piece code represents a piece with white color.
+/// @param piece The bit pattern reprsenting a piece and its color.
+/// @return True if the piece code represents a white piece.
 /// @throw Never throws.
 ///
 bool
-isWhite(piece_t code) noexcept;
+isWhite(piece_t piece) noexcept;
 
 ///
 /// @brief Determine if the color is white.
@@ -221,13 +221,13 @@ bool
 isWhite(Color color) noexcept;
 
 ///
-/// @brief Determine if the code represents a piece with black color.
-/// @param code The bit pattern reprsenting a piece and its color.
-/// @return True if the code represents a black piece.
+/// @brief Determine if the piece code represents a piece with black color.
+/// @param piece The bit pattern reprsenting a piece and its color.
+/// @return True if the piece code represents a black piece.
 /// @throw Never throws.
 ///
 bool
-isBlack(piece_t code) noexcept;
+isBlack(piece_t piece) noexcept;
 
 ///
 /// @brief Determine if the color is black.
@@ -239,13 +239,13 @@ bool
 isBlack(Color color) noexcept;
 
 ///
-/// @brief Determine if the code represents a <em>Piece::NONE</em>.
-/// @param code The bit pattern reprsenting a piece and its color.
-/// @return True if the code represents <em>Piece::NONE</em>.
+/// @brief Determine if the piece code represents a <em>Piece::NONE</em>.
+/// @param piece The bit pattern reprsenting a piece and its color.
+/// @return True if the piece code represents <em>Piece::NONE</em>.
 /// @throw Never throws.
 ///
 bool
-notPiece(piece_t code) noexcept;
+notPiece(piece_t piece) noexcept;
 
 ///
 /// @brief Determine if the piece is <em>Piece::NONE</em>.
@@ -257,13 +257,13 @@ bool
 notPiece(Piece piece) noexcept;
 
 ///
-/// @brief Determine if the code represents a <em>Color::NONE</em>.
-/// @param code The bit pattern reprsenting a piece and its color.
-/// @return True if the code represents <em>Color::NONE</em>.
+/// @brief Determine if the piece code represents a <em>Color::NONE</em>.
+/// @param piece The bit pattern reprsenting a piece and its color.
+/// @return True if the piece code represents <em>Color::NONE</em>.
 /// @throw Never throws.
 ///
 bool
-notColor(piece_t code) noexcept;
+notColor(piece_t piece) noexcept;
 
 ///
 /// @brief Determine if the color is <em>Color::NONE</em>.
@@ -275,24 +275,24 @@ bool
 notColor(Color color) noexcept;
 
 ///
-/// @brief Determine if the code represents the same <em>piece</em>.
+/// @brief Determine if the piece code represents the same <em>piece</em>.
 /// @param code The bit pattern reprsenting a piece and its color.
 /// @param piece The @c Piece.
-/// @return True if the code represents the <em>piece</em>.
+/// @return True if the piece code represents the <em>piece</em>.
 /// @throw Never throws.
 ///
 bool
 isSame(piece_t code, Piece piece) noexcept;
 
 ///
-/// @brief Determine if the code represents the same <em>color</em>.
-/// @param code The bit pattern reprsenting a piece and its color.
+/// @brief Determine if the piece code represents the same <em>color</em>.
+/// @param piece The bit pattern reprsenting a piece and its color.
 /// @param color The @c Color.
-/// @return True if the code represents the <em>color</em>.
+/// @return True if the piece code represents the <em>color</em>.
 /// @throw Never throws.
 ///
 bool
-isSame(piece_t code, Color color) noexcept;
+isSame(piece_t piece, Color color) noexcept;
 
 ///
 /// @brief Output operator for a @c Piece.
@@ -356,13 +356,13 @@ Color
 operator~(Color color) noexcept;
 
 ///
-/// @brief Obtain a short string code representing the piece.
-/// @param code The bit code representing the piece and its color.
+/// @brief Obtain a short string piece code representing the piece.
+/// @param piece The bit code representing the piece and its color.
 /// @return A short, 1 to 2 char, string code.
 /// @throw Never throws.
 ///
 const char*
-shortString(piece_t code) noexcept;
+shortString(piece_t piece) noexcept;
 
 /////////////////////////////////////////////////////////////////////////////////////
 // definitions
@@ -421,7 +421,7 @@ isKnight(piece_t piece) noexcept
 inline bool
 isKnight(Piece piece) noexcept
 {
-  return piece == PieceCode::K;
+  return piece == Piece::K;
 }
 
 //
@@ -430,7 +430,7 @@ isKnight(Piece piece) noexcept
 inline bool
 isBishop(piece_t piece) noexcept
 {
-  return getPiece(code) == Piece::B;
+  return getPiece(piece) == Piece::B;
 }
 
 //
@@ -569,7 +569,7 @@ notColor(Color color) noexcept
 }
 
 //
-// check if code contains piece
+// check if piece code contains piece
 //
 inline bool
 isSame(piece_t code, Piece piece) noexcept
@@ -578,12 +578,12 @@ isSame(piece_t code, Piece piece) noexcept
 }
 
 //
-// check if code contains color
+// check if piece code contains color
 //
 inline bool
-isSame(piece_t code, Color color) noexcept
+isSame(piece_t piece, Color color) noexcept
 {
-  return getColor(code) == color;
+  return getColor(piece) == color;
 }
 
 //

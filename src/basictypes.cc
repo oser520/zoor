@@ -143,7 +143,7 @@ shortString(piece_t piece) noexcept
       return "BQ";
     case Piece::K:
       return "BKi";
-    case Piece::N:
+    case Piece::NONE:
       return "0";
     default:
       assert(false);
