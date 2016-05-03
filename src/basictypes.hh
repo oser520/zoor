@@ -394,7 +394,7 @@ getColor(piece_t piece) noexcept
 inline bool
 isPawn(piece_t piece) noexcept
 {
-  return piece(piece) == Piece::P;
+  return getPiece(piece) == Piece::P;
 }
 
 //
@@ -412,7 +412,7 @@ isPawn(Piece piece) noexcept
 inline bool
 isKnight(piece_t piece) noexcept
 {
-  return piece(piece) == Piece::N;
+  return getPiece(piece) == Piece::N;
 }
 
 //
@@ -430,7 +430,7 @@ isKnight(Piece piece) noexcept
 inline bool
 isBishop(piece_t piece) noexcept
 {
-  return piece(code) == Piece::B;
+  return getPiece(code) == Piece::B;
 }
 
 //
@@ -448,7 +448,7 @@ isBishop(Piece piece) noexcept
 inline bool
 isRook(piece_t piece) noexcept
 {
-  return piece(piece) == Piece::R;
+  return getPiece(piece) == Piece::R;
 }
 
 //
@@ -466,7 +466,7 @@ isRook(Piece piece) noexcept
 inline bool
 isQueen(piece_t piece) noexcept
 {
-  return piece(piece) == Piece::Q;
+  return getPiece(piece) == Piece::Q;
 }
 
 //
@@ -484,7 +484,7 @@ isQueen(Piece piece) noexcept
 inline bool
 isKing(piece_t piece) noexcept
 {
-  return piece(piece) == Piece::K;
+  return getPiece(piece) == Piece::K;
 }
 
 //
@@ -502,7 +502,7 @@ isKing(Piece piece) noexcept
 inline bool
 isWhite(piece_t piece) noexcept
 {
-  return color(piece) == Color::W;
+  return getColor(piece) == Color::W;
 }
 
 //
@@ -520,7 +520,7 @@ isWhite(Color color) noexcept
 inline bool
 isBlack(piece_t piece) noexcept
 {
-  return color(piece) == Color::B;
+  return getColor(piece) == Color::B;
 }
 
 //
@@ -538,7 +538,7 @@ isBlack(Color color) noexcept
 inline bool
 notPiece(piece_t piece) noexcept
 {
-  return piece(piece) == Piece::NONE;
+  return getPiece(piece) == Piece::NONE;
 }
 
 //
@@ -556,7 +556,7 @@ notPiece(Piece piece) noexcept
 inline bool
 notColor(piece_t piece) noexcept
 {
-  return color(piece) == Color::NONE;
+  return getColor(piece) == Color::NONE;
 }
 
 //
@@ -574,7 +574,7 @@ notColor(Color color) noexcept
 inline bool
 isSame(piece_t code, Piece piece) noexcept
 {
-  return piece(code) == piece;
+  return getPiece(code) == piece;
 }
 
 //
@@ -583,7 +583,7 @@ isSame(piece_t code, Piece piece) noexcept
 inline bool
 isSame(piece_t code, Color color) noexcept
 {
-  return color(code) == color;
+  return getColor(code) == color;
 }
 
 //
