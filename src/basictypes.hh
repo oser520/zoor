@@ -421,7 +421,7 @@ isKnight(piece_t piece) noexcept
 inline bool
 isKnight(Piece piece) noexcept
 {
-  return piece == Piece::K;
+  return piece == Piece::N;
 }
 
 //
