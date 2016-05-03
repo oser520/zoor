@@ -75,7 +75,7 @@ tboard: $(OBJ_BOARD)
 # Header dependencies.
 $(OBJ_BASICTYPES): basictypes.hh
 $(OBJ_PIECECODE): piececode.hh
-$(OBJ_PIECECODE): boardinfo.hh
+$(OBJ_BOARDINFO): boardinfo.hh
 $(OBJ_PIECECOUNT): piececount.hh piececode.hh
 $(OBJ_SQUARE): square.hh piececode.hh
 $(OBJ_PIECEMOVE): piecemove.hh square.hh piececode.hh
