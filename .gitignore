@@ -2,6 +2,7 @@
 *~
 *.o
 tags
+tbasictypes
 tsquare
 tpiececode
 tpiececount
