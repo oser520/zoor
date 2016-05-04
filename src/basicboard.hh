@@ -355,7 +355,7 @@ BasicBoard::begin() const noexcept
 }
 
 //
-// return the begin iterator
+// return the end iterator
 //
 inline BasicBoard::iterator
 BasicBoard::end() const noexcept
