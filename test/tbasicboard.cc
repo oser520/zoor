@@ -7,7 +7,7 @@
 //
 // STL
 //
-#include <sstream>
+#include <utility>
 
 //
 // zoor
@@ -25,6 +25,7 @@ namespace {
 //
 // using from STL
 //
+using std::pair;
 
 //
 // access all of zoor
@@ -81,6 +82,52 @@ TEST(BasicBoard, Clear)
   for (int i = 0; i < BasicBoard::DIM; ++i) {
     board.clear(2, i);
     EXPECT_EQ(board.get(2, i), 0);
+  }
+}
+
+//
+// test put
+//
+TEST(BasicBoard, Put)
+{
+  BasicBoard board;
+
+  board.put(0, 0, Color::NONE|Piece::NONE);
+  EXPECT_EQ(board.get(0, 0), 0);
+
+  board.put(0, 1, Piece::NONE, Color::NONE);
+  EXPECT_EQ(board.get(0, 1), 0);
+
+  pair<Piece, Color> pArr[] = {
+    {Piece::P, Color::W},
+    {Piece::N, Color::W},
+    {Piece::B, Color::W},
+    {Piece::R, Color::W},
+    {Piece::Q, Color::W},
+    {Piece::K, Color::W},
+  };
+
+  // put white pieces
+  for (int i = 0; i < 5; ++i) {
+    board.put(2, i, pArr[i].first, pArr[i].second);
+    board.put(3, i, pArr[i].second | pArr[i].first);
+    EXPECT_EQ(board.get(2, i), board.get(3,i));
+    EXPECT_NE(board.get(2, i), 0);
+  }
+
+  // change color to black
+  for (int i = 0; i < 5; ++i)
+    pArr[i].second = Color::B;
+
+  // put black pieces
+  for (int i = 0; i < 5; ++i) {
+    board.put(4, i, pArr[i].first, pArr[i].second);
+    board.put(5, i, pArr[i].second | pArr[i].first);
+    EXPECT_EQ(board.get(4, i), board.get(5,i));
+    EXPECT_NE(board.get(4, i), 0);
+
+    // compare against white pieces
+    EXPECT_NE(board.get(4, i), board.get(3,i));
   }
 }
 
