@@ -217,6 +217,27 @@ index(dim_t row, dim_t column) noexcept
 } // namespace
 
 //
+// Default ctor.
+//
+inline
+BasicBoard::BasicBoard()
+  : mArr(new piece_t[64])
+{
+  std::copy(std::begin(INIT_BOARD), std::end(INIT_BOARD), begin());
+}
+
+//
+// Copy ctor.
+//
+inline
+BasicBoard::BasicBoard(const BasicBoard &board)
+  : mArr(new piece_t[64])
+{
+  assert(board.mArr != nullptr);
+  std::copy(board.begin(), board.end(), begin());
+}
+
+//
 // Move ctor.
 //
 inline

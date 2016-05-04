@@ -5,13 +5,6 @@
 /////////////////////////////////////////////////////////////////////////////////////
 
 //
-// STL
-//
-#include <algorithm>
-#include <cassert>
-#include <iterator>
-
-//
 // zoor
 //
 #include "basicboard.hh"
@@ -37,22 +30,4 @@ const piece_t BasicBoard::INIT_BOARD[] = {
   0x14, 0x12, 0x13, 0x15, 0x16, 0x13, 0x12, 0x14  // 8
 };
 
-//
-// Default ctor.
-//
-BasicBoard::BasicBoard()
-  : mArr(new piece_t[64])
-{
-  std::copy(std::begin(INIT_BOARD), std::end(INIT_BOARD), begin());
-}
-
-//
-// Copy ctor.
-//
-BasicBoard::BasicBoard(const BasicBoard &board)
-  : mArr(new piece_t[64])
-{
-  assert(board.mArr != nullptr);
-  std::copy(board.begin(), board.end(), begin());
-}
 } // zoor
