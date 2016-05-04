@@ -65,6 +65,26 @@ TEST(BasicBoard, DefaultCtorAndGet)
 }
 
 //
+// test clear
+//
+TEST(BasicBoard, Clear)
+{
+  BasicBoard board;
+
+  // test non-empty squares
+  for (int i = 0; i < BasicBoard::DIM; ++i) {
+    board.clear(0, i);
+    EXPECT_EQ(board.get(0, i), 0);
+  }
+
+  // test empty squares
+  for (int i = 0; i < BasicBoard::DIM; ++i) {
+    board.clear(2, i);
+    EXPECT_EQ(board.get(2, i), 0);
+  }
+}
+
+//
 // copy ctor
 //
 TEST(BasicBoard, CopyCtor)
