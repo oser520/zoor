@@ -23,6 +23,7 @@ CXXFLAGS += $(GTFLAGS) $(INCDIR)
 
 # Dependencies for each unit test program.
 OBJ_BASICTYPES = tbasictypes.o basictypes.o
+OBJ_BASICBOARD = tbasicboard.o basicboard.o basictypes.o
 OBJ_PIECECODE = tpiececode.o piececode.o
 OBJ_BOARDINFO = tboardinfo.o
 OBJ_PIECECOUNT = tpiececount.o piececount.o board.o square.o \
@@ -35,8 +36,8 @@ OBJ_IOFEN = tiofen.o fennotation.o board.o piecemove.o \
 OBJ_BOARD = tboard.o board.o piecemove.o square.o piececode.o
 
 # Combine unique object files.
-OBJ_LIST := $(sort $(OBJ_BASICTYPES) $(OBJ_PIECECODE) $(OBJ_PIECECOUNT) \
-              $(OBJ_SQUARE) $(OBJ_PIECEMOVE) $(OBJ_BOARD) \
+OBJ_LIST := $(sort $(OBJ_BASICTYPES) $(OBJ_BASICBOARD) $(OBJ_PIECECODE) \
+              $(OBJ_PIECECOUNT) $(OBJ_SQUARE) $(OBJ_PIECEMOVE) $(OBJ_BOARD) \
               $(OBJ_BOARDINFO) $(OBJ_FENRECORD) $(OBJ_IOFEN))
 
 # Unit test programs.
@@ -46,6 +47,9 @@ TARGETS = tbasictypes tpiececode tboardinfo tpiececount tsquare \
 all: $(TARGETS)
 
 tbasictypes: $(OBJ_BASICTYPES)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
+
+tbasicboard: $(OBJ_BASICBOARD)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
 
 tpiececode: $(OBJ_PIECECODE)
@@ -74,6 +78,7 @@ tboard: $(OBJ_BOARD)
 
 # Header dependencies.
 $(OBJ_BASICTYPES): basictypes.hh
+$(OBJ_BASICBOARD): basicboard.hh basictypes.hh
 $(OBJ_PIECECODE): piececode.hh
 $(OBJ_BOARDINFO): boardinfo.hh
 $(OBJ_PIECECOUNT): piececount.hh piececode.hh
