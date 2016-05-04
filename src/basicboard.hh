@@ -43,7 +43,7 @@ index(dim_t row, dim_t column) noexcept;
 ///
 /// @brief A simple board that represents the position in a chess board.
 ///
-class BasicBoard:
+class BasicBoard
 {
 public:
   ///
@@ -65,7 +65,7 @@ public:
   /// @brief Alias for iterator.
   /// @details Iterator is read only.
   ///
-  using iterator = const piece_t*;
+  using iterator = piece_t*;
 
   ///
   /// @brief Default ctor.
@@ -79,7 +79,7 @@ public:
   /// @param board The @c SimpleBoard to be copied.
   /// @throw May throw bad memory allocation.
   ///
-  BasicBoard(const BasicBoard &board) noexcept;
+  BasicBoard(const BasicBoard &board);
 
   ///
   /// @brief Move ctor.
@@ -174,7 +174,7 @@ public:
   /// @throw Never throws.
   ///
   static bool
-  inBoard(dim_t row, dim_t column) const noexcept;
+  inBoard(dim_t row, dim_t column) noexcept;
 
 private:
   // pointer to the array
@@ -340,7 +340,7 @@ BasicBoard::begin() const noexcept
 // return the begin iterator
 //
 inline BasicBoard::iterator
-BasicBoard::begin() const noexcept
+BasicBoard::end() const noexcept
 {
   assert(mArr != nullptr);
   return mArr + SIZE;
@@ -350,7 +350,7 @@ BasicBoard::begin() const noexcept
 // check row and column are in board
 //
 inline bool
-BasicBoard::inBoard(dim_t row, dim_t column) const noexcept
+BasicBoard::inBoard(dim_t row, dim_t column) noexcept
 {
   return row >= 0 && row < DIM && column >= 0 && column < DIM;
 }

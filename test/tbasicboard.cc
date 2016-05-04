@@ -13,7 +13,7 @@
 // zoor
 //
 #include "basictypes.hh"
-#include "basictboard.hh"
+#include "basicboard.hh"
 
 //
 // gtest
@@ -40,27 +40,27 @@ TEST(BasicBoard, DefaultCtorAndGet)
 {
   BasicBoard board;
 
-  EXPECT_EQUAL(board.get(0,0), Color::W|Piece::R);
-  EXPECT_EQUAL(board.get(0,1), Color::W|Piece::N);
-  EXPECT_EQUAL(board.get(0,2), Color::W|Piece::B);
-  EXPECT_EQUAL(board.get(0,3), Color::W|Piece::Q);
-  EXPECT_EQUAL(board.get(0,4), Color::W|Piece::K);
-  EXPECT_EQUAL(board.get(0,5), Color::W|Piece::B);
-  EXPECT_EQUAL(board.get(0,6), Color::W|Piece::N);
-  EXPECT_EQUAL(board.get(0,7), Color::W|Piece::R);
+  EXPECT_EQ(board.get(0,0), Color::W|Piece::R);
+  EXPECT_EQ(board.get(0,1), Color::W|Piece::N);
+  EXPECT_EQ(board.get(0,2), Color::W|Piece::B);
+  EXPECT_EQ(board.get(0,3), Color::W|Piece::Q);
+  EXPECT_EQ(board.get(0,4), Color::W|Piece::K);
+  EXPECT_EQ(board.get(0,5), Color::W|Piece::B);
+  EXPECT_EQ(board.get(0,6), Color::W|Piece::N);
+  EXPECT_EQ(board.get(0,7), Color::W|Piece::R);
 
   for (int i = 0; i < BasicBoard::DIM; ++i) {
     // white pawns
-    EXPECT_EQUAL(board.get(1,i), Color::W|Piece::P);
+    EXPECT_EQ(board.get(1,i), Color::W|Piece::P);
 
     // black pawns
-    EXPECT_EQUAL(board.get(6,i), Color::B|Piece::P);
+    EXPECT_EQ(board.get(6,i), Color::B|Piece::P);
   }
 
   // test empty squares
   for (int i = 2; i < BasicBoard::DIM-2; ++i) {
-    for (int j = 0; j < BasicBoard::DIM; ++i)
-      EXPECT_EQUAL(board.get(i, j), 0);
+    for (int j = 0; j < BasicBoard::DIM; ++j)
+      EXPECT_EQ(board.get(i, j), 0);
   }
 }
 
