@@ -3,6 +3,7 @@
 *.o
 tags
 tbasictypes
+tbasicboard
 tsquare
 tpiececode
 tpiececount
