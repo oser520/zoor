@@ -54,7 +54,7 @@ public:
   ///
   /// @brief The number of squares in the @c SimpleBoard.
   ///
-  static constexpr dim_t SIZE = DIM * DIM;
+  static constexpr dim_t SIZE{64};
 
   ///
   /// @brief The default initialization board.

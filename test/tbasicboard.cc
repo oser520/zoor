@@ -31,8 +31,10 @@ using std::pair;
 // access all of zoor
 //
 using zoor::BasicBoard;
-using zoor::Piece;
 using zoor::Color;
+using zoor::Piece;
+using zoor::getColor;
+using zoor::getPiece;
 
 //
 // test default ctor and get()
@@ -129,6 +131,38 @@ TEST(BasicBoard, Put)
     // compare against white pieces
     EXPECT_NE(board.get(4, i), board.get(3,i));
   }
+}
+
+//
+// test iterators
+//
+TEST(BasicBoard, Iterator)
+{
+  BasicBoard board;
+
+  auto it = board.begin();
+
+  for (int i = 0; i < BasicBoard::DIM; ++i) {
+    for (int j = 0; j < BasicBoard::DIM; ++j)
+      EXPECT_EQ(*it++, board.get(i, j));
+  }
+
+  // the last piece is a black rook
+  it = const_cast<decltype(it)>(board.cend() - 1);
+  EXPECT_EQ(*it, board.get(7,7));
+  EXPECT_EQ(getPiece(*it), Piece::R);
+  EXPECT_EQ(getColor(*it), Color::B);
+
+  auto itc = board.cbegin();
+  auto ite = board.cend();
+  int i = 0;
+
+  while (itc != ite) {
+    ++itc;
+    ++i;
+  }
+
+  EXPECT_EQ(i, BasicBoard::SIZE);
 }
 
 //
