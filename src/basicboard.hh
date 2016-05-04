@@ -63,9 +63,13 @@ public:
 
   ///
   /// @brief Alias for iterator.
-  /// @details Iterator is read only.
   ///
   using iterator = piece_t*;
+
+  ///
+  /// @brief Alias for const_iterator.
+  ///
+  using const_iterator = const piece_t*;
 
   ///
   /// @brief Default ctor.
@@ -165,6 +169,20 @@ public:
   ///
   iterator
   end() const noexcept;
+
+  ///
+  /// @brief Get read only iterator to the first square on the board.
+  /// @throw Never throws.
+  ///
+  const_iterator
+  cbegin() const noexcept;
+
+  ///
+  /// @brief Get read only iterator to one past the last square.
+  /// @throw Never throws.
+  ///
+  const_iterator
+  cend() const noexcept;
 
   ///
   /// @brief Check that row and column are less than BasicBoard::DIM.
@@ -341,6 +359,26 @@ BasicBoard::begin() const noexcept
 //
 inline BasicBoard::iterator
 BasicBoard::end() const noexcept
+{
+  assert(mArr != nullptr);
+  return mArr + SIZE;
+}
+
+//
+// return the read only begin iterator
+//
+inline BasicBoard::const_iterator
+BasicBoard::cbegin() const noexcept
+{
+  assert(mArr != nullptr);
+  return mArr;
+}
+
+//
+// return the read only end iterator
+//
+inline BasicBoard::const_iterator
+BasicBoard::cend() const noexcept
 {
   assert(mArr != nullptr);
   return mArr + SIZE;
