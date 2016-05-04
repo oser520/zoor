@@ -18,6 +18,8 @@ namespace zoor {
 //
 // init static vars
 //
+constexpr dim_t BasicBoard::DIM;
+constexpr dim_t BasicBoard::SIZE;
 const piece_t BasicBoard::INIT_BOARD[] = {
 // a     b     c     d     e     f     g     h
   0x0c, 0x0a, 0x0b, 0x0d, 0x0e, 0x0b, 0x0a, 0x0c, // 1
