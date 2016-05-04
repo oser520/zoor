@@ -64,6 +64,17 @@ TEST(BasicBoard, DefaultCtorAndGet)
   }
 }
 
+//
+// copy ctor
+//
+TEST(BasicBoard, CopyCtor)
+{
+  BasicBoard board1;
+  BasicBoard board2(board1);
+
+  EXPECT_EQ(board1, board2);
+}
+
 } // anonymous namespace
 
 int main(int argc, char *argv[])
