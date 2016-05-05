@@ -189,6 +189,23 @@ TEST(BasicBoard, MoveCtor)
   EXPECT_EQ(board2.get(0, 0), 0);
 }
 
+//
+// copy assignment
+//
+TEST(BasicBoard, CopyAssign)
+{
+  BasicBoard board1, board2;
+
+  board1.put(0, 0, 0);
+  board2.put(0, 1, 0);
+  EXPECT_EQ(board1.get(0, 0), 0);
+  EXPECT_EQ(board2.get(0, 1), 0);
+
+  board2 = board1;
+  EXPECT_EQ(board2.get(0, 0), 0);
+  EXPECT_NE(board2.get(0, 1), 0);
+}
+
 } // anonymous namespace
 
 int main(int argc, char *argv[])
