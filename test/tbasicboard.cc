@@ -26,6 +26,7 @@ namespace {
 // using from STL
 //
 using std::pair;
+using std::move;
 
 //
 // access all of zoor
@@ -175,6 +176,17 @@ TEST(BasicBoard, CopyCtor)
   BasicBoard board2(board1);
   EXPECT_EQ(board2.get(0, 0), 0);
   EXPECT_EQ(board1, board2);
+}
+
+//
+// move ctor
+//
+TEST(BasicBoard, MoveCtor)
+{
+  BasicBoard board1;
+  board1.put(0, 0, 0);
+  BasicBoard board2(move(board1));
+  EXPECT_EQ(board2.get(0, 0), 0);
 }
 
 } // anonymous namespace
