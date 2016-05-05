@@ -171,8 +171,9 @@ TEST(BasicBoard, Iterator)
 TEST(BasicBoard, CopyCtor)
 {
   BasicBoard board1;
+  board1.put(0, 0, 0);
   BasicBoard board2(board1);
-
+  EXPECT_EQ(board2.get(0, 0), 0);
   EXPECT_EQ(board1, board2);
 }
 
