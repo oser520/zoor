@@ -46,7 +46,7 @@ using zoor::piececode_t;
 //
 // Test the default ctor
 //
-TEST(PieceCount1, DefaultCtor)
+TEST(PieceCount, DefaultCtor)
 {
   PieceCount cp;
   EXPECT_EQ(0, cp.wKing());
@@ -72,7 +72,7 @@ TEST(PieceCount1, DefaultCtor)
 //
 // Test the ctor with vector of squares
 //
-TEST(PieceCount2, SquareListCtor)
+TEST(PieceCount, SquareListCtor)
 {
   vector<Square> sqList;
 
@@ -162,7 +162,7 @@ TEST(PieceCount2, SquareListCtor)
 //
 // Test the ctor with a board
 //
-TEST(PieceCount3, BoardCtor)
+TEST(PieceCount, BoardCtor)
 {
   Board board;
   PieceCount pc(board);
@@ -187,7 +187,7 @@ TEST(PieceCount3, BoardCtor)
 //
 // Test count
 //
-TEST(PieceCount4, Count)
+TEST(PieceCount, Count)
 {
   Board board;
   PieceCount pc(board);
@@ -250,7 +250,7 @@ TEST(PieceCount4, Count)
 //
 // Test clear
 //
-TEST(PieceCount5, Clear)
+TEST(PieceCount, Clear)
 {
   Board board;
   PieceCount pc(board);
@@ -263,7 +263,7 @@ TEST(PieceCount5, Clear)
 //
 // Test PieceCount::good()
 //
-TEST(PieceCount6, Good)
+TEST(PieceCount, Good)
 {
   PieceCount pc;
   vector<Square> sqList;
