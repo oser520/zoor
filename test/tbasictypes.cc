@@ -34,7 +34,7 @@ using namespace zoor;
 //
 // test output string for Piece
 //
-TEST(Piece, OutputOp)
+TEST(BasicTypes, OutputOpPiece)
 {
   ostringstream ss1, ss2, ss3, ss4, ss5, ss6, ss7;
   ss1 << Piece::NONE; 
@@ -57,7 +57,7 @@ TEST(Piece, OutputOp)
 //
 // test output string for Color
 //
-TEST(Color, OutputOp)
+TEST(BasicTypes, OutputOpColor)
 {
   ostringstream ss1, ss2, ss3;
   ss1 << Color::NONE; 
@@ -72,7 +72,7 @@ TEST(Color, OutputOp)
 //
 // test output string for PieceMask
 //
-TEST(PieceMask, OutputOp)
+TEST(BasicTypes, OutputOpPieceMask)
 {
   ostringstream ss1, ss2;
   ss1 << PieceMask::PIECE;
@@ -85,7 +85,7 @@ TEST(PieceMask, OutputOp)
 //
 // test logical OR operator between Color and Piece
 //
-TEST(ColorOrPiece, LogicalOrOp)
+TEST(BasicTypes, LogicOrOpPieceT)
 {
   piece_t pcolor = static_cast<piece_t>(Color::NONE);
   piece_t pcode = static_cast<piece_t>(Piece::P);
@@ -103,7 +103,7 @@ TEST(ColorOrPiece, LogicalOrOp)
 //
 // test logical NOT operator for Color.
 //
-TEST(Color, LogicOpNot)
+TEST(BasicTypes, LogicOpNotColor)
 {
   EXPECT_EQ(Color::NONE, ~Color::NONE);
   EXPECT_EQ(Color::B, ~Color::W);
@@ -113,7 +113,7 @@ TEST(Color, LogicOpNot)
 //
 // test getPiece
 //
-TEST(Piece, getPiece)
+TEST(BasicTypes, getPiece)
 {
   EXPECT_EQ(Piece::R, getPiece(Color::W|Piece::R));
   EXPECT_EQ(Piece::B, getPiece(Color::B|Piece::B));
@@ -124,7 +124,7 @@ TEST(Piece, getPiece)
 //
 // test getColor
 //
-TEST(Color, getColor)
+TEST(BasicTypes, getColor)
 {
   EXPECT_EQ(Color::W, getColor(Color::W|Piece::R));
   EXPECT_EQ(Color::B, getColor(Color::B|Piece::B));
@@ -135,7 +135,7 @@ TEST(Color, getColor)
 //
 // test isPawn
 //
-TEST(Pawn, isPawn)
+TEST(BasicTypes, isPawn)
 {
   EXPECT_TRUE(isPawn(Piece::P));
   EXPECT_TRUE(isPawn(Color::W|Piece::P));
@@ -146,7 +146,7 @@ TEST(Pawn, isPawn)
 //
 // test isKnight
 //
-TEST(Knight, isKnight)
+TEST(BasicTypes, isKnight)
 {
   EXPECT_TRUE(isKnight(Piece::N));
   EXPECT_TRUE(isKnight(Color::W|Piece::N));
@@ -157,7 +157,7 @@ TEST(Knight, isKnight)
 //
 // test isBishop
 //
-TEST(Bishop, isBishop)
+TEST(BasicTypes, isBishop)
 {
   EXPECT_TRUE(isBishop(Piece::B));
   EXPECT_TRUE(isBishop(Color::W|Piece::B));
@@ -168,7 +168,7 @@ TEST(Bishop, isBishop)
 //
 // test isRook
 //
-TEST(Rook, isRook)
+TEST(BasicTypes, isRook)
 {
   EXPECT_TRUE(isRook(Piece::R));
   EXPECT_TRUE(isRook(Color::W|Piece::R));
@@ -179,7 +179,7 @@ TEST(Rook, isRook)
 //
 // test isQueen
 //
-TEST(Queen, isQueen)
+TEST(BasicTypes, isQueen)
 {
   EXPECT_TRUE(isQueen(Piece::Q));
   EXPECT_TRUE(isQueen(Color::W|Piece::Q));
@@ -190,7 +190,7 @@ TEST(Queen, isQueen)
 //
 // test isKing
 //
-TEST(King, isKing)
+TEST(BasicTypes, isKing)
 {
   EXPECT_TRUE(isKing(Piece::K));
   EXPECT_TRUE(isKing(Color::W|Piece::K));
@@ -201,7 +201,7 @@ TEST(King, isKing)
 //
 // test notPiece
 //
-TEST(Piece, notPiece)
+TEST(BasicTypes, notPiece)
 {
   EXPECT_FALSE(notPiece(Piece::K));
   EXPECT_FALSE(notPiece(Color::W|Piece::P));
@@ -212,7 +212,7 @@ TEST(Piece, notPiece)
 //
 // test notColor
 //
-TEST(Color, notColor)
+TEST(BasicTypes, notColor)
 {
   EXPECT_FALSE(notColor(Color::W));
   EXPECT_FALSE(notColor(Color::W|Piece::P));
@@ -223,7 +223,7 @@ TEST(Color, notColor)
 //
 // test isSame with piece argument
 //
-TEST(Piece, isSame)
+TEST(BasicTypes, isSamePiece)
 {
   EXPECT_TRUE(isSame(Color::W|Piece::K, Piece::K));
   EXPECT_FALSE(isSame(Color::W|Piece::K, Piece::R));
@@ -232,7 +232,7 @@ TEST(Piece, isSame)
 //
 // test isSame with color argument
 //
-TEST(Color, isSame)
+TEST(BasicTypes, isSameColor)
 {
   EXPECT_TRUE(isSame(Color::W|Piece::K, Color::W));
   EXPECT_FALSE(isSame(Color::W|Piece::K, Color::B));
