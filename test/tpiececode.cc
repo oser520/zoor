@@ -16,7 +16,7 @@ using namespace zoor;
 /**
  * Test PieceCode output string.
  */
-TEST(PieceCodeTest, PieceCode)
+TEST(PieceCode, OutputOpPieceCode)
 {
   ostringstream ss1, ss2, ss3, ss4, ss5, ss6, ss7;
   ss1 << PieceCode::NONE; 
@@ -39,7 +39,7 @@ TEST(PieceCodeTest, PieceCode)
 /**
  * Test PieceColor output string.
  */
-TEST(PieceColorTest, PieceColor)
+TEST(PieceCode, OutputOpPieceColor)
 {
   ostringstream ss1, ss2, ss3;
   ss1 << PieceColor::NONE; 
@@ -54,7 +54,7 @@ TEST(PieceColorTest, PieceColor)
 /**
  * Test PieceValue on cast.
  */
-TEST(PieceValueTest, PieceValue)
+TEST(PieceCode, PieceValue)
 {
   EXPECT_EQ(0, static_cast<piecevalue_t>(PieceValue::NONE));
   EXPECT_EQ(1, static_cast<piecevalue_t>(PieceValue::PAWN));
@@ -68,7 +68,7 @@ TEST(PieceValueTest, PieceValue)
 /**
  * Test PieceMask on output.
  */
-TEST(PieceMaskTest, OutputOp)
+TEST(PieceCode, OutputOpPieceMask)
 {
   ostringstream ss1, ss2;
   ss1 << PieceMask::PIECE;
@@ -81,7 +81,7 @@ TEST(PieceMaskTest, OutputOp)
 /**
  * Test logical and operator for color and piece.
  */
-TEST(PieceAndColor, LogicOpAnd)
+TEST(PieceCode, LogicOpAndPieceColor)
 {
   piececode_t pcolor = static_cast<piececode_t>(PieceColor::NONE);
   piececode_t pcode = static_cast<piececode_t>(PieceCode::PAWN);
@@ -99,7 +99,7 @@ TEST(PieceAndColor, LogicOpAnd)
 /**
  * Test logical not operator for color.
  */
-TEST(PieceColorNot, LogicOpNot)
+TEST(PieceCode, LogicOpNotColor)
 {
   EXPECT_EQ(PieceColor::NONE, ~PieceColor::NONE);
   EXPECT_EQ(PieceColor::BLACK, ~PieceColor::WHITE);
@@ -109,7 +109,7 @@ TEST(PieceColorNot, LogicOpNot)
 /**
  * Test getPieceCode and getPieceColor.
  */
-TEST(PieceCodeFunc, GetCodeFunc)
+TEST(PieceCode, GetPieceCode)
 {
   auto code = PieceColor::WHITE | PieceCode::ROOK;
   EXPECT_EQ(PieceColor::WHITE, getPieceColor(code));
@@ -121,7 +121,7 @@ TEST(PieceCodeFunc, GetCodeFunc)
 }
 
 // test isPawn
-TEST(isPawnTest, isPawn)
+TEST(PieceCode, IsPawn)
 {
   auto piece = PieceCode::PAWN;
   auto color = PieceColor::WHITE;
@@ -139,7 +139,7 @@ TEST(isPawnTest, isPawn)
 }
 
 // test isKnight
-TEST(isKnightTest, isKnight)
+TEST(PieceCode, IsKnight)
 {
   auto piece = PieceCode::KNIGHT;
   auto color = PieceColor::WHITE;
@@ -157,7 +157,7 @@ TEST(isKnightTest, isKnight)
 }
 
 // test isBishop
-TEST(isBishopTest, isBishop)
+TEST(PieceCode, IsBishop)
 {
   auto piece = PieceCode::BISHOP;
   auto color = PieceColor::WHITE;
@@ -175,7 +175,7 @@ TEST(isBishopTest, isBishop)
 }
 
 // test isRook
-TEST(isRookTest, isRook)
+TEST(PieceCode, IsRook)
 {
   auto piece = PieceCode::ROOK;
   auto color = PieceColor::WHITE;
@@ -193,7 +193,7 @@ TEST(isRookTest, isRook)
 }
 
 // test isQueen
-TEST(isQueenTest, isQueen)
+TEST(PieceCode, IsQueen)
 {
   auto piece = PieceCode::QUEEN;
   auto color = PieceColor::WHITE;
@@ -211,7 +211,7 @@ TEST(isQueenTest, isQueen)
 }
 
 // test isKing
-TEST(isKingTest, isKing)
+TEST(PieceCode, IsKing)
 {
   auto piece = PieceCode::KING;
   auto color = PieceColor::WHITE;
@@ -229,7 +229,7 @@ TEST(isKingTest, isKing)
 }
 
 // test isPieceNone
-TEST(isPieceNoneTest, isPieceNone)
+TEST(PieceCode, IsPieceNone)
 {
   auto piece = PieceCode::KING;
   auto color = PieceColor::WHITE;
@@ -246,7 +246,7 @@ TEST(isPieceNoneTest, isPieceNone)
 }
 
 // test isColorNone
-TEST(isColorNoneTest, isColorNone)
+TEST(PieceCode, IsColorNone)
 {
   auto piece = PieceCode::KING;
   auto color = PieceColor::WHITE;
@@ -263,7 +263,7 @@ TEST(isColorNoneTest, isColorNone)
 }
 
 // test isSamePiece
-TEST(isSamePieceTest, isSamePiece)
+TEST(PieceCode, IsSamePiece)
 {
   auto piece = PieceCode::KING;
   auto color = PieceColor::WHITE;
@@ -279,7 +279,7 @@ TEST(isSamePieceTest, isSamePiece)
 }
 
 // test isSameColor
-TEST(isSameColorTest, isSameColor)
+TEST(PieceCode, IsSameColor)
 {
   auto piece = PieceCode::KING;
   auto color = PieceColor::WHITE;
