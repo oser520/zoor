@@ -1,12 +1,23 @@
-/**
- * @file tsquare.cc
- * @author Omar A Serrano
- * @date 2016-01-05
- */
+/////////////////////////////////////////////////////////////////////////////////////
+/// @file tsquare.cc
+/// @author Omar A Serrano
+/// @date 2016-01-05
+/////////////////////////////////////////////////////////////////////////////////////
 
+//
+// STL
+//
 #include <string>
+
+//
+// zoor
+//
 #include "piececode.hh"
 #include "square.hh"
+
+//
+// gtest
+//
 #include "gtest/gtest.h"
 
 namespace {
@@ -16,7 +27,9 @@ using zoor::Square;
 using zoor::PieceCode;
 using zoor::PieceColor;
 
+//
 // Test for default ctor.
+//
 TEST(Square, DefaultCtor)
 {
   Square s;
@@ -26,7 +39,9 @@ TEST(Square, DefaultCtor)
   EXPECT_EQ(PieceColor::NONE, s.color());
 }
 
+//
 // Test for ctor with 2 parameters.
+//
 TEST(Square, Ctor2Param)
 {
   Square s(3, 5);
@@ -36,7 +51,9 @@ TEST(Square, Ctor2Param)
   EXPECT_EQ(PieceColor::NONE, s.color());
 }
 
+//
 // Test for ctor with 3 parameters.
+//
 TEST(Square, Ctor3Param)
 {
   Square s(3, 5, PieceColor::WHITE | PieceCode::BISHOP);
@@ -46,7 +63,9 @@ TEST(Square, Ctor3Param)
   EXPECT_EQ(PieceColor::WHITE, s.color());
 }
 
+//
 // Test for ctor with 4 parameters.
+//
 TEST(Square, Ctor4Param)
 {
   Square s(3, 5, PieceCode::BISHOP, PieceColor::WHITE);
@@ -56,7 +75,9 @@ TEST(Square, Ctor4Param)
   EXPECT_EQ(PieceColor::WHITE, s.color());
 }
 
+//
 // Test getters.
+//
 TEST(Square, Getters)
 {
   Square s;
@@ -74,7 +95,9 @@ TEST(Square, Getters)
   EXPECT_NE(PieceColor::BLACK | PieceCode::ROOK, s.code());
 }
 
+//
 // Test setters.
+//
 TEST(Square, Setters)
 {
   Square s;
@@ -99,7 +122,9 @@ TEST(Square, Setters)
   EXPECT_EQ(pcode, s.code());
 }
 
+//
 // Test bools.
+//
 TEST(Square, Bools) {
   Square s1(5, 7, PieceCode::KNIGHT, PieceColor::BLACK);
   Square s2(5, 7, PieceCode::KNIGHT, PieceColor::BLACK);
@@ -116,7 +141,9 @@ TEST(Square, Bools) {
   EXPECT_TRUE(s1 != s2);
 }
 
+//
 // Unit tests for equality operators.
+//
 TEST(Square, EqualOp)
 {
   Square s1, s2;
@@ -152,7 +179,9 @@ TEST(Square, EqualOp)
   EXPECT_TRUE(s1 != s2);
 }
 
+//
 // unit tests for toString
+//
 TEST(Square, ToString)
 {
   Square sq1(5, 7, PieceCode::ROOK, PieceColor::WHITE);
@@ -165,7 +194,9 @@ TEST(Square, ToString)
   EXPECT_EQ(s2, sq2.toString());
 }
 
+//
 // unit tests for hashCode
+//
 TEST(Square, HashCode)
 {
   Square sq1(5, 7, PieceCode::ROOK, PieceColor::WHITE);
@@ -174,7 +205,9 @@ TEST(Square, HashCode)
   EXPECT_NE(sq1.hashCode(), sq2.hashCode());
 }
 
+//
 // unit tests for isInBound
+//
 TEST(Square, IsInBound)
 {
   EXPECT_TRUE(Square::isInBound(7, 7));
