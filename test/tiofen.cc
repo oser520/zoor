@@ -45,7 +45,7 @@ using zoor::readFen;
 //
 // Test readFen with a record that represents the initial position
 //
-TEST(IOFen1, defaultBoard)
+TEST(IOFen, defaultBoard)
 {
   Board board;
   auto fenList = readFen("fen/init.fen");
@@ -62,7 +62,7 @@ TEST(IOFen1, defaultBoard)
 //
 // Test reading a fen file that only contains one line
 //
-TEST(IOFen2, test1)
+TEST(IOFen, test1)
 {
   vector<Square> sqList;
 
@@ -96,7 +96,7 @@ TEST(IOFen2, test1)
 //
 // Test reading a fen file with 18 records
 //
-TEST(IOFen3, test2)
+TEST(IOFen, test2)
 {
   // read the FEN records
   auto fenList = readFen("fen/test2.fen");
@@ -229,7 +229,7 @@ TEST(IOFen3, test2)
 //
 // Verify readFen can parse en passant information
 //
-TEST(IOFen4, test3)
+TEST(IOFen, test3)
 {
   vector<Square> sqList;
 
