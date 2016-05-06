@@ -41,8 +41,8 @@ OBJ_LIST := $(sort $(OBJ_BASICTYPES) $(OBJ_BASICBOARD) $(OBJ_PIECECODE) \
               $(OBJ_BOARDINFO) $(OBJ_FENRECORD) $(OBJ_IOFEN))
 
 # Unit test programs.
-TARGETS = tbasictypes tpiececode tboardinfo tpiececount tsquare \
-          tpiecemove tboard tfenrecord tiofen
+TARGETS = tbasictypes tbasicboard tpiececode tboardinfo tpiececount \
+          tsquare tpiecemove tboard tfenrecord tiofen
 
 all: $(TARGETS)
 
