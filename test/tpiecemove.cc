@@ -21,7 +21,7 @@ using zoor::PieceMove;
 using zoor::Square;
 
 // Test the values of the piece making the moves with default constructor.
-TEST(PieceMove1, DefaultCtor)
+TEST(PieceMove, DefaultCtor)
 {
   PieceMove pm;
   auto sq = pm.fromSquare();
@@ -47,7 +47,7 @@ TEST(PieceMove1, DefaultCtor)
 }
 
 // Test the values of the piece making the moves with 1-param constructor.
-TEST(PieceMove2, FourParamCtor)
+TEST(PieceMove, FourParamCtor)
 {
   PieceMove pm(3, 5, PieceCode::ROOK, PieceColor::WHITE);
   auto sq = pm.fromSquare();
@@ -73,7 +73,7 @@ TEST(PieceMove2, FourParamCtor)
 }
 
 // Test the values of the piece making the moves with all-param constructor.
-TEST(PieceMove3, ThreeParamCtor)
+TEST(PieceMove, ThreeParamCtor)
 {
   PieceMove pm(3, 5, PieceColor::WHITE | PieceCode::ROOK);
   auto sq = pm.fromSquare();
@@ -99,7 +99,7 @@ TEST(PieceMove3, ThreeParamCtor)
 }
 
 // Test the values of the piece making the moves with all-param constructor.
-TEST(PieceMove4, FiveParamCtor)
+TEST(PieceMove, FiveParamCtor)
 {
   auto pcode = PieceColor::WHITE | PieceCode::ROOK;
   PieceMove pm(3, 5, pcode, 2, 6);
@@ -127,7 +127,7 @@ TEST(PieceMove4, FiveParamCtor)
 }
 
 // test fromRow and fromColumn
-TEST(PieceMove5, fromRowColumn)
+TEST(PieceMove, fromRowColumn)
 {
   auto pcode = PieceColor::WHITE | PieceCode::ROOK;
   PieceMove pm(3, 5, pcode, 2, 6);
@@ -137,7 +137,7 @@ TEST(PieceMove5, fromRowColumn)
 }
 
 // test toRow and toColumn
-TEST(PieceMove6, toRowColumn)
+TEST(PieceMove, toRowColumn)
 {
   auto pcode = PieceColor::WHITE | PieceCode::ROOK;
   PieceMove pm(3, 5, pcode, 2, 6);
@@ -147,7 +147,7 @@ TEST(PieceMove6, toRowColumn)
 }
 
 // test setPiece
-TEST(PieceMove7, setPiece)
+TEST(PieceMove, setPiece)
 {
   PieceMove pm;
 
@@ -181,7 +181,7 @@ TEST(PieceMove7, setPiece)
 }
 
 // test setCapture
-TEST(PieceMove8, setCapture)
+TEST(PieceMove, setCapture)
 {
   PieceMove pm;
 
@@ -215,7 +215,7 @@ TEST(PieceMove8, setCapture)
 }
 
 // test setPromo
-TEST(PieceMove9, setPromo)
+TEST(PieceMove, setPromo)
 {
   PieceMove pm;
 
@@ -249,7 +249,7 @@ TEST(PieceMove9, setPromo)
 }
 
 // test isCapture
-TEST(PieceMove10, isCapture)
+TEST(PieceMove, isCapture)
 {
   PieceMove pm;
   EXPECT_FALSE(pm.isCapture());
@@ -259,7 +259,7 @@ TEST(PieceMove10, isCapture)
 }
 
 // test isPromo
-TEST(PieceMove11, isPromo)
+TEST(PieceMove, isPromo)
 {
   PieceMove pm;
   EXPECT_FALSE(pm.isPromo());
@@ -269,7 +269,7 @@ TEST(PieceMove11, isPromo)
 }
 
 // test setToRow
-TEST(PieceMove12, setToRow)
+TEST(PieceMove, setToRow)
 {
   PieceMove pm;
   EXPECT_EQ(0, pm.toRow());
@@ -281,7 +281,7 @@ TEST(PieceMove12, setToRow)
 }
 
 // test setToColumn
-TEST(PieceMove13, setToColumn)
+TEST(PieceMove, setToColumn)
 {
   PieceMove pm;
   EXPECT_EQ(0, pm.toRow());
@@ -293,7 +293,7 @@ TEST(PieceMove13, setToColumn)
 }
 
 // test setGoTo
-TEST(PieceMove14, setGoTo)
+TEST(PieceMove, setGoTo)
 {
   PieceMove pm;
   EXPECT_EQ(0, pm.toRow());
@@ -305,7 +305,7 @@ TEST(PieceMove14, setGoTo)
 }
 
 // test isMate
-TEST(PieceMove15, isMate)
+TEST(PieceMove, isMate)
 {
   PieceMove pm;
   EXPECT_FALSE(pm.isMate());
@@ -315,7 +315,7 @@ TEST(PieceMove15, isMate)
 }
 
 // test short white castling
-TEST(PieceMove16, shortWhiteCastle)
+TEST(PieceMove, shortWhiteCastle)
 {
   PieceMove pm;
   EXPECT_FALSE(pm.isCastle());
@@ -345,7 +345,7 @@ TEST(PieceMove16, shortWhiteCastle)
 }
 
 // test short black castling
-TEST(PieceMove17, shortBlackCastle)
+TEST(PieceMove, shortBlackCastle)
 {
   PieceMove pm;
   EXPECT_FALSE(pm.isCastle());
@@ -375,7 +375,7 @@ TEST(PieceMove17, shortBlackCastle)
 }
 
 // test long white castling
-TEST(PieceMove18, longWhiteCastle)
+TEST(PieceMove, longWhiteCastle)
 {
   PieceMove pm;
   EXPECT_FALSE(pm.isCastle());
@@ -405,7 +405,7 @@ TEST(PieceMove18, longWhiteCastle)
 }
 
 // test long black castling
-TEST(PieceMove19, longBlackCastle)
+TEST(PieceMove, longBlackCastle)
 {
   PieceMove pm;
   EXPECT_FALSE(pm.isCastle());
@@ -435,7 +435,7 @@ TEST(PieceMove19, longBlackCastle)
 }
 
 // test isEnPassant
-TEST(PieceMove20, isEnPassant)
+TEST(PieceMove, isEnPassant)
 {
   PieceMove pm(4, 5, PieceCode::PAWN, PieceColor::WHITE);
   pm.setGoTo(5, 6);
@@ -450,7 +450,7 @@ TEST(PieceMove20, isEnPassant)
 }
 
 // test toString
-TEST(PieceMove21, toString)
+TEST(PieceMove, toString)
 {
   auto pcode = PieceColor::WHITE | PieceCode::ROOK;
   PieceMove pm(3, 5, pcode, 6, 5);
@@ -462,7 +462,7 @@ TEST(PieceMove21, toString)
 }
 
 // test hashCode
-TEST(PieceMove22, hashCode)
+TEST(PieceMove, hashCode)
 {
   auto pcode = PieceColor::WHITE | PieceCode::ROOK;
   PieceMove pm(3, 5, pcode, 6, 5);
@@ -473,7 +473,7 @@ TEST(PieceMove22, hashCode)
 }
 
 // test the equality operators
-TEST(PieceMove23, EqualOp) {
+TEST(PieceMove, EqualOp) {
   auto code = PieceColor::BLACK | PieceCode::ROOK;
   PieceMove pm1(1, 2, code, 3, 3);
   pm1.setCapture(3, 3, PieceCode::PAWN, PieceColor::WHITE);
@@ -488,7 +488,7 @@ TEST(PieceMove23, EqualOp) {
 }
 
 // test the output operator
-TEST(PieceMove24, OutputOp) {
+TEST(PieceMove, OutputOp) {
   PieceMove pm(1, 2, PieceCode::ROOK, PieceColor::BLACK);
   pm.setCapture(3, 3, PieceCode::PAWN, PieceColor::WHITE);
   pm.setGoTo(3, 3);
