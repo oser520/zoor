@@ -15,7 +15,7 @@ namespace {
 using zoor::BoardInfo;
 
 // test get
-TEST(BoardInfo1, get)
+TEST(BoardInfo, get)
 {
   BoardInfo bi;
   const auto& bs = bi.get();
@@ -24,7 +24,7 @@ TEST(BoardInfo1, get)
 }
 
 // test rookA1 and rookA1On
-TEST(BoardInfo2, rookA1)
+TEST(BoardInfo, rookA1)
 {
   BoardInfo bi;
   EXPECT_FALSE(bi.rookA1());
@@ -32,7 +32,7 @@ TEST(BoardInfo2, rookA1)
 }
 
 // test rookH1 and rookH1On
-TEST(BoardInfo3, rookH1)
+TEST(BoardInfo, rookH1)
 {
   BoardInfo bi;
   EXPECT_FALSE(bi.rookH1());
@@ -40,7 +40,7 @@ TEST(BoardInfo3, rookH1)
 }
 
 // test wkMoved and wkMovedOn
-TEST(BoardInfo4, wkMoved)
+TEST(BoardInfo, wkMoved)
 {
   BoardInfo bi;
   EXPECT_FALSE(bi.wkMoved());
@@ -48,7 +48,7 @@ TEST(BoardInfo4, wkMoved)
 }
 
 // test wkCheck and wkCheckSet
-TEST(BoardInfo5, wkCheck)
+TEST(BoardInfo, wkCheck)
 {
   BoardInfo bi;
   EXPECT_FALSE(bi.wkCheck());
@@ -57,7 +57,7 @@ TEST(BoardInfo5, wkCheck)
 }
 
 // test wkMate and wkMateOn
-TEST(BoardInfo6, wkMate)
+TEST(BoardInfo, wkMate)
 {
   BoardInfo bi;
   EXPECT_FALSE(bi.wkMate());
@@ -65,7 +65,7 @@ TEST(BoardInfo6, wkMate)
 }
 
 // test wkCastle and wkCastleLong
-TEST(BoardInfo7, wkCastle)
+TEST(BoardInfo, wkCastle)
 {
   BoardInfo bi1;
   EXPECT_TRUE(bi1.wkCastle());
@@ -85,7 +85,7 @@ TEST(BoardInfo7, wkCastle)
 }
 
 // test rookA8 and rookA8On
-TEST(BoardInfo8, rookA8)
+TEST(BoardInfo, rookA8)
 {
   BoardInfo bi;
   EXPECT_FALSE(bi.rookA8());
@@ -93,7 +93,7 @@ TEST(BoardInfo8, rookA8)
 }
 
 // test rookH8 and rookH8On
-TEST(BoardInfo9, rookH8)
+TEST(BoardInfo, rookH8)
 {
   BoardInfo bi;
   EXPECT_FALSE(bi.rookH8());
@@ -101,7 +101,7 @@ TEST(BoardInfo9, rookH8)
 }
 
 // test bkMoved and bkMovedOn
-TEST(BoardInfo10, bkMoved)
+TEST(BoardInfo, bkMoved)
 {
   BoardInfo bi;
   EXPECT_FALSE(bi.bkMoved());
@@ -109,7 +109,7 @@ TEST(BoardInfo10, bkMoved)
 }
 
 // test bkCheck and bkCheckSet
-TEST(BoardInfo11, bkCheck)
+TEST(BoardInfo, bkCheck)
 {
   BoardInfo bi;
   EXPECT_FALSE(bi.bkCheck());
@@ -118,7 +118,7 @@ TEST(BoardInfo11, bkCheck)
 }
 
 // test bkMate and bkMateOn
-TEST(BoardInfo12, bkMate)
+TEST(BoardInfo, bkMate)
 {
   BoardInfo bi;
   EXPECT_FALSE(bi.bkMate());
@@ -126,7 +126,7 @@ TEST(BoardInfo12, bkMate)
 }
 
 // test bkCastle and bkCastleLong
-TEST(BoardInfo13, bkCastle)
+TEST(BoardInfo, bkCastle)
 {
   BoardInfo bi1;
   EXPECT_TRUE(bi1.bkCastle());
@@ -146,7 +146,7 @@ TEST(BoardInfo13, bkCastle)
 }
 
 // test toString and output stream
-TEST(BoardInfo14, toString)
+TEST(BoardInfo, toString)
 {
   BoardInfo bi;
   std::ostringstream oss1, oss2;
@@ -160,7 +160,7 @@ TEST(BoardInfo14, toString)
 }
 
 // test hashCode and hash<BoardInfo>
-TEST(BoardInfo15, hashCode)
+TEST(BoardInfo, hashCode)
 {
   BoardInfo bi1, bi2;
   bi1.rookA1On().rookH8On().wkCheckSet(true).bkMovedOn();
@@ -173,7 +173,7 @@ TEST(BoardInfo15, hashCode)
 }
 
 // test operator== and operator!=
-TEST(BoardInfo16, operatorEq)
+TEST(BoardInfo, operatorEq)
 {
   BoardInfo bi1, bi2;
   bi1.rookA1On().rookH8On().wkCheckSet(true).bkMovedOn();
