@@ -12,7 +12,7 @@
 //
 // zoor
 //
-#include "piececode.hh"
+#include "basictypes.hh"
 #include "square.hh"
 
 //
@@ -24,8 +24,8 @@ namespace {
 
 using std::string;
 using zoor::Square;
-using zoor::PieceCode;
-using zoor::PieceColor;
+using zoor::Piece;
+using zoor::Color;
 
 //
 // Test for default ctor.
@@ -35,8 +35,8 @@ TEST(Square, DefaultCtor)
   Square s;
   EXPECT_EQ(0, s.row());
   EXPECT_EQ(0, s.column());
-  EXPECT_EQ(PieceCode::NONE, s.piece());
-  EXPECT_EQ(PieceColor::NONE, s.color());
+  EXPECT_EQ(Piece::NONE, s.piece());
+  EXPECT_EQ(Color::NONE, s.color());
 }
 
 //
@@ -47,8 +47,8 @@ TEST(Square, Ctor2Param)
   Square s(3, 5);
   EXPECT_EQ(3, s.row());
   EXPECT_EQ(5, s.column());
-  EXPECT_EQ(PieceCode::NONE, s.piece());
-  EXPECT_EQ(PieceColor::NONE, s.color());
+  EXPECT_EQ(Piece::NONE, s.piece());
+  EXPECT_EQ(Color::NONE, s.color());
 }
 
 //
@@ -56,11 +56,11 @@ TEST(Square, Ctor2Param)
 //
 TEST(Square, Ctor3Param)
 {
-  Square s(3, 5, PieceColor::WHITE | PieceCode::BISHOP);
+  Square s(3, 5, Color::W|Piece::B);
   EXPECT_EQ(3, s.row());
   EXPECT_EQ(5, s.column());
-  EXPECT_EQ(PieceCode::BISHOP, s.piece());
-  EXPECT_EQ(PieceColor::WHITE, s.color());
+  EXPECT_EQ(Piece::B, s.piece());
+  EXPECT_EQ(Color::W, s.color());
 }
 
 //
@@ -68,11 +68,11 @@ TEST(Square, Ctor3Param)
 //
 TEST(Square, Ctor4Param)
 {
-  Square s(3, 5, PieceCode::BISHOP, PieceColor::WHITE);
+  Square s(3, 5, Piece::B, Color::W);
   EXPECT_EQ(3, s.row());
   EXPECT_EQ(5, s.column());
-  EXPECT_EQ(PieceCode::BISHOP, s.piece());
-  EXPECT_EQ(PieceColor::WHITE, s.color());
+  EXPECT_EQ(Piece::B, s.piece());
+  EXPECT_EQ(Color::W, s.color());
 }
 
 //
@@ -81,18 +81,18 @@ TEST(Square, Ctor4Param)
 TEST(Square, Getters)
 {
   Square s;
-  s.setPiece(PieceCode::KING).setColor(PieceColor::WHITE).setRow(5).setColumn(7);
-  EXPECT_EQ(PieceCode::KING, s.piece());
-  EXPECT_EQ(PieceColor::WHITE, s.color());
+  s.piece(Piece::K).color(Color::W).row(5).column(7);
+  EXPECT_EQ(Piece::K, s.piece());
+  EXPECT_EQ(Color::W, s.color());
   EXPECT_EQ(5, s.row());
   EXPECT_EQ(7, s.column());
-  EXPECT_EQ(PieceColor::WHITE | PieceCode::KING, s.code());
+  EXPECT_EQ(Color::W|Piece::K, s.code());
 
-  EXPECT_NE(PieceCode::BISHOP, s.piece());
-  EXPECT_NE(PieceColor::BLACK, s.color());
+  EXPECT_NE(Piece::B, s.piece());
+  EXPECT_NE(Color::B, s.color());
   EXPECT_NE(1, s.row());
   EXPECT_NE(3, s.column());
-  EXPECT_NE(PieceColor::BLACK | PieceCode::ROOK, s.code());
+  EXPECT_NE(Color::B|Piece::R, s.code());
 }
 
 //
@@ -101,24 +101,21 @@ TEST(Square, Getters)
 TEST(Square, Setters)
 {
   Square s;
-  s.setPiece(PieceCode::PAWN)
-   .setColor(PieceColor::BLACK)
-   .setRow(5)
-   .setColumn(7);
+  s.piece(Piece::P).color(Color::B).row(5).column(7);
 
-  EXPECT_EQ(PieceCode::PAWN, s.piece());
-  EXPECT_EQ(PieceColor::BLACK, s.color());
+  EXPECT_EQ(Piece::P, s.piece());
+  EXPECT_EQ(Color::B, s.color());
   EXPECT_EQ(5, s.row());
   EXPECT_EQ(7, s.column());
 
-  s.setLocation(2, 5);
+  s.location(2, 5);
   EXPECT_NE(5, s.row());
   EXPECT_NE(7, s.column());
 
-  auto pcode = PieceColor::WHITE | PieceCode::QUEEN;
-  s.setPieceCode(pcode);
-  EXPECT_EQ(PieceCode::QUEEN, s.piece());
-  EXPECT_EQ(PieceColor::WHITE, s.color());
+  auto pcode = Color::W | Piece::Q;
+  s.code(pcode);
+  EXPECT_EQ(Piece::Q, s.piece());
+  EXPECT_EQ(Color::W, s.color());
   EXPECT_EQ(pcode, s.code());
 }
 
@@ -126,16 +123,13 @@ TEST(Square, Setters)
 // Test bools.
 //
 TEST(Square, Bools) {
-  Square s1(5, 7, PieceCode::KNIGHT, PieceColor::BLACK);
-  Square s2(5, 7, PieceCode::KNIGHT, PieceColor::BLACK);
+  Square s1(5, 7, Piece::K, Color::B);
+  Square s2(5, 7, Piece::K, Color::B);
 
   EXPECT_TRUE(s1 == s2);
   EXPECT_FALSE(s1 != s2);
 
-  s1.setPiece(PieceCode::KNIGHT)
-    .setColor(PieceColor::WHITE)
-    .setRow(5)
-    .setColumn(7);
+  s1.piece(Piece::K).color(Color::W).row(5).column(7);
 
   EXPECT_FALSE(s1 == s2);
   EXPECT_TRUE(s1 != s2);
@@ -149,31 +143,27 @@ TEST(Square, EqualOp)
   Square s1, s2;
   EXPECT_EQ(s1, s2);
 
-  s1.setPiece(PieceCode::KNIGHT);
+  s1.piece(Piece::K);
   EXPECT_NE(s1, s2);
 
-  s1.setPiece(PieceCode::NONE);
-  s2.setColor(PieceColor::WHITE);
+  s1.piece(Piece::NONE);
+  s2.color(Color::W);
   EXPECT_NE(s1, s2);
 
-  s1.setPiece(PieceCode::ROOK).setColor(PieceColor::BLACK).setRow(5);
-  s2.setPiece(PieceCode::ROOK).setColor(PieceColor::BLACK).setRow(3);
+  s1.piece(Piece::R).color(Color::B).row(5);
+  s2.piece(Piece::R).color(Color::B).row(3);
   EXPECT_NE(s1, s2);
 
-  s2.setRow(5);
+  s2.row(5);
   EXPECT_EQ(s1, s2);
 
-  s1.setLocation(5, 7)
-    .setPiece(PieceCode::KNIGHT)
-    .setColor(PieceColor::BLACK);
-  s2.setLocation(5, 7)
-    .setPiece(PieceCode::KNIGHT)
-    .setColor(PieceColor::BLACK);
+  s1.location(5, 7).piece(Piece::K).color(Color::B);
+  s2.location(5, 7).piece(Piece::K).color(Color::B);
 
   EXPECT_TRUE(s1 == s2);
   EXPECT_FALSE(s1 != s2);
 
-  s1.setColor(PieceColor::WHITE);
+  s1.color(Color::W);
 
   EXPECT_FALSE(s1 == s2);
   EXPECT_TRUE(s1 != s2);
@@ -184,8 +174,8 @@ TEST(Square, EqualOp)
 //
 TEST(Square, ToString)
 {
-  Square sq1(5, 7, PieceCode::ROOK, PieceColor::WHITE);
-  Square sq2(3, 2, PieceCode::QUEEN, PieceColor::BLACK);
+  Square sq1(5, 7, Piece::R, Color::W);
+  Square sq2(3, 2, Piece::Q, Color::B);
 
   string s1("(ROOK, WHITE, 5, 7)");
   string s2("(QUEEN, BLACK, 3, 2)");
@@ -199,28 +189,10 @@ TEST(Square, ToString)
 //
 TEST(Square, HashCode)
 {
-  Square sq1(5, 7, PieceCode::ROOK, PieceColor::WHITE);
-  Square sq2(3, 2, PieceCode::QUEEN, PieceColor::BLACK);
+  Square sq1(5, 7, Piece::R, Color::W);
+  Square sq2(3, 2, Piece::Q, Color::B);
 
   EXPECT_NE(sq1.hashCode(), sq2.hashCode());
-}
-
-//
-// unit tests for isInBound
-//
-TEST(Square, IsInBound)
-{
-  EXPECT_TRUE(Square::isInBound(7, 7));
-  EXPECT_TRUE(Square::isInBound(7));
-  EXPECT_TRUE(Square::isInBound(0, 0));
-  EXPECT_TRUE(Square::isInBound(0));
-  EXPECT_TRUE(Square::isInBound(2, 5));
-
-  EXPECT_FALSE(Square::isInBound(-1, -2));
-  EXPECT_FALSE(Square::isInBound(9));
-  EXPECT_FALSE(Square::isInBound(10,1));
-  EXPECT_FALSE(Square::isInBound(-3));
-  EXPECT_FALSE(Square::isInBound(2, 20));
 }
 
 } // namespace

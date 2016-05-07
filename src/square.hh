@@ -249,7 +249,7 @@ private:
   unsigned char mCol;
 
   // board dimension
-  enum : dim_t { DIM = 8; };
+  enum : dim_t { DIM = 8 };
 };
 
 ///
@@ -338,7 +338,7 @@ Square::Square(dim_t row, dim_t column, Piece piece, Color color) noexcept
 //
 // get the row
 //
-inline Square::dim_t
+inline dim_t
 Square::row() const noexcept
 {
   return static_cast<dim_t>(mRow);
@@ -347,7 +347,7 @@ Square::row() const noexcept
 //
 // get the column
 //
-inline Square::dim_t
+inline dim_t
 Square::column() const noexcept
 {
   return static_cast<dim_t>(mCol);
@@ -450,7 +450,7 @@ Square::location(dim_t row, dim_t column) noexcept
 {
   assert(checkDim(row, column));
   mRow = row;
-  mCol = column
+  mCol = column;
   return *this;
 }
 
