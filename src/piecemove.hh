@@ -158,12 +158,12 @@ public:
   /// @brief Sets the information for the piece that is moving.
   /// @param row The row location of the piece.
   /// @param column The column location of the piece.
-  /// @param code The bit pattern with color and piece info.
+  /// @param piece The bit pattern with color and piece info.
   /// @return A reference to this @c PieceMove.
   /// @throw Never throws.
   ///
   PieceMove&
-  piece(dim_t row, dim_t column, piece_t code) noexcept;
+  piece(dim_t row, dim_t column, piece_t piece) noexcept;
 
   ///
   /// @brief Sets the information for the piece that is moving.
@@ -634,111 +634,156 @@ operator<<(std::ostream &os, const PieceMove &pm);
 /////////////////////////////////////////////////////////////////////////////////////
 
 //
-// from row getter
+// get piece code making move
 //
-inline PieceMove::dim_type
-PieceMove::fromRow() const noexcept
+inline piece_t
+PieceMove::code() const noexcept
 {
-  return mFrom.row();
+  return mFrom.code();
 }
 
 //
-// from column getter
+// set piece code making move
 //
-inline PieceMove::dim_type
-PieceMove::fromColumn() const noexcept
+inline PieceMove&
+PieceMove::code(piece_t piece) noexcept
 {
-  return mFrom.column();
+  mFrom.code(piece);
+  return *this;
 }
 
 //
-// the row getter for the destination row
+// get piece making move
 //
-inline PieceMove::dim_type
-PieceMove::toRow() const noexcept
-{
-  return mPromo.row();
-}
-
-//
-// the column getter for the destination column
-//
-inline PieceMove::dim_type
-PieceMove::toColumn() const noexcept
-{
-  return mPromo.column();
-}
-
-//
-// the row getter for the captured piece
-//
-inline PieceMove::dim_type
-PieceMove::captureRow() const noexcept
-{
-  return mCapture.row();
-}
-
-//
-// the column getter for the captured piece
-//
-inline PieceMove::dim_type
-PieceMove::captureColumn() const noexcept
-{
-  return mCapture.column();
-}
-
-//
-// source square getter
-//
-inline Square
-PieceMove::fromSquare() const noexcept
-{
-  return mFrom;
-}
-
-//
-// source piece getter
-//
-inline PieceCode
-PieceMove::fromPiece() const noexcept
+inline Piece
+PieceMove::piece() const noexcept
 {
   return mFrom.piece();
 }
 
 //
-// source piece color getter
+// set piece making move
 //
-inline PieceColor
-PieceMove::fromColor() const noexcept
+inline PieceMove&
+PieceMove::piece(Piece piece) noexcept
+{
+  mFrom.piece(piece);
+  return *this;
+}
+
+//
+// set color and piece making move
+//
+inline PieceMove&
+PieceMove::piece(Piece piece, Color color) noexcept
+{
+  mFrom.piece(piece).color(color);
+  return *this;
+}
+
+//
+// set row, column, and piece making move
+//
+inline PieceMove&
+PieceMove::piece(dim_t row, dim_t column, piece_t piece) noexcept
+{
+  mFrom.code(piece).location(row, column);
+  return *this;
+}
+
+//
+// set row, column, color, and piece making move
+//
+inline PieceMove&
+PieceMove::piece(dim_t row, dim_t column, Piece piece, Color color) noexcept
+{
+  mFrom.code(piece).color(color).location(row, column);
+  return *this;
+}
+
+//
+// get the color of the piece making the move
+//
+inline Color
+PieceMove::color() const noexcept
 {
   return mFrom.color();
 }
 
 //
-// get the captured square
+// set the color of the piece making the move
 //
-inline Square
-PieceMove::captureSquare() const noexcept
+inline PieceMove&
+PieceMove::color(Color color) noexcept
 {
-  return mCapture;
+  mFrom.color(color);
+  return *this;
 }
 
 //
-// get the captured piece
+// get the row of the piece making the move
 //
-inline PieceCode
-PieceMove::capturePiece() const noexcept
+inline dim_t
+PieceMove::row() const noexcept
 {
-  return mCapture.piece();
+  return mFrom.row();
 }
 
 //
-// get the captured piece's color
+// set the row of the piece making the move
 //
-inline PieceColor
-PieceMove::captureColor() const noexcept
+inline PieceMove&
+PieceMove::row(dim_t row) noexcept
 {
-  return mCapture.color();
+  mFrom.row(row);
+  return *this;
+}
+
+//
+// get the column of the piece making the move
+//
+inline dim_t
+PieceMove::column() const noexcept
+{
+  return mFrom.column();
+}
+
+//
+// set the column of the piece making the move
+//
+inline PieceMove&
+PieceMove::column(dim_t column) noexcept
+{
+  mFrom.column(column);
+  return *this;
+}
+
+//
+// get the row and column of the piece making the move
+//
+inline std::pair<dim_t, dim_t>
+PieceMove::location() const noexcept
+{
+  return mFrom.location();
+}
+
+//
+// set the row and column of the piece making the move
+//
+inline PieceMove&
+PieceMove::location(dim_t row, dim_t column) noexcept
+{
+  mFrom.location(row, column);
+  return *this;
+}
+
+//
+// get const ref to square making move
+//
+inline const Square&
+PieceMove::square() const noexcept
+{
+  return mFrom;
 }
 
 //
@@ -748,33 +793,6 @@ inline bool
 PieceMove::isPromo() const noexcept
 {
   return mPromo.piece() != PieceCode::NONE;
-}
-
-//
-// promotion square
-//
-inline Square
-PieceMove::promoSquare() const noexcept
-{
-  return mPromo;
-}
-
-//
-// promotion piece getter
-//
-inline PieceCode
-PieceMove::promoPiece() const noexcept
-{
-  return mPromo.piece();
-}
-
-//
-// promotion piece color getter
-//
-inline PieceColor
-PieceMove::promoColor() const noexcept
-{
-  return mPromo.color();
 }
 
 //
