@@ -113,24 +113,152 @@ public:
   ~PieceMove() noexcept = default;
 
   ///
-  /// @brief Obtain the row of source location.
-  /// @return The row of the source location.
+  /// @brief Get the piece and color of piece making move.
+  /// @return The piece.
+  /// @throw Never throws.
+  ///
+  piece_t
+  code() const noexcept;
+
+  ///
+  /// @brief Set the piece making the move.
+  /// @brief piece The piece making the move.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  code(piece_t piece) noexcept;
+
+  ///
+  /// @brief Get the piece making the move.
+  /// @return The piece making the move.
+  /// @throw Never throws.
+  ///
+  Piece
+  piece() const noexcept;
+
+  ///
+  /// @brief Set the piece making the move.
+  /// @brief piece The piece making the move.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  piece(Piece piece) noexcept;
+
+  ///
+  /// @brief Sets the color and piece for the piece that is moving.
+  /// @param piece The piece that is moving.
+  /// @param color The color of the piece that is moving.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  piece(Piece piece, Color color) noexcept;
+
+  ///
+  /// @brief Sets the information for the piece that is moving.
+  /// @param row The row location of the piece.
+  /// @param column The column location of the piece.
+  /// @param code The bit pattern with color and piece info.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  piece(dim_t row, dim_t column, piece_t code) noexcept;
+
+  ///
+  /// @brief Sets the information for the piece that is moving.
+  /// @param row The row location of the piece.
+  /// @param column The column location of the piece.
+  /// @param piece The piece.
+  /// @param color The color of the piece.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  piece(dim_t row, dim_t column, Piece piece, Color color) noexcept;
+
+  ///
+  /// @brief Get the color of the piece making the move.
+  /// @return The color of the piece making the move.
+  /// @throw Never throws.
+  ///
+  Color
+  color() const noexcept;
+
+  ///
+  /// @brief Set the color of the piece making the move.
+  /// @param color The color of the piece making the move.
+  /// @return A reference to this PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  color(Color color) noexcept;
+
+  ///
+  /// @brief Get the row of the piece making the move.
+  /// @return The row of the piece making the move.
   /// @throw Never throws.
   ///
   dim_t
   row() const noexcept;
 
   ///
-  /// @brief Obtain the column of the source location.
-  /// @return The column of the source location.
+  /// @brief Set the row of the piece making the move.
+  /// @param row The row of the piece making the move.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  row(dim_t row) noexcept;
+
+  ///
+  /// @brief Get the column of the piece making the move.
+  /// @return The column of the piece making the move.
   /// @throw Never throws.
   ///
   dim_t
   column() const noexcept;
 
   ///
-  /// @brief Obtain the row of the destination square.
-  /// @return The row of the destination square.
+  /// @brief Set the column of the piece making the move.
+  /// @param column The column of the piece making the move.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  column(dim_t column) noexcept;
+
+  ///
+  /// @brief Get the row and column of the piece making the move.
+  /// @return The row and column of the piece makin the move.
+  /// @throw Never throws.
+  ///
+  std::pair<dim_t, dim_t>
+  location() const noexcept;
+
+  ///
+  /// @brief Set the row and column of the piece making the move.
+  /// @param row The row of the piece making the move.
+  /// @param column The column of the piece making the move.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  location(dim_t row, dim_t column) noexcept;
+
+  ///
+  /// @brief Get a reference to the square with the piece making the move.
+  /// @return A reference to @c Square making the move.
+  /// @throw Never throws.
+  ///
+  const Square&
+  square() const noexcept;
+
+  ///
+  /// @brief Get the row where the piece is moving.
+  /// @return The row of where the piece is moving.
   /// @throw Never throws.
   ///
   dim_t
@@ -159,72 +287,6 @@ public:
   ///
   dim_t
   captureColumn() const noexcept;
-
-  ///
-  /// @brief Sets the information for the piece that is moving.
-  /// @param row The row location of the piece.
-  /// @param column The column location of the piece.
-  /// @param piece The piece.
-  /// @param color The color of the piece.
-  /// @return A reference to this @c PieceMove.
-  /// @throw Never throws.
-  ///
-  PieceMove&
-  setPiece(dim_t row, dim_t column, Piece piece, Color color) noexcept;
-
-  ///
-  /// @brief Sets the information for the piece that is moving.
-  /// @param row The row location of the piece.
-  /// @param column The column location of the piece.
-  /// @param code The bit pattern with color and piece info.
-  /// @return A reference to this @c PieceMove.
-  /// @throw Never throws.
-  ///
-  PieceMove&
-  setPiece(dim_t row, dim_t column, piece_t code) noexcept;
-
-  ///
-  /// @brief Sets the color and piece for the piece that is moving.
-  /// @param piece The piece that is moving.
-  /// @param color The color of the piece that is moving.
-  /// @return A reference to this @c PieceMove.
-  /// @throw Never throws.
-  ///
-  PieceMove&
-  setPiece(Piece piece, Color color) noexcept;
-
-  ///
-  /// @brief Sets the color and piece for the piece that is moving.
-  /// @param code The bit code for the piece and piece color.
-  /// @return A reference to this @c PieceMove.
-  /// @throw Never throws.
-  ///
-  PieceMove&
-  setPiece(piece_t code) noexcept;
-
-  ///
-  /// @brief Obtain the information of the piece that is moving.
-  /// @return A @c Square representing the piece.
-  /// @throw Never throws.
-  ///
-  Square
-  fromSquare() const noexcept;
-
-  ///
-  /// @brief Get the @c Piece of the piece that is moving.
-  /// @return The @c Piece of the piece making the move.
-  /// @throw Never throws.
-  ///
-  Piece
-  fromPiece() const noexcept;
-
-  ///
-  /// @brief Get the @c Color of the piece that is moving.
-  /// @return The @c Color of the piece making the move.
-  /// @throw Never throws.
-  ///
-  Color
-  fromColor() const noexcept;
 
   ///
   /// @brief Sets the information for the catpured piece.
