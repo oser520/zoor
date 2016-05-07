@@ -10,14 +10,15 @@
 // STL
 //
 #include <cassert>
-#include <iostream>
+#include <ostream>
 #include <functional>
 #include <string>
+#include <utility>
 
 //
 // zoor
 //
-#include "piececode.hh"
+#include "basictypes.hh"
 
 namespace zoor {
 
@@ -26,8 +27,8 @@ namespace zoor {
 /////////////////////////////////////////////////////////////////////////////////////
 
 ///
-/// @brief Represents a position in a chess board.
-/// @details A @c Square is aware of how big is the board, if a row and column are
+/// @brief Represents a position on a chess board.
+/// @details A @c Square is aware of how big the board is, if a row and column are
 /// within the bounds of a chess board, and what piece, if any, is sitting on it,
 /// including its color.
 ///
@@ -35,67 +36,57 @@ class Square
 {
 public:
   ///
-  /// @brief Alias for type of row and column.
-  ///
-  using dim_type = short;
-
-  ///
-  /// @brief The maximum size of row or column. The dimensions of the chess board.
-  ///
-  static constexpr dim_type BOARD_DIM = 8;
-
-  ///
   /// @brief Constructs a @c Square with a specific row and column. The piece is set
   /// to <em>NONE</em> and the piece color to <em>NONE</em>.
   /// @param row The row of the @c Square. Assumption: row <= BOARD_DIM.
   /// @param column The column of the @c Square. Assumption: column <= BOARD_DIM.
-  /// @throw Never throws exception.
+  /// @throw Never throws.
   ///
-  Square(dim_type row, dim_type column) noexcept;
+  Square(dim_t row, dim_t column) noexcept;
 
   ///
   /// @brief Constructs a @c Square with row, column, and piece.
   /// @param row The row of the @c Square. Assumption: row <= BOARD_DIM.
   /// @param column The column of the @c Square. Assumption: column <= BOARD_DIM.
   /// @param code The bit pattern containing the piece and color info.
-  /// @throw Never throws exception.
+  /// @throw Never throws.
   ///
-  Square(dim_type row, dim_type column, piececode_t code) noexcept;
+  Square(dim_t row, dim_t column, piece_t code) noexcept;
 
   ///
   /// @brief Constructs a @c Square with a specific row, column, and piece.
-  /// @param row The row of the @c Square. Assumption: row <= BOARD_DIM.
-  /// @param column The column of the @c Square. Assumption: column <= BOARD_DIM.
+  /// @param row The row of the @c Square. Assumption: row <= DIM.
+  /// @param column The column of the @c Square. Assumption: column <= DIM.
   /// @param piece The piece sitting on the @c Square.
-  /// @param color The color of the @c PieceCode.
-  /// @throw Never throws exception.
+  /// @param color The @c Color.
+  /// @throw Never throws.
   ///
-  Square(dim_type row, dim_type column, PieceCode piece, PieceColor color) noexcept;
+  Square(dim_t row, dim_t column, Piece piece, Color color) noexcept;
 
   ///
   /// @brief Default constructor.
-  /// @throw Does not throw exception.
+  /// @throw Never throws.
   ///
   Square() noexcept;
 
   ///
   /// @brief Default copy constructor.
   /// @param square The @c Square being copied.
-  /// @throw Does not throw exception.
+  /// @throw Never throws.
   ///
   Square(const Square& square) noexcept = default;
 
   ///
   /// @brief Default move constructor.
   /// @param square The @c Square being moved.
-  /// @throw Does not throw exception.
+  /// @throw Never throws.
   ///
   Square(Square&& square) noexcept = default;
 
   ///
   /// @brief Default copy assignment.
   /// @param square The @c Square being copied.
-  /// @throw Does not throw exception.
+  /// @throw Never throws.
   ///
   Square&
   operator=(const Square& square) noexcept = default;
@@ -103,47 +94,47 @@ public:
   ///
   /// @brief Default move assignment.
   /// @param square The @c Square being moved.
-  /// @throw Does not throw exception.
+  /// @throw Never throws.
   ///
   Square&
   operator=(Square &&square) noexcept = default;
 
   ///
   /// @brief Default destructor.
-  /// @throw Does not throw exception.
+  /// @throw Never throws.
   ///
   ~Square() noexcept = default;
 
   ///
   /// @brief Gets the row number without modifying the @c Square.
   /// @return The row number.
-  /// @throw Does not throw exception.
+  /// @throw Never throws.
   ///
-  dim_type
+  dim_t
   row() const noexcept;
 
   ///
   /// @brief Gets the column number without modifying the @c Square.
   /// @return The column number.
-  /// @throw Does not throw exception.
+  /// @throw Never throws.
   ///
-  dim_type
+  dim_t
   column() const noexcept;
 
   ///
   /// @brief Gets the piece without modifying the @c Square.
-  /// @return The piece code.
-  /// @throw Does not throw exception.
+  /// @return The @c Piece.
+  /// @throw Never throws.
   ///
-  PieceCode
+  Piece
   piece() const noexcept;
 
   ///
   /// @brief Gets the piece color without modifying the @c Square.
-  /// @return The piece color.
-  /// @throw Does not throw exception.
+  /// @return The @c Color.
+  /// @throw Never throws.
   ///
-  PieceColor
+  Color
   color() const noexcept;
 
   ///
@@ -151,53 +142,61 @@ public:
   /// @return The piece code.
   /// @throw Never throws.
   ///
-  piececode_t
+  piece_t
   code() const noexcept;
+
+  ///
+  /// @brief Get the row and column.
+  /// @return A pair with first=row and second=column.
+  /// @throw Never throws.
+  ///
+  std::pair<dim_t, dim_t>
+  location() const noexcept;
 
   ///
   /// @brief Sets the row number. Enforces the invariant for the row size.
   /// @param row The row number.
   /// @return A reference to this @c Square
-  /// @throw Guaranteed not to throw.
+  /// @throw Never throws.
   ///
   Square&
-  setRow(dim_type row) noexcept;
+  row(dim_t row) noexcept;
 
   ///
-  /// @brief Sets the column number. Enforces the invariant for the column size.
+  /// @brief Sets the column number.
   /// @param column The column number.
   /// @return A reference to this @c Square
-  /// @throw Guaranteed not to throw.
+  /// @throw Never throws.
   ///
   Square&
-  setColumn(dim_type column) noexcept;
+  column(dim_t column) noexcept;
 
   ///
   /// @brief Sets the piece.
-  /// @param The piece.
+  /// @param piece The @c Piece.
   /// @return A reference to this @c Square.
-  /// @throw Does not throw exception.
+  /// @throw Never throws.
   ///
   Square&
-  setPiece(PieceCode piece) noexcept;
+  piece(Piece piece) noexcept;
 
   ///
   /// @brief Sets the piece color.
-  /// @param The piece color.
+  /// @param color The @c Color.
   /// @return A reference to this @c Square.
-  /// @throw Does not throw exception.
+  /// @throw Never throws.
   ///
   Square&
-  setColor(PieceColor color) noexcept;
+  color(Color color) noexcept;
 
   ///
   /// @brief Sets the piece and color.
   /// @param code The piece code with piece and color info.
   /// @return A reference to this @c Square.
-  /// @throw Does not throw exception.
+  /// @throw Never throws.
   ///
   Square&
-  setPieceCode(piececode_t code) noexcept;
+  code(piece_t code) noexcept;
 
   ///
   /// @brief Sets the row and column.
@@ -207,7 +206,7 @@ public:
   /// @throw Never throws.
   ///
   Square&
-  setLocation(dim_type row, dim_type column) noexcept;
+  location(dim_t row, dim_t column) noexcept;
 
   ///
   /// @brief Get the string representation of the square.
@@ -224,39 +223,18 @@ public:
   size_t
   hashCode() const noexcept;
 
-  ///
-  /// @brief Check if the position is in the board.
-  /// @param position The position in the board.
-  /// @param column The column in the board.
-  /// @return True if the position is in the board.
-  /// @throw Never throws.
-  ///
-  static bool
-  isInBound(dim_type position) noexcept;
-
-  ///
-  /// @brief Check if the row and column are in the board.
-  /// @param row The row in the board.
-  /// @param column The column in the board.
-  /// @return True if the row and column are in the board.
-  /// @throw Never throws.
-  ///
-  static bool
-  isInBound(dim_type row, dim_type column) noexcept;
-
 private:
-  // The piece sitting on this @c Square, which may be <em>NONE</em>.
-  PieceCode mPiece;
+  // The piece sitting on this @c Square.
+  Piece mPiece;
 
-  // The color of the piece sitting on this @c Square. Only meaningful if
-  // there is a piece on it.
-  PieceColor mColor;
+  // The piece sitting on this @c Square.
+  Color mColor;
+ 
+  // The row.
+  unsigned char mRow;
 
-  // The row in the @c Square. Invariant: \f$0 \leq row \le BOARD_DIM.
-  dim_type mRow;
-
-  // The column in the @c Square. Invariant: \f$0 \leq column \le BOARD_DIM.
-  dim_type mColumn;
+  // The column.
+  unsigned char mCol;
 };
 
 ///
@@ -264,7 +242,7 @@ private:
 /// @param square1 The first @c Square operand.
 /// @param square2 The second @c Square operand.
 /// @return True if square1 and square2 are equal.
-/// @throw Does not throw exception.
+/// @throw Never throws.
 ///
 bool
 operator==(const Square& square1, const Square& square2) noexcept;
@@ -274,7 +252,7 @@ operator==(const Square& square1, const Square& square2) noexcept;
 /// @param square1 The first @c Square operand.
 /// @param square2 The second @c Square operand.
 /// @return True if square1 and square2 are not equal.
-/// @throw Does not throw exception.
+/// @throw Never throws.
 ///
 bool
 operator!=(const Square& square1, const Square& square2) noexcept;
@@ -289,28 +267,81 @@ operator!=(const Square& square1, const Square& square2) noexcept;
 std::ostream&
 operator<<(std::ostream& os, const Square& square);
 
+/////////////////////////////////////////////////////////////////////////////////////
+// definitions
+/////////////////////////////////////////////////////////////////////////////////////
+
+//
+// default ctor
+//
+inline
+Square::Square() noexcept
+  : mPiece(Piece::NONE),
+    mColor(Color::NONE),
+    mRow(),
+    mCol() {}
+
+//
+// two param ctor
+//
+inline
+Square::Square(dim_t row, dim_t column) noexcept
+  : mPiece(Piece::NONE),
+    mColor(Color::NONE),
+    mRow(row),
+    mCol(column)
+{
+  assert(checkDim(row, column, BOARD_DIM));
+}
+
+//
+// three param ctor
+//
+inline
+Square::Square(dim_t row, dim_t column, piece_t code) noexcept
+  : mPiece(getPiece(code)),
+    mColor(getColor(code)),
+    mRow(row),
+    mCol(column)
+{
+  assert(checkDim(row, column, BOARD_DIM));
+}
+
+//
+// 4 param ctor
+//
+inline
+Square::Square(dim_t row, dim_t column, Piece piece, Color color) noexcept
+  : mPiece(piece),
+    mColor(color),
+    mRow(row),
+    mCol(column)
+{
+  assert(checkDim(row, column, BOARD_DIM));
+}
+
 //
 // get the row
 //
-inline Square::dim_type
+inline Square::dim_t
 Square::row() const noexcept
 {
-  return mRow;
+  return static_cast<dim_t>(mRow);
 }
 
 //
 // get the column
 //
-inline Square::dim_type
+inline Square::dim_t
 Square::column() const noexcept
 {
-  return mColumn;
+  return static_cast<dim_t>(mCol);
 }
 
 //
 // get the piece type
 //
-inline PieceCode
+inline Piece
 Square::piece() const noexcept
 {
   return mPiece;
@@ -319,7 +350,7 @@ Square::piece() const noexcept
 //
 // get the piece color
 //
-inline PieceColor
+inline Color
 Square::color() const noexcept
 {
   return mColor;
@@ -328,20 +359,29 @@ Square::color() const noexcept
 //
 // get the bit code for the piece and color
 //
-inline piececode_t
+inline piece_t
 Square::code() const noexcept
 {
   return mColor | mPiece;
 }
 
 //
+// get the row and column
+//
+inline std::pair<dim_t, dim_t>
+Square::location() const noexcept
+{
+  return std::make_pair(mRow, mCol);
+}
+
+//
 // set the row
 //
 inline Square&
-Square::setRow(dim_type row) noexcept
+Square::row(dim_t row) noexcept
 {
-  assert(isInBound(row));
-  mRow = row;
+  assert(checkDim(row, BOARD_DIM));
+  mRow = static_cast<unsigned char>(row);
   return *this;
 }
 
@@ -349,10 +389,10 @@ Square::setRow(dim_type row) noexcept
 // set the column
 //
 inline Square&
-Square::setColumn(dim_type column) noexcept
+Square::column(dim_t column) noexcept
 {
-  assert(isInBound(column));
-  mColumn = column;
+  assert(checkDim(column, BOARD_DIM));
+  mCol = static_cast<unsigned char>(column);
   return *this;
 }
 
@@ -360,7 +400,7 @@ Square::setColumn(dim_type column) noexcept
 // set the piece
 //
 inline Square&
-Square::setPiece(PieceCode piece) noexcept
+Square::piece(Piece piece) noexcept
 {
   mPiece = piece;
   return *this;
@@ -370,29 +410,42 @@ Square::setPiece(PieceCode piece) noexcept
 // set the color
 //
 inline Square&
-Square::setColor(PieceColor color) noexcept
+Square::color(Color color) noexcept
 {
   mColor = color;
   return *this;
 }
 
 //
-// check if position is valid
+// set the piece and color
 //
-inline bool
-Square::isInBound(dim_type position) noexcept
+inline Square&
+Square::code(piece_t piece) noexcept
 {
-  return position >= 0 && position < BOARD_DIM;
+  mPiece = getPiece(piece);
+  mColor = getColor(piece);
+  return *this;
 }
 
 //
-// check if row and column are valid
+// set the row and column
+//
+inline Square&
+Square::location(dim_t row, dim_t column) noexcept
+{
+  assert(checkDim(row, column, BOARD_DIM));
+  mRow = row;
+  mCol = column
+  return *this;
+}
+
+//
+// non-equality operator
 //
 inline bool
-Square::isInBound(dim_type row, dim_type column) noexcept
+operator!=(const Square& square1, const Square& square2) noexcept
 {
-  return row >= 0 && row < BOARD_DIM
-      && column >= 0 && column < BOARD_DIM;
+  return !(square1 == square2);
 }
 
 } // namespace zoor

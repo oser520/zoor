@@ -7,90 +7,16 @@
 //
 // STL
 //
-#include <cassert>
-#include <iostream>
+#include <ostream>
 #include <sstream>
 #include <string>
 
 //
 // zoor
 //
-#include "piececode.hh"
 #include "square.hh"
 
 namespace zoor {
-
-//
-// default ctor
-//
-Square::Square() noexcept
-  : mPiece(PieceCode::NONE),
-    mColor(PieceColor::NONE),
-    mRow(),
-    mColumn() {}
-
-//
-// two param ctor
-//
-Square::Square(dim_type row, dim_type column) noexcept
-  : mPiece(PieceCode::NONE),
-    mColor(PieceColor::NONE),
-    mRow(row),
-    mColumn(column)
-{
-  assert(isInBound(row, column));
-}
-
-//
-// three param ctor
-//
-Square::Square(dim_type row, dim_type column, piececode_t code) noexcept
-  : mPiece(getPieceCode(code)),
-    mColor(getPieceColor(code)),
-    mRow(row),
-    mColumn(column)
-{
-  assert(isInBound(row, column));
-}
-
-//
-// 4 param ctor
-//
-Square::Square
-  (dim_type row,
-   dim_type column,
-   PieceCode piece,
-   PieceColor color) noexcept
-  : mPiece(piece),
-    mColor(color),
-    mRow(row),
-    mColumn(column)
-{
-  assert(isInBound(row, column));
-}
-
-//
-// set the piece and color
-//
-Square&
-Square::setPieceCode(piececode_t code) noexcept
-{
-  mPiece = getPieceCode(code);
-  mColor = getPieceColor(code);
-  return *this;
-}
-
-//
-// set the row and column of the square
-//
-Square&
-Square::setLocation(dim_type row, dim_type column) noexcept
-{
-  assert(isInBound(row, column));
-  mRow = row;
-  mColumn = column;
-  return *this;
-}
 
 //
 // get a string representation of the square
@@ -125,7 +51,7 @@ Square::hashCode() const noexcept
   h += h << 10;
   h ^= h >> 6;
 
-  h += static_cast<size_t>(mColumn);
+  h += static_cast<size_t>(mCol);
   h += h << 10;
   h ^= h >> 6;
 
@@ -146,15 +72,6 @@ operator==(const Square& square1, const Square& square2) noexcept
       && square1.color() == square2.color()
       && square1.row() == square2.row()
       && square1.column() == square2.column();
-}
-
-//
-// non-equality operator
-//
-bool
-operator!=(const Square& square1, const Square& square2) noexcept
-{
-  return !(square1 == square2);
 }
 
 //
