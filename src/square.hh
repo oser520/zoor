@@ -224,17 +224,32 @@ public:
   hashCode() const noexcept;
 
 private:
+  //
+  // Check pos is less than DIM.
+  //
+  static bool
+  checkDim(dim_t pos) noexcept;
+
+  //
+  // Check pos is less than DIM.
+  //
+  static bool
+  checkDim(dim_t row, dim_t column) noexcept;
+
   // The piece sitting on this @c Square.
   Piece mPiece;
 
   // The piece sitting on this @c Square.
   Color mColor;
- 
+
   // The row.
   unsigned char mRow;
 
   // The column.
   unsigned char mCol;
+
+  // board dimension
+  enum : dim_t { DIM = 8; };
 };
 
 ///
@@ -291,7 +306,7 @@ Square::Square(dim_t row, dim_t column) noexcept
     mRow(row),
     mCol(column)
 {
-  assert(checkDim(row, column, BOARD_DIM));
+  assert(checkDim(row, column));
 }
 
 //
@@ -304,7 +319,7 @@ Square::Square(dim_t row, dim_t column, piece_t code) noexcept
     mRow(row),
     mCol(column)
 {
-  assert(checkDim(row, column, BOARD_DIM));
+  assert(checkDim(row, column));
 }
 
 //
@@ -317,7 +332,7 @@ Square::Square(dim_t row, dim_t column, Piece piece, Color color) noexcept
     mRow(row),
     mCol(column)
 {
-  assert(checkDim(row, column, BOARD_DIM));
+  assert(checkDim(row, column));
 }
 
 //
@@ -380,7 +395,7 @@ Square::location() const noexcept
 inline Square&
 Square::row(dim_t row) noexcept
 {
-  assert(checkDim(row, BOARD_DIM));
+  assert(checkDim(row));
   mRow = static_cast<unsigned char>(row);
   return *this;
 }
@@ -391,7 +406,7 @@ Square::row(dim_t row) noexcept
 inline Square&
 Square::column(dim_t column) noexcept
 {
-  assert(checkDim(column, BOARD_DIM));
+  assert(checkDim(column));
   mCol = static_cast<unsigned char>(column);
   return *this;
 }
@@ -433,10 +448,28 @@ Square::code(piece_t piece) noexcept
 inline Square&
 Square::location(dim_t row, dim_t column) noexcept
 {
-  assert(checkDim(row, column, BOARD_DIM));
+  assert(checkDim(row, column));
   mRow = row;
   mCol = column
   return *this;
+}
+
+//
+// check pos is less than DIM
+//
+inline bool
+Square::checkDim(dim_t pos) noexcept
+{
+  return pos >= 0 && pos < DIM;
+}
+
+//
+// check pos is less than DIM
+//
+inline bool
+Square::checkDim(dim_t row, dim_t column) noexcept
+{
+  return row >= 0 && row < DIM && column >= 0 && column < DIM;
 }
 
 //
