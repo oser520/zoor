@@ -18,7 +18,7 @@
 //
 // zoor
 //
-#include "piececode.hh"
+#include "basictypes.hh"
 #include "square.hh"
 
 namespace zoor {
@@ -34,15 +34,7 @@ namespace zoor {
 ///
 class PieceMove
 {
-  friend bool operator==(const PieceMove &pm1, const PieceMove &pm2) noexcept;
-  friend std::ostream& operator<<(std::ostream &os, const PieceMove &pm);
-
 public:
-  ///
-  /// @brief Alias for the type of the dimension of the board.
-  ///
-  using dim_type = short;
-
   ///
   /// @brief Constructor with info for piece that is moving.
   /// @param row The row of the piece that is moving.
@@ -51,11 +43,7 @@ public:
   /// @param color The color of the piece that is moving.
   /// @throw Never throws.
   ///
-  PieceMove
-    (dim_type row,
-     dim_type column,
-     PieceCode piece,
-     PieceColor color) noexcept;
+  PieceMove(dim_t row, dim_t column, Piece piece, Color color) noexcept;
 
   ///
   /// @brief Constructor with info for piece that is moving.
@@ -64,7 +52,7 @@ public:
   /// @param code The bit pattern containing the piece and color info.
   /// @throw Never throws.
   ///
-  PieceMove(dim_type row, dim_type column, piececode_t code) noexcept;
+  PieceMove(dim_t row, dim_t column, piece_t code) noexcept;
 
   ///
   /// @brief Constructor with info for piece that is moving, and where it is moving.
@@ -76,11 +64,11 @@ public:
   /// @throw Never throws.
   ///
   PieceMove
-    (dim_type fromRow,
-     dim_type fromColumn,
-     piececode_t code,
-     dim_type toRow,
-     dim_type toColumn) noexcept;
+    (dim_t fromRow,
+     dim_t fromColumn,
+     piece_t code,
+     dim_t toRow,
+     dim_t toColumn) noexcept;
 
   ///
   /// @brief Default constructor.
@@ -129,23 +117,23 @@ public:
   /// @return The row of the source location.
   /// @throw Never throws.
   ///
-  dim_type
-  fromRow() const noexcept;
+  dim_t
+  row() const noexcept;
 
   ///
   /// @brief Obtain the column of the source location.
   /// @return The column of the source location.
   /// @throw Never throws.
   ///
-  dim_type
-  fromColumn() const noexcept;
+  dim_t
+  column() const noexcept;
 
   ///
   /// @brief Obtain the row of the destination square.
   /// @return The row of the destination square.
   /// @throw Never throws.
   ///
-  dim_type
+  dim_t
   toRow() const noexcept;
 
   ///
@@ -153,7 +141,7 @@ public:
   /// @return The column of the destination square.
   /// @throw Never throws.
   ///
-  dim_type
+  dim_t
   toColumn() const noexcept;
 
   ///
@@ -161,7 +149,7 @@ public:
   /// @return The row of the captured piece.
   /// @throw Never throws.
   ///
-  dim_type
+  dim_t
   captureRow() const noexcept;
 
   ///
@@ -169,7 +157,7 @@ public:
   /// @return The column of the captured piece.
   /// @throw Never throws.
   ///
-  dim_type
+  dim_t
   captureColumn() const noexcept;
 
   ///
@@ -182,11 +170,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  setPiece
-    (dim_type row,
-     dim_type column,
-     PieceCode piece,
-     PieceColor color) noexcept;
+  setPiece(dim_t row, dim_t column, Piece piece, Color color) noexcept;
 
   ///
   /// @brief Sets the information for the piece that is moving.
@@ -197,7 +181,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  setPiece(dim_type row, dim_type column, piececode_t code) noexcept;
+  setPiece(dim_t row, dim_t column, piece_t code) noexcept;
 
   ///
   /// @brief Sets the color and piece for the piece that is moving.
@@ -207,7 +191,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  setPiece(PieceCode piece, PieceColor color) noexcept;
+  setPiece(Piece piece, Color color) noexcept;
 
   ///
   /// @brief Sets the color and piece for the piece that is moving.
@@ -216,7 +200,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  setPiece(piececode_t code) noexcept;
+  setPiece(piece_t code) noexcept;
 
   ///
   /// @brief Obtain the information of the piece that is moving.
@@ -227,19 +211,19 @@ public:
   fromSquare() const noexcept;
 
   ///
-  /// @brief Get the @c PieceCode of the piece that is moving.
-  /// @return The @c PieceCode of the piece making the move.
+  /// @brief Get the @c Piece of the piece that is moving.
+  /// @return The @c Piece of the piece making the move.
   /// @throw Never throws.
   ///
-  PieceCode
+  Piece
   fromPiece() const noexcept;
 
   ///
-  /// @brief Get the @c PieceColor of the piece that is moving.
-  /// @return The @c PieceColor of the piece making the move.
+  /// @brief Get the @c Color of the piece that is moving.
+  /// @return The @c Color of the piece making the move.
   /// @throw Never throws.
   ///
-  PieceColor
+  Color
   fromColor() const noexcept;
 
   ///
@@ -252,11 +236,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  setCapture
-    (dim_type row,
-     dim_type column,
-     PieceCode piece,
-     PieceColor color) noexcept;
+  setCapture(dim_t row, dim_t column, Piece piece, Color color) noexcept;
 
   ///
   /// @brief Sets the information for the catpured piece.
@@ -267,7 +247,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  setCapture(dim_type row, dim_type column, piececode_t code) noexcept;
+  setCapture(dim_t row, dim_t column, piece_t code) noexcept;
 
   ///
   /// @brief Sets the piece and color for the catpured piece.
@@ -277,7 +257,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  setCapture(PieceCode piece, PieceColor color) noexcept;
+  setCapture(Piece piece, Color color) noexcept;
 
   ///
   /// @brief Sets the piece and color for the catpured piece.
@@ -286,7 +266,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  setCapture(piececode_t code) noexcept;
+  setCapture(piece_t code) noexcept;
 
   ///
   /// @brief Determine if the move has resulted in a capture.
@@ -305,19 +285,19 @@ public:
   captureSquare() const noexcept;
 
   ///
-  /// @brief Obtain the captured @c PieceCode.
-  /// @return The @c PieceCode for the captured piece.
+  /// @brief Obtain the captured @c Piece.
+  /// @return The @c Piece for the captured piece.
   /// @throw Never throws.
   ///
-  PieceCode
+  Piece
   capturePiece() const noexcept;
 
   ///
-  /// @brief Obtain the captured @c PieceColor.
-  /// @return The @c PieceColor for the captured piece.
+  /// @brief Obtain the captured @c Color.
+  /// @return The @c Color for the captured piece.
   /// @throw Never throws.
   ///
-  PieceColor
+  Color
   captureColor() const noexcept;
 
   ///
@@ -330,11 +310,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  setPromo
-    (dim_type row,
-     dim_type column,
-     PieceCode piece,
-     PieceColor color) noexcept;
+  setPromo(dim_t row, dim_t column, Piece piece, Color color) noexcept;
 
   ///
   /// @brief Sets the information for the promoted piece.
@@ -345,10 +321,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  setPromo
-    (dim_type row,
-     dim_type column,
-     piececode_t code) noexcept;
+  setPromo(dim_t row, dim_t column, piece_t code) noexcept;
 
   ///
   /// @brief Sets the color and piece for the promoted piece.
@@ -358,7 +331,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  setPromo(PieceCode piece, PieceColor color) noexcept;
+  setPromo(Piece piece, Color color) noexcept;
 
   ///
   /// @brief Sets the color and piece for the promoted piece.
@@ -367,7 +340,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  setPromo(piececode_t code) noexcept;
+  setPromo(piece_t code) noexcept;
 
   ///
   /// @brief Determine if the move has resulted in a promotion.
@@ -386,19 +359,19 @@ public:
   promoSquare() const noexcept;
 
   ///
-  /// @brief Obtain the promoted @c PieceCode.
-  /// @return The @c PieceCode for the promoted piece.
+  /// @brief Obtain the promoted @c Piece.
+  /// @return The @c Piece for the promoted piece.
   /// @throw Never throws.
   ///
-  PieceCode
+  Piece
   promoPiece() const noexcept;
 
   ///
-  /// @brief Obtain the promoted @c PieceColor.
-  /// @return The @c PieceColor for the promoted piece.
+  /// @brief Obtain the promoted @c Color.
+  /// @return The @c Color for the promoted piece.
   /// @throw Never throws.
   ///
-  PieceColor
+  Color
   promoColor() const noexcept;
 
   ///
@@ -408,7 +381,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  setToRow(dim_type row) noexcept;
+  setToRow(dim_t row) noexcept;
 
   ///
   /// @brief Set the destination column.
@@ -417,7 +390,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  setToColumn(dim_type column) noexcept;
+  setToColumn(dim_t column) noexcept;
 
   ///
   /// @brief Set the destination row and square.
@@ -427,7 +400,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  setGoTo(dim_type row, dim_type column) noexcept;
+  setGoTo(dim_t row, dim_t column) noexcept;
 
   ///
   /// @brief Determine if it is check mate.
@@ -444,7 +417,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  doCastle(PieceColor color) noexcept;
+  doCastle(Color color) noexcept;
 
   ///
   /// @brief Check if the move represents short castling.
@@ -461,7 +434,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  doCastleLong(PieceColor color) noexcept;
+  doCastleLong(Color color) noexcept;
 
   ///
   /// @brief Check if the move represents long castling.
@@ -495,26 +468,14 @@ public:
   hashCode() const noexcept;
 
 private:
-  // The piece that is making the move.
+  // Square piece is moving from.
   Square mFrom;
 
-  //
-  // @brief Represents the location where the piece is moving to.
-  // @detail If there is a capture, then the only time when <em>mPromo</em>
-  // and <em>mCapture</em> will not overlap is when a pawn is captured by
-  // <em>en passant</em>. If there is a pawn promotion, then <em>mPromo</em>
-  // will hold the information for the promoted piece.
-  //
-  Square mPromo;
+  // Square piece is moving to.
+  Square mTo;
 
-  // Represents the location of the captured piece.
-  Square mCapture;
-
-  //
-  // First two bits are used to determine if the move represents short or long
-  // castling, respectively.
-  //
-  unsigned short mCastleInfo;
+  // The captured piece, or rook on a castling move.
+  Square mOther;
 };
 
 ///
