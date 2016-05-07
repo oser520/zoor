@@ -113,7 +113,6 @@ public:
   ~PieceMove() noexcept = default;
 
   ///
-  /// @brief Get the piece and color of piece making move.
   /// @return The piece.
   /// @throw Never throws.
   ///
@@ -130,7 +129,6 @@ public:
   code(piece_t piece) noexcept;
 
   ///
-  /// @brief Get the piece making the move.
   /// @return The piece making the move.
   /// @throw Never throws.
   ///
@@ -180,7 +178,6 @@ public:
   piece(dim_t row, dim_t column, Piece piece, Color color) noexcept;
 
   ///
-  /// @brief Get the color of the piece making the move.
   /// @return The color of the piece making the move.
   /// @throw Never throws.
   ///
@@ -197,7 +194,6 @@ public:
   color(Color color) noexcept;
 
   ///
-  /// @brief Get the row of the piece making the move.
   /// @return The row of the piece making the move.
   /// @throw Never throws.
   ///
@@ -214,7 +210,6 @@ public:
   row(dim_t row) noexcept;
 
   ///
-  /// @brief Get the column of the piece making the move.
   /// @return The column of the piece making the move.
   /// @throw Never throws.
   ///
@@ -231,7 +226,6 @@ public:
   column(dim_t column) noexcept;
 
   ///
-  /// @brief Get the row and column of the piece making the move.
   /// @return The row and column of the piece makin the move.
   /// @throw Never throws.
   ///
@@ -249,7 +243,6 @@ public:
   location(dim_t row, dim_t column) noexcept;
 
   ///
-  /// @brief Get a reference to the square with the piece making the move.
   /// @return A reference to @c Square making the move.
   /// @throw Never throws.
   ///
@@ -278,7 +271,6 @@ public:
   toCode(piece_t piece) noexcept;
 
   ///
-  /// @brief Get the piece at the destination square.
   /// @return The piece at the destination square.
   /// @throw Never throws.
   ///
@@ -287,7 +279,7 @@ public:
 
   ///
   /// @brief Set the piece at the destination square.
-  /// @brief piece The piece at the destination square.
+  /// @param piece The piece at the destination square.
   /// @return A reference to this @c PieceMove.
   /// @throw Never throws.
   ///
@@ -296,8 +288,8 @@ public:
 
   ///
   /// @brief Set the piece at the destination square.
-  /// @brief piece The piece at the destination square.
-  /// @brief color The color at the destination square.
+  /// @param piece The piece at the destination square.
+  /// @param color The color at the destination square.
   /// @return A reference to this @c PieceMove.
   /// @throw Never throws.
   ///
@@ -306,9 +298,9 @@ public:
 
   ///
   /// @brief Set the piece at the destination square.
-  /// @brief row The row of destination square.
-  /// @brief column The column of destination square.
-  /// @brief piecd The piece at the destination square.
+  /// @param row The row of destination square.
+  /// @param column The column of destination square.
+  /// @param piecd The piece at the destination square.
   /// @return A reference to this @c PieceMove.
   /// @throw Never throws.
   ///
@@ -317,10 +309,10 @@ public:
 
   ///
   /// @brief Set the piece at the destination square.
-  /// @brief row The row of destination square.
-  /// @brief column The column of destination square.
-  /// @brief piecd The piece at the destination square.
-  /// @brief color The color at the destination square.
+  /// @param row The row of destination square.
+  /// @param column The column of destination square.
+  /// @param piecd The piece at the destination square.
+  /// @param color The color at the destination square.
   /// @return A reference to this @c PieceMove.
   /// @throw Never throws.
   ///
@@ -328,7 +320,6 @@ public:
   toPiece(dim_t row, dim_t column, Piece piece, Color color) noexcept;
 
   ///
-  /// @brief Get the color of the destination piece.
   /// @return The color of the destination piece.
   /// @throw Never throws.
   ///
@@ -345,7 +336,6 @@ public:
   toColor(Color color) noexcept;
 
   ///
-  /// @brief Get the row of the destination square.
   /// @return The row of the destination square.
   /// @throw Never throws.
   ///
@@ -362,7 +352,6 @@ public:
   toRow(dim_t row) noexcept;
 
   ///
-  /// @brief Get the column of the destination square.
   /// @return The column of the destination square.
   /// @throw Never throws.
   ///
@@ -379,7 +368,6 @@ public:
   toColumn(dim_t column) noexcept;
 
   ///
-  /// @brief Get the row and column of the destination square.
   /// @return The row and column of the destination square.
   /// @throw Never throws.
   ///
@@ -397,72 +385,152 @@ public:
   toLocation(dim_t row, dim_t column) noexcept;
 
   ///
-  /// @brief Get a reference to the destination square.
   /// @return A reference to the destintion square.
   /// @throw Never throws.
   ///
   const Square&
   toSquare() const noexcept;
 
-// look here
+  ///
+  /// @brief Get the piece of the other square.
+  /// @details The other square may contain capture piece if the move results in a
+  /// capture, or a rook of the same color if the move represents castling.
+  /// @return The piece.
+  /// @throw Never throws.
+  ///
+  piece_t
+  otherCode() const noexcept;
 
   ///
-  /// @brief Obtain the row of captured piece.
-  /// @return The row of the captured piece.
+  /// @brief Set the other piece.
+  /// @details The other square may contain a capture piece if the move results in a
+  /// capture, or a rook of the same color if the move represents castling.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  otherCode(piece_t piece) noexcept;
+
+  ///
+  /// @return The piece at the other square.
+  /// @throw Never throws.
+  ///
+  Piece
+  otherPiece() const noexcept;
+
+  ///
+  /// @brief Set the piece at the other square.
+  /// @param piece The piece at the other square.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  otherPiece(Piece piece) noexcept;
+
+  ///
+  /// @brief Set the piece at the other square.
+  /// @param piece The piece at the other square.
+  /// @param color The color at the other square.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  otherPiece(Piece piece, Color color) noexcept;
+
+  ///
+  /// @brief Set the piece at the other square.
+  /// @param row The row of other square.
+  /// @param column The column of other square.
+  /// @param piecd The piece at the other square.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  otherPiece(dim_t row, dim_t column, piece_t piece) noexcept;
+
+  ///
+  /// @brief Set the piece at the other square.
+  /// @param row The row of other square.
+  /// @param column The column of other square.
+  /// @param piecd The piece at the other square.
+  /// @param color The color at the other square.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  otherPiece(dim_t row, dim_t column, Piece piece, Color color) noexcept;
+
+  ///
+  /// @return The color of the other piece.
+  /// @throw Never throws.
+  ///
+  Color
+  otherColor() const noexcept;
+
+  ///
+  /// @brief Set the color of the other piece.
+  /// @param color The color of the other piece.
+  /// @return A reference to this PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  otherColor(Color color) noexcept;
+
+  ///
+  /// @return The row of the other square.
   /// @throw Never throws.
   ///
   dim_t
-  captureRow() const noexcept;
+  otherRow() const noexcept;
 
   ///
-  /// @brief Obtain the column of the captured piece.
-  /// @return The column of the captured piece.
+  /// @brief Set the row of the other square.
+  /// @param row The row of the other square.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  otherRow(dim_t row) noexcept;
+
+  ///
+  /// @return The column of the other square.
   /// @throw Never throws.
   ///
   dim_t
-  captureColumn() const noexcept;
+  otherColumn() const noexcept;
 
   ///
-  /// @brief Sets the information for the catpured piece.
-  /// @param row The row location of the captured piece.
-  /// @param column The column location of the captured piece.
-  /// @param piece The piece captured.
-  /// @param color The color of the piece captured.
+  /// @brief Set the column of the other square.
+  /// @param column The column of the other square.
   /// @return A reference to this @c PieceMove.
   /// @throw Never throws.
   ///
   PieceMove&
-  setCapture(dim_t row, dim_t column, Piece piece, Color color) noexcept;
+  otherColumn(dim_t column) noexcept;
 
   ///
-  /// @brief Sets the information for the catpured piece.
-  /// @param row The row location of the captured piece.
-  /// @param column The column location of the captured piece.
-  /// @param code The bit code containing color and piece type information.
+  /// @return The row and column of the other square.
+  /// @throw Never throws.
+  ///
+  std::pair<dim_t, dim_t>
+  otherLocation() const noexcept;
+
+  ///
+  /// @brief Set the row and column of the other square.
+  /// @param row The row of the other square.
+  /// @param column The column of the other square.
   /// @return A reference to this @c PieceMove.
   /// @throw Never throws.
   ///
   PieceMove&
-  setCapture(dim_t row, dim_t column, piece_t code) noexcept;
+  otherLocation(dim_t row, dim_t column) noexcept;
 
   ///
-  /// @brief Sets the piece and color for the catpured piece.
-  /// @param piece The piece type of the captured piece.
-  /// @param color The color of the captured piece.
-  /// @return A reference to this @c PieceMove.
+  /// @return A reference to the other square.
   /// @throw Never throws.
   ///
-  PieceMove&
-  setCapture(Piece piece, Color color) noexcept;
-
-  ///
-  /// @brief Sets the piece and color for the catpured piece.
-  /// @param code The bit code for the piece and color of the captured piece.
-  /// @return A reference to this @c PieceMove.
-  /// @throw Never throws.
-  ///
-  PieceMove&
-  setCapture(piece_t code) noexcept;
+  const Square&
+  otherSquare() const noexcept;
 
   ///
   /// @brief Determine if the move has resulted in a capture.
@@ -473,72 +541,6 @@ public:
   isCapture() const noexcept;
 
   ///
-  /// @brief Obtain the information for the captured piece.
-  /// @return The @c Square reprsenting the captured piece.
-  /// @throw Never throws.
-  ///
-  Square
-  captureSquare() const noexcept;
-
-  ///
-  /// @brief Obtain the captured @c Piece.
-  /// @return The @c Piece for the captured piece.
-  /// @throw Never throws.
-  ///
-  Piece
-  capturePiece() const noexcept;
-
-  ///
-  /// @brief Obtain the captured @c Color.
-  /// @return The @c Color for the captured piece.
-  /// @throw Never throws.
-  ///
-  Color
-  captureColor() const noexcept;
-
-  ///
-  /// @brief Sets the information for the promoted piece.
-  /// @param row The row location of the promoted piece.
-  /// @param column The column location of the promoted piece.
-  /// @param piece The piece obtained from the promotion.
-  /// @param color The color of the promoted piece.
-  /// @return A reference to this @c PieceMove.
-  /// @throw Never throws.
-  ///
-  PieceMove&
-  setPromo(dim_t row, dim_t column, Piece piece, Color color) noexcept;
-
-  ///
-  /// @brief Sets the information for the promoted piece.
-  /// @param row The row location of the promoted piece.
-  /// @param column The column location of the promoted piece.
-  /// @param code The piece obtained from the promotion.
-  /// @return A reference to this @c PieceMove.
-  /// @throw Never throws.
-  ///
-  PieceMove&
-  setPromo(dim_t row, dim_t column, piece_t code) noexcept;
-
-  ///
-  /// @brief Sets the color and piece for the promoted piece.
-  /// @param piece The piece obtained from the promotion.
-  /// @param color The color of the promoted piece.
-  /// @return A reference to this @c PieceMove.
-  /// @throw Never throws.
-  ///
-  PieceMove&
-  setPromo(Piece piece, Color color) noexcept;
-
-  ///
-  /// @brief Sets the color and piece for the promoted piece.
-  /// @param code The bit pattern containing the piece and color information.
-  /// @return A reference to this @c PieceMove.
-  /// @throw Never throws.
-  ///
-  PieceMove&
-  setPromo(piece_t code) noexcept;
-
-  ///
   /// @brief Determine if the move has resulted in a promotion.
   /// @return True if the move has a promotion, false otherwise.
   /// @throw Never throws.
@@ -547,59 +549,6 @@ public:
   isPromo() const noexcept;
 
   ///
-  /// @brief Obtain the information for the promoted piece.
-  /// @return The @c Square reprsenting the promoted piece.
-  /// @throw Never throws.
-  ///
-  Square
-  promoSquare() const noexcept;
-
-  ///
-  /// @brief Obtain the promoted @c Piece.
-  /// @return The @c Piece for the promoted piece.
-  /// @throw Never throws.
-  ///
-  Piece
-  promoPiece() const noexcept;
-
-  ///
-  /// @brief Obtain the promoted @c Color.
-  /// @return The @c Color for the promoted piece.
-  /// @throw Never throws.
-  ///
-  Color
-  promoColor() const noexcept;
-
-  ///
-  /// @brief Set the destination row.
-  /// @param row The destination row.
-  /// @return A reference to this @c PieceMove.
-  /// @throw Never throws.
-  ///
-  PieceMove&
-  setToRow(dim_t row) noexcept;
-
-  ///
-  /// @brief Set the destination column.
-  /// @param column The destination column.
-  /// @return A reference to this @c PieceMove.
-  /// @throw Never throws.
-  ///
-  PieceMove&
-  setToColumn(dim_t column) noexcept;
-
-  ///
-  /// @brief Set the destination row and square.
-  /// @param row The destination row.
-  /// @param column The destination column.
-  /// @return A reference to this @c PieceMove.
-  /// @throw Never throws.
-  ///
-  PieceMove&
-  setGoTo(dim_t row, dim_t column) noexcept;
-
-  ///
-  /// @brief Determine if it is check mate.
   /// @return True if the move results in a captured king.
   /// @throw Never throws.
   ///
@@ -607,16 +556,6 @@ public:
   isMate() const noexcept;
 
   ///
-  /// @brief Setup the move as short castling.
-  /// @param color The color of the king.
-  /// @return A reference to this @c PieceMove.
-  /// @throw Never throws.
-  ///
-  PieceMove&
-  doCastle(Color color) noexcept;
-
-  ///
-  /// @brief Check if the move represents short castling.
   /// @return True if the move represents short castling.
   /// @throw Never throws.
   ///
@@ -624,16 +563,6 @@ public:
   isCastle() const noexcept;
 
   ///
-  /// @brief Setup the move as long castling.
-  /// @param color The color of the king.
-  /// @return A reference to this @c PieceMove.
-  /// @throw Never throws.
-  ///
-  PieceMove&
-  doCastleLong(Color color) noexcept;
-
-  ///
-  /// @brief Check if the move represents long castling.
   /// @return True if the move represents long castling.
   /// @throw Never throws.
   ///
@@ -641,7 +570,6 @@ public:
   isCastleLong() const noexcept;
 
   ///
-  /// @brief Check if the move represents en passant.
   /// @return True if the move represents en passant.
   /// @throw Never throws.
   ///
@@ -649,14 +577,12 @@ public:
   isEnPassant() const noexcept;
 
   ///
-  /// @brief Return string representation of the @c PieceMove.
   /// @return A string representing the @c PiecMove.
   ///
   std::string
   toString() const;
 
   ///
-  /// @brief Get the hash code for this @c PieceMove.
   /// @return The numeric hash code for this @c PieceMove.
   /// @throw Never throws.
   ///
