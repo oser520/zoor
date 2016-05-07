@@ -257,20 +257,154 @@ public:
   square() const noexcept;
 
   ///
-  /// @brief Get the row where the piece is moving.
-  /// @return The row of where the piece is moving.
+  /// @brief Get the piece of the square where the piece is moving to.
+  /// @details The piece at the destination square is only different from the piece
+  /// at the source square when move results in pawn promotion.
+  /// @return The piece.
+  /// @throw Never throws.
+  ///
+  piece_t
+  toCode() const noexcept;
+
+  ///
+  /// @brief Set the piece at the destination square.
+  /// @details The piece at the destination square is only different from the piece
+  /// at the source square when move results in pawn promotion.
+  /// @brief piece The piece at the destination square.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  toCode(piece_t piece) noexcept;
+
+  ///
+  /// @brief Get the piece at the destination square.
+  /// @return The piece at the destination square.
+  /// @throw Never throws.
+  ///
+  Piece
+  toPiece() const noexcept;
+
+  ///
+  /// @brief Set the piece at the destination square.
+  /// @brief piece The piece at the destination square.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  toPiece(Piece piece) noexcept;
+
+  ///
+  /// @brief Set the piece at the destination square.
+  /// @brief piece The piece at the destination square.
+  /// @brief color The color at the destination square.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  toPiece(Piece piece, Color color) noexcept;
+
+  ///
+  /// @brief Set the piece at the destination square.
+  /// @brief row The row of destination square.
+  /// @brief column The column of destination square.
+  /// @brief piecd The piece at the destination square.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  toPiece(dim_t row, dim_t column, piece_t piece) noexcept;
+
+  ///
+  /// @brief Set the piece at the destination square.
+  /// @brief row The row of destination square.
+  /// @brief column The column of destination square.
+  /// @brief piecd The piece at the destination square.
+  /// @brief color The color at the destination square.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  toPiece(dim_t row, dim_t column, Piece piece, Color color) noexcept;
+
+  ///
+  /// @brief Get the color of the destination piece.
+  /// @return The color of the destination piece.
+  /// @throw Never throws.
+  ///
+  Color
+  toColor() const noexcept;
+
+  ///
+  /// @brief Set the color of the destination piece.
+  /// @param color The color of the destination piece.
+  /// @return A reference to this PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  toColor(Color color) noexcept;
+
+  ///
+  /// @brief Get the row of the destination square.
+  /// @return The row of the destination square.
   /// @throw Never throws.
   ///
   dim_t
   toRow() const noexcept;
 
   ///
-  /// @brief Obtain the column of the destination square.
+  /// @brief Set the row of the destination square.
+  /// @param row The row of the destination square.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  toRow(dim_t row) noexcept;
+
+  ///
+  /// @brief Get the column of the destination square.
   /// @return The column of the destination square.
   /// @throw Never throws.
   ///
   dim_t
   toColumn() const noexcept;
+
+  ///
+  /// @brief Set the column of the destination square.
+  /// @param column The column of the destination square.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  toColumn(dim_t column) noexcept;
+
+  ///
+  /// @brief Get the row and column of the destination square.
+  /// @return The row and column of the destination square.
+  /// @throw Never throws.
+  ///
+  std::pair<dim_t, dim_t>
+  toLocation() const noexcept;
+
+  ///
+  /// @brief Set the row and column of the destination square.
+  /// @param row The row of the destination square.
+  /// @param column The column of the destination square.
+  /// @return A reference to this @c PieceMove.
+  /// @throw Never throws.
+  ///
+  PieceMove&
+  toLocation(dim_t row, dim_t column) noexcept;
+
+  ///
+  /// @brief Get a reference to the destination square.
+  /// @return A reference to the destintion square.
+  /// @throw Never throws.
+  ///
+  const Square&
+  toSquare() const noexcept;
+
+// look here
 
   ///
   /// @brief Obtain the row of captured piece.
