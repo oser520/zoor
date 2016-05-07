@@ -8,6 +8,7 @@
 // STL
 //
 #include <string>
+#include <utility>
 
 //
 // zoor
@@ -102,11 +103,14 @@ TEST(Square, Setters)
 {
   Square s;
   s.piece(Piece::P).color(Color::B).row(5).column(7);
+  auto p = s.location();
 
   EXPECT_EQ(Piece::P, s.piece());
   EXPECT_EQ(Color::B, s.color());
   EXPECT_EQ(5, s.row());
   EXPECT_EQ(7, s.column());
+  EXPECT_EQ(5, p.first);
+  EXPECT_EQ(7, p.second);
 
   s.location(2, 5);
   EXPECT_NE(5, s.row());
