@@ -697,7 +697,7 @@ PieceMove::sPiece(dim_t row, dim_t column, piece_t piece) noexcept
 inline PieceMove&
 PieceMove::sPiece(dim_t row, dim_t column, Piece piece, Color color) noexcept
 {
-  mFrom.code(piece).color(color).location(row, column);
+  mFrom.piece(piece).color(color).location(row, column);
   return *this;
 }
 
@@ -850,7 +850,7 @@ PieceMove::dPiece(dim_t row, dim_t column, piece_t piece) noexcept
 inline PieceMove&
 PieceMove::dPiece(dim_t row, dim_t column, Piece piece, Color color) noexcept
 {
-  mTo.code(piece).color(color).location(row, column);
+  mTo.piece(piece).color(color).location(row, column);
   return *this;
 }
 
@@ -1003,7 +1003,7 @@ PieceMove::xPiece(dim_t row, dim_t column, piece_t piece) noexcept
 inline PieceMove&
 PieceMove::xPiece(dim_t row, dim_t column, Piece piece, Color color) noexcept
 {
-  mOther.code(piece).color(color).location(row, column);
+  mOther.piece(piece).color(color).location(row, column);
   return *this;
 }
 
