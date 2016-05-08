@@ -163,21 +163,6 @@ public:
   canCastleLong() const noexcept;
 
   ///
-  /// @brief Return a reference to the rows of the board.
-  /// @return A constant reference to the rows of the board.
-  /// @throw Never throws.
-  ///
-  const std::array<row_type, BOARD_DIM>&
-  rows() const noexcept;
-
-  ///
-  /// @brief Return a copy of the rows of the board.
-  /// @return A copy of the rows of the board.
-  ///
-  std::array<row_type, BOARD_DIM>
-  rowsCopy() const;
-
-  ///
   /// @brief Return a vector of all the legal moves from the given position.
   /// @param row The row in the board.
   /// @param col The column in the board.
@@ -929,25 +914,6 @@ Board::isInBound(dim_t row, dim_t column) noexcept
 {
   return row >= 0 && column < BOARD_DIM
       && column >= 0 && column < BOARD_DIM;
-}
-
-//
-// return a reference to the rows
-//
-inline const std::array<Board::row_type, Board::BOARD_DIM>&
-Board::rows() const noexcept
-{
-  return mRows;
-}
-
-//
-// return a copy of the rows
-//
-inline std::array<Board::row_type, Board::BOARD_DIM>
-Board::rowsCopy() const
-{
-  auto rc(mRows);
-  return rc;
 }
 
 //
