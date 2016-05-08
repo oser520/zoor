@@ -9,12 +9,11 @@
 //
 // standard headers
 //
-#include <array>
 #include <cassert>
 #include <cstdint>
 #include <functional>
-#include <iostream>
 #include <iterator>
+#include <ostream>
 #include <stdexcept>
 #include <string>
 #include <vector>
@@ -23,9 +22,9 @@
 //
 // zoor headers
 //
+#include "basictypes.hh"
 #include "boardinfo.hh"
 #include "chesserror.hh"
-#include "piececode.hh"
 #include "piecemove.hh"
 #include "square.hh"
 
@@ -34,11 +33,6 @@ namespace zoor {
 /////////////////////////////////////////////////////////////////////////////////////
 // declarations
 /////////////////////////////////////////////////////////////////////////////////////
-
-//
-// forward declaration
-//
-class BoardIterator;
 
 ///
 /// @brief The Board class maintains the current state of the chess board.
