@@ -608,7 +608,7 @@ inline Square
 Board::operator()(dim_t row, dim_t column) const noexcept
 {
   assert(inBoard(row, column));
-  return Square(row, column, get(row, column));
+  return Square(row, column, mBoard.get(row, column));
 }
 
 //
