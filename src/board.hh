@@ -128,25 +128,6 @@ public:
   ~Board() noexcept = default;
 
   ///
-  /// @brief Determine if position is within bounds of board.
-  /// @param position The position in question.
-  /// @return True if position is within bounds of board.
-  /// @throw Never throws.
-  ///
-  static bool
-  isInBound(dim_t position) noexcept;
-
-  ///
-  /// @brief Determine if row and column are in bounds.
-  /// @param row The row of the position.
-  /// @param column The column of the position.
-  /// @return True if position is within bounds of board.
-  /// @throw Never throws.
-  ///
-  static bool
-  isInBound(dim_t row, dim_t column) noexcept;
-
-  ///
   /// @brief Determine if the king whose turn is it to move can do short castling.
   /// @return True if the king can do short castling.
   /// @throw Never throws.
@@ -595,25 +576,6 @@ operator!=(const Board &boar1, const Board &board2) noexcept;
 ////////////////////////////////////////////////////////////////////////////////
 // definitions
 ////////////////////////////////////////////////////////////////////////////////
-
-//
-// check if position is valid in board
-//
-inline bool
-Board::isInBound(dim_t position) noexcept
-{
-  return position >= 0 && position < BOARD_DIM;
-}
-
-//
-// check if row and column are within bounds of board
-//
-inline bool
-Board::isInBound(dim_t row, dim_t column) noexcept
-{
-  return row >= 0 && column < BOARD_DIM
-      && column >= 0 && column < BOARD_DIM;
-}
 
 //
 // make a move on a copy of the board
