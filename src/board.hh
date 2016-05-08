@@ -62,7 +62,7 @@ public:
   ///
   /// @brief Alias for a vector of jump positions.
   ///
-  using jump_list = std::vector<std::pair<dim_type, dim_type>>;
+  using jump_list = std::vector<std::pair<dim_t, dim_t>>;
 
   ///
   /// @brief The jump deltas for a knight.
@@ -103,7 +103,7 @@ public:
   ///
   Board
     (const std::vector<Square> &squareList,
-     const PieceColor color,
+     const Color color,
      const BoardInfo &boardInfo,
      const PieceMove &lastMove = PieceMove());
 
@@ -134,7 +134,7 @@ public:
   /// @throw Never throws.
   ///
   static bool
-  isInBound(dim_type position) noexcept;
+  isInBound(dim_t position) noexcept;
 
   ///
   /// @brief Determine if row and column are in bounds.
@@ -144,7 +144,7 @@ public:
   /// @throw Never throws.
   ///
   static bool
-  isInBound(dim_type row, dim_type column) noexcept;
+  isInBound(dim_t row, dim_t column) noexcept;
 
   ///
   /// @brief Determine if the king whose turn is it to move can do short castling.
@@ -185,7 +185,7 @@ public:
   /// vector if there are no moves from the given position.
   ///
   std::vector<PieceMove>
-  getMoves(dim_type row, dim_type col) const;
+  getMoves(dim_t row, dim_t col) const;
 
   ///
   /// @brief Return a vector of all the legal moves from all the pieces on the board.
@@ -255,7 +255,7 @@ public:
   /// @throw Never throws.
   ///
   Square
-  operator()(dim_type row, dim_type column) const noexcept;
+  operator()(dim_t row, dim_t column) const noexcept;
 
   ///
   /// @brief Provide an iterator to the first @c Square in the @c Board.
@@ -282,7 +282,7 @@ public:
   /// @throw Never throws.
   ///
   jump_list
-  jump(dim_type row, dim_type column, const jump_list &positions) const;
+  jump(dim_t row, dim_t column, const jump_list &positions) const;
 
   ///
   /// @brief Determine if there is a pawn check at the given row and column.
@@ -292,7 +292,7 @@ public:
   /// @throw Never throws.
   ///
   bool
-  isCheckPawn(dim_type row, dim_type column) const noexcept;
+  isCheckPawn(dim_t row, dim_t column) const noexcept;
 
   ///
   /// @brief Determine if there is a knight check at the given row and column.
@@ -301,7 +301,7 @@ public:
   /// @return True if there is a check at the given square.
   ///
   bool
-  isCheckKnight(dim_type row, dim_type column) const;
+  isCheckKnight(dim_t row, dim_t column) const;
 
   ///
   /// @brief Determine if there is a bishop check at the given row and column.
@@ -311,7 +311,7 @@ public:
   /// @throw Never throws.
   ///
   bool
-  isCheckBishop(dim_type row, dim_type column) const noexcept;
+  isCheckBishop(dim_t row, dim_t column) const noexcept;
 
   ///
   /// @brief Determine if there is a rook check at the given row and column.
@@ -321,7 +321,7 @@ public:
   /// @throw Never throws.
   ///
   bool
-  isCheckRook(dim_type row, dim_type column) const noexcept;
+  isCheckRook(dim_t row, dim_t column) const noexcept;
 
   ///
   /// @brief Determine if there is a queen check at the given row and column.
@@ -331,7 +331,7 @@ public:
   /// @throw Never throws.
   ///
   bool
-  isCheckQueen(dim_type row, dim_type column) const noexcept;
+  isCheckQueen(dim_t row, dim_t column) const noexcept;
 
   ///
   /// @brief Determine if there is a king check at the given row and column.
@@ -340,7 +340,7 @@ public:
   /// @return True if there is a check at the given square.
   ///
   bool
-  isCheckKing(dim_type row, dim_type column) const;
+  isCheckKing(dim_t row, dim_t column) const;
 
   ///
   /// @brief Determine if there is a check at the given row and column.
@@ -349,17 +349,17 @@ public:
   /// @return True if there is a check at the given square.
   ///
   bool
-  isCheck(dim_type row, dim_type column) const;
+  isCheck(dim_t row, dim_t column) const;
 
   ///
   /// @brief Determine if there is an en passant at a given column.
-  /// @param color The @c PieceColor.
+  /// @param color The @c Color.
   /// @param toColumn The column where there might be an en passant.
   /// @return True if there is an en passant at the given column.
   /// @throw Never throws.
   ////
   bool
-  isEnPassant(PieceColor color, dim_type toColumn) const noexcept;
+  isEnPassant(Color color, dim_t toColumn) const noexcept;
 
   ///
   /// @brief Move the pawn at the given row and column.
@@ -368,7 +368,7 @@ public:
   /// @return A vector of moves.
   ///
   std::vector<PieceMove>
-  movePawn(dim_type row, dim_type column) const;
+  movePawn(dim_t row, dim_t column) const;
 
   ///
   /// @brief Move the knight at the given row and column.
@@ -377,7 +377,7 @@ public:
   /// @return A vector of squares where the knight can move.
   ///
   std::vector<PieceMove>
-  moveKnight(dim_type row, dim_type column) const;
+  moveKnight(dim_t row, dim_t column) const;
 
   ///
   /// @brief Move the bishop at the given row and column.
@@ -386,7 +386,7 @@ public:
   /// @return A vector of squares where the bishop can move.
   ///
   std::vector<PieceMove>
-  moveBishop(dim_type row, dim_type column) const;
+  moveBishop(dim_t row, dim_t column) const;
 
   ///
   /// @brief Move the rook at the given row and column.
@@ -395,7 +395,7 @@ public:
   /// @return A vector of squares where the rook can move.
   ///
   std::vector<PieceMove>
-  moveRook(dim_type row, dim_type column) const;
+  moveRook(dim_t row, dim_t column) const;
 
   ///
   /// @brief Move the queen at the given row and column.
@@ -404,7 +404,7 @@ public:
   /// @return A vector of squares where the queen can move.
   ///
   std::vector<PieceMove>
-  moveQueen(dim_type row, dim_type column) const;
+  moveQueen(dim_t row, dim_t column) const;
 
   ///
   /// @brief Move the king at the given row and column.
@@ -413,7 +413,7 @@ public:
   /// @return A vector of squares where the king can move.
   ///
   std::vector<PieceMove>
-  moveKing(dim_type row, dim_type column) const;
+  moveKing(dim_t row, dim_t column) const;
 
   ///
   /// @brief Return string representation of the board.
@@ -436,7 +436,7 @@ public:
   /// @brief Get the color of whose turn it is to move.
   /// @return The color of the player whose turn it is to move.
   ///
-  PieceColor
+  Color
   colorToMove() const noexcept;
 
 private:
@@ -469,7 +469,7 @@ private:
   /// @throw Never throws.
   ///
   bool
-  isCheckNE(dim_type row, dim_type column, PieceCode piece) const noexcept;
+  isCheckNE(dim_t row, dim_t column, Piece piece) const noexcept;
 
   ///
   /// @brief Determine if there is a check at the given row and column from a piece
@@ -480,7 +480,7 @@ private:
   /// @return True if there is a check.
   /// @throw Never throws.
   ///
-  bool isCheckSE(dim_type row, dim_type column, PieceCode piece) const noexcept;
+  bool isCheckSE(dim_t row, dim_t column, Piece piece) const noexcept;
 
   ///
   /// @brief Determine if there is a check at the given row and column from a piece
@@ -492,7 +492,7 @@ private:
   /// @throw Never throws.
   ///
   bool
-  isCheckSW(dim_type row, dim_type column, PieceCode piece) const noexcept;
+  isCheckSW(dim_t row, dim_t column, Piece piece) const noexcept;
 
   ///
   /// @brief Determine if there is a  check at the given row and column from a piece
@@ -504,7 +504,7 @@ private:
   /// @throw Never throws.
   ///
   bool
-  isCheckNW(dim_type row, dim_type column, PieceCode piece) const noexcept;
+  isCheckNW(dim_t row, dim_t column, Piece piece) const noexcept;
 
   ///
   /// @brief Determine if there is a check at the given row and column from a piece
@@ -516,7 +516,7 @@ private:
   /// @throw Never throws.
   ///
   bool
-  isCheckN(dim_type row, dim_type column, PieceCode piece) const noexcept;
+  isCheckN(dim_t row, dim_t column, Piece piece) const noexcept;
 
   ///
   /// @brief Determine if there is a check at the given row and column from a piece
@@ -528,7 +528,7 @@ private:
   /// @throw Never throws.
   ///
   bool
-  isCheckE(dim_type row, dim_type column, PieceCode piece) const noexcept;
+  isCheckE(dim_t row, dim_t column, Piece piece) const noexcept;
 
   ///
   /// @brief Determine if there is a check at the given row and column from a piece
@@ -540,7 +540,7 @@ private:
   /// @throw Never throws.
   ///
   bool
-  isCheckS(dim_type row, dim_type column, PieceCode piece) const noexcept;
+  isCheckS(dim_t row, dim_t column, Piece piece) const noexcept;
 
   ///
   /// @brief Determine if there is a check at the given row and column from a piece
@@ -552,7 +552,7 @@ private:
   /// @throw Never throws.
   ///
   bool
-  isCheckW(dim_type row, dim_type column, PieceCode piece) const noexcept;
+  isCheckW(dim_t row, dim_t column, Piece piece) const noexcept;
 
   ///
   /// @brief Get the bit pattern at a specific row and column in the @c Board.
@@ -561,8 +561,8 @@ private:
   /// @return An unsigned char representing the bit pattern.
   /// @throw Never throws.
   ///
-  piececode_t
-  get(dim_type row, dim_type column) const noexcept;
+  piece_t
+  get(dim_t row, dim_t column) const noexcept;
 
   ///
   /// @brief Put a bit pattern for a piece on the board.
@@ -572,29 +572,29 @@ private:
   /// @throw Never throws.
   ///
   void
-  put(dim_type row, dim_type column, piececode_t code) noexcept;
+  put(dim_t row, dim_t column, piece_t code) noexcept;
 
   ///
   /// @brief Put a bit pattern for a piece on the board.
   /// @detail Uses the current color for the color of the piece.
   /// @param row The row of the location.
   /// @param column The column of the location.
-  /// @param piece The @c PieceCode.
+  /// @param piece The @c Piece.
   /// @throw Never throws.
   ///
   void
-  put(dim_type row, dim_type column, PieceCode piece) noexcept;
+  put(dim_t row, dim_t column, Piece piece) noexcept;
 
   ///
   /// @brief Put a bit pattern for a piece on the board.
   /// @param row The row of the location.
   /// @param column The column of the location.
-  /// @param piece The @c PieceCode.
-  /// @param color The @c PieceColor.
+  /// @param piece The @c Piece.
+  /// @param color The @c Color.
   /// @throw Never throws.
   ///
   void
-  put(dim_type row, dim_type column, PieceCode piece, PieceColor color) noexcept;
+  put(dim_t row, dim_t column, Piece piece, Color color) noexcept;
 
   ///
   /// @brief Clear the bits in a square.
@@ -603,8 +603,8 @@ private:
   /// @return The bit pattern in the square.
   /// @throw Never throws.
   ///
-  piececode_t
-  clearSq(dim_type row, dim_type column) noexcept;
+  piece_t
+  clearSq(dim_t row, dim_t column) noexcept;
 
   //
   // The actual board, in the sense that 8 bits represent one square, and each row
@@ -613,7 +613,7 @@ private:
   std::array<row_type, BOARD_DIM> mRows;
 
   // Indicates the player's turn: either white or black moves.
-  PieceColor mColor;
+  Color mColor;
 
   //
   // The last move. The first @c Square is the piece that made the move, and the
@@ -676,8 +676,8 @@ operator!=(const Board &boar1, const Board &board2) noexcept;
 class BoardIterator
   : public std::iterator<
       std::random_access_iterator_tag,
-      piececode_t,
-      Board::dim_type>
+      piece_t,
+      Board::dim_t>
 {
   // see the comments for these declarations below
   friend bool
@@ -691,13 +691,13 @@ public:
   ///
   /// @brief Alias for the type of the dimension of a @c Board.
   ///
-  using dim_type = Board::dim_type;
+  using dim_t = Board::dim_t;
 
   ///
   /// @brief The number of squres in a row.
   /// @detail Also represents the number of squares in a column.
   ///
-  static constexpr dim_type LAST_INDEX = Board::BOARD_DIM * Board::BOARD_DIM;
+  static constexpr dim_t LAST_INDEX = Board::BOARD_DIM * Board::BOARD_DIM;
 
   ///
   /// Default constructor is deleted.
@@ -805,7 +805,7 @@ public:
   /// @return The piece in the square.
   /// @throw ChessError if iterator is <em>end</em> iterator.
   ///
-  PieceCode
+  Piece
   piece() const;
 
   ///
@@ -814,7 +814,7 @@ public:
   /// @return The color of the piece in the square.
   /// @throw ChessError if iterator is <em>end</em> iterator.
   ///
-  PieceColor
+  Color
   color() const;
 
   ///
@@ -822,7 +822,7 @@ public:
   /// @return The row of the current square.
   /// @throw ChessError if iterator is <em>end</em> iterator.
   ///
-  dim_type
+  dim_t
   row() const;
 
   ///
@@ -830,7 +830,7 @@ public:
   /// @return The column of the current square.
   /// @throw ChessError if iterator is <em>end</em> iterator.
   ///
-  dim_type
+  dim_t
   column() const;
 
 private:
@@ -844,7 +844,7 @@ private:
   difference_type mIndex;
 
   // The code representing the piece on the current square.
-  piececode_t mCode;
+  piece_t mCode;
 };
 
 ///
@@ -916,7 +916,7 @@ operator+(const BoardIterator &bi, BoardIterator::difference_type value);
 // check if position is valid in board
 //
 inline bool
-Board::isInBound(dim_type position) noexcept
+Board::isInBound(dim_t position) noexcept
 {
   return position >= 0 && position < BOARD_DIM;
 }
@@ -925,7 +925,7 @@ Board::isInBound(dim_type position) noexcept
 // check if row and column are within bounds of board
 //
 inline bool
-Board::isInBound(dim_type row, dim_type column) noexcept
+Board::isInBound(dim_t row, dim_t column) noexcept
 {
   return row >= 0 && column < BOARD_DIM
       && column >= 0 && column < BOARD_DIM;
@@ -975,7 +975,7 @@ Board::lastMove() const noexcept
 // get a square from a board
 //
 inline Square
-Board::operator()(dim_type row, dim_type column) const noexcept
+Board::operator()(dim_t row, dim_t column) const noexcept
 {
   assert(isInBound(row, column));
   return Square(row, column, get(row, column));
@@ -1014,7 +1014,7 @@ Board::toString() const
 //
 // determine whether it is white's or black's turn to move
 //
-inline PieceColor
+inline Color
 Board::colorToMove() const noexcept
 {
   return mColor;
@@ -1034,8 +1034,8 @@ Board::moveCopy(const PieceMove &pieceMove) const
 //
 // get the piece code on a squre
 //
-inline piececode_t
-Board::get(dim_type row, dim_type column) const noexcept
+inline piece_t
+Board::get(dim_t row, dim_t column) const noexcept
 {
   assert(isInBound(row, column));
   return mRows[row][column];
@@ -1045,7 +1045,7 @@ Board::get(dim_type row, dim_type column) const noexcept
 // put a piece on the board
 //
 inline void
-Board::put(dim_type row, dim_type column, piececode_t code) noexcept
+Board::put(dim_t row, dim_t column, piece_t code) noexcept
 {
   assert(isInBound(row, column));
   mRows[row][column] = code;
@@ -1055,7 +1055,7 @@ Board::put(dim_type row, dim_type column, piececode_t code) noexcept
 // put a piece on the board, assuming color is the current color
 //
 inline void
-Board::put(dim_type row, dim_type column, PieceCode piece) noexcept
+Board::put(dim_t row, dim_t column, Piece piece) noexcept
 {
   put(row, column, mColor | piece);
 }
@@ -1064,7 +1064,7 @@ Board::put(dim_type row, dim_type column, PieceCode piece) noexcept
 // put a piece on the board
 //
 inline void
-Board::put(dim_type row, dim_type column, PieceCode piece, PieceColor color) noexcept
+Board::put(dim_t row, dim_t column, Piece piece, Color color) noexcept
 {
   put(row, column, color | piece);
 }
@@ -1072,8 +1072,8 @@ Board::put(dim_type row, dim_type column, PieceCode piece, PieceColor color) noe
 //
 // clear a piece from the board
 //
-inline piececode_t
-Board::clearSq(dim_type row, dim_type column) noexcept
+inline piece_t
+Board::clearSq(dim_t row, dim_t column) noexcept
 {
   assert(isInBound(row, column));
   auto code = mRows[row][column];
