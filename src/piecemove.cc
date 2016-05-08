@@ -55,7 +55,7 @@ PieceMove::isCastle() const noexcept
   return isKing(sPiece())
       && isRook(xPiece())
       && sColor() == xColor()
-      && dRow() == 6;
+      && dColumn() == 6;
 }
 
 //
@@ -67,7 +67,7 @@ PieceMove::isCastleLong() const noexcept
   return isKing(sPiece())
       && isRook(xPiece())
       && sColor() == xColor()
-      && dRow() == 2;
+      && dColumn() == 2;
 }
 
 //
