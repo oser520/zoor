@@ -47,10 +47,6 @@ namespace zoor {
 /// led to a given position.
 ///
 class Board {
-  friend BoardIterator;
-  friend std::ostream& operator<<(std::ostream &os, const Board &board);
-  friend bool operator==(const Board &board1, const Board &board2) noexcept;
-  
 public:
   ///
   /// @brief Alias for the type of the dimension of the @c Board.
