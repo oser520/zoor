@@ -65,11 +65,6 @@ public:
   using jump_list = std::vector<std::pair<dim_type, dim_type>>;
 
   ///
-  /// @brief Specifies the number of rows and columns on the @c Board.
-  ///
-  static constexpr dim_type BOARD_DIM = 8;
-
-  ///
   /// @brief The jump deltas for a knight.
   ///
   static const jump_list JUMP_KNIGHT;
@@ -78,11 +73,6 @@ public:
   /// @brief The jump deltas for a king.
   ///
   static const jump_list JUMP_KING;
-
-  ///
-  /// @brief Used to initialize the board at construction.
-  ///
-  static const std::array<row_type, BOARD_DIM> INIT_BOARD;
 
   ///
   /// @brief Default constructor.
