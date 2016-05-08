@@ -539,16 +539,13 @@ private:
   bool
   isCheckW(dim_t row, dim_t column, Piece piece) const noexcept;
 
-  // the underlying board
+  // The underlying board.
   BasicBoard mBoard;
 
   // Indicates the player's turn: either white or black moves.
   Color mColor;
 
-  //
-  // The last move. The first @c Square is the piece that made the move, and the
-  // second @c Square is where the piece moves.
-  //
+  // The last move on the board.
   PieceMove mLastMove;
 
   //
