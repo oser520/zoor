@@ -539,58 +539,6 @@ private:
   bool
   isCheckW(dim_t row, dim_t column, Piece piece) const noexcept;
 
-  ///
-  /// @brief Get the bit pattern at a specific row and column in the @c Board.
-  /// @param row The row to get the pattern from.
-  /// @param column The column to get the bit pattern from.
-  /// @return An unsigned char representing the bit pattern.
-  /// @throw Never throws.
-  ///
-  piece_t
-  get(dim_t row, dim_t column) const noexcept;
-
-  ///
-  /// @brief Put a bit pattern for a piece on the board.
-  /// @param row The row of the location.
-  /// @param column The column of the location.
-  /// @param code The bit pattern representing the piece.
-  /// @throw Never throws.
-  ///
-  void
-  put(dim_t row, dim_t column, piece_t code) noexcept;
-
-  ///
-  /// @brief Put a bit pattern for a piece on the board.
-  /// @detail Uses the current color for the color of the piece.
-  /// @param row The row of the location.
-  /// @param column The column of the location.
-  /// @param piece The @c Piece.
-  /// @throw Never throws.
-  ///
-  void
-  put(dim_t row, dim_t column, Piece piece) noexcept;
-
-  ///
-  /// @brief Put a bit pattern for a piece on the board.
-  /// @param row The row of the location.
-  /// @param column The column of the location.
-  /// @param piece The @c Piece.
-  /// @param color The @c Color.
-  /// @throw Never throws.
-  ///
-  void
-  put(dim_t row, dim_t column, Piece piece, Color color) noexcept;
-
-  ///
-  /// @brief Clear the bits in a square.
-  /// @param row The row of the location.
-  /// @param column The column of the location.
-  /// @return The bit pattern in the square.
-  /// @throw Never throws.
-  ///
-  piece_t
-  clearSq(dim_t row, dim_t column) noexcept;
-
   //
   // The actual board, in the sense that 8 bits represent one square, and each row
   // cotains 8 squares.
@@ -995,56 +943,6 @@ Board::moveCopy(const PieceMove &pieceMove) const
   Board board(*this);
   board.moveRef(pieceMove);
   return board;
-}
-
-//
-// get the piece code on a squre
-//
-inline piece_t
-Board::get(dim_t row, dim_t column) const noexcept
-{
-  assert(isInBound(row, column));
-  return mRows[row][column];
-}
-
-//
-// put a piece on the board
-//
-inline void
-Board::put(dim_t row, dim_t column, piece_t code) noexcept
-{
-  assert(isInBound(row, column));
-  mRows[row][column] = code;
-}
-
-//
-// put a piece on the board, assuming color is the current color
-//
-inline void
-Board::put(dim_t row, dim_t column, Piece piece) noexcept
-{
-  put(row, column, mColor | piece);
-}
-
-//
-// put a piece on the board
-//
-inline void
-Board::put(dim_t row, dim_t column, Piece piece, Color color) noexcept
-{
-  put(row, column, color | piece);
-}
-
-//
-// clear a piece from the board
-//
-inline piece_t
-Board::clearSq(dim_t row, dim_t column) noexcept
-{
-  assert(isInBound(row, column));
-  auto code = mRows[row][column];
-  mRows[row][column] = 0;
-  return code;
 }
 
 //
