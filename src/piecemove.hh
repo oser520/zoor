@@ -787,6 +787,159 @@ PieceMove::square() const noexcept
 }
 
 //
+// get piece code from destination square
+//
+inline piece_t
+PieceMove::toCode() const noexcept
+{
+  return mTo.code();
+}
+
+//
+// set piece code making move
+//
+inline PieceMove&
+PieceMove::toCode(piece_t piece) noexcept
+{
+  mTo.code(piece);
+  return *this;
+}
+
+//
+// get piece at destination square
+//
+inline Piece
+PieceMove::toPiece() const noexcept
+{
+  return mTo.piece();
+}
+
+//
+// set piece at destination square
+//
+inline PieceMove&
+PieceMove::toPiece(Piece piece) noexcept
+{
+  mTo.piece(piece);
+  return *this;
+}
+
+//
+// set color and piece at destination square
+//
+inline PieceMove&
+PieceMove::toPiece(Piece piece, Color color) noexcept
+{
+  mTo.piece(piece).color(color);
+  return *this;
+}
+
+//
+// set row, column, and piece at destination square
+//
+inline PieceMove&
+PieceMove::toPiece(dim_t row, dim_t column, piece_t piece) noexcept
+{
+  mTo.code(piece).location(row, column);
+  return *this;
+}
+
+//
+// set row, column, color, and piece at destination square
+//
+inline PieceMove&
+PieceMove::toPiece(dim_t row, dim_t column, Piece piece, Color color) noexcept
+{
+  mTo.code(piece).color(color).location(row, column);
+  return *this;
+}
+
+//
+// get the color of the piece at the destination square
+//
+inline Color
+PieceMove::toColor() const noexcept
+{
+  return mTo.color();
+}
+
+//
+// set the color of the piece at the destination square
+//
+inline PieceMove&
+PieceMove::toColor(Color color) noexcept
+{
+  mTo.color(color);
+  return *this;
+}
+
+//
+// get the row of the piece at the destination square
+//
+inline dim_t
+PieceMove::toRow() const noexcept
+{
+  return mTo.row();
+}
+
+//
+// set the row of the piece at the destination square
+//
+inline PieceMove&
+PieceMove::toRow(dim_t row) noexcept
+{
+  mTo.row(row);
+  return *this;
+}
+
+//
+// get the column of the piece at the destination square
+//
+inline dim_t
+PieceMove::toColumn() const noexcept
+{
+  return mTo.column();
+}
+
+//
+// set the column of the piece at the destination square
+//
+inline PieceMove&
+PieceMove::toColumn(dim_t column) noexcept
+{
+  mTo.column(column);
+  return *this;
+}
+
+//
+// get the row and column of the piece at the destination square
+//
+inline std::pair<dim_t, dim_t>
+PieceMove::toLocation() const noexcept
+{
+  return mTo.location();
+}
+
+//
+// set the row and column of the piece at the destination square
+//
+inline PieceMove&
+PieceMove::toLocation(dim_t row, dim_t column) noexcept
+{
+  mTo.location(row, column);
+  return *this;
+}
+
+//
+// get const ref to the destination square
+//
+inline const Square&
+PieceMove::toSquare() const noexcept
+{
+  return mTo;
+}
+
+//
 // does move result in promotion
 //
 inline bool
