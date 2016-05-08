@@ -8,12 +8,10 @@
 // STL
 //
 #include <algorithm>
-#include <array>
 #include <bitset>
 #include <cassert>
 #include <functional>
-#include <iostream>
-#include <iterator>
+#include <ostream>
 #include <sstream>
 #include <string>
 #include <utility>
@@ -22,9 +20,10 @@
 //
 // zoor
 //
+#include "basicboard.hh"
+#include "basictypes.hh"
 #include "board.hh"
 #include "chesserror.hh"
-#include "piececode.hh"
 #include "piecemove.hh"
 #include "square.hh"
 
