@@ -55,8 +55,7 @@ const jump_list Board::JUMP_KING = {
 // default ctor
 //
 Board::Board()
-  : mRows(INIT_BOARD),
-    mColor(Color::W) {}
+  : mColor(Color::W) {}
 
 //
 // constructor with list of pieces
@@ -66,8 +65,7 @@ Board::Board
    const Color color,
    const BoardInfo &boardInfo,
    const PieceMove &lastMove)
-  : mRows(),
-    mColor(color),
+  : mColor(color),
     mLastMove(lastMove),
     mInfo(boardInfo)
 {
