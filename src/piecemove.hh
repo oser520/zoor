@@ -940,6 +940,159 @@ PieceMove::toSquare() const noexcept
 }
 
 //
+// get piece code from other square
+//
+inline piece_t
+PieceMove::otherCode() const noexcept
+{
+  return mOther.code();
+}
+
+//
+// set piece code from other square
+//
+inline PieceMove&
+PieceMove::otherCode(piece_t piece) noexcept
+{
+  mOther.code(piece);
+  return *this;
+}
+
+//
+// get piece at other square
+//
+inline Piece
+PieceMove::otherPiece() const noexcept
+{
+  return mOther.piece();
+}
+
+//
+// set piece at other square
+//
+inline PieceMove&
+PieceMove::otherPiece(Piece piece) noexcept
+{
+  mOther.piece(piece);
+  return *this;
+}
+
+//
+// set color and piece at other square
+//
+inline PieceMove&
+PieceMove::otherPiece(Piece piece, Color color) noexcept
+{
+  mOther.piece(piece).color(color);
+  return *this;
+}
+
+//
+// set row, column, and piece at other square
+//
+inline PieceMove&
+PieceMove::otherPiece(dim_t row, dim_t column, piece_t piece) noexcept
+{
+  mOther.code(piece).location(row, column);
+  return *this;
+}
+
+//
+// set row, column, color, and piece at other square
+//
+inline PieceMove&
+PieceMove::otherPiece(dim_t row, dim_t column, Piece piece, Color color) noexcept
+{
+  mOther.code(piece).color(color).location(row, column);
+  return *this;
+}
+
+//
+// get the color of the piece at the other square
+//
+inline Color
+PieceMove::otherColor() const noexcept
+{
+  return mOther.color();
+}
+
+//
+// set the color of the piece at the other square
+//
+inline PieceMove&
+PieceMove::otherColor(Color color) noexcept
+{
+  mOther.color(color);
+  return *this;
+}
+
+//
+// get the row of the piece at the other square
+//
+inline dim_t
+PieceMove::otherRow() const noexcept
+{
+  return mOther.row();
+}
+
+//
+// set the row of the piece at the other square
+//
+inline PieceMove&
+PieceMove::otherRow(dim_t row) noexcept
+{
+  mOther.row(row);
+  return *this;
+}
+
+//
+// get the column of the piece at the other square
+//
+inline dim_t
+PieceMove::otherColumn() const noexcept
+{
+  return mOther.column();
+}
+
+//
+// set the column of the piece at the other square
+//
+inline PieceMove&
+PieceMove::otherColumn(dim_t column) noexcept
+{
+  mOther.column(column);
+  return *this;
+}
+
+//
+// get the row and column of the piece at the other square
+//
+inline std::pair<dim_t, dim_t>
+PieceMove::otherLocation() const noexcept
+{
+  return mOther.location();
+}
+
+//
+// set the row and column of the piece at the other square
+//
+inline PieceMove&
+PieceMove::otherLocation(dim_t row, dim_t column) noexcept
+{
+  mOther.location(row, column);
+  return *this;
+}
+
+//
+// get const ref to the other square
+//
+inline const Square&
+PieceMove::otherSquare() const noexcept
+{
+  return mOther;
+}
+
+//
 // does move result in promotion
 //
 inline bool
