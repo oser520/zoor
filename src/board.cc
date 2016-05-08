@@ -32,7 +32,6 @@ namespace zoor {
 //
 // aliases
 //
-using dim_type = Board::dim_type;
 using jump_list = Board::jump_list;
 
 //
@@ -57,14 +56,14 @@ const jump_list Board::JUMP_KING = {
 //
 Board::Board()
   : mRows(INIT_BOARD),
-    mColor(PieceColor::WHITE) {}
+    mColor(Color::W) {}
 
 //
 // constructor with list of pieces
 //
 Board::Board
   (const std::vector<Square> &squareList,
-   const PieceColor color,
+   const Color color,
    const BoardInfo &boardInfo,
    const PieceMove &lastMove)
   : mRows(),
@@ -72,7 +71,7 @@ Board::Board
     mLastMove(lastMove),
     mInfo(boardInfo)
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(!squareList.empty());
 
   for (auto& sq : squareList)
@@ -88,7 +87,7 @@ Board::Board
 bool
 Board::canCastle() const noexcept
 {
-  dim_type row;
+  dim_t row;
 
   // set row to first or last
   if (isWhite(mColor)) {
@@ -102,7 +101,7 @@ Board::canCastle() const noexcept
   }
 
   // path for castling is clear
-  if (!isPieceNone(get(row, 5)) || !isPieceNone(get(row, 6)))
+  if (!notPiece(get(row, 5)) || !notPiece(get(row, 6)))
     return false;
 
   // no checks on path to castle
@@ -118,7 +117,7 @@ Board::canCastle() const noexcept
 bool
 Board::canCastleLong() const noexcept
 {
-  dim_type row;
+  dim_t row;
 
   // row and shift parameter for color
   if (isWhite(mColor)) {
@@ -132,7 +131,7 @@ Board::canCastleLong() const noexcept
   }
 
   // path for castling is clear
-  if (!isPieceNone(get(row, 3)) || !isPieceNone(get(row, 2)))
+  if (!notPiece(get(row, 3)) || !notPiece(get(row, 2)))
     return false;
 
   // no checks on path to castle
@@ -146,33 +145,33 @@ Board::canCastleLong() const noexcept
 // get the moves that can be made from a given square
 //
 std::vector<PieceMove>
-Board::getMoves(dim_type row, dim_type column) const
+Board::getMoves(dim_t row, dim_t column) const
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   std::vector<PieceMove> moveList;
 
   auto code = get(row, column);
 
-  if (isPieceNone(code) || !isSameColor(code, mColor))
+  if (notPiece(code) || !isSame(code, mColor))
     return moveList;
 
-  switch (getPieceCode(code)) {
-  case PieceCode::PAWN:
+  switch (getPiece(code)) {
+  case Piece::P:
     moveList = movePawn(row, column);
     break;
-  case PieceCode::KNIGHT:
+  case Piece::N:
     moveList = moveKnight(row, column);
     break;
-  case PieceCode::BISHOP:
+  case Piece::B:
     moveList = moveBishop(row, column);
     break;
-  case PieceCode::ROOK:
+  case Piece::R:
     moveList = moveRook(row, column);
     break;
-  case PieceCode::QUEEN:
+  case Piece::Q:
     moveList = moveQueen(row, column);
     break;
-  case PieceCode::KING:
+  case Piece::K:
     moveList = moveKing(row, column);
     break;
   default:
@@ -190,13 +189,13 @@ Board::getMoves(dim_type row, dim_type column) const
 std::vector<PieceMove>
 Board::getMoves() const
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
 
   std::vector<PieceMove> moveList;
 
-  for (dim_type row = 0; row < BOARD_DIM; ++row) {
-    for (dim_type col = 0; col < BOARD_DIM; ++col) {
-      if (isSameColor(get(row, col), mColor)) {
+  for (dim_t row = 0; row < BOARD_DIM; ++row) {
+    for (dim_t col = 0; col < BOARD_DIM; ++col) {
+      if (isSame(get(row, col), mColor)) {
         auto moves = getMoves(row, col);
         std::copy(moves.begin(), moves.end(), std::back_inserter(moveList));
       }
@@ -234,7 +233,7 @@ Board::makeMove(const PieceMove &pieceMove)
   auto fromCode = get(sq.row(), sq.column());
 
   // verify correct piece in square
-  assert(isSamePiece(fromCode, sq.piece()) && isSameColor(fromCode, sq.color()));
+  assert(isSame(fromCode, sq.piece()) && isSame(fromCode, sq.color()));
 
   // fetch legal moves
   auto moveList = getMoves(sq.row(), sq.column());
@@ -256,9 +255,9 @@ bool
 Board::isLastMoveOk() const noexcept
 {
   auto piece = mLastMove.fromPiece();
-  if (!isPieceNone(piece)) {
+  if (!notPiece(piece)) {
     // check that there is no piece from square where piece moved from
-    if (!isPieceNone(get(mLastMove.fromRow(), mLastMove.fromColumn())))
+    if (!notPiece(get(mLastMove.fromRow(), mLastMove.fromColumn())))
       return false;
 
     if (mLastMove.isCastle()) {
@@ -309,21 +308,21 @@ Board::isLastMoveOk() const noexcept
       auto pcode = get(mLastMove.toRow(), mLastMove.toColumn());
       auto pcolor = mLastMove.fromColor();
       auto ppromo = mLastMove.promoPiece();
-      if (!isSamePiece(pcode, ppromo) || !isSameColor(pcode, pcolor))
+      if (!isSame(pcode, ppromo) || !isSame(pcode, pcolor))
         return false;
     } else if (mLastMove.isEnPassant()) {
       // check there's no piece at capture square
       auto pcode = get(mLastMove.captureRow(), mLastMove.captureColumn());
-      if (!isPieceNone(pcode))
+      if (!notPiece(pcode))
         return false;
       pcode = get(mLastMove.toRow(), mLastMove.toColumn());
       auto pcolor = mLastMove.fromColor();
-      if (!isPawn(pcode) || !isSameColor(pcode, pcolor))
+      if (!isPawn(pcode) || !isSame(pcode, pcolor))
         return false;
     } else {
       auto pcode = get(mLastMove.toRow(), mLastMove.toColumn());
       auto pcolor = mLastMove.fromColor();
-      if (!isSamePiece(pcode, piece) || !isSameColor(pcode, pcolor))
+      if (!isSame(pcode, piece) || !isSame(pcode, pcolor))
         return false;
     }
   }
@@ -335,8 +334,8 @@ Board::isLastMoveOk() const noexcept
 // valid jump positions from a given row and column
 //
 jump_list Board::jump
-  (dim_type row,
-   dim_type column,
+  (dim_t row,
+   dim_t column,
    const jump_list &positions) const
 {
   assert(inBoard(row, column));
@@ -356,9 +355,9 @@ jump_list Board::jump
 // is it check from a pawn
 //
 bool
-Board::isCheckPawn(dim_type row, dim_type column) const noexcept
+Board::isCheckPawn(dim_t row, dim_t column) const noexcept
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(inBoard(row, column));
 
   if (isWhite(mColor)) {
@@ -398,15 +397,15 @@ Board::isCheckPawn(dim_type row, dim_type column) const noexcept
 // is there check from a knight
 //
 bool
-Board::isCheckKnight(dim_type row, dim_type column) const
+Board::isCheckKnight(dim_t row, dim_t column) const
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(inBoard(row, column));
 
   auto jumpList = jump(row, column, JUMP_KNIGHT);
   for (auto& pos : jumpList) {
     auto pcode = get(pos.first, pos.second);
-    if (isKnight(pcode) && !isSameColor(pcode, mColor))
+    if (isKnight(pcode) && !isSame(pcode, mColor))
       return true;
   }
 
@@ -417,11 +416,11 @@ Board::isCheckKnight(dim_type row, dim_type column) const
 // is there a check from a bishop
 //
 bool
-Board::isCheckBishop(dim_type row, dim_type column) const noexcept
+Board::isCheckBishop(dim_t row, dim_t column) const noexcept
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(inBoard(row, column));
-  auto piece = PieceCode::BISHOP;
+  auto piece = Piece::B;
 
   return isCheckNW(row, column, piece) || isCheckSW(row, column, piece)
       || isCheckNE(row, column, piece) || isCheckSE(row, column, piece);
@@ -431,11 +430,11 @@ Board::isCheckBishop(dim_type row, dim_type column) const noexcept
 // is there a check from a rook
 //
 bool
-Board::isCheckRook(dim_type row, dim_type column) const noexcept
+Board::isCheckRook(dim_t row, dim_t column) const noexcept
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(inBoard(row, column));
-  auto piece = PieceCode::ROOK;
+  auto piece = Piece::R;
 
   return isCheckN(row, column, piece) || isCheckW(row, column, piece)
       || isCheckS(row, column, piece) || isCheckE(row, column, piece);
@@ -445,11 +444,11 @@ Board::isCheckRook(dim_type row, dim_type column) const noexcept
 // is there a check from a queen
 //
 bool
-Board::isCheckQueen(dim_type row, dim_type column) const noexcept
+Board::isCheckQueen(dim_t row, dim_t column) const noexcept
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(inBoard(row, column));
-  auto piece = PieceCode::QUEEN;
+  auto piece = Piece::Q;
 
   return isCheckN(row, column, piece) || isCheckNE(row, column, piece)
       || isCheckW(row, column, piece) || isCheckSE(row, column, piece)
@@ -461,15 +460,15 @@ Board::isCheckQueen(dim_type row, dim_type column) const noexcept
 // is there a check from the king
 //
 bool
-Board::isCheckKing(dim_type row, dim_type column) const
+Board::isCheckKing(dim_t row, dim_t column) const
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(inBoard(row, column));
 
   auto jumpList = jump(row, column, JUMP_KING);
   for (auto& pos : jumpList) {
     auto pcode = get(pos.first, pos.second);
-    if (isKing(pcode) && !isSameColor(pcode, mColor))
+    if (isKing(pcode) && !isSame(pcode, mColor))
       return true;
   }
 
@@ -480,9 +479,9 @@ Board::isCheckKing(dim_type row, dim_type column) const
 // check if king is in danger
 //
 bool
-Board::isCheck(dim_type row, dim_type column) const
+Board::isCheck(dim_t row, dim_t column) const
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(inBoard(row, column));
 
   return isCheckRook(row, column) || isCheckBishop(row, column)
@@ -494,12 +493,12 @@ Board::isCheck(dim_type row, dim_type column) const
 // check if there is an en passant at the given column
 //
 bool
-Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
+Board::isEnPassant(Color color, dim_t toColumn) const noexcept
 {
-  if (isColorNone(color))
+  if (notColor(color))
     return false;
 
-  dim_type toRow, fromRow;
+  dim_t toRow, fromRow;
   if (isWhite(color)) {
     toRow = 4;
     fromRow = 6;
@@ -509,7 +508,7 @@ Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
   }
 
   auto toCode = get(toRow, toColumn);
-  return isPawn(toCode) && !isSameColor(toCode, mColor)
+  return isPawn(toCode) && !isSame(toCode, mColor)
       && isPawn(mLastMove.fromPiece())
       && mLastMove.fromRow() == fromRow
       && mLastMove.fromColumn() == toColumn
@@ -521,27 +520,27 @@ Board::isEnPassant(PieceColor color, dim_type toColumn) const noexcept
 // Return a list of all the pawn moves.
 //
 std::vector<PieceMove>
-Board::movePawn(dim_type row, dim_type column) const
+Board::movePawn(dim_t row, dim_t column) const
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(inBoard(row, column));
   auto fromCode = get(row, column);
   assert(isPawn(fromCode));
 
   std::vector<PieceMove> moveList;
-  dim_type cmpRow;
-  std::function<bool(dim_type, dim_type)> cmpFunc;
-  std::function<dim_type(dim_type, dim_type)> rowOp;
+  dim_t cmpRow;
+  std::function<bool(dim_t, dim_t)> cmpFunc;
+  std::function<dim_t(dim_t, dim_t)> rowOp;
 
   // set handles to deal with black or white pawn move
   if (isWhite(mColor)) {
     cmpRow = 6;
-    cmpFunc = std::less<dim_type>();
-    rowOp = std::plus<dim_type>();
+    cmpFunc = std::less<dim_t>();
+    rowOp = std::plus<dim_t>();
   } else {
     cmpRow = 1;
-    cmpFunc = std::greater<dim_type>();
-    rowOp = std::minus<dim_type>();
+    cmpFunc = std::greater<dim_t>();
+    rowOp = std::minus<dim_t>();
   }
 
   // all normal moves (i.e., pawn moves one square up or down)
@@ -549,13 +548,13 @@ Board::movePawn(dim_type row, dim_type column) const
     auto toRow = rowOp(row, 1);
     // check one square straight up or down
     auto toCode = get(toRow, column);
-    if (isPieceNone(toCode))
+    if (notPiece(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, column);
     // check one square up or down, and to the left
     if (column > 0) {
       auto toCol = column-1;
       toCode = get(toRow, toCol);
-      if (!isSameColor(toCode, mColor)) {
+      if (!isSame(toCode, mColor)) {
         moveList.emplace_back(row, column, fromCode, toRow, toCol);
         moveList.back().setCapture(toRow, toCol, toCode);
       }
@@ -564,7 +563,7 @@ Board::movePawn(dim_type row, dim_type column) const
     if (column < 7) {
       auto toCol = column+1;
       toCode = get(toRow, toCol);
-      if (!isSameColor(toCode, mColor)) {
+      if (!isSame(toCode, mColor)) {
         moveList.emplace_back(row, column, fromCode, toRow, toCol);
         moveList.back().setCapture(toRow, toCol, toCode);
       }
@@ -576,9 +575,9 @@ Board::movePawn(dim_type row, dim_type column) const
 
   // two moves on first move
   if (row == cmpRow) {
-    if (isPieceNone(get(rowOp(row, 1), column))) {
+    if (notPiece(get(rowOp(row, 1), column))) {
       auto toRow = rowOp(row, 2);
-      if (isPieceNone(get(toRow, column)))
+      if (notPiece(get(toRow, column)))
         moveList.emplace_back(row, column, fromCode, toRow, column);
     }
   }
@@ -611,14 +610,14 @@ Board::movePawn(dim_type row, dim_type column) const
 
   // pawn promotion
   if (row == cmpRow) {
-    PieceCode pcArr[] = {
-      PieceCode::KNIGHT, PieceCode::BISHOP,
-      PieceCode::ROOK, PieceCode::QUEEN
+    Piece pcArr[] = {
+      Piece::N, Piece::B,
+      Piece::R, Piece::Q
     };
     auto toRow = rowOp(row, 1);
     // check one square up
     auto toCode = get(toRow, column);
-    if (isPieceNone(toCode)) {
+    if (notPiece(toCode)) {
       for (auto& pc : pcArr) {
         moveList.emplace_back(row, column, fromCode);
         moveList.back().setPromo(toRow, column, pc, mColor);
@@ -628,7 +627,7 @@ Board::movePawn(dim_type row, dim_type column) const
     if (column > 0) {
       auto toCol = column-1;
       toCode = get(toRow, toCol);
-      if (!isPieceNone(toCode) && !isSameColor(toCode, mColor)) {
+      if (!notPiece(toCode) && !isSame(toCode, mColor)) {
         for (auto& pc : pcArr) {
           moveList.emplace_back(row, column, fromCode);
           moveList.back().setCapture(toRow, toCol, toCode);
@@ -640,7 +639,7 @@ Board::movePawn(dim_type row, dim_type column) const
     if (column < 7) {
       auto toCol = column+1;
       toCode = get(toRow, toCol);
-      if (!isPieceNone(toCode) && !isSameColor(toCode, mColor)) {
+      if (!notPiece(toCode) && !isSame(toCode, mColor)) {
         for (auto& pc : pcArr) {
           moveList.emplace_back(row, column, fromCode);
           moveList.back().setCapture(toRow, toCol, toCode);
@@ -657,9 +656,9 @@ Board::movePawn(dim_type row, dim_type column) const
 // move knight
 //
 std::vector<PieceMove>
-Board::moveKnight(dim_type row, dim_type column) const
+Board::moveKnight(dim_t row, dim_t column) const
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(inBoard(row, column));
   auto fromCode = get(row, column);
   assert(isKnight(fromCode));
@@ -668,9 +667,9 @@ Board::moveKnight(dim_type row, dim_type column) const
   auto jumpList = jump(row, column, JUMP_KNIGHT);
   for (auto &pos : jumpList) {
     auto toCode = get(pos.first, pos.second);
-    if (isPieceNone(toCode))
+    if (notPiece(toCode))
       moveList.emplace_back(row, column, fromCode, pos.first, pos.second);
-    else if (!isSameColor(toCode, mColor)) {
+    else if (!isSame(toCode, mColor)) {
       moveList.emplace_back(row, column, fromCode);
       moveList.back().setCapture(pos.first, pos.second, toCode);
     }
@@ -683,9 +682,9 @@ Board::moveKnight(dim_type row, dim_type column) const
 // move bishop
 //
 std::vector<PieceMove>
-Board::moveBishop(dim_type row, dim_type column) const
+Board::moveBishop(dim_t row, dim_t column) const
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(inBoard(row, column));
   auto fromCode = get(row, column);
   assert(isBishop(fromCode));
@@ -695,9 +694,9 @@ Board::moveBishop(dim_type row, dim_type column) const
   for (auto toCol = column+1, toRow = row+1;
        toCol < BOARD_DIM && toRow < BOARD_DIM; ++toCol, ++toRow) {
     auto toCode = get(toRow, toCol);
-    if (isSameColor(toCode, mColor))
+    if (isSame(toCode, mColor))
       break;
-    else if (isColorNone(toCode))
+    else if (notColor(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, toCol);
     else {
       moveList.emplace_back(row, column, fromCode);
@@ -710,9 +709,9 @@ Board::moveBishop(dim_type row, dim_type column) const
   for (auto toCol = column+1, toRow = row-1;
        toCol < BOARD_DIM && toRow >= 0; ++toCol, --toRow) {
     auto toCode = get(toRow, toCol);
-    if (isSameColor(toCode, mColor))
+    if (isSame(toCode, mColor))
       break;
-    else if (isColorNone(toCode))
+    else if (notColor(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, toCol);
     else {
       moveList.emplace_back(row, column, fromCode);
@@ -725,9 +724,9 @@ Board::moveBishop(dim_type row, dim_type column) const
   for (auto toCol = column-1, toRow = row+1;
        toCol >= 0 && toRow < BOARD_DIM; --toCol, ++toRow) {
     auto toCode = get(toRow, toCol);
-    if (isSameColor(toCode, mColor))
+    if (isSame(toCode, mColor))
       break;
-    else if (isColorNone(toCode))
+    else if (notColor(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, toCol);
     else {
       moveList.emplace_back(row, column, fromCode);
@@ -740,9 +739,9 @@ Board::moveBishop(dim_type row, dim_type column) const
   for (auto toCol = column-1, toRow = row-1;
        toCol >= 0 && toRow >= 0; --toCol, --toRow) {
     auto toCode = get(toRow, toCol);
-    if (isSameColor(toCode, mColor))
+    if (isSame(toCode, mColor))
       break;
-    else if (isColorNone(toCode))
+    else if (notColor(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, toCol);
     else {
       moveList.emplace_back(row, column, fromCode);
@@ -758,9 +757,9 @@ Board::moveBishop(dim_type row, dim_type column) const
 // move rook
 //
 std::vector<PieceMove>
-Board::moveRook(dim_type row, dim_type column) const
+Board::moveRook(dim_t row, dim_t column) const
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(inBoard(row, column));
   auto fromCode = get(row, column);
   assert(isRook(fromCode));
@@ -769,9 +768,9 @@ Board::moveRook(dim_type row, dim_type column) const
   // check all moves right
   for (auto toCol = column+1; toCol < BOARD_DIM; ++toCol) {
     auto toCode = get(row, toCol);
-    if (isSameColor(toCode, mColor))
+    if (isSame(toCode, mColor))
       break;
-    else if (isColorNone(toCode))
+    else if (notColor(toCode))
       moveList.emplace_back(row, column, fromCode, row, toCol);
     else {
       moveList.emplace_back(row, column, fromCode, row, toCol);
@@ -783,9 +782,9 @@ Board::moveRook(dim_type row, dim_type column) const
   // check all moves left
   for (auto toCol = column-1; toCol >= 0; --toCol) {
     auto toCode = get(row, toCol);
-    if (isSameColor(toCode, mColor))
+    if (isSame(toCode, mColor))
       break;
-    else if (isColorNone(toCode))
+    else if (notColor(toCode))
       moveList.emplace_back(row, column, fromCode, row, toCol);
     else {
       moveList.emplace_back(row, column, fromCode, row, toCol);
@@ -797,9 +796,9 @@ Board::moveRook(dim_type row, dim_type column) const
   // check all moves up
   for (auto toRow = row+1; toRow < BOARD_DIM; ++toRow) {
     auto toCode = get(toRow, column);
-    if (isSameColor(toCode, mColor))
+    if (isSame(toCode, mColor))
       break;
-    else if (isColorNone(toCode))
+    else if (notColor(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, column);
     else {
       moveList.emplace_back(row, column, fromCode, toRow, column);
@@ -811,9 +810,9 @@ Board::moveRook(dim_type row, dim_type column) const
   // check all moves down
   for (auto toRow = row-1; toRow >= 0; --toRow) {
     auto toCode = get(toRow, column);
-    if (isSameColor(toCode, mColor))
+    if (isSame(toCode, mColor))
       break;
-    else if (isColorNone(toCode))
+    else if (notColor(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, column);
     else {
       moveList.emplace_back(row, column, fromCode, toRow, column);
@@ -829,9 +828,9 @@ Board::moveRook(dim_type row, dim_type column) const
 // move queen
 //
 std::vector<PieceMove>
-Board::moveQueen(dim_type row, dim_type column) const
+Board::moveQueen(dim_t row, dim_t column) const
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(inBoard(row, column));
   auto fromCode = get(row, column);
   assert(isQueen(fromCode));
@@ -840,9 +839,9 @@ Board::moveQueen(dim_type row, dim_type column) const
   // check all moves right
   for (auto toCol = column+1; toCol < BOARD_DIM; ++toCol) {
     auto toCode = get(row, toCol);
-    if (isSameColor(toCode, mColor))
+    if (isSame(toCode, mColor))
       break;
-    else if (isColorNone(toCode))
+    else if (notColor(toCode))
       moveList.emplace_back(row, column, fromCode, row, toCol);
     else {
       moveList.emplace_back(row, column, fromCode, row, toCol);
@@ -854,9 +853,9 @@ Board::moveQueen(dim_type row, dim_type column) const
   // check all moves left
   for (auto toCol = column-1; toCol >= 0; --toCol) {
     auto toCode = get(row, toCol);
-    if (isSameColor(toCode, mColor))
+    if (isSame(toCode, mColor))
       break;
-    else if (isColorNone(toCode))
+    else if (notColor(toCode))
       moveList.emplace_back(row, column, fromCode, row, toCol);
     else {
       moveList.emplace_back(row, column, fromCode, row, toCol);
@@ -868,9 +867,9 @@ Board::moveQueen(dim_type row, dim_type column) const
   // check all moves up
   for (auto toRow = row+1; toRow < BOARD_DIM; ++toRow) {
     auto toCode = get(toRow, column);
-    if (isSameColor(toCode, mColor))
+    if (isSame(toCode, mColor))
       break;
-    else if (isColorNone(toCode))
+    else if (notColor(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, column);
     else {
       moveList.emplace_back(row, column, fromCode, toRow, column);
@@ -882,9 +881,9 @@ Board::moveQueen(dim_type row, dim_type column) const
   // check all moves down
   for (auto toRow = row-1; toRow >= 0; --toRow) {
     auto toCode = get(toRow, column);
-    if (isSameColor(toCode, mColor))
+    if (isSame(toCode, mColor))
       break;
-    else if (isColorNone(toCode))
+    else if (notColor(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, column);
     else {
       moveList.emplace_back(row, column, fromCode, toRow, column);
@@ -897,9 +896,9 @@ Board::moveQueen(dim_type row, dim_type column) const
   for (auto toCol = column+1, toRow = row+1;
        toCol < BOARD_DIM && toRow < BOARD_DIM; ++toCol, ++toRow) {
     auto toCode = get(toRow, toCol);
-    if (isSameColor(toCode, mColor))
+    if (isSame(toCode, mColor))
       break;
-    else if (isColorNone(toCode))
+    else if (notColor(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, toCol);
     else {
       moveList.emplace_back(row, column, fromCode);
@@ -912,9 +911,9 @@ Board::moveQueen(dim_type row, dim_type column) const
   for (auto toCol = column+1, toRow = row-1;
        toCol < BOARD_DIM && toRow >= 0; ++toCol, --toRow) {
     auto toCode = get(toRow, toCol);
-    if (isSameColor(toCode, mColor))
+    if (isSame(toCode, mColor))
       break;
-    else if (isColorNone(toCode))
+    else if (notColor(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, toCol);
     else {
       moveList.emplace_back(row, column, fromCode);
@@ -927,9 +926,9 @@ Board::moveQueen(dim_type row, dim_type column) const
   for (auto toCol = column-1, toRow = row+1;
        toCol >= 0 && toRow < BOARD_DIM; --toCol, ++toRow) {
     auto toCode = get(toRow, toCol);
-    if (isSameColor(toCode, mColor))
+    if (isSame(toCode, mColor))
       break;
-    else if (isColorNone(toCode))
+    else if (notColor(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, toCol);
     else {
       moveList.emplace_back(row, column, fromCode);
@@ -942,9 +941,9 @@ Board::moveQueen(dim_type row, dim_type column) const
   for (auto toCol = column-1, toRow = row-1;
        toCol >= 0 && toRow >= 0; --toCol, --toRow) {
     auto toCode = get(toRow, toCol);
-    if (isSameColor(toCode, mColor))
+    if (isSame(toCode, mColor))
       break;
-    else if (isColorNone(toCode))
+    else if (notColor(toCode))
       moveList.emplace_back(row, column, fromCode, toRow, toCol);
     else {
       moveList.emplace_back(row, column, fromCode);
@@ -960,9 +959,9 @@ Board::moveQueen(dim_type row, dim_type column) const
 // move king
 //
 std::vector<PieceMove>
-Board::moveKing(dim_type row, dim_type column) const
+Board::moveKing(dim_t row, dim_t column) const
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(inBoard(row, column));
   auto fromCode = get(row, column);
   assert(isKing(fromCode));
@@ -972,9 +971,9 @@ Board::moveKing(dim_type row, dim_type column) const
   auto jumpList = jump(row, column, JUMP_KING);
   for (auto& pos : jumpList) {
     auto toCode = get(pos.first, pos.second);
-    if (isPieceNone(toCode))
+    if (notPiece(toCode))
       moveList.emplace_back(row, column, fromCode, pos.first, pos.second);
-    else if (!isSameColor(toCode, mColor)) {
+    else if (!isSame(toCode, mColor)) {
       moveList.emplace_back(row, column, fromCode);
       moveList.back().setCapture(pos.first, pos.second, toCode);
     }
@@ -1030,7 +1029,7 @@ Board::hashCode() const noexcept
 Board&
 Board::moveRef(const PieceMove &pieceMove) noexcept
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   auto toRow = pieceMove.toRow();
   auto toCol = pieceMove.toColumn();
 
@@ -1051,13 +1050,13 @@ Board::moveRef(const PieceMove &pieceMove) noexcept
 
   auto piece = pieceMove.fromPiece();
   if (isPawn(piece)) {
-    auto piece = pieceMove.isPromo() ? pieceMove.promoPiece() : PieceCode::PAWN;
+    auto piece = pieceMove.isPromo() ? pieceMove.promoPiece() : Piece::P;
     put(toRow, toCol, piece);
   } else if (isKing(piece)) {
     if (!pieceMove.isCastle() && !pieceMove.isCastleLong())
-      put(toRow, toCol, PieceCode::KING);
+      put(toRow, toCol, Piece::K);
     else if (pieceMove.isCastle()) {
-      dim_type row;
+      dim_t row;
       if (isWhite(mColor)) {
         row = 0;
         mInfo.rookH1On();
@@ -1069,10 +1068,10 @@ Board::moveRef(const PieceMove &pieceMove) noexcept
       }
       // clear the rook from corner square
       clearSq(row, 7);
-      put(row, 6, PieceCode::KING);
-      put(row, 5, PieceCode::ROOK);
+      put(row, 6, Piece::K);
+      put(row, 5, Piece::R);
     } else {  // is long castling
-      dim_type row;
+      dim_t row;
       if (isWhite(mColor)) {
         row = 0;
         mInfo.rookA1On();
@@ -1084,8 +1083,8 @@ Board::moveRef(const PieceMove &pieceMove) noexcept
       }
       // clear the rook from corner square
       clearSq(row, 0);
-      put(row, 2, PieceCode::KING);
-      put(row, 3, PieceCode::ROOK);
+      put(row, 2, Piece::K);
+      put(row, 3, Piece::R);
     }
   } else {
     put(toRow, toCol, piece);
@@ -1129,17 +1128,17 @@ Board::moveRef(const PieceMove &pieceMove) noexcept
 // is there a check in the diagonal from above and to the right
 //
 bool
-Board::isCheckNE(dim_type row, dim_type column, PieceCode piece) const noexcept
+Board::isCheckNE(dim_t row, dim_t column, Piece piece) const noexcept
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(inBoard(row, column));
 
   for (auto toRow = row+1, toCol = column+1;
        toRow < BOARD_DIM && toCol < BOARD_DIM; ++toRow, ++toCol) {
     auto toCode = get(toRow, toCol);
-    if (isColorNone(toCode))
+    if (notColor(toCode))
       continue;
-    else if (isSameColor(toCode, mColor) || !isSamePiece(toCode, piece))
+    else if (isSame(toCode, mColor) || !isSame(toCode, piece))
       break;
     else
       return true;
@@ -1152,17 +1151,17 @@ Board::isCheckNE(dim_type row, dim_type column, PieceCode piece) const noexcept
 // is there a check in the diagonal from below and to the right
 //
 bool
-Board::isCheckSE(dim_type row, dim_type column, PieceCode piece) const noexcept
+Board::isCheckSE(dim_t row, dim_t column, Piece piece) const noexcept
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(inBoard(row, column));
 
   for (auto toRow = row-1, toCol = column+1;
        toRow >= 0 && toCol < BOARD_DIM; --toRow, ++toCol) {
     auto toCode = get(toRow, toCol);
-    if (isColorNone(toCode))
+    if (notColor(toCode))
       continue;
-    else if (isSameColor(toCode, mColor) || !isSamePiece(toCode, piece))
+    else if (isSame(toCode, mColor) || !isSame(toCode, piece))
       break;
     else
       return true;
@@ -1175,17 +1174,17 @@ Board::isCheckSE(dim_type row, dim_type column, PieceCode piece) const noexcept
 // is there a check in the diagonal from below and to the left
 //
 bool
-Board::isCheckSW(dim_type row, dim_type column, PieceCode piece) const noexcept
+Board::isCheckSW(dim_t row, dim_t column, Piece piece) const noexcept
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(inBoard(row, column));
 
   for (auto toRow = row-1, toCol = column-1;
        toRow >= 0 && toCol >= 0; --toRow, --toCol) {
     auto toCode = get(toRow, toCol);
-    if (isColorNone(toCode))
+    if (notColor(toCode))
       continue;
-    else if (isSameColor(toCode, mColor) || !isSamePiece(toCode, piece))
+    else if (isSame(toCode, mColor) || !isSame(toCode, piece))
       break;
     else
       return true;
@@ -1198,17 +1197,17 @@ Board::isCheckSW(dim_type row, dim_type column, PieceCode piece) const noexcept
 // is there a check in the diagonal from above and to the left
 //
 bool
-Board::isCheckNW(dim_type row, dim_type column, PieceCode piece) const noexcept
+Board::isCheckNW(dim_t row, dim_t column, Piece piece) const noexcept
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(inBoard(row, column));
 
   for (auto toRow = row+1, toCol = column-1;
        toRow < BOARD_DIM && toCol >= 0; ++toRow, --toCol) {
     auto toCode = get(toRow, toCol);
-    if (isColorNone(toCode))
+    if (notColor(toCode))
       continue;
-    else if (isSameColor(toCode, mColor) || !isSamePiece(toCode, piece))
+    else if (isSame(toCode, mColor) || !isSame(toCode, piece))
       break;
     else
       return true;
@@ -1221,17 +1220,17 @@ Board::isCheckNW(dim_type row, dim_type column, PieceCode piece) const noexcept
 // is it check in column from above
 //
 bool
-Board::isCheckN(dim_type row, dim_type column, PieceCode piece) const noexcept
+Board::isCheckN(dim_t row, dim_t column, Piece piece) const noexcept
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(inBoard(row, column));
 
   // check against piece in colomn from above
   for (auto toRow = row+1; toRow < BOARD_DIM; ++toRow) {
     auto toCode = get(toRow, column);
-    if (isColorNone(toCode))
+    if (notColor(toCode))
       continue;
-    else if (isSameColor(toCode, mColor) || !isSamePiece(toCode, piece))
+    else if (isSame(toCode, mColor) || !isSame(toCode, piece))
       break;
     else
       return true;
@@ -1244,17 +1243,17 @@ Board::isCheckN(dim_type row, dim_type column, PieceCode piece) const noexcept
 // is it check in row from right
 //
 bool
-Board::isCheckE(dim_type row, dim_type column, PieceCode piece) const noexcept
+Board::isCheckE(dim_t row, dim_t column, Piece piece) const noexcept
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(inBoard(row, column));
 
   // check against piece in row from the right
   for (auto toCol = row+1; toCol < BOARD_DIM; ++toCol) {
     auto toCode = get(row, toCol);
-    if (isColorNone(toCode))
+    if (notColor(toCode))
       continue;
-    else if (isSameColor(toCode, mColor) || !isSamePiece(toCode, piece))
+    else if (isSame(toCode, mColor) || !isSame(toCode, piece))
       break;
     else
       return true;
@@ -1267,17 +1266,17 @@ Board::isCheckE(dim_type row, dim_type column, PieceCode piece) const noexcept
 // is it check in column from below
 //
 bool
-Board::isCheckS(dim_type row, dim_type column, PieceCode piece) const noexcept
+Board::isCheckS(dim_t row, dim_t column, Piece piece) const noexcept
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(inBoard(row, column));
 
   // check against piece in column from below
   for (auto toRow = row-1; toRow >= 0; --toRow) {
     auto toCode = get(toRow, column);
-    if (isColorNone(toCode))
+    if (notColor(toCode))
       continue;
-    else if (isSameColor(toCode, mColor) || !isSamePiece(toCode, piece))
+    else if (isSame(toCode, mColor) || !isSame(toCode, piece))
       break;
     else
       return true;
@@ -1290,17 +1289,17 @@ Board::isCheckS(dim_type row, dim_type column, PieceCode piece) const noexcept
 // is it check in row from left
 //
 bool
-Board::isCheckW(dim_type row, dim_type column, PieceCode piece) const noexcept
+Board::isCheckW(dim_t row, dim_t column, Piece piece) const noexcept
 {
-  assert(!isColorNone(mColor));
+  assert(!notColor(mColor));
   assert(inBoard(row, column));
 
   // check against piece in row from left
   for (auto toCol = row-1; toCol >= 0; --toCol) {
     auto toCode = get(row, toCol);
-    if (isColorNone(toCode))
+    if (notColor(toCode))
       continue;
-    else if (isSameColor(toCode, mColor) || !isSamePiece(toCode, piece))
+    else if (isSame(toCode, mColor) || !isSame(toCode, piece))
       break;
     else
       return true;
