@@ -1098,7 +1098,7 @@ PieceMove::otherSquare() const noexcept
 inline bool
 PieceMove::isPromo() const noexcept
 {
-  return mPromo.piece() != PieceCode::NONE;
+  return isPawn(mFrom.piece()) && !isPawn(mTo.piece());
 }
 
 //
@@ -1107,25 +1107,7 @@ PieceMove::isPromo() const noexcept
 inline bool
 PieceMove::isMate() const noexcept
 {
-  return isKing(mCapture.piece());
-}
-
-//
-// check if the move represents short castling
-//
-inline bool
-PieceMove::isCastle() const noexcept
-{
-  return mCastleInfo == 0x1;
-}
-
-//
-// check if the move represents long castling
-//
-inline bool
-PieceMove::isCastleLong() const noexcept
-{
-  return mCastleInfo == 0x2;
+  return isKing(mOther.piece());
 }
 
 //

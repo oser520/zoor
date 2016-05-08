@@ -263,6 +263,30 @@ PieceMove::doCastleLong(PieceColor color) noexcept
 }
 
 //
+// check if the move represents short castling
+//
+inline bool
+PieceMove::isCastle() const noexcept
+{
+  return isKing(mFrom.piece())
+      && isRook(mOther.piece())
+      && mFrom.color() == mOther.color()
+      && mTo.row() == 6;
+}
+
+//
+// check if the move represents long castling
+//
+inline bool
+PieceMove::isCastleLong() const noexcept
+{
+  return isKing(mFrom.piece())
+      && isRook(mOther.piece())
+      && mFrom.color() == mOther.color()
+      && mTo.row() == 2;
+}
+
+//
 // check if the move is en passant
 //
 bool
