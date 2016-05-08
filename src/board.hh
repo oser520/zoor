@@ -248,7 +248,7 @@ public:
   /// @return An iterator to the first @c Square.
   /// @throw Never throws.
   ///
-  iterator
+  const_iterator
   begin() const noexcept;
 
   ///
@@ -256,7 +256,7 @@ public:
   /// @return An iterator to one past the last @c Square in the board.
   /// @throw Never throws.
   ///
-  iterator
+  const_iterator
   end() const noexcept;
 
   ///
