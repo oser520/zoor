@@ -13,7 +13,7 @@
 //
 // zoor
 //
-#include "piececode.hh"
+#include "basictypes.hh"
 #include "piecemove.hh"
 #include "square.hh"
 
@@ -26,8 +26,8 @@ namespace {
 
 using std::ostringstream;
 using std::string;
-using zoor::PieceCode;
-using zoor::PieceColor;
+using zoor::Piece;
+using zoor::Color;
 using zoor::PieceMove;
 using zoor::Square;
 
@@ -37,23 +37,21 @@ using zoor::Square;
 TEST(PieceMove, DefaultCtor)
 {
   PieceMove pm;
-  auto sq = pm.fromSquare();
-  EXPECT_EQ(PieceCode::NONE, sq.piece());
-  EXPECT_EQ(PieceColor::NONE, sq.color());
-  EXPECT_EQ(0, sq.row());
-  EXPECT_EQ(0, sq.column());
 
-  sq = pm.captureSquare();
-  EXPECT_EQ(PieceCode::NONE, sq.piece());
-  EXPECT_EQ(PieceColor::NONE, sq.color());
-  EXPECT_EQ(0, sq.row());
-  EXPECT_EQ(0, sq.column());
+  EXPECT_EQ(Piece::NONE, pm.sPiece());
+  EXPECT_EQ(Color::NONE, pm.sColor());
+  EXPECT_EQ(0, pm.sRow());
+  EXPECT_EQ(0, pm.sColumn());
 
-  sq = pm.promoSquare();
-  EXPECT_EQ(PieceCode::NONE, sq.piece());
-  EXPECT_EQ(PieceColor::NONE, sq.color());
-  EXPECT_EQ(0, sq.row());
-  EXPECT_EQ(0, sq.column());
+  EXPECT_EQ(Piece::NONE, pm.dPiece());
+  EXPECT_EQ(Color::NONE, pm.dColor());
+  EXPECT_EQ(0, pm.dRow());
+  EXPECT_EQ(0, pm.dColumn());
+
+  EXPECT_EQ(PieceCode::NONE, pm.xPiece());
+  EXPECT_EQ(PieceColor::NONE, pm.xColor());
+  EXPECT_EQ(0, pm.xRow());
+  EXPECT_EQ(0, pm.xColumn());
 
   EXPECT_FALSE(pm.isCastle());
   EXPECT_FALSE(pm.isCastleLong());
@@ -64,24 +62,22 @@ TEST(PieceMove, DefaultCtor)
 //
 TEST(PieceMove, FourParamCtor)
 {
-  PieceMove pm(3, 5, PieceCode::ROOK, PieceColor::WHITE);
-  auto sq = pm.fromSquare();
-  EXPECT_EQ(PieceCode::ROOK, sq.piece());
-  EXPECT_EQ(PieceColor::WHITE, sq.color());
-  EXPECT_EQ(3, sq.row());
-  EXPECT_EQ(5, sq.column());
+  PieceMove pm(3, 5, Piece::R, Color::W);
 
-  sq = pm.captureSquare();
-  EXPECT_EQ(PieceCode::NONE, sq.piece());
-  EXPECT_EQ(PieceColor::NONE, sq.color());
-  EXPECT_EQ(0, sq.row());
-  EXPECT_EQ(0, sq.column());
+  EXPECT_EQ(Piece::R, pm.sPiece());
+  EXPECT_EQ(Color::W, pm.sColor());
+  EXPECT_EQ(3, pm.sRow());
+  EXPECT_EQ(5, pm.sColumn());
 
-  sq = pm.promoSquare();
-  EXPECT_EQ(PieceCode::NONE, sq.piece());
-  EXPECT_EQ(PieceColor::NONE, sq.color());
-  EXPECT_EQ(0, sq.row());
-  EXPECT_EQ(0, sq.column());
+  EXPECT_EQ(Piece::NONE, pm.dPiece());
+  EXPECT_EQ(Color::NONE, pm.dColor());
+  EXPECT_EQ(0, pm.dRow());
+  EXPECT_EQ(0, pm.dColumn());
+
+  EXPECT_EQ(Piece::NONE, pm.xPiece());
+  EXPECT_EQ(Color::NONE, pm.xColor());
+  EXPECT_EQ(0, pm.xRow());
+  EXPECT_EQ(0, pm.xColumn());
 
   EXPECT_FALSE(pm.isCastle());
   EXPECT_FALSE(pm.isCastleLong());
@@ -92,24 +88,22 @@ TEST(PieceMove, FourParamCtor)
 //
 TEST(PieceMove, ThreeParamCtor)
 {
-  PieceMove pm(3, 5, PieceColor::WHITE | PieceCode::ROOK);
-  auto sq = pm.fromSquare();
-  EXPECT_EQ(PieceCode::ROOK, sq.piece());
-  EXPECT_EQ(PieceColor::WHITE, sq.color());
-  EXPECT_EQ(3, sq.row());
-  EXPECT_EQ(5, sq.column());
+  PieceMove pm(3, 5, Color::W|Piece::R);
 
-  sq = pm.captureSquare();
-  EXPECT_EQ(PieceCode::NONE, sq.piece());
-  EXPECT_EQ(PieceColor::NONE, sq.color());
-  EXPECT_EQ(0, sq.row());
-  EXPECT_EQ(0, sq.column());
+  EXPECT_EQ(Piece::R, pm.sPiece());
+  EXPECT_EQ(Color::W, pm.sColor());
+  EXPECT_EQ(3, pm.sRow());
+  EXPECT_EQ(5, pm.sColumn());
 
-  sq = pm.promoSquare();
-  EXPECT_EQ(PieceCode::NONE, sq.piece());
-  EXPECT_EQ(PieceColor::NONE, sq.color());
-  EXPECT_EQ(0, sq.row());
-  EXPECT_EQ(0, sq.column());
+  EXPECT_EQ(Piece::NONE, pm.dPiece());
+  EXPECT_EQ(Color::NONE, pm.dColor());
+  EXPECT_EQ(0, pm.dRow());
+  EXPECT_EQ(0, pm.dColumn());
+
+  EXPECT_EQ(Piece::NONE, pm.xPiece());
+  EXPECT_EQ(Color::NONE, pm.xColor());
+  EXPECT_EQ(0, pm.xRow());
+  EXPECT_EQ(0, pm.xColumn());
 
   EXPECT_FALSE(pm.isCastle());
   EXPECT_FALSE(pm.isCastleLong());
@@ -120,394 +114,303 @@ TEST(PieceMove, ThreeParamCtor)
 //
 TEST(PieceMove, FiveParamCtor)
 {
-  auto pcode = PieceColor::WHITE | PieceCode::ROOK;
-  PieceMove pm(3, 5, pcode, 2, 6);
+  PieceMove pm(3, 5, Color::W|Piece::R, 2, 6);
 
-  auto sq = pm.fromSquare();
-  EXPECT_EQ(PieceCode::ROOK, sq.piece());
-  EXPECT_EQ(PieceColor::WHITE, sq.color());
-  EXPECT_EQ(3, sq.row());
-  EXPECT_EQ(5, sq.column());
+  EXPECT_EQ(Piece::R, pm.sPiece());
+  EXPECT_EQ(Color::W, pm.sColor());
+  EXPECT_EQ(3, pm.sRow());
+  EXPECT_EQ(5, pm.sColumn());
 
-  sq = pm.captureSquare();
-  EXPECT_EQ(PieceCode::NONE, sq.piece());
-  EXPECT_EQ(PieceColor::NONE, sq.color());
-  EXPECT_EQ(0, sq.row());
-  EXPECT_EQ(0, sq.column());
+  EXPECT_EQ(Piece::NONE, pm.dPiece());
+  EXPECT_EQ(Color::NONE, pm.dColor());
+  EXPECT_EQ(0, pm.dRow());
+  EXPECT_EQ(0, pm.dColumn());
 
-  sq = pm.promoSquare();
-  EXPECT_EQ(PieceCode::NONE, sq.piece());
-  EXPECT_EQ(PieceColor::NONE, sq.color());
-  EXPECT_EQ(2, sq.row());
-  EXPECT_EQ(6, sq.column());
+  EXPECT_EQ(Piece::NONE, pm.xPiece());
+  EXPECT_EQ(Color::NONE, pm.xColor());
+  EXPECT_EQ(2, pm.xRow());
+  EXPECT_EQ(6, pm.xColumn());
 
   EXPECT_FALSE(pm.isCastle());
   EXPECT_FALSE(pm.isCastleLong());
 }
 
 //
-// test fromRow and fromColumn
+// test sPiece()
 //
-TEST(PieceMove, fromRowColumn)
-{
-  auto pcode = PieceColor::WHITE | PieceCode::ROOK;
-  PieceMove pm(3, 5, pcode, 2, 6);
-
-  EXPECT_EQ(3, pm.fromRow());
-  EXPECT_EQ(5, pm.fromColumn());
-}
-
-//
-// test toRow and toColumn
-//
-TEST(PieceMove, toRowColumn)
-{
-  auto pcode = PieceColor::WHITE | PieceCode::ROOK;
-  PieceMove pm(3, 5, pcode, 2, 6);
-
-  EXPECT_EQ(2, pm.toRow());
-  EXPECT_EQ(6, pm.toColumn());
-}
-
-//
-// test setPiece
-//
-TEST(PieceMove, setPiece)
+TEST(PieceMove, SPiece)
 {
   PieceMove pm;
 
-  // 4 param setPiece
-  pm.setPiece(1, 3, PieceCode::ROOK, PieceColor::WHITE);
-  EXPECT_EQ(1, pm.fromRow());
-  EXPECT_EQ(3, pm.fromColumn());
-  EXPECT_EQ(PieceCode::ROOK, pm.fromPiece());
-  EXPECT_EQ(PieceColor::WHITE, pm.fromColor());
+  // 4 param sPiece
+  pm.sPiece(1, 3, Piece::R, Color::W);
+  EXPECT_EQ(1, pm.sRow());
+  EXPECT_EQ(3, pm.sColumn());
+  EXPECT_EQ(Piece::R, pm.sPiece());
+  EXPECT_EQ(Color::W, pm.sColor());
 
-  // 3 param setPiece
-  pm.setPiece(2, 5, PieceColor::BLACK | PieceCode::KNIGHT);
-  EXPECT_EQ(2, pm.fromRow());
-  EXPECT_EQ(5, pm.fromColumn());
-  EXPECT_EQ(PieceCode::KNIGHT, pm.fromPiece());
-  EXPECT_EQ(PieceColor::BLACK, pm.fromColor());
+  // 3 param sPiece
+  pm.sPiece(2, 5, Color::B|Piece::K);
+  EXPECT_EQ(2, pm.sRow());
+  EXPECT_EQ(5, pm.sColumn());
+  EXPECT_EQ(Piece::K, pm.sPiece());
+  EXPECT_EQ(Color::B, pm.sColor());
 
-  // 2 param setPiece
-  pm.setPiece(PieceCode::QUEEN, PieceColor::WHITE);
-  EXPECT_EQ(2, pm.fromRow());
-  EXPECT_EQ(5, pm.fromColumn());
-  EXPECT_EQ(PieceCode::QUEEN, pm.fromPiece());
-  EXPECT_EQ(PieceColor::WHITE, pm.fromColor());
+  // 2 param sPiece
+  pm.sPiece(Piece::Q, Color::W);
+  EXPECT_EQ(2, pm.sRow());
+  EXPECT_EQ(5, pm.sColumn());
+  EXPECT_EQ(Piece::Q, pm.sPiece());
+  EXPECT_EQ(Color::W, pm.sColor());
 
-  // 1 param setPiece
-  pm.setPiece(PieceColor::BLACK | PieceCode::PAWN);
-  EXPECT_EQ(2, pm.fromRow());
-  EXPECT_EQ(5, pm.fromColumn());
-  EXPECT_EQ(PieceCode::PAWN, pm.fromPiece());
-  EXPECT_EQ(PieceColor::BLACK, pm.fromColor());
+  // 1 param sPiece
+  pm.sPiece(Color::B|Piece::P);
+  EXPECT_EQ(2, pm.sRow());
+  EXPECT_EQ(5, pm.sColumn());
+  EXPECT_EQ(Piece::P, pm.sPiece());
+  EXPECT_EQ(Color::B, pm.sColor());
 }
 
 //
-// test setCapture
+// test dPiece()
 //
-TEST(PieceMove, setCapture)
+TEST(PieceMove, DPiece)
 {
   PieceMove pm;
 
-  // 4 param setCapture
-  pm.setCapture(1, 3, PieceCode::ROOK, PieceColor::WHITE);
-  EXPECT_EQ(1, pm.captureRow());
-  EXPECT_EQ(3, pm.captureColumn());
-  EXPECT_EQ(PieceCode::ROOK, pm.capturePiece());
-  EXPECT_EQ(PieceColor::WHITE, pm.captureColor());
+  // 4 param dPiece
+  pm.dPiece(1, 3, Piece::R, Color::W);
+  EXPECT_EQ(1, pm.dRow());
+  EXPECT_EQ(3, pm.dColumn());
+  EXPECT_EQ(Piece::R, pm.dPiece());
+  EXPECT_EQ(Color::W, pm.dColor());
 
-  // 3 param setCapture
-  pm.setCapture(2, 5, PieceColor::BLACK | PieceCode::KNIGHT);
-  EXPECT_EQ(2, pm.captureRow());
-  EXPECT_EQ(5, pm.captureColumn());
-  EXPECT_EQ(PieceCode::KNIGHT, pm.capturePiece());
-  EXPECT_EQ(PieceColor::BLACK, pm.captureColor());
+  // 3 param dPiece
+  pm.dPiece(2, 5, Color::B|Piece::K);
+  EXPECT_EQ(2, pm.dRow());
+  EXPECT_EQ(5, pm.dColumn());
+  EXPECT_EQ(Piece::K, pm.dPiece());
+  EXPECT_EQ(Color::B, pm.dColor());
 
-  // 2 param setCapture
-  pm.setCapture(PieceCode::QUEEN, PieceColor::WHITE);
-  EXPECT_EQ(2, pm.captureRow());
-  EXPECT_EQ(5, pm.captureColumn());
-  EXPECT_EQ(PieceCode::QUEEN, pm.capturePiece());
-  EXPECT_EQ(PieceColor::WHITE, pm.captureColor());
+  // 2 param dPiece
+  pm.dPiece(Piece::Q, Color::W);
+  EXPECT_EQ(2, pm.dRow());
+  EXPECT_EQ(5, pm.dColumn());
+  EXPECT_EQ(Piece::Q, pm.dPiece());
+  EXPECT_EQ(Color::W, pm.dColor());
 
-  // 1 param setCapture
-  pm.setCapture(PieceColor::BLACK | PieceCode::PAWN);
-  EXPECT_EQ(2, pm.captureRow());
-  EXPECT_EQ(5, pm.captureColumn());
-  EXPECT_EQ(PieceCode::PAWN, pm.capturePiece());
-  EXPECT_EQ(PieceColor::BLACK, pm.captureColor());
+  // 1 param dPiece
+  pm.dPiece(Color::B|Piece::P);
+  EXPECT_EQ(2, pm.dRow());
+  EXPECT_EQ(5, pm.dColumn());
+  EXPECT_EQ(Piece::P, pm.dPiece());
+  EXPECT_EQ(Color::B, pm.dColor());
 }
 
 //
-// test setPromo
+// test xPromo()
 //
-TEST(PieceMove, setPromo)
+TEST(PieceMove, XPiece)
 {
   PieceMove pm;
 
-  // 4 param setPromo
-  pm.setPromo(1, 3, PieceCode::ROOK, PieceColor::WHITE);
-  EXPECT_EQ(1, pm.toRow());
-  EXPECT_EQ(3, pm.toColumn());
-  EXPECT_EQ(PieceCode::ROOK, pm.promoPiece());
-  EXPECT_EQ(PieceColor::WHITE, pm.promoColor());
+  // 4 param xPiece
+  pm.xPiece(1, 3, Piece::R, Color::W);
+  EXPECT_EQ(1, pm.xRow());
+  EXPECT_EQ(3, pm.xColumn());
+  EXPECT_EQ(Piece::R, pm.xPiece());
+  EXPECT_EQ(Color::W, pm.xColor());
 
-  // 3 param setPromo
-  pm.setPromo(2, 5, PieceColor::BLACK | PieceCode::KNIGHT);
-  EXPECT_EQ(2, pm.toRow());
-  EXPECT_EQ(5, pm.toColumn());
-  EXPECT_EQ(PieceCode::KNIGHT, pm.promoPiece());
-  EXPECT_EQ(PieceColor::BLACK, pm.promoColor());
+  // 3 param xPiece
+  pm.xPiece(2, 5, Color::B|Piece::K);
+  EXPECT_EQ(2, pm.xRow());
+  EXPECT_EQ(5, pm.xColumn());
+  EXPECT_EQ(Piece::K, pm.xPiece());
+  EXPECT_EQ(Color::B, pm.xColor());
 
-  // 2 param setPromo
-  pm.setPromo(PieceCode::QUEEN, PieceColor::WHITE);
-  EXPECT_EQ(2, pm.toRow());
-  EXPECT_EQ(5, pm.toColumn());
-  EXPECT_EQ(PieceCode::QUEEN, pm.promoPiece());
-  EXPECT_EQ(PieceColor::WHITE, pm.promoColor());
+  // 2 param xPiece
+  pm.xPiece(Piece::Q, Color::W);
+  EXPECT_EQ(2, pm.xRow());
+  EXPECT_EQ(5, pm.xColumn());
+  EXPECT_EQ(Piece::Q, pm.xPiece());
+  EXPECT_EQ(Color::W, pm.xColor());
 
-  // 1 param setPromo
-  pm.setPromo(PieceColor::BLACK | PieceCode::PAWN);
-  EXPECT_EQ(2, pm.toRow());
-  EXPECT_EQ(5, pm.toColumn());
-  EXPECT_EQ(PieceCode::PAWN, pm.promoPiece());
-  EXPECT_EQ(PieceColor::BLACK, pm.promoColor());
+  // 1 param xPiece
+  pm.xPiece(Color::B|Piece::P);
+  EXPECT_EQ(2, pm.xRow());
+  EXPECT_EQ(5, pm.xColumn());
+  EXPECT_EQ(Piece::P, pm.xPiece());
+  EXPECT_EQ(Color::B, pm.xColor());
 }
 
 //
-// test isCapture
+// test isCapture()
 //
-TEST(PieceMove, isCapture)
+TEST(PieceMove, IsCapture)
 {
   PieceMove pm;
   EXPECT_FALSE(pm.isCapture());
 
-  pm.setCapture(2, 5, PieceColor::BLACK | PieceCode::KNIGHT);
+  pm.xPiece(2, 5, Color::B|Piece::K);
   EXPECT_TRUE(pm.isCapture());
 }
 
 //
-// test isPromo
+// test isPromo()
 //
-TEST(PieceMove, isPromo)
+TEST(PieceMove, IsPromo)
 {
-  PieceMove pm;
+  PieceMove pm(6, 2, Color::W|Piece::P, 7, 2);
   EXPECT_FALSE(pm.isPromo());
 
-  pm.setPromo(2, 5, PieceColor::BLACK | PieceCode::KNIGHT);
+  pm.dPiece(Piece::N);
   EXPECT_TRUE(pm.isPromo());
 }
 
 //
-// test setToRow
+// test dRow()
 //
-TEST(PieceMove, setToRow)
+TEST(PieceMove, DRow)
 {
   PieceMove pm;
-  EXPECT_EQ(0, pm.toRow());
-  EXPECT_EQ(0, pm.toColumn());
+  EXPECT_EQ(0, pm.dRow());
+  EXPECT_EQ(0, pm.dColumn());
 
-  pm.setToRow(2);
-  EXPECT_EQ(2, pm.toRow());
-  EXPECT_EQ(0, pm.toColumn());
+  pm.dRow(2);
+  EXPECT_EQ(2, pm.dRow());
+  EXPECT_EQ(0, pm.dColumn());
 }
 
 //
-// test setToColumn
+// test dColumn()
 //
-TEST(PieceMove, setToColumn)
+TEST(PieceMove, DColumn)
 {
   PieceMove pm;
-  EXPECT_EQ(0, pm.toRow());
-  EXPECT_EQ(0, pm.toColumn());
+  EXPECT_EQ(0, pm.dRow());
+  EXPECT_EQ(0, pm.dColumn());
 
-  pm.setToColumn(2);
-  EXPECT_EQ(0, pm.toRow());
-  EXPECT_EQ(2, pm.toColumn());
+  pm.dColumn(2);
+  EXPECT_EQ(0, pm.dRow());
+  EXPECT_EQ(2, pm.dColumn());
 }
 
 //
-// test setGoTo
+// test dLocation()
 //
-TEST(PieceMove, setGoTo)
+TEST(PieceMove, DLocation)
 {
   PieceMove pm;
-  EXPECT_EQ(0, pm.toRow());
-  EXPECT_EQ(0, pm.toColumn());
+  EXPECT_EQ(0, pm.dRow());
+  EXPECT_EQ(0, pm.dColumn());
 
-  pm.setGoTo(2, 3);
-  EXPECT_EQ(2, pm.toRow());
-  EXPECT_EQ(3, pm.toColumn());
+  pm.dLocation(2, 3);
+  EXPECT_EQ(2, pm.dRow());
+  EXPECT_EQ(3, pm.dColumn());
 }
 
 //
 // test isMate
 //
-TEST(PieceMove, isMate)
+TEST(PieceMove, IsMate)
 {
   PieceMove pm;
   EXPECT_FALSE(pm.isMate());
 
-  pm.setCapture(PieceCode::KING, PieceColor::BLACK);
+  pm.xPiece(Piece::K, Color::B);
   EXPECT_TRUE(pm.isMate());
 }
 
 //
-// test short white castling
+// test isCatle() for white
 //
-TEST(PieceMove, shortWhiteCastle)
+TEST(PieceMove, WhiteCastling)
 {
   PieceMove pm;
+
   EXPECT_FALSE(pm.isCastle());
   EXPECT_FALSE(pm.isCastleLong());
 
-  pm.doCastle(PieceColor::WHITE);
-  // verify from squre
-  EXPECT_EQ(0, pm.fromRow());
-  EXPECT_EQ(4, pm.fromColumn());
-  EXPECT_EQ(PieceCode::KING, pm.fromPiece());
-  EXPECT_EQ(PieceColor::WHITE, pm.fromColor());
-
-  // verify destinatin square
-  EXPECT_EQ(0, pm.toRow());
-  EXPECT_EQ(6, pm.toColumn());
-  EXPECT_EQ(PieceCode::NONE, pm.promoPiece());
-  EXPECT_EQ(PieceColor::NONE, pm.promoColor());
-
-  // verify capture square
-  EXPECT_EQ(0, pm.captureRow());
-  EXPECT_EQ(0, pm.captureColumn());
-  EXPECT_EQ(PieceCode::NONE, pm.capturePiece());
-  EXPECT_EQ(PieceColor::NONE, pm.captureColor());
+  pm.sPiece(0, 4, Piece::K, Color::W);
+  pm.dPiece(0, 6, Piece::K, Color::W);
+  pm.xPiece(0, 7, Piece::R, Color::W);
 
   EXPECT_TRUE(pm.isCastle());
   EXPECT_FALSE(pm.isCastleLong());
 }
 
 //
-// test short black castling
+// test isCastle() for black
 //
-TEST(PieceMove, shortBlackCastle)
+TEST(PieceMove, BlackCastling)
 {
   PieceMove pm;
   EXPECT_FALSE(pm.isCastle());
   EXPECT_FALSE(pm.isCastleLong());
 
-  pm.doCastle(PieceColor::BLACK);
-  // verify from squre
-  EXPECT_EQ(7, pm.fromRow());
-  EXPECT_EQ(4, pm.fromColumn());
-  EXPECT_EQ(PieceCode::KING, pm.fromPiece());
-  EXPECT_EQ(PieceColor::BLACK, pm.fromColor());
-
-  // verify destinatin square
-  EXPECT_EQ(7, pm.toRow());
-  EXPECT_EQ(6, pm.toColumn());
-  EXPECT_EQ(PieceCode::NONE, pm.promoPiece());
-  EXPECT_EQ(PieceColor::NONE, pm.promoColor());
-
-  // verify capture square
-  EXPECT_EQ(0, pm.captureRow());
-  EXPECT_EQ(0, pm.captureColumn());
-  EXPECT_EQ(PieceCode::NONE, pm.capturePiece());
-  EXPECT_EQ(PieceColor::NONE, pm.captureColor());
+  pm.sPiece(7, 4, Piece::K, Color::B);
+  pm.dPiece(7, 6, Piece::K, Color::B);
+  pm.xPiece(7, 7, Piece::R, Color::B);
 
   EXPECT_TRUE(pm.isCastle());
   EXPECT_FALSE(pm.isCastleLong());
 }
 
 //
-// test long white castling
+// test isCatleLong() for white
 //
-TEST(PieceMove, longWhiteCastle)
+TEST(PieceMove, WhiteCastlingLong)
 {
   PieceMove pm;
   EXPECT_FALSE(pm.isCastle());
   EXPECT_FALSE(pm.isCastleLong());
 
-  pm.doCastleLong(PieceColor::WHITE);
-  // verify from squre
-  EXPECT_EQ(0, pm.fromRow());
-  EXPECT_EQ(4, pm.fromColumn());
-  EXPECT_EQ(PieceCode::KING, pm.fromPiece());
-  EXPECT_EQ(PieceColor::WHITE, pm.fromColor());
-
-  // verify destinatin square
-  EXPECT_EQ(0, pm.toRow());
-  EXPECT_EQ(2, pm.toColumn());
-  EXPECT_EQ(PieceCode::NONE, pm.promoPiece());
-  EXPECT_EQ(PieceColor::NONE, pm.promoColor());
-
-  // verify capture square
-  EXPECT_EQ(0, pm.captureRow());
-  EXPECT_EQ(0, pm.captureColumn());
-  EXPECT_EQ(PieceCode::NONE, pm.capturePiece());
-  EXPECT_EQ(PieceColor::NONE, pm.captureColor());
+  pm.sPiece(0, 4, Piece::K, Color::W);
+  pm.dPiece(0, 2, Piece::K, Color::W);
+  pm.xPiece(0, 0, Piece::R, Color::W);
 
   EXPECT_FALSE(pm.isCastle());
   EXPECT_TRUE(pm.isCastleLong());
 }
 
 //
-// test long black castling
+// test isCastleLong() for black
 //
-TEST(PieceMove, longBlackCastle)
+TEST(PieceMove, BlackCastlingLong)
 {
   PieceMove pm;
   EXPECT_FALSE(pm.isCastle());
   EXPECT_FALSE(pm.isCastleLong());
 
-  pm.doCastleLong(PieceColor::BLACK);
-  // verify from squre
-  EXPECT_EQ(7, pm.fromRow());
-  EXPECT_EQ(4, pm.fromColumn());
-  EXPECT_EQ(PieceCode::KING, pm.fromPiece());
-  EXPECT_EQ(PieceColor::BLACK, pm.fromColor());
-
-  // verify destinatin square
-  EXPECT_EQ(7, pm.toRow());
-  EXPECT_EQ(2, pm.toColumn());
-  EXPECT_EQ(PieceCode::NONE, pm.promoPiece());
-  EXPECT_EQ(PieceColor::NONE, pm.promoColor());
-
-  // verify capture square
-  EXPECT_EQ(0, pm.captureRow());
-  EXPECT_EQ(0, pm.captureColumn());
-  EXPECT_EQ(PieceCode::NONE, pm.capturePiece());
-  EXPECT_EQ(PieceColor::NONE, pm.captureColor());
+  pm.sPiece(7, 4, Piece::K, Color::B);
+  pm.dPiece(7, 2, Piece::K, Color::B);
+  pm.xPiece(7, 0, Piece::R, Color::B);
 
   EXPECT_FALSE(pm.isCastle());
   EXPECT_TRUE(pm.isCastleLong());
 }
 
 //
-// test isEnPassant
+// test isEnPassant()
 //
-TEST(PieceMove, isEnPassant)
+TEST(PieceMove, IsEnPassant)
 {
-  PieceMove pm(4, 5, PieceCode::PAWN, PieceColor::WHITE);
-  pm.setGoTo(5, 6);
-  pm.setCapture(4, 6, PieceCode::PAWN, PieceColor::BLACK);
-
+  PieceMove pm(4, 5, Color::W|Piece::P, 5, 6);
+  pm.xPiece(4, 6, Piece::P, Color::B);
   EXPECT_TRUE(pm.isEnPassant());
 
-  auto pcode = PieceColor::WHITE | PieceCode::ROOK;
-  PieceMove pm1(3, 5, pcode, 6, 5);
-  pm1.setCapture(PieceCode::PAWN, PieceColor::BLACK);
+  PieceMove pm1(3, 5, Color::W|Piece::R, 6, 5);
+  pm1.xPiece(Piece::P, Color::B);
   EXPECT_FALSE(pm1.isEnPassant());
 }
 
 //
 // test toString
 //
-TEST(PieceMove, toString)
+TEST(PieceMove, ToString)
 {
-  auto pcode = PieceColor::WHITE | PieceCode::ROOK;
-  PieceMove pm(3, 5, pcode, 6, 5);
-  pm.setCapture(PieceCode::PAWN, PieceColor::BLACK);
+  PieceMove pm(3, 5, Color::W|Piece::R, 6, 5);
+  pm.xPiece(Piece::P, Color::B);
 
   string s1("((ROOK, WHITE, 3, 5), (NONE, NONE, 6, 5), (PAWN, BLACK, 0, 0))");
 
@@ -517,12 +420,11 @@ TEST(PieceMove, toString)
 //
 // test hashCode
 //
-TEST(PieceMove, hashCode)
+TEST(PieceMove, HashCode)
 {
-  auto pcode = PieceColor::WHITE | PieceCode::ROOK;
-  PieceMove pm(3, 5, pcode, 6, 5);
-  pm.setCapture(PieceCode::PAWN, PieceColor::BLACK);
-  PieceMove pm1(3, 5, pcode, 6, 5);
+  PieceMove pm(3, 5, Color::W|Piece::R, 6, 5);
+  pm.xPiece(Piece::P, Color::B);
+  PieceMove pm1(3, 5, Color::W|Piece::R, 6, 5);
 
   EXPECT_NE(pm.hashCode(), pm1.hashCode());
 }
@@ -532,15 +434,14 @@ TEST(PieceMove, hashCode)
 //
 TEST(PieceMove, EqualOp)
 {
-  auto code = PieceColor::BLACK | PieceCode::ROOK;
-  PieceMove pm1(1, 2, code, 3, 3);
-  pm1.setCapture(3, 3, PieceCode::PAWN, PieceColor::WHITE);
+  PieceMove pm1(1, 2, Color::B|Piece::R, 3, 3);
+  pm1.xPiece(3, 3, Piece::P, Color::W);
   PieceMove pm2(pm1);
 
   EXPECT_TRUE(pm1 == pm2);
   EXPECT_FALSE(pm1 != pm2);
 
-  pm2.setGoTo(5, 5);
+  pm2.dLocation(5, 5);
   EXPECT_TRUE(pm1 != pm2);
   EXPECT_FALSE(pm1 == pm2);
 }
@@ -550,9 +451,9 @@ TEST(PieceMove, EqualOp)
 //
 TEST(PieceMove, OutputOp)
 {
-  PieceMove pm(1, 2, PieceCode::ROOK, PieceColor::BLACK);
-  pm.setCapture(3, 3, PieceCode::PAWN, PieceColor::WHITE);
-  pm.setGoTo(3, 3);
+  PieceMove pm(1, 2, Piece::R, Color::B);
+  pm.xPiece(3, 3, Piece::P, Color::W);
+  pm.dLocation(3, 3);
 
   ostringstream ss1, ss2;
   ss1 << "((ROOK, BLACK, 1, 2),"
