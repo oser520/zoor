@@ -117,7 +117,7 @@ public:
   /// @throw Never throws.
   ///
   piece_t
-  code() const noexcept;
+  sCode() const noexcept;
 
   ///
   /// @brief Set the piece making the move.
@@ -126,14 +126,14 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  code(piece_t piece) noexcept;
+  sCode(piece_t piece) noexcept;
 
   ///
   /// @return The piece making the move.
   /// @throw Never throws.
   ///
   Piece
-  piece() const noexcept;
+  sPiece() const noexcept;
 
   ///
   /// @brief Set the piece making the move.
@@ -142,7 +142,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  piece(Piece piece) noexcept;
+  sPiece(Piece piece) noexcept;
 
   ///
   /// @brief Sets the color and piece for the piece that is moving.
@@ -152,7 +152,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  piece(Piece piece, Color color) noexcept;
+  sPiece(Piece piece, Color color) noexcept;
 
   ///
   /// @brief Sets the information for the piece that is moving.
@@ -163,7 +163,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  piece(dim_t row, dim_t column, piece_t piece) noexcept;
+  sPiece(dim_t row, dim_t column, piece_t piece) noexcept;
 
   ///
   /// @brief Sets the information for the piece that is moving.
@@ -175,14 +175,14 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  piece(dim_t row, dim_t column, Piece piece, Color color) noexcept;
+  sPiece(dim_t row, dim_t column, Piece piece, Color color) noexcept;
 
   ///
   /// @return The color of the piece making the move.
   /// @throw Never throws.
   ///
   Color
-  color() const noexcept;
+  sColor() const noexcept;
 
   ///
   /// @brief Set the color of the piece making the move.
@@ -191,14 +191,14 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  color(Color color) noexcept;
+  sColor(Color color) noexcept;
 
   ///
   /// @return The row of the piece making the move.
   /// @throw Never throws.
   ///
   dim_t
-  row() const noexcept;
+  sRow() const noexcept;
 
   ///
   /// @brief Set the row of the piece making the move.
@@ -207,14 +207,14 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  row(dim_t row) noexcept;
+  sRow(dim_t row) noexcept;
 
   ///
   /// @return The column of the piece making the move.
   /// @throw Never throws.
   ///
   dim_t
-  column() const noexcept;
+  sColumn() const noexcept;
 
   ///
   /// @brief Set the column of the piece making the move.
@@ -223,14 +223,14 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  column(dim_t column) noexcept;
+  sColumn(dim_t column) noexcept;
 
   ///
   /// @return The row and column of the piece makin the move.
   /// @throw Never throws.
   ///
   std::pair<dim_t, dim_t>
-  location() const noexcept;
+  sLocation() const noexcept;
 
   ///
   /// @brief Set the row and column of the piece making the move.
@@ -240,14 +240,14 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  location(dim_t row, dim_t column) noexcept;
+  sLocation(dim_t row, dim_t column) noexcept;
 
   ///
   /// @return A reference to @c Square making the move.
   /// @throw Never throws.
   ///
   const Square&
-  square() const noexcept;
+  sSquare() const noexcept;
 
   ///
   /// @brief Get the piece of the square where the piece is moving to.
@@ -257,7 +257,7 @@ public:
   /// @throw Never throws.
   ///
   piece_t
-  toCode() const noexcept;
+  dCode() const noexcept;
 
   ///
   /// @brief Set the piece at the destination square.
@@ -268,14 +268,14 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  toCode(piece_t piece) noexcept;
+  dCode(piece_t piece) noexcept;
 
   ///
   /// @return The piece at the destination square.
   /// @throw Never throws.
   ///
   Piece
-  toPiece() const noexcept;
+  dPiece() const noexcept;
 
   ///
   /// @brief Set the piece at the destination square.
@@ -284,7 +284,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  toPiece(Piece piece) noexcept;
+  dPiece(Piece piece) noexcept;
 
   ///
   /// @brief Set the piece at the destination square.
@@ -294,7 +294,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  toPiece(Piece piece, Color color) noexcept;
+  dPiece(Piece piece, Color color) noexcept;
 
   ///
   /// @brief Set the piece at the destination square.
@@ -305,7 +305,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  toPiece(dim_t row, dim_t column, piece_t piece) noexcept;
+  dPiece(dim_t row, dim_t column, piece_t piece) noexcept;
 
   ///
   /// @brief Set the piece at the destination square.
@@ -317,14 +317,14 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  toPiece(dim_t row, dim_t column, Piece piece, Color color) noexcept;
+  dPiece(dim_t row, dim_t column, Piece piece, Color color) noexcept;
 
   ///
   /// @return The color of the destination piece.
   /// @throw Never throws.
   ///
   Color
-  toColor() const noexcept;
+  dColor() const noexcept;
 
   ///
   /// @brief Set the color of the destination piece.
@@ -333,14 +333,14 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  toColor(Color color) noexcept;
+  dColor(Color color) noexcept;
 
   ///
   /// @return The row of the destination square.
   /// @throw Never throws.
   ///
   dim_t
-  toRow() const noexcept;
+  dRow() const noexcept;
 
   ///
   /// @brief Set the row of the destination square.
@@ -349,14 +349,14 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  toRow(dim_t row) noexcept;
+  dRow(dim_t row) noexcept;
 
   ///
   /// @return The column of the destination square.
   /// @throw Never throws.
   ///
   dim_t
-  toColumn() const noexcept;
+  dColumn() const noexcept;
 
   ///
   /// @brief Set the column of the destination square.
@@ -365,14 +365,14 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  toColumn(dim_t column) noexcept;
+  dColumn(dim_t column) noexcept;
 
   ///
   /// @return The row and column of the destination square.
   /// @throw Never throws.
   ///
   std::pair<dim_t, dim_t>
-  toLocation() const noexcept;
+  dLocation() const noexcept;
 
   ///
   /// @brief Set the row and column of the destination square.
@@ -382,14 +382,14 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  toLocation(dim_t row, dim_t column) noexcept;
+  dLocation(dim_t row, dim_t column) noexcept;
 
   ///
   /// @return A reference to the destintion square.
   /// @throw Never throws.
   ///
   const Square&
-  toSquare() const noexcept;
+  dSquare() const noexcept;
 
   ///
   /// @brief Get the piece of the other square.
@@ -399,7 +399,7 @@ public:
   /// @throw Never throws.
   ///
   piece_t
-  otherCode() const noexcept;
+  xCode() const noexcept;
 
   ///
   /// @brief Set the other piece.
@@ -409,14 +409,14 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  otherCode(piece_t piece) noexcept;
+  xCode(piece_t piece) noexcept;
 
   ///
   /// @return The piece at the other square.
   /// @throw Never throws.
   ///
   Piece
-  otherPiece() const noexcept;
+  xPiece() const noexcept;
 
   ///
   /// @brief Set the piece at the other square.
@@ -425,7 +425,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  otherPiece(Piece piece) noexcept;
+  xPiece(Piece piece) noexcept;
 
   ///
   /// @brief Set the piece at the other square.
@@ -435,7 +435,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  otherPiece(Piece piece, Color color) noexcept;
+  xPiece(Piece piece, Color color) noexcept;
 
   ///
   /// @brief Set the piece at the other square.
@@ -446,7 +446,7 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  otherPiece(dim_t row, dim_t column, piece_t piece) noexcept;
+  xPiece(dim_t row, dim_t column, piece_t piece) noexcept;
 
   ///
   /// @brief Set the piece at the other square.
@@ -458,14 +458,14 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  otherPiece(dim_t row, dim_t column, Piece piece, Color color) noexcept;
+  xPiece(dim_t row, dim_t column, Piece piece, Color color) noexcept;
 
   ///
   /// @return The color of the other piece.
   /// @throw Never throws.
   ///
   Color
-  otherColor() const noexcept;
+  xColor() const noexcept;
 
   ///
   /// @brief Set the color of the other piece.
@@ -474,14 +474,14 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  otherColor(Color color) noexcept;
+  xColor(Color color) noexcept;
 
   ///
   /// @return The row of the other square.
   /// @throw Never throws.
   ///
   dim_t
-  otherRow() const noexcept;
+  xRow() const noexcept;
 
   ///
   /// @brief Set the row of the other square.
@@ -490,14 +490,14 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  otherRow(dim_t row) noexcept;
+  xRow(dim_t row) noexcept;
 
   ///
   /// @return The column of the other square.
   /// @throw Never throws.
   ///
   dim_t
-  otherColumn() const noexcept;
+  xColumn() const noexcept;
 
   ///
   /// @brief Set the column of the other square.
@@ -506,14 +506,14 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  otherColumn(dim_t column) noexcept;
+  xColumn(dim_t column) noexcept;
 
   ///
   /// @return The row and column of the other square.
   /// @throw Never throws.
   ///
   std::pair<dim_t, dim_t>
-  otherLocation() const noexcept;
+  xLocation() const noexcept;
 
   ///
   /// @brief Set the row and column of the other square.
@@ -523,14 +523,14 @@ public:
   /// @throw Never throws.
   ///
   PieceMove&
-  otherLocation(dim_t row, dim_t column) noexcept;
+  xLocation(dim_t row, dim_t column) noexcept;
 
   ///
   /// @return A reference to the other square.
   /// @throw Never throws.
   ///
   const Square&
-  otherSquare() const noexcept;
+  xSquare() const noexcept;
 
   ///
   /// @brief Determine if the move has resulted in a capture.
@@ -637,7 +637,7 @@ operator<<(std::ostream &os, const PieceMove &pm);
 // get piece code making move
 //
 inline piece_t
-PieceMove::code() const noexcept
+PieceMove::sCode() const noexcept
 {
   return mFrom.code();
 }
@@ -646,7 +646,7 @@ PieceMove::code() const noexcept
 // set piece code making move
 //
 inline PieceMove&
-PieceMove::code(piece_t piece) noexcept
+PieceMove::sCode(piece_t piece) noexcept
 {
   mFrom.code(piece);
   return *this;
@@ -656,7 +656,7 @@ PieceMove::code(piece_t piece) noexcept
 // get piece making move
 //
 inline Piece
-PieceMove::piece() const noexcept
+PieceMove::sPiece() const noexcept
 {
   return mFrom.piece();
 }
@@ -665,7 +665,7 @@ PieceMove::piece() const noexcept
 // set piece making move
 //
 inline PieceMove&
-PieceMove::piece(Piece piece) noexcept
+PieceMove::sPiece(Piece piece) noexcept
 {
   mFrom.piece(piece);
   return *this;
@@ -675,7 +675,7 @@ PieceMove::piece(Piece piece) noexcept
 // set color and piece making move
 //
 inline PieceMove&
-PieceMove::piece(Piece piece, Color color) noexcept
+PieceMove::sPiece(Piece piece, Color color) noexcept
 {
   mFrom.piece(piece).color(color);
   return *this;
@@ -685,7 +685,7 @@ PieceMove::piece(Piece piece, Color color) noexcept
 // set row, column, and piece making move
 //
 inline PieceMove&
-PieceMove::piece(dim_t row, dim_t column, piece_t piece) noexcept
+PieceMove::sPiece(dim_t row, dim_t column, piece_t piece) noexcept
 {
   mFrom.code(piece).location(row, column);
   return *this;
@@ -695,7 +695,7 @@ PieceMove::piece(dim_t row, dim_t column, piece_t piece) noexcept
 // set row, column, color, and piece making move
 //
 inline PieceMove&
-PieceMove::piece(dim_t row, dim_t column, Piece piece, Color color) noexcept
+PieceMove::sPiece(dim_t row, dim_t column, Piece piece, Color color) noexcept
 {
   mFrom.code(piece).color(color).location(row, column);
   return *this;
@@ -705,7 +705,7 @@ PieceMove::piece(dim_t row, dim_t column, Piece piece, Color color) noexcept
 // get the color of the piece making the move
 //
 inline Color
-PieceMove::color() const noexcept
+PieceMove::sColor() const noexcept
 {
   return mFrom.color();
 }
@@ -714,7 +714,7 @@ PieceMove::color() const noexcept
 // set the color of the piece making the move
 //
 inline PieceMove&
-PieceMove::color(Color color) noexcept
+PieceMove::sColor(Color color) noexcept
 {
   mFrom.color(color);
   return *this;
@@ -724,7 +724,7 @@ PieceMove::color(Color color) noexcept
 // get the row of the piece making the move
 //
 inline dim_t
-PieceMove::row() const noexcept
+PieceMove::sRow() const noexcept
 {
   return mFrom.row();
 }
@@ -733,7 +733,7 @@ PieceMove::row() const noexcept
 // set the row of the piece making the move
 //
 inline PieceMove&
-PieceMove::row(dim_t row) noexcept
+PieceMove::sRow(dim_t row) noexcept
 {
   mFrom.row(row);
   return *this;
@@ -743,7 +743,7 @@ PieceMove::row(dim_t row) noexcept
 // get the column of the piece making the move
 //
 inline dim_t
-PieceMove::column() const noexcept
+PieceMove::sColumn() const noexcept
 {
   return mFrom.column();
 }
@@ -752,7 +752,7 @@ PieceMove::column() const noexcept
 // set the column of the piece making the move
 //
 inline PieceMove&
-PieceMove::column(dim_t column) noexcept
+PieceMove::sColumn(dim_t column) noexcept
 {
   mFrom.column(column);
   return *this;
@@ -762,7 +762,7 @@ PieceMove::column(dim_t column) noexcept
 // get the row and column of the piece making the move
 //
 inline std::pair<dim_t, dim_t>
-PieceMove::location() const noexcept
+PieceMove::sLocation() const noexcept
 {
   return mFrom.location();
 }
@@ -771,7 +771,7 @@ PieceMove::location() const noexcept
 // set the row and column of the piece making the move
 //
 inline PieceMove&
-PieceMove::location(dim_t row, dim_t column) noexcept
+PieceMove::sLocation(dim_t row, dim_t column) noexcept
 {
   mFrom.location(row, column);
   return *this;
@@ -781,7 +781,7 @@ PieceMove::location(dim_t row, dim_t column) noexcept
 // get const ref to square making move
 //
 inline const Square&
-PieceMove::square() const noexcept
+PieceMove::sSquare() const noexcept
 {
   return mFrom;
 }
@@ -790,7 +790,7 @@ PieceMove::square() const noexcept
 // get piece code from destination square
 //
 inline piece_t
-PieceMove::toCode() const noexcept
+PieceMove::dCode() const noexcept
 {
   return mTo.code();
 }
@@ -799,7 +799,7 @@ PieceMove::toCode() const noexcept
 // set piece code making move
 //
 inline PieceMove&
-PieceMove::toCode(piece_t piece) noexcept
+PieceMove::dCode(piece_t piece) noexcept
 {
   mTo.code(piece);
   return *this;
@@ -809,7 +809,7 @@ PieceMove::toCode(piece_t piece) noexcept
 // get piece at destination square
 //
 inline Piece
-PieceMove::toPiece() const noexcept
+PieceMove::dPiece() const noexcept
 {
   return mTo.piece();
 }
@@ -818,7 +818,7 @@ PieceMove::toPiece() const noexcept
 // set piece at destination square
 //
 inline PieceMove&
-PieceMove::toPiece(Piece piece) noexcept
+PieceMove::dPiece(Piece piece) noexcept
 {
   mTo.piece(piece);
   return *this;
@@ -828,7 +828,7 @@ PieceMove::toPiece(Piece piece) noexcept
 // set color and piece at destination square
 //
 inline PieceMove&
-PieceMove::toPiece(Piece piece, Color color) noexcept
+PieceMove::dPiece(Piece piece, Color color) noexcept
 {
   mTo.piece(piece).color(color);
   return *this;
@@ -838,7 +838,7 @@ PieceMove::toPiece(Piece piece, Color color) noexcept
 // set row, column, and piece at destination square
 //
 inline PieceMove&
-PieceMove::toPiece(dim_t row, dim_t column, piece_t piece) noexcept
+PieceMove::dPiece(dim_t row, dim_t column, piece_t piece) noexcept
 {
   mTo.code(piece).location(row, column);
   return *this;
@@ -848,7 +848,7 @@ PieceMove::toPiece(dim_t row, dim_t column, piece_t piece) noexcept
 // set row, column, color, and piece at destination square
 //
 inline PieceMove&
-PieceMove::toPiece(dim_t row, dim_t column, Piece piece, Color color) noexcept
+PieceMove::dPiece(dim_t row, dim_t column, Piece piece, Color color) noexcept
 {
   mTo.code(piece).color(color).location(row, column);
   return *this;
@@ -858,7 +858,7 @@ PieceMove::toPiece(dim_t row, dim_t column, Piece piece, Color color) noexcept
 // get the color of the piece at the destination square
 //
 inline Color
-PieceMove::toColor() const noexcept
+PieceMove::dColor() const noexcept
 {
   return mTo.color();
 }
@@ -867,7 +867,7 @@ PieceMove::toColor() const noexcept
 // set the color of the piece at the destination square
 //
 inline PieceMove&
-PieceMove::toColor(Color color) noexcept
+PieceMove::dColor(Color color) noexcept
 {
   mTo.color(color);
   return *this;
@@ -877,7 +877,7 @@ PieceMove::toColor(Color color) noexcept
 // get the row of the piece at the destination square
 //
 inline dim_t
-PieceMove::toRow() const noexcept
+PieceMove::dRow() const noexcept
 {
   return mTo.row();
 }
@@ -886,7 +886,7 @@ PieceMove::toRow() const noexcept
 // set the row of the piece at the destination square
 //
 inline PieceMove&
-PieceMove::toRow(dim_t row) noexcept
+PieceMove::dRow(dim_t row) noexcept
 {
   mTo.row(row);
   return *this;
@@ -896,7 +896,7 @@ PieceMove::toRow(dim_t row) noexcept
 // get the column of the piece at the destination square
 //
 inline dim_t
-PieceMove::toColumn() const noexcept
+PieceMove::dColumn() const noexcept
 {
   return mTo.column();
 }
@@ -905,7 +905,7 @@ PieceMove::toColumn() const noexcept
 // set the column of the piece at the destination square
 //
 inline PieceMove&
-PieceMove::toColumn(dim_t column) noexcept
+PieceMove::dColumn(dim_t column) noexcept
 {
   mTo.column(column);
   return *this;
@@ -915,7 +915,7 @@ PieceMove::toColumn(dim_t column) noexcept
 // get the row and column of the piece at the destination square
 //
 inline std::pair<dim_t, dim_t>
-PieceMove::toLocation() const noexcept
+PieceMove::dLocation() const noexcept
 {
   return mTo.location();
 }
@@ -924,7 +924,7 @@ PieceMove::toLocation() const noexcept
 // set the row and column of the piece at the destination square
 //
 inline PieceMove&
-PieceMove::toLocation(dim_t row, dim_t column) noexcept
+PieceMove::dLocation(dim_t row, dim_t column) noexcept
 {
   mTo.location(row, column);
   return *this;
@@ -934,7 +934,7 @@ PieceMove::toLocation(dim_t row, dim_t column) noexcept
 // get const ref to the destination square
 //
 inline const Square&
-PieceMove::toSquare() const noexcept
+PieceMove::dSquare() const noexcept
 {
   return mTo;
 }
@@ -943,7 +943,7 @@ PieceMove::toSquare() const noexcept
 // get piece code from other square
 //
 inline piece_t
-PieceMove::otherCode() const noexcept
+PieceMove::xCode() const noexcept
 {
   return mOther.code();
 }
@@ -952,7 +952,7 @@ PieceMove::otherCode() const noexcept
 // set piece code from other square
 //
 inline PieceMove&
-PieceMove::otherCode(piece_t piece) noexcept
+PieceMove::xCode(piece_t piece) noexcept
 {
   mOther.code(piece);
   return *this;
@@ -962,7 +962,7 @@ PieceMove::otherCode(piece_t piece) noexcept
 // get piece at other square
 //
 inline Piece
-PieceMove::otherPiece() const noexcept
+PieceMove::xPiece() const noexcept
 {
   return mOther.piece();
 }
@@ -971,7 +971,7 @@ PieceMove::otherPiece() const noexcept
 // set piece at other square
 //
 inline PieceMove&
-PieceMove::otherPiece(Piece piece) noexcept
+PieceMove::xPiece(Piece piece) noexcept
 {
   mOther.piece(piece);
   return *this;
@@ -981,7 +981,7 @@ PieceMove::otherPiece(Piece piece) noexcept
 // set color and piece at other square
 //
 inline PieceMove&
-PieceMove::otherPiece(Piece piece, Color color) noexcept
+PieceMove::xPiece(Piece piece, Color color) noexcept
 {
   mOther.piece(piece).color(color);
   return *this;
@@ -991,7 +991,7 @@ PieceMove::otherPiece(Piece piece, Color color) noexcept
 // set row, column, and piece at other square
 //
 inline PieceMove&
-PieceMove::otherPiece(dim_t row, dim_t column, piece_t piece) noexcept
+PieceMove::xPiece(dim_t row, dim_t column, piece_t piece) noexcept
 {
   mOther.code(piece).location(row, column);
   return *this;
@@ -1001,7 +1001,7 @@ PieceMove::otherPiece(dim_t row, dim_t column, piece_t piece) noexcept
 // set row, column, color, and piece at other square
 //
 inline PieceMove&
-PieceMove::otherPiece(dim_t row, dim_t column, Piece piece, Color color) noexcept
+PieceMove::xPiece(dim_t row, dim_t column, Piece piece, Color color) noexcept
 {
   mOther.code(piece).color(color).location(row, column);
   return *this;
@@ -1011,7 +1011,7 @@ PieceMove::otherPiece(dim_t row, dim_t column, Piece piece, Color color) noexcep
 // get the color of the piece at the other square
 //
 inline Color
-PieceMove::otherColor() const noexcept
+PieceMove::xColor() const noexcept
 {
   return mOther.color();
 }
@@ -1020,7 +1020,7 @@ PieceMove::otherColor() const noexcept
 // set the color of the piece at the other square
 //
 inline PieceMove&
-PieceMove::otherColor(Color color) noexcept
+PieceMove::xColor(Color color) noexcept
 {
   mOther.color(color);
   return *this;
@@ -1030,7 +1030,7 @@ PieceMove::otherColor(Color color) noexcept
 // get the row of the piece at the other square
 //
 inline dim_t
-PieceMove::otherRow() const noexcept
+PieceMove::xRow() const noexcept
 {
   return mOther.row();
 }
@@ -1039,7 +1039,7 @@ PieceMove::otherRow() const noexcept
 // set the row of the piece at the other square
 //
 inline PieceMove&
-PieceMove::otherRow(dim_t row) noexcept
+PieceMove::xRow(dim_t row) noexcept
 {
   mOther.row(row);
   return *this;
@@ -1049,7 +1049,7 @@ PieceMove::otherRow(dim_t row) noexcept
 // get the column of the piece at the other square
 //
 inline dim_t
-PieceMove::otherColumn() const noexcept
+PieceMove::xColumn() const noexcept
 {
   return mOther.column();
 }
@@ -1058,7 +1058,7 @@ PieceMove::otherColumn() const noexcept
 // set the column of the piece at the other square
 //
 inline PieceMove&
-PieceMove::otherColumn(dim_t column) noexcept
+PieceMove::xColumn(dim_t column) noexcept
 {
   mOther.column(column);
   return *this;
@@ -1068,7 +1068,7 @@ PieceMove::otherColumn(dim_t column) noexcept
 // get the row and column of the piece at the other square
 //
 inline std::pair<dim_t, dim_t>
-PieceMove::otherLocation() const noexcept
+PieceMove::xLocation() const noexcept
 {
   return mOther.location();
 }
@@ -1077,7 +1077,7 @@ PieceMove::otherLocation() const noexcept
 // set the row and column of the piece at the other square
 //
 inline PieceMove&
-PieceMove::otherLocation(dim_t row, dim_t column) noexcept
+PieceMove::xLocation(dim_t row, dim_t column) noexcept
 {
   mOther.location(row, column);
   return *this;
@@ -1087,7 +1087,7 @@ PieceMove::otherLocation(dim_t row, dim_t column) noexcept
 // get const ref to the other square
 //
 inline const Square&
-PieceMove::otherSquare() const noexcept
+PieceMove::xSquare() const noexcept
 {
   return mOther;
 }
@@ -1098,7 +1098,7 @@ PieceMove::otherSquare() const noexcept
 inline bool
 PieceMove::isPromo() const noexcept
 {
-  return isPawn(mFrom.piece()) && !isPawn(mTo.piece());
+  return isPawn(sPiece()) && !isPawn(dPiece());
 }
 
 //
@@ -1107,7 +1107,7 @@ PieceMove::isPromo() const noexcept
 inline bool
 PieceMove::isMate() const noexcept
 {
-  return isKing(mOther.piece());
+  return isKing(xPiece());
 }
 
 //
