@@ -412,7 +412,7 @@ TEST(PieceMove, ToString)
   PieceMove pm(3, 5, Color::W|Piece::R, 6, 5);
   pm.xPiece(Piece::P, Color::B);
 
-  string s1("((ROOK, WHITE, 3, 5), (NONE, NONE, 6, 5), (PAWN, BLACK, 0, 0))");
+  string s1("((ROOK, WHITE, 3, 5), (ROOK, WHITE, 6, 5), (PAWN, BLACK, 0, 0))");
 
   EXPECT_EQ(s1, pm.toString());
 }
