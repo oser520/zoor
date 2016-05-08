@@ -49,16 +49,6 @@ namespace zoor {
 class Board {
 public:
   ///
-  /// @brief Alias for the type of the dimension of the @c Board.
-  ///
-  using dim_type = short;
-
-  ///
-  /// @brief Alias for the type of the row of the @c Board.
-  ///
-  using row_type = std::array<piececode_t, 8>;
-
-  ///
   /// @brief Alias for the BoardIterator.
   ///
   using iterator = BoardIterator;
