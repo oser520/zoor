@@ -539,11 +539,8 @@ private:
   bool
   isCheckW(dim_t row, dim_t column, Piece piece) const noexcept;
 
-  //
-  // The actual board, in the sense that 8 bits represent one square, and each row
-  // cotains 8 squares.
-  //
-  std::array<row_type, BOARD_DIM> mRows;
+  // the underlying board
+  BasicBoard mBoard;
 
   // Indicates the player's turn: either white or black moves.
   Color mColor;
