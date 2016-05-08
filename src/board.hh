@@ -520,6 +520,9 @@ private:
   bool
   isCheckW(dim_t row, dim_t column, Piece piece) const noexcept;
 
+  // allow us to skip scope
+  using BasicBoard::inBoard;
+
   // The underlying board.
   BasicBoard mBoard;
 
@@ -604,7 +607,7 @@ Board::lastMove() const noexcept
 inline Square
 Board::operator()(dim_t row, dim_t column) const noexcept
 {
-  assert(isInBound(row, column));
+  assert(inBoard(row, column));
   return Square(row, column, get(row, column));
 }
 
