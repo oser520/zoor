@@ -121,15 +121,15 @@ TEST(PieceMove, FiveParamCtor)
   EXPECT_EQ(3, pm.sRow());
   EXPECT_EQ(5, pm.sColumn());
 
-  EXPECT_EQ(Piece::NONE, pm.dPiece());
-  EXPECT_EQ(Color::NONE, pm.dColor());
-  EXPECT_EQ(0, pm.dRow());
-  EXPECT_EQ(0, pm.dColumn());
+  EXPECT_EQ(Piece::R, pm.dPiece());
+  EXPECT_EQ(Color::W, pm.dColor());
+  EXPECT_EQ(2, pm.dRow());
+  EXPECT_EQ(6, pm.dColumn());
 
   EXPECT_EQ(Piece::NONE, pm.xPiece());
   EXPECT_EQ(Color::NONE, pm.xColor());
-  EXPECT_EQ(2, pm.xRow());
-  EXPECT_EQ(6, pm.xColumn());
+  EXPECT_EQ(0, pm.xRow());
+  EXPECT_EQ(0, pm.xColumn());
 
   EXPECT_FALSE(pm.isCastle());
   EXPECT_FALSE(pm.isCastleLong());
