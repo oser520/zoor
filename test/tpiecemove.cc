@@ -26,8 +26,8 @@ namespace {
 
 using std::ostringstream;
 using std::string;
-using zoor::Piece;
 using zoor::Color;
+using zoor::Piece;
 using zoor::PieceMove;
 using zoor::Square;
 
