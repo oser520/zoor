@@ -1001,12 +1001,10 @@ Board::hashCode() const noexcept
   size_t h = 0;
 
   // hash the contents of board
-  for (auto &row : mRows) {
-    for (auto &c : row) {
-      h += static_cast<size_t>(c);
-      h += h << 10;
-      h ^= h >> 6;
-    }
+  for (auto &piece : mBoard) {
+    h += static_cast<size_t>(piece);
+    h += h << 10;
+    h ^= h >> 6;
   }
 
   // hash the turn to move of white or black
