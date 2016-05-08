@@ -23,6 +23,7 @@
 // zoor headers
 //
 #include "basictypes.hh"
+#include "basicboard.hh"
 #include "boardinfo.hh"
 #include "chesserror.hh"
 #include "piecemove.hh"
@@ -49,9 +50,14 @@ namespace zoor {
 class Board {
 public:
   ///
-  /// @brief Alias for the BoardIterator.
+  /// @brief The board iterator
   ///
-  using iterator = BoardIterator;
+  using iterator = BasicBoard::iterator;
+
+  ///
+  /// @brief The const board iterator
+  ///
+  using const_iterator = BasicBoard::const_iterator;
 
   ///
   /// @brief Alias for a vector of jump positions.
