@@ -48,8 +48,8 @@ TEST(PieceMove, DefaultCtor)
   EXPECT_EQ(0, pm.dRow());
   EXPECT_EQ(0, pm.dColumn());
 
-  EXPECT_EQ(PieceCode::NONE, pm.xPiece());
-  EXPECT_EQ(PieceColor::NONE, pm.xColor());
+  EXPECT_EQ(Piece::NONE, pm.xPiece());
+  EXPECT_EQ(Color::NONE, pm.xColor());
   EXPECT_EQ(0, pm.xRow());
   EXPECT_EQ(0, pm.xColumn());
 
@@ -164,7 +164,7 @@ TEST(PieceMove, SPiece)
   EXPECT_EQ(Color::W, pm.sColor());
 
   // 1 param sPiece
-  pm.sPiece(Color::B|Piece::P);
+  pm.sCode(Color::B|Piece::P);
   EXPECT_EQ(2, pm.sRow());
   EXPECT_EQ(5, pm.sColumn());
   EXPECT_EQ(Piece::P, pm.sPiece());
@@ -200,7 +200,7 @@ TEST(PieceMove, DPiece)
   EXPECT_EQ(Color::W, pm.dColor());
 
   // 1 param dPiece
-  pm.dPiece(Color::B|Piece::P);
+  pm.dCode(Color::B|Piece::P);
   EXPECT_EQ(2, pm.dRow());
   EXPECT_EQ(5, pm.dColumn());
   EXPECT_EQ(Piece::P, pm.dPiece());
@@ -208,7 +208,7 @@ TEST(PieceMove, DPiece)
 }
 
 //
-// test xPromo()
+// test xPiece()
 //
 TEST(PieceMove, XPiece)
 {
@@ -236,7 +236,7 @@ TEST(PieceMove, XPiece)
   EXPECT_EQ(Color::W, pm.xColor());
 
   // 1 param xPiece
-  pm.xPiece(Color::B|Piece::P);
+  pm.xCode(Color::B|Piece::P);
   EXPECT_EQ(2, pm.xRow());
   EXPECT_EQ(5, pm.xColumn());
   EXPECT_EQ(Piece::P, pm.xPiece());
