@@ -1096,6 +1096,15 @@ PieceMove::xSquare() const noexcept
 // does move result in promotion
 //
 inline bool
+PieceMove::isCapture() const noexcept
+{
+  return !notPiece(xPiece()) && sColor() != xColor();
+}
+
+//
+// does move result in promotion
+//
+inline bool
 PieceMove::isPromo() const noexcept
 {
   return isPawn(sPiece()) && !isPawn(dPiece());

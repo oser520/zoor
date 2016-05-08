@@ -49,7 +49,7 @@ PieceMove::PieceMove
 //
 // check if the move represents short castling
 //
-inline bool
+bool
 PieceMove::isCastle() const noexcept
 {
   return isKing(sPiece())
@@ -61,7 +61,7 @@ PieceMove::isCastle() const noexcept
 //
 // check if the move represents long castling
 //
-inline bool
+bool
 PieceMove::isCastleLong() const noexcept
 {
   return isKing(sPiece())
