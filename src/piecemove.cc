@@ -16,7 +16,7 @@
 //
 // zoor
 //
-#include "piececode.hh"
+#include "basictypes.hh"
 #include "piecemove.hh"
 #include "square.hh"
 
