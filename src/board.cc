@@ -254,14 +254,14 @@ Board::makeMove(const PieceMove &pMove)
 bool
 Board::isLastMoveOk() const noexcept
 {
-  auto piece = mLastMove.fromPiece();
+  auto piece = mLastMove.sPiece();
   if (!notPiece(piece)) {
     // check that there is no piece from square where piece moved from
-    if (!notPiece(mBoard.get(mLastMove.fromRow(), mLastMove.fromColumn())))
+    if (!notPiece(mBoard.get(mLastMove.sRow(), mLastMove.sColumn())))
       return false;
 
     if (mLastMove.isCastle()) {
-      if (isWhite(mLastMove.fromColor())) {
+      if (isWhite(mLastMove.sColor())) {
         auto pcode = mBoard.get(0, 7);
         if (!isRook(pcode) || !isWhite(pcode))
           return false;
@@ -283,7 +283,7 @@ Board::isLastMoveOk() const noexcept
           return false;
       }
     } else if (mLastMove.isCastleLong()) {
-      if (isWhite(mLastMove.fromColor())) {
+      if (isWhite(mLastMove.sColor())) {
         auto pcode = mBoard.get(0, 0);
         if (!isRook(pcode) || !isWhite(pcode))
           return false;
@@ -305,23 +305,23 @@ Board::isLastMoveOk() const noexcept
           return false;
       }
     } else if (mLastMove.isPromo()) {
-      auto pcode = mBoard.get(mLastMove.toRow(), mLastMove.toColumn());
-      auto pcolor = mLastMove.fromColor();
-      auto ppromo = mLastMove.promoPiece();
+      auto pcode = mBoard.get(mLastMove.dRow(), mLastMove.dColumn());
+      auto pcolor = mLastMove.sColor();
+      auto ppromo = mLastMove.dPiece();
       if (!isSame(pcode, ppromo) || !isSame(pcode, pcolor))
         return false;
     } else if (mLastMove.isEnPassant()) {
       // check there's no piece at capture square
-      auto pcode = mBoard.get(mLastMove.captureRow(), mLastMove.captureColumn());
+      auto pcode = mBoard.get(mLastMove.xRow(), mLastMove.xColumn());
       if (!notPiece(pcode))
         return false;
-      pcode = mBoard.get(mLastMove.toRow(), mLastMove.toColumn());
-      auto pcolor = mLastMove.fromColor();
+      pcode = mBoard.get(mLastMove.dRow(), mLastMove.dColumn());
+      auto pcolor = mLastMove.sColor();
       if (!isPawn(pcode) || !isSame(pcode, pcolor))
         return false;
     } else {
-      auto pcode = mBoard.get(mLastMove.toRow(), mLastMove.toColumn());
-      auto pcolor = mLastMove.fromColor();
+      auto pcode = mBoard.get(mLastMove.dRow(), mLastMove.dColumn());
+      auto pcolor = mLastMove.sColor();
       if (!isSame(pcode, piece) || !isSame(pcode, pcolor))
         return false;
     }
