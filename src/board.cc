@@ -8,7 +8,6 @@
 // STL
 //
 #include <algorithm>
-#include <bitset>
 #include <cassert>
 #include <functional>
 #include <ostream>

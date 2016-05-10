@@ -10,11 +10,8 @@
 // standard headers
 //
 #include <cassert>
-#include <cstdint>
 #include <functional>
-#include <iterator>
 #include <ostream>
-#include <stdexcept>
 #include <string>
 #include <vector>
 #include <utility>
