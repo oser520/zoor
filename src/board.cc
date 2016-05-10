@@ -435,10 +435,11 @@ Board::isCheckRook(dim_t row, dim_t column) const noexcept
 {
   assert(!notColor(mColor));
   assert(inBoard(row, column));
-  auto piece = Piece::R;
 
-  return isCheckN(row, column, piece) || isCheckW(row, column, piece)
-      || isCheckS(row, column, piece) || isCheckE(row, column, piece);
+  return isCheckN(row, column, Piece::R)
+      || isCheckW(row, column, Piece::R)
+      || isCheckS(row, column, Piece::R)
+      || isCheckE(row, column, Piece::R);
 }
 
 //
