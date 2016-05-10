@@ -625,19 +625,19 @@ Board::operator()(dim_t row, dim_t column) const noexcept
 //
 // iterator to the first square
 //
-inline Board::iterator
+inline Board::const_iterator
 Board::begin() const noexcept
 {
-  return iterator(*this);
+  return mBoard.begin();
 }
 
 //
 // iterator to one past the last square
 //
-inline Board::iterator
+inline Board::const_iterator
 Board::end() const noexcept
 {
-  return iterator(*this, 0);
+  return mBoard.end();
 }
 
 //
