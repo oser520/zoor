@@ -362,8 +362,8 @@ Board::isCheckPawn(dim_t row, dim_t column) const noexcept
 
   if (isWhite(mColor)) {
     auto toRow = row+1;
-    if (toRow < BOARD_DIM) {
-      if (column < BOARD_DIM-1) {
+    if (toRow < BasicBoard::DIM) {
+      if (column < BasicBoard::DIM-1) {
         auto code = mBoard.get(toRow, column+1);
         if (isPawn(code) && isBlack(code))
           return true;
@@ -377,7 +377,7 @@ Board::isCheckPawn(dim_t row, dim_t column) const noexcept
   } else {
     auto toRow = row-1;
     if (toRow >= 0) {
-      if (column < BOARD_DIM-1) {
+      if (column < BasicBoard::DIM-1) {
         auto code = mBoard.get(toRow, column+1);
         if (isPawn(code) && isWhite(code))
           return true;
