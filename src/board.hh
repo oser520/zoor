@@ -404,6 +404,18 @@ public:
   Color
   nextTurn() const noexcept;
 
+  ///
+  /// @return A const reference to the underlying king info.
+  ///
+  const BoardInfo&
+  kingInfo() const noexcept;
+
+  ///
+  /// @return A const reference to the underlying board.
+  ///
+  const BasicBoard&
+  base() const noexcept;
+
 private:
   ///
   /// @brief Make a move on a new board.
@@ -650,6 +662,25 @@ Board::nextTurn() const noexcept
 }
 
 //
+// get the info for castling rights, check on king, and mate
+//
+inline BoardInfo&
+Board::kingInfo() const noexcept
+{
+  return mInfo;
+}
+
+//
+// determine whether it is white's or black's turn to move
+//
+inline BasicBoard&
+Board::base() const noexcept
+{
+  return mBoard;
+}
+
+
+//
 // get a copy of the board after making a move
 //
 inline Board
@@ -670,8 +701,8 @@ inline bool
 operator==(const Board &board1, const Board &board2) noexcept
 {
   return board1.nextTurn() == board2.nextTurn()
-      && board1.getKingInfo() == board2.getKingInfo()
-      && board1.getBase() == board2.getBase();
+      && board1.kingInfo() == board2.kingInfo()
+      && board1.base() == board2.base();
 }
 
 //
