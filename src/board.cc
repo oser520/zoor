@@ -450,12 +450,15 @@ Board::isCheckQueen(dim_t row, dim_t column) const noexcept
 {
   assert(!notColor(mColor));
   assert(inBoard(row, column));
-  auto piece = Piece::Q;
 
-  return isCheckN(row, column, piece) || isCheckNE(row, column, piece)
-      || isCheckW(row, column, piece) || isCheckSE(row, column, piece)
-      || isCheckS(row, column, piece) || isCheckSW(row, column, piece)
-      || isCheckE(row, column, piece) || isCheckNW(row, column, piece);
+  return isCheckN(row, column, Piece::Q)
+      || isCheckNE(row, column, Piece::Q)
+      || isCheckW(row, column, Piece::Q)
+      || isCheckSE(row, column, Piece::Q)
+      || isCheckS(row, column, Piece::Q)
+      || isCheckSW(row, column, Piece::Q)
+      || isCheckE(row, column, Piece::Q)
+      || isCheckNW(row, column, Piece::Q);
 }
 
 //
