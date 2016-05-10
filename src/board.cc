@@ -1034,35 +1034,35 @@ Board::hashCode() const noexcept
 // make a move on this board
 //
 Board&
-Board::moveRef(const PieceMove &pieceMove) noexcept
+Board::moveRef(const PieceMove &pMove) noexcept
 {
   assert(!notColor(mColor));
-  auto toRow = pieceMove.toRow();
-  auto toCol = pieceMove.toColumn();
+  auto toRow = pMove.dRow();
+  auto toCol = pMove.dColumn();
 
   // clear piece from where it is moving
-  mBoard.clear(pieceMove.fromRow(), pieceMove.fromColumn());
+  mBoard.clear(pMove.sRow(), pMove.sColumn());
 
   // clear captured piece
-  if (pieceMove.isCapture()) {
-    mBoard.clear(pieceMove.captureRow(), pieceMove.captureColumn());
+  if (pMove.isCapture()) {
+    mBoard.clear(pMove.xRow(), pMove.xColumn());
     // check if it is mate
-    if (isKing(pieceMove.capturePiece())) {
-      if (isWhite(pieceMove.captureColor()))
+    if (isKing(pMove.xPiece())) {
+      if (isWhite(pMove.xColor()))
         mInfo.wkMateOn();
       else
         mInfo.bkMateOn();
     }
   }
 
-  auto piece = pieceMove.fromPiece();
+  auto piece = pMove.sPiece();
   if (isPawn(piece)) {
-    auto piece = pieceMove.isPromo() ? pieceMove.promoPiece() : Piece::P;
+    auto piece = pMove.isPromo() ? pMove.dPiece() : Piece::P;
     mBoard.put(toRow, toCol, piece);
   } else if (isKing(piece)) {
-    if (!pieceMove.isCastle() && !pieceMove.isCastleLong())
+    if (!pMove.isCastle() && !pMove.isCastleLong())
       mBoard.put(toRow, toCol, Piece::K);
-    else if (pieceMove.isCastle()) {
+    else if (pMove.isCastle()) {
       dim_t row;
       if (isWhite(mColor)) {
         row = 0;
@@ -1097,8 +1097,8 @@ Board::moveRef(const PieceMove &pieceMove) noexcept
     mBoard.put(toRow, toCol, piece);
     // set flag if a rook has moved
     if (isRook(piece)) {
-      auto row = pieceMove.fromRow();
-      auto col = pieceMove.fromColumn();
+      auto row = pMove.sRow();
+      auto col = pMove.sColumn();
       if (isWhite(mColor)) {
         if (!mInfo.rookH1() && row == 0 && col == 7)
           mInfo.rookH1On();
@@ -1123,7 +1123,7 @@ Board::moveRef(const PieceMove &pieceMove) noexcept
   }
 
   // update the last move
-  mLastMove = pieceMove;
+  mLastMove = pMove;
 
   // flip the color
   mColor = ~mColor;
