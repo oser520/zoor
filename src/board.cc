@@ -781,7 +781,7 @@ Board::moveRook(dim_t row, dim_t column) const
       moveList.emplace_back(row, column, fromCode, row, toCol);
     else {
       moveList.emplace_back(row, column, fromCode, row, toCol);
-      moveList.back().setCapture(row, toCol, toCode);
+      moveList.back().xPiece(row, toCol, toCode);
       break;
     }
   }
@@ -795,7 +795,7 @@ Board::moveRook(dim_t row, dim_t column) const
       moveList.emplace_back(row, column, fromCode, row, toCol);
     else {
       moveList.emplace_back(row, column, fromCode, row, toCol);
-      moveList.back().setCapture(row, toCol, toCode);
+      moveList.back().xPiece(row, toCol, toCode);
       break;
     }
   }
@@ -809,7 +809,7 @@ Board::moveRook(dim_t row, dim_t column) const
       moveList.emplace_back(row, column, fromCode, toRow, column);
     else {
       moveList.emplace_back(row, column, fromCode, toRow, column);
-      moveList.back().setCapture(toRow, column, toCode);
+      moveList.back().xPiece(toRow, column, toCode);
       break;
     }
   }
@@ -823,7 +823,7 @@ Board::moveRook(dim_t row, dim_t column) const
       moveList.emplace_back(row, column, fromCode, toRow, column);
     else {
       moveList.emplace_back(row, column, fromCode, toRow, column);
-      moveList.back().setCapture(toRow, column, toCode);
+      moveList.back().xPiece(toRow, column, toCode);
       break;
     }
   }
