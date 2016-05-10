@@ -982,20 +982,22 @@ Board::moveKing(dim_t row, dim_t column) const
       moveList.emplace_back(row, column, fromCode, pos.first, pos.second);
     else if (!isSame(toCode, mColor)) {
       moveList.emplace_back(row, column, fromCode);
-      moveList.back().setCapture(pos.first, pos.second, toCode);
+      moveList.back().xPiece(pos.first, pos.second, toCode);
     }
   }
 
   // short castling
   if (canCastle()) {
-    moveList.emplace_back();
-    moveList.back().doCastle(mColor);
+    auto cRow = isWhite(mColor) ? 0 : 7;
+    moveList.emplace_back(cRow, 4, Piece::K, mColor, cRow, 6);
+    moveList.back().xPiece(cRow, 7, Piece::R, mColor);
   }
 
   // long castling
   if (canCastleLong()) {
-    moveList.emplace_back();
-    moveList.back().doCastleLong(mColor);
+    auto cRow = isWhite(mColor) ? 0 : 7;
+    moveList.emplace_back(cRow, 4, Piece::K, mColor, cRow, 2);
+    moveList.back().xPiece(cRow, 0, Piece::R, mColor);
   }
 
   return moveList;
