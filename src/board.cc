@@ -489,9 +489,12 @@ Board::isCheck(dim_t row, dim_t column) const
   assert(!notColor(mColor));
   assert(inBoard(row, column));
 
-  return isCheckRook(row, column) || isCheckBishop(row, column)
-      || isCheckKing(row, column) || isCheckQueen(row, column)
-      || isCheckPawn(row, column) || isCheckKnight(row, column);
+  return isCheckRook(row, column)
+      || isCheckBishop(row, column)
+      || isCheckKing(row, column)
+      || isCheckQueen(row, column)
+      || isCheckPawn(row, column)
+      || isCheckKnight(row, column);
 }
 
 //
