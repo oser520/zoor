@@ -707,7 +707,7 @@ Board::moveBishop(dim_t row, dim_t column) const
       moveList.emplace_back(row, column, fromCode, toRow, toCol);
     else {
       moveList.emplace_back(row, column, fromCode);
-      moveList.back().setCapture(toRow, toCol, toCode);
+      moveList.back().xPiece(toRow, toCol, toCode);
       break;
     }
   }
@@ -722,7 +722,7 @@ Board::moveBishop(dim_t row, dim_t column) const
       moveList.emplace_back(row, column, fromCode, toRow, toCol);
     else {
       moveList.emplace_back(row, column, fromCode);
-      moveList.back().setCapture(toRow, toCol, toCode);
+      moveList.back().xPiece(toRow, toCol, toCode);
       break;
     }
   }
@@ -737,7 +737,7 @@ Board::moveBishop(dim_t row, dim_t column) const
       moveList.emplace_back(row, column, fromCode, toRow, toCol);
     else {
       moveList.emplace_back(row, column, fromCode);
-      moveList.back().setCapture(toRow, toCol, toCode);
+      moveList.back().xPiece(toRow, toCol, toCode);
       break;
     }
   }
@@ -752,7 +752,7 @@ Board::moveBishop(dim_t row, dim_t column) const
       moveList.emplace_back(row, column, fromCode, toRow, toCol);
     else {
       moveList.emplace_back(row, column, fromCode);
-      moveList.back().setCapture(toRow, toCol, toCode);
+      moveList.back().xPiece(toRow, toCol, toCode);
       break;
     }
   }
