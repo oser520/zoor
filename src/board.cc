@@ -420,10 +420,11 @@ Board::isCheckBishop(dim_t row, dim_t column) const noexcept
 {
   assert(!notColor(mColor));
   assert(inBoard(row, column));
-  auto piece = Piece::B;
 
-  return isCheckNW(row, column, piece) || isCheckSW(row, column, piece)
-      || isCheckNE(row, column, piece) || isCheckSE(row, column, piece);
+  return isCheckNW(row, column, Piece::B)
+      || isCheckSW(row, column, Piece::B)
+      || isCheckNE(row, column, Piece::B)
+      || isCheckSE(row, column, Piece::B);
 }
 
 //
