@@ -191,7 +191,6 @@ public:
   /// @param pieceMove The @c PieceMove.
   /// @return A reference to this @c Board.
   /// @throw Never throws.
-  /// @TODO throw exception if the move is not legal (ChessError)
   ///
   Board&
   makeMove(const PieceMove &pieceMove);
@@ -693,9 +692,6 @@ Board::moveCopy(const PieceMove &pieceMove) const
 
 //
 // compare boards for equality
-// TODO: also compare mInfo, because two boards may have the same position, but
-// the kings and rooks may be able to make different moves. Also change how the
-// hash code is computed, so that it takes mInfo into account.
 //
 inline bool
 operator==(const Board &board1, const Board &board2) noexcept
