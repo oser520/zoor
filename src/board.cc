@@ -692,7 +692,7 @@ Board::moveBishop(dim_t row, dim_t column) const
 
   // check all moves right and up
   for (auto toCol = column+1, toRow = row+1;
-       toCol < BOARD_DIM && toRow < BOARD_DIM; ++toCol, ++toRow) {
+       toCol < BasicBoard::DIM && toRow < BasicBoard::DIM; ++toCol, ++toRow) {
     auto toCode = mBoard.get(toRow, toCol);
     if (isSame(toCode, mColor))
       break;
@@ -707,7 +707,7 @@ Board::moveBishop(dim_t row, dim_t column) const
 
   // check all moves right and down
   for (auto toCol = column+1, toRow = row-1;
-       toCol < BOARD_DIM && toRow >= 0; ++toCol, --toRow) {
+       toCol < BasicBoard::DIM && toRow >= 0; ++toCol, --toRow) {
     auto toCode = mBoard.get(toRow, toCol);
     if (isSame(toCode, mColor))
       break;
@@ -722,7 +722,7 @@ Board::moveBishop(dim_t row, dim_t column) const
 
   // check all moves left and up
   for (auto toCol = column-1, toRow = row+1;
-       toCol >= 0 && toRow < BOARD_DIM; --toCol, ++toRow) {
+       toCol >= 0 && toRow < BasicBoard::DIM; --toCol, ++toRow) {
     auto toCode = mBoard.get(toRow, toCol);
     if (isSame(toCode, mColor))
       break;
@@ -766,7 +766,7 @@ Board::moveRook(dim_t row, dim_t column) const
   std::vector<PieceMove> moveList;
 
   // check all moves right
-  for (auto toCol = column+1; toCol < BOARD_DIM; ++toCol) {
+  for (auto toCol = column+1; toCol < BasicBoard::DIM; ++toCol) {
     auto toCode = mBoard.get(row, toCol);
     if (isSame(toCode, mColor))
       break;
@@ -794,7 +794,7 @@ Board::moveRook(dim_t row, dim_t column) const
   }
 
   // check all moves up
-  for (auto toRow = row+1; toRow < BOARD_DIM; ++toRow) {
+  for (auto toRow = row+1; toRow < BasicBoard::DIM; ++toRow) {
     auto toCode = mBoard.get(toRow, column);
     if (isSame(toCode, mColor))
       break;
@@ -837,7 +837,7 @@ Board::moveQueen(dim_t row, dim_t column) const
   std::vector<PieceMove> moveList;
 
   // check all moves right
-  for (auto toCol = column+1; toCol < BOARD_DIM; ++toCol) {
+  for (auto toCol = column+1; toCol < BasicBoard::DIM; ++toCol) {
     auto toCode = mBoard.get(row, toCol);
     if (isSame(toCode, mColor))
       break;
@@ -865,7 +865,7 @@ Board::moveQueen(dim_t row, dim_t column) const
   }
 
   // check all moves up
-  for (auto toRow = row+1; toRow < BOARD_DIM; ++toRow) {
+  for (auto toRow = row+1; toRow < BasicBoard::DIM; ++toRow) {
     auto toCode = mBoard.get(toRow, column);
     if (isSame(toCode, mColor))
       break;
@@ -894,7 +894,7 @@ Board::moveQueen(dim_t row, dim_t column) const
 
   // check all moves right and up
   for (auto toCol = column+1, toRow = row+1;
-       toCol < BOARD_DIM && toRow < BOARD_DIM; ++toCol, ++toRow) {
+       toCol < BasicBoard::DIM && toRow < BasicBoard::DIM; ++toCol, ++toRow) {
     auto toCode = mBoard.get(toRow, toCol);
     if (isSame(toCode, mColor))
       break;
@@ -909,7 +909,7 @@ Board::moveQueen(dim_t row, dim_t column) const
 
   // check all moves right and down
   for (auto toCol = column+1, toRow = row-1;
-       toCol < BOARD_DIM && toRow >= 0; ++toCol, --toRow) {
+       toCol < BasicBoard::DIM && toRow >= 0; ++toCol, --toRow) {
     auto toCode = mBoard.get(toRow, toCol);
     if (isSame(toCode, mColor))
       break;
@@ -924,7 +924,7 @@ Board::moveQueen(dim_t row, dim_t column) const
 
   // check all moves left and up
   for (auto toCol = column-1, toRow = row+1;
-       toCol >= 0 && toRow < BOARD_DIM; --toCol, ++toRow) {
+       toCol >= 0 && toRow < BasicBoard::DIM; --toCol, ++toRow) {
     auto toCode = mBoard.get(toRow, toCol);
     if (isSame(toCode, mColor))
       break;
@@ -1132,7 +1132,7 @@ Board::isCheckNE(dim_t row, dim_t column, Piece piece) const noexcept
   assert(inBoard(row, column));
 
   for (auto toRow = row+1, toCol = column+1;
-       toRow < BOARD_DIM && toCol < BOARD_DIM; ++toRow, ++toCol) {
+       toRow < BasicBoard::DIM && toCol < BasicBoard::DIM; ++toRow, ++toCol) {
     auto toCode = mBoard.get(toRow, toCol);
     if (notColor(toCode))
       continue;
@@ -1155,7 +1155,7 @@ Board::isCheckSE(dim_t row, dim_t column, Piece piece) const noexcept
   assert(inBoard(row, column));
 
   for (auto toRow = row-1, toCol = column+1;
-       toRow >= 0 && toCol < BOARD_DIM; --toRow, ++toCol) {
+       toRow >= 0 && toCol < BasicBoard::DIM; --toRow, ++toCol) {
     auto toCode = mBoard.get(toRow, toCol);
     if (notColor(toCode))
       continue;
@@ -1201,7 +1201,7 @@ Board::isCheckNW(dim_t row, dim_t column, Piece piece) const noexcept
   assert(inBoard(row, column));
 
   for (auto toRow = row+1, toCol = column-1;
-       toRow < BOARD_DIM && toCol >= 0; ++toRow, --toCol) {
+       toRow < BasicBoard::DIM && toCol >= 0; ++toRow, --toCol) {
     auto toCode = mBoard.get(toRow, toCol);
     if (notColor(toCode))
       continue;
@@ -1224,7 +1224,7 @@ Board::isCheckN(dim_t row, dim_t column, Piece piece) const noexcept
   assert(inBoard(row, column));
 
   // check against piece in colomn from above
-  for (auto toRow = row+1; toRow < BOARD_DIM; ++toRow) {
+  for (auto toRow = row+1; toRow < BasicBoard::DIM; ++toRow) {
     auto toCode = mBoard.get(toRow, column);
     if (notColor(toCode))
       continue;
@@ -1247,7 +1247,7 @@ Board::isCheckE(dim_t row, dim_t column, Piece piece) const noexcept
   assert(inBoard(row, column));
 
   // check against piece in row from the right
-  for (auto toCol = row+1; toCol < BOARD_DIM; ++toCol) {
+  for (auto toCol = row+1; toCol < BasicBoard::DIM; ++toCol) {
     auto toCode = mBoard.get(row, toCol);
     if (notColor(toCode))
       continue;
@@ -1315,23 +1315,24 @@ operator<<(std::ostream &os, const Board &board)
   // begin the board
   os << "{";
 
+  auto dim = BasicBoard::DIM - 1;
   // everything but the last row
-  for (size_t row = 0; row < Board::BOARD_DIM-1; ++row) {
+  for (size_t row = 0; row < dim; ++row) {
     // begin the row
     os << "{";
     // everything but last square in row
-    for (size_t col = 0; col < Board::BOARD_DIM-1; ++col)
+    for (size_t col = 0; col < dim; ++col)
       os << shortStringCode(board.get(row, col)) << ", ";
     // last square in row
-    os << shortStringCode(board.get(row, Board::BOARD_DIM-1)) << "}, ";
+    os << shortStringCode(board.get(row, dim)) << "}, ";
   }
 
   // everything but last square in last row
   os << "{";
-  for (size_t col = 0; col < Board::BOARD_DIM-1; ++col)
-      os << shortStringCode(board.get(Board::BOARD_DIM-1, col)) << ", ";
+  for (size_t col = 0; col < dim; ++col)
+      os << shortStringCode(board.get(dim, col)) << ", ";
   // handle last square in last row
-  os << shortStringCode(board.get(Board::BOARD_DIM-1, Board::BOARD_DIM-1)) << "}";
+  os << shortStringCode(board.get(dim, dim)) << "}";
 
   // close the board
   os << "}";
