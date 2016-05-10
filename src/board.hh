@@ -188,12 +188,12 @@ public:
   /// @brief Make a move on the current board.
   /// @detail This move will become the new last move. Meant to be used to take a
   /// board to a position.
-  /// @param pieceMove The @c PieceMove.
+  /// @param pMove The @c PieceMove.
   /// @return A reference to this @c Board.
   /// @throw Never throws.
   ///
   Board&
-  makeMove(const PieceMove &pieceMove);
+  makeMove(const PieceMove &pMove);
 
   ///
   /// @brief Get the last move made on this board.
@@ -419,21 +419,21 @@ private:
   ///
   /// @brief Make a move on a new board.
   /// @detail Does not affect state of this board.
-  /// @param pieceMove The @c PieceMove.
+  /// @param pMove The @c PieceMove.
   /// @return A copy of the board after the move.
   ///
   Board
-  moveCopy(const PieceMove &pieceMove) const;
+  moveCopy(const PieceMove &pMove) const;
 
   ///
   /// @brief Make a move on the board.
   /// @detail The move becomes the last move made.
-  /// @param pieceMove The @c PieceMove.
+  /// @param pMove The @c PieceMove.
   /// @return A reference to this @c Board.
   /// @throw Never throws.
   ///
   Board&
-  moveRef(const PieceMove &pieceMove) noexcept;
+  moveRef(const PieceMove &pMove) noexcept;
 
   ///
   /// @brief Determine if there is a check at the given row and column from a piece
@@ -594,10 +594,10 @@ operator!=(const Board &boar1, const Board &board2) noexcept;
 // make a move on a copy of the board
 //
 inline Board
-Board::makeMoveCopy(const PieceMove &pieceMove) const
+Board::makeMoveCopy(const PieceMove &pMove) const
 {
   Board board(*this);
-  board.makeMove(pieceMove);
+  board.makeMove(pMove);
 
   return board;
 }
@@ -683,10 +683,10 @@ Board::base() const noexcept
 // get a copy of the board after making a move
 //
 inline Board
-Board::moveCopy(const PieceMove &pieceMove) const
+Board::moveCopy(const PieceMove &pMove) const
 {
   Board board(*this);
-  board.moveRef(pieceMove);
+  board.moveRef(pMove);
   return board;
 }
 
