@@ -402,7 +402,7 @@ public:
   /// @return The color of the player whose turn it is to move.
   ///
   Color
-  colorToMove() const noexcept;
+  nextTurn() const noexcept;
 
 private:
   ///
@@ -644,7 +644,7 @@ Board::toString() const
 // determine whether it is white's or black's turn to move
 //
 inline Color
-Board::colorToMove() const noexcept
+Board::nextTurn() const noexcept
 {
   return mColor;
 }
