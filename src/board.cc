@@ -225,23 +225,25 @@ Board::getBoards() const
 // make a move on this board
 //
 Board&
-Board::makeMove(const PieceMove &pieceMove)
+Board::makeMove(const PieceMove &pMove)
 {
-  auto sq = pieceMove.fromSquare();
-  auto fromCode = mBoard.get(sq.row(), sq.column());
+  auto r = pMove.sRow();
+  auto c = pMove.sColumn();
+  auto pc = mBoard.get(r, c);
 
   // verify correct piece in square
-  assert(isSame(fromCode, sq.piece()) && isSame(fromCode, sq.color()));
+  assert(isSame(pc, pMove.sPiece()) && isSame(pc, pMove.sColor()));
 
   // fetch legal moves
-  auto moveList = getMoves(sq.row(), sq.column());
-  auto it = std::find(moveList.begin(), moveList.end(), pieceMove);
+  auto moveList = getMoves(r, c);
+  auto it = std::find(moveList.begin(), moveList.end(), pMove);
 
-  // verify move is legal
-  assert(it != moveList.end());
+  // throw error if move not legal
+  if (it == moveList.end())
+    throw ChessError("Illegal move");
 
   // make the move
-  moveRef(pieceMove);
+  moveRef(pMove);
 
   return *this;
 }
