@@ -669,8 +669,9 @@ Board::moveCopy(const PieceMove &pieceMove) const
 inline bool
 operator==(const Board &board1, const Board &board2) noexcept
 {
-  return board1.mColor == board2.mColor
-      && std::equal(board1.begin(), board1.end(), board2.begin());
+  return board1.nextTurn() == board2.nextTurn()
+      && board1.getKingInfo() == board2.getKingInfo()
+      && board1.getBase() == board2.getBase();
 }
 
 //
