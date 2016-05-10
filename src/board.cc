@@ -191,8 +191,8 @@ Board::getMoves() const
 
   std::vector<PieceMove> moveList;
 
-  for (dim_t row = 0; row < BOARD_DIM; ++row) {
-    for (dim_t col = 0; col < BOARD_DIM; ++col) {
+  for (dim_t row = 0; row < BasicBoard::DIM; ++row) {
+    for (dim_t col = 0; col < BasicBoard::DIM; ++col) {
       if (isSame(mBoard.get(row, col), mColor)) {
         auto moves = getMoves(row, col);
         std::copy(moves.begin(), moves.end(), std::back_inserter(moveList));
