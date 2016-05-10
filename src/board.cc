@@ -678,7 +678,7 @@ Board::moveKnight(dim_t row, dim_t column) const
       moveList.emplace_back(row, column, fromCode, pos.first, pos.second);
     else if (!isSame(toCode, mColor)) {
       moveList.emplace_back(row, column, fromCode);
-      moveList.back().setCapture(pos.first, pos.second, toCode);
+      moveList.back().xPiece(pos.first, pos.second, toCode);
     }
   }
 
