@@ -988,14 +988,14 @@ Board::moveKing(dim_t row, dim_t column) const
   // short castling
   if (canCastle()) {
     auto cRow = isWhite(mColor) ? 0 : 7;
-    moveList.emplace_back(cRow, 4, Piece::K, mColor, cRow, 6);
+    moveList.emplace_back(cRow, 4, mColor | Piece::K, cRow, 6);
     moveList.back().xPiece(cRow, 7, Piece::R, mColor);
   }
 
   // long castling
   if (canCastleLong()) {
     auto cRow = isWhite(mColor) ? 0 : 7;
-    moveList.emplace_back(cRow, 4, Piece::K, mColor, cRow, 2);
+    moveList.emplace_back(cRow, 4, mColor | Piece::K, cRow, 2);
     moveList.back().xPiece(cRow, 0, Piece::R, mColor);
   }
 
@@ -1325,22 +1325,22 @@ operator<<(std::ostream &os, const Board &board)
 
   auto dim = BasicBoard::DIM - 1;
   // everything but the last row
-  for (size_t row = 0; row < dim; ++row) {
+  for (dim_t row = 0; row < dim; ++row) {
     // begin the row
     os << "{";
     // everything but last square in row
-    for (size_t col = 0; col < dim; ++col)
-      os << shortStringCode(board.get(row, col)) << ", ";
+    for (dim_t col = 0; col < dim; ++col)
+      os << shortString(board(row, col).code()) << ", ";
     // last square in row
-    os << shortStringCode(board.get(row, dim)) << "}, ";
+    os << shortString(board(row, dim).code()) << "}, ";
   }
 
   // everything but last square in last row
   os << "{";
-  for (size_t col = 0; col < dim; ++col)
-      os << shortStringCode(board.get(dim, col)) << ", ";
+  for (dim_t col = 0; col < dim; ++col)
+      os << shortString(board(dim, col).code()) << ", ";
   // handle last square in last row
-  os << shortStringCode(board.get(dim, dim)) << "}";
+  os << shortString(board(dim, dim).code()) << "}";
 
   // close the board
   os << "}";
