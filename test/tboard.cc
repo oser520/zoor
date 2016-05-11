@@ -1,14 +1,25 @@
-/**
- * @file tboard.cc
- * @author Omar A Serrano
- * @date 2016-03-19
- */
+/////////////////////////////////////////////////////////////////////////////////////
+/// @file tboard.cc
+/// @author Omar A Serrano
+/// @date 2016-03-19
+/////////////////////////////////////////////////////////////////////////////////////
 
+//
+// STL
+//
 #include <string>
-#include "piececode.hh"
-#include "square.hh"
-#include "piecemove.hh"
+
+//
+// zoor
+//
+#include "basictypes.hh"
 #include "board.hh"
+#include "piecemove.hh"
+#include "square.hh"
+
+//
+// gtest
+//
 #include "gtest/gtest.h"
 
 namespace {
@@ -16,303 +27,315 @@ namespace {
 using std::ostringstream;
 using namespace zoor;
 
+//
 // test Board default ctor
+//
 TEST(Board, DefaultCtor)
 {
   Board board;
   EXPECT_FALSE(board.canCastle());
   EXPECT_FALSE(board.canCastleLong());
-  EXPECT_EQ(PieceColor::WHITE, board.colorToMove());
+  EXPECT_EQ(Color::W, board.nextTurn());
 
   auto sq = board(0, 0);
   EXPECT_EQ(0, sq.row());
   EXPECT_EQ(0, sq.column());
-  EXPECT_EQ(PieceCode::ROOK, sq.piece());
-  EXPECT_EQ(PieceColor::WHITE, sq.color());
+  EXPECT_EQ(Piece::R, sq.piece());
+  EXPECT_EQ(Color::W, sq.color());
 
   sq = board(6, 2);
   EXPECT_EQ(6, sq.row());
   EXPECT_EQ(2, sq.column());
-  EXPECT_EQ(PieceCode::PAWN, sq.piece());
-  EXPECT_EQ(PieceColor::BLACK, sq.color());
+  EXPECT_EQ(Piece::P, sq.piece());
+  EXPECT_EQ(Color::B, sq.color());
 
   sq = board(7, 2);
   EXPECT_EQ(7, sq.row());
   EXPECT_EQ(2, sq.column());
-  EXPECT_EQ(PieceCode::BISHOP, sq.piece());
-  EXPECT_EQ(PieceColor::BLACK, sq.color());
+  EXPECT_EQ(Piece::B, sq.piece());
+  EXPECT_EQ(Color::B, sq.color());
 
   sq = board(0, 3);
   EXPECT_EQ(0, sq.row());
   EXPECT_EQ(3, sq.column());
-  EXPECT_EQ(PieceCode::QUEEN, sq.piece());
-  EXPECT_EQ(PieceColor::WHITE, sq.color());
+  EXPECT_EQ(Piece::Q, sq.piece());
+  EXPECT_EQ(Color::W, sq.color());
 
   sq = board(7, 4);
   EXPECT_EQ(7, sq.row());
   EXPECT_EQ(4, sq.column());
-  EXPECT_EQ(PieceCode::KING, sq.piece());
-  EXPECT_EQ(PieceColor::BLACK, sq.color());
+  EXPECT_EQ(Piece::K, sq.piece());
+  EXPECT_EQ(Color::B, sq.color());
 
   sq = board(0, 5);
   EXPECT_EQ(0, sq.row());
   EXPECT_EQ(5, sq.column());
-  EXPECT_EQ(PieceCode::BISHOP, sq.piece());
-  EXPECT_EQ(PieceColor::WHITE, sq.color());
+  EXPECT_EQ(Piece::B, sq.piece());
+  EXPECT_EQ(Color::W, sq.color());
 
   sq = board(7, 6);
   EXPECT_EQ(7, sq.row());
   EXPECT_EQ(6, sq.column());
-  EXPECT_EQ(PieceCode::KNIGHT, sq.piece());
-  EXPECT_EQ(PieceColor::BLACK, sq.color());
+  EXPECT_EQ(Piece::K, sq.piece());
+  EXPECT_EQ(Color::B, sq.color());
 
   sq = board(0, 7);
   EXPECT_EQ(0, sq.row());
   EXPECT_EQ(7, sq.column());
-  EXPECT_EQ(PieceCode::ROOK, sq.piece());
-  EXPECT_EQ(PieceColor::WHITE, sq.color());
+  EXPECT_EQ(Piece::R, sq.piece());
+  EXPECT_EQ(Color::W, sq.color());
 
   sq = board(4, 5);
   EXPECT_EQ(4, sq.row());
   EXPECT_EQ(5, sq.column());
-  EXPECT_EQ(PieceCode::NONE, sq.piece());
-  EXPECT_EQ(PieceColor::NONE, sq.color());
+  EXPECT_EQ(Piece::NONE, sq.piece());
+  EXPECT_EQ(Color::NONE, sq.color());
 }
 
-// test isInBound
-TEST(Board, isInBound)
-{
-  EXPECT_TRUE(Board::isInBound(6));
-  EXPECT_TRUE(Board::isInBound(1,3));
-
-  EXPECT_FALSE(Board::isInBound(9));
-  EXPECT_FALSE(Board::isInBound(3, 8));
-}
-
+//
 // test canCastle
-TEST(Board, canCastle)
+//
+TEST(Board, CanCastle)
 {
   Board board;
   EXPECT_FALSE(board.canCastle());
 
-  // TODO: make different tests
-  // while on check
-  // gets on check when it moves
-  // legal move
-  // after moving king
-  // after moving rook
-  // repeat for black and white
+  // TODO
 }
 
+//
 // test canCastleLong
-TEST(Board, canCastleLong)
+//
+TEST(Board, CanCastleLong)
 {
   Board board;
   EXPECT_FALSE(board.canCastleLong());
 
-  // TODO: make different tests
-  // while on check
-  // gets on check when it moves
-  // legal move
-  // after moving king
-  // after moving rook
-  // repeat for black and white
+  // TODO
 }
 
+//
 // test getMoves with row and column specified
-// TODO: enable test
-TEST(Board, DISABLED_getMovesRowCol)
+//
+TEST(Board, DISABLED_GetMovesRowCol)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test getMoves for all moves on the board
-// TODO: enable test
-TEST(Board, DISABLED_getMoves)
+//
+TEST(Board, DISABLED_GetMoves)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test getBoards
-// TODO: enable test
-TEST(Board, DISABLED_getBoards)
+//
+TEST(Board, DISABLED_GetBoards)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test makeMoveCopy
-// TODO: enable test
-TEST(Board, DISABLED_makeMoveCopy)
+//
+TEST(Board, DISABLED_MakeMoveCopy)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test makeMove
-// TODO: enable test
-TEST(Board, DISABLED_makeMove)
+//
+TEST(Board, DISABLED_MakeMove)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test lastMove
-// TODO: enable test
-TEST(Board, DISABLED_lastMove)
+//
+TEST(Board, DISABLED_LastMove)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test operator()
-// TODO: enable test
-TEST(Board, DISABLED_callOp)
+//
+TEST(Board, DISABLED_CallOp)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test begin
-// TODO: enable test
-TEST(Board, DISABLED_begin)
+//
+TEST(Board, DISABLED_Begin)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test end
-// TODO: enable test
-TEST(Board, DISABLED_end)
+//
+TEST(Board, DISABLED_End)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test jump
-// TODO: enable test
-TEST(Board, DISABLED_jump)
+//
+TEST(Board, DISABLED_Jump)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test isCheckPawn
-// TODO: enable test
-TEST(Board, DISABLED_isCheckPawn)
+//
+TEST(Board, DISABLED_IsCheckPawn)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test isCheckKnight
-// TODO: enable test
-TEST(Board, DISABLED_isCheckKnight)
+//
+TEST(Board, DISABLED_IsCheckKnight)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test isCheckBishop
-// TODO: enable test
-TEST(Board, DISABLED_isCheckBishop)
+//
+TEST(Board, DISABLED_IsCheckBishop)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test isCheckRook
-// TODO: enable test
-TEST(Board, DISABLED_isCheckRook)
+//
+TEST(Board, DISABLED_IsCheckRook)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test isCheckQueen
-// TODO: enable test
-TEST(Board, DISABLED_isCheckQueen)
+//
+TEST(Board, DISABLED_IsCheckQueen)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test isCheckKing
-// TODO: enable test
-TEST(Board, DISABLED_isCheckKing)
+//
+TEST(Board, DISABLED_IsCheckKing)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test isCheck
-// TODO: enable test
-TEST(Board, DISABLED_isCheck)
+//
+TEST(Board, DISABLED_IsCheck)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test isEnPassant
-// TODO: enable test
-TEST(Board, DISABLED_isEnPassant)
+//
+TEST(Board, DISABLED_IsEnPassant)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test movePawn
-// TODO: enable test
-TEST(Board, DISABLED_movePawn)
+//
+TEST(Board, DISABLED_MovePawn)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test moveKnight
-// TODO: enable test
-TEST(Board, DISABLED_moveKnight)
+//
+TEST(Board, DISABLED_MoveKnight)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test moveBishop
-// TODO: enable test
-TEST(Board, DISABLED_moveBishop)
+//
+TEST(Board, DISABLED_MoveBishop)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test moveRook
-// TODO: enable test
-TEST(Board, DISABLED_moveRook)
+//
+TEST(Board, DISABLED_MoveRook)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test moveQueen
-// TODO: enable test
-TEST(Board, DISABLED_moveQueen)
+//
+TEST(Board, DISABLED_MoveQueen)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test moveKing
-// TODO: enable test
-TEST(Board, DISABLED_moveKing)
+//
+TEST(Board, DISABLED_MoveKing)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test toString
-// TODO: enable test
-TEST(Board, DISABLED_toString)
+//
+TEST(Board, DISABLED_ToString)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test hashCode
-// TODO: enable test
-TEST(Board, DISABLED_hashCode)
+//
+TEST(Board, DISABLED_HashCode)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test colorToMove
-// TODO: enable test
-TEST(Board, DISABLED_colorToMove)
+//
+TEST(Board, DISABLED_NextTurn)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
+//
 // test equality operator
-// TODO: enable test
-TEST(Board, DISABLED_EqualityOp)
+//
+TEST(Board, DISABLED_EqualOp)
 {
-  // TODO: try different scenarios
+  // TODO
 }
 
 } // anonymous namespace
