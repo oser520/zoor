@@ -527,9 +527,6 @@ private:
   bool
   isCheckW(dim_t row, dim_t column, Piece piece) const noexcept;
 
-  // allow us to skip scope
-  using BasicBoard::inBoard;
-
   // The underlying board.
   BasicBoard mBoard;
 
@@ -614,7 +611,7 @@ Board::lastMove() const noexcept
 inline Square
 Board::operator()(dim_t row, dim_t column) const noexcept
 {
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
   return Square(row, column, mBoard.get(row, column));
 }
 
@@ -660,7 +657,7 @@ Board::nextTurn() const noexcept
 //
 // get the info for castling rights, check on king, and mate
 //
-inline BoardInfo&
+inline const BoardInfo&
 Board::kingInfo() const noexcept
 {
   return mInfo;
@@ -669,7 +666,7 @@ Board::kingInfo() const noexcept
 //
 // determine whether it is white's or black's turn to move
 //
-inline BasicBoard&
+inline const BasicBoard&
 Board::base() const noexcept
 {
   return mBoard;

@@ -337,13 +337,13 @@ jump_list Board::jump
    dim_t column,
    const jump_list &positions) const
 {
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
   jump_list jumpList;
 
   for (auto& pos : positions) {
     auto toRow = row + pos.first;
     auto toCol = column + pos.second;
-    if (inBoard(toRow, toCol))
+    if (BasicBoard::inBoard(toRow, toCol))
       jumpList.emplace_back(toRow, toCol);
   }
 
@@ -357,7 +357,7 @@ bool
 Board::isCheckPawn(dim_t row, dim_t column) const noexcept
 {
   assert(!notColor(mColor));
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
 
   if (isWhite(mColor)) {
     auto toRow = row+1;
@@ -399,7 +399,7 @@ bool
 Board::isCheckKnight(dim_t row, dim_t column) const
 {
   assert(!notColor(mColor));
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
 
   auto jumpList = jump(row, column, JUMP_KNIGHT);
   for (auto& pos : jumpList) {
@@ -418,7 +418,7 @@ bool
 Board::isCheckBishop(dim_t row, dim_t column) const noexcept
 {
   assert(!notColor(mColor));
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
 
   return isCheckNW(row, column, Piece::B)
       || isCheckSW(row, column, Piece::B)
@@ -433,7 +433,7 @@ bool
 Board::isCheckRook(dim_t row, dim_t column) const noexcept
 {
   assert(!notColor(mColor));
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
 
   return isCheckN(row, column, Piece::R)
       || isCheckW(row, column, Piece::R)
@@ -448,7 +448,7 @@ bool
 Board::isCheckQueen(dim_t row, dim_t column) const noexcept
 {
   assert(!notColor(mColor));
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
 
   return isCheckN(row, column, Piece::Q)
       || isCheckNE(row, column, Piece::Q)
@@ -467,7 +467,7 @@ bool
 Board::isCheckKing(dim_t row, dim_t column) const
 {
   assert(!notColor(mColor));
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
 
   auto jumpList = jump(row, column, JUMP_KING);
   for (auto& pos : jumpList) {
@@ -486,7 +486,7 @@ bool
 Board::isCheck(dim_t row, dim_t column) const
 {
   assert(!notColor(mColor));
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
 
   return isCheckRook(row, column)
       || isCheckBishop(row, column)
@@ -530,7 +530,7 @@ std::vector<PieceMove>
 Board::movePawn(dim_t row, dim_t column) const
 {
   assert(!notColor(mColor));
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
   auto fromCode = mBoard.get(row, column);
   assert(isPawn(fromCode));
 
@@ -665,7 +665,7 @@ std::vector<PieceMove>
 Board::moveKnight(dim_t row, dim_t column) const
 {
   assert(!notColor(mColor));
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
   auto fromCode = mBoard.get(row, column);
   assert(isKnight(fromCode));
   std::vector<PieceMove> moveList;
@@ -691,7 +691,7 @@ std::vector<PieceMove>
 Board::moveBishop(dim_t row, dim_t column) const
 {
   assert(!notColor(mColor));
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
   auto fromCode = mBoard.get(row, column);
   assert(isBishop(fromCode));
   std::vector<PieceMove> moveList;
@@ -766,7 +766,7 @@ std::vector<PieceMove>
 Board::moveRook(dim_t row, dim_t column) const
 {
   assert(!notColor(mColor));
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
   auto fromCode = mBoard.get(row, column);
   assert(isRook(fromCode));
   std::vector<PieceMove> moveList;
@@ -837,7 +837,7 @@ std::vector<PieceMove>
 Board::moveQueen(dim_t row, dim_t column) const
 {
   assert(!notColor(mColor));
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
   auto fromCode = mBoard.get(row, column);
   assert(isQueen(fromCode));
   std::vector<PieceMove> moveList;
@@ -968,7 +968,7 @@ std::vector<PieceMove>
 Board::moveKing(dim_t row, dim_t column) const
 {
   assert(!notColor(mColor));
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
   auto fromCode = mBoard.get(row, column);
   assert(isKing(fromCode));
   std::vector<PieceMove> moveList;
@@ -1137,7 +1137,7 @@ bool
 Board::isCheckNE(dim_t row, dim_t column, Piece piece) const noexcept
 {
   assert(!notColor(mColor));
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
 
   for (auto toRow = row+1, toCol = column+1;
        toRow < BasicBoard::DIM && toCol < BasicBoard::DIM; ++toRow, ++toCol) {
@@ -1160,7 +1160,7 @@ bool
 Board::isCheckSE(dim_t row, dim_t column, Piece piece) const noexcept
 {
   assert(!notColor(mColor));
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
 
   for (auto toRow = row-1, toCol = column+1;
        toRow >= 0 && toCol < BasicBoard::DIM; --toRow, ++toCol) {
@@ -1183,7 +1183,7 @@ bool
 Board::isCheckSW(dim_t row, dim_t column, Piece piece) const noexcept
 {
   assert(!notColor(mColor));
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
 
   for (auto toRow = row-1, toCol = column-1;
        toRow >= 0 && toCol >= 0; --toRow, --toCol) {
@@ -1206,7 +1206,7 @@ bool
 Board::isCheckNW(dim_t row, dim_t column, Piece piece) const noexcept
 {
   assert(!notColor(mColor));
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
 
   for (auto toRow = row+1, toCol = column-1;
        toRow < BasicBoard::DIM && toCol >= 0; ++toRow, --toCol) {
@@ -1229,7 +1229,7 @@ bool
 Board::isCheckN(dim_t row, dim_t column, Piece piece) const noexcept
 {
   assert(!notColor(mColor));
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
 
   // check against piece in colomn from above
   for (auto toRow = row+1; toRow < BasicBoard::DIM; ++toRow) {
@@ -1252,7 +1252,7 @@ bool
 Board::isCheckE(dim_t row, dim_t column, Piece piece) const noexcept
 {
   assert(!notColor(mColor));
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
 
   // check against piece in row from the right
   for (auto toCol = row+1; toCol < BasicBoard::DIM; ++toCol) {
@@ -1275,7 +1275,7 @@ bool
 Board::isCheckS(dim_t row, dim_t column, Piece piece) const noexcept
 {
   assert(!notColor(mColor));
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
 
   // check against piece in column from below
   for (auto toRow = row-1; toRow >= 0; --toRow) {
@@ -1298,7 +1298,7 @@ bool
 Board::isCheckW(dim_t row, dim_t column, Piece piece) const noexcept
 {
   assert(!notColor(mColor));
-  assert(inBoard(row, column));
+  assert(BasicBoard::inBoard(row, column));
 
   // check against piece in row from left
   for (auto toCol = row-1; toCol >= 0; --toCol) {
