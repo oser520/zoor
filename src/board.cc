@@ -1057,10 +1057,10 @@ Board::moveRef(const PieceMove &pMove) noexcept
   auto piece = pMove.sPiece();
   if (isPawn(piece)) {
     auto piece = pMove.isPromo() ? pMove.dPiece() : Piece::P;
-    mBoard.put(toRow, toCol, piece);
+    mBoard.put(toRow, toCol, piece, mColor);
   } else if (isKing(piece)) {
     if (!pMove.isCastle() && !pMove.isCastleLong())
-      mBoard.put(toRow, toCol, Piece::K);
+      mBoard.put(toRow, toCol, Piece::K, mColor);
     else if (pMove.isCastle()) {
       dim_t row;
       if (isWhite(mColor)) {
@@ -1074,8 +1074,8 @@ Board::moveRef(const PieceMove &pMove) noexcept
       }
       // clear the rook from corner square
       mBoard.clear(row, 7);
-      mBoard.put(row, 6, Piece::K);
-      mBoard.put(row, 5, Piece::R);
+      mBoard.put(row, 6, Piece::K, mColor);
+      mBoard.put(row, 5, Piece::R, mColor);
     } else {  // is long castling
       dim_t row;
       if (isWhite(mColor)) {
@@ -1089,11 +1089,11 @@ Board::moveRef(const PieceMove &pMove) noexcept
       }
       // clear the rook from corner square
       mBoard.clear(row, 0);
-      mBoard.put(row, 2, Piece::K);
-      mBoard.put(row, 3, Piece::R);
+      mBoard.put(row, 2, Piece::K, mColor);
+      mBoard.put(row, 3, Piece::R, mColor);
     }
   } else {
-    mBoard.put(toRow, toCol, piece);
+    mBoard.put(toRow, toCol, piece, mColor);
     // set flag if a rook has moved
     if (isRook(piece)) {
       auto row = pMove.sRow();
