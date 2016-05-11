@@ -76,7 +76,7 @@ TEST(Board, DefaultCtor)
   sq = board(7, 6);
   EXPECT_EQ(7, sq.row());
   EXPECT_EQ(6, sq.column());
-  EXPECT_EQ(Piece::K, sq.piece());
+  EXPECT_EQ(Piece::N, sq.piece());
   EXPECT_EQ(Color::B, sq.color());
 
   sq = board(0, 7);
@@ -345,4 +345,3 @@ int main(int argc, char *argv[])
   testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }
-
