@@ -14,8 +14,8 @@
 //
 // zoor
 //
+#include "basictypes.hh"
 #include "board.hh"
-#include "piececode.hh"
 #include "piececount.hh"
 #include "square.hh"
 
@@ -37,11 +37,11 @@ using std::vector;
 // using from zoor
 //
 using zoor::Board;
-using zoor::PieceCode;
-using zoor::PieceColor;
+using zoor::Piece;
+using zoor::Color;
 using zoor::PieceCount;
 using zoor::Square;
-using zoor::piececode_t;
+using zoor::piece_t;
 
 //
 // Test the default ctor
@@ -77,68 +77,68 @@ TEST(PieceCount, SquareListCtor)
   vector<Square> sqList;
 
   // add white pawns
-  auto wpawn = PieceColor::WHITE | PieceCode::PAWN;
-  sqList.emplace_back(1, 0, wpawn);
-  sqList.emplace_back(1, 1, wpawn);
-  sqList.emplace_back(1, 2, wpawn);
-  sqList.emplace_back(1, 3, wpawn);
-  sqList.emplace_back(1, 4, wpawn);
-  sqList.emplace_back(1, 5, wpawn);
+  auto piece = Color::W | Piece::P;
+  sqList.emplace_back(1, 0, piece);
+  sqList.emplace_back(1, 1, piece);
+  sqList.emplace_back(1, 2, piece);
+  sqList.emplace_back(1, 3, piece);
+  sqList.emplace_back(1, 4, piece);
+  sqList.emplace_back(1, 5, piece);
 
   // add white knights
-  auto wknight = PieceColor::WHITE | PieceCode::KNIGHT;
-  sqList.emplace_back(0, 1, wknight);
-  sqList.emplace_back(0, 6, wknight);
+  piece = Color::W | Piece::N;
+  sqList.emplace_back(0, 1, piece);
+  sqList.emplace_back(0, 6, piece);
 
   // add white bishops
-  auto wbishop = PieceColor::WHITE | PieceCode::BISHOP;
-  sqList.emplace_back(0, 2, wbishop);
-  sqList.emplace_back(0, 5, wbishop);
+  piece = Color::W | Piece::B;
+  sqList.emplace_back(0, 2, piece);
+  sqList.emplace_back(0, 5, piece);
 
   // add white rook
-  auto wrook = PieceColor::WHITE | PieceCode::ROOK;
-  sqList.emplace_back(0, 0, wrook);
-  sqList.emplace_back(0, 7, wrook);
+  piece = Color::W | Piece::R;
+  sqList.emplace_back(0, 0, piece);
+  sqList.emplace_back(0, 7, piece);
 
   // add white queen
-  auto wqueen = PieceColor::WHITE | PieceCode::QUEEN;
-  sqList.emplace_back(0, 3, wqueen);
+  piece = Color::W | Piece::Q;
+  sqList.emplace_back(0, 3, piece);
 
   // add white king
-  auto wking = PieceColor::WHITE | PieceCode::KING;
+  piece = Color::W | Piece::K;
   sqList.emplace_back(0, 4, wking);
 
   // add black pawns
-  auto bpawn = PieceColor::BLACK | PieceCode::PAWN;
-  sqList.emplace_back(6, 0, bpawn);
-  sqList.emplace_back(6, 1, bpawn);
-  sqList.emplace_back(6, 2, bpawn);
-  sqList.emplace_back(6, 3, bpawn);
-  sqList.emplace_back(6, 4, bpawn);
-  sqList.emplace_back(6, 5, bpawn);
+  piece = Color::BLACK | Piece::P;
+  sqList.emplace_back(6, 0, piece);
+  sqList.emplace_back(6, 1, piece);
+  sqList.emplace_back(6, 2, piece);
+  sqList.emplace_back(6, 3, piece);
+  sqList.emplace_back(6, 4, piece);
+  sqList.emplace_back(6, 5, piece);
 
   // add black knights
-  auto bknight = PieceColor::BLACK | PieceCode::KNIGHT;
-  sqList.emplace_back(7, 1, bknight);
-  sqList.emplace_back(7, 6, bknight);
+  piece = Color::B | Piece::N;
+  sqList.emplace_back(7, 1, piece);
+  sqList.emplace_back(7, 6, piece);
 
   // add black bishops
-  auto bbishop = PieceColor::BLACK | PieceCode::BISHOP;
-  sqList.emplace_back(7, 2, bbishop);
-  sqList.emplace_back(7, 5, bbishop);
+  piece = Color::B | Piece::B;
+  sqList.emplace_back(7, 2, piece);
+  sqList.emplace_back(7, 5, piece);
 
   // add black rook
-  auto brook = PieceColor::BLACK | PieceCode::ROOK;
-  sqList.emplace_back(7, 0, brook);
-  sqList.emplace_back(7, 7, brook);
+  piece = Color::B | Piece::R;
+  sqList.emplace_back(7, 0, piece);
+  sqList.emplace_back(7, 7, piece);
 
   // add black queen
-  auto bqueen = PieceColor::BLACK | PieceCode::QUEEN;
-  sqList.emplace_back(7, 3, bqueen);
+  piece = Color::B | Piece::Q;
+  sqList.emplace_back(7, 3, piece);
 
   // add black king
-  auto bking = PieceColor::BLACK | PieceCode::KING;
-  sqList.emplace_back(7, 4, bking);
+  piece = Color::B | Piece::K;
+  sqList.emplace_back(7, 4, piece);
 
   PieceCount pc(sqList);
 
@@ -194,21 +194,10 @@ TEST(PieceCount, Count)
 
   vector<Square> sqList;
 
-  // add white queen
-  auto wqueen = PieceColor::WHITE | PieceCode::QUEEN;
-  sqList.emplace_back(0, 3, wqueen);
-
-  // add white king
-  auto wking = PieceColor::WHITE | PieceCode::KING;
-  sqList.emplace_back(0, 4, wking);
-
-  // add black queen
-  auto bqueen = PieceColor::BLACK | PieceCode::QUEEN;
-  sqList.emplace_back(7, 3, bqueen);
-
-  // add black king
-  auto bking = PieceColor::BLACK | PieceCode::KING;
-  sqList.emplace_back(7, 4, bking);
+  sqList.emplace_back(0, 3, Piece::Q, Color::W);
+  sqList.emplace_back(0, 4, Piece::K, Color::W);
+  sqList.emplace_back(7, 3, Piece::Q, Color::B);
+  sqList.emplace_back(7, 4, Piece::K, Color::B);
 
   pc.count(sqList);
 
@@ -269,7 +258,7 @@ TEST(PieceCount, Good)
   vector<Square> sqList;
 
   // add two kings
-  auto code = PieceColor::WHITE | PieceCode::KING;
+  auto code = Color::W | Piece::K;
   sqList.emplace_back(0, 0, code);
   sqList.emplace_back(0, 1, code);
 
@@ -282,7 +271,7 @@ TEST(PieceCount, Good)
   pc.clear();
 
   // add 10 queens
-  code = PieceColor::WHITE | PieceCode::QUEEN;
+  code = Color::W | Piece::Q;
   sqList.emplace_back(0, 0, code);
   sqList.emplace_back(0, 1, code);
   sqList.emplace_back(0, 2, code);
@@ -302,10 +291,10 @@ TEST(PieceCount, Good)
   sqList.clear();
   pc.clear();
 
-  piececode_t pcArr[] = {
-    PieceColor::WHITE | PieceCode::ROOK,
-    PieceColor::WHITE | PieceCode::BISHOP,
-    PieceColor::WHITE | PieceCode::KNIGHT
+  piece_t pcArr[] = {
+    Color::WHITE | Piece::R,
+    Color::WHITE | Piece::B,
+    Color::WHITE | Piece::N
   };
 
   for (auto pcode : pcArr) {
@@ -332,7 +321,7 @@ TEST(PieceCount, Good)
   }
 
   // add 9 pawns
-  code = PieceColor::WHITE | PieceCode::PAWN;
+  code = Color::W | Piece::P;
   sqList.emplace_back(0, 0, code);
   sqList.emplace_back(0, 1, code);
   sqList.emplace_back(0, 2, code);
