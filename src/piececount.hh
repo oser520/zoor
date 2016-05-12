@@ -15,8 +15,8 @@
 //
 // zoor
 //
+#include "basictypes.hh"
 #include "board.hh"
-#include "piececode.hh"
 #include "square.hh"
 
 namespace zoor {
@@ -253,7 +253,7 @@ private:
   // @throw Never throws.
   //
   void
-  add(const piececode_t code) noexcept;
+  add(const piece_t code) noexcept;
 
   // Mantain the count of white and black pieces.
   count_type mWhite;

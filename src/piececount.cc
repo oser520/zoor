@@ -13,8 +13,8 @@
 //
 // zoor
 //
+#include "basictypes.hh"
 #include "board.hh"
-#include "piececode.hh"
 #include "piececount.hh"
 #include "square.hh"
 
@@ -36,7 +36,7 @@ PieceCount::count(const Board &board) noexcept
   mBlack = 0;
 
   // count the pieces
-  for (auto it : board)
+  for (auto &it : board)
     add(it);
 
   return *this;
@@ -77,34 +77,34 @@ PieceCount::good() const noexcept
 // add the piece code to the white or black count
 //
 void
-PieceCount::add(const piececode_t code) noexcept
+PieceCount::add(const piece_t code) noexcept
 {
+  assert(!notColor(code));
+  assert(!notPiece(code));
   count_type shift = 0;
 
-  switch (getPieceCode(code)) {
-  case PieceCode::PAWN:
+  switch (getPiece(code)) {
+  case Piece::P:
     shift = PSHIFT;
     break;
-  case PieceCode::KNIGHT:
+  case Piece::N:
     shift = NSHIFT;
     break;
-  case PieceCode::BISHOP:
+  case Piece::B:
     shift = BSHIFT;
     break;
-  case PieceCode::ROOK:
+  case Piece::R:
     shift = RSHIFT;
     break;
-  case PieceCode::QUEEN:
+  case Piece::Q:
     shift = QSHIFT;
     break;
-  case PieceCode::KING:
+  case Piece::K:
     shift = KSHIFT;
     break;
   default:
     return;
   }
-
-  assert(!isColorNone(code));
 
   // point to either black or white count
   auto &cnt = isWhite(code) ? mWhite : mBlack;
