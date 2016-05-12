@@ -27,7 +27,7 @@ OBJ_BASICBOARD = tbasicboard.o basicboard.o basictypes.o
 OBJ_PIECECODE = tpiececode.o piececode.o
 OBJ_BOARDINFO = tboardinfo.o
 OBJ_PIECECOUNT = tpiececount.o piececount.o board.o square.o \
-                 piecemove.o piececode.o
+                 piecemove.o basictypes.o
 OBJ_SQUARE = tsquare.o square.o basictypes.o
 OBJ_PIECEMOVE = tpiecemove.o piecemove.o square.o basictypes.o
 OBJ_FENRECORD = tfenrecord.o board.o piecemove.o square.o piececode.o
@@ -81,7 +81,7 @@ $(OBJ_BASICTYPES): basictypes.hh
 $(OBJ_BASICBOARD): basicboard.hh basictypes.hh
 $(OBJ_PIECECODE): piececode.hh
 $(OBJ_BOARDINFO): boardinfo.hh
-$(OBJ_PIECECOUNT): piececount.hh piececode.hh
+$(OBJ_PIECECOUNT): piececount.hh basictypes.hh board.hh square.hh
 $(OBJ_SQUARE): square.hh basictypes.hh
 $(OBJ_PIECEMOVE): piecemove.hh square.hh basictypes.hh
 $(OBJ_FENRECORD): fenrecord.hh board.hh
