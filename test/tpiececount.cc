@@ -106,10 +106,10 @@ TEST(PieceCount, SquareListCtor)
 
   // add white king
   piece = Color::W | Piece::K;
-  sqList.emplace_back(0, 4, wking);
+  sqList.emplace_back(0, 4, piece);
 
   // add black pawns
-  piece = Color::BLACK | Piece::P;
+  piece = Color::B | Piece::P;
   sqList.emplace_back(6, 0, piece);
   sqList.emplace_back(6, 1, piece);
   sqList.emplace_back(6, 2, piece);
@@ -292,9 +292,9 @@ TEST(PieceCount, Good)
   pc.clear();
 
   piece_t pcArr[] = {
-    Color::WHITE | Piece::R,
-    Color::WHITE | Piece::B,
-    Color::WHITE | Piece::N
+    Color::W | Piece::R,
+    Color::W | Piece::B,
+    Color::W | Piece::N
   };
 
   for (auto pcode : pcArr) {
