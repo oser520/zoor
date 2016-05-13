@@ -44,6 +44,9 @@ using std::getline;
 // static member definitions
 /////////////////////////////////////////////////////////////////////////////////////
 
+constexpr size_t FenSymbols::RANK_LENGTH;
+constexpr size_t FenSymbols::CASTLE_LENGTH;
+constexpr char FenSymbols::DASH;
 const string FenSymbols::RANK_CHR("PNBRQKpnbrqk12345678");
 const string FenSymbols::CASTLE_CHR("KQkq");
 const string FenSymbols::COLOR_CHR("wb");
