@@ -21,8 +21,8 @@
 #include "basictypes.hh"
 #include "board.hh"
 #include "chesserror.hh"
-#include "fennotation.hh"
 #include "fenrecord.hh"
+#include "iofen.hh"
 #include "piececount.hh"
 #include "square.hh"
 
