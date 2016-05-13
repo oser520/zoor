@@ -85,7 +85,8 @@ $(OBJ_PIECECOUNT): piececount.hh basictypes.hh board.hh square.hh
 $(OBJ_SQUARE): square.hh basictypes.hh
 $(OBJ_PIECEMOVE): piecemove.hh square.hh basictypes.hh
 $(OBJ_FENRECORD): fenrecord.hh board.hh
-$(OBJ_IOFEN): fennotation.hh fenrecord.hh board.hh
+$(OBJ_IOFEN): iofen.hh fenrecord.hh board.hh piecemove.hh square.hh \
+              boardinfo.hh basictypes.hh
 $(OBJ_BOARD): board.hh basicboard.hh piecemove.hh square.hh basictypes.hh
 
 .PHONY: run clean
