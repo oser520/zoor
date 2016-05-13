@@ -56,7 +56,7 @@ TEST(IOFen, DefaultBoard)
   EXPECT_EQ(0, fenrec.halfMove());
   EXPECT_EQ(1, fenrec.fullMove());
   EXPECT_EQ(board, *fenrec.boardPtr());
-  EXPECT_EQ(Color::W, fenrec.boardPtr()->colorToMove());
+  EXPECT_EQ(Color::W, fenrec.boardPtr()->nextTurn());
 }
 
 //
@@ -108,13 +108,13 @@ TEST(IOFen, Test2)
   }
 
   // check next color to move
-  EXPECT_EQ(Color::B, fenList[0].boardPtr()->colorToMove());
+  EXPECT_EQ(Color::B, fenList[0].boardPtr()->nextTurn());
 
   for (int i = 1; i < 10; ++i)
-    EXPECT_EQ(Color::W, fenList[i].boardPtr()->colorToMove());
+    EXPECT_EQ(Color::W, fenList[i].boardPtr()->nextTurn());
 
   for (int i = 10; i < 19; ++i)
-    EXPECT_EQ(Color::B, fenList[i].boardPtr()->colorToMove());
+    EXPECT_EQ(Color::B, fenList[i].boardPtr()->nextTurn());
 
   // default BoardInfo on all tests
   BoardInfo info;
