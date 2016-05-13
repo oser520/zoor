@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////////////
 
 //
-// STL headers
+// STL
 //
 #include <algorithm>
 #include <fstream>
@@ -16,13 +16,13 @@
 #include <utility>
 
 //
-// zoor headers
+// zoor
 //
+#include "basictypes.hh"
 #include "board.hh"
 #include "chesserror.hh"
 #include "fennotation.hh"
 #include "fenrecord.hh"
-#include "piececode.hh"
 #include "piececount.hh"
 #include "square.hh"
 
@@ -39,11 +39,6 @@ using std::sort;
 using std::unique;
 using std::make_shared;
 using std::getline;
-
-//
-// using from zoor
-//
-using dim_type = Board::dim_type;
 
 /////////////////////////////////////////////////////////////////////////////////////
 // static member definitions
@@ -63,8 +58,8 @@ namespace {
 // helper functions for readFen(const string&)
 //
 size_t
-readRank(const string &rankLine, vector<Square>& squareList, const dim_type row);
-PieceColor
+readRank(const string &rankLine, vector<Square>& squareList, const dim_t row);
+Color
 readColor(const string &colorLine);
 BoardInfo
 readBoardInfo(string &infoLine);
@@ -167,38 +162,38 @@ readFenLine(const string &fenLine)
 //
 // convert a FEN symbol to a piece code
 //
-piececode_t
+piece_t
 fenPiece(char fenCode) noexcept
 {
   // get the color
-  PieceColor color;
+  Color color;
   if (std::islower(fenCode))
-    color = PieceColor::BLACK;
+    color = Color::B;
   else {
-    color = PieceColor::WHITE;
+    color = Color::W;
     fenCode = std::tolower(fenCode);
   }
 
   // get the piece type
-  PieceCode piece;
+  Piece piece;
   switch (fenCode) {
   case 'p':
-    piece = PieceCode::PAWN;
+    piece = Piece::P;
     break;
   case 'n':
-    piece = PieceCode::KNIGHT;
+    piece = Piece::N;
     break;
   case 'b':
-    piece = PieceCode::BISHOP;
+    piece = Piece::B;
     break;
   case 'r':
-    piece = PieceCode::ROOK;
+    piece = Piece::R;
     break;
   case 'q':
-    piece = PieceCode::QUEEN;
+    piece = Piece::Q;
     break;
   case 'k':
-    piece = PieceCode::KING;
+    piece = Piece::K;
     break;
   default:
     return 0;
@@ -227,7 +222,7 @@ namespace {
 // @throw ChessError if the rankLine violates any of the assumptions.
 //
 size_t
-readRank(const string &rankLine, vector<Square> &squareList, const dim_type row)
+readRank(const string &rankLine, vector<Square> &squareList, const dim_t row)
 {
   // check rank line is not empty and does not exceed max chars
   if (rankLine.empty() || rankLine.size() > FenSymbols::RANK_LENGTH)
@@ -237,7 +232,7 @@ readRank(const string &rankLine, vector<Square> &squareList, const dim_type row)
   if (rankLine.find_first_not_of(FenSymbols::RANK_CHR) != string::npos)
     throw ChessError("FEN record is not valid");
 
-  dim_type col = 0;
+  dim_t col = 0;
   size_t numPieces = 0;
 
   for (auto &c : rankLine) {
@@ -279,7 +274,7 @@ readColor(const string &colorLine)
   if (colorLine.find_first_not_of(FenSymbols::COLOR_CHR) != string::npos)
     throw ChessError("FEN record is not valid");
 
-  return colorLine.front() == 'w' ? PieceColor::WHITE : PieceColor::BLACK;
+  return colorLine.front() == 'w' ? Color::W : Color::B;
 }
 
 //
@@ -405,7 +400,7 @@ readEnPassant(const string &field)
     throw ChessError("FEN record is not valid");
 
   // set the column number
-  dim_type col = colChr - 'a';
+  dim_t col = colChr - 'a';
 
   // check row number is valid
   auto rowChr = field.back();
@@ -413,17 +408,17 @@ readEnPassant(const string &field)
     throw ChessError("FEN record is not valid");
 
   // set the row numbers and the piece code
-  piececode_t code;
-  dim_type fromRow, toRow;
+  piece_t code;
+  dim_t fromRow, toRow;
 
   if (rowChr == '3') {
     fromRow = 1;
     toRow = 3;
-    code = PieceColor::WHITE | PieceCode::PAWN;
+    code = Color::W | Piece::P;
   } else {
     fromRow = 6;
     toRow = 4;
-    code = PieceColor::BLACK | PieceCode::PAWN;
+    code = Color::B | Piece::P;
   }
 
   return PieceMove(fromRow, col, code, toRow, col);
