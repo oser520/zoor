@@ -194,9 +194,23 @@ public:
   static bool
   inBoard(dim_t row, dim_t column) noexcept;
 
+  ///
+  /// @return Return a board without any pieces.
+  ///
+  static BasicBoard
+  emptyBoard();
+
 private:
+  enum class InitEmpty { INIT };
+
+  ///
+  /// @return Return a board without any pieces.
+  ///
+  BasicBoard(int);
+
   // pointer to the array
   piece_t *mArr;
+
 };
 
 ///
@@ -301,6 +315,13 @@ BasicBoard::~BasicBoard() noexcept
 }
 
 //
+// Blank board ctor.
+//
+inline
+BasicBoard::BasicBoard(int)
+  : mArr(new piece_t[SIZE]()) {}
+
+//
 // get the piece from a given square
 //
 inline piece_t
@@ -382,6 +403,15 @@ BasicBoard::cend() const noexcept
 {
   assert(mArr != nullptr);
   return mArr + SIZE;
+}
+
+//
+// return an empty board
+//
+inline BasicBoard
+BasicBoard::emptyBoard()
+{
+  return BasicBoard(int);
 }
 
 //
