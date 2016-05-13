@@ -31,8 +31,8 @@ OBJ_PIECECOUNT = tpiececount.o piececount.o board.o square.o \
 OBJ_SQUARE = tsquare.o square.o basictypes.o
 OBJ_PIECEMOVE = tpiecemove.o piecemove.o square.o basictypes.o
 OBJ_FENRECORD = tfenrecord.o board.o piecemove.o square.o piececode.o
-OBJ_IOFEN = tiofen.o fennotation.o board.o piecemove.o \
-            square.o piececode.o piececount.o
+OBJ_IOFEN = tiofen.o iofen.o board.o basicboard.o piecemove.o \
+            square.o basictypes.o piececount.o
 OBJ_BOARD = tboard.o board.o basicboard.o piecemove.o square.o basictypes.o
 
 # Combine unique object files.
