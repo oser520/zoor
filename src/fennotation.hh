@@ -24,21 +24,22 @@
 #define _FENNOTATION_H
 
 //
-// STL headers
+// STL
 //
+#include <fstream>
 #include <string>
 #include <vector>
-#include <fstream>
 
 //
-// zoor headers
+// zoor
 //
+#include "basictypes.hh"
 #include "fenrecord.hh"
 
 namespace zoor {
 
 /////////////////////////////////////////////////////////////////////////////////////
-// Declarations.
+// declarations
 /////////////////////////////////////////////////////////////////////////////////////
 
 ///
@@ -152,7 +153,7 @@ writeFen(const std::string &fileName, const std::vector<Board> &boardList);
 /// fenCode is not a valid symbol for a piece, then the piece code is none.
 /// @throw Never throws.
 ///
-piececode_t
+piece_t
 fenPiece(char fenCode) noexcept;
 
 /////////////////////////////////////////////////////////////////////////////////////
