@@ -15,7 +15,7 @@
 #include "basictypes.hh"
 #include "board.hh"
 #include "boardinfo.hh"
-#include "fennotation.hh"
+#include "iofen.hh"
 #include "piecemove.hh"
 #include "square.hh"
 
