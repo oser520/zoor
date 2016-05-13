@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////////////
-/// @file fennotation.hh
+/// @file iofen.hh
 /// @author Omar A Serrano
 /// @date 2016-04-07
 ///
@@ -20,8 +20,8 @@
 /// After the move 2. Nf3:
 /// rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2
 /////////////////////////////////////////////////////////////////////////////////////
-#ifndef _FENNOTATION_H
-#define _FENNOTATION_H
+#ifndef _IOFEN_H
+#define _IOFEN_H
 
 //
 // STL
@@ -181,4 +181,4 @@ readFen(const std::string &fileName)
 }
 
 } // namesapce zoor
-#endif // _FENNOTATION_H
+#endif // _IOFEN_H
