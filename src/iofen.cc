@@ -265,10 +265,10 @@ readRank(const string &rankLine, vector<Square> &squareList, const dim_t row)
 // @li Contains exactly one character.
 // @li Valid characters are <em>w</em> and <em>b</em>.
 // @param colorLine The string representing the color.
-// @return The @c PieceColor for black or white.
+// @return The @c Color for black or white.
 // @throw ChessError if the rankLine violates any of the assumptions.
 //
-PieceColor
+Color
 readColor(const string &colorLine)
 {
   if (colorLine.size() != 1)
