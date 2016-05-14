@@ -15,6 +15,8 @@
 //
 #include "basictypes.hh"
 #include "board.hh"
+#include "fenrecord.hh"
+#include "iofen.hh"
 #include "piecemove.hh"
 #include "square.hh"
 
@@ -166,10 +168,28 @@ TEST(Board, CtorWithVectorColorInfoMoveParam)
 //
 TEST(Board, CanCastle)
 {
-  Board board;
-  EXPECT_FALSE(board.canCastle());
+  vector<FenRecord> fenList = readFen("fen/castling.fen");
+  EXPECT_EQ(5, fenList.size());
 
-  // TODO
+  auto pb = fenList[0].boardPtr();
+  EXPECT_TRUE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
+
+  pb = fenList[1].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastleLong());
+
+  pb = fenList[2].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastleLong());
+
+  pb = fenList[3].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
+
+  pb = fenList[4].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
 }
 
 //

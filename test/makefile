@@ -32,7 +32,8 @@ OBJ_PIECEMOVE = tpiecemove.o piecemove.o square.o basictypes.o
 OBJ_FENRECORD = tfenrecord.o board.o piecemove.o square.o
 OBJ_IOFEN = tiofen.o iofen.o board.o basicboard.o piecemove.o \
             square.o basictypes.o piececount.o
-OBJ_BOARD = tboard.o board.o basicboard.o piecemove.o square.o basictypes.o
+OBJ_BOARD = tboard.o board.o basicboard.o piecemove.o square.o \
+						basictypes.o iofen.o piececount.o
 
 # Combine unique object files.
 OBJ_LIST := $(sort $(OBJ_BASICTYPES) $(OBJ_BASICBOARD) $(OBJ_PIECECOUNT) \
@@ -82,7 +83,8 @@ $(OBJ_PIECEMOVE): piecemove.hh square.hh basictypes.hh
 $(OBJ_FENRECORD): fenrecord.hh board.hh
 $(OBJ_IOFEN): iofen.hh fenrecord.hh board.hh piecemove.hh square.hh \
               boardinfo.hh basictypes.hh
-$(OBJ_BOARD): board.hh basicboard.hh piecemove.hh square.hh basictypes.hh
+$(OBJ_BOARD): board.hh basicboard.hh piecemove.hh square.hh \
+              basictypes.hh iofen.hh fenrecord.hh piececount.hh
 
 .PHONY: run clean
 # Run all unit tests.
