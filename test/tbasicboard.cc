@@ -69,6 +69,16 @@ TEST(BasicBoard, DefaultCtorAndGet)
 }
 
 //
+// test emptyBoard() constructor
+//
+TEST(BasicBoard, EmptyBoard)
+{
+  auto board = BasicBoard::emptyBoard();
+  for (auto &p : board)
+    EXPECT_EQ(0, p);
+}
+
+//
 // test clear
 //
 TEST(BasicBoard, Clear)
