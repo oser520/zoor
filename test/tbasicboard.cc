@@ -235,6 +235,18 @@ TEST(BasicBoard, MoveAssign)
   EXPECT_NE(board2.get(0, 1), 0);
 }
 
+//
+// test equality operator
+//
+TEST(BasicBoard, EqualOp)
+{
+  BasicBoard board1, board2;
+
+  EXPECT_EQ(board1, board2);
+  board1.clear(0, 0);
+  EXPECT_NE(board1, board2);
+}
+
 } // anonymous namespace
 
 int main(int argc, char *argv[])
