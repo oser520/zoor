@@ -212,7 +212,7 @@ TEST(Board, CanCastle)
   EXPECT_TRUE(pb->canCastleLong());
 
   pb = fenList[10].boardPtr();
-  EXPECT_TRUE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastle());
   EXPECT_FALSE(pb->canCastleLong());
 }
 
