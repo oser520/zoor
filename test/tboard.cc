@@ -164,11 +164,11 @@ TEST(Board, CtorWithVectorColorInfoMoveParam)
 }
 
 //
-// test canCastle
+// test canCastle and canCastleLong for white
 //
-TEST(Board, CanCastle)
+TEST(Board, CanWhiteCastle)
 {
-  vector<FenRecord> fenList = readFen("fen/castling.fen");
+  vector<FenRecord> fenList = readFen("fen/canWhiteCastle.fen");
 
   auto pb = fenList[0].boardPtr();
   EXPECT_TRUE(pb->canCastle());
