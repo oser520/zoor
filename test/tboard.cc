@@ -8,6 +8,7 @@
 // STL
 //
 #include <string>
+#include <vector>
 
 //
 // zoor
@@ -24,7 +25,15 @@
 
 namespace {
 
+//
+// from STL
+//
 using std::ostringstream;
+using std::vector;
+
+//
+// from zoor
+//
 using namespace zoor;
 
 //
@@ -101,6 +110,55 @@ TEST(Board, DefaultCtor)
   EXPECT_EQ(5, sq.column());
   EXPECT_EQ(Piece::NONE, sq.piece());
   EXPECT_EQ(Color::NONE, sq.color());
+}
+
+//
+// test ctor with 4 param
+//
+TEST(Board, CtorWithVectorColorInfoMoveParam)
+{
+  vector<Square> sqList;
+  sqList.emplace_back(0, 0, Piece::K, Color::W);
+  sqList.emplace_back(0, 2, Piece::K, Color::B);
+
+  BoardInfo info;
+  info.rookA1On().rookA8On().rookH1On().rookH8On();
+
+  PieceMove pm(0, 3, Color::B|Piece::K, 0, 2);
+
+  Board board(sqList, Color::W, info, pm);
+
+  EXPECT_EQ(Color::W, board.nextTurn());
+  EXPECT_EQ(pm, board.lastMove());
+  EXPECT_FALSE(board.canCastle());
+  EXPECT_FALSE(board.canCastleLong());
+
+  auto sq = board(0, 0);
+  EXPECT_EQ(0, sq.row());
+  EXPECT_EQ(0, sq.column());
+  EXPECT_EQ(Piece::K, sq.piece());
+  EXPECT_EQ(Color::W, sq.color());
+
+  sq = board(0, 1);
+  EXPECT_EQ(0, sq.row());
+  EXPECT_EQ(1, sq.column());
+  EXPECT_EQ(0, sq.code());
+
+  sq = board(0, 2);
+  EXPECT_EQ(0, sq.row());
+  EXPECT_EQ(2, sq.column());
+  EXPECT_EQ(Piece::K, sq.piece());
+  EXPECT_EQ(Color::B, sq.color());
+
+  // check other squares in first row are empty
+  for (int i = 3; i < BasicBoard::DIM; ++i)
+    EXPECT_EQ(0, board(0, i).code());
+
+  // check other squares in board are empty
+  for (int i = 1; i < BasicBoard::DIM; ++i) {
+    for (int j = 1; j < BasicBoard::DIM; ++j)
+      EXPECT_EQ(0, board(i, j).code());
+  }
 }
 
 //
