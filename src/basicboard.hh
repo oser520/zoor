@@ -201,14 +201,19 @@ public:
   emptyBoard();
 
 private:
+  //
+  // Dummy type to indicate to compiler to construct empty board.
+  //
   enum class InitEmpty { INIT };
 
-  ///
-  /// @return Return a board without any pieces.
-  ///
-  BasicBoard(int);
+  //
+  // @return Return a board without any pieces.
+  //
+  BasicBoard(InitEmpty);
 
+  //
   // pointer to the array
+  //
   piece_t *mArr;
 
 };
@@ -318,7 +323,7 @@ BasicBoard::~BasicBoard() noexcept
 // Blank board ctor.
 //
 inline
-BasicBoard::BasicBoard(int)
+BasicBoard::BasicBoard(InitEmpty)
   : mArr(new piece_t[SIZE]()) {}
 
 //
@@ -406,12 +411,12 @@ BasicBoard::cend() const noexcept
 }
 
 //
-// return an empty board
+// create an empty board
 //
 inline BasicBoard
 BasicBoard::emptyBoard()
 {
-  return BasicBoard(int);
+  return BasicBoard(InitEmpty::INIT);
 }
 
 //
