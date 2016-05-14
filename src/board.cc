@@ -121,7 +121,7 @@ Board::canCastleLong() const noexcept
   if (isWhite(mColor)) {
     if (!mInfo.wkCastleLong())
       return false;
-    row = 1;
+    row = 0;
   } else {
     if (!mInfo.bkCastleLong())
       return false;
