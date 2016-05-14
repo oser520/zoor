@@ -359,11 +359,11 @@ readBoardInfo(string &infoLine)
 
   // remove short castling for black
   if (!bCastle)
-    info.rookH1On();
+    info.rookH8On();
 
   // remove long castling for black
   if (!bCastleLong)
-    info.rookA1On();
+    info.rookA8On();
 
   return info;
 }
