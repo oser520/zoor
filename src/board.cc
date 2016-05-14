@@ -128,12 +128,26 @@ Board::canCastleLong() const noexcept
     row = 7;
   }
 
+  // check that king is in castling position
+  auto piece = mBoard.get(row, 4);
+  if (!isKing(piece) || !isSame(piece, mColor))
+    return false;
+
+  // check that rook is in castling position
+  piece = mBoard.get(row, 0);
+  if (!isRook(piece) || !isSame(piece, mColor))
+    return false;
+
   // path for castling is clear
   if (!notPiece(mBoard.get(row, 3)) || !notPiece(mBoard.get(row, 2)))
     return false;
 
   // no checks on path to castle
   if (isCheck(row, 3) || isCheck(row, 2))
+    return false;
+
+  // not in check now
+  if (isCheck(row, 4))
     return false;
 
   return true;
