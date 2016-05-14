@@ -169,7 +169,7 @@ TEST(Board, CtorWithVectorColorInfoMoveParam)
 TEST(Board, CanCastle)
 {
   vector<FenRecord> fenList = readFen("fen/castling.fen");
-  EXPECT_EQ(5, fenList.size());
+  EXPECT_EQ(11, fenList.size());
 
   auto pb = fenList[0].boardPtr();
   EXPECT_TRUE(pb->canCastle());
@@ -190,6 +190,30 @@ TEST(Board, CanCastle)
   pb = fenList[4].boardPtr();
   EXPECT_FALSE(pb->canCastle());
   EXPECT_TRUE(pb->canCastleLong());
+
+  pb = fenList[5].boardPtr();
+  EXPECT_TRUE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastleLong());
+
+  pb = fenList[6].boardPtr();
+  EXPECT_TRUE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
+
+  pb = fenList[7].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastleLong());
+
+  pb = fenList[8].boardPtr();
+  EXPECT_TRUE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
+
+  pb = fenList[9].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
+
+  pb = fenList[10].boardPtr();
+  EXPECT_TRUE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastleLong());
 }
 
 //
