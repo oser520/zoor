@@ -273,6 +273,18 @@ TEST(Board, CanCastle)
   pb = fenList[25].boardPtr();
   EXPECT_TRUE(pb->canCastle());
   EXPECT_FALSE(pb->canCastleLong());
+
+  pb = fenList[26].boardPtr();
+  EXPECT_TRUE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastleLong());
+
+  pb = fenList[27].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
+
+  pb = fenList[28].boardPtr();
+  EXPECT_TRUE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
 }
 
 //
