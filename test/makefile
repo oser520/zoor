@@ -24,24 +24,23 @@ CXXFLAGS += $(GTFLAGS) $(INCDIR)
 # Dependencies for each unit test program.
 OBJ_BASICTYPES = tbasictypes.o basictypes.o
 OBJ_BASICBOARD = tbasicboard.o basicboard.o basictypes.o
-OBJ_PIECECODE = tpiececode.o piececode.o
 OBJ_BOARDINFO = tboardinfo.o
 OBJ_PIECECOUNT = tpiececount.o piececount.o board.o square.o \
                  piecemove.o basictypes.o basicboard.o
 OBJ_SQUARE = tsquare.o square.o basictypes.o
 OBJ_PIECEMOVE = tpiecemove.o piecemove.o square.o basictypes.o
-OBJ_FENRECORD = tfenrecord.o board.o piecemove.o square.o piececode.o
+OBJ_FENRECORD = tfenrecord.o board.o piecemove.o square.o
 OBJ_IOFEN = tiofen.o iofen.o board.o basicboard.o piecemove.o \
             square.o basictypes.o piececount.o
 OBJ_BOARD = tboard.o board.o basicboard.o piecemove.o square.o basictypes.o
 
 # Combine unique object files.
-OBJ_LIST := $(sort $(OBJ_BASICTYPES) $(OBJ_BASICBOARD) $(OBJ_PIECECODE) \
-              $(OBJ_PIECECOUNT) $(OBJ_SQUARE) $(OBJ_PIECEMOVE) $(OBJ_BOARD) \
+OBJ_LIST := $(sort $(OBJ_BASICTYPES) $(OBJ_BASICBOARD) $(OBJ_PIECECOUNT) \
+              $(OBJ_SQUARE) $(OBJ_PIECEMOVE) $(OBJ_BOARD) \
               $(OBJ_BOARDINFO) $(OBJ_FENRECORD) $(OBJ_IOFEN))
 
 # Unit test programs.
-TARGETS = tbasictypes tbasicboard tpiececode tboardinfo tpiececount \
+TARGETS = tbasictypes tbasicboard tboardinfo tpiececount \
           tsquare tpiecemove tboard tfenrecord tiofen
 
 all: $(TARGETS)
@@ -50,9 +49,6 @@ tbasictypes: $(OBJ_BASICTYPES)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
 
 tbasicboard: $(OBJ_BASICBOARD)
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
-
-tpiececode: $(OBJ_PIECECODE)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ $(LFLAGS) -o $@
 
 tboardinfo: $(OBJ_BOARDINFO)
@@ -79,7 +75,6 @@ tboard: $(OBJ_BOARD)
 # Header dependencies.
 $(OBJ_BASICTYPES): basictypes.hh
 $(OBJ_BASICBOARD): basicboard.hh basictypes.hh
-$(OBJ_PIECECODE): piececode.hh
 $(OBJ_BOARDINFO): boardinfo.hh
 $(OBJ_PIECECOUNT): piececount.hh basictypes.hh board.hh square.hh
 $(OBJ_SQUARE): square.hh basictypes.hh
