@@ -37,6 +37,17 @@ TEST(Board, DefaultCtor)
   EXPECT_FALSE(board.canCastleLong());
   EXPECT_EQ(Color::W, board.nextTurn());
 
+  auto pm = board.lastMove();
+  EXPECT_EQ(0, pm.sRow());
+  EXPECT_EQ(0, pm.sColumn());
+  EXPECT_EQ(0, pm.sCode());
+  EXPECT_EQ(0, pm.dRow());
+  EXPECT_EQ(0, pm.dColumn());
+  EXPECT_EQ(0, pm.dCode());
+  EXPECT_EQ(0, pm.xRow());
+  EXPECT_EQ(0, pm.xColumn());
+  EXPECT_EQ(0, pm.xCode());
+
   auto sq = board(0, 0);
   EXPECT_EQ(0, sq.row());
   EXPECT_EQ(0, sq.column());
