@@ -116,8 +116,9 @@ TEST(IOFen, Test2)
   for (int i = 10; i < 19; ++i)
     EXPECT_EQ(Color::B, fenList[i].boardPtr()->nextTurn());
 
-  // default BoardInfo on all tests
+  // no castling rights on all tests
   BoardInfo info;
+  info.rookA1On().rookA8On().rookH1On().rookH8On();
 
   vector<Square> sqList;
   // position in 1st fen line
