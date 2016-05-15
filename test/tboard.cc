@@ -419,14 +419,16 @@ TEST(Board, IsEnPassantForWhite)
 {
   auto fenList = readFen("fen/enPassantForWhite.fen");
 
-  for (int i = 0; i < 8; ++i) {
+  EXPECT_EQ(16, fenList.size());
+
+  for (int col = 0, i = 0; col < 8; ++col, i += 2) {
     auto pb = fenList[i].boardPtr();
-    EXPECT_TRUE(pb->isEnPassant(Color::W, i))
-      << "checking on column " << i
+    EXPECT_TRUE(pb->isEnPassant(Color::W, col))
+      << "\tchecking on column " << col
       << " the last move is " << pb->lastMove();
     pb = fenList[i+1].boardPtr();
-    EXPECT_FALSE(pb->isEnPassant(Color::W, i))
-      << "checking on column " << i
+    EXPECT_FALSE(pb->isEnPassant(Color::W, col))
+      << "\tchecking on column " << col
       << " the last move is " << pb->lastMove();
   }
 }
