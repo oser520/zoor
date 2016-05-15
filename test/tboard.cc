@@ -413,11 +413,22 @@ TEST(Board, DISABLED_IsCheck)
 }
 
 //
-// test isEnPassant
+// test isEnPassant on white's turn
 //
-TEST(Board, DISABLED_IsEnPassant)
+TEST(Board, IsEnPassantForWhite)
 {
-  // TODO
+  auto fenList = readFen("fen/enPassantForWhite.fen");
+
+  for (int i = 0; i < 8; ++i) {
+    auto pb = fenList[i].boardPtr();
+    EXPECT_TRUE(pb->isEnPassant(Color::W, i))
+      << "checking on column " << i
+      << " the last move is " << pb->lastMove();
+    pb = fenList[i+1].boardPtr();
+    EXPECT_FALSE(pb->isEnPassant(Color::W, i))
+      << "checking on column " << i
+      << " the last move is " << pb->lastMove();
+  }
 }
 
 //
