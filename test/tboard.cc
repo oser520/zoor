@@ -438,7 +438,7 @@ TEST(Board, IsEnPassantForWhite)
 //
 TEST(Board, MoveWhitePawn)
 {
-  vector<FenRecord> fenList = readFen("fen/movePawn.fen");
+  vector<FenRecord> fenList = readFen("fen/moveWhiePawn.fen");
 
   vector<PieceMove> moveList;
   auto wpawn = Color::W | Piece::P;
