@@ -7,6 +7,7 @@
 //
 // STL
 //
+#include <algorithm>
 #include <string>
 #include <utility>
 #include <vector>
@@ -422,9 +423,27 @@ TEST(Board, DISABLED_IsEnPassant)
 //
 // test movePawn
 //
-TEST(Board, DISABLED_MovePawn)
+TEST(Board, MovePawn)
 {
-  // TODO
+  vector<PieceMove> moveList;
+  moveList.emplace_back(1, 1, Color::W|Piece::P, 2, 1);
+  moveList.emplace_back(1, 1, Color::W|Piece::P, 3, 1);
+  moveList.emplace_back(1, 1, Color::W|Piece::P, 2, 2);
+  moveList.back().xPiece(2, 2, Piece::P, Color::B);
+
+  vector<FenRecord> fenList = readFen("fen/movePawn.fen");
+  auto pb = fenList[0].boardPtr();
+  auto pawnMoveList = pb->movePawn(1, 1);
+
+  EXPECT_EQ(moveList[0], pawnMoveList[0]);
+  EXPECT_EQ(moveList[1], pawnMoveList[1]);
+  EXPECT_EQ(moveList[2], pawnMoveList[2]);
+  EXPECT_EQ(moveList[0], pawnMoveList[3]);
+  EXPECT_EQ(moveList.size(), pawnMoveList.size());
+
+  const auto ite = pawnMoveList.end();
+  for (const auto it : moveList)
+    EXPECT_NE(ite, std::find(pawnMoveList.begin(), ite, it));
 }
 
 //
