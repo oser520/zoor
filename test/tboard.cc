@@ -458,12 +458,6 @@ TEST(Board, MoveWhitePawn)
   moveList.back().xPiece(2, 0, Piece::R, Color::B);
   pb = fenList[1].boardPtr();
   pawnMoveList = pb->movePawn(1, 1);
-/*
-  EXPECT_EQ(moveList[0], pawnMoveList[0]);
-  EXPECT_EQ(moveList[1], pawnMoveList[1]);
-  EXPECT_EQ(moveList[2], pawnMoveList[2]);
-  EXPECT_EQ(moveList[3], pawnMoveList[3]);
-*/
   EXPECT_EQ(moveList.size(), pawnMoveList.size());
   ite = pawnMoveList.cend();
   for (const auto it : moveList)
