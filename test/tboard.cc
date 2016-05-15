@@ -317,14 +317,156 @@ TEST(Board, CanWhiteCastle)
 }
 
 //
-// test canCastleLong
+// test canBlackCastle
 //
-TEST(Board, CanCastleLong)
+TEST(Board, CanBlackCastle)
 {
-  Board board;
-  EXPECT_FALSE(board.canCastleLong());
+  vector<FenRecord> fenList = readFen("fen/canBlackCastle.fen");
 
-  // TODO
+  // FEN record --> r3k2r/8/8/4N3/8/8/8/7K b kq - 0 40
+  auto pb = fenList[0].boardPtr();
+  EXPECT_TRUE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/4N3/8/8/8/8/8/7K b kq - 0 40
+  pb = fenList[1].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/8/4N3/8/8/8/8/7K b kq - 0 40
+  pb = fenList[2].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/7N/8/8/8/8/8/7K b kq - 0 40
+  pb = fenList[3].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/8/6N1/8/8/8/8/7K b kq - 0 40
+  pb = fenList[4].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/N7/8/8/8/8/8/7K b kq - 0 40
+  pb = fenList[5].boardPtr();
+  EXPECT_TRUE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/B7/8/8/8/8/8/7K b kq - 0 40
+  pb = fenList[6].boardPtr();
+  EXPECT_TRUE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/8/4B3/8/8/8/8/7K b kq - 0 40
+  pb = fenList[7].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/8/8/4B3/8/8/8/7K b kq - 0 40
+  pb = fenList[8].boardPtr();
+  EXPECT_TRUE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/8/7B/8/8/8/8/7K b kq - 0 40
+  pb = fenList[9].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/8/8/8/B7/8/8/7K b kq - 0 40
+  pb = fenList[10].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/8/8/8/8/8/4R3/7K b kq - 0 40
+  pb = fenList[11].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/8/8/8/8/8/5R2/7K b kq - 0 40
+  pb = fenList[12].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/8/8/8/8/8/7R/7K b kq - 0 40
+  pb = fenList[13].boardPtr();
+  EXPECT_TRUE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/8/8/8/8/8/2R3R1/7K b kq - 0 40
+  pb = fenList[14].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/8/7Q/8/8/8/8/7K b kq - 0 40
+  pb = fenList[15].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/8/8/7Q/8/8/8/7K b kq - 0 40
+  pb = fenList[16].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/8/8/8/7Q/8/8/7K b kq - 0 40
+  pb = fenList[17].boardPtr();
+  EXPECT_TRUE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/8/8/8/8/7Q/8/7K b kq - 0 40
+  pb = fenList[18].boardPtr();
+  EXPECT_TRUE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/8/8/8/8/8/7Q/7K b kq - 0 40
+  pb = fenList[19].boardPtr();
+  EXPECT_TRUE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/8/8/8/8/8/4Q3/7K b kq - 0 40
+  pb = fenList[20].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastleLong());
+
+  // FEN record --> rQ2k2r/8/8/8/8/8/8/7K b kq - 0 40
+  pb = fenList[21].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/7P/8/8/8/8/8/7K b kq - 0 40
+  pb = fenList[22].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/8/7P/8/8/8/8/7K b kq - 0 40
+  pb = fenList[23].boardPtr();
+  EXPECT_TRUE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/4P3/8/8/8/8/8/7K b kq - 0 40
+  pb = fenList[24].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/2P5/8/8/8/8/8/7K b kq - 0 40
+  pb = fenList[25].boardPtr();
+  EXPECT_TRUE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/1K6/8/8/8/8/8/8 b kq - 0 40
+  pb = fenList[26].boardPtr();
+  EXPECT_TRUE(pb->canCastle());
+  EXPECT_FALSE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/6K1/8/8/8/8/8/8 b kq - 0 40
+  pb = fenList[27].boardPtr();
+  EXPECT_FALSE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
+
+  // FEN record --> r3k2r/8/6K1/8/8/8/8/8 b kq - 0 40
+  pb = fenList[28].boardPtr();
+  EXPECT_TRUE(pb->canCastle());
+  EXPECT_TRUE(pb->canCastleLong());
 }
 
 //
