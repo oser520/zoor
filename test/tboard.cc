@@ -217,7 +217,7 @@ TEST(Board, CanWhiteCastle)
 }
 
 //
-// test canBlackCastle
+// test canCaslte and canCastleLong for black
 //
 TEST(Board, CanBlackCastle)
 {
