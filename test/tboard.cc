@@ -421,9 +421,9 @@ TEST(Board, DISABLED_IsEnPassant)
 }
 
 //
-// test movePawn
+// test movePawn on white's turn
 //
-TEST(Board, MovePawn)
+TEST(Board, MoveWhitePawn)
 {
   vector<FenRecord> fenList = readFen("fen/movePawn.fen");
 
