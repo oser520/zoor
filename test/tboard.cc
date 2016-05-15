@@ -328,19 +328,23 @@ TEST(Board, DISABLED_CallOp)
 }
 
 //
-// test begin
+// test iterators
 //
-TEST(Board, DISABLED_Begin)
+TEST(Board, Iterators)
 {
-  // TODO
-}
+  Board board;
+  auto it = board.begin();
 
-//
-// test end
-//
-TEST(Board, DISABLED_End)
-{
-  // TODO
+  EXPECT_EQ(Color::W|Piece::R, *it);
+  EXPECT_EQ(Color::W|Piece::N, *(it+6));
+  EXPECT_EQ(Color::W|Piece::R, *(it+7));
+
+  for (int i = 0; i < BasicBoard::DIM; ++i) {
+    for (int j = 0; j < BasicBoard::DIM; ++j)
+      EXPECT_EQ(board(i, j).code(), *it++);
+  }
+
+  EXPECT_EQ(board.end(), it);
 }
 
 //
