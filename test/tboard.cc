@@ -172,6 +172,8 @@ TEST(Board, CanWhiteCastle)
 {
   vector<FenRecord> fenList = readFen("fen/canWhiteCastle.fen");
 
+  // first bool is expected for canCastle()
+  // second bool is expected for canCastleLong()
   vector<pair<bool, bool>> boolList = {
     {true, true},   // k7/8/8/8/4n3/8/8/R3K2R w KQ - 0 40
     {false, false}, // k7/8/8/8/8/8/4n3/R3K2R w KQ - 0 40
