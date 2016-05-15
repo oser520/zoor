@@ -434,6 +434,27 @@ TEST(Board, IsEnPassantForWhite)
 }
 
 //
+// test isEnPassant on black's turn
+//
+TEST(Board, IsEnPassantForBlack)
+{
+  auto fenList = readFen("fen/enPassantForBlack.fen");
+
+  EXPECT_EQ(16, fenList.size());
+
+  for (int col = 0, i = 0; col < 8; ++col, i += 2) {
+    auto pb = fenList[i].boardPtr();
+    EXPECT_TRUE(pb->isEnPassant(Color::B, col))
+      << "\tchecking on column " << col
+      << " the last move is " << pb->lastMove();
+    pb = fenList[i+1].boardPtr();
+    EXPECT_FALSE(pb->isEnPassant(Color::B, col))
+      << "\tchecking on column " << col
+      << " the last move is " << pb->lastMove();
+  }
+}
+
+//
 // test movePawn on white's turn
 //
 TEST(Board, MoveWhitePawn)
