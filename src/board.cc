@@ -1283,8 +1283,8 @@ Board::isCheckE(dim_t row, dim_t column, Piece piece) const noexcept
   assert(!notColor(mColor));
   assert(BasicBoard::inBoard(row, column));
 
-  // check against piece in row from the right
-  for (auto toCol = row+1; toCol < BasicBoard::DIM; ++toCol) {
+  // check against piece in same row from the right
+  for (auto toCol = column+1; toCol < BasicBoard::DIM; ++toCol) {
     auto toCode = mBoard.get(row, toCol);
     if (notColor(toCode))
       continue;
