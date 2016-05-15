@@ -1329,8 +1329,8 @@ Board::isCheckW(dim_t row, dim_t column, Piece piece) const noexcept
   assert(!notColor(mColor));
   assert(BasicBoard::inBoard(row, column));
 
-  // check against piece in row from left
-  for (auto toCol = row-1; toCol >= 0; --toCol) {
+  // check against piece in the same row from left
+  for (auto toCol = column-1; toCol >= 0; --toCol) {
     auto toCode = mBoard.get(row, toCol);
     if (notColor(toCode))
       continue;
