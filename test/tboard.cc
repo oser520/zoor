@@ -425,25 +425,44 @@ TEST(Board, DISABLED_IsEnPassant)
 //
 TEST(Board, MovePawn)
 {
-  vector<PieceMove> moveList;
-  moveList.emplace_back(1, 1, Color::W|Piece::P, 2, 1);
-  moveList.emplace_back(1, 1, Color::W|Piece::P, 3, 1);
-  moveList.emplace_back(1, 1, Color::W|Piece::P, 2, 2);
-  moveList.back().xPiece(2, 2, Piece::P, Color::B);
-
   vector<FenRecord> fenList = readFen("fen/movePawn.fen");
+
+  vector<PieceMove> moveList;
+  auto wpawn = Color::W | Piece::P;
+
+  moveList.emplace_back(1, 1, wpawn, 2, 1);
+  moveList.emplace_back(1, 1, wpawn, 3, 1);
+  moveList.emplace_back(1, 1, wpawn, 2, 2);
+  moveList.back().xPiece(2, 2, Piece::P, Color::B);
   auto pb = fenList[0].boardPtr();
   auto pawnMoveList = pb->movePawn(1, 1);
+  EXPECT_EQ(moveList.size(), pawnMoveList.size());
+  auto ite = pawnMoveList.cend();
+  for (const auto it : moveList)
+    EXPECT_NE(ite, std::find(pawnMoveList.cbegin(), ite, it));
 
+  moveList.emplace_back(1, 1, wpawn, 2, 0);
+  moveList.back().xPiece(2, 0, Piece::R, Color::B);
+  pb = fenList[1].boardPtr();
+  pawnMoveList = pb->movePawn(1, 1);
+/*
   EXPECT_EQ(moveList[0], pawnMoveList[0]);
   EXPECT_EQ(moveList[1], pawnMoveList[1]);
   EXPECT_EQ(moveList[2], pawnMoveList[2]);
-  EXPECT_EQ(moveList[0], pawnMoveList[3]);
+  EXPECT_EQ(moveList[3], pawnMoveList[3]);
+*/
   EXPECT_EQ(moveList.size(), pawnMoveList.size());
-
-  const auto ite = pawnMoveList.end();
+  ite = pawnMoveList.cend();
   for (const auto it : moveList)
-    EXPECT_NE(ite, std::find(pawnMoveList.begin(), ite, it));
+    EXPECT_NE(ite, std::find(pawnMoveList.cbegin(), ite, it));
+
+  pb = fenList[2].boardPtr();
+  EXPECT_EQ(0, pb->movePawn(1, 1).size());
+
+  pb = fenList[3].boardPtr();
+  pawnMoveList = pb->movePawn(2, 1);
+  EXPECT_EQ(1, pawnMoveList.size());
+  EXPECT_EQ(PieceMove(2, 1, wpawn, 3, 1), pawnMoveList.front());
 }
 
 //
