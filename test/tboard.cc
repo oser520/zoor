@@ -459,11 +459,12 @@ TEST(Board, IsEnPassantForBlack)
 //
 TEST(Board, MoveWhitePawn)
 {
-  vector<FenRecord> fenList = readFen("fen/moveWhitePawn.fen");
+  auto fenList = readFen("fen/moveWhitePawn.fen");
 
   vector<PieceMove> moveList;
   auto wpawn = Color::W | Piece::P;
 
+  // FEN 1: k7/p7/8/8/8/2p5/1P6/4K3 w - - 0 40
   moveList.emplace_back(1, 1, wpawn, 2, 1);
   moveList.emplace_back(1, 1, wpawn, 3, 1);
   moveList.emplace_back(1, 1, wpawn, 2, 2);
@@ -475,6 +476,7 @@ TEST(Board, MoveWhitePawn)
   for (const auto it : moveList)
     EXPECT_NE(ite, std::find(pawnMoveList.cbegin(), ite, it));
 
+  // FEN 2: k7/p7/8/8/8/r1p5/1P6/4K3 w - - 0 40
   moveList.emplace_back(1, 1, wpawn, 2, 0);
   moveList.back().xPiece(2, 0, Piece::R, Color::B);
   pb = fenList[1].boardPtr();
@@ -484,14 +486,17 @@ TEST(Board, MoveWhitePawn)
   for (const auto it : moveList)
     EXPECT_NE(ite, std::find(pawnMoveList.cbegin(), ite, it));
 
+  // FEN 3: k7/p7/8/8/8/1p6/1P6/4K3 w - - 0 40
   pb = fenList[2].boardPtr();
   EXPECT_EQ(0, pb->movePawn(1, 1).size());
 
+  // FEN 4: k7/p7/8/8/8/1P6/8/4K3 w - - 0 40
   pb = fenList[3].boardPtr();
   pawnMoveList = pb->movePawn(2, 1);
   EXPECT_EQ(1, pawnMoveList.size());
   EXPECT_EQ(PieceMove(2, 1, wpawn, 3, 1), pawnMoveList.front());
 
+  // FEN 5: k7/8/p7/1Pp5/8/8/8/4K3 w - c6 0 40
   moveList.clear();
   moveList.emplace_back(4, 1, wpawn, 5, 0);
   moveList.back().xPiece(5, 0, Piece::P, Color::B);
