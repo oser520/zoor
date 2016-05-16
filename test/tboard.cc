@@ -491,6 +491,23 @@ TEST(Board, MoveWhitePawn)
   pawnMoveList = pb->movePawn(2, 1);
   EXPECT_EQ(1, pawnMoveList.size());
   EXPECT_EQ(PieceMove(2, 1, wpawn, 3, 1), pawnMoveList.front());
+
+  moveList.clear();
+  moveList.emplace_back(4, 1, wpawn, 5, 0);
+  moveList.back().xPiece(5, 0, Piece::P, Color::B);
+  moveList.emplace_back(4, 1, wpawn, 5, 1);
+  moveList.emplace_back(4, 1, wpawn, 5, 2);
+  moveList.back().xPiece(4, 2, Piece::P, Color::B);
+  pb = fenList[4].boardPtr();
+  pawnMoveList = pb->movePawn(4, 1);
+  EXPECT_EQ(moveList.size(), pawnMoveList.size());
+  ite = pawnMoveList.cend();
+  for (const auto it : moveList) {
+    EXPECT_NE(ite, std::find(pawnMoveList.cbegin(), ite, it))
+      << "\tPieceMove not found: " << it
+      << "\n\tisEnPassant(white, 2): "
+      << pb->isEnPassant(Color::W, 2);
+  }
 }
 
 //
