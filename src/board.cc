@@ -619,7 +619,7 @@ Board::movePawn(dim_t row, dim_t column) const
   }
 
   // set comparison row for en passant
-  cmpRow = isWhite(mColor) ? 5 : 4;
+  cmpRow = isWhite(mColor) ? 4 : 3;
 
   // en passant
   if (row == cmpRow) {
