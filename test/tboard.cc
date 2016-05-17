@@ -516,6 +516,67 @@ TEST(Board, MoveWhitePawn)
 }
 
 //
+// test movePawn on black's turn
+//
+TEST(Board, MoveBlackPawn)
+{
+  auto fenList = readFen("fen/moveBlackPawn.fen");
+
+  vector<PieceMove> moveList;
+  auto bpawn = Color::B | Piece::P;
+
+  // FEN 1: 4k3/1p6/2P5/8/8/8/P7/K7 b - - 0 1
+  moveList.emplace_back(6, 1, bpawn, 5, 1);
+  moveList.emplace_back(6, 1, bpawn, 4, 1);
+  moveList.emplace_back(6, 1, bpawn, 5, 2);
+  moveList.back().xPiece(5, 2, Piece::P, Color::W);
+  auto pb = fenList[0].boardPtr();
+  auto pawnMoveList = pb->movePawn(6, 1);
+  EXPECT_EQ(moveList.size(), pawnMoveList.size());
+  auto ite = pawnMoveList.cend();
+  for (const auto it : moveList)
+    EXPECT_NE(ite, std::find(pawnMoveList.cbegin(), ite, it));
+
+  // FEN 2: 4k3/1p6/R1P5/8/8/8/P7/K7 b - - 0 1
+  moveList.emplace_back(6, 1, bpawn, 5, 0);
+  moveList.back().xPiece(5, 0, Piece::R, Color::W);
+  pb = fenList[1].boardPtr();
+  pawnMoveList = pb->movePawn(6, 1);
+  EXPECT_EQ(moveList.size(), pawnMoveList.size());
+  ite = pawnMoveList.cend();
+  for (const auto it : moveList)
+    EXPECT_NE(ite, std::find(pawnMoveList.cbegin(), ite, it));
+
+  // FEN 3: 4k3/1p6/1P6/8/8/8/P7/K7 b - - 0 1
+  pb = fenList[2].boardPtr();
+  EXPECT_EQ(0, pb->movePawn(6, 1).size());
+
+  // FEN 4: 4k3/8/1p6/8/8/8/P7/K7 b - - 0 1
+  pb = fenList[3].boardPtr();
+  pawnMoveList = pb->movePawn(5, 1);
+  EXPECT_EQ(1, pawnMoveList.size());
+  EXPECT_EQ(PieceMove(5, 1, bpawn, 4, 1), pawnMoveList.front());
+
+  // FEN 5: 4k3/8/8/8/1pP5/P7/8/K7 b - c6 0 1
+  moveList.clear();
+  moveList.emplace_back(3, 1, bpawn, 2, 0);
+  moveList.back().xPiece(2, 0, Piece::P, Color::W);
+  moveList.emplace_back(3, 1, bpawn, 2, 1);
+  moveList.emplace_back(3, 1, bpawn, 2, 2);
+  moveList.back().xPiece(3, 2, Piece::P, Color::W);
+  pb = fenList[4].boardPtr();
+  pawnMoveList = pb->movePawn(3, 1);
+  EXPECT_EQ(moveList.size(), pawnMoveList.size());
+  ite = pawnMoveList.cend();
+  for (const auto it : moveList) {
+    EXPECT_NE(ite, std::find(pawnMoveList.cbegin(), ite, it))
+      << "\tPieceMove not found: " << it
+      << "\n\tisEnPassant(black, 2): "
+      << pb->isEnPassant(Color::B, 2);
+  }
+}
+
+//
 // test moveKnight
 //
 TEST(Board, DISABLED_MoveKnight)
