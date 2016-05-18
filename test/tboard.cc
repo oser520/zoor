@@ -368,6 +368,25 @@ TEST(Board, WhiteOnCheckFromPawn)
 }
 
 //
+// test isCheckPawn on black king
+//
+TEST(Board, BlackOnCheckFromPawn)
+{
+  auto fenList = readFen("fen/blackOnCheckFromPawn.fen");
+
+  // FEN 1: 8/3k4/2P5/8/8/8/8/K7 b - - 0 1
+  // FEN 2: 8/3k4/4P3/8/8/8/8/K7 b - - 0 1
+  EXPECT_TRUE(fenList[0].boardPtr()->isCheckPawn(6, 3));
+  EXPECT_TRUE(fenList[1].boardPtr()->isCheckPawn(6, 3));
+
+  // FEN 3: 8/3k4/3P4/8/8/8/8/K7 b - - 0 1
+  // FEN 4: 8/2Pk4/8/8/8/8/8/K7 b - - 0 1
+  // FEN 5: 8/3kP3/8/8/8/8/8/K7 b - - 0 1
+  for (auto it = fenList.cbegin()+2; it != fenList.cend(); ++it)
+    EXPECT_FALSE(it->boardPtr()->isCheckPawn(6, 3));
+}
+
+//
 // test isCheckKnight
 //
 TEST(Board, DISABLED_IsCheckKnight)
