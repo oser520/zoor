@@ -321,14 +321,6 @@ TEST(Board, DISABLED_LastMove)
 }
 
 //
-// test operator()
-//
-TEST(Board, DISABLED_CallOp)
-{
-  // TODO
-}
-
-//
 // test iterators
 //
 TEST(Board, Iterators)
