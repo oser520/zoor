@@ -387,11 +387,37 @@ TEST(Board, BlackOnCheckFromPawn)
 }
 
 //
-// test isCheckKnight
+// test isCheckKnight on white's turn
 //
-TEST(Board, DISABLED_IsCheckKnight)
+TEST(Board, WhiteOnCheckFromKnight)
 {
-  // TODO
+  vector<bool> boolList = {
+    true,  // FEN 1: k7/8/4n3/8/3K4/8/8/8 w - - 0 1
+    true,  // FEN 2: k7/8/8/5n2/3K4/8/8/8 w - - 0 1
+    true,  // FEN 3: k7/8/8/8/3K4/5n2/8/8 w - - 0 1
+    true,  // FEN 4: k7/8/8/8/3K4/8/4n3/8 w - - 0 1
+    true,  // FEN 5: k7/8/8/8/3K4/8/2n5/8 w - - 0 1
+    true,  // FEN 6: k7/8/8/8/3K4/1n6/8/8 w - - 0 1
+    true,  // FEN 7: k7/8/8/1n6/3K4/8/8/8 w - - 0 1
+    true,  // FEN 8: k7/8/2n5/8/3K4/8/8/8 w - - 0 1
+    false, // FEN 9: k7/8/3n4/3n4/3K4/3n4/3n4/8 w - - 0 1
+    false, // FEN 10: k7/8/8/2n5/2nK4/2n5/8/8 w - - 0 1
+    false  // FEN 11: k7/8/8/4n3/3Kn3/4n3/8/8 w - - 0 1
+  };
+
+  auto fenList = readFen("fen/whiteOnCheckFromKnight.fen");
+
+  EXPECT_EQ(boolList.size(), fenList.size());
+
+  auto itfen = fenList.cbegin();
+  auto itbool = boolList.cbegin();
+  auto ite = fenList.cend();
+
+  while (itfen != ite) {
+    EXPECT_EQ(*itbool, itfen->boardPtr()->isCheckKnight(3, 3));
+    ++itbool;
+    ++itfen;
+  }
 }
 
 //
