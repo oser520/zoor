@@ -421,6 +421,40 @@ TEST(Board, WhiteOnCheckFromKnight)
 }
 
 //
+// test isCheckKnight on blacks's turn
+//
+TEST(Board, BlackOnCheckFromKnight)
+{
+  vector<bool> boolList = {
+    true,  // FEN 1: K7/8/4N3/8/3k4/8/8/8 b - - 0 1
+    true,  // FEN 2: K7/8/8/5N2/3k4/8/8/8 b - - 0 1
+    true,  // FEN 3: K7/8/8/8/3k4/5N2/8/8 b - - 0 1
+    true,  // FEN 4: K7/8/8/8/3k4/8/4N3/8 b - - 0 1
+    true,  // FEN 5: K7/8/8/8/3k4/8/2N5/8 b - - 0 1
+    true,  // FEN 6: K7/8/8/8/3k4/1N6/8/8 b - - 0 1
+    true,  // FEN 7: K7/8/8/1N6/3k4/8/8/8 b - - 0 1
+    true,  // FEN 8: K7/8/2N5/8/3k4/8/8/8 b - - 0 1
+    false, // FEN 9: K7/8/3N4/3N4/3k4/3N4/3N4/8 b - - 0 1
+    false, // FEN 10: K7/8/8/2N5/2Nk4/2N5/8/8 b - - 0 1
+    false  // FEN 11: K7/8/8/4N3/3kN3/4N3/8/8 b - - 0 1
+  };
+
+  auto fenList = readFen("fen/blackOnCheckFromKnight.fen");
+
+  EXPECT_EQ(boolList.size(), fenList.size());
+
+  auto itfen = fenList.cbegin();
+  auto itbool = boolList.cbegin();
+  auto ite = fenList.cend();
+
+  while (itfen != ite) {
+    EXPECT_EQ(*itbool, itfen->boardPtr()->isCheckKnight(3, 3));
+    ++itbool;
+    ++itfen;
+  }
+}
+
+//
 // test isCheckBishop
 //
 TEST(Board, DISABLED_IsCheckBishop)
