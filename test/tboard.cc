@@ -455,11 +455,36 @@ TEST(Board, BlackOnCheckFromKnight)
 }
 
 //
-// test isCheckBishop
+// test isCheckBishop on white's turn
 //
-TEST(Board, DISABLED_IsCheckBishop)
+TEST(Board, WhiteOnCheckFromBishop)
 {
-  // TODO
+  auto fenList = readFen("fen/whiteOnCheckFromBishop.fen");
+  auto it1 = fenList.cbegin();
+  auto it2 = it1+4;
+  auto itend = fenList.cend();
+
+  // FEN 1: k7/8/5b2/8/3K4/8/8/8 w - - 0 1
+  // FEN 2: k7/8/1b6/8/3K4/8/8/8 w - - 0 1
+  // FEN 3: k7/8/8/8/3K4/8/5b2/8 w - - 0 1
+  // FEN 4: k7/8/8/8/3K4/8/1b6/8 w - - 0 1
+  while (it1 != it2)
+    EXPECT_TRUE((it1++)->boardPtr()->isCheckBishop(3, 3));
+
+  // FEN 5: k7/8/7b/8/3K4/8/8/8 w - - 0 1
+  // FEN 6: k7/8/6b1/8/3K4/8/8/8 w - - 0 1
+  // FEN 7: k7/8/4b3/8/3K4/8/8/8 w - - 0 1
+  // FEN 8: k7/8/3b4/8/3K4/8/8/8 w - - 0 1
+  // FEN 9: k7/8/2b5/8/3K4/8/8/8 w - - 0 1
+  // FEN 10: k7/8/b7/8/3K4/8/8/8 w - - 0 1
+  // FEN 11: k7/8/8/8/3K4/8/7b/8 w - - 0 1
+  // FEN 12: k7/8/8/8/3K4/8/6b1/8 w - - 0 1
+  // FEN 13: k7/8/8/8/3K4/8/4b3/8 w - - 0 1
+  // FEN 14: k7/8/8/8/3K4/8/3b4/8 w - - 0 1
+  // FEN 15: k7/8/8/8/3K4/8/2b5/8 w - - 0 1
+  // FEN 16: k7/8/8/8/3K4/8/b7/8 w - - 0 1
+  while (it1 != itend)
+    EXPECT_FALSE((it1++)->boardPtr()->isCheckBishop(3, 3));
 }
 
 //
