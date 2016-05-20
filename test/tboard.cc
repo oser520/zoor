@@ -548,6 +548,33 @@ TEST(Board, WhiteOnCheckFromRook)
 }
 
 //
+// test isCheckRook on black's turn
+//
+TEST(Board, BlackOnCheckFromRook)
+{
+  auto fenList = readFen("fen/blackOnCheckFromRook.fen");
+  auto it1 = fenList.cbegin();
+  auto it2 = it1+4;
+  auto itend = fenList.cend();
+
+  // FEN 1: K7/8/8/8/3k3R/8/8/8 b - - 0 1
+  // FEN 2: K7/3R4/8/8/3k4/8/8/8 b - - 0 1
+  // FEN 3: K7/8/8/8/R2k4/8/8/8 b - - 0 1
+  // FEN 4: K7/8/8/8/3k4/8/8/3R4 b - - 0 1
+  while (it1 != it2)
+    EXPECT_TRUE((it1++)->boardPtr()->isCheckRook(3, 3));
+
+  // FEN 5: K7/6R1/8/8/3k4/8/8/8 b - - 0 1
+  // FEN 6: K7/5R2/8/8/3k4/8/8/8 b - - 0 1
+  // FEN 7: K7/4R3/8/8/3k4/8/8/8 b - - 0 1
+  // FEN 8: K7/8/8/8/3k4/8/8/2R5 b - - 0 1
+  // FEN 9: K7/8/8/8/3k4/8/8/1R6 b - - 0 1
+  // FEN 10: K7/8/8/8/3k4/8/8/R7 b - - 0 1
+  while (it1 != itend)
+    EXPECT_FALSE((it1++)->boardPtr()->isCheckRook(3, 3));
+}
+
+//
 // test isCheckQueen
 //
 TEST(Board, DISABLED_IsCheckQueen)
