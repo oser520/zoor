@@ -719,6 +719,30 @@ TEST(Board, IsWhiteOnCheck)
 }
 
 //
+// test isCheck on black's turn to move
+//
+TEST(Board, IsBlackOnCheck)
+{
+  auto fenList = readFen("fen/isBlackOnCheck.fen");
+  auto it1 = fenList.cbegin();
+  auto it2 = it1+5;
+  auto itend = fenList.cend();
+
+  // FEN 1: K6B/8/3N4/3P1P2/Rp1k2N1/7R/5n2/3B2Q1 b - - 0 1
+  // FEN 2: K7/8/7B/1N1P1P2/Rp1k2N1/7R/5n2/3B2Q1 b - - 0 1
+  // FEN 3: K7/2N5/7B/3P1P2/Rp1k2N1/7R/4n3/3B2Q1 b - - 0 1
+  // FEN 4: K7/2N5/7B/3P1P2/Np1k3R/7R/5n2/3B2Q1 b - - 0 1
+  // FEN 5: K5R1/2N5/7B/8/Np1k4/3PP2R/5n2/3B2Q1 b - - 0 1
+  while (it1 != it2)
+    EXPECT_TRUE((it1++)->boardPtr()->isCheck(3, 3));
+
+  // FEN 6: K7/7B/3N4/3P4/Rp1k4/8/5n2/6Q1 b - - 0 1
+  // FEN 7: K7/7B/3N1N2/3P1P2/3k4/7R/3B1n2/6Q1 b - - 0 1
+  while (it1 != itend)
+    EXPECT_FALSE((it1++)->boardPtr()->isCheck(3, 3));
+}
+
+//
 // test isEnPassant on white's turn
 //
 TEST(Board, IsEnPassantForWhite)
