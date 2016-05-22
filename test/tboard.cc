@@ -1047,6 +1047,54 @@ TEST(Board, MoveWhiteBishop)
 }
 
 //
+// test moveBishop on black's turn to move
+//
+TEST(Board, MoveBlackBishop)
+{
+  vector<PieceMove> moveList;
+  auto bbishop = Color::B | Piece::B;
+  auto fenList = readFen("fen/moveBlackBishop.fen");
+
+  // FEN 1: K7/8/5Q2/8/3b4/8/1p6/7k b - - 0 1
+  moveList.emplace_back(3, 3, bbishop, 2, 4);
+  moveList.emplace_back(3, 3, bbishop, 1, 5);
+  moveList.emplace_back(3, 3, bbishop, 0, 6);
+  moveList.emplace_back(3, 3, bbishop, 2, 2);
+  moveList.emplace_back(3, 3, bbishop, 4, 2);
+  moveList.emplace_back(3, 3, bbishop, 5, 1);
+  moveList.emplace_back(3, 3, bbishop, 6, 0);
+  moveList.emplace_back(3, 3, bbishop, 4, 4);
+  moveList.emplace_back(3, 3, bbishop, 5, 5);
+  moveList.back().xPiece(5, 5, Piece::Q, Color::W);
+  auto moveFromBoard = fenList[0].boardPtr()->moveBishop(3, 3);
+  EXPECT_EQ(moveList.size(), moveFromBoard.size());
+  auto ite = moveFromBoard.cend();
+  for (auto pm : moveList) {
+    EXPECT_NE(ite, std::find(moveFromBoard.cbegin(), ite, pm))
+      << "\tPieceMove not found: " << pm;
+  }
+
+  // FEN 2: K3R3/8/8/8/b7/8/8/3N3k b - - 0 1
+  moveList.clear();
+  moveList.emplace_back(3, 0, bbishop, 2, 1);
+  moveList.emplace_back(3, 0, bbishop, 1, 2);
+  moveList.emplace_back(3, 0, bbishop, 0, 3);
+  moveList.back().xPiece(0, 3, Piece::N, Color::W);
+  moveList.emplace_back(3, 0, bbishop, 4, 1);
+  moveList.emplace_back(3, 0, bbishop, 5, 2);
+  moveList.emplace_back(3, 0, bbishop, 6, 3);
+  moveList.emplace_back(3, 0, bbishop, 7, 4);
+  moveList.back().xPiece(7, 4, Piece::R, Color::W);
+  moveFromBoard = fenList[1].boardPtr()->moveBishop(3, 0);
+  EXPECT_EQ(moveList.size(), moveFromBoard.size());
+  ite = moveFromBoard.cend();
+  for (auto pm : moveList) {
+    EXPECT_NE(ite, std::find(moveFromBoard.cbegin(), ite, pm))
+      << "\tPieceMove not found: " << pm;
+  }
+}
+
+//
 // test moveRook
 //
 TEST(Board, DISABLED_MoveRook)
