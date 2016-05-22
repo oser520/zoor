@@ -705,7 +705,7 @@ Board::moveKnight(dim_t row, dim_t column) const
     if (notPiece(toCode))
       moveList.emplace_back(row, column, fromCode, pos.first, pos.second);
     else if (!isSame(toCode, mColor)) {
-      moveList.emplace_back(row, column, fromCode);
+      moveList.emplace_back(row, column, fromCode, pos.first, pos.second);
       moveList.back().xPiece(pos.first, pos.second, toCode);
     }
   }
