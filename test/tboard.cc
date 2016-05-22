@@ -1009,6 +1009,7 @@ TEST(Board, MoveWhiteBishop)
   auto wbishop = Color::W | Piece::B;
   auto fenList = readFen("fen/moveWhiteBishop.fen");
 
+  // FEN 1: k7/8/5q2/8/3B4/8/1P6/7K w - - 0 1
   moveList.emplace_back(3, 3, wbishop, 2, 4);
   moveList.emplace_back(3, 3, wbishop, 1, 5);
   moveList.emplace_back(3, 3, wbishop, 0, 6);
@@ -1027,6 +1028,7 @@ TEST(Board, MoveWhiteBishop)
       << "\tPieceMove not found: " << pm;
   }
 
+  // FEN 2: k3r3/8/8/8/B7/8/8/3n3K w - - 0 1
   moveList.clear();
   moveList.emplace_back(3, 0, wbishop, 2, 1);
   moveList.emplace_back(3, 0, wbishop, 1, 2);
