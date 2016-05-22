@@ -1026,6 +1026,24 @@ TEST(Board, MoveWhiteBishop)
     EXPECT_NE(ite, std::find(moveFromBoard.cbegin(), ite, pm))
       << "\tPieceMove not found: " << pm;
   }
+
+  moveList.clear();
+  moveList.emplace_back(3, 0, wbishop, 2, 1);
+  moveList.emplace_back(3, 0, wbishop, 1, 2);
+  moveList.emplace_back(3, 0, wbishop, 0, 3);
+  moveList.back().xPiece(0, 3, Piece::N, Color::B);
+  moveList.emplace_back(3, 0, wbishop, 4, 1);
+  moveList.emplace_back(3, 0, wbishop, 5, 2);
+  moveList.emplace_back(3, 0, wbishop, 6, 3);
+  moveList.emplace_back(3, 0, wbishop, 7, 4);
+  moveList.back().xPiece(7, 4, Piece::R, Color::B);
+  moveFromBoard = fenList[1].boardPtr()->moveBishop(3, 0);
+  EXPECT_EQ(moveList.size(), moveFromBoard.size());
+  ite = moveFromBoard.cend();
+  for (auto pm : moveList) {
+    EXPECT_NE(ite, std::find(moveFromBoard.cbegin(), ite, pm))
+      << "\tPieceMove not found: " << pm;
+  }
 }
 
 //
