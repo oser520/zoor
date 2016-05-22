@@ -907,11 +907,34 @@ TEST(Board, MoveBlackPawn)
 }
 
 //
-// test moveKnight
+// test moveKnight on white's turn to move
 //
-TEST(Board, DISABLED_MoveKnight)
+TEST(Board, MoveWhiteKnight)
 {
-  // TODO
+  vector<PieceMove> moveList;
+  auto wknight = Color::W | Piece::N;
+  auto fenList = readFen("fen/moveWhiteKnight.fen");
+
+  moveList.emplace_back(4, 4, wknight, 5, 2);
+  moveList.back().xPiece(5, 2, Piece::P, Color::B);
+  moveList.emplace_back(4, 4, wknight, 6, 3);
+  moveList.emplace_back(4, 4, wknight, 6, 5);
+  moveList.back().xPiece(6, 5, Piece::B, Color::B);
+  moveList.emplace_back(4, 4, wknight, 5, 6);
+  moveList.emplace_back(4, 4, wknight, 3, 6);
+  moveList.emplace_back(4, 4, wknight, 2, 5);
+  moveList.emplace_back(4, 4, wknight, 2, 3);
+  moveList.emplace_back(4, 4, wknight, 3, 2);
+
+  auto moveFromBoard = fenList[0].boardPtr()->moveKnight(4, 4);
+  auto ite = moveFromBoard.cend();
+
+  EXPECT_EQ(moveList.size(), moveFromBoard.size());
+
+  for (auto pm : moveList) {
+    EXPECT_NE(ite, std::find(moveFromBoard.cbegin(), ite, pm))
+      << "\tPieceMove not found: " << pm;
+  }
 }
 
 //
