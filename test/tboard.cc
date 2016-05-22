@@ -1001,11 +1001,31 @@ TEST(Board, MoveBlackKnight)
 }
 
 //
-// test moveBishop
+// test moveBishop on white's turn to move
 //
-TEST(Board, DISABLED_MoveBishop)
+TEST(Board, MoveWhiteBishop)
 {
-  // TODO
+  vector<PieceMove> moveList;
+  auto wbishop = Color::W | Piece::B;
+  auto fenList = readFen("fen/moveWhiteBishop.fen");
+
+  moveList.emplace_back(3, 3, wbishop, 2, 4);
+  moveList.emplace_back(3, 3, wbishop, 1, 5);
+  moveList.emplace_back(3, 3, wbishop, 0, 6);
+  moveList.emplace_back(3, 3, wbishop, 2, 2);
+  moveList.emplace_back(3, 3, wbishop, 4, 2);
+  moveList.emplace_back(3, 3, wbishop, 5, 1);
+  moveList.emplace_back(3, 3, wbishop, 6, 0);
+  moveList.emplace_back(3, 3, wbishop, 4, 4);
+  moveList.emplace_back(3, 3, wbishop, 5, 5);
+  moveList.back().xPiece(5, 5, Piece::Q, Color::B);
+  auto moveFromBoard = fenList[0].boardPtr()->moveBishop(3, 3);
+  EXPECT_EQ(moveList.size(), moveFromBoard.size());
+  auto ite = moveFromBoard.cend();
+  for (auto pm : moveList) {
+    EXPECT_NE(ite, std::find(moveFromBoard.cbegin(), ite, pm))
+      << "\tPieceMove not found: " << pm;
+  }
 }
 
 //
