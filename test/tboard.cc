@@ -962,6 +962,7 @@ TEST(Board, MoveBlackKnight)
   auto bknight = Color::B | Piece::N;
   auto fenList = readFen("fen/moveBlackKnight.fen");
 
+  // FEN 1: K7/5B2/2P5/4n3/8/8/8/7k b - - 0 1
   moveList.emplace_back(4, 4, bknight, 5, 2);
   moveList.back().xPiece(5, 2, Piece::P, Color::W);
   moveList.emplace_back(4, 4, bknight, 6, 3);
@@ -980,6 +981,7 @@ TEST(Board, MoveBlackKnight)
       << "\tPieceMove not found: " << pm;
   }
 
+  // FEN 2: K7/6R1/5p2/7n/8/6B1/8/7k b - - 0 1
   moveList.clear();
   moveList.emplace_back(4, 7, bknight, 2, 6);
   moveList.back().xPiece(2, 6, Piece::B, Color::W);
@@ -994,6 +996,7 @@ TEST(Board, MoveBlackKnight)
       << "\tPieceMove not found: " << pm;
   }
 
+  // FEN 3: K7/6r1/5p2/7n/5b2/6n1/8/7k b - - 0 1
   EXPECT_EQ(0, fenList[2].boardPtr()->moveKnight(4, 7).size());
 }
 
