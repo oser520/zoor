@@ -915,6 +915,7 @@ TEST(Board, MoveWhiteKnight)
   auto wknight = Color::W | Piece::N;
   auto fenList = readFen("fen/moveWhiteKnight.fen");
 
+  // FEN 1: k7/5b2/2p5/4N3/8/8/8/7K w - - 0 1
   moveList.emplace_back(4, 4, wknight, 5, 2);
   moveList.back().xPiece(5, 2, Piece::P, Color::B);
   moveList.emplace_back(4, 4, wknight, 6, 3);
@@ -925,16 +926,31 @@ TEST(Board, MoveWhiteKnight)
   moveList.emplace_back(4, 4, wknight, 2, 5);
   moveList.emplace_back(4, 4, wknight, 2, 3);
   moveList.emplace_back(4, 4, wknight, 3, 2);
-
   auto moveFromBoard = fenList[0].boardPtr()->moveKnight(4, 4);
-  auto ite = moveFromBoard.cend();
-
   EXPECT_EQ(moveList.size(), moveFromBoard.size());
-
+  auto ite = moveFromBoard.cend();
   for (auto pm : moveList) {
     EXPECT_NE(ite, std::find(moveFromBoard.cbegin(), ite, pm))
       << "\tPieceMove not found: " << pm;
   }
+
+  // FEN 2: k7/6r1/5P2/7N/8/6b1/8/7K w - - 0 1
+  moveList.clear();
+  moveList.emplace_back(4, 7, wknight, 2, 6);
+  moveList.back().xPiece(2, 6, Piece::B, Color::B);
+  moveList.emplace_back(4, 7, wknight, 3, 5);
+  moveList.emplace_back(4, 7, wknight, 6, 6);
+  moveList.back().xPiece(6, 6, Piece::R, Color::B);
+  moveFromBoard = fenList[1].boardPtr()->moveKnight(4, 7);
+  EXPECT_EQ(moveList.size(), moveFromBoard.size());
+  ite = moveFromBoard.cend();
+  for (auto pm : moveList) {
+    EXPECT_NE(ite, std::find(moveFromBoard.cbegin(), ite, pm))
+      << "\tPieceMove not found: " << pm;
+  }
+
+  // FEN 3: k7/6R1/5P2/7N/5B2/6N1/8/7K w - - 0 1
+  EXPECT_EQ(0, fenList[2].boardPtr()->moveKnight(4, 7).size());
 }
 
 //
