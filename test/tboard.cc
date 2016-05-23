@@ -1269,6 +1269,7 @@ TEST(Board, MoveBlackQueen)
   auto bqueen = Color::B | Piece::Q;
   auto fenList = readFen("fen/moveBlackQueen.fen");
 
+  // FEN 1: K2R3B/P7/8/8/3q2P1/8/8/3r3k b - - 0 1
   moveList.emplace_back(3, 3, bqueen, 3, 4);
   moveList.emplace_back(3, 3, bqueen, 3, 5);
   moveList.emplace_back(3, 3, bqueen, 3, 6);
