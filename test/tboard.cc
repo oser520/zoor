@@ -1097,11 +1097,57 @@ TEST(Board, MoveBlackBishop)
 }
 
 //
-// test moveRook
+// test moveRook on white's turn to move
 //
-TEST(Board, DISABLED_MoveRook)
+TEST(Board, MoveWhiteRook)
 {
-  // TODO
+  vector<PieceMove> moveList;
+  auto wrook = Color::W | Piece::R;
+  auto fenList = readFen("fen/moveWhiteRook.fen");
+
+  // FEN 1: k2r4/8/8/8/3R1P2/8/8/3n3K w - - 0 1
+  moveList.emplace_back(3, 3, wrook, 3, 4);
+  moveList.emplace_back(3, 3, wrook, 2, 3);
+  moveList.emplace_back(3, 3, wrook, 1, 3);
+  moveList.emplace_back(3, 3, wrook, 0, 3);
+  moveList.back().xPiece(0, 3, Piece::N, Color::B);
+  moveList.emplace_back(3, 3, wrook, 3, 2);
+  moveList.emplace_back(3, 3, wrook, 3, 1);
+  moveList.emplace_back(3, 3, wrook, 3, 0);
+  moveList.emplace_back(3, 3, wrook, 4, 3);
+  moveList.emplace_back(3, 3, wrook, 5, 3);
+  moveList.emplace_back(3, 3, wrook, 6, 3);
+  moveList.emplace_back(3, 3, wrook, 7, 3);
+  moveList.back().xPiece(7, 3, Piece::R, Color::B);
+  auto moveFromBoard = fenList[0].boardPtr()->moveRook(3, 3);
+  EXPECT_EQ(moveList.size(), moveFromBoard.size());
+  auto ite = moveFromBoard.cend();
+  for (auto pm : moveList) {
+    EXPECT_NE(ite, std::find(moveFromBoard.cbegin(), ite, pm))
+      << "\tPieceMove not found: " << pm;
+  }
+
+  // FEN 3: k7/8/8/3r4/1n1R3q/8/8/3R3K w - - 0 1
+  moveList.clear();
+  moveList.emplace_back(3, 3, wrook, 3, 4);
+  moveList.emplace_back(3, 3, wrook, 3, 5);
+  moveList.emplace_back(3, 3, wrook, 3, 6);
+  moveList.emplace_back(3, 3, wrook, 3, 7);
+  moveList.back().xPiece(3, 7, Piece::Q, Color::B);
+  moveList.emplace_back(3, 3, wrook, 2, 3);
+  moveList.emplace_back(3, 3, wrook, 1, 3);
+  moveList.emplace_back(3, 3, wrook, 3, 2);
+  moveList.emplace_back(3, 3, wrook, 3, 1);
+  moveList.back().xPiece(3, 1, Piece::N, Color::B);
+  moveList.emplace_back(3, 3, wrook, 4, 3);
+  moveList.back().xPiece(4, 3, Piece::R, Color::B);
+  moveFromBoard = fenList[1].boardPtr()->moveRook(3, 3);
+  EXPECT_EQ(moveList.size(), moveFromBoard.size());
+  ite = moveFromBoard.cend();
+  for (auto pm : moveList) {
+    EXPECT_NE(ite, std::find(moveFromBoard.cbegin(), ite, pm))
+      << "\tPieceMove not found: " << pm;
+  }
 }
 
 //
