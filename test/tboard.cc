@@ -1205,11 +1205,59 @@ TEST(Board, MoveBlackRook)
 }
 
 //
-// test moveQueen
+// test moveQueen on white's turn to move
 //
-TEST(Board, DISABLED_MoveQueen)
+TEST(Board, MoveWhiteQueen)
 {
-  // TODO
+  vector<PieceMove> moveList;
+  auto wqueen = Color::W | Piece::Q;
+  auto fenList = readFen("fen/moveWhiteQueen.fen");
+
+  // FEN 1: k2r3b/p7/8/8/3Q2p1/8/8/3R3K w - - 0 1
+  moveList.emplace_back(3, 3, wqueen, 3, 4);
+  moveList.emplace_back(3, 3, wqueen, 3, 5);
+  moveList.emplace_back(3, 3, wqueen, 3, 6);
+  moveList.back().xPiece(3, 6, Piece::P, Color::B);
+
+  moveList.emplace_back(3, 3, wqueen, 2, 4);
+  moveList.emplace_back(3, 3, wqueen, 1, 5);
+  moveList.emplace_back(3, 3, wqueen, 0, 6);
+
+  moveList.emplace_back(3, 3, wqueen, 2, 3);
+  moveList.emplace_back(3, 3, wqueen, 1, 3);
+
+  moveList.emplace_back(3, 3, wqueen, 2, 2);
+  moveList.emplace_back(3, 3, wqueen, 1, 1);
+  moveList.emplace_back(3, 3, wqueen, 0, 0);
+
+  moveList.emplace_back(3, 3, wqueen, 3, 2);
+  moveList.emplace_back(3, 3, wqueen, 3, 1);
+  moveList.emplace_back(3, 3, wqueen, 3, 0);
+
+  moveList.emplace_back(3, 3, wqueen, 4, 2);
+  moveList.emplace_back(3, 3, wqueen, 5, 1);
+  moveList.emplace_back(3, 3, wqueen, 6, 0);
+  moveList.back().xPiece(6, 0, Piece::P, Color::B);
+
+  moveList.emplace_back(3, 3, wqueen, 4, 3);
+  moveList.emplace_back(3, 3, wqueen, 5, 3);
+  moveList.emplace_back(3, 3, wqueen, 6, 3);
+  moveList.emplace_back(3, 3, wqueen, 7, 3);
+  moveList.back().xPiece(7, 3, Piece::R, Color::B);
+
+  moveList.emplace_back(3, 3, wqueen, 4, 4);
+  moveList.emplace_back(3, 3, wqueen, 5, 5);
+  moveList.emplace_back(3, 3, wqueen, 6, 6);
+  moveList.emplace_back(3, 3, wqueen, 7, 7);
+  moveList.back().xPiece(7, 7, Piece::B, Color::B);
+
+  auto moveFromBoard = fenList[0].boardPtr()->moveQueen(3, 3);
+  EXPECT_EQ(moveList.size(), moveFromBoard.size());
+  auto ite = moveFromBoard.cend();
+  for (auto pm : moveList) {
+    EXPECT_NE(ite, std::find(moveFromBoard.cbegin(), ite, pm))
+      << "\tPieceMove not found: " << pm;
+  }
 }
 
 //
