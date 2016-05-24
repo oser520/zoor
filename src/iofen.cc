@@ -227,6 +227,7 @@ namespace {
 size_t
 readRank(const string &rankLine, vector<Square> &squareList, const dim_t row)
 {
+
   // check rank line is not empty and does not exceed max chars
   if (rankLine.empty() || rankLine.size() > FenSymbols::RANK_LENGTH)
     throw ChessError("FEN record is not valid");
@@ -237,6 +238,7 @@ readRank(const string &rankLine, vector<Square> &squareList, const dim_t row)
 
   dim_t col = 0;
   size_t numPieces = 0;
+  using len_type = decltype(FenSymbols::RANK_LENGTH);
 
   for (auto &c : rankLine) {
     // check for empty squares
@@ -244,6 +246,9 @@ readRank(const string &rankLine, vector<Square> &squareList, const dim_t row)
       col += c - '0';
       continue;
     }
+
+    if (static_cast<len_type>(col) >= FenSymbols::RANK_LENGTH)
+      throw ChessError("FEN record is not valid");
 
     // convert code to piece
     auto code = fenPiece(c);
