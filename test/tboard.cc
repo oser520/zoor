@@ -1365,6 +1365,54 @@ TEST(Board, MoveWhiteKing)
 }
 
 //
+// test moveKing on black's turn to move
+//
+TEST(Board, MoveBlackKing)
+{
+  vector<PieceMove> moveList;
+  auto bking = Color::B | Piece::K;
+  auto fenList = readFen("fen/moveBlackKing.fen");
+
+  // FEN 1: r3k2r/8/8/8/8/8/8/4K3 b kq - 0 1
+  moveList.emplace_back(7, 4, bking, 7, 3);
+  moveList.emplace_back(7, 4, bking, 6, 3);
+  moveList.emplace_back(7, 4, bking, 6, 4);
+  moveList.emplace_back(7, 4, bking, 6, 5);
+  moveList.emplace_back(7, 4, bking, 7, 5);
+  moveList.emplace_back(7, 4, bking, 7, 6);
+  moveList.back().xPiece(7, 7, Piece::R, Color::B);
+  moveList.emplace_back(7, 4, bking, 7, 2);
+  moveList.back().xPiece(7, 0, Piece::R, Color::B);
+  auto moveFromBoard = fenList[0].boardPtr()->moveKing(7, 4);
+  EXPECT_EQ(moveList.size(), moveFromBoard.size());
+  auto ite = moveFromBoard.cend();
+  for (auto pm : moveList) {
+    EXPECT_NE(ite, std::find(moveFromBoard.cbegin(), ite, pm))
+      << "\tPieceMove not found: " << pm;
+  }
+
+  // FEN 2: 8/8/8/4kP2/4P3/8/8/4K3 b - - 0 1
+  moveList.clear();
+  moveList.emplace_back(4, 4, bking, 4, 3);
+  moveList.emplace_back(4, 4, bking, 5, 3);
+  moveList.emplace_back(4, 4, bking, 5, 4);
+  moveList.emplace_back(4, 4, bking, 5, 5);
+  moveList.emplace_back(4, 4, bking, 4, 5);
+  moveList.back().xPiece(4, 5, Piece::P, Color::W);
+  moveList.emplace_back(4, 4, bking, 3, 5);
+  moveList.emplace_back(4, 4, bking, 3, 4);
+  moveList.back().xPiece(3, 4, Piece::P, Color::W);
+  moveList.emplace_back(4, 4, bking, 3, 3);
+  moveFromBoard = fenList[1].boardPtr()->moveKing(4, 4);
+  EXPECT_EQ(moveList.size(), moveFromBoard.size());
+  ite = moveFromBoard.cend();
+  for (auto pm : moveList) {
+    EXPECT_NE(ite, std::find(moveFromBoard.cbegin(), ite, pm))
+      << "\tPieceMove not found: " << pm;
+  }
+}
+
+//
 // test toString
 //
 TEST(Board, DISABLED_ToString)
