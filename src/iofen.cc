@@ -227,7 +227,6 @@ namespace {
 size_t
 readRank(const string &rankLine, vector<Square> &squareList, const dim_t row)
 {
-
   // check rank line is not empty and does not exceed max chars
   if (rankLine.empty() || rankLine.size() > FenSymbols::RANK_LENGTH)
     throw ChessError("FEN record is not valid");
