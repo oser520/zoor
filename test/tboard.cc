@@ -278,8 +278,10 @@ TEST(Board, CanBlackCastle)
 TEST(Board, WhiteGetMovesRowCol)
 {
   auto fenList = readFen("fen/whiteGetMovesRowCol.fen");
-  auto pb = fenList[0].boardPtr();
   vector<PieceMove> moveList;
+
+  // FEN: q3kb1r/1p2p3/p7/7n/7N/P7/1P2P3/Q3KB1R w - - 0 1
+  auto pb = fenList[0].boardPtr();
 
   // rook moves
   auto piece = Color::W | Piece::R;
