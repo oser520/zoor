@@ -201,8 +201,6 @@ Board::getMoves(dim_t row, dim_t column) const
     moveList = moveKing(row, column);
     break;
   default:
-    // should never get here
-    assert(false);
     break;
   }
 
