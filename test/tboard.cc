@@ -273,11 +273,26 @@ TEST(Board, CanBlackCastle)
 }
 
 //
-// test getMoves with row and column specified
+// test getMoves with row and column specified, on white's turn to move
 //
-TEST(Board, DISABLED_GetMovesRowCol)
+TEST(Board, WhiteGetMovesRowCol)
 {
-  // TODO
+  auto fenList = readFen("fen/whiteGetMovesRowCol.fen");
+  auto pb = fenList[0].boardPtr();
+  vector<PieceMove> moveList;
+
+  // rook moves
+  auto piece = Color::W | Piece::R;
+  moveList.emplace_back(0, 7, piece, 1, 7);
+  moveList.emplace_back(0, 7, piece, 2, 7);
+  moveList.emplace_back(0, 7, piece, 0, 6);
+  auto moveFromBoard = pb->getMoves(0, 7);
+  EXPECT_EQ(moveList.size(), moveFromBoard.size());
+  auto ite = moveFromBoard.cend();
+  for (auto pm : moveList) {
+    EXPECT_NE(ite, std::find(moveFromBoard.cbegin(), ite, pm))
+      << "\tPieceMove not found: " << pm;
+  }
 }
 
 //
