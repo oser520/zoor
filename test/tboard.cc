@@ -320,6 +320,21 @@ TEST(Board, WhiteGetMovesRowCol)
     EXPECT_NE(ite, std::find(moveFromBoard.cbegin(), ite, pm))
       << "\tPieceMove not found: " << pm;
   }
+
+  // queen moves
+  piece = Color::W | Piece::Q;
+  moveList.clear();
+  moveList.emplace_back(0, 0, piece, 0, 3);
+  moveList.emplace_back(0, 0, piece, 0, 2);
+  moveList.emplace_back(0, 0, piece, 0, 1);
+  moveList.emplace_back(0, 0, piece, 1, 0);
+  moveFromBoard = pb->getMoves(0, 0);
+  EXPECT_EQ(moveList.size(), moveFromBoard.size());
+  ite = moveFromBoard.cend();
+  for (auto pm : moveList) {
+    EXPECT_NE(ite, std::find(moveFromBoard.cbegin(), ite, pm))
+      << "\tPieceMove not found: " << pm;
+  }
 }
 
 //
