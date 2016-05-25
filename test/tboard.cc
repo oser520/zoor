@@ -365,6 +365,9 @@ TEST(Board, WhiteGetMovesRowCol)
     EXPECT_NE(ite, std::find(moveFromBoard.cbegin(), ite, pm))
       << "\tPieceMove not found: " << pm;
   }
+
+  // on empty square
+  EXPECT_EQ(0, pb->getMoves(1, 7).size());
 }
 
 //
@@ -459,6 +462,9 @@ TEST(Board, BlackGetMovesRowCol)
     EXPECT_NE(ite, std::find(moveFromBoard.cbegin(), ite, pm))
       << "\tPieceMove not found: " << pm;
   }
+
+  // on empty square
+  EXPECT_EQ(0, pb->getMoves(6, 7).size());
 }
 
 //
