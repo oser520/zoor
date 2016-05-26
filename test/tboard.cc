@@ -526,6 +526,64 @@ TEST(Board, WhiteGetMoves)
 }
 
 //
+// test getMoves for all moves on the board, on black's turn to move
+//
+TEST(Board, BlackGetMoves)
+{
+  // FEN: q3kb1r/1p2p3/p7/7n/7N/P7/1P2P3/Q3KB1R b - - 0 1
+  auto fenList = readFen("fen/blackGetMovesRowCol.fen");
+  vector<PieceMove> moveList;
+
+  // rook moves
+  auto piece = Color::B | Piece::R;
+  moveList.emplace_back(7, 7, piece, 6, 7);
+  moveList.emplace_back(7, 7, piece, 5, 7);
+  moveList.emplace_back(7, 7, piece, 7, 6);
+
+  // bishop moves
+  piece = Color::B | Piece::B;
+  moveList.emplace_back(7, 5, piece, 6, 6);
+  moveList.emplace_back(7, 5, piece, 5, 7);
+
+  // king moves
+  piece = Color::B | Piece::K;
+  moveList.emplace_back(7, 4, piece, 6, 5);
+  moveList.emplace_back(7, 4, piece, 7, 3);
+  moveList.emplace_back(7, 4, piece, 6, 3);
+
+  // queen moves
+  piece = Color::B | Piece::Q;
+  moveList.emplace_back(7, 0, piece, 7, 3);
+  moveList.emplace_back(7, 0, piece, 7, 2);
+  moveList.emplace_back(7, 0, piece, 7, 1);
+  moveList.emplace_back(7, 0, piece, 6, 0);
+
+  // pawn moves
+  piece = Color::B | Piece::P;
+  moveList.emplace_back(6, 4, piece, 5, 4);
+  moveList.emplace_back(6, 4, piece, 4, 4);
+  moveList.emplace_back(6, 1, piece, 5, 1);
+  moveList.emplace_back(6, 1, piece, 4, 1);
+  moveList.emplace_back(5, 0, piece, 4, 0);
+
+  // knight moves
+  piece = Color::B | Piece::N;
+  moveList.emplace_back(4, 7, piece, 6, 6);
+  moveList.emplace_back(4, 7, piece, 5, 5);
+  moveList.emplace_back(4, 7, piece, 3, 5);
+  moveList.emplace_back(4, 7, piece, 2, 6);
+
+  auto moveFromBoard = fenList[0].boardPtr()->getMoves();
+  EXPECT_EQ(moveList.size(), moveFromBoard.size());
+
+  auto ite = moveFromBoard.cend();
+  for (auto pm : moveList) {
+    EXPECT_NE(ite, std::find(moveFromBoard.cbegin(), ite, pm))
+      << "\tPieceMove not found: " << pm;
+  }
+}
+
+//
 // test getBoards
 //
 TEST(Board, DISABLED_GetBoards)
