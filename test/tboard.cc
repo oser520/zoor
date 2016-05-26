@@ -602,9 +602,63 @@ TEST(Board, DISABLED_MakeMoveCopy)
 //
 // test makeMove
 //
-TEST(Board, DISABLED_MakeMove)
+TEST(Board, MakeMove)
 {
-  // TODO
+  vector<PieceMove> moveList;
+  moveList.emplace_back(1, 4, Color::W|Piece::P, 3, 4); // 01. e4    ..
+  moveList.emplace_back(6, 4, Color::B|Piece::P, 4, 4); // 01. ..    e5
+  moveList.emplace_back(0, 6, Color::W|Piece::N, 2, 5); // 02. Nf3   ..
+  moveList.emplace_back(7, 1, Color::B|Piece::N, 5, 2); // 02. ..    Nc6
+  moveList.emplace_back(0, 5, Color::W|Piece::B, 3, 2); // 03. Bc4   ..
+  moveList.emplace_back(7, 5, Color::B|Piece::B, 4, 2); // 03. ..    Bc5
+  moveList.emplace_back(1, 1, Color::W|Piece::P, 3, 1); // 04. b4    ..
+  moveList.emplace_back(4, 2, Color::B|Piece::B, 3, 1); // 04. ..    Bxb4
+  moveList.back().xPiece(3, 1, Piece::P, Color::W);
+  moveList.emplace_back(1, 2, Color::W|Piece::P, 2, 2); // 05. c3    ..
+  moveList.emplace_back(3, 1, Color::B|Piece::B, 4, 0); // 05. ..    Ba5
+  moveList.emplace_back(1, 3, Color::W|Piece::P, 3, 3); // 06. d4    ..
+  moveList.emplace_back(4, 4, Color::B|Piece::P, 3, 3); // 06. ..    exd4
+  moveList.back().xPiece(3, 3, Piece::P, Color::W);
+  moveList.emplace_back(0, 4, Color::W|Piece::K, 0, 6); // 07. 0-0   ..
+  moveList.back().xPiece(0, 7, Piece::R, Color::W);
+  moveList.emplace_back(3, 3, Color::B|Piece::P, 2, 2); // 07. ..    dxc3
+  moveList.back().xPiece(2, 2, Piece::P, Color::W);
+  moveList.emplace_back(0, 3, Color::W|Piece::Q, 2, 1); // 08. Qb3   ..
+  moveList.emplace_back(7, 6, Color::B|Piece::N, 5, 7); // 08. ..    Nh6
+  moveList.emplace_back(0, 2, Color::W|Piece::B, 5, 7); // 09. Bxh6  ..
+  moveList.back().xPiece(5, 7, Piece::N, Color::B);
+  moveList.emplace_back(6, 6, Color::B|Piece::P, 5, 7); // 09. ..    gxh6
+  moveList.back().xPiece(5, 7, Piece::B, Color::W);
+  moveList.emplace_back(3, 2, Color::W|Piece::B, 6, 5); // 10. Bxf7 ..
+  moveList.back().xPiece(6, 5, Piece::P, Color::B);
+  moveList.emplace_back(7, 4, Color::B|Piece::K, 7, 5); // 10. ..    Kf8
+  moveList.emplace_back(6, 5, Color::W|Piece::B, 4, 7); // 11. Bh5   ..
+  moveList.emplace_back(7, 3, Color::B|Piece::Q, 3, 7); // 11. ..    Qh44
+  moveList.emplace_back(2, 1, Color::W|Piece::Q, 6, 5); // 12. Qf6   ..
+  moveList.emplace_back(3, 7, Color::B|Piece::Q, 3, 4); // 12. ..    Qxe4
+  moveList.back().xPiece(3, 4, Piece::P, Color::W);
+  moveList.emplace_back(6, 5, Color::W|Piece::Q, 7, 5); // 13. Qxf8  ..
+  moveList.back().xPiece(7, 5, Piece::K, Color::B);
+
+  auto fenList = readFen("fen/makeMove.fen");
+  Board board;
+
+  EXPECT_EQ(moveList.size()+1, fenList.size());
+  EXPECT_EQ(board, *fenList[0].boardPtr());
+
+  int i = 1;
+  auto color = Color::W;
+  for (auto &pm : moveList) {
+    board.makeMove(pm);
+    color = ~color;
+    auto pb = fenList[i++].boardPtr();
+
+    EXPECT_EQ(color, pb->nextTurn())
+      << "\tNext color is not equal after move: " << pm;
+
+    EXPECT_EQ(board.base(), pb->base())
+      << "\tBoards are not equal after move: " << pm;
+  }
 }
 
 //
