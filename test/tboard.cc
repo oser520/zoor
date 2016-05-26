@@ -277,7 +277,7 @@ TEST(Board, CanBlackCastle)
 //
 TEST(Board, WhiteGetMovesRowCol)
 {
-  auto fenList = readFen("fen/whiteGetMovesRowCol.fen");
+  auto fenList = readFen("fen/whiteGetMoves.fen");
   vector<PieceMove> moveList;
 
   // FEN: q3kb1r/1p2p3/p7/7n/7N/P7/1P2P3/Q3KB1R w - - 0 1
@@ -375,7 +375,7 @@ TEST(Board, WhiteGetMovesRowCol)
 //
 TEST(Board, BlackGetMovesRowCol)
 {
-  auto fenList = readFen("fen/blackGetMovesRowCol.fen");
+  auto fenList = readFen("fen/blackGetMoves.fen");
   vector<PieceMove> moveList;
 
   auto pb = fenList[0].boardPtr();
@@ -473,7 +473,7 @@ TEST(Board, BlackGetMovesRowCol)
 TEST(Board, WhiteGetMoves)
 {
   // FEN: q3kb1r/1p2p3/p7/7n/7N/P7/1P2P3/Q3KB1R w - - 0 1
-  auto fenList = readFen("fen/whiteGetMovesRowCol.fen");
+  auto fenList = readFen("fen/whiteGetMoves.fen");
   vector<PieceMove> moveList;
 
   // rook moves
@@ -531,7 +531,7 @@ TEST(Board, WhiteGetMoves)
 TEST(Board, BlackGetMoves)
 {
   // FEN: q3kb1r/1p2p3/p7/7n/7N/P7/1P2P3/Q3KB1R b - - 0 1
-  auto fenList = readFen("fen/blackGetMovesRowCol.fen");
+  auto fenList = readFen("fen/blackGetMoves.fen");
   vector<PieceMove> moveList;
 
   // rook moves
