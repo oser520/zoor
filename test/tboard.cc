@@ -596,9 +596,35 @@ TEST(Board, DISABLED_GetBoards)
 //
 // test makeMoveCopy
 //
-TEST(Board, DISABLED_MakeMoveCopy)
+TEST(Board, MakeMoveCopy)
 {
-  // TODO
+  vector<PieceMove> moveList;
+  // simulate a Vienna game
+  playViennaGame(moveList);
+  auto fenList = readFen("fen/makeMove.fen");
+  Board board, boardCopy;
+
+  EXPECT_EQ(moveList.size()+1, fenList.size());
+  EXPECT_EQ(board, *fenList[0].boardPtr());
+
+  int i = 1;
+  auto color = Color::W;
+  for (auto &pm : moveList) {
+    boardCopy = board.makeMoveCopy(pm);
+    color = ~color;
+
+    EXPECT_EQ(color, fenList[i].boardPtr()->nextTurn())
+      << "\tNext color is not equal after move: " << pm;
+
+    EXPECT_EQ(boardCopy.base(), fenList[i].boardPtr()->base())
+      << "\tNext boards are not equal after move: " << pm;
+
+    EXPECT_EQ(board.base(), fenList[i-1].boardPtr()->base())
+      << "\tPrevious boards are not equal after move: " << pm;
+
+    board = boardCopy;
+    ++i;
+  }
 }
 
 //
