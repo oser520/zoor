@@ -113,17 +113,17 @@ shortString(piece_t piece) noexcept
   if (isWhite(piece)) {
     switch (getPiece(piece)) {
     case Piece::P:
-      return "WP";
+      return "P";
     case Piece::N:
-      return "WKn";
+      return "N";
     case Piece::B:
-      return "WB";
+      return "B";
     case Piece::R:
-      return "WR";
+      return "R";
     case Piece::Q:
-      return "WQ";
+      return "Q";
     case Piece::K:
-      return "WKi";
+      return "K";
     case Piece::NONE:
       return "0";
     default:
@@ -132,17 +132,17 @@ shortString(piece_t piece) noexcept
   } else {
     switch (getPiece(piece)) {
     case Piece::P:
-      return "BP";
+      return "p";
     case Piece::N:
-      return "BKn";
+      return "n";
     case Piece::B:
-      return "BB";
+      return "b";
     case Piece::R:
-      return "BR";
+      return "r";
     case Piece::Q:
-      return "BQ";
+      return "q";
     case Piece::K:
-      return "BKi";
+      return "k";
     case Piece::NONE:
       return "0";
     default:
