@@ -734,14 +734,6 @@ TEST(Board, Iterators)
 }
 
 //
-// test jump
-//
-TEST(Board, DISABLED_Jump)
-{
-  // TODO
-}
-
-//
 // test isCheckPawn on white king
 //
 TEST(Board, WhiteOnCheckFromPawn)
