@@ -1823,9 +1823,13 @@ TEST(Board, ToString)
 //
 // test hashCode
 //
-TEST(Board, DISABLED_HashCode)
+TEST(Board, HashCode)
 {
-  // TODO
+  Board board1, board2;
+  EXPECT_EQ(board1.hashCode(), board2.hashCode());
+  PieceMove pm(1, 0, Color::W|Piece::P, 3, 0);
+  board2.makeMove(pm);
+  EXPECT_NE(board1.hashCode(), board2.hashCode());
 }
 
 //
