@@ -704,9 +704,13 @@ TEST(Board, MakeMove)
 //
 // test lastMove
 //
-TEST(Board, DISABLED_LastMove)
+TEST(Board, LastMove)
 {
-  // TODO
+  Board board;
+  PieceMove pm1, pm2(1, 0, Color::W|Piece::P, 3, 0);
+  EXPECT_EQ(pm1, board.lastMove());
+  board.makeMove(pm2);
+  EXPECT_EQ(pm2, board.lastMove());
 }
 
 //
