@@ -591,18 +591,18 @@ TEST(Board, BlackGetMoves)
 TEST(Board, WhiteGetBoards)
 {
   auto fenList = readFen("fen/whiteGetBoards.fen");
-  auto boardList = fenList[0].boardPtr()->getBoards();
+  auto bList = fenList[0].boardPtr()->getBoards();
 
-  EXPECT_EQ(fenList.size()-1, boardList.size());
+  EXPECT_EQ(fenList.size()-1, bList.size());
 
   int i = 1;
   auto fenIter = fenList.cbegin()+1;
   auto fenLast = fenList.cend();
-  auto boardIter = boardList.cbegin();
-  auto boardLast = boardList.cend();
+  auto bIter = bList.cbegin();
+  auto bLast = bList.cend();
   while (fenIter != fenLast) {
     auto &board = *(fenIter++)->boardPtr();
-    EXPECT_NE(boardLast, std::find(boardIter, boardLast, board))
+    EXPECT_NE(bLast, std::find(bIter, bLast, board))
       << "Position not found: " << i;
     ++i;
   }
