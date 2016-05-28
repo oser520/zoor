@@ -602,8 +602,11 @@ TEST(Board, WhiteGetBoards)
   auto bLast = bList.cend();
   while (fenIter != fenLast) {
     auto &board = *(fenIter++)->boardPtr();
-    EXPECT_NE(bLast, std::find(bIter, bLast, board))
-      << "\tPosition not found: " << i;
+    EXPECT_NE(bLast, std::find_if(bIter, bLast,
+      [&board](const Board b) -> bool {
+        return board.base() == b.base() && board.nextTurn() == b.nextTurn();
+      }
+    )) << "\tPosition not found: " << i;
     ++i;
   }
 }
