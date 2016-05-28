@@ -603,7 +603,7 @@ TEST(Board, WhiteGetBoards)
   while (fenIter != fenLast) {
     auto &board = *(fenIter++)->boardPtr();
     EXPECT_NE(bLast, std::find(bIter, bLast, board))
-      << "Position not found: " << i;
+      << "\tPosition not found: " << i;
     ++i;
   }
 }
