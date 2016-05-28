@@ -1835,9 +1835,13 @@ TEST(Board, HashCode)
 //
 // test colorToMove
 //
-TEST(Board, DISABLED_NextTurn)
+TEST(Board, NextTurn)
 {
-  // TODO
+  Board board;
+  EXPECT_EQ(Color::W, board.nextTurn());
+  PieceMove pm(1, 0, Color::W|Piece::P, 3, 0);
+  board.makeMove(pm);
+  EXPECT_EQ(Color::B, board.nextTurn());
 }
 
 //
