@@ -612,6 +612,32 @@ TEST(Board, WhiteGetBoards)
 }
 
 //
+// test getBoards on black's turn to move
+//
+TEST(Board, BlackGetBoards)
+{
+  auto fenList = readFen("fen/blackGetBoards.fen");
+  auto bList = fenList[0].boardPtr()->getBoards();
+
+  EXPECT_EQ(fenList.size()-1, bList.size());
+
+  int i = 1;
+  auto fenIter = fenList.cbegin()+1;
+  auto fenLast = fenList.cend();
+  auto bIter = bList.cbegin();
+  auto bLast = bList.cend();
+  while (fenIter != fenLast) {
+    auto &board = *(fenIter++)->boardPtr();
+    EXPECT_NE(bLast, std::find_if(bIter, bLast,
+      [&board](const Board b) -> bool {
+        return board.base() == b.base() && board.nextTurn() == b.nextTurn();
+      }
+    )) << "\tPosition not found: " << i;
+    ++i;
+  }
+}
+
+//
 // test makeMoveCopy
 //
 TEST(Board, MakeMoveCopy)
