@@ -8,6 +8,7 @@
 // STL
 //
 #include <algorithm>
+#include <sstream>
 #include <string>
 #include <utility>
 #include <vector>
@@ -1803,9 +1804,20 @@ TEST(Board, MoveBlackKing)
 //
 // test toString
 //
-TEST(Board, DISABLED_ToString)
+TEST(Board, ToString)
 {
-  // TODO
+  ostringstream oss;
+  oss << "{{R, N, B, Q, K, B, N, R}, ";
+  oss << "{P, P, P, P, P, P, P, P}, ";
+  oss << "{0, 0, 0, 0, 0, 0, 0, 0}, ";
+  oss << "{0, 0, 0, 0, 0, 0, 0, 0}, ";
+  oss << "{0, 0, 0, 0, 0, 0, 0, 0}, ";
+  oss << "{0, 0, 0, 0, 0, 0, 0, 0}, ";
+  oss << "{p, p, p, p, p, p, p, p}, ";
+  oss << "{r, n, b, q, k, b, n, r}}";
+
+  Board board;
+  EXPECT_EQ(oss.str(), board.toString());
 }
 
 //
