@@ -1847,9 +1847,13 @@ TEST(Board, NextTurn)
 //
 // test equality operator
 //
-TEST(Board, DISABLED_EqualOp)
+TEST(Board, EqualOp)
 {
-  // TODO
+  Board board1, board2;
+  EXPECT_TRUE(board1 == board2);
+  PieceMove pm(1, 0, Color::W|Piece::P, 3, 0);
+  board2.makeMove(pm);
+  EXPECT_TRUE(board1 != board2);
 }
 
 void
