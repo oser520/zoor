@@ -24,7 +24,7 @@ These are only necessary to run unit tests, but the engine does not depend on th
 
 ## Developmnet Environment
 
-I use [Debian][9], and that's what I'm using as my develoment environment. Anything
+I use [Debian][4], and that's what I'm using as my develoment environment. Anything
 I say about building or compiling is thus only applicable to an operating system
 environment similar to mine; however, if you have a compliant C++11 compiler, and a
 recent version of *make*, then you should be able to build the unit tests without too
@@ -32,23 +32,15 @@ much fiddling.
 
 ## Short Term Goals
 
-* [ ] ***Board Logic*** The board logic is for the most part complete, but I'm not
-marking it as complete yet, because I need to verify that the logic is correct.
-Verifying that the logic works entails writing unit tests to check that moves are
-generated correctly, which means constructing boards with specific positions --
-many of them because move logic is complex. Instead of proceeding to write code
-to manually construct these boards, this is a natural stopping point to look
-into chess-notation systems for computers, and thus use chess notation files to
-construct boards. Therefore, add logic to use one of the following computer chess
-notations:
-  * ***Portable game notation*** (PGN) See [here][4] and [here][5].
-  * ***Forsyth-Edwards notation*** (FEN) See [here][6] and [here][7]. My initial
-    impression is that this might be the easiest to implement.
-  * ***Extended position description*** (EPD) See [here][8].
-* [ ] ***Search Logic***
-* [ ] ***Evaluation Logic***
-* [ ] ***Player Logic***
-* [ ] ***Game Logic***
+* **Evaluation Logic** Neet to implement one or more stretegies that can be employed
+to evaluate a chess position, and can be plugged into the search algorithms to select
+a move.
+* **Search Logic** Examples of algorithms:
+  * [AlphaBeta](https://chessprogramming.wikispaces.com/Alpha-Beta)
+  * [B*](https://chessprogramming.wikispaces.com/B%2A)
+  * [Monte Carlo Search Tree](https://chessprogramming.wikispaces.com/Monte-Carlo+Tree+Search)
+* **Player Logic**
+* **Game Logic**
 
 Once all of these pieces are in place, it will be possible to play against the
 engine. At this point the engine might not be very good, but the goal is for it
@@ -60,6 +52,7 @@ able to beat good chess players and other chess engines.
 
 ## Long Term Goals
 
+* Make engine portable.
 * Create chess games database, by either designing one from scratch or creating an
   interface for an SQL or NoSQL database.
   * games should be stored compactly
@@ -76,9 +69,4 @@ able to beat good chess players and other chess engines.
 [1]: https://www.gnu.org/software/make/
 [2]: https://github.com/google/googletest
 [3]: https://www.python.org/
-[4]: https://en.wikipedia.org/wiki/Portable_Game_Notation
-[5]: https://chessprogramming.wikispaces.com/Portable+Game+Notation
-[6]: https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation
-[7]: https://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation
-[8]: https://chessprogramming.wikispaces.com/Extended+Position+Description
-[9]: https://www.debian.org/
+[4]: https://www.debian.org/
