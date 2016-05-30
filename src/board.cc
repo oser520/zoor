@@ -1086,39 +1086,21 @@ Board::moveRef(const PieceMove &pMove) noexcept
     auto piece = pMove.isPromo() ? pMove.dPiece() : Piece::P;
     mBoard.put(toRow, toCol, piece, mColor);
   } else if (isKing(piece)) {
-    if (!pMove.isCastle() && !pMove.isCastleLong())
-      mBoard.put(toRow, toCol, Piece::K, mColor);
-    else if (pMove.isCastle()) {
-      dim_t row;
+    if (pMove.isCastle() || pMove.isCastleLong()) {
       if (isWhite(mColor)) {
-        row = 0;
         mInfo.rookH1On();
         mInfo.wkMovedOn();
       } else {
-        row = 7;
         mInfo.rookH8On();
         mInfo.bkMovedOn();
       }
       // clear the rook from corner square
-      mBoard.clear(row, 7);
-      mBoard.put(row, 6, Piece::K, mColor);
-      mBoard.put(row, 5, Piece::R, mColor);
-    } else {  // is long castling
-      dim_t row;
-      if (isWhite(mColor)) {
-        row = 0;
-        mInfo.rookA1On();
-        mInfo.wkMovedOn();
-      } else {
-        row = 7;
-        mInfo.rookA8On();
-        mInfo.bkMovedOn();
-      }
-      // clear the rook from corner square
-      mBoard.clear(row, 0);
-      mBoard.put(row, 2, Piece::K, mColor);
-      mBoard.put(row, 3, Piece::R, mColor);
-    }
+      mBoard.clear(pMove.xRow(), pMove.xColumn());
+      mBoard.put(toRow, toCol, Piece::K, mColor);
+      dim_t rookCol = pMove.isCastle() ? 5 : 3;
+      mBoard.put(toRow, rookCol, Piece::R, mColor);
+    } else
+      mBoard.put(toRow, toCol, Piece::K, mColor);
   } else {
     mBoard.put(toRow, toCol, piece, mColor);
     // set flag if a rook has moved
