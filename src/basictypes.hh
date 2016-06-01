@@ -77,6 +77,36 @@ enum class PieceMask: piece_t
 };
 
 ///
+/// @brief A board's row numbers.
+///
+enum Row : dim_t
+{
+  R1,
+  R2,
+  R3,
+  R4,
+  R5,
+  R6,
+  R7,
+  R8
+};
+
+///
+/// @brief A board's column letters.
+///
+enum Column : dim_t
+{
+  A,
+  B,
+  C,
+  D,
+  E,
+  F,
+  G,
+  H
+};
+
+///
 /// @brief Get a @c Piece from a bit pattern.
 /// @param piece The bit pattern containing a @c Piece.
 /// @return A @c Piece.
