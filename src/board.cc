@@ -112,12 +112,8 @@ Board::canCastle() const noexcept
   if (!notPiece(mBoard.get(row, 5)) || !notPiece(mBoard.get(row, 6)))
     return false;
 
-  // no checks on path to castle
-  if (isCheck(row, 5) || isCheck(row, 6))
-    return false;
-
-  // not in check now
-  if (isCheck(row, 4))
+  // no checks
+  if (isCheck(row, 4) || isCheck(row, 5) || isCheck(row, 6))
     return false;
 
   return true;
