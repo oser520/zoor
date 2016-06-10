@@ -20,22 +20,13 @@
 //
 #include "gtest/gtest.h"
 
-namespace {
+namespace zoor {
 
 //
 // using from STL
 //
 using std::pair;
 using std::move;
-
-//
-// access all of zoor
-//
-using zoor::BasicBoard;
-using zoor::Color;
-using zoor::Piece;
-using zoor::getColor;
-using zoor::getPiece;
 
 //
 // test default ctor and get()
@@ -247,10 +238,4 @@ TEST(BasicBoard, EqualOp)
   EXPECT_NE(board1, board2);
 }
 
-} // anonymous namespace
-
-int main(int argc, char *argv[])
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+} // namespace zoor

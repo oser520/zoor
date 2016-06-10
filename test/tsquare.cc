@@ -21,12 +21,9 @@
 //
 #include "gtest/gtest.h"
 
-namespace {
+namespace zoor {
 
 using std::string;
-using zoor::Square;
-using zoor::Piece;
-using zoor::Color;
 
 //
 // Test for default ctor.
@@ -199,10 +196,4 @@ TEST(Square, HashCode)
   EXPECT_NE(sq1.hashCode(), sq2.hashCode());
 }
 
-} // namespace
-
-int main(int argc, char *argv[])
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+} // namespace zoor

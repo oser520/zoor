@@ -24,7 +24,7 @@
 //
 #include "gtest/gtest.h"
 
-namespace {
+namespace zoor {
 
 //
 // using from STL
@@ -32,16 +32,6 @@ namespace {
 using std::ostringstream;
 using std::string;
 using std::vector;
-
-//
-// using from zoor
-//
-using zoor::Board;
-using zoor::Piece;
-using zoor::Color;
-using zoor::PieceCount;
-using zoor::Square;
-using zoor::piece_t;
 
 //
 // Test the default ctor
@@ -337,10 +327,4 @@ TEST(PieceCount, Good)
   EXPECT_FALSE(pc.good());
 }
 
-} // anonymous namespace
-
-int main(int argc, char *argv[])
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+} // namespace zoor

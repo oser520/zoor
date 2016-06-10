@@ -10,9 +10,7 @@
 #include "boardinfo.hh"
 #include "gtest/gtest.h"
 
-namespace {
-
-using zoor::BoardInfo;
+namespace zoor {
 
 // test get
 TEST(BoardInfo, get)
@@ -184,10 +182,4 @@ TEST(BoardInfo, operatorEq)
   EXPECT_EQ(bi1.hashCode(), bi2.hashCode());
 }
 
-} // anonymous namespace
-
-int main(int argc, char *argv[])
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+} // namespace zoor

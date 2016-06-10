@@ -19,17 +19,12 @@
 //
 #include "gtest/gtest.h"
 
-namespace {
+namespace zoor {
 
 //
 // using from STL
 //
 using std::ostringstream;
-
-//
-// access all of zoor
-//
-using namespace zoor;
 
 //
 // test output string for Piece
@@ -238,10 +233,4 @@ TEST(BasicTypes, isSameColor)
   EXPECT_FALSE(isSame(Color::W|Piece::K, Color::B));
 }
 
-} // anonymous namespace
-
-int main(int argc, char *argv[])
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+} // namespace zoor

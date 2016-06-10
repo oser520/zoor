@@ -22,14 +22,10 @@
 //
 #include "gtest/gtest.h"
 
-namespace {
+namespace zoor {
 
 using std::ostringstream;
 using std::string;
-using zoor::Color;
-using zoor::Piece;
-using zoor::PieceMove;
-using zoor::Square;
 
 //
 // Test the values of the piece making the moves with default constructor.
@@ -464,10 +460,4 @@ TEST(PieceMove, OutputOp)
   EXPECT_EQ(ss1.str(), ss2.str()); 
 }
 
-} // anonymous namespace
-
-int main(int argc, char *argv[])
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+} // namespace zoor

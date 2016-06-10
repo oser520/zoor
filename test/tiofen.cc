@@ -24,23 +24,12 @@
 //
 #include "gtest/gtest.h"
 
-namespace {
+namespace zoor {
 
 //
 // using from STL
 //
 using std::vector;
-
-//
-// using from zoor
-//
-using zoor::Board;
-using zoor::BoardInfo;
-using zoor::Piece;
-using zoor::Color;
-using zoor::PieceMove;
-using zoor::Square;
-using zoor::readFen;
 
 //
 // Test readFen with a record that represents the initial position
@@ -256,10 +245,4 @@ TEST(IOFen, Test3)
   EXPECT_EQ(board, *fenList[0].boardPtr());
 }
 
-} // namespace
-
-int main(int argc, char *argv[])
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+} // namespace zoor

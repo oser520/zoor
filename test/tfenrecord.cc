@@ -20,18 +20,12 @@
 //
 #include "gtest/gtest.h"
 
-namespace {
+namespace zoor {
 
 //
 // using from STL
 //
 using std::make_shared;
-
-//
-// using from zoor
-//
-using zoor::Board;
-using zoor::FenRecord;
 
 //
 // Test FenRecord
@@ -47,11 +41,4 @@ TEST(FenRecord, CtorAndGetters)
   EXPECT_EQ(0, fr.fullMove());
 }
 
-} // namespace
-
-int main(int argc, char *argv[])
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
-
+} // namespace zoor

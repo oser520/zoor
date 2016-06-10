@@ -28,7 +28,7 @@
 //
 #include "gtest/gtest.h"
 
-namespace {
+namespace zoor {
 
 //
 // from STL
@@ -36,11 +36,6 @@ namespace {
 using std::ostringstream;
 using std::pair;
 using std::vector;
-
-//
-// from zoor
-//
-using namespace zoor;
 
 void playViennaGame(vector<PieceMove> &moveList);
 
@@ -1891,10 +1886,4 @@ playViennaGame(vector<PieceMove> &moveList)
   moveList.back().xPiece(7, 5, Piece::K, Color::B);
 }
 
-} // anonymous namespace
-
-int main(int argc, char *argv[])
-{
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+} // namespace zoor
