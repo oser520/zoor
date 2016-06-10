@@ -79,8 +79,6 @@ PieceCount::good() const noexcept
 void
 PieceCount::add(const piece_t code) noexcept
 {
-  assert(!notColor(code));
-  assert(!notPiece(code));
   count_type shift = 0;
 
   switch (getPiece(code)) {
