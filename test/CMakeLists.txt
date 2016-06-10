@@ -1,4 +1,3 @@
-cmake_minimum_required(VERSION 3.02)
 include_directories(../src)
 include_directories(SYSTEM ${GTEST_INC_DIR} ${GMOCK_INC_DIR})
 link_directories(${GMOCK_LIB_DIR})
