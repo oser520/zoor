@@ -1,6 +1,6 @@
 include_directories(../src)
-include_directories(SYSTEM ${GTEST_INC_DIR} ${GMOCK_INC_DIR})
-link_directories(${GMOCK_LIB_DIR})
+include_directories(SYSTEM $ENV{GTEST_INC_DIR} $ENV{GMOCK_INC_DIR})
+link_directories($ENV{GMOCK_LIB_DIR})
 set(TZOOR_LIBS tzoor gmock_main pthread)
 set(TEST_SRC
     tbasicboard.cc
@@ -23,7 +23,7 @@ add_executable(test_all ${TEST_SRC})
 # TODO: handle this in loop
 add_executable(tbasicboard tbasicboard.cc)
 add_executable(tbasictypes tbasictypes.cc)
-add_executable(board tboard.cc)
+add_executable(tboard tboard.cc)
 add_executable(tboardinfo tboardinfo.cc)
 add_executable(tfenrecord tfenrecord.cc)
 add_executable(tiofen tiofen.cc)
@@ -36,10 +36,12 @@ target_link_libraries(test_all ${TZOOR_LIBS})
 # TODO: handle this in loop
 target_link_libraries(tbasicboard ${TZOOR_LIBS})
 target_link_libraries(tbasictypes ${TZOOR_LIBS})
-target_link_libraries(board ${TZOOR_LIBS})
+target_link_libraries(tboard ${TZOOR_LIBS})
 target_link_libraries(tboardinfo ${TZOOR_LIBS})
 target_link_libraries(tfenrecord ${TZOOR_LIBS})
 target_link_libraries(tiofen ${TZOOR_LIBS})
 target_link_libraries(tpiececount ${TZOOR_LIBS})
 target_link_libraries(tpiecemove ${TZOOR_LIBS})
 target_link_libraries(tsquare ${TZOOR_LIBS})
+
+file(COPY fen DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
