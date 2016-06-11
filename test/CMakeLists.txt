@@ -18,6 +18,7 @@ target_link_libraries(tzoor zoor)
 
 # One executable for all unit tests.
 add_executable(test_all ${TEST_SRC})
+target_link_libraries(test_all ${TZOOR_LIBS})
 
 # One executable per unit test module.
 # TODO: handle this in loop
@@ -30,8 +31,6 @@ add_executable(tiofen tiofen.cc)
 add_executable(tpiececount tpiececount.cc)
 add_executable(tpiecemove tpiecemove.cc)
 add_executable(tsquare tsquare.cc)
-
-target_link_libraries(test_all ${TZOOR_LIBS})
 
 # TODO: handle this in loop
 target_link_libraries(tbasicboard ${TZOOR_LIBS})
