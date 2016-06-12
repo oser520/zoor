@@ -1,8 +1,8 @@
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 /// @file board.hh
 /// @author Omar A Serrano
 /// @date 2015-12-18
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 #ifndef _BOARD_H
 #define _BOARD_H
 
@@ -28,21 +28,22 @@
 
 namespace zoor {
 
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 // declarations
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 ///
 /// @brief The Board class maintains the current state of the chess board.
-/// @details The functionality of the Board class is limited to the minimum knowledge we would
-/// expect a board to have about itself, including the current chess position, the
-/// number of pieces on the board, the positions that can be obtained from the current
-/// position via legal moves, and whether it is white's or black's turn to move. On
-/// the other hand, we don't expect a chess board to know the series of moves that led
-/// to the current position. It is in fact feasible that we arrived at the current
-/// position without any prior moves if we are not playing a game but only analysing a
-/// position. In real life, it is the player's job to know the series of moves that
-/// led to a given position.
+/// @details The functionality of the Board class is limited to the minimum
+/// knowledge we would expect a board to have about itself, including the
+/// current chess position, the number of pieces on the board, the positions
+/// that can be obtained from the current position via legal moves, and whether
+/// it is white's or black's turn to move. On the other hand, we don't expect a
+/// chess board to know the series of moves that led to the current position. It
+/// is in fact feasible that we arrived at the current position without any
+/// prior moves if we are not playing a game but only analysing a position. In
+/// real life, it is the player's job to know the series of moves that led to a
+/// given position.
 ///
 class Board {
 public:
@@ -125,7 +126,8 @@ public:
   ~Board() noexcept = default;
 
   ///
-  /// @brief Determine if the king whose turn is it to move can do short castling.
+  /// @brief Determine if the king whose turn is it to move can do short
+  /// castling.
   /// @return True if the king can do short castling.
   /// @throw Never throws.
   ///
@@ -133,7 +135,8 @@ public:
   canCastle() const noexcept;
 
   ///
-  /// @brief Determine if the king whose turn is it to move can do long castling.
+  /// @brief Determine if the king whose turn is it to move can do long
+  /// castling.
   /// @return True if the king can do long castling.
   /// @throw Never throws.
   ///
@@ -144,28 +147,30 @@ public:
   /// @brief Return a vector of all the legal moves from the given position.
   /// @param row The row in the board.
   /// @param col The column in the board.
-  /// @return A vector of all the legal moves from the current position. An empty
+  /// @return A vector of all the legal moves from the current position. An
+  /// empty
   /// vector if there are no moves from the given position.
   ///
   std::vector<PieceMove>
   getMoves(dim_t row, dim_t col) const;
 
   ///
-  /// @brief Return a vector of all the legal moves from all the pieces on the board.
+  /// @brief Return a vector of all the legal moves from all the pieces on the
+  /// board.
   /// @param row The row in the board.
   /// @param col The column in the board.
-  /// @return A vector of all the legal moves from the all the pieces on the board.
-  /// An empty vector if there are no moves from the given position.
+  /// @return A vector of all the legal moves from the all the pieces on the
+  /// board. An empty vector if there are no moves from the given position.
   ///
   std::vector<PieceMove>
   getMoves() const;
 
   ///
-  /// @brief Return a vector of all the boards that can be reached from this board in
-  /// one move.
-  /// @detail If there are no legal moves, then the vector of boards will be empty.
-  /// This may mean that the current position is a checkmate, a stalemate, or that
-  /// there are no pieces on the board.
+  /// @brief Return a vector of all the boards that can be reached from this
+  /// board in one move.
+  /// @detail If there are no legal moves, then the vector of boards will be
+  /// empty. This may mean that the current position is a checkmate, a
+  /// stalemate, or that there are no pieces on the board.
   /// @return A vector of all the legal moves from the current position.
   ///
   std::vector<Board>
@@ -183,8 +188,8 @@ public:
 
   ///
   /// @brief Make a move on the current board.
-  /// @detail This move will become the new last move. Meant to be used to take a
-  /// board to a position.
+  /// @detail This move will become the new last move. Meant to be used to take
+  /// a board to a position.
   /// @param pMove The @c PieceMove.
   /// @return A reference to this @c Board.
   /// @throw Never throws.
@@ -236,7 +241,8 @@ public:
   end() const noexcept;
 
   ///
-  /// @brief Get a list of jump positions that are legal from a given row and column.
+  /// @brief Get a list of jump positions that are legal from a given row and
+  /// column.
   /// @param row The row where the jump is being made from.
   /// @param column The column where the jump is being made from.
   /// @return positions The list of jumping positions.
@@ -385,9 +391,9 @@ public:
 
   ///
   /// @brief Get the hash code for this board.
-  /// @details Hashes the raw contents of the board and the color reprsenting whose
-  /// turn is it to move, which are also the two characteristics used to determine
-  /// equality. Implemented using One-at-a-Time hash
+  /// @details Hashes the raw contents of the board and the color reprsenting
+  /// whose turn is it to move, which are also the two characteristics used to
+  /// determine equality. Implemented using One-at-a-Time hash
   /// @return The numeric hash code for this board.
   ///
   size_t
@@ -433,9 +439,10 @@ private:
   moveRef(const PieceMove &pMove) noexcept;
 
   ///
-  /// @brief Determine if there is a check at the given row and column from a piece
-  /// in the diagonal up and to the right.
-  /// @detail Can use this to determine if there is a check from a bishop or a queen.
+  /// @brief Determine if there is a check at the given row and column from a
+  /// piece in the diagonal up and to the right.
+  /// @detail Can use this to determine if there is a check from a bishop or a
+  /// queen.
   /// @param row The row where the king might be located.
   /// @param column The column where the king might be located.
   /// @return True if there is a check.
@@ -445,9 +452,10 @@ private:
   isCheckNE(dim_t row, dim_t column, Piece piece) const noexcept;
 
   ///
-  /// @brief Determine if there is a check at the given row and column from a piece
-  /// in the diagonal down and to the right.
-  /// @detail Can use this to determine if there is a check from a bishop or a queen.
+  /// @brief Determine if there is a check at the given row and column from a
+  /// piece in the diagonal down and to the right.
+  /// @detail Can use this to determine if there is a check from a bishop or a
+  /// queen.
   /// @param row The row where the king might be located.
   /// @param column The column where the king might be located.
   /// @return True if there is a check.
@@ -456,9 +464,10 @@ private:
   bool isCheckSE(dim_t row, dim_t column, Piece piece) const noexcept;
 
   ///
-  /// @brief Determine if there is a check at the given row and column from a piece
-  /// in the diagonal down and to the left.
-  /// @detail Can use this to determine if there is a check from a bishop or a queen.
+  /// @brief Determine if there is a check at the given row and column from a
+  /// piece in the diagonal down and to the left.
+  /// @detail Can use this to determine if there is a check from a bishop or a
+  /// queen.
   /// @param row The row where the king might be located.
   /// @param column The column where the king might be located.
   /// @return True if there is a check.
@@ -468,9 +477,10 @@ private:
   isCheckSW(dim_t row, dim_t column, Piece piece) const noexcept;
 
   ///
-  /// @brief Determine if there is a  check at the given row and column from a piece
-  /// in the diagonal up and to the left.
-  /// @detail Can use this to determine if there is a check from a bishop or a queen.
+  /// @brief Determine if there is a  check at the given row and column from a
+  /// piece in the diagonal up and to the left.
+  /// @detail Can use this to determine if there is a check from a bishop or a
+  /// queen.
   /// @param row The row where the king might be located.
   /// @param column The column where the king might be located.
   /// @return True if there is a check.
@@ -480,9 +490,10 @@ private:
   isCheckNW(dim_t row, dim_t column, Piece piece) const noexcept;
 
   ///
-  /// @brief Determine if there is a check at the given row and column from a piece
-  /// in the column from above.
-  /// @detail Can use this to determine if there is a check from a rook or a queen.
+  /// @brief Determine if there is a check at the given row and column from a
+  /// piece in the column from above.
+  /// @detail Can use this to determine if there is a check from a rook or a
+  /// queen.
   /// @param row The row where the king might be located.
   /// @param column The column where the king might be located.
   /// @return True if there is a check.
@@ -492,9 +503,10 @@ private:
   isCheckN(dim_t row, dim_t column, Piece piece) const noexcept;
 
   ///
-  /// @brief Determine if there is a check at the given row and column from a piece
-  /// in the row from the right.
-  /// @detail Can use this to determine if there is a check from a rook or a queen.
+  /// @brief Determine if there is a check at the given row and column from a
+  /// piece in the row from the right.
+  /// @detail Can use this to determine if there is a check from a rook or a
+  /// queen.
   /// @param row The row where the king might be located.
   /// @param column The column where the king might be located.
   /// @return True if there is a check.
@@ -504,9 +516,10 @@ private:
   isCheckE(dim_t row, dim_t column, Piece piece) const noexcept;
 
   ///
-  /// @brief Determine if there is a check at the given row and column from a piece
-  /// in the column from below.
-  /// @detail Can use this to determine if there is a check from a rook or a queen.
+  /// @brief Determine if there is a check at the given row and column from a
+  /// piece in the column from below.
+  /// @detail Can use this to determine if there is a check from a rook or a
+  /// queen.
   /// @param row The row where the king might be located.
   /// @param column The column where the king might be located.
   /// @return True if there is a check.
@@ -516,9 +529,10 @@ private:
   isCheckS(dim_t row, dim_t column, Piece piece) const noexcept;
 
   ///
-  /// @brief Determine if there is a check at the given row and column from a piece
-  /// in the row from the left.
-  /// @detail Can use this to determine if there is a check from a rook or a queen.
+  /// @brief Determine if there is a check at the given row and column from a
+  /// piece in the row from the left.
+  /// @detail Can use this to determine if there is a check from a rook or a
+  /// queen.
   /// @param row The row where the king might be located.
   /// @param column The column where the king might be located.
   /// @return True if there is a check.
@@ -537,9 +551,10 @@ private:
   PieceMove mLastMove;
 
   //
-  // @brief Maintains information about that may limit the moves a king can make.
-  // @details Knows if a king or any of the rooks have moved, and if either king is
-  // in check or if it's mate for one of them.
+  // @brief Maintains information about that may limit the moves a king can
+  // make.
+  // @details Knows if a king or any of the rooks have moved, and if either king
+  // is in check or if it's mate for one of them.
   //
   BoardInfo mInfo;
 
@@ -556,9 +571,9 @@ operator<<(std::ostream &os, const Board &board);
 
 ///
 /// @brief Equality operator.
-/// @detail The board position, and who's turn is it to play determine the uniqueness
-/// of a board, and whether two boards are equal or not. Therefore, it is enough to
-/// look the eight rows and who's turn it is.
+/// @detail The board position, and who's turn is it to play determine the
+/// uniqueness of a board, and whether two boards are equal or not. Therefore,
+/// it is enough to look the eight rows and who's turn it is.
 /// @param board1 The first board.
 /// @param board2 The second board.
 /// @return True if boards are equal, false otherwise.
@@ -569,9 +584,9 @@ operator==(const Board &boar1, const Board &board2) noexcept;
 
 ///
 /// @brief Non-equality operator.
-/// @detail The board position, and who's turn is it to play determine the uniqueness
-/// of a board, and whether two boards are equal or not. Therefore, it is enough to
-/// look the eight rows and who's turn it is.
+/// @detail The board position, and who's turn is it to play determine the
+/// uniqueness of a board, and whether two boards are equal or not. Therefore,
+/// it is enough to look the eight rows and who's turn it is.
 /// @param board1 The first board.
 /// @param board2 The second board.
 /// @return False if boards are equal, true otherwise.
@@ -709,8 +724,8 @@ operator!=(const Board &board1, const Board &board2) noexcept
 namespace std {
 
 ///
-/// @brief Board specialization for <em>hash</em>. Needs to be defined within std
-/// namespece.
+/// @brief Board specialization for <em>hash</em>. Needs to be defined within
+/// std namespece.
 ///
 template<>
 struct hash<zoor::Board>
