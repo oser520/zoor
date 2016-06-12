@@ -1,9 +1,9 @@
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 /// @file fenrecord.hh
 /// @author Omar A Serrano
 /// @date 2016-04-17
 /// @details Class declaration for a Forsyth-Edwards Notation (FEN) record.
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 #ifndef _FENRECORD_H
 #define _FENRECORD_H
 
@@ -16,9 +16,9 @@
 
 namespace zoor {
 
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 // declarations
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 //
 // forward declaration
@@ -26,11 +26,12 @@ namespace zoor {
 class Board;
 
 ///
-/// @brief Aggregates the information in a Forsyth-Edwards notation (FEN) record.
-/// @details The information in the first four fields of a FEN record are embedded
-/// within a @c Board, but the last two fields are not, because they represent
-/// information that should be maintained by the @c Player. In other words, a @c
-/// Board doesn't care about the number of moves, but a @c Player does.
+/// @brief Aggregates the information in a Forsyth-Edwards (FEN) record.
+/// @details The information in the first four fields of a FEN record are
+/// embedded within a @c Board, but the last two fields are not, because they
+/// represent information that should be maintained by the @c Player. In other
+/// words, a @c Board doesn't care about the number of moves, but a @c Player
+/// does.
 ///
 class FenRecord
 {
@@ -46,14 +47,14 @@ public:
   FenRecord() = delete;
 
   ///
-  /// @brief Initializes a FenRecord with a pointer to a board, the half move count,
-  /// and the full move count.
-  /// @param boardPtr A shared pointer to a board.
-  /// @param halfMove The half move count.
-  /// @param fullMove The full move count.
+  /// @brief Initializes a FenRecord with a pointer to a board, the half move
+  /// count, and the full move count.
+  /// @param pBoard A shared pointer to a board.
+  /// @param hMove The half move count.
+  /// @param fMove The full move count.
   /// @throw Never throws.
   ///
-  FenRecord(const board_ptr &boardPtr, size_t halfMove, size_t fullMove) noexcept;
+  FenRecord(const board_ptr &pBoard, size_t hMove, size_t fMove) noexcept;
 
   ///
   /// @brief Default copy ctor.
@@ -121,18 +122,15 @@ private:
   board_ptr mBoardPtr;
 };
 
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 // inline function definitions
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 //
 // initializer
 //
-inline
-FenRecord::FenRecord
-  (const board_ptr &boardPtr,
-   size_t halfMove,
-   size_t fullMove) noexcept
+inline FenRecord::
+FenRecord(const board_ptr &pBoard, size_t hMove, size_t fMove) noexcept
   : mHalfMove(halfMove),
     mFullMove(fullMove),
     mBoardPtr(boardPtr)
