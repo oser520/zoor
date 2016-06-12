@@ -1,8 +1,8 @@
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 /// @file square.hh
 /// @author Omar A Serrano
 /// @data 2015-12-31
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 #ifndef _SQUARE_H
 #define _SQUARE_H
 
@@ -22,24 +22,24 @@
 
 namespace zoor {
 
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 // declarations
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 ///
 /// @brief Represents a position on a chess board.
-/// @details A @c Square is aware of how big the board is, if a row and column are
-/// within the bounds of a chess board, and what piece, if any, is sitting on it,
-/// including its color.
+/// @details A @c Square is aware of how big the board is, if a row and column
+/// are within the bounds of a chess board, and what piece, if any, is sitting
+/// on it, including its color.
 ///
 class Square
 {
 public:
   ///
-  /// @brief Constructs a @c Square with a specific row and column. The piece is set
-  /// to <em>NONE</em> and the piece color to <em>NONE</em>.
-  /// @param row The row of the @c Square. Assumption: row <= BOARD_DIM.
-  /// @param column The column of the @c Square. Assumption: column <= BOARD_DIM.
+  /// @brief Constructs a @c Square with a specific row and column. The piece is
+  /// set to <em>NONE</em> and the piece color to <em>NONE</em>.
+  /// @param row The row of the @c Square; must be less than BOARD_DIM.
+  /// @param column The column of the @c Square; must be lesst than BOARD_DIM.
   /// @throw Never throws.
   ///
   Square(dim_t row, dim_t column) noexcept;
@@ -47,7 +47,7 @@ public:
   ///
   /// @brief Constructs a @c Square with row, column, and piece.
   /// @param row The row of the @c Square. Assumption: row <= BOARD_DIM.
-  /// @param column The column of the @c Square. Assumption: column <= BOARD_DIM.
+  /// @param column The column of the @c Square; must be less than BOARD_DIM.
   /// @param code The bit pattern containing the piece and color info.
   /// @throw Never throws.
   ///
@@ -282,9 +282,9 @@ operator!=(const Square& square1, const Square& square2) noexcept;
 std::ostream&
 operator<<(std::ostream& os, const Square& square);
 
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 // definitions
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 //
 // default ctor
@@ -486,8 +486,8 @@ operator!=(const Square& square1, const Square& square2) noexcept
 namespace std {
 
 ///
-/// @brief Square specialization for <em>hash</em>. Needs to be defined within std
-/// namespece.
+/// @brief Square specialization for <em>hash</em>. Needs to be defined within
+/// std namespece.
 ///
 template<>
 struct hash<zoor::Square>
