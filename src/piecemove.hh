@@ -1,8 +1,8 @@
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 /// @file piecemove.hh
 /// @author Omar A Serrano
 /// @date 2015-12-29
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 #ifndef _PIECEMOVES_H
 #define _PIECEMOVES_H
 
@@ -23,14 +23,14 @@
 
 namespace zoor {
 
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 // declarations
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 ///
-/// @brief Maintains information about a move, including the destination square, if
-/// there's a capture, and if there's a promotion, .i.e., the pawn moves to the last
-/// row and becomes a more powerful piece.
+/// @brief Maintains information about a move, including the destination square,
+/// if there's a capture, and if there's a promotion, .i.e., the pawn moves to
+/// the last row and becomes a more powerful piece.
 ///
 class PieceMove
 {
@@ -55,7 +55,8 @@ public:
   PieceMove(dim_t row, dim_t column, piece_t code) noexcept;
 
   ///
-  /// @brief Constructor with info for piece that is moving, and where it is moving.
+  /// @brief Constructor with info for piece that is moving, and where it is
+  /// moving.
   /// @param fromRow The row from where the piece is moving.
   /// @param fromColumn The column from where the piece is moving.
   /// @param code The bit pattern containing the piece and color info.
@@ -251,8 +252,8 @@ public:
 
   ///
   /// @brief Get the piece of the square where the piece is moving to.
-  /// @details The piece at the destination square is only different from the piece
-  /// at the source square when move results in pawn promotion.
+  /// @details The piece at the destination square is only different from the
+  /// piece at the source square when move results in pawn promotion.
   /// @return The piece.
   /// @throw Never throws.
   ///
@@ -261,8 +262,8 @@ public:
 
   ///
   /// @brief Set the piece at the destination square.
-  /// @details The piece at the destination square is only different from the piece
-  /// at the source square when move results in pawn promotion.
+  /// @details The piece at the destination square is only different from the
+  /// piece at the source square when move results in pawn promotion.
   /// @brief piece The piece at the destination square.
   /// @return A reference to this @c PieceMove.
   /// @throw Never throws.
@@ -393,8 +394,8 @@ public:
 
   ///
   /// @brief Get the piece of the other square.
-  /// @details The other square may contain capture piece if the move results in a
-  /// capture, or a rook of the same color if the move represents castling.
+  /// @details The other square may contain capture piece if the move results
+  /// in a capture, or a rook of the same color if the move represents castling.
   /// @return The piece.
   /// @throw Never throws.
   ///
@@ -403,8 +404,8 @@ public:
 
   ///
   /// @brief Set the other piece.
-  /// @details The other square may contain a capture piece if the move results in a
-  /// capture, or a rook of the same color if the move represents castling.
+  /// @details The other square may contain a capture piece if the move results
+  /// in a capture, or a rook of the same color if the move represents castling.
   /// @return A reference to this @c PieceMove.
   /// @throw Never throws.
   ///
@@ -629,9 +630,9 @@ operator!=(const PieceMove &pm1, const PieceMove &pm2) noexcept;
 std::ostream&
 operator<<(std::ostream &os, const PieceMove &pm);
 
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 // definitions
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 //
 // get piece code making move
@@ -1133,8 +1134,8 @@ operator!=(const PieceMove &pm1, const PieceMove &pm2) noexcept
 namespace std {
 
 ///
-/// @brief PieceMove specialization for <em>hash</em>. Needs to be defined within
-/// std namespece.
+/// @brief PieceMove specialization for <em>hash</em>. Needs to be defined
+/// within std namespece.
 ///
 template<>
 struct hash<zoor::PieceMove>
