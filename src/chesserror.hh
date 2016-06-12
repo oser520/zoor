@@ -1,8 +1,8 @@
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 /// @file chesserror.hh
 /// @author Omar A Serrano
 /// @date 2016-02-28
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 #ifndef _CHESSERROR_H
 #define _CHESSERROR_H
 
@@ -17,7 +17,8 @@ namespace zoor {
 ///
 /// @brief A simple exception class to represent chess errors.
 ///
-class ChessError: public std::logic_error
+class ChessError
+  : public std::logic_error
 {
 public:
   ///
@@ -29,13 +30,15 @@ public:
   /// @brief Constructor.
   /// @param msg The exception message.
   ///
-  explicit ChessError(const char *msg): std::logic_error(msg) {}
+  explicit
+  ChessError(const char *msg): std::logic_error(msg) {}
 
   ///
   /// @brief Constructor.
   /// @param msg The exception message.
   ///
-  explicit ChessError(const std::string &msg): std::logic_error(msg) {}
+  explicit
+  ChessError(const std::string &msg): std::logic_error(msg) {}
 };
 
 } // zoor
