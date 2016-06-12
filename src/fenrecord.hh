@@ -131,9 +131,9 @@ private:
 //
 inline FenRecord::
 FenRecord(const board_ptr &pBoard, size_t hMove, size_t fMove) noexcept
-  : mHalfMove(halfMove),
-    mFullMove(fullMove),
-    mBoardPtr(boardPtr)
+  : mHalfMove(hMove),
+    mFullMove(fMove),
+    mBoardPtr(pBoard)
 {
   assert(mBoardPtr != nullptr);
 }

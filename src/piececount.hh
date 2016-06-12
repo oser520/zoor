@@ -313,7 +313,7 @@ operator!=(const PieceCount &pc1, const PieceCount &pc2) noexcept;
 //
 // default Ctor
 //
-inline explicit
+inline
 PieceCount::PieceCount() noexcept
   : mWhite(),
     mBlack() {}
