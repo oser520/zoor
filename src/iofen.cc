@@ -1,8 +1,8 @@
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 /// @file iofen.cc
 /// @author Omar A Serrano
 /// @date 2016-04-09
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 //
 // STL
@@ -40,9 +40,9 @@ using std::unique;
 using std::make_shared;
 using std::getline;
 
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 // static member definitions
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 constexpr size_t FenSymbols::RANK_LENGTH;
 constexpr size_t FenSymbols::CASTLE_LENGTH;
@@ -51,9 +51,9 @@ const string FenSymbols::RANK_CHR("PNBRQKpnbrqk12345678");
 const string FenSymbols::CASTLE_CHR("KQkq");
 const string FenSymbols::COLOR_CHR("wb");
 
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 // static function declarations
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 namespace {
 
@@ -71,9 +71,9 @@ readEnPassant(const string &field);
 
 } // namespace
 
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 // function definitions
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 //
 // readFen with param ifstream.
@@ -205,18 +205,19 @@ fenPiece(char fenCode) noexcept
   return color | piece;
 }
 
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 // static function definitions
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 namespace {
 
 //
-// @brief Read the contents of one single rank from the first field in a FEN record.
+// @brief Read the contents of one single rank from the first field in a FEN
+// record.
 // @details The assumptions are listed here:
 // @li Does not contain more than 8 characters.
-// @li Valid digits are 1 to 8, but if there are multiple digits their sum cannot
-// exceed 8.
+// @li Valid digits are 1 to 8, but if there are multiple digits their sum
+// cannot exceed 8.
 // @li The only valid letters are those that represent white or black pieces.
 // @param rankLine The string representing one rank.
 // @param squareList A reference to a vector of squares where squares are added.
@@ -291,8 +292,9 @@ readColor(const string &colorLine)
 // @li Legal characters are -, K, Q, k, and q.
 // @li If - is present, then this should be the only character available.
 // @li Valid characters should not repeat.
-// @param infoLine The string representing the castling rights. Should not be marked
-// as const, because it is sorted in order to find unique values in string.
+// @param infoLine The string representing the castling rights. Should not be
+// marked as const, because it is sorted in order to find unique values in
+// string.
 // @return A @c BoardInfo representing the castling rights.
 // @throw ChessError if the infoLine violates any of the assumptions.
 //
@@ -378,8 +380,8 @@ readBoardInfo(string &infoLine)
 // @li Does not contain more than 2 characters.
 // @li Legal characters are -, a-h, 3, and 6.
 // @li If - is present, then the field should not contain more chars.
-// @li If - is not present, then the field should contain 2 chars, the first should
-// be a letter in a-h, and second should be 3 or 6.
+// @li If - is not present, then the field should contain 2 chars, the first
+// should be a letter in a-h, and second should be 3 or 6.
 // @details If there is an en passant, then the caller of this function should
 // enforce that there is a pawn that makes this info true.
 // @param field The string representing the 4th field in the FEN record.
