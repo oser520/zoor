@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
-/// @file basicboard.hh
-/// @author Omar A Serrano
-/// @date 2016-04-28
+//! @file basicboard.hh
+//! @author Omar A Serrano
+//! @date 2016-04-28
 ////////////////////////////////////////////////////////////////////////////////
 #ifndef _BASICBOARD_H
 #define _BASICBOARD_H
@@ -24,217 +24,158 @@ namespace zoor {
 // declarations
 ////////////////////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////////////////
-// BasicBoard
-////////////////////////////////////////////////////////////////////////////////
-
 namespace {
-//
 // @brief Compute index from row and column.
 // @param row The row number.
 // @param column The column number.
 // @return The index of the square in range [1, 64].
 // @throw Never throws.
-//
 dim_t
 index(dim_t row, dim_t column) noexcept;
 } // namespace
 
-///
-/// @brief A simple board that represents the position in a chess board.
-///
+//!
+//! @brief A simple board that represents the position in a chess board.
+//!
 class BasicBoard
 {
 public:
-  ///
-  /// @brief The number of squares per row and column.
-  ///
+  //! @brief The number of squares per row and column.
   static constexpr dim_t DIM = 8;
 
-  ///
-  /// @brief The number of squares in the @c SimpleBoard.
-  ///
+  //! @brief The number of squares in a BasicBoard.
   static constexpr dim_t SIZE = 64;
 
-  ///
-  /// @brief The default initialization board.
-  ///
+  //! @brief The default initialization board.
   static const piece_t INIT_BOARD[SIZE];
 
-  ///
-  /// @brief Alias for iterator.
-  ///
+  //! @brief Alias for iterator.
   using iterator = piece_t*;
 
-  ///
-  /// @brief Alias for const_iterator.
-  ///
+  //! @brief Alias for const_iterator.
   using const_iterator = const piece_t*;
 
-  ///
-  /// @brief Default ctor.
-  /// @details Initializes the board with the normal setup for beginning game.
-  /// @throw May throw bad memory allocation.
-  ///
+  //! @details Initializes the board with the normal setup for beginning game.
+  //! @throw May throw bad memory allocation.
   BasicBoard();
 
-  ///
-  /// @brief Copy ctor.
-  /// @param board The @c SimpleBoard to be copied.
-  /// @throw May throw bad memory allocation.
-  ///
+  //! @brief Copy ctor.
+  //! @param board The board to be copied.
+  //! @throw May throw bad memory allocation.
   BasicBoard(const BasicBoard &board);
 
-  ///
-  /// @brief Move ctor.
-  /// @param board The @c SimpleBoard being moved.
-  /// @throw Never throws.
-  ///
+  //! @brief Move ctor.
+  //! @param board The board being moved.
+  //! @throw Never throws.
   BasicBoard(BasicBoard &&board) noexcept;
 
-  ///
-  /// @brief Copy assignment.
-  /// @param board The @c SimpleBoard being assigned.
-  /// @return A reference to @c BasicBoard.
-  /// @throw Never throws.
-  ///
+  //! @brief Copy assignment.
+  //! @param board The board being assigned.
+  //! @return A reference to @c BasicBoard.
+  //! @throw Never throws.
   BasicBoard&
   operator=(const BasicBoard &board) noexcept;
 
-  ///
-  /// @brief Move assignment.
-  /// @param board The @c SimpleBoard being moved.
-  /// @return A reference to @c BasicBoard.
-  /// @throw Never throws.
-  ///
+  //! @brief Move assignment.
+  //! @param board The board being moved.
+  //! @return A reference to @c BasicBoard.
+  //! @throw Never throws.
   BasicBoard&
   operator=(BasicBoard &&board) noexcept;
 
-  ///
-  /// @brief Dtor.
-  /// @throw Never throws.
-  ///
+  //! @brief Dtor.
+  //! @throw Never throws.
   ~BasicBoard() noexcept;
 
-  ///
-  /// @brief Obtain the contents of a given square.
-  /// @param row The row of the square.
-  /// @param column The column of the square.
-  /// @return The piece located at the given square.
-  /// @throw Never throws.
-  ///
+  //! @brief Obtain the contents of a given square.
+  //! @param row The row of the square.
+  //! @param column The column of the square.
+  //! @return The piece located at the given square.
+  //! @throw Never throws.
   piece_t
   get(dim_t row, dim_t column) const noexcept;
 
-  ///
-  /// @brief Clear the contents of a given square.
-  /// @param row The row of the square.
-  /// @param column The column of the square.
-  /// @throw Never throws.
-  ///
+  //! @brief Clear the contents of a given square.
+  //! @param row The row of the square.
+  //! @param column The column of the square.
+  //! @throw Never throws.
   void
   clear(dim_t row, dim_t column) noexcept;
 
-  ///
-  /// @brief Put a chess piece on a square.
-  /// @param row The row of the square.
-  /// @param column The column of the square.
-  /// @param piece The type of chess piece.
-  /// @throw Never throws.
-  ///
+  //! @brief Put a chess piece on a square.
+  //! @param row The row of the square.
+  //! @param column The column of the square.
+  //! @param piece The type of chess piece.
+  //! @throw Never throws.
   void
   put(dim_t row, dim_t column, piece_t piece) noexcept;
 
-  ///
-  /// @brief Put a chess piece on a square.
-  /// @param row The row of the square.
-  /// @param column The column of the square.
-  /// @param piece The type of chess piece.
-  /// @param color The color of the chess piece.
-  /// @throw Never throws.
-  ///
+  //! @brief Put a chess piece on a square.
+  //! @param row The row of the square.
+  //! @param column The column of the square.
+  //! @param piece The type of chess piece.
+  //! @param color The color of the chess piece.
+  //! @throw Never throws.
   void
   put(dim_t row, dim_t column, Piece piece, Color color) noexcept;
 
-  ///
-  /// @brief Get iterator to the first square on the board.
-  /// @throw Never throws.
-  ///
+  //! @brief Get iterator to the first square on the board.
+  //! @throw Never throws.
   iterator
   begin() const noexcept;
 
-  ///
-  /// @brief Get iterator to one past the last square.
-  /// @throw Never throws.
-  ///
+  //! @brief Get iterator to one past the last square.
+  //! @throw Never throws.
   iterator
   end() const noexcept;
 
-  ///
-  /// @brief Get read only iterator to the first square on the board.
-  /// @throw Never throws.
-  ///
+  //! @brief Get read only iterator to the first square on the board.
+  //! @throw Never throws.
   const_iterator
   cbegin() const noexcept;
 
-  ///
-  /// @brief Get read only iterator to one past the last square.
-  /// @throw Never throws.
-  ///
+  //! @brief Get read only iterator to one past the last square.
+  //! @throw Never throws.
   const_iterator
   cend() const noexcept;
 
-  ///
-  /// @brief Check that row and column are less than BasicBoard::DIM.
-  /// @param row The row number.
-  /// @brief column The column number.
-  /// @return True if both row and column are in the board, false otherwise.
-  /// @throw Never throws.
-  ///
+  //! @brief Check that row and column are less than BasicBoard::DIM.
+  //! @param row The row number.
+  //! @brief column The column number.
+  //! @return True if both row and column are in the board, false otherwise.
+  //! @throw Never throws.
   static bool
   inBoard(dim_t row, dim_t column) noexcept;
 
-  ///
-  /// @return Return a board without any pieces.
-  ///
+  //! @return Return a board without any pieces.
   static BasicBoard
   emptyBoard();
 
 private:
-  //
   // Dummy type to indicate to compiler to construct empty board.
-  //
   enum class InitEmpty { INIT };
 
-  //
-  // @return Return a board without any pieces.
-  //
+  // Return a board without any pieces.
   BasicBoard(InitEmpty);
 
-  //
-  // pointer to the array
-  //
+  // Pointer to the array.
   piece_t *mArr;
 
 };
 
-///
-/// @brief Equality operator for two boards.
-/// @param board1 The left hand board.
-/// @param board2 The right hand board.
-/// @return True if the board are equal, false otherwise.
-/// @throw Never throws.
-///
+//! @brief Equality operator for two boards.
+//! @param board1 The left hand board.
+//! @param board2 The right hand board.
+//! @return True if the board are equal, false otherwise.
+//! @throw Never throws.
 bool
 operator==(const BasicBoard &board1, const BasicBoard &board2) noexcept;
 
-///
-/// @brief Non-equality operator for two boards.
-/// @param board1 The left hand board.
-/// @param board2 The right hand board.
-/// @return False if the board are equal, true otherwise.
-/// @throw Never throws.
-///
+//! @brief Non-equality operator for two boards.
+//! @param board1 The left hand board.
+//! @param board2 The right hand board.
+//! @return False if the board are equal, true otherwise.
+//! @throw Never throws.
 bool
 operator!=(const BasicBoard &board1, const BasicBoard &board2) noexcept;
 
