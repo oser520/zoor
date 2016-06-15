@@ -25,7 +25,7 @@ using piece_t = uint8_t;
 using dim_t = int16_t;
 
 //! @brief Represents a piece on the board.
-//! @defails Since each piece on a board is represented in a byte, the type for
+//! @details Since each piece on a board is represented in a byte, the type for
 //! each Piece is an unsigned char.
 //! @li NONE is no piece
 //! @li P for pawn
