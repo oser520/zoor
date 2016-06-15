@@ -127,7 +127,7 @@ public:
 private:
   //
   // @brief Maintains information about the kings and rooks.
-  // @detail Maintains the following information:
+  // @details Maintains the following information:
   // @li 1. The rook at <em>a1</em> has moved.
   // @li 2. The rook at <em>h1</em> has moved.
   // @li 3. The white king has moved.
@@ -188,7 +188,7 @@ BoardInfo::rookA1() const noexcept
 
 ///
 /// @brief Turn on the bit for rook A1.
-/// @detail This action is irreversible.
+/// @details This action is irreversible.
 /// @return A reference to this @c BoardInfo.
 /// @throw Never throws.
 ///
@@ -211,7 +211,7 @@ BoardInfo::rookH1() const noexcept
 
 ///
 /// @brief Turn on the bit for rook H1.
-/// @detail This action is irreversible.
+/// @details This action is irreversible.
 /// @return A reference to this @c BoardInfo.
 /// @throw Never throws.
 ///
@@ -234,7 +234,7 @@ BoardInfo::wkMoved() const noexcept
 
 ///
 /// @brief Turn on the bit for white king has moved.
-/// @detail This action is irreversible.
+/// @details This action is irreversible.
 /// @return A reference to this @c BoardInfo.
 /// @throw Never throws.
 ///
@@ -280,7 +280,7 @@ BoardInfo::wkMate() const noexcept
 
 ///
 /// @brief Turn on the bit for mate for the white king.
-/// @detail This action is irreversible.
+/// @details This action is irreversible.
 /// @return A reference to this @c BoardInfo.
 /// @throw Never throws.
 ///
@@ -331,7 +331,7 @@ BoardInfo::rookA8() const noexcept
 
 ///
 /// @brief Turn on the bit for rook A8.
-/// @detail This action is irreversible.
+/// @details This action is irreversible.
 /// @return A reference to this @c BoardInfo.
 /// @throw Never throws.
 ///
@@ -354,7 +354,7 @@ BoardInfo::rookH8() const noexcept
 
 ///
 /// @brief Turn on the bit for rook H8.
-/// @detail This action is irreversible.
+/// @details This action is irreversible.
 /// @return A reference to this @c BoardInfo.
 /// @throw Never throws.
 ///
@@ -377,7 +377,7 @@ BoardInfo::bkMoved() const noexcept
 
 ///
 /// @brief Turn on the bit for black king has moved.
-/// @detail This action is irreversible.
+/// @details This action is irreversible.
 /// @return A reference to this @c BoardInfo.
 /// @throw Never throws.
 ///
@@ -423,7 +423,7 @@ BoardInfo::bkMate() const noexcept
 
 ///
 /// @brief Turn on the bit for mate for the black king.
-/// @detail This action is irreversible.
+/// @details This action is irreversible.
 /// @return A reference to this @c BoardInfo.
 /// @throw Never throws.
 ///

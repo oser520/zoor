@@ -74,7 +74,7 @@ public:
 
   ///
   /// @brief Default constructor.
-  /// @detail Initializes a board with the standard number of pieces, with
+  /// @details Initializes a board with the standard number of pieces, with
   /// white's turn to move.
   ///
   Board();
@@ -168,7 +168,7 @@ public:
   ///
   /// @brief Return a vector of all the boards that can be reached from this
   /// board in one move.
-  /// @detail If there are no legal moves, then the vector of boards will be
+  /// @details If there are no legal moves, then the vector of boards will be
   /// empty. This may mean that the current position is a checkmate, a
   /// stalemate, or that there are no pieces on the board.
   /// @return A vector of all the legal moves from the current position.
@@ -178,8 +178,8 @@ public:
 
   ///
   /// @brief Make a move and return a new board.
-  /// @detail Meant to be used to take a board to a position.
-  /// @detail Does not affect the state of this board.
+  /// @details Meant to be used to take a board to a position.
+  /// @details Does not affect the state of this board.
   /// @param pMove The @c PieceMove.
   /// @return A copy of the new @c Board after the move.
   ///
@@ -188,7 +188,7 @@ public:
 
   ///
   /// @brief Make a move on the current board.
-  /// @detail This move will become the new last move. Meant to be used to take
+  /// @details This move will become the new last move. Meant to be used to take
   /// a board to a position.
   /// @param pMove The @c PieceMove.
   /// @return A reference to this @c Board.
@@ -225,7 +225,7 @@ public:
 
   ///
   /// @brief Provide an iterator to the first @c Square in the @c Board.
-  /// @detail The iterator cannot modify the @c Board.
+  /// @details The iterator cannot modify the @c Board.
   /// @return An iterator to the first @c Square.
   /// @throw Never throws.
   ///
@@ -421,7 +421,7 @@ public:
 private:
   ///
   /// @brief Make a move on a new board.
-  /// @detail Does not affect state of this board.
+  /// @details Does not affect state of this board.
   /// @param pMove The @c PieceMove.
   /// @return A copy of the board after the move.
   ///
@@ -430,7 +430,7 @@ private:
 
   ///
   /// @brief Make a move on the board.
-  /// @detail The move becomes the last move made.
+  /// @details The move becomes the last move made.
   /// @param pMove The @c PieceMove.
   /// @return A reference to this @c Board.
   /// @throw Never throws.
@@ -441,7 +441,7 @@ private:
   ///
   /// @brief Determine if there is a check at the given row and column from a
   /// piece in the diagonal up and to the right.
-  /// @detail Can use this to determine if there is a check from a bishop or a
+  /// @details Can use this to determine if there is a check from a bishop or a
   /// queen.
   /// @param row The row where the king might be located.
   /// @param column The column where the king might be located.
@@ -454,7 +454,7 @@ private:
   ///
   /// @brief Determine if there is a check at the given row and column from a
   /// piece in the diagonal down and to the right.
-  /// @detail Can use this to determine if there is a check from a bishop or a
+  /// @details Can use this to determine if there is a check from a bishop or a
   /// queen.
   /// @param row The row where the king might be located.
   /// @param column The column where the king might be located.
@@ -466,7 +466,7 @@ private:
   ///
   /// @brief Determine if there is a check at the given row and column from a
   /// piece in the diagonal down and to the left.
-  /// @detail Can use this to determine if there is a check from a bishop or a
+  /// @details Can use this to determine if there is a check from a bishop or a
   /// queen.
   /// @param row The row where the king might be located.
   /// @param column The column where the king might be located.
@@ -479,7 +479,7 @@ private:
   ///
   /// @brief Determine if there is a  check at the given row and column from a
   /// piece in the diagonal up and to the left.
-  /// @detail Can use this to determine if there is a check from a bishop or a
+  /// @details Can use this to determine if there is a check from a bishop or a
   /// queen.
   /// @param row The row where the king might be located.
   /// @param column The column where the king might be located.
@@ -492,7 +492,7 @@ private:
   ///
   /// @brief Determine if there is a check at the given row and column from a
   /// piece in the column from above.
-  /// @detail Can use this to determine if there is a check from a rook or a
+  /// @details Can use this to determine if there is a check from a rook or a
   /// queen.
   /// @param row The row where the king might be located.
   /// @param column The column where the king might be located.
@@ -505,7 +505,7 @@ private:
   ///
   /// @brief Determine if there is a check at the given row and column from a
   /// piece in the row from the right.
-  /// @detail Can use this to determine if there is a check from a rook or a
+  /// @details Can use this to determine if there is a check from a rook or a
   /// queen.
   /// @param row The row where the king might be located.
   /// @param column The column where the king might be located.
@@ -518,7 +518,7 @@ private:
   ///
   /// @brief Determine if there is a check at the given row and column from a
   /// piece in the column from below.
-  /// @detail Can use this to determine if there is a check from a rook or a
+  /// @details Can use this to determine if there is a check from a rook or a
   /// queen.
   /// @param row The row where the king might be located.
   /// @param column The column where the king might be located.
@@ -531,7 +531,7 @@ private:
   ///
   /// @brief Determine if there is a check at the given row and column from a
   /// piece in the row from the left.
-  /// @detail Can use this to determine if there is a check from a rook or a
+  /// @details Can use this to determine if there is a check from a rook or a
   /// queen.
   /// @param row The row where the king might be located.
   /// @param column The column where the king might be located.
@@ -571,7 +571,7 @@ operator<<(std::ostream &os, const Board &board);
 
 ///
 /// @brief Equality operator.
-/// @detail The board position, and who's turn is it to play determine the
+/// @details The board position, and who's turn is it to play determine the
 /// uniqueness of a board, and whether two boards are equal or not. Therefore,
 /// it is enough to look the eight rows and who's turn it is.
 /// @param board1 The first board.
@@ -584,7 +584,7 @@ operator==(const Board &boar1, const Board &board2) noexcept;
 
 ///
 /// @brief Non-equality operator.
-/// @detail The board position, and who's turn is it to play determine the
+/// @details The board position, and who's turn is it to play determine the
 /// uniqueness of a board, and whether two boards are equal or not. Therefore,
 /// it is enough to look the eight rows and who's turn it is.
 /// @param board1 The first board.
