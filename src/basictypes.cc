@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
-/// @file basictypes.cc
-/// @author Omar A Serrano
-/// @date 2016-04-30
+//! @file basictypes.cc
+//! @author Omar A Serrano
+//! @date 2016-04-30
 ////////////////////////////////////////////////////////////////////////////////
 
 //
@@ -18,9 +18,18 @@
 
 namespace zoor {
 
-//
-// output operator for pieces
-//
+//! @brief Output operator for a @c Piece.
+//! @details The @c Piece names are:
+//! @li NONE
+//! @li PAWN
+//! @li KNIGHT
+//! @li BISHOP
+//! @li ROOK
+//! @li QUEEN
+//! @li KING
+//! @param os The output stream.
+//! @param piece The @c Piece.
+//! @return A reference to the output stream.
 std::ostream&
 operator<<(std::ostream &os, Piece piece)
 {
@@ -54,9 +63,14 @@ operator<<(std::ostream &os, Piece piece)
   return os;
 }
 
-//
-// output operator for color
-//
+//! @brief Output operator for a @c Color.
+//! @details The @c Color names are:
+//! @li NONE
+//! @li WHITE
+//! @li BLACK
+//! @param os The output stream.
+//! @param color The @c Color.
+//! @return A reference to the output stream.
 std::ostream&
 operator<<(std::ostream &os, Color color)
 {
@@ -78,9 +92,13 @@ operator<<(std::ostream &os, Color color)
   return os;
 }
 
-//
-// output operator for piece mask
-//
+//! @brief Output operator for a @c PieceMask.
+//! @details The @c PieceMask names are:
+//! @li PIECE
+//! @li COLOR
+//! @param os The output stream.
+//! @param mask The @c PieceMask.
+//! @return A reference to the output stream.
 std::ostream&
 operator<<(std::ostream &os, PieceMask mask)
 {
@@ -90,9 +108,10 @@ operator<<(std::ostream &os, PieceMask mask)
   return os;
 }
 
-//
-// logical not operator for color
-//
+//! @brief Logical negation operator for @c Color.
+//! @param color The @c Color.
+//! @return White if it is black, black if it is white, or none.
+//! @throw Never throws.
 Color
 operator~(Color color) noexcept
 {
@@ -104,9 +123,10 @@ operator~(Color color) noexcept
     return color;
 }
 
-//
-// get a short string code representing a piece
-//
+//! @brief Obtain a short string piece code representing the piece.
+//! @param piece The bit code representing the piece and its color.
+//! @return A short, 1 to 2 char, string code.
+//! @throw Never throws.
 const char*
 shortString(piece_t piece) noexcept
 {
