@@ -15,3 +15,6 @@ tboard
 oser/*
 dump_symbols.txt
 build/*
+doxy/doxygen_sqlite3.db
+doxy/html/*
+doxy/latex/*
