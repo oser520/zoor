@@ -1,24 +1,19 @@
 ////////////////////////////////////////////////////////////////////////////////
-/// @file iofen.hh
-/// @author Omar A Serrano
-/// @date 2016-04-07
-///
-/// @details Functions and objects to create boards from a file that contains
-/// records written in Forsyth-Edwards notation (FEN), and to write FEN records
-/// from a given board.
-///
-/// The following are examples of FEN records.
-/// FEN record for starting position:
-/// rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
-///
-/// After the move 1. e4:
-/// rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1
-///
-/// After the move 1. .. c5:
-/// rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq c6 0 2
-///
-/// After the move 2. Nf3:
-/// rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2
+//! @file iofen.hh
+//! @author Omar A Serrano
+//! @date 2016-04-07
+//! @details Functions and objects to create boards from a file that contains
+//! records written in Forsyth-Edwards notation (FEN), and to write FEN records
+//! from a given board.
+//! The following are examples of FEN records.
+//! FEN record for starting position:
+//! rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1
+//! After the move 1. e4:
+//! rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1
+//! After the move 1. .. c5:
+//! rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq c6 0 2
+//! After the move 2. Nf3:
+//! rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2
 ////////////////////////////////////////////////////////////////////////////////
 #ifndef _IOFEN_H
 #define _IOFEN_H
@@ -42,12 +37,10 @@ namespace zoor {
 // declarations
 ////////////////////////////////////////////////////////////////////////////////
 
-///
-/// @brief FenSymbols contains static members that are used by functions to
-/// parse a FEN record and build a board from it.
-/// @details Copy control for FenSymbols has been removed, because it is not
-/// meant to instantiated.
-///
+//! @brief FenSymbols contains static members that are used by functions to
+//! parse a FEN record and build a board from it.
+//! @details Copy control for FenSymbols has been removed, because it is not
+//! meant to instantiated.
 struct FenSymbols
 {
   // Remove copy control
@@ -57,115 +50,85 @@ struct FenSymbols
   FenSymbols& operator=(const FenSymbols&) = delete;
   FenSymbols& operator=(FenSymbols&&) = delete;
 
-  ///
-  /// @brief The maximum number of chars that can be on a rank.
-  ///
+  //! @brief The maximum number of chars that can be on a rank.
   static constexpr size_t RANK_LENGTH = 8;
 
-  ///
-  /// @brief The maximum number of chars that can be on the 3rd field of a FEN
-  /// record.
-  ///
+  //! @brief The maximum number of chars that can be on the 3rd field of a FEN
+  //! record.
   static constexpr size_t CASTLE_LENGTH = 4;
 
-  ///
-  /// @brief The char symbols for valid pieces.
-  ///
+  //! @brief The char symbols for valid pieces.
   static const std::string RANK_CHR;
 
-  ///
-  /// @brief The char symbols to represent castling rights in the 3rd field of a
-  /// FEN record.
-  ///
+  //! @brief The char symbols to represent castling rights in the 3rd field of a
+  //! FEN record.
   static const std::string CASTLE_CHR;
 
-  ///
-  /// @brief The char symbols for a valid color.
-  ///
+  //! @brief The char symbols for a valid color.
   static const std::string COLOR_CHR;
 
-  ///
-  /// @brief Used in 3rd and 4th fields to indicate that there are no castling
-  /// rights or that there is no en passant.
-  ///
+  //! @brief Used in 3rd and 4th fields to indicate that there are no castling
+  //! rights or that there is no en passant.
   static constexpr char DASH = '-';
 };
 
-///
-/// @brief Read a chess position in FEN notation from a string.
-/// @details If the string contains more than a FEN record, but the record
-/// begins with a valid FEN record, then the record is consumed and whatever
-/// else remains is ignored.
-/// @param fenLine A FEN record string.
-/// @return A @c FenRecord.
-/// @throw ChessError if the FEN record is not valid.
-///
+//! @brief Read a chess position in FEN notation from a string.
+//! @details If the string contains more than a FEN record, but the record
+//! begins with a valid FEN record, then the record is consumed and whatever
+//! else remains is ignored.
+//! @param fenLine A FEN record string.
+//! @return A @c FenRecord.
+//! @throw ChessError if the FEN record is not valid.
 const FenRecord
 readFenLine(const std::string &fenLine);
 
-///
-/// @brief Read a chess position in FEN notation from a file.
-/// @param inFile The name of the file.
-/// @return A vector of @c FenRecord.
-///
+//! @brief Read a chess position in FEN notation from a file.
+//! @param inFile The name of the file.
+//! @return A vector of @c FenRecord.
 std::vector<FenRecord>
 readFen(std::ifstream &inFile);
 
-///
-/// @brief Read a chess position FEN notation from a file.
-/// @param fileName The name of the file.
-/// @return A vector of @c FenRecord, which may contain 0 or more @c FenRecord.
-///
+//! @brief Read a chess position FEN notation from a file.
+//! @param fileName The name of the file.
+//! @return A vector of @c FenRecord, which may contain 0 or more @c FenRecord.
 std::vector<FenRecord>
 readFen(const char *fileName);
 
-///
-/// @copydoc readFen(const char*)
-///
+//! @copydoc readFen(const char*)
 std::vector<FenRecord>
 readFen(const std::string &fileName);
 
 #if 0
 // TODO: implement these after I have implemented Game and Player
 
-///
-/// @brief Write a board to a file in FEN notation.
-/// @param fileName The name of the file.
-/// @param board The @c Board to be written.
-///
+//! @brief Write a board to a file in FEN notation.
+//! @param fileName The name of the file.
+//! @param board The @c Board to be written.
 void
 writeFen(const char *fileName, const Board &board);
 
-///
-/// @brief Write a board to a file in FEN notation.
-/// @param fileName The name of the file.
-/// @param boardList A vector of boards, each of which gets one line.
-///
+//! @brief Write a board to a file in FEN notation.
+//! @param fileName The name of the file.
+//! @param boardList A vector of boards, each of which gets one line.
 void
 writeFen(const char *fileName, const std::vector<Board> &boardList);
 
-///
-/// @copydoc writeFen(const char*,const &)
-///
+//! @copydoc writeFen(const char*,const &)
 void
 writeFen(const std::string &fileName, const Board &board);
 
-///
-/// @copydoc writeFen(const char*,const std::vector<Board>&)
-///
+//! @copydoc writeFen(const char*,const std::vector<Board>&)
 void
 writeFen(const std::string &fileName, const std::vector<Board> &boardList);
 #endif
 
-///
-/// @brief Get the piece code from a FEN piece.
-/// @param fenCode The symbol representing a piece. For white pieces, legal
-/// values are P, N, B, R, Q, and K. Black pieces use the same symbols in
-/// lowercase.
-/// @return A piece code representing the piece and the color of the piece. If
-/// fenCode is not a valid symbol for a piece, then the piece code is none.
-/// @throw Never throws.
-///
+//! @brief Get the piece code from a FEN piece.
+//! @param fenCode The symbol representing a piece. For white pieces, legal
+//! values are P, N, B, R, Q, and K. Black pieces use the same symbols in
+//! lowercase.
+//! @return A piece code representing the piece and the color of the piece. If
+//! fenCode is not a valid symbol for a piece, then the piece code is none.
+//! @throw Never throws.
 piece_t
 fenPiece(char fenCode) noexcept;
 
