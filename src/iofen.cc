@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
-/// @file iofen.cc
-/// @author Omar A Serrano
-/// @date 2016-04-09
+//! @file iofen.cc
+//! @author Omar A Serrano
+//! @date 2016-04-09
 ////////////////////////////////////////////////////////////////////////////////
 
 //
@@ -211,20 +211,18 @@ fenPiece(char fenCode) noexcept
 
 namespace {
 
-//
-// @brief Read the contents of one single rank from the first field in a FEN
-// record.
-// @details The assumptions are listed here:
-// @li Does not contain more than 8 characters.
-// @li Valid digits are 1 to 8, but if there are multiple digits their sum
-// cannot exceed 8.
-// @li The only valid letters are those that represent white or black pieces.
-// @param rankLine The string representing one rank.
-// @param squareList A reference to a vector of squares where squares are added.
-// @param row The number of row representing the current rank.
-// @return The total number of pieces found in the rank.
-// @throw ChessError if the rankLine violates any of the assumptions.
-//
+//! @brief Read the contents of one single rank from the first field in a FEN
+//! record.
+//! @details The assumptions are listed here:
+//! @li Does not contain more than 8 characters.
+//! @li Valid digits are 1 to 8, but if there are multiple digits their sum
+//! cannot exceed 8.
+//! @li The only valid letters are those that represent white or black pieces.
+//! @param rankLine The string representing one rank.
+//! @param squareList A reference to a vector of squares where squares are added.
+//! @param row The number of row representing the current rank.
+//! @return The total number of pieces found in the rank.
+//! @throw ChessError if the rankLine violates any of the assumptions.
 size_t
 readRank(const string &rankLine, vector<Square> &squareList, const dim_t row)
 {
@@ -264,15 +262,13 @@ readRank(const string &rankLine, vector<Square> &squareList, const dim_t row)
   return numPieces;
 }
 
-//
-// @brief Reads the color of the player who moves next.
-// @details The assumptions are:
-// @li Contains exactly one character.
-// @li Valid characters are <em>w</em> and <em>b</em>.
-// @param colorLine The string representing the color.
-// @return The @c Color for black or white.
-// @throw ChessError if the rankLine violates any of the assumptions.
-//
+//! @brief Reads the color of the player who moves next.
+//! @details The assumptions are:
+//! @li Contains exactly one character.
+//! @li Valid characters are <em>w</em> and <em>b</em>.
+//! @param colorLine The string representing the color.
+//! @return The @c Color for black or white.
+//! @throw ChessError if the rankLine violates any of the assumptions.
 Color
 readColor(const string &colorLine)
 {
@@ -285,19 +281,17 @@ readColor(const string &colorLine)
   return colorLine.front() == 'w' ? Color::W : Color::B;
 }
 
-//
-// @brief Read the castling rights from the 3rd field in a FEN record.
-// @details The assumptions are:
-// @li Does not contain more than 4 characters.
-// @li Legal characters are -, K, Q, k, and q.
-// @li If - is present, then this should be the only character available.
-// @li Valid characters should not repeat.
-// @param infoLine The string representing the castling rights. Should not be
-// marked as const, because it is sorted in order to find unique values in
-// string.
-// @return A @c BoardInfo representing the castling rights.
-// @throw ChessError if the infoLine violates any of the assumptions.
-//
+//! @brief Read the castling rights from the 3rd field in a FEN record.
+//! @details The assumptions are:
+//! @li Does not contain more than 4 characters.
+//! @li Legal characters are -, K, Q, k, and q.
+//! @li If - is present, then this should be the only character available.
+//! @li Valid characters should not repeat.
+//! @param infoLine The string representing the castling rights. Should not be
+//! marked as const, because it is sorted in order to find unique values in
+//! string.
+//! @return A @c BoardInfo representing the castling rights.
+//! @throw ChessError if the infoLine violates any of the assumptions.
 BoardInfo
 readBoardInfo(string &infoLine)
 {
@@ -374,20 +368,18 @@ readBoardInfo(string &infoLine)
   return info;
 }
 
-//
-// @brief Read en passant info from the 4th field in a FEN record.
-// @details The assumptions are:
-// @li Does not contain more than 2 characters.
-// @li Legal characters are -, a-h, 3, and 6.
-// @li If - is present, then the field should not contain more chars.
-// @li If - is not present, then the field should contain 2 chars, the first
-// should be a letter in a-h, and second should be 3 or 6.
-// @details If there is an en passant, then the caller of this function should
-// enforce that there is a pawn that makes this info true.
-// @param field The string representing the 4th field in the FEN record.
-// @return A @c PieceMove representing the last move.
-// @throw ChessError if the field violates any of the assumptions.
-//
+//! @brief Read en passant info from the 4th field in a FEN record.
+//! @details The assumptions are:
+//! @li Does not contain more than 2 characters.
+//! @li Legal characters are -, a-h, 3, and 6.
+//! @li If - is present, then the field should not contain more chars.
+//! @li If - is not present, then the field should contain 2 chars, the first
+//! should be a letter in a-h, and second should be 3 or 6.
+//! @details If there is an en passant, then the caller of this function should
+//! enforce that there is a pawn that makes this info true.
+//! @param field The string representing the 4th field in the FEN record.
+//! @return A @c PieceMove representing the last move.
+//! @throw ChessError if the field violates any of the assumptions.
 PieceMove
 readEnPassant(const string &field)
 {
