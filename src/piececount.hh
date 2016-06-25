@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
-/// @file piececount.hh
-/// @author Omar A Serrano
-/// @date 2015-12-19
+//! @file piececount.hh
+//! @author Omar A Serrano
+//! @date 2015-12-19
 ////////////////////////////////////////////////////////////////////////////////
 #ifndef _PIECECOUNT_H
 #define _PIECECOUNT_H
@@ -25,225 +25,169 @@ namespace zoor {
 // Declarations
 ////////////////////////////////////////////////////////////////////////////////
 
-///
-/// @brief PieceCount counts the number of pieces on a board.
-/// @details Maintains the following invariants:
-/// @li At least one king, and no more than two kings.
-/// @li No more than 8 pawns per player.
-/// @li No more than 10 pieces of type knight, bishop, or rook.
-/// @li No more than 9 queen.
-/// @li No more than 16 pieces total per player.
-///
+//! @brief PieceCount counts the number of pieces on a board.
+//! @details Maintains the following invariants:
+//! @li At least one king, and no more than two kings.
+//! @li No more than 8 pawns per player.
+//! @li No more than 10 pieces of type knight, bishop, or rook.
+//! @li No more than 9 queen.
+//! @li No more than 16 pieces total per player.
 class PieceCount
 {
 public:
-  ///
-  /// @brief The type used to count pieces.
-  ///
+  //! @brief The type used to count pieces.
   using count_type = uint32_t;
 
-  ///
-  /// @brief Default ctor.
-  /// @details Initializes count to 0 for all pieces.
-  ///
+  //! @brief Default ctor.
+  //! @details Initializes count to 0 for all pieces.
   PieceCount() noexcept;
 
-  ///
-  /// @brief Constructor with a @c Board.
-  /// @param board The board whose pieces are counted.
-  /// @throw Never throws.
-  ///
+  //! @brief Constructor with a @c Board.
+  //! @param board The board whose pieces are counted.
+  //! @throw Never throws.
   explicit
   PieceCount(const Board &board) noexcept;
 
-  ///
-  /// @brief Constructor with a list of squares.
-  /// @param squareList The list of squres with pieces.
-  /// @throw Never throws.
-  ///
+  //! @brief Constructor with a list of squares.
+  //! @param squareList The list of squres with pieces.
+  //! @throw Never throws.
   PieceCount(const std::vector<Square> &squareList) noexcept;
 
-  ///
-  /// @brief Copy constructor.
-  /// @param pcount The @c PieceCount to be copied.
-  /// @throw Never throws.
-  ///
+  //! @brief Copy constructor.
+  //! @param pcount The @c PieceCount to be copied.
+  //! @throw Never throws.
   PieceCount(const PieceCount &pcount) noexcept = default;
 
-  ///
-  /// @brief Move constructor.
-  /// @param pcount The @c PieceCount to be moved.
-  /// @throw Never throws.
-  ///
+  //! @brief Move constructor.
+  //! @param pcount The @c PieceCount to be moved.
+  //! @throw Never throws.
   PieceCount(PieceCount &&pcount) noexcept = default;
 
-  ///
-  /// @brief Copy assignment operator.
-  /// @param pcount The @c PieceCount to be copied.
-  /// @return A reference to this @c PieceCount.
-  /// @throw Never throws.
-  ///
+  //! @brief Copy assignment operator.
+  //! @param pcount The @c PieceCount to be copied.
+  //! @return A reference to this @c PieceCount.
+  //! @throw Never throws.
   PieceCount&
   operator=(const PieceCount &pcount) noexcept = default;
 
-  ///
-  /// @brief Move assignment operator.
-  /// @param pcount The @c PieceCount to be moved.
-  /// @return A reference to this @c PieceCount.
-  /// @throw Never throws.
-  ///
+  //! @brief Move assignment operator.
+  //! @param pcount The @c PieceCount to be moved.
+  //! @return A reference to this @c PieceCount.
+  //! @throw Never throws.
   PieceCount&
   operator=(PieceCount &&pcount) noexcept = default;
 
-  ///
-  /// @brief Default destructor.
-  /// @throw Never throws.
-  ///
+  //! @brief Default destructor.
+  //! @throw Never throws.
   ~PieceCount() noexcept = default;
 
-  ///
-  /// @brief Count the number of pieces in board.
-  /// @param board The board whose pieces are counted.
-  /// @return A reference to this PieceCount.
-  /// @throw Never throws.
-  ///
+  //! @brief Count the number of pieces in board.
+  //! @param board The board whose pieces are counted.
+  //! @return A reference to this PieceCount.
+  //! @throw Never throws.
   PieceCount&
   count(const Board &board) noexcept;
 
-  ///
-  /// @brief Count the number of pieces in a list of @c Squares.
-  /// @param squareList A list of @c Squares with pieces.
-  /// @return A reference to this PieceCount.
-  /// @throw Never throws.
-  ///
+  //! @brief Count the number of pieces in a list of @c Squares.
+  //! @param squareList A list of @c Squares with pieces.
+  //! @return A reference to this PieceCount.
+  //! @throw Never throws.
   PieceCount&
   count(const std::vector<Square> &squareList) noexcept;
 
-  ///
-  /// @brief Checks that invariants hold.
-  /// @return True if invariants hold, false otherwise.
-  /// @throw Never throws.
-  ///
+  //! @brief Checks that invariants hold.
+  //! @return True if invariants hold, false otherwise.
+  //! @throw Never throws.
   bool
   good() const noexcept;
 
-  ///
-  /// @brief Sets the count of every piece to zero.
-  /// @return A reference to this PieceCount.
-  /// @throw Never throws.
-  ///
+  //! @brief Sets the count of every piece to zero.
+  //! @return A reference to this PieceCount.
+  //! @throw Never throws.
   PieceCount&
   clear() noexcept;
 
-  ///
-  /// @brief Get the underlying data for white piece count.
-  /// @return Data with count for white pieces.
-  /// @throw Never throws.
-  ///
+  //! @brief Get the underlying data for white piece count.
+  //! @return Data with count for white pieces.
+  //! @throw Never throws.
   count_type
   white() const noexcept;
 
-  ///
-  /// @brief Get the underlying data for black pieces count.
-  /// @return Data with count for black pieces.
-  /// @throw Never throws.
-  ///
+  //! @brief Get the underlying data for black pieces count.
+  //! @return Data with count for black pieces.
+  //! @throw Never throws.
   count_type
   black() const noexcept;
 
-  ///
-  /// @brief Get number of white kings.
-  /// @return The number of white kings.
-  /// @throw Never throws.
-  ///
+  //! @brief Get number of white kings.
+  //! @return The number of white kings.
+  //! @throw Never throws.
   count_type
   wKing() const noexcept;
 
-  ///
-  /// @brief Get the number of white queens.
-  /// @return The number of white queens.
-  /// @throw Never throws.
-  ///
+  //! @brief Get the number of white queens.
+  //! @return The number of white queens.
+  //! @throw Never throws.
   count_type
   wQueen() const noexcept;
 
-  ///
-  /// @brief Get the number of white rooks.
-  /// @return The number of white rooks.
-  /// @throw Never throws.
-  ///
+  //! @brief Get the number of white rooks.
+  //! @return The number of white rooks.
+  //! @throw Never throws.
   count_type
   wRook() const noexcept;
 
-  ///
-  /// @brief Get the number of white bishops.
-  /// @return The number of white bishops.
-  /// @throw Never throws.
-  ///
+  //! @brief Get the number of white bishops.
+  //! @return The number of white bishops.
+  //! @throw Never throws.
   count_type
   wBishop() const noexcept;
 
-  ///
-  /// @brief Get the number of white knights.
-  /// @return The number of white knights.
-  /// @throw Never throws.
-  ///
+  //! @brief Get the number of white knights.
+  //! @return The number of white knights.
+  //! @throw Never throws.
   count_type
   wKnight() const noexcept;
 
-  ///
-  /// @brief Get the number of white pawns.
-  /// @return The number of white pawns.
-  /// @throw Never throws.
-  ///
+  //! @brief Get the number of white pawns.
+  //! @return The number of white pawns.
+  //! @throw Never throws.
   count_type
   wPawn() const noexcept;
 
-  ///
-  /// @brief Get number of black kings.
-  /// @return The number of black kings.
-  /// @throw Never throws.
-  ///
+  //! @brief Get number of black kings.
+  //! @return The number of black kings.
+  //! @throw Never throws.
   count_type
   bKing() const noexcept;
 
-  ///
-  /// @brief Get the number of black queens.
-  /// @return The number of black queens.
-  /// @throw Never throws.
-  ///
+  //! @brief Get the number of black queens.
+  //! @return The number of black queens.
+  //! @throw Never throws.
   count_type
   bQueen() const noexcept;
 
-  ///
-  /// @brief Get the number of black rooks.
-  /// @return The number of black rooks.
-  /// @throw Never throws.
-  ///
+  //! @brief Get the number of black rooks.
+  //! @return The number of black rooks.
+  //! @throw Never throws.
   count_type
   bRook() const noexcept;
 
-  ///
-  /// @brief Get the number of black bishops.
-  /// @return The number of black bishops.
-  /// @throw Never throws.
-  ///
+  //! @brief Get the number of black bishops.
+  //! @return The number of black bishops.
+  //! @throw Never throws.
   count_type
   bBishop() const noexcept;
 
-  ///
-  /// @brief Get the number of black knights.
-  /// @return The number of black knights.
-  /// @throw Never throws.
-  ///
+  //! @brief Get the number of black knights.
+  //! @return The number of black knights.
+  //! @throw Never throws.
   count_type
   bKnight() const noexcept;
 
-  ///
-  /// @brief Get the number of black pawns.
-  /// @return The number of black pawns.
-  /// @throw Never throws.
-  ///
+  //! @brief Get the number of black pawns.
+  //! @return The number of black pawns.
+  //! @throw Never throws.
   count_type
   bPawn() const noexcept;
 
@@ -286,23 +230,19 @@ private:
   };
 };
 
-///
-/// @brief Compares two @c PieceCount objects for equality.
-/// @param pc1 The first @c PieceCount object.
-/// @param pc2 The second @c PieceCount object.
-/// @return True if they are equal, false otherwise.
-/// @throw Never throws.
-///
+//! @brief Compares two @c PieceCount objects for equality.
+//! @param pc1 The first @c PieceCount object.
+//! @param pc2 The second @c PieceCount object.
+//! @return True if they are equal, false otherwise.
+//! @throw Never throws.
 bool
 operator==(const PieceCount &pc1, const PieceCount &pc2) noexcept;
 
-///
-/// @brief Compares two @c PieceCount objects for non-equality.
-/// @param pc1 The first @c PieceCount object.
-/// @param pc2 The second @c PieceCount object.
-/// @return False if they are equal, true otherwise.
-/// @throw Never throws.
-///
+//! @brief Compares two @c PieceCount objects for non-equality.
+//! @param pc1 The first @c PieceCount object.
+//! @param pc2 The second @c PieceCount object.
+//! @return False if they are equal, true otherwise.
+//! @throw Never throws.
 bool
 operator!=(const PieceCount &pc1, const PieceCount &pc2) noexcept;
 
