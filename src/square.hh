@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
-/// @file square.hh
-/// @author Omar A Serrano
-/// @data 2015-12-31
+//! @file square.hh
+//! @author Omar A Serrano
+//! @data 2015-12-31
 ////////////////////////////////////////////////////////////////////////////////
 #ifndef _SQUARE_H
 #define _SQUARE_H
@@ -26,200 +26,152 @@ namespace zoor {
 // declarations
 ////////////////////////////////////////////////////////////////////////////////
 
-///
-/// @brief Represents a position on a chess board.
-/// @details A @c Square is aware of how big the board is, if a row and column
-/// are within the bounds of a chess board, and what piece, if any, is sitting
-/// on it, including its color.
-///
+//! @brief Represents a position on a chess board.
+//! @details A @c Square is aware of how big the board is, if a row and column
+//! are within the bounds of a chess board, and what piece, if any, is sitting
+//! on it, including its color.
 class Square
 {
 public:
-  ///
-  /// @brief Constructs a @c Square with a specific row and column. The piece is
-  /// set to <em>NONE</em> and the piece color to <em>NONE</em>.
-  /// @param row The row of the @c Square; must be less than BOARD_DIM.
-  /// @param column The column of the @c Square; must be lesst than BOARD_DIM.
-  /// @throw Never throws.
-  ///
+  //! @brief Constructs a @c Square with a specific row and column. The piece is
+  //! set to <em>NONE</em> and the piece color to <em>NONE</em>.
+  //! @param row The row of the @c Square; must be less than BOARD_DIM.
+  //! @param column The column of the @c Square; must be lesst than BOARD_DIM.
+  //! @throw Never throws.
   Square(dim_t row, dim_t column) noexcept;
 
-  ///
-  /// @brief Constructs a @c Square with row, column, and piece.
-  /// @param row The row of the @c Square. Assumption: row <= BOARD_DIM.
-  /// @param column The column of the @c Square; must be less than BOARD_DIM.
-  /// @param code The bit pattern containing the piece and color info.
-  /// @throw Never throws.
-  ///
+  //! @brief Constructs a @c Square with row, column, and piece.
+  //! @param row The row of the @c Square. Assumption: row <= BOARD_DIM.
+  //! @param column The column of the @c Square; must be less than BOARD_DIM.
+  //! @param code The bit pattern containing the piece and color info.
+  //! @throw Never throws.
   Square(dim_t row, dim_t column, piece_t code) noexcept;
 
-  ///
-  /// @brief Constructs a @c Square with a specific row, column, and piece.
-  /// @param row The row of the @c Square. Assumption: row <= DIM.
-  /// @param column The column of the @c Square. Assumption: column <= DIM.
-  /// @param piece The piece sitting on the @c Square.
-  /// @param color The @c Color.
-  /// @throw Never throws.
-  ///
+  //! @brief Constructs a @c Square with a specific row, column, and piece.
+  //! @param row The row of the @c Square. Assumption: row <= DIM.
+  //! @param column The column of the @c Square. Assumption: column <= DIM.
+  //! @param piece The piece sitting on the @c Square.
+  //! @param color The @c Color.
+  //! @throw Never throws.
   Square(dim_t row, dim_t column, Piece piece, Color color) noexcept;
 
-  ///
-  /// @brief Default constructor.
-  /// @throw Never throws.
-  ///
+  //! @brief Default constructor.
+  //! @throw Never throws.
   Square() noexcept;
 
-  ///
-  /// @brief Default copy constructor.
-  /// @param square The @c Square being copied.
-  /// @throw Never throws.
-  ///
+  //! @brief Default copy constructor.
+  //! @param square The @c Square being copied.
+  //! @throw Never throws.
   Square(const Square& square) noexcept = default;
 
-  ///
-  /// @brief Default move constructor.
-  /// @param square The @c Square being moved.
-  /// @throw Never throws.
-  ///
+  //! @brief Default move constructor.
+  //! @param square The @c Square being moved.
+  //! @throw Never throws.
   Square(Square&& square) noexcept = default;
 
-  ///
-  /// @brief Default copy assignment.
-  /// @param square The @c Square being copied.
-  /// @throw Never throws.
-  ///
+  //! @brief Default copy assignment.
+  //! @param square The @c Square being copied.
+  //! @throw Never throws.
   Square&
   operator=(const Square& square) noexcept = default;
 
-  ///
-  /// @brief Default move assignment.
-  /// @param square The @c Square being moved.
-  /// @throw Never throws.
-  ///
+  //! @brief Default move assignment.
+  //! @param square The @c Square being moved.
+  //! @throw Never throws.
   Square&
   operator=(Square &&square) noexcept = default;
 
-  ///
-  /// @brief Default destructor.
-  /// @throw Never throws.
-  ///
+  //! @brief Default destructor.
+  //! @throw Never throws.
   ~Square() noexcept = default;
 
-  ///
-  /// @brief Gets the row number without modifying the @c Square.
-  /// @return The row number.
-  /// @throw Never throws.
-  ///
+  //! @brief Gets the row number without modifying the @c Square.
+  //! @return The row number.
+  //! @throw Never throws.
   dim_t
   row() const noexcept;
 
-  ///
-  /// @brief Gets the column number without modifying the @c Square.
-  /// @return The column number.
-  /// @throw Never throws.
-  ///
+  //! @brief Gets the column number without modifying the @c Square.
+  //! @return The column number.
+  //! @throw Never throws.
   dim_t
   column() const noexcept;
 
-  ///
-  /// @brief Gets the piece without modifying the @c Square.
-  /// @return The @c Piece.
-  /// @throw Never throws.
-  ///
+  //! @brief Gets the piece without modifying the @c Square.
+  //! @return The @c Piece.
+  //! @throw Never throws.
   Piece
   piece() const noexcept;
 
-  ///
-  /// @brief Gets the piece color without modifying the @c Square.
-  /// @return The @c Color.
-  /// @throw Never throws.
-  ///
+  //! @brief Gets the piece color without modifying the @c Square.
+  //! @return The @c Color.
+  //! @throw Never throws.
   Color
   color() const noexcept;
 
-  ///
-  /// @brief Gets the bit pattern of the piece and color.
-  /// @return The piece code.
-  /// @throw Never throws.
-  ///
+  //! @brief Gets the bit pattern of the piece and color.
+  //! @return The piece code.
+  //! @throw Never throws.
   piece_t
   code() const noexcept;
 
-  ///
-  /// @brief Get the row and column.
-  /// @return A pair with first=row and second=column.
-  /// @throw Never throws.
-  ///
+  //! @brief Get the row and column.
+  //! @return A pair with first=row and second=column.
+  //! @throw Never throws.
   std::pair<dim_t, dim_t>
   location() const noexcept;
 
-  ///
-  /// @brief Sets the row number. Enforces the invariant for the row size.
-  /// @param row The row number.
-  /// @return A reference to this @c Square
-  /// @throw Never throws.
-  ///
+  //! @brief Sets the row number. Enforces the invariant for the row size.
+  //! @param row The row number.
+  //! @return A reference to this @c Square
+  //! @throw Never throws.
   Square&
   row(dim_t row) noexcept;
 
-  ///
-  /// @brief Sets the column number.
-  /// @param column The column number.
-  /// @return A reference to this @c Square
-  /// @throw Never throws.
-  ///
+  //! @brief Sets the column number.
+  //! @param column The column number.
+  //! @return A reference to this @c Square
+  //! @throw Never throws.
   Square&
   column(dim_t column) noexcept;
 
-  ///
-  /// @brief Sets the piece.
-  /// @param piece The @c Piece.
-  /// @return A reference to this @c Square.
-  /// @throw Never throws.
-  ///
+  //! @brief Sets the piece.
+  //! @param piece The @c Piece.
+  //! @return A reference to this @c Square.
+  //! @throw Never throws.
   Square&
   piece(Piece piece) noexcept;
 
-  ///
-  /// @brief Sets the piece color.
-  /// @param color The @c Color.
-  /// @return A reference to this @c Square.
-  /// @throw Never throws.
-  ///
+  //! @brief Sets the piece color.
+  //! @param color The @c Color.
+  //! @return A reference to this @c Square.
+  //! @throw Never throws.
   Square&
   color(Color color) noexcept;
 
-  ///
-  /// @brief Sets the piece and color.
-  /// @param code The piece code with piece and color info.
-  /// @return A reference to this @c Square.
-  /// @throw Never throws.
-  ///
+  //! @brief Sets the piece and color.
+  //! @param code The piece code with piece and color info.
+  //! @return A reference to this @c Square.
+  //! @throw Never throws.
   Square&
   code(piece_t code) noexcept;
 
-  ///
-  /// @brief Sets the row and column.
-  /// @param row The row in the board.
-  /// @param column The column in the board.
-  /// @return A reference to this @c Square.
-  /// @throw Never throws.
-  ///
+  //! @brief Sets the row and column.
+  //! @param row The row in the board.
+  //! @param column The column in the board.
+  //! @return A reference to this @c Square.
+  //! @throw Never throws.
   Square&
   location(dim_t row, dim_t column) noexcept;
 
-  ///
-  /// @brief Get the string representation of the square.
-  /// @return A string representing the square.
-  ///
+  //! @brief Get the string representation of the square.
+  //! @return A string representing the square.
   std::string
   toString() const;
 
-  ///
-  /// @brief Get the hash code for the square.
-  /// @return The hash code.
-  /// @throw Never throws.
-  ///
+  //! @brief Get the hash code for the square.
+  //! @return The hash code.
+  //! @throw Never throws.
   size_t
   hashCode() const noexcept;
 
@@ -252,33 +204,27 @@ private:
   enum : dim_t { DIM = 8 };
 };
 
-///
-/// @brief Equality test for @c Square.
-/// @param square1 The first @c Square operand.
-/// @param square2 The second @c Square operand.
-/// @return True if square1 and square2 are equal.
-/// @throw Never throws.
-///
+//! @brief Equality test for @c Square.
+//! @param square1 The first @c Square operand.
+//! @param square2 The second @c Square operand.
+//! @return True if square1 and square2 are equal.
+//! @throw Never throws.
 bool
 operator==(const Square& square1, const Square& square2) noexcept;
 
-///
-/// @brief Non-equality test for @c Square.
-/// @param square1 The first @c Square operand.
-/// @param square2 The second @c Square operand.
-/// @return True if square1 and square2 are not equal.
-/// @throw Never throws.
-///
+//! @brief Non-equality test for @c Square.
+//! @param square1 The first @c Square operand.
+//! @param square2 The second @c Square operand.
+//! @return True if square1 and square2 are not equal.
+//! @throw Never throws.
 bool
 operator!=(const Square& square1, const Square& square2) noexcept;
 
-///
-/// @brief Output operator for @c Square. Format is
-/// <em>(piece, color, row, column)</em>.
-/// @param os The output stream.
-/// @param square An immutable @c Square.
-/// @return A reference to the output stream.
-///
+//! @brief Output operator for @c Square. Format is
+//! <em>(piece, color, row, column)</em>.
+//! @param os The output stream.
+//! @param square An immutable @c Square.
+//! @return A reference to the output stream.
 std::ostream&
 operator<<(std::ostream& os, const Square& square);
 
@@ -485,10 +431,8 @@ operator!=(const Square& square1, const Square& square2) noexcept
 
 namespace std {
 
-///
-/// @brief Square specialization for <em>hash</em>. Needs to be defined within
-/// std namespece.
-///
+//! @brief Square specialization for <em>hash</em>. Needs to be defined within
+//! std namespece.
 template<>
 struct hash<zoor::Square>
 {
