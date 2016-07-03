@@ -19,6 +19,7 @@ BasicStrategy::score(const Board &board) noexcept
   // 1. number of pieces for each color
   // 2. how well are pieces positioned
   //   - is king castled
+  //   - is king well protected
   //   - are knights out of the first rank
   //   - are bishops out of the first rank
   //   - are rooks connected
