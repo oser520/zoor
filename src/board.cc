@@ -59,12 +59,12 @@ Board::Board()
 //
 // constructor with list of pieces
 //
-Board::Board
-  (const std::vector<Square> &squareList,
-   const Color color,
-   const BoardInfo &boardInfo,
-   const PieceMove &lastMove)
-  : mBoard(BasicBoard::emptyBoard()),
+Board::Board(
+  const std::vector<Square> &squareList,
+  const Color color,
+  const BoardInfo &boardInfo,
+  const PieceMove &lastMove
+) : mBoard(BasicBoard::emptyBoard()),
     mColor(color),
     mLastMove(lastMove),
     mInfo(boardInfo)
