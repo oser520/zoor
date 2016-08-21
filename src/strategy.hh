@@ -3,8 +3,8 @@
 //! @author Omar A Serrano
 //! @date 2016-06-28
 ////////////////////////////////////////////////////////////////////////////////
-#ifndef _STRATEGY_H
-#define _STRATEGY_H
+#ifndef _ISTRATEGY_H
+#define _ISTRATEGY_H
 
 
 namespace zoor {
@@ -13,10 +13,10 @@ namespace zoor {
 class Board;
 
 //! @brief An abstract strategy for evaluating a chess position.
-struct Strategy
+struct IStrategy
 {
   virtual
-  ~Strategy() noexcept = default;
+  ~IStrategy() noexcept = default;
 
   //! @param board The board to evaluate.
   //! @return The score for the player making a move. A positive, zero, or
@@ -27,4 +27,4 @@ struct Strategy
 };
 
 } // namespace zoor
-#endif // _STRATEGY_H 
+#endif // _ISTRATEGY_H
