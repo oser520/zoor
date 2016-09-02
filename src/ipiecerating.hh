@@ -17,9 +17,9 @@ namespace zoor {
 class IPieceRating
 {
   Piece mPiece;
-  unsigned mMobility{0};
-  unsigned mAttack{0};
-  unsigned mThreat{0};
+  uint8_t mMobility{0};
+  uint8_t mAttack{0};
+  uint8_t mThreat{0};
 
 public:
   //! Dtor.
