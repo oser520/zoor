@@ -42,10 +42,8 @@ public:
 
   //! Initializes piece rating with a piece.
   //! @param piece The bit code representing the piece.
+  explicit
   IPieceRating(piece_t piece) noexcept;
-
-  //! Defaul ctor.
-  IPieceRating() noexcept = default;
 
   //! Dtor.
   virtual
