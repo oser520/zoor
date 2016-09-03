@@ -29,8 +29,10 @@ class PawnRating
   bool mIsInCenter{false};
   bool mIsPassed{false};
   bool mCanPromote{false};
+
   // Indicates if there are no other pawns in ajoining columns.
   bool mIsIsolated{false};
+
   // Number of pawns it is blocking on this column.
   uint8_t mBlocking{0};
 
@@ -59,7 +61,10 @@ PawnRating::PawnRating(Color color)
 
 inline
 PawnRating::PawnRating(piece_t piece)
-  : IPieceRating(piece) {}
+  : IPieceRating(piece)
+{
+  assert(isPawn(mPiece));
+}
 
 } // namespace zoor
 #endif // _PAWNRATING_H
