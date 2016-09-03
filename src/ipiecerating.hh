@@ -6,8 +6,20 @@
 #ifndef _IPIECERATING_H
 #define _IPIECERATING_H
 
+//
+// STL
+//
+#include <cassert>
 #include <cstdint>
+
+//
+// zoor
+//
 #include "basictypes.hh"
+
+////////////////////////////////////////////////////////////////////////////////
+// declarations
+////////////////////////////////////////////////////////////////////////////////
 
 namespace zoor {
 
@@ -17,11 +29,24 @@ namespace zoor {
 class IPieceRating
 {
   Piece mPiece;
+  Color mColor;
   uint8_t mMobility{0};
   uint8_t mAttack{0};
   uint8_t mThreat{0};
 
 public:
+  //! Initializes piece rating with a piece.
+  //! @param piece The type of piece.
+  //! @param color The color of the piece.
+  IPieceRating(Piece piece, Color color) noexcept;
+
+  //! Initializes piece rating with a piece.
+  //! @param piece The bit code representing the piece.
+  IPieceRating(piece_t piece) noexcept;
+
+  //! Defaul ctor.
+  IPieceRating() noexcept = default;
+
   //! Dtor.
   virtual
   ~IPieceRating() noexcept = default;
@@ -29,6 +54,14 @@ public:
   //! @return The type of Piece represented.
   Piece
   type() const noexcept;
+
+  //! @return The color of the piece.
+  Color
+  color() const noexcept;
+
+  //! @return The bit code of the piece.
+  piece_t
+  code() const noexcept;
 
   //! @return The mobility of the chess piece.
   unsigned
@@ -55,28 +88,52 @@ public:
   rating() noexcept = 0;
 };
 
-//! @return The type of Piece represented.
+////////////////////////////////////////////////////////////////////////////////
+// definitions
+////////////////////////////////////////////////////////////////////////////////
+
+inline
+IPieceRating(Piece piece, Color color) noexcept
+  : mPiece(piece), mColor(color)
+{
+  assert(isPiece(piece));
+  assert(isColor(color));
+}
+
+inline
+IPieceRating(piece_t piece) noexcept
+  : IPieceRating(getPiece(piece), getColor(color)) {}
+
 inline Piece
 PieceRating::type() const noexcept
 {
   return mPiece;
 }
 
-//! @return The mobility of the chess piece.
+inline Color
+PieceRating::color() const noexcept
+{
+  return mColor;
+}
+
+inline piece_t
+PieceRating::code() const noexcept
+{
+  return mColor | mPiece;
+}
+
 inline unsigned
 PieceRating::mobility() const noexcept
 {
   return mMobility;
 }
 
-//! @return The number of pieces it attacks.
 inline unsigned
 PieceRating::attack() const noexcept
 {
   return mAttack;
 }
 
-//! @return The number of pieces attacking it.
 inline unsigned
 PieceRating::threat() const noexcept
 {
