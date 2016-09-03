@@ -19,6 +19,9 @@
 
 namespace zoor {
 
+// TODO: Create an entity that represents the values of the different factors
+// that are evaluated for the pawn, e.g., PawnRatingPoints.
+
 class BasicBoard;
 
 //! @brief Represents the overall rating of a pawn given a current position on
@@ -30,8 +33,11 @@ class PawnRating
   bool mIsPassed{false};
   bool mCanPromote{false};
 
-  // Indicates if there are no other pawns in ajoining columns.
+  // Indicates there are no other pawns in ajoining columns.
   bool mIsIsolated{false};
+
+  // Indicates it is defending or being defended by another pawn.
+  bool mIsConnected{false};
 
   // Number of pawns it is blocking on this column.
   uint8_t mBlocking{0};
