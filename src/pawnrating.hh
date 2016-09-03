@@ -33,7 +33,7 @@ class PawnRating
 
 public:
   //! @copydoc PieceRating::compute(dim_t, tim_t, BasicBoard)
-  PieceRating&
+  void
   compute(dim_t row, dim_t col, const BasicBoard &board) noexcept override;
 
   //! @copydoc PieceRating::rating()

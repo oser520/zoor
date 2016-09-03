@@ -80,7 +80,7 @@ public:
   //! @param row The row of the square where piece is located.
   //! @param col The column of the square where piece is located.
   //! @return This PieceRating.
-  virtual PieceRating&
+  virtual void
   compute(dim_t row, dim_t col, const BasicBoard &board) noexcept = 0;
 
   //! @return The overall rating of the piece, excluding its nominal value.
