@@ -55,5 +55,33 @@ public:
   rating() noexcept = 0;
 };
 
+//! @return The type of Piece represented.
+inline Piece
+PieceRating::type() const noexcept
+{
+  return mPiece;
+}
+
+//! @return The mobility of the chess piece.
+inline unsigned
+PieceRating::mobility() const noexcept
+{
+  return mMobility;
+}
+
+//! @return The number of pieces it attacks.
+inline unsigned
+PieceRating::attack() const noexcept
+{
+  return mAttack;
+}
+
+//! @return The number of pieces attacking it.
+inline unsigned
+PieceRating::threat() const noexcept
+{
+  return mThreat;
+}
+
 } // namespace zoor
 #endif // _IPIECERATING_H
