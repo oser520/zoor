@@ -23,6 +23,8 @@
 
 namespace zoor {
 
+class BasicBoard;
+
 //! @brief Represents the overall rating of a piece, taking into account its
 //! mobility, the number of pieces it is currently attacking, and the number of
 //! pieces attacking it.
