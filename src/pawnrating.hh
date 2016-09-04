@@ -48,15 +48,15 @@ public:
   explicit
   PawnRating(Color color) noexcept;
 
-  //! @copydoc PieceRating::PieceRating(piece_t)
+  //! @copydoc IPieceRating::IPieceRating(piece_t)
   explicit
   PawnRating(piece_t piece) noexcept;
 
-  //! @copydoc PieceRating::compute(dim_t, tim_t, BasicBoard)
+  //! @copydoc IPieceRating::compute(dim_t, tim_t, BasicBoard)
   void
   compute(dim_t row, dim_t col, const BasicBoard &board) noexcept override;
 
-  //! @copydoc PieceRating::rating()
+  //! @copydoc IPieceRating::rating()
   unsigned
   rating() noexcept override;
 };
