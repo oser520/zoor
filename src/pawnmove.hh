@@ -15,6 +15,7 @@
 // zoor
 //
 #include "basictypes.hh"
+#include "imove.hh"
 
 ////////////////////////////////////////////////////////////////////////////////
 // declarations
@@ -27,61 +28,29 @@ class PieceMove;
 
 //! Represents the moves a pawn can make from a given position on a board.
 class PawnMove
+  : public IMove
 {
-  dim_t mRow;
-  dim_t mCol;
-  const Board &mBoard;
-  Color mColor;
-  std::vector<std::pair<dim_t, dim_t>> mDeltas; 
+  std::vector<std::pair<dim_t, dim_t>> mDeltas;
 
 public:
-  //! Initializes PawnMove with the row and column of the pawn, and the board.
-  //! @param row The row of the pawn.
-  //! @param col The column of the pawn.
-  //! @param board The board where the pawn is located.
+  //! @copydoc IMove::IMove(dim_t, dim_t, Board)
   PawnMove(dim_t row, dim_t col, const Board &board) noexcept;
 
-  //! @return The color of the pawn.
-  Color
-  color() const noexcept;
+  //! @copydoc IMove::type()
+  constexpr Piece
+  type() const noexcept override;
 
-  //! @return The row of the pawn.
-  dim_t
-  row() const noexcept;
-
-  //! @return The board.
-  const Board&
-  board() const noexcept;
-
-  //! Changes the square from where the pawn is moving.
-  //! @param row The new row location of the pawn.
-  //! @param column The new column location of the pawn.
-  //! @throw If the square does not contain a pawn.
-  void
-  square(dim_t row, dim_t col);
-  
-  //! Determine if the piece can move to the given square.
-  //! @param row The row where the pawn should move.
-  //! @param row The column where the pawn should move.
-  //! @return True if the pawn can move to the square, false otherwise.
+  //! @copydoc IMove::canMove(dim_t, dim_t)
   bool
-  canMove(dim_t row, dim_t col) const noexcept;
+  canMove(dim_t row, dim_t col) const noexcept override;
 
-  //! Moves the pawn to the given square.
-  //! @param row The row of the square where the pawn is moving.
-  //! @param col The column of the square where the pawn is moving.
-  //! @return A PieceMove.
-  //! @throw If the pawn cannot move to the given square.
+  //! @copydoc IMove::move(dim_t, dim_t)
   PieceMove
-  move(dim_t row, dim_t col) const;
+  move(dim_t row, dim_t col) const override;
 
-  //! Moves the pawn to the given square.
-  //! @param row The row of the square where the pawn is moving.
-  //! @param col The column of the square where the pawn is moving.
-  //! @return A PieceMove.
-  //! @throw If the pawn cannot move to the given square.
+  //! @copydoc IMove::moves()
   std::vector<PieceMove>
-  moves() const;
+  moves() const override;
 
 private:
   //! Moves the pawn to the given square.
