@@ -7,9 +7,11 @@
 //
 // STL
 //
+#include <array>
 #include <vector>
 #include <utility>
 #include <stdexcept>
+#include <cassert>
 
 //
 // zoor
@@ -25,6 +27,7 @@ PawnMove::PawnMove(dim_t row, dim_t col, const Board &board) noexcept
   : IMove(row, col, board)
 {
   assert(isPawn(mBoard(row, col).piece()));
+  mDeltas = deltas();
 }
 
 constexpr Piece
@@ -98,6 +101,32 @@ PieceMove
 PawnMove::enPassant(dim_t row, dim_t col) const noexcept
 {
   throw std::logic_error("NOT IMPLEMENTED");
+}
+
+std::vector<std::pair<dim_t, dim_t>>
+PawnMove::deltas() const
+{
+  auto delta = delta() + mRow;
+  std::array<std::pair<dim_t, dim_t>, 3> aDeltas = {
+    {delta, mCol},
+    {delta, mCol+1},
+    {delta, mCol-1}
+  };
+  std::vector<std::pair<dim_t, dim_t>> vDeltas;
+  for (auto d : aDeltas) {
+    if (inBound(d.first, d.second))
+      vDeltas.emplace_back(d.first, d.second);
+  }
+  if (isFirstMove())
+    vDeltas.emplace_back(jumpTwo());
+
+  return vDeltas;
+}
+
+dim_t
+PawnMove::delta() const noexcept
+{
+  return isWhite(mColor) ? 1 : -1;
 }
 
 } // namespace zoor
