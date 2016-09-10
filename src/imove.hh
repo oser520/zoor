@@ -100,17 +100,6 @@ public:
 // definitions
 ////////////////////////////////////////////////////////////////////////////////
 
-IMove::IMove(dim_t row, dim_t col, const Board &board)
-  : mRow(row),
-    mCol(col),
-    mBoard(board),
-    mColor(mBoard(mRow, mCol).color())
-{
-  // TODO: return exception instead of asserting
-  assert(isColor(mColor));
-  assert(mColor == mBoard.nextTurn());
-}
-
 inline const Board&
 IMove::board() const noexcept
 {
@@ -133,16 +122,6 @@ inline dim_t
 IMove::col() const noexcept
 {
   return mCol;
-}
-
-inline void
-IMove::square(dim_t row, dim_t col)
-{
-  // TODO: return exception instead of asserting
-  assert(mBoard(row, col).piece() == type());
-  assert(mBoard(row, col).color() == color());
-  mRow = row;
-  mCol = col;
 }
 
 } // namespace zoor
