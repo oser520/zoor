@@ -106,7 +106,7 @@ PawnMove::enPassant(dim_t row, dim_t col) const noexcept
 std::vector<std::pair<dim_t, dim_t>>
 PawnMove::deltas() const
 {
-  auto delta = delta() + mRow;
+  auto delta = delta(mColor) + mRow;
   std::array<std::pair<dim_t, dim_t>, 3> aDeltas = {
     {delta, mCol},
     {delta, mCol+1},
