@@ -78,7 +78,8 @@ PawnMove::_canMove(dim_t row, dim_t col) const noexcept
 bool
 PawnMove::isFirstMove() const noexcept
 {
-  throw std::logic_error("NOT IMPLEMENTED");
+  return (isWhite(mColor) && mRow == 1)
+      || (isBlack(mColor) && mRow == 6);
 }
 
 std::pair<dim_t, dim_t>
