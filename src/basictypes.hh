@@ -458,5 +458,14 @@ operator|(Color color, Piece piece) noexcept
   return static_cast<piece_t>(color) | static_cast<piece_t>(piece);
 }
 
+//! @param color The color of the piece.
+//! @return 1 if it is white, -1 otherwise.
+//! @throw Never throws.
+inline dim_t
+delta(Color color) noexcept
+{
+  return isWhite(color) ? 1 : -1;
+}
+
 } // namespace zoor
 #endif // _BASICTYPES_H
