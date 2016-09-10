@@ -109,6 +109,10 @@ private:
   //! @return An en passant PieceMove.
   PieceMove
   enPassant(dim_t row, dim_t col) const noexcept;
+
+  //! @return A list squares of where it is viable for the pawn to move.
+  std::vector<std::pair<dim_t, dim_t>>
+  deltas() const;
 };
 
 } // namespace zoor
