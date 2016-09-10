@@ -8,6 +8,7 @@
 // STL
 //
 #include <array>
+#include <algorithm>
 #include <vector>
 #include <utility>
 #include <stdexcept>
@@ -39,7 +40,9 @@ PawnMove::type() const noexcept
 bool
 PawnMove::canMove(dim_t row, dim_t col) const noexcept
 {
-  throw std::logic_error("NOT IMPLEMENTED");
+  auto last = std::cend(mDeltas);
+  auto it = find(std::cbegin(mDeltas), last, std::make_pair(row, col));
+  return (it == last) ? false : _canMove(row, col);
 }
 
 PieceMove
