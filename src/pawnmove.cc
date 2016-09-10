@@ -123,10 +123,4 @@ PawnMove::deltas() const
   return vDeltas;
 }
 
-dim_t
-PawnMove::delta() const noexcept
-{
-  return isWhite(mColor) ? 1 : -1;
-}
-
 } // namespace zoor
