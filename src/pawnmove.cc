@@ -108,20 +108,20 @@ std::vector<std::pair<dim_t, dim_t>>
 PawnMove::deltas() const
 {
   auto delta = delta(mColor) + mRow;
-  std::array<std::pair<dim_t, dim_t>, 3> aDeltas = {
+  std::array<std::pair<dim_t, dim_t>, 3> arr = {
     {delta, mCol},
     {delta, mCol+1},
     {delta, mCol-1}
   };
-  std::vector<std::pair<dim_t, dim_t>> vDeltas;
-  for (auto d : aDeltas) {
+  std::vector<std::pair<dim_t, dim_t>> vec;
+  for (auto d : arr) {
     if (inBound(d.first, d.second))
-      vDeltas.emplace_back(d.first, d.second);
+      vec.emplace_back(d.first, d.second);
   }
   if (isFirstMove())
-    vDeltas.emplace_back(jumpTwo());
+    vec.emplace_back(jumpTwo());
 
-  return vDeltas;
+  return vec;
 }
 
 } // namespace zoor
