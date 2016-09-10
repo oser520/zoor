@@ -88,7 +88,8 @@ PawnMove::isFirstMove() const noexcept
 std::pair<dim_t, dim_t>
 PawnMove::jumpTwo() const noexcept
 {
-  throw std::logic_error("NOT IMPLEMENTED");
+  auto col = mCol + 2 * delta();
+  return {mRow, col};
 }
 
 bool
