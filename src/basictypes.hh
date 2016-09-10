@@ -467,5 +467,16 @@ delta(Color color) noexcept
   return isWhite(color) ? 1 : -1;
 }
 
+//! @param row The row of the square.
+//! @param col The column of the square.
+//! @return True if the square is inside of a 8x8 board, false otherwise.
+//! @throw Never throws.
+inline bool
+inBound(dim_t row, dim_t col) noexcept
+{
+  return row >= 0 && row <= 7
+      && col >= 0 && col <= 7;
+}
+
 } // namespace zoor
 #endif // _BASICTYPES_H
