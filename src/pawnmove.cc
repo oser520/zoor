@@ -74,7 +74,23 @@ PawnMove::isPromotion(dim_t row, dim_t col) const noexcept
 std::vector<PieceMove>
 PawnMove::promote(dim_t row, dim_t col) const
 {
-  throw std::logic_error("NOT IMPLEMENTED");
+  assert(mBoard(row, col).color() != mColor);
+  const static std::array<Piece, 4> pieces = {
+    Piece::N,
+    Piece::B,
+    Piece::R,
+    Piece::Q
+  };
+  auto capture = mBoard(row, col).code();
+  std::vector<PieceMove> moveList(4);
+  for (auto p : pieces) {
+    moveList.emplace_back(row, col, Piece::P, mColor);
+    auto& pMove = moveList.back();
+    pMove.dPiece(row, col, code);
+    pMove.xPiece(row, col, p, mColor);
+  }
+
+  return moveList;
 }
 
 bool
