@@ -66,7 +66,9 @@ PawnMove::_move(dim_t row, dim_t col) const
 bool
 PawnMove::isPromotion(dim_t row, dim_t col) const noexcept
 {
-  throw std::logic_error("NOT IMPLEMENTED");
+  if (col != mCol)
+    return isWhite(mColor) ? row == 7 : row == 0;
+  return false;
 }
 
 std::vector<PieceMove>
