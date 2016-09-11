@@ -121,6 +121,10 @@ PawnMove::isEnPassant(dim_t row, dim_t col) const noexcept
   if (mCol == col)
     return false;
 
+  const auto pc = mBoard(captureRow, col).code();
+  if (isPiece(pc))
+    return false;
+
   const dimt_t enPassantRow;
   const dimt_t captureRow;
   const dimt_t pawnRow;
@@ -138,7 +142,6 @@ PawnMove::isEnPassant(dim_t row, dim_t col) const noexcept
   if (enPassantRow != row)
     return false;
 
-  const auto pc = mBoard(captureRow, col).code();
   if (getColor(pc) != mColor && isPawn(pc)) {
     auto pm = mBoard.lastMove();
     if (isPawn(pm.sPiece())
