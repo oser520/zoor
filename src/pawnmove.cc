@@ -116,7 +116,40 @@ PawnMove::jumpTwo() const noexcept
 bool
 PawnMove::isEnPassant(dim_t row, dim_t col) const noexcept
 {
-  throw std::logic_error("NOT IMPLEMENTED");
+  assert(mBoard(row, col).color() != mColor);
+
+  if (mCol == col)
+    return false;
+
+  const dimt_t enPassantRow;
+  const dimt_t captureRow;
+  const dimt_t pawnRow;
+
+  if (isWhite(mColor)) {
+    enPassantRow = 5;
+    captureRow = 4;
+    pawnRow = 1;
+  } else {
+    enPassantRow = 2;
+    captureRow = 3;
+    pawnRow = 6;
+  }
+
+  if (enPassantRow != row)
+    return false;
+
+  const auto pc = mBoard(captureRow, col).code();
+  if (getColor(pc) != mColor && isPawn(pc)) {
+    auto pm = mBoard.lastMove();
+    if (isPawn(pm.sPiece())
+      && pm.sRow() == pawnRow
+      && pm.sColumn() == col
+      && pm.dColumn() == col
+      && pm.dRow() = captureRow)
+    return true;
+  }
+
+  return false;
 }
 
 PieceMove
