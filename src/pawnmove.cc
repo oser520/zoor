@@ -109,8 +109,8 @@ PawnMove::isFirstMove() const noexcept
 std::pair<dim_t, dim_t>
 PawnMove::jumpTwo() const noexcept
 {
-  auto col = mCol + 2 * delta();
-  return {mRow, col};
+  auto row = mRow + 2 * delta();
+  return {row, mCol};
 }
 
 bool
