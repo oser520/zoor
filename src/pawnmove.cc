@@ -158,7 +158,11 @@ PawnMove::isEnPassant(dim_t row, dim_t col) const noexcept
 PieceMove
 PawnMove::enPassant(dim_t row, dim_t col) const noexcept
 {
-  throw std::logic_error("NOT IMPLEMENTED");
+  const auto code = mColor | Piece::P;
+  PieceMove pm(mRow, mCol, code, row, col);
+  row += -1 * delta();
+  pm.xPiece(row, col, mBoard(row, col).code());
+  return pm;
 }
 
 std::vector<std::pair<dim_t, dim_t>>
