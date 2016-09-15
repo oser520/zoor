@@ -113,6 +113,13 @@ private:
   //! @return A list squares of where it is viable for the pawn to move.
   std::vector<std::pair<dim_t, dim_t>>
   deltas() const;
+
+  //! Checks the move to the given square is an attack move.
+  //! @param row The row of the square where the pawn is moving.
+  //! @param col The column of the square where the pawn is moving.
+  //! @return True if the move is an attacking move, false otherwise.
+  bool
+  isAttack(dim_t row, dim_t col) const noexcept;
 };
 
 } // namespace zoor
