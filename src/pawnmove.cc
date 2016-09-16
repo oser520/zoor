@@ -185,4 +185,11 @@ PawnMove::deltas() const
   return vec;
 }
 
+bool
+PawnMove::isAttack(dim_t row, dim_t col) const noexcept
+{
+  auto code = mBoard(row, col).code();
+  return col != mCol && isPiece(code) && isSame(code, mColor);
+}
+
 } // namespace zoor
