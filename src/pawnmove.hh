@@ -127,6 +127,17 @@ private:
   //! @return True if the move is a move forward, false otherwise.
   bool
   isForward(dim_t row, dim_t col) const noexcept;
+
+  //! Checks the move is legal.
+  //! @details In this context, legal means the move is one square forward,
+  //! diagonally, or two moves forward if it's the pawn's very first move, but
+  //! the move might not actually valid, e.g., the pawn cannot move forward one
+  //! square because it is not empty.
+  //! @param row The row of the square where the pawn is moving.
+  //! @param col The column of the square where the pawn is moving.
+  //! @return True if the move is valid, false otherwise.
+  bool
+  isLegal(dim_t row, dim_t col) const noexcept;
 };
 
 } // namespace zoor
