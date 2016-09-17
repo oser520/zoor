@@ -192,4 +192,10 @@ PawnMove::isAttack(dim_t row, dim_t col) const noexcept
   return col != mCol && isPiece(code) && !isSame(code, mColor);
 }
 
+bool
+PawnMove::isForward(dim_t col) const noexcept
+{
+  return col == mCol;
+}
+
 } // namespace zoor
