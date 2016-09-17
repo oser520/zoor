@@ -40,9 +40,7 @@ PawnMove::type() const noexcept
 bool
 PawnMove::canMove(dim_t row, dim_t col) const noexcept
 {
-  auto last = std::cend(mDeltas);
-  auto it = find(std::cbegin(mDeltas), last, std::make_pair(row, col));
-  return (it == last) ? false : _canMove(row, col);
+  return isLegal(row, col) ? _canMove(row, col) : false;
 }
 
 PieceMove
