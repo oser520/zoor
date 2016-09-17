@@ -120,6 +120,13 @@ private:
   //! @return True if the move is an attacking move, false otherwise.
   bool
   isAttack(dim_t row, dim_t col) const noexcept;
+
+  //! Checks the move is a one or two square move forward.
+  //! @param row The row of the square where the pawn is moving.
+  //! @param col The column of the square where the pawn is moving.
+  //! @return True if the move is a move forward, false otherwise.
+  bool
+  isForward(dim_t row, dim_t col) const noexcept;
 };
 
 } // namespace zoor
