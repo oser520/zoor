@@ -53,11 +53,11 @@ PawnMove::move(dim_t row, dim_t col) const
   if (isLegal(row, col)) {
     if (isForward(row, col))
       return MoveList{{_move(row, col)}};
-    if (isPromotion(row, col))
+    else if (isPromotion(row, col))
       return promote(row, col);
-    if (isAttack(row, col))
+    else if (isAttack(row, col))
       return MoveList{{_move(row, col)}};
-    if (isEnPassant(row, col))
+    else if (isEnPassant(row, col))
       return enPassant(row, col);
   }
 
