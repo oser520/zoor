@@ -43,10 +43,23 @@ PawnMove::canMove(dim_t row, dim_t col) const noexcept
   return isLegal(row, col) ? _canMove(row, col) : false;
 }
 
-PieceMove
+std::vector<PieceMove>
 PawnMove::move(dim_t row, dim_t col) const
 {
-  throw std::logic_error("NOT IMPLEMENTED");
+  using MoveList = std::vector<PieceMove>;
+
+  if (isLegal(row, col)) {
+    if (isForward(row, col))
+      return MoveList{{_move(row, col)}};
+    if (isPromotion(row, col))
+      return promote(row, col);
+    if (isAttack(row, col))
+      return MoveList{{_move(row, col)}};
+    if (isEnPassant(row, col))
+      return enPassant(row, col);
+  }
+
+  throw std::logic_error("Move is not legal");
 }
 
 std::vector<PieceMove>

@@ -46,7 +46,7 @@ public:
   canMove(dim_t row, dim_t col) const noexcept override;
 
   //! @copydoc IMove::move(dim_t, dim_t)
-  PieceMove
+  std::vector<PieceMove>
   move(dim_t row, dim_t col) const override;
 
   //! @copydoc IMove::moves()
