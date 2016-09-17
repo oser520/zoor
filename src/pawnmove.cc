@@ -96,7 +96,7 @@ PawnMove::promote(dim_t row, dim_t col) const
 bool
 PawnMove::_canMove(dim_t row, dim_t col) const noexcept
 {
-  throw std::logic_error("NOT IMPLEMENTED");
+  return isForward(col) || isAttack(row, col) || isEnPassant(row, col);
 }
 
 bool
