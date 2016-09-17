@@ -13,9 +13,11 @@
 // zoor
 //
 #include "basictypes.hh"
-#include "board.hh"
+#include "imove.hh"
 
 namespace zoor {
+
+class Board;
 
 IMove::IMove(dim_t row, dim_t col, const Board &board)
   : mRow(row),
