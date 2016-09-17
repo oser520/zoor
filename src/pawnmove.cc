@@ -198,4 +198,12 @@ PawnMove::isForward(dim_t row, dim_t col) const noexcept
   return col == mCol && notPiece(mBoard(row, col).piece());
 }
 
+bool
+PawnMove::isLegal(dim_t row, dim_t col) const noexcept
+{
+  auto last = std::cend(mDeltas);
+  auto rowcol = std::make_pair(row, col);
+  return last != find(std::cbegin(mDeltas), last, rowcol);
+}
+
 } // namespace zoor
