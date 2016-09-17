@@ -84,9 +84,9 @@ public:
   //! Moves the piece to the given square.
   //! @param row The row of the square where the piece is moving.
   //! @param col The column of the square where the piece is moving.
-  //! @return A PieceMove.
+  //! @return A list of moves.
   //! @throw If the piece cannot move to the given square.
-  virtual PieceMove
+  virtual std::vector<PieceMove>
   move(dim_t row, dim_t col) const;
 
   //! The list of moves the piece can make.
