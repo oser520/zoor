@@ -71,7 +71,9 @@ PawnMove::moves() const
 PieceMove
 PawnMove::_move(dim_t row, dim_t col) const
 {
-  throw std::logic_error("NOT IMPLEMENTED");
+  PieceMove pm(mRow, mCol, Piece::p, mColor);
+  pm.dPiece(row, col, mBoard(row, col).code());
+  return pm;
 }
 
 bool
