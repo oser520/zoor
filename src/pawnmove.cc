@@ -10,7 +10,9 @@
 #include <array>
 #include <algorithm>
 #include <cassert>
+#include <iterator>
 #include <stdexcept>
+#include <tuple>
 #include <utility>
 #include <vector>
 
@@ -65,7 +67,26 @@ PawnMove::move(dim_t row, dim_t col) const
 std::vector<PieceMove>
 PawnMove::moves() const
 {
-  throw std::logic_error("NOT IMPLEMENTED");
+  std::vector<PieceMove> moveList;
+
+  for (const auto delta : mDeltas) {
+    std::dim_t row, col;
+    std::tie(row, col) = delta;
+    if (isForward(row, col))
+      moveList.emplace_back(_move(row, col));
+    else if (isPromotion(row, col)) {
+      auto ml = promote(row, col);
+      std::move(std::begin(ml), std::end(ml), std::back_inserter(moveList));
+    }
+    else if (isAttack(row, col))
+      moveList.emplace_back(_move(row, col));
+    else if (isEnPassant(row, col)) {
+      auto ml = enPassant(row, col);
+      std::move(std::begin(ml), std::end(ml), std::back_inserter(moveList));
+    }
+  }
+
+  return moveList;
 }
 
 PieceMove
