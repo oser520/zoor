@@ -9,10 +9,10 @@
 //
 #include <array>
 #include <algorithm>
-#include <vector>
-#include <utility>
-#include <stdexcept>
 #include <cassert>
+#include <stdexcept>
+#include <utility>
+#include <vector>
 
 //
 // zoor
@@ -142,7 +142,7 @@ PawnMove::isEnPassant(dim_t row, dim_t col) const noexcept
   if (enPassantRow != row)
     return false;
 
-  if (getColor(pc) != mColor && isPawn(pc)) {
+  if (!isSame(pc, mColor) && isPawn(pc)) {
     auto pm = mBoard.lastMove();
     if (isPawn(pm.sPiece())
       && pm.sRow() == pawnRow
@@ -193,9 +193,9 @@ PawnMove::isAttack(dim_t row, dim_t col) const noexcept
 }
 
 bool
-PawnMove::isForward(dim_t col) const noexcept
+PawnMove::isForward(dim_t row, dim_t col) const noexcept
 {
-  return col == mCol;
+  return col == mCol && notPiece(mBoard(row, col).piece());
 }
 
 } // namespace zoor
