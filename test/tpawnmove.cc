@@ -21,55 +21,55 @@
 
 namespace zoor {
 
-TEST(PawnMoveTest, ConstructorShouldThrowIfRowIsNotValid)
+TEST(PawnMoveTest, DISABLED_ConstructorShouldThrowIfRowIsNotValid)
 {
 }
 
-TEST(PawnMoveTest, ConstructorShouldThrowIfColumIsNotValid)
+TEST(PawnMoveTest, DISABLED_ConstructorShouldThrowIfColumIsNotValid)
 {
 }
 
-TEST(PawnMoveTest, ConstructorShouldThrowIfThePieceIsNotAPawn)
+TEST(PawnMoveTest, DISABLED_ConstructorShouldThrowIfThePieceIsNotAPawn)
 {
 }
 
-TEST(PawnMoveTest, TypeShouldReturnAPawn)
+TEST(PawnMoveTest, DISABLED_TypeShouldReturnAPawn)
 {
 }
 
-TEST(PawnMoveTest, CanMoveShouldReturnFalseIfMovesAreNotValid)
+TEST(PawnMoveTest, DISABLED_CanMoveShouldReturnFalseIfMovesAreNotValid)
 {
 }
 
-TEST(PawnMoveTest, CanMoveShouldReturnTrueIfMovesAreValid)
+TEST(PawnMoveTest, DISABLED_CanMoveShouldReturnTrueIfMovesAreValid)
 {
 }
 
-TEST(PawnMoveTest, MoveShouldReturnAForwardPieceMove)
+TEST(PawnMoveTest, DISABLED_MoveShouldReturnAForwardPieceMove)
 {
 }
 
-TEST(PawnMoveTest, MoveShouldReturnATwoSquareForwardPieceMove)
+TEST(PawnMoveTest, DISABLED_MoveShouldReturnATwoSquareForwardPieceMove)
 {
 }
 
-TEST(PawnMoveTest, MoveShouldReturnAnAttackMove)
+TEST(PawnMoveTest, DISABLED_MoveShouldReturnAnAttackMove)
 {
 }
 
-TEST(PawnMoveTest, MoveShouldReturnMultipleMovesOnPromotion)
+TEST(PawnMoveTest, DISABLED_MoveShouldReturnMultipleMovesOnPromotion)
 {
 }
 
-TEST(PawnMoveTest, MoveShouldReturnAListOfMovesOnPromotion)
+TEST(PawnMoveTest, DISABLED_MoveShouldReturnAListOfMovesOnPromotion)
 {
 }
 
-TEST(PawnMoveTest, MoveShouldReturnAnEnPassantMove)
+TEST(PawnMoveTest, DISABLED_MoveShouldReturnAnEnPassantMove)
 {
 }
 
-TEST(PawnMoveTest, MovesShouldReturnACorrectListOfValidMoves)
+TEST(PawnMoveTest, DISABLED_MovesShouldReturnACorrectListOfValidMoves)
 {
 }
 
