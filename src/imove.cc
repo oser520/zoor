@@ -34,7 +34,7 @@ void
 IMove::square(dim_t row, dim_t col)
 {
   // TODO: return exception instead of asserting
-  assert(mBoard(row, col).piece() == type());
+  assert(mBoard(row, col).piece() == piece());
   assert(mBoard(row, col).color() == color());
   mRow = row;
   mCol = col;

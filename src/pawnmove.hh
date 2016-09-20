@@ -37,9 +37,9 @@ public:
   //! @copydoc IMove::IMove(dim_t, dim_t, Board)
   PawnMove(dim_t row, dim_t col, const Board &board) noexcept;
 
-  //! @copydoc IMove::type()
-  constexpr Piece
-  type() const noexcept override;
+  //! @copydoc IMove::piece()
+  Piece
+  piece() const noexcept override;
 
   //! @copydoc IMove::canMove(dim_t, dim_t)
   bool

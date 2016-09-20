@@ -33,8 +33,8 @@ PawnMove::PawnMove(dim_t row, dim_t col, const Board &board) noexcept
   mDeltas = deltas();
 }
 
-constexpr Piece
-PawnMove::type() const noexcept
+Piece
+PawnMove::piece() const noexcept
 {
   return Piece::P;
 }

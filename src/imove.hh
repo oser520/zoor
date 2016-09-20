@@ -71,8 +71,8 @@ public:
   square(dim_t row, dim_t col);
 
   //! @return The type of piece making the move.
-  virtual constexpr Piece
-  type() const noexcept;
+  virtual Piece
+  piece() const noexcept;
 
   //! Determine if the piece can move to the given square.
   //! @param row The row where the piece should move.
