@@ -29,6 +29,7 @@ class PieceMove;
 //! Represents the moves a piece can make from a given position on a board.
 class IMove
 {
+protected:
   dim_t mRow;
   dim_t mCol;
   const Board &mBoard;
