@@ -11,6 +11,7 @@ set(test_src
     tpiececount.cc
     tpiecemove.cc
     tsquare.cc
+    tpawnmove.cc
 )
 add_library(tzoor STATIC ${test_src})
 target_link_libraries(tzoor zoor)
