@@ -10,4 +10,5 @@ add_library(zoor STATIC
     search.cc
     square.cc
     strategy.cc
+    pawnmove.cc
 )
