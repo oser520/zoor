@@ -58,7 +58,7 @@ PawnMove::move(dim_t row, dim_t col) const
     else if (isAttack(row, col))
       return MoveList{{_move(row, col)}};
     else if (isEnPassant(row, col))
-      return enPassant(row, col);
+      return MoveList{{enPassant(row, col)}};
   }
 
   throw std::logic_error("Move is not legal");
