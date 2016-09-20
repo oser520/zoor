@@ -385,6 +385,27 @@ isBlack(Color color) noexcept
   return color == Color::B;
 }
 
+//! @brief Determine if the piece code represents a piece, such as a pawn.
+//! @param piece The bit pattern reprsenting a piece and its color.
+//! @return True if the piece code represents does not represent Piece::NONE,
+//! false otherwise.
+//! @throw Never throws.
+inline bool
+isPiece(piece_t piece) noexcept
+{
+  return getPiece(piece) != Piece::NONE;
+}
+
+//! @brief Determine if the piece is a valid piece, such as a pawn.
+//! @param piece The Piece.
+//! @return True if piece is not Piece::NONE, false otherwise.
+//! @throw Never throws.
+inline bool
+isPiece(Piece piece) noexcept
+{
+  return piece != Piece::NONE;
+}
+
 //! @brief Determine if the piece code represents a <em>Piece::NONE</em>.
 //! @param piece The bit pattern reprsenting a piece and its color.
 //! @return True if the piece code represents <em>Piece::NONE</em>.

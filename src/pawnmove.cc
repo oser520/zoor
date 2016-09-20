@@ -118,7 +118,7 @@ PawnMove::promote(dim_t row, dim_t col) const
   for (auto p : pieces) {
     moveList.emplace_back(row, col, Piece::P, mColor);
     auto& pMove = moveList.back();
-    pMove.dPiece(row, col, code);
+    pMove.dPiece(row, col, capture);
     pMove.xPiece(row, col, p, mColor);
   }
 
@@ -128,7 +128,7 @@ PawnMove::promote(dim_t row, dim_t col) const
 bool
 PawnMove::_canMove(dim_t row, dim_t col) const noexcept
 {
-  return isForward(col) || isAttack(row, col) || isEnPassant(row, col);
+  return isForward(row, col) || isAttack(row, col) || isEnPassant(row, col);
 }
 
 bool
@@ -141,7 +141,7 @@ PawnMove::isFirstMove() const noexcept
 std::pair<dim_t, dim_t>
 PawnMove::jumpTwo() const noexcept
 {
-  auto row = mRow + 2 * delta();
+  auto row = mRow + 2 * delta(mColor);
   return {row, mCol};
 }
 
@@ -153,13 +153,13 @@ PawnMove::isEnPassant(dim_t row, dim_t col) const noexcept
   if (mCol == col)
     return false;
 
-  const auto pc = mBoard(captureRow, col).code();
+  const auto pc = mBoard(row, col).code();
   if (isPiece(pc))
     return false;
 
-  const dimt_t enPassantRow;
-  const dimt_t captureRow;
-  const dimt_t pawnRow;
+  dim_t enPassantRow;
+  dim_t captureRow;
+  dim_t pawnRow;
 
   if (isWhite(mColor)) {
     enPassantRow = 5;
@@ -180,7 +180,7 @@ PawnMove::isEnPassant(dim_t row, dim_t col) const noexcept
       && pm.sRow() == pawnRow
       && pm.sColumn() == col
       && pm.dColumn() == col
-      && pm.dRow() = captureRow)
+      && pm.dRow() == captureRow)
     return true;
   }
 
@@ -192,7 +192,7 @@ PawnMove::enPassant(dim_t row, dim_t col) const noexcept
 {
   const auto code = mColor | Piece::P;
   PieceMove pm(mRow, mCol, code, row, col);
-  row += -1 * delta();
+  row += -1 * delta(mColor);
   pm.xPiece(row, col, mBoard(row, col).code());
   return pm;
 }
@@ -200,12 +200,12 @@ PawnMove::enPassant(dim_t row, dim_t col) const noexcept
 std::vector<std::pair<dim_t, dim_t>>
 PawnMove::deltas() const
 {
-  auto delta = delta(mColor) + mRow;
-  std::array<std::pair<dim_t, dim_t>, 3> arr = {
-    {delta, mCol},
-    {delta, mCol+1},
-    {delta, mCol-1}
-  };
+  auto del = delta(mColor) + mRow;
+  std::array<std::pair<dim_t, dim_t>, 3> arr = {{
+    {del, mCol},
+    {del, mCol+1},
+    {del, mCol-1}
+  }};
   std::vector<std::pair<dim_t, dim_t>> vec;
   for (auto d : arr) {
     if (inBound(d.first, d.second))
@@ -233,9 +233,9 @@ PawnMove::isForward(dim_t row, dim_t col) const noexcept
 bool
 PawnMove::isLegal(dim_t row, dim_t col) const noexcept
 {
-  auto last = std::cend(mDeltas);
+  auto last = std::end(mDeltas);
   auto rowcol = std::make_pair(row, col);
-  return last != find(std::cbegin(mDeltas), last, rowcol);
+  return last != find(std::begin(mDeltas), last, rowcol);
 }
 
 } // namespace zoor
