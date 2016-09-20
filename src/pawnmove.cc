@@ -80,10 +80,8 @@ PawnMove::moves() const
     }
     else if (isAttack(row, col))
       moveList.emplace_back(_move(row, col));
-    else if (isEnPassant(row, col)) {
-      auto ml = enPassant(row, col);
-      std::move(std::begin(ml), std::end(ml), std::back_inserter(moveList));
-    }
+    else if (isEnPassant(row, col))
+      moveList.emplace_back(enPassant(row, col));
   }
 
   return moveList;
