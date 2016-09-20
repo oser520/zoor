@@ -90,7 +90,7 @@ PawnMove::moves() const
 PieceMove
 PawnMove::_move(dim_t row, dim_t col) const
 {
-  PieceMove pm(mRow, mCol, Piece::p, mColor);
+  PieceMove pm(mRow, mCol, Piece::P, mColor);
   pm.dPiece(row, col, mBoard(row, col).code());
   return pm;
 }
