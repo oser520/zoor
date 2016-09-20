@@ -70,7 +70,7 @@ PawnMove::moves() const
   std::vector<PieceMove> moveList;
 
   for (const auto delta : mDeltas) {
-    std::dim_t row, col;
+    dim_t row, col;
     std::tie(row, col) = delta;
     if (isForward(row, col))
       moveList.emplace_back(_move(row, col));
