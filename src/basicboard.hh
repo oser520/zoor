@@ -384,7 +384,7 @@ operator==(const BasicBoard &board1, const BasicBoard &board2) noexcept
 inline bool
 operator!=(const BasicBoard &board1, const BasicBoard &board2) noexcept
 {
-  return !(board1 == board2);
+  return not (board1 == board2);
 }
 
 } // zoor
