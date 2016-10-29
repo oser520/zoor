@@ -1,14 +1,20 @@
 add_library(zoor STATIC
     basicboard.cc
+    basicboard.hh
     basictypes.cc
+    basictypes.hh
     board.cc
-    game.cc
+    board.hh
     iofen.cc
+    iofen.hh
     piececount.cc
+    piececount.hh
     piecemove.cc
-    player.cc
-    search.cc
+    piecemove.hh
     square.cc
+    square.hh
     strategy.cc
+    strategy.hh
     pawnmove.cc
+    pawnmove.hh
 )
