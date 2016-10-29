@@ -174,7 +174,7 @@ PawnMove::isEnPassant(dim_t row, dim_t col) const noexcept
   if (enPassantRow != row)
     return false;
 
-  if (!isSame(pc, mColor) && isPawn(pc)) {
+  if (not isSame(pc, mColor) && isPawn(pc)) {
     auto pm = mBoard.lastMove();
     if (isPawn(pm.sPiece())
       && pm.sRow() == pawnRow
@@ -221,7 +221,7 @@ bool
 PawnMove::isAttack(dim_t row, dim_t col) const noexcept
 {
   auto code = mBoard(row, col).code();
-  return col != mCol && isPiece(code) && !isSame(code, mColor);
+  return col != mCol && isPiece(code) && not isSame(code, mColor);
 }
 
 bool
