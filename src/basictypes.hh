@@ -495,8 +495,8 @@ delta(Color color) noexcept
 inline bool
 inBound(dim_t row, dim_t col) noexcept
 {
-  return row >= 0 && row <= 7
-      && col >= 0 && col <= 7;
+  return row >= 0 and row <= 7
+      and col >= 0 and col <= 7;
 }
 
 } // namespace zoor
