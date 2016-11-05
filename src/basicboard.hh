@@ -366,7 +366,7 @@ BasicBoard::emptyBoard()
 inline bool
 BasicBoard::inBoard(dim_t row, dim_t column) noexcept
 {
-  return row >= 0 && row < DIM && column >= 0 && column < DIM;
+  return row >= 0 and row < DIM and column >= 0 and column < DIM;
 }
 
 //
