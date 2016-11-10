@@ -69,9 +69,9 @@ bool
 operator==(const Square& square1, const Square& square2) noexcept
 {
   return square1.piece() == square2.piece()
-      && square1.color() == square2.color()
-      && square1.row() == square2.row()
-      && square1.column() == square2.column();
+      and square1.color() == square2.color()
+      and square1.row() == square2.row()
+      and square1.column() == square2.column();
 }
 
 //
