@@ -254,7 +254,7 @@ Board::makeMove(const PieceMove &pMove)
   auto pc = mBoard.get(r, c);
 
   // verify correct piece in square
-  assert(isSame(pc, pMove.sPiece()) && isSame(pc, pMove.sColor()));
+  assert(isSame(pc, pMove.sPiece()) and isSame(pc, pMove.sColor()));
 
   // fetch legal moves
   auto moveList = getMoves(r, c);
@@ -277,28 +277,28 @@ bool
 Board::isLastMoveOk() const noexcept
 {
   auto piece = mLastMove.sPiece();
-  if (!notPiece(piece)) {
+  if (not notPiece(piece)) {
     // check that there is no piece from square where piece moved from
-    if (!notPiece(mBoard.get(mLastMove.sRow(), mLastMove.sColumn())))
+    if (not notPiece(mBoard.get(mLastMove.sRow(), mLastMove.sColumn())))
       return false;
 
     if (mLastMove.isCastle()) {
       if (isWhite(mLastMove.sColor())) {
         auto pcode = mBoard.get(0, 7);
-        if (!isRook(pcode) || !isWhite(pcode))
+        if (not isRook(pcode) or not isWhite(pcode))
           return false;
         pcode = mBoard.get(0, 4);
-        if (!isKing(pcode) || !isWhite(pcode))
+        if (not isKing(pcode) or not isWhite(pcode))
           return false;
         // check if board info allows castling
-        if (!mInfo.wkCastle())
+        if (not mInfo.wkCastle())
           return false;
       } else {
         auto pcode = mBoard.get(7, 7);
-        if (!isRook(pcode) || !isBlack(pcode))
+        if (not isRook(pcode) or not isBlack(pcode))
           return false;
         pcode = mBoard.get(7, 4);
-        if (!isKing(pcode) || !isBlack(pcode))
+        if (not isKing(pcode) or not isBlack(pcode))
           return false;
         // check if board info allows castling
         if (!mInfo.bkCastle())
@@ -307,23 +307,23 @@ Board::isLastMoveOk() const noexcept
     } else if (mLastMove.isCastleLong()) {
       if (isWhite(mLastMove.sColor())) {
         auto pcode = mBoard.get(0, 0);
-        if (!isRook(pcode) || !isWhite(pcode))
+        if (not isRook(pcode) or not isWhite(pcode))
           return false;
         pcode = mBoard.get(0, 2);
-        if (!isKing(pcode) || !isWhite(pcode))
+        if (not isKing(pcode) or not isWhite(pcode))
           return false;
         // check if board info allows castling
-        if (!mInfo.wkCastleLong())
+        if (not mInfo.wkCastleLong())
           return false;
       } else {
         auto pcode = mBoard.get(7, 0);
-        if (!isRook(pcode) || !isBlack(pcode))
+        if (!isRook(pcode) or not isBlack(pcode))
           return false;
         pcode = mBoard.get(7, 2);
-        if (!isKing(pcode) || !isBlack(pcode))
+        if (not isKing(pcode) or not isBlack(pcode))
           return false;
         // check if board info allows castling
-        if (!mInfo.bkCastleLong())
+        if (not mInfo.bkCastleLong())
           return false;
       }
     } else if (mLastMove.isPromo()) {
