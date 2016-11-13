@@ -379,7 +379,7 @@ jump_list Board::jump
 bool
 Board::isCheckPawn(dim_t row, dim_t column) const noexcept
 {
-  assert(!notColor(mColor));
+  assert(not notColor(mColor));
   assert(BasicBoard::inBoard(row, column));
 
   if (isWhite(mColor)) {
@@ -387,12 +387,12 @@ Board::isCheckPawn(dim_t row, dim_t column) const noexcept
     if (toRow < BasicBoard::DIM) {
       if (column < BasicBoard::DIM-1) {
         auto code = mBoard.get(toRow, column+1);
-        if (isPawn(code) && isBlack(code))
+        if (isPawn(code) and isBlack(code))
           return true;
       }
       if (column > 0) {
         auto code = mBoard.get(toRow, column-1);
-        if (isPawn(code) && isBlack(code))
+        if (isPawn(code) and isBlack(code))
           return true;
       }
     }
@@ -401,12 +401,12 @@ Board::isCheckPawn(dim_t row, dim_t column) const noexcept
     if (toRow >= 0) {
       if (column < BasicBoard::DIM-1) {
         auto code = mBoard.get(toRow, column+1);
-        if (isPawn(code) && isWhite(code))
+        if (isPawn(code) and isWhite(code))
           return true;
       }
       if (column > 0) {
         auto code = mBoard.get(toRow, column-1);
-        if (isPawn(code) && isWhite(code))
+        if (isPawn(code) and isWhite(code))
           return true;
       }
     }
