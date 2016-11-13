@@ -69,13 +69,13 @@ Board::Board(
     mLastMove(lastMove),
     mInfo(boardInfo)
 {
-  assert(!notColor(mColor));
-  assert(!squareList.empty());
+  assert(not notColor(mColor));
+  assert(not squareList.empty());
 
   for (auto& sq : squareList)
     mBoard.put(sq.row(), sq.column(), sq.code());
 
-  if (!isLastMoveOk())
+  if (not isLastMoveOk())
     throw ChessError("Bad last move");
 }
 
