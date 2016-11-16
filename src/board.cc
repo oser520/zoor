@@ -489,13 +489,13 @@ Board::isCheckQueen(dim_t row, dim_t column) const noexcept
 bool
 Board::isCheckKing(dim_t row, dim_t column) const
 {
-  assert(!notColor(mColor));
+  assert(not notColor(mColor));
   assert(BasicBoard::inBoard(row, column));
 
   auto jumpList = jump(row, column, JUMP_KING);
   for (auto& pos : jumpList) {
     auto pcode = mBoard.get(pos.first, pos.second);
-    if (isKing(pcode) && !isSame(pcode, mColor))
+    if (isKing(pcode) and not isSame(pcode, mColor))
       return true;
   }
 
