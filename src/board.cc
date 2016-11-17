@@ -538,12 +538,12 @@ Board::isEnPassant(Color color, dim_t toColumn) const noexcept
   }
 
   auto toCode = mBoard.get(toRow, toColumn);
-  return isPawn(toCode) && !isSame(toCode, mColor)
-      && isPawn(mLastMove.sPiece())
-      && mLastMove.sRow() == fromRow
-      && mLastMove.sColumn() == toColumn
-      && mLastMove.dRow() == toRow
-      && mLastMove.dColumn() == toColumn;
+  return isPawn(toCode) and not isSame(toCode, mColor)
+     and isPawn(mLastMove.sPiece())
+     and mLastMove.sRow() == fromRow
+     and mLastMove.sColumn() == toColumn
+     and mLastMove.dRow() == toRow
+     and mLastMove.dColumn() == toColumn;
 }
 
 //
