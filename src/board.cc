@@ -656,7 +656,7 @@ Board::movePawn(dim_t row, dim_t column) const
     if (column > 0) {
       auto toCol = column-1;
       toCode = mBoard.get(toRow, toCol);
-      if (!notPiece(toCode) && !isSame(toCode, mColor)) {
+      if (not notPiece(toCode) and not isSame(toCode, mColor)) {
         for (auto& pc : pcArr) {
           moveList.emplace_back(row, column, fromCode);
           moveList.back().xPiece(toRow, toCol, toCode);
@@ -668,7 +668,7 @@ Board::movePawn(dim_t row, dim_t column) const
     if (column < 7) {
       auto toCol = column+1;
       toCode = mBoard.get(toRow, toCol);
-      if (!notPiece(toCode) && !isSame(toCode, mColor)) {
+      if (not notPiece(toCode) and not isSame(toCode, mColor)) {
         for (auto& pc : pcArr) {
           moveList.emplace_back(row, column, fromCode);
           moveList.back().xPiece(toRow, toCol, toCode);
