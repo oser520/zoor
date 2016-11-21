@@ -497,7 +497,7 @@ operator==(const BoardInfo& info1, const BoardInfo& info2) noexcept
 inline bool
 operator!=(const BoardInfo& info1, const BoardInfo& info2) noexcept
 {
-  return !(info1 == info2);
+  return not (info1 == info2);
 }
 
 //! @brief The output operator for @c BoardInfo.
