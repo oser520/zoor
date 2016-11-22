@@ -90,7 +90,7 @@ readFen(ifstream &inFile)
     fenList.push_back(fenrec);
   }
 
-  if (inFile.fail() && !inFile.eof())
+  if (inFile.fail() and not inFile.eof())
     throw ChessError("Error processing FEN file");
 
   return fenList;
