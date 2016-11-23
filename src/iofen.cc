@@ -109,44 +109,44 @@ readFenLine(const string &fenLine)
 
   // process the last ranks, 8 through 2
   for (; numRank > 0; --numRank) {
-    if (!getline(iss, buff, '/'))
+    if (not getline(iss, buff, '/'))
       throw ChessError("FEN record is not valid");
 
     readRank(buff, squareList, numRank);
   }
 
   // process the 1st rank
-  if (!(iss >> buff))
+  if (not (iss >> buff))
     throw ChessError("FEN record is not valid");
 
   readRank(buff, squareList, numRank);
 
   // check that number of pieces makes sense
   PieceCount pc(squareList);
-  if (!pc.good())
+  if (not pc.good())
     throw ChessError("FEN record is not valid");
 
   // process color to move next
-  if (!(iss >> buff))
+  if (not (iss >> buff))
     throw ChessError("FEN record is not valid");
 
   auto color = readColor(buff);
 
   // process board info
-  if (!(iss >> buff))
+  if (not (iss >> buff))
     throw ChessError("FEN record is not valid");
 
   auto info = readBoardInfo(buff);
 
   // process en passant
-  if (!(iss >> buff))
+  if (not (iss >> buff))
     throw ChessError("FEN record is not valid");
 
   auto pmove = readEnPassant(buff);
 
   // process half moves
   size_t halfMoves;
-  if (!(iss >> halfMoves))
+  if (not (iss >> halfMoves))
     throw ChessError("FEN record is not valid");
 
   // process full moves
@@ -154,7 +154,7 @@ readFenLine(const string &fenLine)
   iss >> fullMoves;
 
   // can't use !(iss >> fullMove) above, because it will be true if eof
-  if (iss.fail() && !iss.eof())
+  if (iss.fail() and not iss.eof())
     throw ChessError("FEN record is not valid");
 
   auto pb = make_shared<Board>(squareList, color, info, pmove);
