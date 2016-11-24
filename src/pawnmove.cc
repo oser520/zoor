@@ -128,14 +128,14 @@ PawnMove::promote(dim_t row, dim_t col) const
 bool
 PawnMove::_canMove(dim_t row, dim_t col) const noexcept
 {
-  return isForward(row, col) || isAttack(row, col) || isEnPassant(row, col);
+  return isForward(row, col) or isAttack(row, col) or isEnPassant(row, col);
 }
 
 bool
 PawnMove::isFirstMove() const noexcept
 {
-  return (isWhite(mColor) && mRow == 1)
-      || (isBlack(mColor) && mRow == 6);
+  return (isWhite(mColor) and mRow == 1)
+      or (isBlack(mColor) and mRow == 6);
 }
 
 std::pair<dim_t, dim_t>
@@ -174,7 +174,7 @@ PawnMove::isEnPassant(dim_t row, dim_t col) const noexcept
   if (enPassantRow != row)
     return false;
 
-  if (not isSame(pc, mColor) && isPawn(pc)) {
+  if (not isSame(pc, mColor) and isPawn(pc)) {
     auto pm = mBoard.lastMove();
     if (isPawn(pm.sPiece())
       && pm.sRow() == pawnRow
