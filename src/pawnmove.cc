@@ -177,10 +177,10 @@ PawnMove::isEnPassant(dim_t row, dim_t col) const noexcept
   if (not isSame(pc, mColor) and isPawn(pc)) {
     auto pm = mBoard.lastMove();
     if (isPawn(pm.sPiece())
-      && pm.sRow() == pawnRow
-      && pm.sColumn() == col
-      && pm.dColumn() == col
-      && pm.dRow() == captureRow)
+      and pm.sRow() == pawnRow
+      and pm.sColumn() == col
+      and pm.dColumn() == col
+      and pm.dRow() == captureRow)
     return true;
   }
 
