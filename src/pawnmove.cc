@@ -221,13 +221,13 @@ bool
 PawnMove::isAttack(dim_t row, dim_t col) const noexcept
 {
   auto code = mBoard(row, col).code();
-  return col != mCol && isPiece(code) && not isSame(code, mColor);
+  return col != mCol and isPiece(code) and not isSame(code, mColor);
 }
 
 bool
 PawnMove::isForward(dim_t row, dim_t col) const noexcept
 {
-  return col == mCol && notPiece(mBoard(row, col).piece());
+  return col == mCol and notPiece(mBoard(row, col).piece());
 }
 
 bool
