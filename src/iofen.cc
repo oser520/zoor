@@ -227,7 +227,7 @@ size_t
 readRank(const string &rankLine, vector<Square> &squareList, const dim_t row)
 {
   // check rank line is not empty and does not exceed max chars
-  if (rankLine.empty() || rankLine.size() > FenSymbols::RANK_LENGTH)
+  if (rankLine.empty() or rankLine.size() > FenSymbols::RANK_LENGTH)
     throw ChessError("FEN record is not valid");
 
   // check that we only have valid chars
@@ -240,7 +240,7 @@ readRank(const string &rankLine, vector<Square> &squareList, const dim_t row)
 
   for (auto &c : rankLine) {
     // check for empty squares
-    if (c >= '1' && c <= '8') {
+    if (c >= '1' and c <= '8') {
       col += c - '0';
       continue;
     }
@@ -296,10 +296,10 @@ BoardInfo
 readBoardInfo(string &infoLine)
 {
   // check info line is not empty and does not exceed max chars
-  if (infoLine.empty() || infoLine.size() > FenSymbols::CASTLE_LENGTH)
+  if (infoLine.empty() or infoLine.size() > FenSymbols::CASTLE_LENGTH)
     throw ChessError("FEN record is not valid");
 
-  if (infoLine.size() == 1 && infoLine.front() == FenSymbols::DASH) {
+  if (infoLine.size() == 1 and infoLine.front() == FenSymbols::DASH) {
     // remove castling rights
     BoardInfo info;
     info.rookA1On();
@@ -350,19 +350,19 @@ readBoardInfo(string &infoLine)
   BoardInfo info;
 
   // remove short castling for white
-  if (!wCastle)
+  if (not wCastle)
     info.rookH1On();
 
   // remove long castling for white
-  if (!wCastleLong)
+  if (not wCastleLong)
     info.rookA1On();
 
   // remove short castling for black
-  if (!bCastle)
+  if (not bCastle)
     info.rookH8On();
 
   // remove long castling for black
-  if (!bCastleLong)
+  if (not bCastleLong)
     info.rookA8On();
 
   return info;
@@ -384,7 +384,7 @@ PieceMove
 readEnPassant(const string &field)
 {
   // field cannot be empty or exceed two chars
-  if (field.empty() || field.size() > 2)
+  if (field.empty() or field.size() > 2)
     throw ChessError("FEN record is not valid");
 
   if (field.size() == 1) {
@@ -397,7 +397,7 @@ readEnPassant(const string &field)
 
   // check column letter is valid
   auto colChr = field.front();
-  if (colChr < 'a' || colChr > 'h')
+  if (colChr < 'a' or colChr > 'h')
     throw ChessError("FEN record is not valid");
 
   // set the column number
@@ -405,7 +405,7 @@ readEnPassant(const string &field)
 
   // check row number is valid
   auto rowChr = field.back();
-  if (rowChr != '3' && rowChr != '6')
+  if (rowChr != '3' and rowChr != '6')
     throw ChessError("FEN record is not valid");
 
   // set the row numbers and the piece code
