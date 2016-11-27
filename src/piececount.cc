@@ -65,12 +65,12 @@ PieceCount::count(const vector<Square> &squareList) noexcept
 bool
 PieceCount::good() const noexcept
 {
-  return wKing() <= KMAX && bKing() <= KMAX
-      && wQueen() <= QMAX && bQueen() <= QMAX
-      && wRook() <= RMAX && bRook() <= RMAX
-      && wBishop() <= BMAX && bBishop() <= BMAX
-      && wKnight() <= NMAX && bKnight() <= NMAX
-      && wPawn() <= PMAX && bPawn() <= PMAX;
+  return wKing() <= KMAX and bKing() <= KMAX
+      and wQueen() <= QMAX and bQueen() <= QMAX
+      and wRook() <= RMAX and bRook() <= RMAX
+      and wBishop() <= BMAX and bBishop() <= BMAX
+      and wKnight() <= NMAX and bKnight() <= NMAX
+      and wPawn() <= PMAX and bPawn() <= PMAX;
 }
 
 //
