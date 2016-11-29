@@ -988,7 +988,7 @@ PieceMove::isMate() const noexcept
 inline bool
 operator!=(const PieceMove &pm1, const PieceMove &pm2) noexcept
 {
-  return !(pm1 == pm2);
+  return not (pm1 == pm2);
 }
 
 } // namespace zoor
