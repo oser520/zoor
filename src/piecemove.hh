@@ -961,7 +961,7 @@ PieceMove::xSquare() const noexcept
 inline bool
 PieceMove::isCapture() const noexcept
 {
-  return !notPiece(xPiece()) && sColor() != xColor();
+  return not notPiece(xPiece()) and sColor() != xColor();
 }
 
 //
@@ -970,7 +970,7 @@ PieceMove::isCapture() const noexcept
 inline bool
 PieceMove::isPromo() const noexcept
 {
-  return isPawn(sPiece()) && !isPawn(dPiece());
+  return isPawn(sPiece()) and not isPawn(dPiece());
 }
 
 //
