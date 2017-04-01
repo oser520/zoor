@@ -355,10 +355,8 @@ Board::isLastMoveOk() const noexcept
 //
 // valid jump positions from a given row and column
 //
-jump_list Board::jump
-  (dim_t row,
-   dim_t column,
-   const jump_list &positions) const
+jump_list
+Board::jump(dim_t row, dim_t column, const jump_list &positions) const
 {
   assert(BasicBoard::inBoard(row, column));
   jump_list jumpList;
